@@ -18,7 +18,7 @@ type SkillsModulePageProps = {
 export function SkillsModulePage({ data }: SkillsModulePageProps) {
   if (!data.hasResume || !data.overview) {
     return (
-      <WorkspaceModuleLayout activeModule="Skills" title="Skills Module">
+      <WorkspaceModuleLayout title="Skills Module">
         <SkillsEmptyState variant="no-resume" />
       </WorkspaceModuleLayout>
     );
@@ -29,7 +29,7 @@ export function SkillsModulePage({ data }: SkillsModulePageProps) {
   const hasJobs = overview.savedJobsAnalyzedCount > 0;
 
   return (
-    <WorkspaceModuleLayout activeModule="Skills" title="Skills Module">
+    <WorkspaceModuleLayout title="Skills Module">
       <div className="relative min-h-0 flex-1 overflow-y-auto">
         <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
           <CareerCore

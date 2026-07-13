@@ -34,7 +34,7 @@ export function ResumeAnalysisPage({
   const actionPlan = analysis ? generateResumeActionPlan(analysis) : [];
 
   return (
-    <WorkspaceModuleLayout activeModule="Resume" title="Resume Module">
+    <WorkspaceModuleLayout title="Resume Module">
       {!analysis && history.length === 0 ? (
         <ResumeEmptyState />
       ) : (

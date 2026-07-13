@@ -25,7 +25,7 @@ export function JobsModulePage({
   hasResumeProfile,
 }: JobsModulePageProps) {
   return (
-    <WorkspaceModuleLayout activeModule="Jobs" title="Jobs Module">
+    <WorkspaceModuleLayout title="Jobs Module">
       <div className="relative min-h-0 flex-1 overflow-y-auto">
         <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
           <CareerCore

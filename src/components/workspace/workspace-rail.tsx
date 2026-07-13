@@ -1,0 +1,86 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { WorkspaceSettingsLink } from "./workspace-settings-link";
+
+const navItems = [
+  { label: "Core", glyph: "C", href: "/workspace" },
+  { label: "Resume", glyph: "R", href: "/workspace/resume" },
+  { label: "Jobs", glyph: "J", href: "/workspace/jobs" },
+  { label: "Skills", glyph: "S", href: "/workspace/skills" },
+  { label: "Analytics", glyph: "A", href: "/workspace/analytics" },
+] as const;
+
+type WorkspaceModuleLabel = (typeof navItems)[number]["label"];
+
+function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
+  switch (pathname) {
+    case "/workspace":
+      return "Core";
+    case "/workspace/resume":
+      return "Resume";
+    case "/workspace/jobs":
+      return "Jobs";
+    case "/workspace/skills":
+      return "Skills";
+    case "/workspace/analytics":
+      return "Analytics";
+    default:
+      return null;
+  }
+}
+
+export function WorkspaceRail() {
+  const pathname = usePathname();
+  const activeModule = resolveActiveModule(pathname);
+  const settingsActive = pathname === "/workspace/settings";
+
+  return (
+    <aside className="fixed inset-y-0 left-0 z-30 flex h-screen w-16 flex-col items-center border-r border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_58%)] px-2 py-5 backdrop-blur-xl">
+      <Link
+        className="mb-4 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-[var(--surface-soft-glass-border)] bg-[rgb(23_23_23_/_72%)] text-[11px] font-semibold text-[var(--color-accent)] shadow-[var(--shadow-sm)] [transition:var(--motion-fade)] hover:border-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        href="/workspace"
+        title="CareerOS"
+      >
+        CO
+      </Link>
+
+      <nav
+        aria-label="Workspace modules"
+        className="flex w-full shrink-0 flex-col gap-2"
+      >
+        {navItems.map((item) => {
+          const isActive = activeModule === item.label;
+
+          return (
+            <Link
+              aria-current={isActive ? "page" : undefined}
+              className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
+                isActive
+                  ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+                  : "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:border-[var(--color-border)] hover:bg-[var(--surface-soft-glass)] hover:text-[var(--color-text-primary)]"
+              }`}
+              href={item.href}
+              key={item.label}
+              title={item.label}
+            >
+              {item.glyph}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="min-h-0 flex-1" />
+
+      <div className="mb-20 flex w-full shrink-0 flex-col items-center gap-2 border-t border-[var(--color-border-subtle)] pt-3">
+        <WorkspaceSettingsLink isActive={settingsActive} />
+        <div
+          aria-hidden="true"
+          className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] opacity-70 shadow-[var(--shadow-accent-glow)]"
+        />
+      </div>
+    </aside>
+  );
+}
