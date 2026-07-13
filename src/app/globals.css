@@ -14,3 +14,26 @@ body {
   background: var(--background);
   font-family: var(--font-sans);
 }
+
+.command-palette-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(99 102 241 / 38%) rgb(17 17 17 / 88%);
+}
+
+.command-palette-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.command-palette-list::-webkit-scrollbar-track {
+  background: rgb(17 17 17 / 88%);
+  border-radius: 999px;
+}
+
+.command-palette-list::-webkit-scrollbar-thumb {
+  background: rgb(99 102 241 / 38%);
+  border-radius: 999px;
+}
+
+.command-palette-list::-webkit-scrollbar-thumb:hover {
+  background: rgb(99 102 241 / 52%);
+}
