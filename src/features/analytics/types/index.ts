@@ -30,6 +30,11 @@ export type AnalyticsJobsMetrics = {
   strongMatchesCount: number;
   partialMatchesCount: number;
   weakMatchesCount: number;
+  savedStatusCount: number;
+  appliedStatusCount: number;
+  interviewStatusCount: number;
+  offerStatusCount: number;
+  rejectedStatusCount: number;
 };
 
 export type AnalyticsSkillsMetrics = {

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { JobDetailView } from "../types";
+import { JobApplicationTracker } from "./job-application-tracker";
 import { formatJobCreatedAt, JobMatchSummary } from "./job-match-summary";
 import { JobRecommendations } from "./job-recommendations";
 
@@ -55,6 +56,8 @@ export function JobDetailPanel({ job }: JobDetailPanelProps) {
           </p>
         </div>
       </section>
+
+      <JobApplicationTracker job={job} />
 
       {job.analysis ? (
         <>

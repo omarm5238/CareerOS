@@ -5,8 +5,9 @@ import type { WorkspaceJobsStatus } from "../types";
 export async function getWorkspaceJobsStatusForUser(
   userId: string,
 ): Promise<WorkspaceJobsStatus> {
-  const [count, latest] = await Promise.all([
+  const [count, appliedCount, latest] = await Promise.all([
     prisma.jobPosting.count({ where: { userId } }),
+    prisma.jobPosting.count({ where: { userId, applicationStatus: "applied" } }),
     prisma.jobPosting.findFirst({
       where: { userId, analysis: { isNot: null } },
       orderBy: { createdAt: "desc" },
@@ -16,6 +17,7 @@ export async function getWorkspaceJobsStatusForUser(
 
   return {
     count,
+    appliedCount,
     latestMatchScore: latest?.analysis?.matchScore ?? null,
   };
 }

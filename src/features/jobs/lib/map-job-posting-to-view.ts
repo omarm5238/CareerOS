@@ -1,3 +1,4 @@
+import { parseApplicationStatus } from "../constants/application-status";
 import type { JobDetailView, JobListItem, RoleAlignment } from "../types";
 
 function parseStringArray(value: unknown): string[] {
@@ -25,6 +26,9 @@ type JobRecord = {
   jobUrl: string | null;
   description: string;
   source: string | null;
+  applicationStatus: string;
+  applicationNotes: string | null;
+  appliedAt: Date | null;
   createdAt: Date;
   analysis: {
     matchScore: number;
@@ -37,6 +41,14 @@ type JobRecord = {
   } | null;
 };
 
+function mapApplicationFields(job: JobRecord) {
+  return {
+    applicationStatus: parseApplicationStatus(job.applicationStatus),
+    applicationNotes: job.applicationNotes,
+    appliedAt: job.appliedAt ? job.appliedAt.toISOString() : null,
+  };
+}
+
 export function mapJobPostingToListItem(job: JobRecord): JobListItem {
   return {
     id: job.id,
@@ -45,6 +57,7 @@ export function mapJobPostingToListItem(job: JobRecord): JobListItem {
     location: job.location,
     source: job.source,
     createdAt: job.createdAt.toISOString(),
+    ...mapApplicationFields(job),
     analysis: job.analysis
       ? {
           matchScore: job.analysis.matchScore,
@@ -66,6 +79,7 @@ export function mapJobPostingToDetailView(job: JobRecord): JobDetailView {
     description: job.description,
     source: job.source,
     createdAt: job.createdAt.toISOString(),
+    ...mapApplicationFields(job),
     analysis: job.analysis
       ? {
           matchScore: job.analysis.matchScore,

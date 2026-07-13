@@ -39,6 +39,23 @@ export function JobsAnalyticsPanel({ jobs }: JobsAnalyticsPanelProps) {
 
           <div className="mt-4">
             <h3 className="text-sm font-medium text-[var(--color-text-primary)]">
+              Application status
+            </h3>
+            <ul className="mt-2 space-y-2">
+              <DistributionItem count={jobs.savedStatusCount} label="Saved" tone="partial" />
+              <DistributionItem count={jobs.appliedStatusCount} label="Applied" tone="strong" />
+              <DistributionItem
+                count={jobs.interviewStatusCount}
+                label="Interview"
+                tone="partial"
+              />
+              <DistributionItem count={jobs.offerStatusCount} label="Offer" tone="strong" />
+              <DistributionItem count={jobs.rejectedStatusCount} label="Rejected" tone="weak" />
+            </ul>
+          </div>
+
+          <div className="mt-4">
+            <h3 className="text-sm font-medium text-[var(--color-text-primary)]">
               Match distribution
             </h3>
             <ul className="mt-2 space-y-2">

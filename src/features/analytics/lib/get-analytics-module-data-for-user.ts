@@ -1,3 +1,4 @@
+import { parseApplicationStatus } from "@/features/jobs/constants/application-status";
 import { getJobPostingsForUser } from "@/features/jobs/server";
 import {
   getLatestResumeAnalysisForUser,
@@ -25,6 +26,20 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
   let strongMatchesCount = 0;
   let partialMatchesCount = 0;
   let weakMatchesCount = 0;
+  let savedStatusCount = 0;
+  let appliedStatusCount = 0;
+  let interviewStatusCount = 0;
+  let offerStatusCount = 0;
+  let rejectedStatusCount = 0;
+
+  for (const job of jobs) {
+    const status = parseApplicationStatus(job.applicationStatus);
+    if (status === "saved") savedStatusCount += 1;
+    else if (status === "applied") appliedStatusCount += 1;
+    else if (status === "interview") interviewStatusCount += 1;
+    else if (status === "offer") offerStatusCount += 1;
+    else if (status === "rejected") rejectedStatusCount += 1;
+  }
 
   for (const job of analyzed) {
     const alignment = job.analysis!.roleAlignment;
@@ -45,6 +60,11 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
     strongMatchesCount,
     partialMatchesCount,
     weakMatchesCount,
+    savedStatusCount,
+    appliedStatusCount,
+    interviewStatusCount,
+    offerStatusCount,
+    rejectedStatusCount,
   };
 }
 

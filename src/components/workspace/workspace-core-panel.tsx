@@ -40,10 +40,14 @@ function mapCachedProfileToWorkspaceProfile(): WorkspaceProfile | null {
 
 function buildJobsLabel(jobsStatus: WorkspaceJobsStatus): string {
   if (jobsStatus.count <= 0) return "No saved jobs";
+
+  const base = `${jobsStatus.count} jobs · ${jobsStatus.appliedCount} applied`;
+
   if (jobsStatus.latestMatchScore !== null) {
-    return `${jobsStatus.count} saved · ${jobsStatus.latestMatchScore}%`;
+    return `${base} · ${jobsStatus.latestMatchScore}%`;
   }
-  return `${jobsStatus.count} saved`;
+
+  return base;
 }
 
 export function WorkspaceCorePanel({

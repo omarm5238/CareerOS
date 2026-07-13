@@ -1,5 +1,14 @@
 export type RoleAlignment = "Strong" | "Partial" | "Weak" | "Unknown";
 
+export type ApplicationStatus =
+  import("../constants/application-status").ApplicationStatus;
+
+export type JobApplicationFields = {
+  applicationStatus: ApplicationStatus;
+  applicationNotes: string | null;
+  appliedAt: string | null;
+};
+
 export type JobMatchAnalysis = {
   matchScore: number;
   roleAlignment: RoleAlignment;
@@ -26,7 +35,7 @@ export type JobAnalysisSummary = {
   missingSkillsCount: number;
 };
 
-export type JobListItem = {
+export type JobListItem = JobApplicationFields & {
   id: string;
   title: string;
   company: string;
@@ -36,7 +45,7 @@ export type JobListItem = {
   analysis: JobAnalysisSummary | null;
 };
 
-export type JobDetailView = {
+export type JobDetailView = JobApplicationFields & {
   id: string;
   title: string;
   company: string;
@@ -54,5 +63,12 @@ export type JobFormValidationResult =
 
 export type WorkspaceJobsStatus = {
   count: number;
+  appliedCount: number;
   latestMatchScore: number | null;
+};
+
+export type UpdateJobApplicationInput = {
+  applicationStatus: ApplicationStatus;
+  applicationNotes?: string | null;
+  appliedAt?: Date | null;
 };

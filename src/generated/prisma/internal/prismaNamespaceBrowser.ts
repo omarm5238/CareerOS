@@ -182,6 +182,9 @@ export const JobPostingScalarFieldEnum = {
   jobUrl: 'jobUrl',
   description: 'description',
   source: 'source',
+  applicationStatus: 'applicationStatus',
+  applicationNotes: 'applicationNotes',
+  appliedAt: 'appliedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

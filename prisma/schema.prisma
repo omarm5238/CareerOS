@@ -108,16 +108,19 @@ model resumeAnalysis {
 }
 
 model jobPosting {
-  id          String   @id @default(cuid())
-  userId      String
-  title       String
-  company     String
-  location    String?
-  jobUrl      String?
-  description String
-  source      String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                String    @id @default(cuid())
+  userId            String
+  title             String
+  company           String
+  location          String?
+  jobUrl            String?
+  description       String
+  source            String?
+  applicationStatus String    @default("saved")
+  applicationNotes  String?
+  appliedAt         DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 
   user     user         @relation(fields: [userId], references: [id], onDelete: Cascade)
   analysis jobAnalysis?

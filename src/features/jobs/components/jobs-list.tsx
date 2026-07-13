@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { APPLICATION_STATUS_LABELS } from "@/features/jobs/constants/application-status";
 import type { JobListItem } from "../types";
 
 type JobsListProps = {
@@ -49,11 +50,16 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                       {job.location ? ` · ${job.location}` : ""}
                     </p>
                   </div>
-                  {job.analysis ? (
+                  <div className="flex flex-wrap items-center gap-1.5">
                     <span className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
-                      {job.analysis.matchScore}% match
+                      {APPLICATION_STATUS_LABELS[job.applicationStatus]}
                     </span>
-                  ) : null}
+                    {job.analysis ? (
+                      <span className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
+                        {job.analysis.matchScore}%
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
               </Link>
             </li>
