@@ -1,0 +1,2 @@
+# lib — framework-agnostic shared utilities, helpers, and client-safe code.
+# Pure functions and small helpers. No feature/business logic.

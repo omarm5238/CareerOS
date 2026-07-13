@@ -1,0 +1,2 @@
+# styles — additional global styles, design tokens, and Tailwind layer extensions.
+# Note: the primary entrypoint globals.css currently lives in src/app.

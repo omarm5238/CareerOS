@@ -1,0 +1,99 @@
+/**
+ * CareerOS Design Tokens
+ *
+ * Centralized CSS custom properties for the design system.
+ * Visual foundation: Matte Graphite, Soft Glass, Subtle Accent Glow.
+ */
+
+:root {
+  /* Typography */
+  --font-sans: "Geist", "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Colors */
+  --color-background: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-elevated: #171717;
+  --color-border: #262626;
+  --color-border-subtle: #262626;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a3a3a3;
+  --color-accent: #6366f1;
+  --color-accent-muted: rgb(99 102 241 / 14%);
+
+  /* Surfaces */
+  --surface-matte-graphite: var(--color-surface);
+  --surface-soft-glass: rgb(23 23 23 / 72%);
+  --surface-soft-glass-border: rgb(245 245 245 / 8%);
+  --surface-accent-glow: 0 0 48px rgb(99 102 241 / 24%);
+
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+
+  /* Border radius */
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 28%);
+  --shadow-md: 0 12px 32px rgb(0 0 0 / 32%);
+  --shadow-lg: 0 20px 56px rgb(0 0 0 / 38%);
+  --shadow-xl: 0 32px 80px rgb(0 0 0 / 44%);
+  --shadow-accent-glow: var(--surface-accent-glow);
+
+  /* Z-index */
+  --z-base: 0;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-overlay: 30;
+  --z-modal: 40;
+  --z-toast: 50;
+  --z-tooltip: 60;
+
+  /* Motion */
+  --duration-instant: 0ms;
+  --duration-fast: 180ms;
+  --duration-normal: 280ms;
+  --duration-slow: 420ms;
+  --duration-slower: 640ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --motion-fade: opacity var(--duration-normal) var(--ease-standard);
+  --motion-slide: transform var(--duration-slow) var(--ease-emphasized),
+    opacity var(--duration-slow) var(--ease-standard);
+}

@@ -1,0 +1,75 @@
+import type { SkillCategory } from "../types";
+
+export const SKILL_CATEGORY_ORDER: SkillCategory[] = [
+  "Technical",
+  "Design",
+  "Tools",
+  "Soft Skills",
+  "Data",
+  "Other",
+];
+
+export const SKILL_CATEGORY_MAP: Record<SkillCategory, readonly string[]> = {
+  Technical: [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "Java",
+    "Go",
+    "SQL",
+    "REST API",
+    "PostgreSQL",
+    "MongoDB",
+    "Docker",
+    "Git",
+    "Tailwind CSS",
+  ],
+  Design: [
+    "Graphic Design",
+    "Branding",
+    "Typography",
+    "Social Media Design",
+    "Visual Identity",
+    "Photo Manipulation",
+    "Color Theory",
+    "Logo Design",
+    "Layout Design",
+    "Print Design",
+    "Motion Graphics",
+  ],
+  Tools: [
+    "Photoshop",
+    "Illustrator",
+    "Figma",
+    "InDesign",
+    "Canva",
+    "GitHub",
+    "VS Code",
+    "After Effects",
+    "Premiere Pro",
+  ],
+  "Soft Skills": [
+    "Communication",
+    "Collaboration",
+    "Project Management",
+    "Research",
+    "Leadership",
+    "Problem Solving",
+  ],
+  Data: [
+    "Data Analysis",
+    "Machine Learning",
+    "Excel",
+    "Power BI",
+    "Tableau",
+    "Statistical Analysis",
+    "Data Visualization",
+    "ETL",
+  ],
+  Other: [],
+};
+
+export const MAX_PRIORITY_SKILLS = 8;

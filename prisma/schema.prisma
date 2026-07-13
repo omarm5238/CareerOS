@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model user {
+  id            String   @id @default(cuid())
+  name          String
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  image         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  sessions        session[]
+  accounts        account[]
+  resumeDocuments resumeDocument[]
+  jobPostings     jobPosting[]
+}
+
+model session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+}
+
+model resumeDocument {
+  id          String   @id @default(cuid())
+  userId      String
+  filename    String
+  mimeType    String
+  fileSize    Int
+  textLength  Int
+  textPreview String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user     user            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis resumeAnalysis?
+
+  @@index([userId])
+}
+
+model resumeAnalysis {
+  id                 String   @id @default(cuid())
+  resumeDocumentId   String   @unique
+  detectedRole       String
+  experienceLevel    String
+  completenessScore  Int
+  detectedSkills     Json
+  suggestedFocus     Json
+  warnings           Json
+  profileSummary     String?
+  strengths          Json     @default("[]")
+  weaknesses         Json     @default("[]")
+  atsRecommendations Json     @default("[]")
+  analysisSource     String   @default("rule_based")
+  aiModel            String?
+  aiWarnings         Json     @default("[]")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  resumeDocument resumeDocument @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
+}
+
+model jobPosting {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  company     String
+  location    String?
+  jobUrl      String?
+  description String
+  source      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user     user         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis jobAnalysis?
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model jobAnalysis {
+  id              String   @id @default(cuid())
+  jobPostingId    String   @unique
+  matchScore      Int
+  roleAlignment   String
+  matchedSkills   Json
+  missingSkills   Json
+  resumeSignals   Json
+  jobSignals      Json
+  recommendations Json
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  jobPosting jobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+}

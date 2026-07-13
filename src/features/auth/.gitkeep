@@ -1,0 +1,2 @@
+# features/auth — authentication UI/flows (client-side). Server auth lives in src/server/auth.
+# No implementation yet.

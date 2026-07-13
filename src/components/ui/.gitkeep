@@ -1,0 +1,2 @@
+# components/ui — reusable, presentational primitives (buttons, inputs, dialogs, cards).
+# Keep these dumb and stateless. No business logic here.

@@ -1,0 +1,2 @@
+# features/core — cross-cutting feature logic shared across domains (e.g. user profile, notifications).
+# No implementation yet.

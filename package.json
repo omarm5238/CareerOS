@@ -1,0 +1,38 @@
+{
+  "name": "careeros",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "latest",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "better-auth": "^1.6.20",
+    "mammoth": "^1.12.0",
+    "next": "^15.1.0",
+    "openai": "^6.45.0",
+    "pdf-parse": "^2.4.5",
+    "pg": "^8.22.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.1.0",
+    "postcss": "^8",
+    "prisma": "latest",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

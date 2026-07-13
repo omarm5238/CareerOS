@@ -1,0 +1,2 @@
+# components/workspace — shared workspace shell/layout components (panels, toolbars, nav).
+# Composed of ui primitives; orchestrated by features.
