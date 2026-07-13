@@ -222,38 +222,34 @@ function CentralNeuralMesh({
   });
 
   return (
-    <group ref={groupRef} position={rootNode.position}>
+    <group ref={groupRef} position={rootNode.position} scale={[1.18, 0.68, 0.96]}>
       <mesh>
-        <sphereGeometry args={[0.82, 56, 56]} />
+        <sphereGeometry args={[0.74, 48, 48]} />
         <meshStandardMaterial
           ref={coreMaterialRef}
           color="#171717"
           emissive="#6366f1"
           emissiveIntensity={rootIntensity}
           metalness={0.08}
-          roughness={0.58}
+          roughness={0.62}
         />
       </mesh>
       <mesh rotation={[1.24, 0.16, 0.28]}>
-        <torusGeometry args={[1.32, 0.008, 8, 192]} />
-        <meshBasicMaterial ref={ringMaterialRef} color="#6366f1" transparent opacity={0.14} />
+        <torusGeometry args={[1.18, 0.007, 8, 160]} />
+        <meshBasicMaterial ref={ringMaterialRef} color="#6366f1" transparent opacity={0.12} />
       </mesh>
       <mesh rotation={[1.52, -0.38, -0.5]}>
-        <torusGeometry args={[1.72, 0.006, 8, 192]} />
-        <meshBasicMaterial color="#f5f5f5" transparent opacity={0.06} />
+        <torusGeometry args={[1.48, 0.005, 8, 160]} />
+        <meshBasicMaterial color="#f5f5f5" transparent opacity={0.05} />
       </mesh>
-      <mesh rotation={[1.36, 0.54, 0.82]}>
-        <torusGeometry args={[2.18, 0.005, 8, 192]} />
-        <meshBasicMaterial color="#6366f1" transparent opacity={0.08} />
-      </mesh>
-      {meshPoints.map((point, index) => (
+      {meshPoints.slice(0, 4).map((point, index) => (
         <mesh key={`mesh-point-${index}`} position={point}>
-          <sphereGeometry args={[0.042, 18, 18]} />
-          <meshBasicMaterial color="#6366f1" transparent opacity={0.84} />
+          <sphereGeometry args={[0.036, 16, 16]} />
+          <meshBasicMaterial color="#6366f1" transparent opacity={0.72} />
         </mesh>
       ))}
-      {meshPoints.slice(1).map((point, index) => (
-        <TubeConnection key={`core-link-${index}`} from={new THREE.Vector3(0, 0, 0)} opacity={0.28} to={point} />
+      {meshPoints.slice(1, 4).map((point, index) => (
+        <TubeConnection key={`core-link-${index}`} from={new THREE.Vector3(0, 0, 0)} opacity={0.22} to={point} />
       ))}
     </group>
   );
@@ -306,7 +302,7 @@ function NodeField({
           void main() {
             vec2 coord = gl_PointCoord - vec2(0.5);
             float dist = length(coord);
-            float alpha = smoothstep(0.5, 0.14, dist) * vAlpha * uNodeOpacity;
+            float alpha = smoothstep(0.5, 0.16, dist) * vAlpha * uNodeOpacity;
             vec3 color = mix(uColor, uSoftWhite, vPulse * 0.45);
             gl_FragColor = vec4(color, alpha);
           }
@@ -350,7 +346,7 @@ function NodeField({
             float pulseRadius = mod(uTime * 1.85, 7.4);
             float wave = smoothstep(0.42, 0.0, abs(dist - pulseRadius));
             vPulse = wave;
-            vAlpha = 0.54 + wave * 0.42;
+            vAlpha = 0.46 + wave * 0.34;
 
             vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
             gl_PointSize = (aSize * (1.0 + wave * 2.8)) * (uPointScale / -mvPosition.z);
@@ -556,7 +552,7 @@ function createCrystallineNetwork(densityFactor: number) {
 
   for (let layer = 1; layer <= LAYERS; layer += 1) {
     const radius = layer * 1.34;
-    const count = Math.max(8, Math.floor(layer * 24 * densityFactor));
+    const count = Math.max(6, Math.floor(layer * 18 * densityFactor));
     const layerStart = nodes.length;
 
     for (let i = 0; i < count; i += 1) {
@@ -564,9 +560,9 @@ function createCrystallineNetwork(densityFactor: number) {
       const theta = (2 * Math.PI * i) / GOLDEN_RATIO;
       const drift = deterministicNoise(layer * 100 + i) * 0.42;
       const position = new THREE.Vector3(
-        (radius + drift) * Math.sin(phi) * Math.cos(theta),
-        (radius + drift) * Math.sin(phi) * Math.sin(theta) * 0.76,
-        (radius + drift) * Math.cos(phi) * 0.9,
+        (radius + drift) * Math.sin(phi) * Math.cos(theta) * 1.06,
+        (radius + drift) * Math.sin(phi) * Math.sin(theta) * 0.58,
+        (radius + drift) * Math.cos(phi) * 0.82,
       );
 
       nodes.push(
@@ -590,7 +586,7 @@ function createCrystallineNetwork(densityFactor: number) {
           distance: node.position.distanceTo(candidate.position),
         }))
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, layer === 1 ? 1 : 4);
+        .slice(0, layer === 1 ? 1 : 3);
 
       for (const item of nearestPrevious) {
         connectNodes(node, item.candidate, Math.max(0.32, 1 - item.distance / (radius * 2.2)));
@@ -603,7 +599,7 @@ function createCrystallineNetwork(densityFactor: number) {
           distance: node.position.distanceTo(candidate.position),
         }))
         .sort((a, b) => a.distance - b.distance)
-        .slice(0, 7);
+        .slice(0, 4);
 
       for (const item of nearestLayer) {
         if (item.distance < radius * 1.05) {
@@ -614,7 +610,7 @@ function createCrystallineNetwork(densityFactor: number) {
   }
 
   const outerNodes = nodes.filter((node) => node.level >= 3);
-  const crossLinkCount = Math.floor(150 * densityFactor);
+  const crossLinkCount = Math.floor(72 * densityFactor);
   for (let i = 0; i < crossLinkCount; i += 1) {
     const a = outerNodes[Math.floor(deterministicNoise(i + 400) * outerNodes.length)];
     const b = outerNodes[Math.floor(deterministicNoise(i + 800) * outerNodes.length)];

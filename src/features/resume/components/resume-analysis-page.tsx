@@ -50,7 +50,7 @@ export function ResumeAnalysisPage({
             />
           </div>
 
-          <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-8 lg:py-10">
+          <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-8 lg:py-9">
             {documentNotFound ? (
               <section className="mb-8 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
                 <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">

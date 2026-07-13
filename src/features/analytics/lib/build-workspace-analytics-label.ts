@@ -7,8 +7,8 @@ export function buildWorkspaceAnalyticsLabel(status: WorkspaceAnalyticsStatus): 
 
   const label = status.careerHealthLabel;
   if (label && label !== "Not Enough Data") {
-    return `Health ${status.careerHealthScore}% · ${label}`;
+    return `${status.careerHealthScore}% · ${label}`;
   }
 
-  return `Health ${status.careerHealthScore}%`;
+  return `${status.careerHealthScore}%`;
 }
