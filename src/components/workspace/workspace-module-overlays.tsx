@@ -54,7 +54,7 @@ const modules = [
     parallaxX: -16,
     parallaxY: -12,
     traceRotation: "rotate-[26deg]",
-    href: null,
+    href: "/workspace/analytics" as string | null,
   },
 ];
 

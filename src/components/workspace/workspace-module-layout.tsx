@@ -13,7 +13,7 @@ const navItems = [
   { label: "Resume", glyph: "R", href: "/workspace/resume" },
   { label: "Jobs", glyph: "J", href: "/workspace/jobs" },
   { label: "Skills", glyph: "S", href: "/workspace/skills" },
-  { label: "Analytics", glyph: "A", href: null },
+  { label: "Analytics", glyph: "A", href: "/workspace/analytics" },
 ] as const;
 
 export function WorkspaceModuleLayout({
@@ -39,33 +39,20 @@ export function WorkspaceModuleLayout({
             {navItems.map((item) => {
               const isActive = item.label === activeModule;
 
-              if (item.href) {
-                return (
-                  <Link
-                    aria-current={isActive ? "page" : undefined}
-                    className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
-                      isActive
-                        ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
-                        : "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:border-[var(--color-border)] hover:bg-[var(--surface-soft-glass)] hover:text-[var(--color-text-primary)]"
-                    }`}
-                    href={item.href}
-                    key={item.label}
-                    title={item.label}
-                  >
-                    {item.glyph}
-                  </Link>
-                );
-              }
-
               return (
-                <div
-                  aria-disabled="true"
-                  className="flex h-9 w-9 cursor-default items-center justify-center rounded-[var(--radius-lg)] border border-transparent bg-transparent text-[10px] font-medium text-[var(--color-text-secondary)] opacity-45"
+                <Link
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
+                    isActive
+                      ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+                      : "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:border-[var(--color-border)] hover:bg-[var(--surface-soft-glass)] hover:text-[var(--color-text-primary)]"
+                  }`}
+                  href={item.href}
                   key={item.label}
-                  title={`${item.label} — coming soon`}
+                  title={item.label}
                 >
                   {item.glyph}
-                </div>
+                </Link>
               );
             })}
           </nav>

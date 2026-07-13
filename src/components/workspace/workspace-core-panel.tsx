@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { CareerCore } from "@/components/core/CareerCore";
 import type { CareerCoreModuleId } from "@/core/career-core/types";
+import { buildWorkspaceAnalyticsLabel, type WorkspaceAnalyticsStatus } from "@/features/analytics";
 import type { WorkspaceJobsStatus } from "@/features/jobs";
 import { readOnboardingState } from "@/features/onboarding";
 import type { WorkspaceProfile } from "@/features/resume";
@@ -17,6 +18,7 @@ type WorkspaceCorePanelProps = {
   profile: WorkspaceProfile | null;
   jobsStatus: WorkspaceJobsStatus;
   skillsStatus: WorkspaceSkillsStatus;
+  analyticsStatus: WorkspaceAnalyticsStatus;
 };
 
 function mapCachedProfileToWorkspaceProfile(): WorkspaceProfile | null {
@@ -48,6 +50,7 @@ export function WorkspaceCorePanel({
   profile,
   jobsStatus,
   skillsStatus,
+  analyticsStatus,
 }: WorkspaceCorePanelProps) {
   const [highlightedModule, setHighlightedModule] = useState<CareerCoreModuleId | null>(
     null,
@@ -66,11 +69,12 @@ export function WorkspaceCorePanel({
   const hasProfile = !!resolvedProfile;
   const jobsLabel = buildJobsLabel(jobsStatus);
   const skillsLabel = buildWorkspaceSkillsLabel(skillsStatus);
+  const analyticsLabel = buildWorkspaceAnalyticsLabel(analyticsStatus);
   const moduleSecondaryLabels: Partial<Record<CareerCoreModuleId, string>> = {
     resume: hasProfile ? "Profile created" : "Upload to begin",
     skills: skillsLabel,
     jobs: jobsLabel,
-    analytics: hasProfile ? "Baseline available" : "No baseline yet",
+    analytics: analyticsLabel,
   };
 
   return (
