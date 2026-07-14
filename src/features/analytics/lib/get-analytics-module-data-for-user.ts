@@ -26,6 +26,8 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
   let strongMatchesCount = 0;
   let partialMatchesCount = 0;
   let weakMatchesCount = 0;
+  let aiAnalyzedCount = 0;
+  let ruleBasedAnalyzedCount = 0;
   let savedStatusCount = 0;
   let appliedStatusCount = 0;
   let interviewStatusCount = 0;
@@ -50,6 +52,12 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
     } else {
       weakMatchesCount += 1;
     }
+
+    if (job.analysis!.analysisSource === "ai") {
+      aiAnalyzedCount += 1;
+    } else {
+      ruleBasedAnalyzedCount += 1;
+    }
   }
 
   return {
@@ -60,6 +68,8 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
     strongMatchesCount,
     partialMatchesCount,
     weakMatchesCount,
+    aiAnalyzedCount,
+    ruleBasedAnalyzedCount,
     savedStatusCount,
     appliedStatusCount,
     interviewStatusCount,

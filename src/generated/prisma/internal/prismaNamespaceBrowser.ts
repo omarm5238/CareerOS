@@ -202,6 +202,12 @@ export const JobAnalysisScalarFieldEnum = {
   resumeSignals: 'resumeSignals',
   jobSignals: 'jobSignals',
   recommendations: 'recommendations',
+  analysisSource: 'analysisSource',
+  aiModel: 'aiModel',
+  fitSummary: 'fitSummary',
+  applicationStrategy: 'applicationStrategy',
+  resumeTailoringTips: 'resumeTailoringTips',
+  aiWarnings: 'aiWarnings',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

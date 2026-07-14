@@ -1,5 +1,7 @@
 export type RoleAlignment = "Strong" | "Partial" | "Weak" | "Unknown";
 
+export type JobAnalysisSource = "ai" | "rule_based";
+
 export type ApplicationStatus =
   import("../constants/application-status").ApplicationStatus;
 
@@ -17,7 +19,24 @@ export type JobMatchAnalysis = {
   resumeSignals: string[];
   jobSignals: string[];
   recommendations: string[];
+  analysisSource: JobAnalysisSource;
+  aiModel?: string | null;
+  fitSummary?: string | null;
+  applicationStrategy: string[];
+  resumeTailoringTips: string[];
+  aiWarnings: string[];
 };
+
+export type RuleBasedJobMatchCore = Pick<
+  JobMatchAnalysis,
+  | "matchScore"
+  | "roleAlignment"
+  | "matchedSkills"
+  | "missingSkills"
+  | "resumeSignals"
+  | "jobSignals"
+  | "recommendations"
+>;
 
 export type CreateJobPostingInput = {
   title: string;
@@ -33,6 +52,7 @@ export type JobAnalysisSummary = {
   roleAlignment: RoleAlignment;
   matchedSkillsCount: number;
   missingSkillsCount: number;
+  analysisSource: JobAnalysisSource;
 };
 
 export type JobListItem = JobApplicationFields & {

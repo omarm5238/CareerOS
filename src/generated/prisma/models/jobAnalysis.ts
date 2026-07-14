@@ -39,6 +39,9 @@ export type JobAnalysisMinAggregateOutputType = {
   jobPostingId: string | null
   matchScore: number | null
   roleAlignment: string | null
+  analysisSource: string | null
+  aiModel: string | null
+  fitSummary: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,6 +51,9 @@ export type JobAnalysisMaxAggregateOutputType = {
   jobPostingId: string | null
   matchScore: number | null
   roleAlignment: string | null
+  analysisSource: string | null
+  aiModel: string | null
+  fitSummary: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -62,6 +68,12 @@ export type JobAnalysisCountAggregateOutputType = {
   resumeSignals: number
   jobSignals: number
   recommendations: number
+  analysisSource: number
+  aiModel: number
+  fitSummary: number
+  applicationStrategy: number
+  resumeTailoringTips: number
+  aiWarnings: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -81,6 +93,9 @@ export type JobAnalysisMinAggregateInputType = {
   jobPostingId?: true
   matchScore?: true
   roleAlignment?: true
+  analysisSource?: true
+  aiModel?: true
+  fitSummary?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -90,6 +105,9 @@ export type JobAnalysisMaxAggregateInputType = {
   jobPostingId?: true
   matchScore?: true
   roleAlignment?: true
+  analysisSource?: true
+  aiModel?: true
+  fitSummary?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -104,6 +122,12 @@ export type JobAnalysisCountAggregateInputType = {
   resumeSignals?: true
   jobSignals?: true
   recommendations?: true
+  analysisSource?: true
+  aiModel?: true
+  fitSummary?: true
+  applicationStrategy?: true
+  resumeTailoringTips?: true
+  aiWarnings?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -205,6 +229,12 @@ export type JobAnalysisGroupByOutputType = {
   resumeSignals: runtime.JsonValue
   jobSignals: runtime.JsonValue
   recommendations: runtime.JsonValue
+  analysisSource: string
+  aiModel: string | null
+  fitSummary: string | null
+  applicationStrategy: runtime.JsonValue
+  resumeTailoringTips: runtime.JsonValue
+  aiWarnings: runtime.JsonValue
   createdAt: Date
   updatedAt: Date
   _count: JobAnalysisCountAggregateOutputType | null
@@ -242,6 +272,12 @@ export type jobAnalysisWhereInput = {
   resumeSignals?: Prisma.JsonFilter<"jobAnalysis">
   jobSignals?: Prisma.JsonFilter<"jobAnalysis">
   recommendations?: Prisma.JsonFilter<"jobAnalysis">
+  analysisSource?: Prisma.StringFilter<"jobAnalysis"> | string
+  aiModel?: Prisma.StringNullableFilter<"jobAnalysis"> | string | null
+  fitSummary?: Prisma.StringNullableFilter<"jobAnalysis"> | string | null
+  applicationStrategy?: Prisma.JsonFilter<"jobAnalysis">
+  resumeTailoringTips?: Prisma.JsonFilter<"jobAnalysis">
+  aiWarnings?: Prisma.JsonFilter<"jobAnalysis">
   createdAt?: Prisma.DateTimeFilter<"jobAnalysis"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobAnalysis"> | Date | string
   jobPosting?: Prisma.XOR<Prisma.JobPostingScalarRelationFilter, Prisma.jobPostingWhereInput>
@@ -257,6 +293,12 @@ export type jobAnalysisOrderByWithRelationInput = {
   resumeSignals?: Prisma.SortOrder
   jobSignals?: Prisma.SortOrder
   recommendations?: Prisma.SortOrder
+  analysisSource?: Prisma.SortOrder
+  aiModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  fitSummary?: Prisma.SortOrderInput | Prisma.SortOrder
+  applicationStrategy?: Prisma.SortOrder
+  resumeTailoringTips?: Prisma.SortOrder
+  aiWarnings?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   jobPosting?: Prisma.jobPostingOrderByWithRelationInput
@@ -275,6 +317,12 @@ export type jobAnalysisWhereUniqueInput = Prisma.AtLeast<{
   resumeSignals?: Prisma.JsonFilter<"jobAnalysis">
   jobSignals?: Prisma.JsonFilter<"jobAnalysis">
   recommendations?: Prisma.JsonFilter<"jobAnalysis">
+  analysisSource?: Prisma.StringFilter<"jobAnalysis"> | string
+  aiModel?: Prisma.StringNullableFilter<"jobAnalysis"> | string | null
+  fitSummary?: Prisma.StringNullableFilter<"jobAnalysis"> | string | null
+  applicationStrategy?: Prisma.JsonFilter<"jobAnalysis">
+  resumeTailoringTips?: Prisma.JsonFilter<"jobAnalysis">
+  aiWarnings?: Prisma.JsonFilter<"jobAnalysis">
   createdAt?: Prisma.DateTimeFilter<"jobAnalysis"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobAnalysis"> | Date | string
   jobPosting?: Prisma.XOR<Prisma.JobPostingScalarRelationFilter, Prisma.jobPostingWhereInput>
@@ -290,6 +338,12 @@ export type jobAnalysisOrderByWithAggregationInput = {
   resumeSignals?: Prisma.SortOrder
   jobSignals?: Prisma.SortOrder
   recommendations?: Prisma.SortOrder
+  analysisSource?: Prisma.SortOrder
+  aiModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  fitSummary?: Prisma.SortOrderInput | Prisma.SortOrder
+  applicationStrategy?: Prisma.SortOrder
+  resumeTailoringTips?: Prisma.SortOrder
+  aiWarnings?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.jobAnalysisCountOrderByAggregateInput
@@ -312,6 +366,12 @@ export type jobAnalysisScalarWhereWithAggregatesInput = {
   resumeSignals?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
   jobSignals?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
   recommendations?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
+  analysisSource?: Prisma.StringWithAggregatesFilter<"jobAnalysis"> | string
+  aiModel?: Prisma.StringNullableWithAggregatesFilter<"jobAnalysis"> | string | null
+  fitSummary?: Prisma.StringNullableWithAggregatesFilter<"jobAnalysis"> | string | null
+  applicationStrategy?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
+  resumeTailoringTips?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
+  aiWarnings?: Prisma.JsonWithAggregatesFilter<"jobAnalysis">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"jobAnalysis"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"jobAnalysis"> | Date | string
 }
@@ -325,6 +385,12 @@ export type jobAnalysisCreateInput = {
   resumeSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  fitSummary?: string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   jobPosting: Prisma.jobPostingCreateNestedOneWithoutAnalysisInput
@@ -340,6 +406,12 @@ export type jobAnalysisUncheckedCreateInput = {
   resumeSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  fitSummary?: string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -353,6 +425,12 @@ export type jobAnalysisUpdateInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   jobPosting?: Prisma.jobPostingUpdateOneRequiredWithoutAnalysisNestedInput
@@ -368,6 +446,12 @@ export type jobAnalysisUncheckedUpdateInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -382,6 +466,12 @@ export type jobAnalysisCreateManyInput = {
   resumeSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  fitSummary?: string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -395,6 +485,12 @@ export type jobAnalysisUpdateManyMutationInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -409,6 +505,12 @@ export type jobAnalysisUncheckedUpdateManyInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -428,6 +530,12 @@ export type jobAnalysisCountOrderByAggregateInput = {
   resumeSignals?: Prisma.SortOrder
   jobSignals?: Prisma.SortOrder
   recommendations?: Prisma.SortOrder
+  analysisSource?: Prisma.SortOrder
+  aiModel?: Prisma.SortOrder
+  fitSummary?: Prisma.SortOrder
+  applicationStrategy?: Prisma.SortOrder
+  resumeTailoringTips?: Prisma.SortOrder
+  aiWarnings?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -441,6 +549,9 @@ export type jobAnalysisMaxOrderByAggregateInput = {
   jobPostingId?: Prisma.SortOrder
   matchScore?: Prisma.SortOrder
   roleAlignment?: Prisma.SortOrder
+  analysisSource?: Prisma.SortOrder
+  aiModel?: Prisma.SortOrder
+  fitSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -450,6 +561,9 @@ export type jobAnalysisMinOrderByAggregateInput = {
   jobPostingId?: Prisma.SortOrder
   matchScore?: Prisma.SortOrder
   roleAlignment?: Prisma.SortOrder
+  analysisSource?: Prisma.SortOrder
+  aiModel?: Prisma.SortOrder
+  fitSummary?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -499,6 +613,12 @@ export type jobAnalysisCreateWithoutJobPostingInput = {
   resumeSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  fitSummary?: string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -512,6 +632,12 @@ export type jobAnalysisUncheckedCreateWithoutJobPostingInput = {
   resumeSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  fitSummary?: string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -541,6 +667,12 @@ export type jobAnalysisUpdateWithoutJobPostingInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -554,6 +686,12 @@ export type jobAnalysisUncheckedUpdateWithoutJobPostingInput = {
   resumeSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   jobSignals?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   recommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fitSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStrategy?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  resumeTailoringTips?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -570,6 +708,12 @@ export type jobAnalysisSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   resumeSignals?: boolean
   jobSignals?: boolean
   recommendations?: boolean
+  analysisSource?: boolean
+  aiModel?: boolean
+  fitSummary?: boolean
+  applicationStrategy?: boolean
+  resumeTailoringTips?: boolean
+  aiWarnings?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
@@ -585,6 +729,12 @@ export type jobAnalysisSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   resumeSignals?: boolean
   jobSignals?: boolean
   recommendations?: boolean
+  analysisSource?: boolean
+  aiModel?: boolean
+  fitSummary?: boolean
+  applicationStrategy?: boolean
+  resumeTailoringTips?: boolean
+  aiWarnings?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
@@ -600,6 +750,12 @@ export type jobAnalysisSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   resumeSignals?: boolean
   jobSignals?: boolean
   recommendations?: boolean
+  analysisSource?: boolean
+  aiModel?: boolean
+  fitSummary?: boolean
+  applicationStrategy?: boolean
+  resumeTailoringTips?: boolean
+  aiWarnings?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
@@ -615,11 +771,17 @@ export type jobAnalysisSelectScalar = {
   resumeSignals?: boolean
   jobSignals?: boolean
   recommendations?: boolean
+  analysisSource?: boolean
+  aiModel?: boolean
+  fitSummary?: boolean
+  applicationStrategy?: boolean
+  resumeTailoringTips?: boolean
+  aiWarnings?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type jobAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "jobPostingId" | "matchScore" | "roleAlignment" | "matchedSkills" | "missingSkills" | "resumeSignals" | "jobSignals" | "recommendations" | "createdAt" | "updatedAt", ExtArgs["result"]["jobAnalysis"]>
+export type jobAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "jobPostingId" | "matchScore" | "roleAlignment" | "matchedSkills" | "missingSkills" | "resumeSignals" | "jobSignals" | "recommendations" | "analysisSource" | "aiModel" | "fitSummary" | "applicationStrategy" | "resumeTailoringTips" | "aiWarnings" | "createdAt" | "updatedAt", ExtArgs["result"]["jobAnalysis"]>
 export type jobAnalysisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
 }
@@ -645,6 +807,12 @@ export type $jobAnalysisPayload<ExtArgs extends runtime.Types.Extensions.Interna
     resumeSignals: runtime.JsonValue
     jobSignals: runtime.JsonValue
     recommendations: runtime.JsonValue
+    analysisSource: string
+    aiModel: string | null
+    fitSummary: string | null
+    applicationStrategy: runtime.JsonValue
+    resumeTailoringTips: runtime.JsonValue
+    aiWarnings: runtime.JsonValue
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["jobAnalysis"]>
@@ -1080,6 +1248,12 @@ export interface jobAnalysisFieldRefs {
   readonly resumeSignals: Prisma.FieldRef<"jobAnalysis", 'Json'>
   readonly jobSignals: Prisma.FieldRef<"jobAnalysis", 'Json'>
   readonly recommendations: Prisma.FieldRef<"jobAnalysis", 'Json'>
+  readonly analysisSource: Prisma.FieldRef<"jobAnalysis", 'String'>
+  readonly aiModel: Prisma.FieldRef<"jobAnalysis", 'String'>
+  readonly fitSummary: Prisma.FieldRef<"jobAnalysis", 'String'>
+  readonly applicationStrategy: Prisma.FieldRef<"jobAnalysis", 'Json'>
+  readonly resumeTailoringTips: Prisma.FieldRef<"jobAnalysis", 'Json'>
+  readonly aiWarnings: Prisma.FieldRef<"jobAnalysis", 'Json'>
   readonly createdAt: Prisma.FieldRef<"jobAnalysis", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"jobAnalysis", 'DateTime'>
 }

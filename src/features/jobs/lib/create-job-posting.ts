@@ -1,26 +1,28 @@
-import { prisma } from "@/server/db/prisma";
 import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { prisma } from "@/server/db/prisma";
 
-import { analyzeJobMatchRuleBased } from "./analyze-job-match-rule-based";
-import { mapJobPostingToDetailView } from "./map-job-posting-to-view";
+import { buildJobMatchInput, resolveJobMatchAnalysis } from "../ai";
 import type { CreateJobPostingInput, JobDetailView } from "../types";
+import { jobMatchAnalysisToPrismaData } from "./job-match-analysis-to-prisma";
+import { mapJobPostingToDetailView } from "./map-job-posting-to-view";
 
 export async function createJobPostingForUser(
   userId: string,
   input: CreateJobPostingInput,
 ): Promise<JobDetailView> {
   const resume = await getLatestResumeAnalysisForUser(userId);
-  const analysis = analyzeJobMatchRuleBased({
-    title: input.title,
-    description: input.description,
-    resume: resume
-      ? {
-          role: resume.role,
-          experienceLevel: resume.experienceLevel,
-          detectedSkills: resume.detectedSkills,
-        }
-      : null,
-  });
+  const matchInput = buildJobMatchInput(
+    {
+      title: input.title,
+      company: input.company,
+      location: input.location ?? null,
+      description: input.description,
+      source: input.source ?? null,
+      jobUrl: input.jobUrl ?? null,
+    },
+    resume,
+  );
+  const analysis = await resolveJobMatchAnalysis(matchInput);
 
   const created = await prisma.jobPosting.create({
     data: {
@@ -32,15 +34,7 @@ export async function createJobPostingForUser(
       description: input.description,
       source: input.source ?? null,
       analysis: {
-        create: {
-          matchScore: analysis.matchScore,
-          roleAlignment: analysis.roleAlignment,
-          matchedSkills: analysis.matchedSkills,
-          missingSkills: analysis.missingSkills,
-          resumeSignals: analysis.resumeSignals,
-          jobSignals: analysis.jobSignals,
-          recommendations: analysis.recommendations,
-        },
+        create: jobMatchAnalysisToPrismaData(analysis),
       },
     },
     include: { analysis: true },

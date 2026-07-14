@@ -130,17 +130,23 @@ model jobPosting {
 }
 
 model jobAnalysis {
-  id              String   @id @default(cuid())
-  jobPostingId    String   @unique
-  matchScore      Int
-  roleAlignment   String
-  matchedSkills   Json
-  missingSkills   Json
-  resumeSignals   Json
-  jobSignals      Json
-  recommendations Json
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id                  String   @id @default(cuid())
+  jobPostingId        String   @unique
+  matchScore          Int
+  roleAlignment       String
+  matchedSkills       Json
+  missingSkills       Json
+  resumeSignals       Json
+  jobSignals          Json
+  recommendations     Json
+  analysisSource      String   @default("rule_based")
+  aiModel             String?
+  fitSummary          String?
+  applicationStrategy Json     @default("[]")
+  resumeTailoringTips Json     @default("[]")
+  aiWarnings          Json     @default("[]")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 
   jobPosting jobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
 }

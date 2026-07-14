@@ -30,6 +30,8 @@ export type AnalyticsJobsMetrics = {
   strongMatchesCount: number;
   partialMatchesCount: number;
   weakMatchesCount: number;
+  aiAnalyzedCount: number;
+  ruleBasedAnalyzedCount: number;
   savedStatusCount: number;
   appliedStatusCount: number;
   interviewStatusCount: number;

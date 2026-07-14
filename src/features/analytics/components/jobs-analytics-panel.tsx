@@ -35,6 +35,11 @@ export function JobsAnalyticsPanel({ jobs }: JobsAnalyticsPanelProps) {
             <MetricItem label="Best match" value={formatScore(jobs.bestMatchScore)} />
             <MetricItem label="Average match" value={formatScore(jobs.averageMatchScore)} />
             <MetricItem label="Weakest match" value={formatScore(jobs.weakestMatchScore)} />
+            <MetricItem label="AI analyses" value={String(jobs.aiAnalyzedCount)} />
+            <MetricItem
+              label="Rule-based analyses"
+              value={String(jobs.ruleBasedAnalyzedCount)}
+            />
           </dl>
 
           <div className="mt-4">

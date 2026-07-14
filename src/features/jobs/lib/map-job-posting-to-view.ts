@@ -1,5 +1,11 @@
 import { parseApplicationStatus } from "../constants/application-status";
-import type { JobDetailView, JobListItem, RoleAlignment } from "../types";
+import type {
+  JobAnalysisSource,
+  JobDetailView,
+  JobListItem,
+  JobMatchAnalysis,
+  RoleAlignment,
+} from "../types";
 
 function parseStringArray(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
@@ -16,6 +22,10 @@ function parseRoleAlignment(value: unknown): RoleAlignment {
     return value;
   }
   return "Unknown";
+}
+
+function parseAnalysisSource(value: unknown): JobAnalysisSource {
+  return value === "ai" ? "ai" : "rule_based";
 }
 
 type JobRecord = {
@@ -38,6 +48,12 @@ type JobRecord = {
     resumeSignals: unknown;
     jobSignals: unknown;
     recommendations: unknown;
+    analysisSource?: string | null;
+    aiModel?: string | null;
+    fitSummary?: string | null;
+    applicationStrategy?: unknown;
+    resumeTailoringTips?: unknown;
+    aiWarnings?: unknown;
   } | null;
 };
 
@@ -46,6 +62,26 @@ function mapApplicationFields(job: JobRecord) {
     applicationStatus: parseApplicationStatus(job.applicationStatus),
     applicationNotes: job.applicationNotes,
     appliedAt: job.appliedAt ? job.appliedAt.toISOString() : null,
+  };
+}
+
+function mapAnalysisRecord(
+  analysis: NonNullable<JobRecord["analysis"]>,
+): JobMatchAnalysis {
+  return {
+    matchScore: analysis.matchScore,
+    roleAlignment: parseRoleAlignment(analysis.roleAlignment),
+    matchedSkills: parseStringArray(analysis.matchedSkills),
+    missingSkills: parseStringArray(analysis.missingSkills),
+    resumeSignals: parseStringArray(analysis.resumeSignals),
+    jobSignals: parseStringArray(analysis.jobSignals),
+    recommendations: parseStringArray(analysis.recommendations),
+    analysisSource: parseAnalysisSource(analysis.analysisSource),
+    aiModel: analysis.aiModel ?? null,
+    fitSummary: analysis.fitSummary ?? null,
+    applicationStrategy: parseStringArray(analysis.applicationStrategy),
+    resumeTailoringTips: parseStringArray(analysis.resumeTailoringTips),
+    aiWarnings: parseStringArray(analysis.aiWarnings),
   };
 }
 
@@ -64,6 +100,7 @@ export function mapJobPostingToListItem(job: JobRecord): JobListItem {
           roleAlignment: parseRoleAlignment(job.analysis.roleAlignment),
           matchedSkillsCount: parseStringArray(job.analysis.matchedSkills).length,
           missingSkillsCount: parseStringArray(job.analysis.missingSkills).length,
+          analysisSource: parseAnalysisSource(job.analysis.analysisSource),
         }
       : null,
   };
@@ -80,16 +117,6 @@ export function mapJobPostingToDetailView(job: JobRecord): JobDetailView {
     source: job.source,
     createdAt: job.createdAt.toISOString(),
     ...mapApplicationFields(job),
-    analysis: job.analysis
-      ? {
-          matchScore: job.analysis.matchScore,
-          roleAlignment: parseRoleAlignment(job.analysis.roleAlignment),
-          matchedSkills: parseStringArray(job.analysis.matchedSkills),
-          missingSkills: parseStringArray(job.analysis.missingSkills),
-          resumeSignals: parseStringArray(job.analysis.resumeSignals),
-          jobSignals: parseStringArray(job.analysis.jobSignals),
-          recommendations: parseStringArray(job.analysis.recommendations),
-        }
-      : null,
+    analysis: job.analysis ? mapAnalysisRecord(job.analysis) : null,
   };
 }

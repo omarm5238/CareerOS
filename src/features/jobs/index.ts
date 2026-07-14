@@ -10,6 +10,7 @@ export { validateUpdateApplicationInput } from "./lib/validate-update-applicatio
 export type {
   ApplicationStatus,
   CreateJobPostingInput,
+  JobAnalysisSource,
   JobDetailView,
   JobListItem,
   JobMatchAnalysis,

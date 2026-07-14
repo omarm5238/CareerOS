@@ -1,7 +1,7 @@
 import type { ResumeModuleAnalysis } from "@/features/resume";
 
 import { extractJobSignals, extractJobSkills } from "./extract-job-signals";
-import type { JobMatchAnalysis, RoleAlignment } from "../types";
+import type { RuleBasedJobMatchCore, RoleAlignment } from "../types";
 
 type AnalyzeJobMatchInput = {
   title: string;
@@ -106,7 +106,7 @@ function experienceAligned(
 
 export function analyzeJobMatchRuleBased(
   input: AnalyzeJobMatchInput,
-): JobMatchAnalysis {
+): RuleBasedJobMatchCore {
   const jobSkills = extractJobSkills(`${input.title}\n${input.description}`);
   const jobSignals = extractJobSignals(input.title, input.description);
   const resumeSkills = input.resume?.detectedSkills ?? [];

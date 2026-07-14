@@ -54,8 +54,8 @@ export function JobsModulePage({
                 Job Matching
               </h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-text-secondary)]">
-                Save job postings and get a deterministic match against your latest resume
-                analysis.
+                Save job postings and compare them against your latest resume profile with AI
+                matching and rule-based fallback.
               </p>
             </div>
           </header>
@@ -90,7 +90,7 @@ export function JobsModulePage({
               </div>
               <div>
                 {selectedJob ? (
-                  <JobDetailPanel job={selectedJob} />
+                  <JobDetailPanel hasResumeProfile={hasResumeProfile} job={selectedJob} />
                 ) : (
                   <p className="text-sm text-[var(--color-text-secondary)]">
                     Select a saved job to view match details.
