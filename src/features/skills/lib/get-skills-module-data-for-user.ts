@@ -1,44 +1,18 @@
-import { prisma } from "@/server/db/prisma";
 import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
 
 import { generateSkillsOverview } from "./generate-skills-overview";
-import type { JobSkillsSnapshot, SkillsModuleData, WorkspaceSkillsStatus } from "../types";
-
-function parseStringArray(value: unknown): string[] {
-  if (!Array.isArray(value)) return [];
-  return value.filter((item): item is string => typeof item === "string");
-}
-
-async function getJobSkillsSnapshotsForUser(
-  userId: string,
-): Promise<JobSkillsSnapshot[]> {
-  const jobs = await prisma.jobPosting.findMany({
-    where: {
-      userId,
-      analysis: { isNot: null },
-    },
-    orderBy: { createdAt: "desc" },
-    take: 20,
-    include: { analysis: true },
-  });
-
-  return jobs
-    .filter((job) => job.analysis !== null)
-    .map((job) => ({
-      id: job.id,
-      title: job.title,
-      matchedSkills: parseStringArray(job.analysis!.matchedSkills),
-      missingSkills: parseStringArray(job.analysis!.missingSkills),
-      jobSignals: parseStringArray(job.analysis!.jobSignals),
-    }));
-}
+import { getJobSkillsSnapshotsForUser } from "./get-job-skills-snapshots-for-user";
+import { getLatestSkillsInsightForUser } from "./get-latest-skills-insight-for-user";
+import { mapSkillsInsightToView } from "./map-skills-insight-to-view";
+import type { SkillsModuleData, WorkspaceSkillsStatus } from "../types";
 
 export async function getSkillsModuleDataForUser(
   userId: string,
 ): Promise<SkillsModuleData> {
-  const [resume, jobs] = await Promise.all([
+  const [resume, jobs, latestInsight] = await Promise.all([
     getLatestResumeAnalysisForUser(userId),
     getJobSkillsSnapshotsForUser(userId),
+    getLatestSkillsInsightForUser(userId),
   ]);
 
   if (!resume) {
@@ -47,6 +21,7 @@ export async function getSkillsModuleDataForUser(
       resumeRole: null,
       resumeExperienceLevel: null,
       overview: null,
+      insight: null,
     };
   }
 
@@ -63,6 +38,7 @@ export async function getSkillsModuleDataForUser(
       resumeWeaknesses: resume.weaknesses,
       jobs,
     }),
+    insight: latestInsight ? mapSkillsInsightToView(latestInsight) : null,
   };
 }
 

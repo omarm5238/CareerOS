@@ -58,7 +58,8 @@ export const ModelName = {
   resumeDocument: 'resumeDocument',
   resumeAnalysis: 'resumeAnalysis',
   jobPosting: 'jobPosting',
-  jobAnalysis: 'jobAnalysis'
+  jobAnalysis: 'jobAnalysis',
+  skillsInsight: 'skillsInsight'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -213,6 +214,27 @@ export const JobAnalysisScalarFieldEnum = {
 } as const
 
 export type JobAnalysisScalarFieldEnum = (typeof JobAnalysisScalarFieldEnum)[keyof typeof JobAnalysisScalarFieldEnum]
+
+
+export const SkillsInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  resumeAnalysisId: 'resumeAnalysisId',
+  jobCount: 'jobCount',
+  analysisSource: 'analysisSource',
+  aiModel: 'aiModel',
+  skillCoverageScore: 'skillCoverageScore',
+  prioritySkills: 'prioritySkills',
+  learningRoadmap: 'learningRoadmap',
+  projectIdeas: 'projectIdeas',
+  resumeSkillAdvice: 'resumeSkillAdvice',
+  marketSignals: 'marketSignals',
+  warnings: 'warnings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SkillsInsightScalarFieldEnum = (typeof SkillsInsightScalarFieldEnum)[keyof typeof SkillsInsightScalarFieldEnum]
 
 
 export const SortOrder = {

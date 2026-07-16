@@ -81,3 +81,8 @@ export type jobPosting = Prisma.jobPostingModel
  * 
  */
 export type jobAnalysis = Prisma.jobAnalysisModel
+/**
+ * Model skillsInsight
+ * 
+ */
+export type skillsInsight = Prisma.skillsInsightModel

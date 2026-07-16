@@ -109,6 +109,8 @@ export async function getAnalyticsModuleDataForUser(
     topPrioritySkills: (skillsOverview?.prioritySkills ?? [])
       .slice(0, 5)
       .map((item) => item.skill),
+    skillsInsightSource: skillsData.insight?.analysisSource ?? null,
+    skillsInsightGeneratedAt: skillsData.insight?.generatedAt ?? null,
   };
 
   const careerHealth = generateCareerHealthScore({

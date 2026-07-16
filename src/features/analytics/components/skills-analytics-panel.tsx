@@ -29,6 +29,24 @@ export function SkillsAnalyticsPanel({ skills }: SkillsAnalyticsPanelProps) {
         <MetricItem label="Skill gaps" value={String(skills.gapsCount)} />
         <MetricItem label="Priority skills" value={String(skills.prioritySkillsCount)} />
         <MetricItem label="Skill coverage" value={formatScore(skills.skillCoverageScore)} />
+        <MetricItem
+          label="Skills strategy"
+          value={
+            skills.skillsInsightSource === "ai"
+              ? "AI"
+              : skills.skillsInsightSource === "rule_based"
+                ? "Rule-based"
+                : "—"
+          }
+        />
+        <MetricItem
+          label="Strategy generated"
+          value={
+            skills.skillsInsightGeneratedAt
+              ? new Date(skills.skillsInsightGeneratedAt).toLocaleDateString()
+              : "—"
+          }
+        />
       </dl>
 
       {skills.topPrioritySkills.length > 0 ? (

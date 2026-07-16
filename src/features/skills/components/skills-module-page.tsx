@@ -4,6 +4,7 @@ import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
 
 import type { SkillsModuleData } from "../types";
+import { AiSkillsStrategyPanel } from "./ai-skills-strategy-panel";
 import { JobsSkillsSignalPanel } from "./jobs-skills-signal-panel";
 import { PrioritySkillsPanel } from "./priority-skills-panel";
 import { SkillGapsPanel } from "./skill-gaps-panel";
@@ -71,6 +72,8 @@ export function SkillsModulePage({ data }: SkillsModulePageProps) {
 
           <div className="mt-8 space-y-6">
             <SkillsOverviewPanel overview={overview} />
+
+            <AiSkillsStrategyPanel insight={data.insight} />
 
             {!hasDetectedSkills ? (
               <SkillsEmptyState variant="no-detected-skills" />

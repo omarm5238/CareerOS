@@ -11,13 +11,18 @@ export async function withAiTimeout<T>(
     const value = await operation(controller.signal);
     return { ok: true, value };
   } catch (error) {
-    if (error instanceof Error && error.name === "AbortError") {
-      return {
-        ok: false,
-        timedOut: true,
-        errorName: error.name,
-        message: "AI request timed out",
-      };
+    if (error instanceof Error) {
+      const isAbort =
+        error.name === "AbortError" || /abort/i.test(error.message);
+
+      if (isAbort) {
+        return {
+          ok: false,
+          timedOut: true,
+          errorName: error.name,
+          message: error.message || "AI request timed out",
+        };
+      }
     }
 
     throw error;

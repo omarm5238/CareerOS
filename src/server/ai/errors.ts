@@ -16,15 +16,20 @@ export function buildAiDiagnostic(
   };
 }
 
+function isRequestAbortedError(error: Error): boolean {
+  if (error.name === "AbortError") return true;
+  return /abort/i.test(error.message);
+}
+
 export function extractOpenAIErrorDetails(
   error: unknown,
 ): Pick<AiDiagnostic, "reason" | "timedOut" | "errorName" | "code" | "status" | "message"> {
-  if (error instanceof Error && error.name === "AbortError") {
+  if (error instanceof Error && isRequestAbortedError(error)) {
     return {
-      reason: "timeout",
+      reason: error.name === "AbortError" ? "timeout" : "request_aborted",
       timedOut: true,
       errorName: error.name,
-      message: "AI request timed out",
+      message: error.message || "AI request timed out",
     };
   }
 

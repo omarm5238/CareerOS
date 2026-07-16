@@ -45,6 +45,8 @@ export type AnalyticsSkillsMetrics = {
   prioritySkillsCount: number;
   gapsCount: number;
   topPrioritySkills: string[];
+  skillsInsightSource: "ai" | "rule_based" | null;
+  skillsInsightGeneratedAt: string | null;
 };
 
 export type AnalyticsModuleData = {

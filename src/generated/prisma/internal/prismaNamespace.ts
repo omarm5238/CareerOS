@@ -391,7 +391,8 @@ export const ModelName = {
   resumeDocument: 'resumeDocument',
   resumeAnalysis: 'resumeAnalysis',
   jobPosting: 'jobPosting',
-  jobAnalysis: 'jobAnalysis'
+  jobAnalysis: 'jobAnalysis',
+  skillsInsight: 'skillsInsight'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1004,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    skillsInsight: {
+      payload: Prisma.$skillsInsightPayload<ExtArgs>
+      fields: Prisma.skillsInsightFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.skillsInsightFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.skillsInsightFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        findFirst: {
+          args: Prisma.skillsInsightFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.skillsInsightFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        findMany: {
+          args: Prisma.skillsInsightFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>[]
+        }
+        create: {
+          args: Prisma.skillsInsightCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        createMany: {
+          args: Prisma.skillsInsightCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.skillsInsightCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>[]
+        }
+        delete: {
+          args: Prisma.skillsInsightDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        update: {
+          args: Prisma.skillsInsightUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        deleteMany: {
+          args: Prisma.skillsInsightDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.skillsInsightUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.skillsInsightUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>[]
+        }
+        upsert: {
+          args: Prisma.skillsInsightUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$skillsInsightPayload>
+        }
+        aggregate: {
+          args: Prisma.SkillsInsightAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSkillsInsight>
+        }
+        groupBy: {
+          args: Prisma.skillsInsightGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SkillsInsightGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.skillsInsightCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SkillsInsightCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1178,6 +1253,27 @@ export const JobAnalysisScalarFieldEnum = {
 } as const
 
 export type JobAnalysisScalarFieldEnum = (typeof JobAnalysisScalarFieldEnum)[keyof typeof JobAnalysisScalarFieldEnum]
+
+
+export const SkillsInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  resumeAnalysisId: 'resumeAnalysisId',
+  jobCount: 'jobCount',
+  analysisSource: 'analysisSource',
+  aiModel: 'aiModel',
+  skillCoverageScore: 'skillCoverageScore',
+  prioritySkills: 'prioritySkills',
+  learningRoadmap: 'learningRoadmap',
+  projectIdeas: 'projectIdeas',
+  resumeSkillAdvice: 'resumeSkillAdvice',
+  marketSignals: 'marketSignals',
+  warnings: 'warnings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SkillsInsightScalarFieldEnum = (typeof SkillsInsightScalarFieldEnum)[keyof typeof SkillsInsightScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1420,6 +1516,7 @@ export type GlobalOmitConfig = {
   resumeAnalysis?: Prisma.resumeAnalysisOmit
   jobPosting?: Prisma.jobPostingOmit
   jobAnalysis?: Prisma.jobAnalysisOmit
+  skillsInsight?: Prisma.skillsInsightOmit
 }
 
 /* Types for Logging */
