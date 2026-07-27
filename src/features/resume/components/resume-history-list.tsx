@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatAnalyzedDate } from "../lib/format-resume-display";
 import type { ResumeAnalysisHistoryItem } from "../types";
 import { AnalysisSourceBadge } from "./analysis-source-badge";
+import { DeleteResumeHistoryItemButton } from "./delete-resume-history-item-button";
 
 type ResumeHistoryListProps = {
   items: ResumeAnalysisHistoryItem[];
@@ -73,6 +74,7 @@ export function ResumeHistoryList({
                       </span>
                     ) : null}
                     <AnalysisSourceBadge source={item.analysisSource} />
+                    <DeleteResumeHistoryItemButton documentId={item.resumeDocumentId} />
                   </div>
                 </div>
               </Link>

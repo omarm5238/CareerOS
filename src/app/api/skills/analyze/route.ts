@@ -20,7 +20,20 @@ export async function POST() {
       return NextResponse.json({ message: result.message }, { status: result.status });
     }
 
-    return NextResponse.json(result.insight);
+    if (result.skipped) {
+      return NextResponse.json({
+        ok: true,
+        skipped: true,
+        reason: result.reason,
+        message: result.message,
+      });
+    }
+
+    return NextResponse.json({
+      ...result.insight,
+      preserved: result.preserved ?? false,
+      message: result.message,
+    });
   } catch {
     return NextResponse.json(
       { message: "Could not generate skills intelligence. Please try again." },

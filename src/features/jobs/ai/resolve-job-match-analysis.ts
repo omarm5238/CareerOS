@@ -36,22 +36,6 @@ export function buildJobMatchInput(
   };
 }
 
-function buildAiUnavailableWarning(reason: string): string {
-  if (reason === "missing_api_key") {
-    return "AI analysis unavailable; using rule-based matching.";
-  }
-
-  if (reason === "timeout") {
-    return "AI analysis timed out; using rule-based matching.";
-  }
-
-  if (reason === "json_validation_failed" || reason === "json_parse_failed") {
-    return "AI response could not be validated; using rule-based matching.";
-  }
-
-  return "AI analysis unavailable; using rule-based matching.";
-}
-
 export async function resolveJobMatchAnalysis(
   input: JobMatchAnalysisInput,
 ): Promise<JobMatchAnalysis> {
@@ -68,7 +52,9 @@ export async function resolveJobMatchAnalysis(
   logAiFallback("job-match", aiOutcome.diagnostic);
 
   return analyzeJobMatchWithFallback(input, {
-    aiWarnings: [buildAiUnavailableWarning(aiOutcome.diagnostic.reason)],
+    aiWarnings: [
+      "AI match was unavailable. A provisional rule-based match was saved. Re-analyze with AI when ready.",
+    ],
   });
 }
 

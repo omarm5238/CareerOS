@@ -5,7 +5,11 @@ import { AnalyticsModulePage } from "@/features/analytics/components/analytics-m
 import { getAnalyticsModuleDataForUser } from "@/features/analytics/server";
 import { auth } from "@/server/auth";
 
-export default async function WorkspaceAnalyticsPage() {
+export default async function WorkspaceAnalyticsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ jobId?: string }>;
+}) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -14,7 +18,8 @@ export default async function WorkspaceAnalyticsPage() {
     redirect("/sign-in");
   }
 
-  const data = await getAnalyticsModuleDataForUser(session.user.id);
+  const { jobId } = await searchParams;
+  const data = await getAnalyticsModuleDataForUser(session.user.id, jobId);
 
   return <AnalyticsModulePage data={data} />;
 }

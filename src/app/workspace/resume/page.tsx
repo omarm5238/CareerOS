@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { ResumeAnalysisPage } from "@/features/resume/components/resume-analysis-page";
+import { getTargetJobContextForUser } from "@/features/jobs/server";
 import {
   getLatestResumeAnalysisForUser,
   getResumeAnalysisByDocumentIdForUser,
@@ -31,7 +32,10 @@ export default async function WorkspaceResumePage({
       ? rawDocumentId.trim()
       : null;
 
-  const history = await getResumeAnalysisHistoryForUser(session.user.id);
+  const [history, targetJobContext] = await Promise.all([
+    getResumeAnalysisHistoryForUser(session.user.id),
+    getTargetJobContextForUser(session.user.id),
+  ]);
 
   if (documentId) {
     const selected = await getResumeAnalysisByDocumentIdForUser(
@@ -46,6 +50,7 @@ export default async function WorkspaceResumePage({
           documentNotFound
           history={history}
           selectedDocumentId={documentId}
+          targetJobContext={targetJobContext}
         />
       );
     }
@@ -55,6 +60,7 @@ export default async function WorkspaceResumePage({
         analysis={selected}
         history={history}
         selectedDocumentId={selected.resumeDocumentId}
+        targetJobContext={targetJobContext}
       />
     );
   }
@@ -66,6 +72,7 @@ export default async function WorkspaceResumePage({
       analysis={latest}
       history={history}
       selectedDocumentId={latest?.resumeDocumentId ?? null}
+      targetJobContext={targetJobContext}
     />
   );
 }

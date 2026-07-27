@@ -69,6 +69,26 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                   </div>
                 </div>
               </Link>
+              <div className="mt-1 flex flex-wrap gap-3 px-2 text-xs">
+                <Link
+                  className="text-[var(--color-accent)] underline-offset-4 hover:underline"
+                  href={`/workspace/skills?jobId=${encodeURIComponent(job.id)}`}
+                >
+                  Analyze in Skills
+                </Link>
+                <Link
+                  className="text-[var(--color-accent)] underline-offset-4 hover:underline"
+                  href={`/workspace/analytics?jobId=${encodeURIComponent(job.id)}`}
+                >
+                  View Analytics
+                </Link>
+                <Link
+                  className="text-[var(--color-accent)] underline-offset-4 hover:underline"
+                  href={`/workspace/report?jobId=${encodeURIComponent(job.id)}`}
+                >
+                  View Report
+                </Link>
+              </div>
             </li>
           );
         })}

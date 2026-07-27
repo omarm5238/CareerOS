@@ -1,4 +1,16 @@
 import type { AnalysisSource } from "@/features/resume";
+import type { TargetJobContext } from "@/features/jobs";
+import type { SelectedTargetDeltaData } from "@/features/shared/insights";
+
+import type {
+  CareerBriefActionCenterSection,
+  CareerBriefNextAction,
+  CareerBriefOpportunity,
+  CareerBriefPlanItem,
+  CareerBriefRisk,
+  CareerBriefSource,
+} from "../ai/types";
+import type { CareerExecutionPlan } from "./execution-plan";
 
 export type CareerHealthLabel =
   | "Strong"
@@ -49,6 +61,26 @@ export type AnalyticsSkillsMetrics = {
   skillsInsightGeneratedAt: string | null;
 };
 
+export type CareerBriefView = {
+  id: string;
+  analysisSource: CareerBriefSource;
+  aiModel: string | null;
+  healthScore: number;
+  headline: string | null;
+  summary: string | null;
+  topRisks: CareerBriefRisk[];
+  topOpportunities: CareerBriefOpportunity[];
+  nextActions: CareerBriefNextAction[];
+  thirtyDayPlan: CareerBriefPlanItem[];
+  careerExecutionPlan: CareerExecutionPlan | null;
+  actionCenter: CareerBriefActionCenterSection[];
+  warnings: string[];
+  dataSourceNotes: string[];
+  generatedAt: string;
+  isStale: boolean;
+  staleReason: string | null;
+};
+
 export type AnalyticsModuleData = {
   careerHealth: CareerHealthResult;
   resume: AnalyticsResumeMetrics;
@@ -56,6 +88,11 @@ export type AnalyticsModuleData = {
   skills: AnalyticsSkillsMetrics;
   recommendations: string[];
   hasUsableData: boolean;
+  careerBrief: CareerBriefView | null;
+  liveExecutionPlan: CareerExecutionPlan;
+  targetJobContext: TargetJobContext;
+  scopeMode: "selected_job" | "all_jobs";
+  selectedTargetDelta: SelectedTargetDeltaData | null;
 };
 
 export type WorkspaceAnalyticsStatus = {

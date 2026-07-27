@@ -4,6 +4,7 @@ export type {
   AnalyticsModuleData,
   AnalyticsResumeMetrics,
   AnalyticsSkillsMetrics,
+  CareerBriefView,
   CareerHealthLabel,
   CareerHealthResult,
   WorkspaceAnalyticsStatus,

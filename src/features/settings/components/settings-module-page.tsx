@@ -5,6 +5,7 @@ import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-l
 
 import type { SettingsModuleData } from "../types";
 import { AccountSummaryPanel } from "./account-summary-panel";
+import { DataControlsPanel } from "./data-controls-panel";
 import { ProfileSettingsForm } from "./profile-settings-form";
 import { SettingsEmptyState } from "./settings-empty-state";
 import { SignOutButton } from "./sign-out-button";
@@ -52,7 +53,7 @@ export function SettingsModulePage({ data }: SettingsModulePageProps) {
                 Settings
               </h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--color-text-secondary)]">
-                Manage your CareerOS account profile.
+                Manage your CareerOS account profile and personal data controls.
               </p>
             </div>
           </header>
@@ -63,6 +64,7 @@ export function SettingsModulePage({ data }: SettingsModulePageProps) {
               accountSummary={data.accountSummary}
               profile={data.profile}
             />
+            <DataControlsPanel />
             <SignOutButton />
           </div>
         </div>

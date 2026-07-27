@@ -19,6 +19,7 @@ export function JobReanalyzeButton({
   const router = useRouter();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   if (!hasResumeProfile) {
     return (
@@ -33,6 +34,7 @@ export function JobReanalyzeButton({
 
     setIsAnalyzing(true);
     setError(null);
+    setSuccess(null);
 
     try {
       const response = await fetch(`/api/jobs/${encodeURIComponent(jobId)}/analyze`, {
@@ -44,6 +46,26 @@ export function JobReanalyzeButton({
         throw new Error(body?.message ?? "Could not re-analyze this job.");
       }
 
+      const body = (await response.json()) as {
+        message?: string;
+        preserved?: boolean;
+        analysis?: { analysisSource?: JobAnalysisSource } | null;
+      };
+
+      if (body.preserved) {
+        setSuccess(
+          body.message ??
+            (analysisSource === "ai"
+              ? "AI was unavailable. Previous AI match preserved."
+              : "AI was unavailable. Provisional match remains."),
+        );
+      } else if (body.analysis?.analysisSource === "rule_based") {
+        setSuccess(
+          body.message ?? "AI unavailable; provisional rule-based match saved.",
+        );
+      } else {
+        setSuccess(body.message ?? "AI match updated.");
+      }
       router.refresh();
       setIsAnalyzing(false);
     } catch (reanalyzeError) {
@@ -76,6 +98,11 @@ export function JobReanalyzeButton({
       {error ? (
         <p className="mt-2 text-sm text-[var(--color-text-secondary)]" role="alert">
           {error}
+        </p>
+      ) : null}
+      {success ? (
+        <p className="mt-2 text-sm text-[var(--color-text-secondary)]" role="status">
+          {success}
         </p>
       ) : null}
     </div>

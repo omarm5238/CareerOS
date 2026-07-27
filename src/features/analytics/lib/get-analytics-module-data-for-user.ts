@@ -4,10 +4,17 @@ import {
   getLatestResumeAnalysisForUser,
   getResumeAnalysisHistoryForUser,
 } from "@/features/resume/server";
+import { evaluateInsightFreshness } from "@/features/shared/insights/freshness";
+import { getInsightSourceTimestampsForUser } from "@/features/shared/insights/get-insight-source-timestamps";
+import { buildSelectedTargetDelta } from "@/features/shared/insights";
+import type { PrioritySkillItem } from "@/features/skills/types";
 import { getSkillsModuleDataForUser } from "@/features/skills/server";
 
 import { generateAnalyticsRecommendations } from "./generate-analytics-recommendations";
 import { generateCareerHealthScore } from "./generate-career-health-score";
+import { getLatestCareerBriefForUser } from "./get-latest-career-brief-for-user";
+import { mapCareerBriefToView } from "./map-career-brief-to-view";
+import { buildCareerExecutionPlan } from "./build-career-execution-plan";
 import type {
   AnalyticsJobsMetrics,
   AnalyticsModuleData,
@@ -80,12 +87,15 @@ function buildJobsMetrics(jobs: Awaited<ReturnType<typeof getJobPostingsForUser>
 
 export async function getAnalyticsModuleDataForUser(
   userId: string,
+  requestedJobId?: string | null,
 ): Promise<AnalyticsModuleData> {
-  const [resume, history, jobs, skillsData] = await Promise.all([
+  const [resume, history, jobs, skillsData, latestBrief, sourceTimestamps] = await Promise.all([
     getLatestResumeAnalysisForUser(userId),
     getResumeAnalysisHistoryForUser(userId),
     getJobPostingsForUser(userId),
-    getSkillsModuleDataForUser(userId),
+    getSkillsModuleDataForUser(userId, requestedJobId),
+    getLatestCareerBriefForUser(userId),
+    getInsightSourceTimestampsForUser(userId),
   ]);
 
   const jobsMetrics = buildJobsMetrics(jobs);
@@ -101,14 +111,16 @@ export async function getAnalyticsModuleDataForUser(
     analysisSource: resume?.analysisSource ?? null,
   };
 
+  const prioritySkills: PrioritySkillItem[] = skillsOverview?.prioritySkills ?? [];
   const skillsMetrics = {
     detectedSkillsCount: skillsOverview?.detectedSkills.length ?? resumeMetrics.detectedSkillsCount,
     skillCoverageScore: skillsOverview?.skillCoverageScore ?? null,
-    prioritySkillsCount: skillsOverview?.prioritySkills.length ?? 0,
+    prioritySkillsCount: prioritySkills.length,
     gapsCount: skillsOverview?.missingSkillsFromJobs.length ?? 0,
-    topPrioritySkills: (skillsOverview?.prioritySkills ?? [])
+    topPrioritySkills: prioritySkills
       .slice(0, 5)
-      .map((item) => item.skill),
+      .map((item: PrioritySkillItem) => item.skill)
+      .filter((skill): skill is string => Boolean(skill)),
     skillsInsightSource: skillsData.insight?.analysisSource ?? null,
     skillsInsightGeneratedAt: skillsData.insight?.generatedAt ?? null,
   };
@@ -118,7 +130,10 @@ export async function getAnalyticsModuleDataForUser(
     completenessScore: resumeMetrics.completenessScore,
     skillCoverageScore: skillsMetrics.skillCoverageScore,
     savedJobsCount: jobsMetrics.savedJobsCount,
-    averageMatchScore: jobsMetrics.averageMatchScore,
+    averageMatchScore:
+      skillsData.scopeMode === "selected_job"
+        ? skillsData.targetJobContext.selectedJob?.analysis?.matchScore ?? null
+        : jobsMetrics.averageMatchScore,
   });
 
   const hasUsableData =
@@ -131,14 +146,77 @@ export async function getAnalyticsModuleDataForUser(
     jobs: jobsMetrics,
     skills: skillsMetrics,
   });
+  const liveExecutionPlan = buildCareerExecutionPlan({
+    hasResume: !!resume,
+    resumeFixes: [
+      ...(resume?.weaknesses ?? []),
+      ...(resume?.suggestedFocus ?? []),
+    ].slice(0, 6),
+    skillGaps: skillsOverview?.missingSkillsFromJobs.slice(0, 4) ?? [],
+    projectIdeas: skillsOverview?.projectIdeas.map((item) => item.title) ?? [],
+    savedJobsCount: skillsData.targetJobContext.savedJobsCount,
+    appliedCount: jobsMetrics.appliedStatusCount,
+    selectedJobTitle:
+      skillsData.scopeMode === "selected_job"
+        ? skillsData.targetJobContext.selectedJobTitle
+        : null,
+    selectedJobCompany:
+      skillsData.scopeMode === "selected_job"
+        ? skillsData.targetJobContext.selectedJobCompany
+        : null,
+  });
+
+  const briefFreshness = latestBrief
+    ? evaluateInsightFreshness({
+        generatedAt: latestBrief.createdAt,
+        latestResumeAt: sourceTimestamps.latestResumeAt,
+        latestJobAt: sourceTimestamps.latestJobAt,
+        currentJobCount: sourceTimestamps.currentJobCount,
+      })
+    : null;
+
+  const selectedJobTitle =
+    skillsData.scopeMode === "selected_job"
+      ? skillsData.targetJobContext.selectedJobTitle
+      : null;
+  const selectedJob = skillsData.targetJobContext.selectedJob;
+  const selectedTargetDelta =
+    skillsData.scopeMode === "selected_job" && selectedJob
+      ? buildSelectedTargetDelta({
+          jobTitle: selectedJob.title,
+          company: selectedJob.company,
+          matchScore: selectedJob.analysis?.matchScore,
+          missingTechnicalSkills: skillsOverview?.missingSkillsFromJobs ?? [],
+          experienceGaps: skillsOverview?.experienceGaps,
+          evidenceGaps: skillsOverview?.evidenceGaps,
+          contextRequirements: skillsOverview?.contextRequirements,
+        })
+      : null;
 
   return {
-    careerHealth,
+    careerHealth: {
+      ...careerHealth,
+      explanation: selectedJobTitle
+        ? `${careerHealth.explanation} Scoped to selected target job: ${selectedJobTitle}.`
+        : careerHealth.explanation,
+    },
     resume: resumeMetrics,
     jobs: jobsMetrics,
     skills: skillsMetrics,
     recommendations,
     hasUsableData,
+    careerBrief: latestBrief
+      ? mapCareerBriefToView(latestBrief, {
+          isStale: briefFreshness?.isStale ?? false,
+          staleReason: briefFreshness?.isStale
+            ? "Needs refresh. Resume or saved-job data changed since this brief was generated."
+            : null,
+        })
+      : null,
+    liveExecutionPlan,
+    targetJobContext: skillsData.targetJobContext,
+    scopeMode: skillsData.scopeMode,
+    selectedTargetDelta,
   };
 }
 

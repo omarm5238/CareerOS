@@ -6,10 +6,16 @@ import { mapJobPostingToDetailView } from "./map-job-posting-to-view";
 import { jobMatchAnalysisToPrismaData } from "./job-match-analysis-to-prisma";
 import type { JobDetailView } from "../types";
 
+export type AnalyzeJobPostingResult = {
+  job: JobDetailView;
+  preserved: boolean;
+  message: string;
+};
+
 export async function analyzeJobPostingForUser(
   userId: string,
   jobId: string,
-): Promise<JobDetailView | null> {
+): Promise<AnalyzeJobPostingResult | null> {
   const job = await prisma.jobPosting.findFirst({
     where: {
       id: jobId,
@@ -33,6 +39,28 @@ export async function analyzeJobPostingForUser(
     resume,
   );
   const analysis = await resolveJobMatchAnalysis(matchInput);
+  if (
+    analysis.analysisSource === "rule_based" &&
+    job.analysis?.analysisSource === "ai"
+  ) {
+    return {
+      job: mapJobPostingToDetailView(job),
+      preserved: true,
+      message: "AI was unavailable. Previous AI match preserved.",
+    };
+  }
+
+  if (
+    analysis.analysisSource === "rule_based" &&
+    job.analysis?.analysisSource === "rule_based"
+  ) {
+    return {
+      job: mapJobPostingToDetailView(job),
+      preserved: true,
+      message: "AI was unavailable. Provisional match remains.",
+    };
+  }
+
   const analysisData = jobMatchAnalysisToPrismaData(analysis);
 
   if (job.analysis) {
@@ -55,5 +83,12 @@ export async function analyzeJobPostingForUser(
   });
 
   if (!updated) return null;
-  return mapJobPostingToDetailView(updated);
+  return {
+    job: mapJobPostingToDetailView(updated),
+    preserved: false,
+    message:
+      analysis.analysisSource === "ai"
+        ? "AI match updated."
+        : "AI unavailable; provisional rule-based match saved.",
+  };
 }

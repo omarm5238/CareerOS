@@ -1,3 +1,5 @@
+import { canonicalizeActionTitle } from "@/features/shared/insights";
+
 import type {
   ResumeActionItem,
   ResumeActionPriority,
@@ -99,9 +101,11 @@ function createCandidate(input: {
   source: ResumeActionSource;
   rank: number;
 }): CandidateAction {
+  const title = canonicalizeActionTitle(input.title);
   return {
     ...input,
-    fingerprint: fingerprintFromTitle(input.title),
+    title,
+    fingerprint: fingerprintFromTitle(title),
   };
 }
 

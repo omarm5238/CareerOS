@@ -18,6 +18,10 @@ export type GenerateJsonWithAiOptions = {
   model?: string;
   temperature?: number;
   fallbackLabel?: string;
+  responseSchema?: {
+    name: string;
+    schema: Record<string, unknown>;
+  };
 };
 
 export type GenerateJsonWithAiSuccess<T> = {

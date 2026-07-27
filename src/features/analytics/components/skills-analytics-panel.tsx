@@ -1,9 +1,12 @@
 import Link from "next/link";
 
+import { ZERO_JOBS_UNLOCK_MESSAGE } from "@/features/shared/insights";
+
 import type { AnalyticsSkillsMetrics } from "../types";
 
 type SkillsAnalyticsPanelProps = {
   skills: AnalyticsSkillsMetrics;
+  savedJobsCount: number;
 };
 
 function formatScore(value: number | null): string {
@@ -11,7 +14,9 @@ function formatScore(value: number | null): string {
   return `${value}%`;
 }
 
-export function SkillsAnalyticsPanel({ skills }: SkillsAnalyticsPanelProps) {
+export function SkillsAnalyticsPanel({ skills, savedJobsCount }: SkillsAnalyticsPanelProps) {
+  const needsJob = savedJobsCount === 0;
+
   return (
     <section
       aria-labelledby="skills-analytics-heading"
@@ -26,30 +31,37 @@ export function SkillsAnalyticsPanel({ skills }: SkillsAnalyticsPanelProps) {
 
       <dl className="mt-4 grid gap-3 sm:grid-cols-2">
         <MetricItem label="Detected skills" value={String(skills.detectedSkillsCount)} />
-        <MetricItem label="Skill gaps" value={String(skills.gapsCount)} />
-        <MetricItem label="Priority skills" value={String(skills.prioritySkillsCount)} />
+        <MetricItem label="Skill gaps" value={needsJob ? "0" : String(skills.gapsCount)} />
+        <MetricItem
+          label="Priority skills"
+          value={needsJob ? "0" : String(skills.prioritySkillsCount)}
+        />
         <MetricItem label="Skill coverage" value={formatScore(skills.skillCoverageScore)} />
         <MetricItem
           label="Skills strategy"
           value={
-            skills.skillsInsightSource === "ai"
-              ? "AI"
-              : skills.skillsInsightSource === "rule_based"
-                ? "Rule-based"
-                : "—"
+            needsJob
+              ? "Needs target job"
+              : skills.skillsInsightSource === "ai"
+                ? savedJobsCount > 1
+                  ? "AI · all saved jobs"
+                  : "AI"
+                : skills.skillsInsightSource === "rule_based"
+                  ? "Rule-based"
+                  : "—"
           }
         />
         <MetricItem
           label="Strategy generated"
           value={
-            skills.skillsInsightGeneratedAt
+            !needsJob && skills.skillsInsightGeneratedAt
               ? new Date(skills.skillsInsightGeneratedAt).toLocaleDateString()
               : "—"
           }
         />
       </dl>
 
-      {skills.topPrioritySkills.length > 0 ? (
+      {!needsJob && skills.topPrioritySkills.length > 0 ? (
         <div className="mt-4">
           <h3 className="text-sm font-medium text-[var(--color-text-primary)]">
             Top priority skills
@@ -66,16 +78,28 @@ export function SkillsAnalyticsPanel({ skills }: SkillsAnalyticsPanelProps) {
         </div>
       ) : (
         <p className="mt-4 text-sm text-[var(--color-text-secondary)]">
-          No priority skills identified yet.
+          {needsJob
+            ? `No priority skills identified yet. ${ZERO_JOBS_UNLOCK_MESSAGE}`
+            : "No priority skills identified yet."}
         </p>
       )}
 
-      <Link
-        className="mt-4 inline-flex text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-        href="/workspace/skills"
-      >
-        View Skills module
-      </Link>
+      <div className="mt-4 flex flex-wrap gap-4">
+        <Link
+          className="inline-flex text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          href="/workspace/skills"
+        >
+          View Skills module
+        </Link>
+        {needsJob ? (
+          <Link
+            className="inline-flex text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+            href="/workspace/jobs"
+          >
+            View Jobs module
+          </Link>
+        ) : null}
+      </div>
     </section>
   );
 }

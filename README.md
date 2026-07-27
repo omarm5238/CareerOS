@@ -93,6 +93,24 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000).
 
+### Optional Career Brief AI settings
+
+The CareerOS Brief uses `OPENAI_MODEL` by default. These optional overrides tune
+the primary and compact retry attempts:
+
+```bash
+OPENAI_ANALYTICS_MODEL="gpt-4.1-mini"
+OPENAI_ANALYTICS_FAST_MODEL="gpt-4.1-mini"
+OPENAI_ANALYTICS_TIMEOUT_MS="45000"
+OPENAI_ANALYTICS_RETRY_TIMEOUT_MS="25000"
+
+# Optional job-match overrides. Defaults: primary 45s, compact retry 25s.
+OPENAI_JOB_MATCH_MODEL=""
+OPENAI_JOB_MATCH_FAST_MODEL=""
+OPENAI_JOB_MATCH_TIMEOUT_MS="45000"
+OPENAI_JOB_MATCH_RETRY_TIMEOUT_MS="25000"
+```
+
 ### Scripts
 
 | Script          | Description                |

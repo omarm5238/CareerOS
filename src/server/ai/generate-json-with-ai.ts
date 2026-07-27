@@ -45,7 +45,16 @@ export async function generateJsonWithAI<T>(
           {
             model,
             temperature: options.temperature ?? 0.2,
-            response_format: { type: "json_object" },
+            response_format: options.responseSchema
+              ? {
+                  type: "json_schema",
+                  json_schema: {
+                    name: options.responseSchema.name,
+                    strict: true,
+                    schema: options.responseSchema.schema,
+                  },
+                }
+              : { type: "json_object" },
             messages: [
               { role: "system", content: options.systemPrompt },
               { role: "user", content: options.userPrompt },

@@ -1,9 +1,12 @@
+import { ZERO_JOBS_BENCHMARKING_MESSAGE } from "@/features/shared/insights";
+
 import Link from "next/link";
 
 type SkillGapsPanelProps = {
   missingSkills: string[];
   missingSkillJobCounts: Record<string, number>;
   hasJobs: boolean;
+  selectedJobLabel?: string | null;
 };
 
 function resolveJobCount(
@@ -17,6 +20,7 @@ export function SkillGapsPanel({
   missingSkills,
   missingSkillJobCounts,
   hasJobs,
+  selectedJobLabel = null,
 }: SkillGapsPanelProps) {
   return (
     <section
@@ -33,7 +37,7 @@ export function SkillGapsPanel({
       {!hasJobs ? (
         <div className="mt-4">
           <p className="text-sm text-[var(--color-text-secondary)]">
-            Add saved jobs to discover market-driven skill gaps.
+            {ZERO_JOBS_BENCHMARKING_MESSAGE}
           </p>
           <Link
             className="mt-3 inline-flex text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
@@ -53,7 +57,9 @@ export function SkillGapsPanel({
               >
                 <span className="text-sm text-[var(--color-text-primary)]">{skill}</span>
                 <span className="text-xs text-[var(--color-text-secondary)]">
-                  Missing in {count} saved {count === 1 ? "job" : "jobs"}
+                  {selectedJobLabel
+                    ? "Missing for selected target job"
+                    : `Missing in ${count} saved ${count === 1 ? "job" : "jobs"}`}
                 </span>
               </li>
             );

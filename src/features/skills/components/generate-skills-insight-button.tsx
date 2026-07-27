@@ -8,11 +8,13 @@ import type { SkillsInsightSource } from "../types";
 type GenerateSkillsInsightButtonProps = {
   hasInsight: boolean;
   analysisSource: SkillsInsightSource | null;
+  allJobsLabel?: boolean;
 };
 
 export function GenerateSkillsInsightButton({
   hasInsight,
   analysisSource,
+  allJobsLabel = false,
 }: GenerateSkillsInsightButtonProps) {
   const router = useRouter();
   const [isGenerating, setIsGenerating] = useState(false);
@@ -31,12 +33,50 @@ export function GenerateSkillsInsightButton({
         method: "POST",
       });
 
+      const body = (await response.json().catch(() => null)) as
+        | {
+            message?: string;
+            skipped?: boolean;
+            preserved?: boolean;
+            warnings?: string[];
+            prioritySkills?: unknown[];
+            analysisSource?: SkillsInsightSource;
+          }
+        | null;
+
       if (!response.ok) {
-        const body = (await response.json().catch(() => null)) as { message?: string } | null;
         throw new Error(body?.message ?? "Could not generate skills strategy.");
       }
 
-      setSuccess("Skills strategy updated.");
+      if (body?.skipped) {
+        setSuccess(
+          body.message ??
+            "Add a saved job before generating a market-driven skills strategy.",
+        );
+        router.refresh();
+        setIsGenerating(false);
+        return;
+      }
+
+      if (body?.preserved) {
+        setSuccess(
+          body.message ?? "AI refresh failed. Previous AI skills strategy kept.",
+        );
+        router.refresh();
+        setIsGenerating(false);
+        return;
+      }
+
+      const warning = body?.warnings?.[0];
+      const emptyPriorities = (body?.prioritySkills?.length ?? 0) === 0;
+      setSuccess(
+        body?.message ??
+          (body?.analysisSource === "ai"
+            ? "Skills strategy updated with AI."
+            : emptyPriorities && warning
+              ? warning
+              : "AI strategy was unavailable. A provisional rule-based strategy was saved."),
+      );
       router.refresh();
       setIsGenerating(false);
     } catch (generateError) {
@@ -59,9 +99,15 @@ export function GenerateSkillsInsightButton({
 
   const label = hasInsight
     ? analysisSource === "ai"
-      ? "Refresh strategy"
-      : "Refresh with AI"
-    : "Generate AI strategy";
+      ? allJobsLabel
+        ? "Refresh all-jobs strategy"
+        : "Refresh strategy"
+      : allJobsLabel
+        ? "Refresh all-jobs with AI"
+        : "Refresh with AI"
+    : allJobsLabel
+      ? "Generate all-jobs AI strategy"
+      : "Generate AI strategy";
 
   return (
     <div>

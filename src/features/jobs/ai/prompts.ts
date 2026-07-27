@@ -50,24 +50,67 @@ export function buildJobMatchUserPrompt(input: {
 RESUME PROFILE
 Role: ${input.resume.detectedRole}
 Experience level: ${input.resume.experienceLevel}
-Completeness score: ${input.resume.completenessScore}
-Detected skills: ${input.resume.detectedSkills.join(", ") || "None listed"}
-Profile summary: ${input.resume.profileSummary ?? "Not provided"}
-Strengths: ${input.resume.strengths.join("; ") || "None listed"}
-Weaknesses: ${input.resume.weaknesses.join("; ") || "None listed"}
-Suggested focus: ${input.resume.suggestedFocus.join("; ") || "None listed"}
-ATS recommendations: ${input.resume.atsRecommendations.join("; ") || "None listed"}
+Top skills: ${input.resume.detectedSkills.slice(0, 20).join(", ") || "None listed"}
+Profile summary: ${(input.resume.profileSummary ?? "Not provided").slice(0, 900)}
 
 JOB POSTING
 Title: ${input.job.title}
 Company: ${input.job.company}
 Location: ${input.job.location ?? "Not specified"}
-Source: ${input.job.source ?? "Not specified"}
-URL: ${input.job.jobUrl ?? "Not provided"}
 
 Description:
 ${input.job.description}${truncationNote}
 
 Return JSON with keys:
 matchScore, roleAlignment, matchedSkills, missingSkills, resumeSignals, jobSignals, recommendations, fitSummary, applicationStrategy, resumeTailoringTips, warnings`;
+}
+
+export function buildJobMatchRetryPrompt(input: {
+  resume: {
+    detectedRole: string;
+    experienceLevel: string;
+    detectedSkills: string[];
+    profileSummary: string | null;
+  };
+  job: {
+    title: string;
+    company: string;
+    location: string | null;
+    description: string;
+  };
+  hints?: { matchedSkills: string[]; missingSkills: string[] };
+}): string {
+  return JSON.stringify({
+    instruction:
+      "Return the requested job-match JSON. Be specific to this job and use only supported resume evidence.",
+    resume: {
+      role: input.resume.detectedRole,
+      experienceLevel: input.resume.experienceLevel,
+      detectedSkills: input.resume.detectedSkills.slice(0, 16),
+      profileSummary: input.resume.profileSummary?.slice(0, 700) ?? null,
+    },
+    job: {
+      title: input.job.title,
+      company: input.job.company,
+      location: input.job.location,
+      description: input.job.description.slice(0, 2800),
+    },
+    existingExtractedKeywords: {
+      matchedSkills: input.hints?.matchedSkills.slice(0, 12) ?? [],
+      missingSkills: input.hints?.missingSkills.slice(0, 12) ?? [],
+    },
+    requiredKeys: [
+      "matchScore",
+      "roleAlignment",
+      "matchedSkills",
+      "missingSkills",
+      "resumeSignals",
+      "jobSignals",
+      "recommendations",
+      "fitSummary",
+      "applicationStrategy",
+      "resumeTailoringTips",
+      "warnings",
+    ],
+  });
 }

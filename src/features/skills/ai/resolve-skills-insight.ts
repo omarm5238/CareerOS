@@ -1,4 +1,8 @@
 import { isAiConfigured, logAiFallback } from "@/server/ai";
+import {
+  filterMarketSkillsOnly,
+  isValidMarketSkillName,
+} from "@/features/shared/insights";
 import type { ResumeModuleAnalysis } from "@/features/resume/types";
 
 import type { SkillsOverview } from "../types";
@@ -6,6 +10,7 @@ import { analyzeSkillsWithAi } from "./analyze-skills-with-ai";
 import { buildFallbackSkillsInsight } from "./fallback-skills-insight";
 import type {
   SkillsInsightAnalysisInput,
+  SkillsInsightProjectIdea,
   SkillsInsightResult,
   SkillsJobAnalysisInput,
   SkillsResumeInput,
@@ -57,24 +62,99 @@ export function buildSkillsInsightInput(
   };
 }
 
+export function buildZeroJobsSkillsInsight(
+  overview: SkillsOverview,
+): SkillsInsightResult {
+  return {
+    skillCoverageScore: overview.skillCoverageScore,
+    prioritySkills: [],
+    learningRoadmap: [],
+    projectIdeas: [],
+    resumeSkillAdvice: [],
+    marketSignals: [],
+    warnings: [
+      "No saved jobs yet. Add at least one target job to generate market-driven skill priorities.",
+    ],
+    analysisSource: "rule_based",
+    aiModel: null,
+  };
+}
+
+function sanitizeProjectIdeas(
+  ideas: SkillsInsightProjectIdea[],
+): SkillsInsightProjectIdea[] {
+  return ideas
+    .filter((idea) => {
+      const title = idea.title.trim().toLowerCase();
+      if (!title) return false;
+      if (
+        title.includes("open-source contribution") ||
+        title.includes("certification preparation") ||
+        title.includes("impact measurement") ||
+        title.includes("soft skills workshop")
+      ) {
+        return false;
+      }
+      return true;
+    })
+    .map((idea) => ({
+      ...idea,
+      skills: idea.skills.filter(isValidMarketSkillName),
+    }))
+    .slice(0, 4);
+}
+
+function finalizeSkillsInsight(
+  input: SkillsInsightAnalysisInput,
+  result: SkillsInsightResult,
+): SkillsInsightResult {
+  if (input.jobs.length === 0) {
+    return buildZeroJobsSkillsInsight(input.overview);
+  }
+
+  const prioritySkills = filterMarketSkillsOnly(result.prioritySkills);
+
+  if (prioritySkills.length === 0) {
+    return buildFallbackSkillsInsight(input);
+  }
+
+  return {
+    ...result,
+    prioritySkills: prioritySkills.slice(0, 6),
+    projectIdeas: sanitizeProjectIdeas(result.projectIdeas),
+    resumeSkillAdvice: filterMarketSkillsOnly(result.resumeSkillAdvice).slice(0, 6),
+    learningRoadmap: result.learningRoadmap.map((item) => ({
+      ...item,
+      skills: item.skills.filter(isValidMarketSkillName),
+    })),
+  };
+}
+
 export async function resolveSkillsInsight(
   input: SkillsInsightAnalysisInput,
 ): Promise<SkillsInsightResult> {
+  if (input.jobs.length === 0) {
+    return buildZeroJobsSkillsInsight(input.overview);
+  }
+
   if (!isAiConfigured()) {
-    return buildFallbackSkillsInsight(input);
+    return finalizeSkillsInsight(input, buildFallbackSkillsInsight(input));
   }
 
   const aiOutcome = await analyzeSkillsWithAi(input);
 
   if (aiOutcome.success) {
-    return aiOutcome.analysis;
+    return finalizeSkillsInsight(input, aiOutcome.analysis);
   }
 
   logAiFallback("skills-insight", aiOutcome.diagnostic);
 
-  return buildFallbackSkillsInsight(input, {
-    aiWarnings: [buildAiUnavailableWarning(aiOutcome.diagnostic.reason)],
-  });
+  return finalizeSkillsInsight(
+    input,
+    buildFallbackSkillsInsight(input, {
+      aiWarnings: [buildAiUnavailableWarning(aiOutcome.diagnostic.reason)],
+    }),
+  );
 }
 
 export { isAiConfigured };

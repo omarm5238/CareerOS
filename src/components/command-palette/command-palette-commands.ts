@@ -80,6 +80,27 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     href: "/workspace/analytics",
   },
   {
+    id: "action-analytics-brief",
+    title: "Open Analytics Brief",
+    group: "Actions",
+    keywords: ["brief", "analytics", "careeros", "action center"],
+    href: "/workspace/analytics",
+  },
+  {
+    id: "action-export-data",
+    title: "Export workspace data",
+    group: "Actions",
+    keywords: ["export", "download", "data", "backup", "settings"],
+    href: "/workspace/settings",
+  },
+  {
+    id: "action-open-report",
+    title: "Open Report",
+    group: "Actions",
+    keywords: ["report", "pdf", "print", "summary", "careeros"],
+    href: "/workspace/report",
+  },
+  {
     id: "action-sign-out",
     title: "Manage sign out",
     group: "Actions",

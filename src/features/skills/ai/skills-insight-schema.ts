@@ -1,5 +1,13 @@
+import {
+  classifyRequirement,
+  estimateLearningEffort,
+  isValidSkillName,
+  normalizeSkillName,
+} from "@/features/shared/insights";
+
 import type { SkillPriority } from "../types";
 import type {
+  SkillsEvidenceStatus,
   SkillsInsightAIPayload,
   SkillsInsightPrioritySkill,
   SkillsInsightProjectIdea,
@@ -13,6 +21,12 @@ const ACTIONS: SkillsInsightResumeAdvice["action"][] = [
   "Add evidence first",
   "Add to resume",
   "Do not add yet",
+];
+const EVIDENCE_STATUSES: SkillsEvidenceStatus[] = [
+  "missing_from_resume",
+  "partially_supported",
+  "supported",
+  "needs_proof_first",
 ];
 
 const LIMITS = {
@@ -80,6 +94,16 @@ function sanitizeAction(value: unknown): SkillsInsightResumeAdvice["action"] {
   return "Add evidence first";
 }
 
+function sanitizeEvidenceStatus(value: unknown, resumeSafe: boolean): SkillsEvidenceStatus {
+  if (typeof value === "string") {
+    const normalized = value.trim();
+    if (EVIDENCE_STATUSES.includes(normalized as SkillsEvidenceStatus)) {
+      return normalized as SkillsEvidenceStatus;
+    }
+  }
+  return resumeSafe ? "supported" : "needs_proof_first";
+}
+
 function sanitizeBoolean(value: unknown): boolean {
   return value === true;
 }
@@ -91,15 +115,49 @@ function sanitizePrioritySkills(value: unknown): SkillsInsightPrioritySkill[] {
   for (const entry of value) {
     if (!entry || typeof entry !== "object") continue;
     const record = entry as Record<string, unknown>;
-    const skill = sanitizeString(record.skill, "", 80);
-    if (!skill) continue;
+    const skill = normalizeSkillName(sanitizeString(record.skill, "", 80));
+    if (
+      !skill ||
+      !isValidSkillName(skill) ||
+      classifyRequirement(skill).kind !== "skill"
+    ) continue;
+
+    const reason = sanitizeString(
+      record.whyThisMatters ?? record.reason,
+      "Relevant to your saved jobs and profile.",
+    );
+    const evidence = sanitizeString(
+      record.currentEvidence ?? record.evidence,
+      "Based on saved job and resume data.",
+    );
+    const resumeSafe = sanitizeBoolean(record.resumeSafe);
+    const evidenceStatus = sanitizeEvidenceStatus(record.evidenceStatus, resumeSafe);
 
     items.push({
       skill,
       priority: sanitizePriority(record.priority),
-      reason: sanitizeString(record.reason, "Relevant to your saved jobs and profile."),
-      evidence: sanitizeString(record.evidence, "Based on saved job and resume data."),
-      resumeSafe: sanitizeBoolean(record.resumeSafe),
+      reason,
+      evidence,
+      resumeSafe: resumeSafe || evidenceStatus === "supported",
+      evidenceStatus,
+      whyThisMatters: reason,
+      currentEvidence: evidence,
+      learningTarget: sanitizeString(
+        record.learningTarget,
+        `Learn practical ${skill} fundamentals you can demonstrate.`,
+      ),
+      proofProject: sanitizeString(
+        record.proofProject,
+        `Build one small project that clearly uses ${skill}.`,
+        LIMITS.proofField,
+      ),
+      estimatedHours: estimateLearningEffort(skill).label,
+      resumeRule: sanitizeString(
+        record.resumeRule,
+        resumeSafe || evidenceStatus === "supported"
+          ? "Add to resume if usage is already clear."
+          : "Add only after you can show project or work evidence.",
+      ),
     });
 
     if (items.length >= LIMITS.prioritySkills) break;
@@ -120,7 +178,9 @@ function sanitizeLearningRoadmap(value: unknown): SkillsInsightRoadmapItem[] {
 
     items.push({
       title,
-      skills: sanitizeStringArray(record.skills, LIMITS.skillsPerItem),
+      skills: sanitizeStringArray(record.skills, LIMITS.skillsPerItem).filter((skill) =>
+        isValidSkillName(skill) && classifyRequirement(skill).kind === "skill",
+      ),
       timeframe: sanitizeString(record.timeframe, "1-2 weeks", 60),
       outcome: sanitizeString(record.outcome, "Demonstrate practical ability with a small project."),
     });
@@ -134,21 +194,53 @@ function sanitizeLearningRoadmap(value: unknown): SkillsInsightRoadmapItem[] {
 function sanitizeProjectIdeas(value: unknown): SkillsInsightProjectIdea[] {
   if (!Array.isArray(value)) return [];
 
+  const banned = [
+    "open-source contribution",
+    "certification preparation",
+    "impact measurement",
+    "soft skills workshop",
+  ];
+
   const items: SkillsInsightProjectIdea[] = [];
   for (const entry of value) {
     if (!entry || typeof entry !== "object") continue;
     const record = entry as Record<string, unknown>;
     const title = sanitizeString(record.title, "", 120);
     if (!title) continue;
+    if (banned.some((phrase) => title.toLowerCase().includes(phrase))) continue;
+
+    const skills = sanitizeStringArray(
+      record.skillsCovered ?? record.skills,
+      LIMITS.skillsPerItem,
+    ).filter(
+      (skill) =>
+        isValidSkillName(skill) && classifyRequirement(skill).kind === "skill",
+    );
+
+    const description = sanitizeString(
+      record.description,
+      `Build a concrete portfolio artifact that proves ${skills[0] ?? "the target skill"}.`,
+    );
+    const output = sanitizeString(
+      record.output,
+      "GitHub repo with README and runnable setup instructions.",
+    );
+    const estimatedHours = estimateLearningEffort(skills[0] ?? title).label;
+    const resumeProof = sanitizeString(
+      record.resumeProof ?? record.proof,
+      "Add to resume only after the repo proves the skill.",
+      LIMITS.proofField,
+    );
 
     items.push({
       title,
-      skills: sanitizeStringArray(record.skills, LIMITS.skillsPerItem),
-      proof: sanitizeString(
-        record.proof,
-        "Add a GitHub link or portfolio entry showing the finished work.",
-        LIMITS.proofField,
-      ),
+      skills,
+      proof: resumeProof,
+      description,
+      skillsCovered: skills,
+      output,
+      estimatedHours,
+      resumeProof,
     });
 
     if (items.length >= LIMITS.projectIdeas) break;
@@ -164,7 +256,7 @@ function sanitizeResumeSkillAdvice(value: unknown): SkillsInsightResumeAdvice[] 
   for (const entry of value) {
     if (!entry || typeof entry !== "object") continue;
     const record = entry as Record<string, unknown>;
-    const skill = sanitizeString(record.skill, "", 80);
+    const skill = normalizeSkillName(sanitizeString(record.skill, "", 80));
     if (!skill) continue;
 
     items.push({

@@ -2,14 +2,14 @@ import Link from "next/link";
 
 import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
+import type { TargetJobContext } from "@/features/jobs";
 
-import { generateResumeActionPlan } from "../lib/generate-resume-action-plan";
+import { buildResumeImprovementCenter } from "../lib/build-resume-improvement-center";
 import type { ResumeAnalysisHistoryItem, ResumeModuleAnalysis } from "../types";
-import { ResumeActionPlan } from "./resume-action-plan";
 import { ResumeAnalysisHeader } from "./resume-analysis-header";
-import { ResumeAtsRecommendations } from "./resume-ats-recommendations";
 import { ResumeEmptyState } from "./resume-empty-state";
 import { ResumeHistoryList } from "./resume-history-list";
+import { ResumeImprovementCenter } from "./resume-improvement-center";
 import { ResumeInsightsSection } from "./resume-insights-section";
 import { ResumeMetadataSection } from "./resume-metadata-section";
 import { ResumeProfileOverview } from "./resume-profile-overview";
@@ -22,6 +22,7 @@ type ResumeAnalysisPageProps = {
   history: ResumeAnalysisHistoryItem[];
   selectedDocumentId: string | null;
   documentNotFound?: boolean;
+  targetJobContext: TargetJobContext;
 };
 
 export function ResumeAnalysisPage({
@@ -29,9 +30,12 @@ export function ResumeAnalysisPage({
   history,
   selectedDocumentId,
   documentNotFound = false,
+  targetJobContext,
 }: ResumeAnalysisPageProps) {
   const latestDocumentId = history[0]?.resumeDocumentId ?? null;
-  const actionPlan = analysis ? generateResumeActionPlan(analysis) : [];
+  const improvementCenter = analysis
+    ? buildResumeImprovementCenter({ analysis, targetJobContext })
+    : null;
 
   return (
     <WorkspaceModuleLayout title="Resume Module">
@@ -72,6 +76,15 @@ export function ResumeAnalysisPage({
               <>
                 <ResumeAnalysisHeader analysis={analysis} />
 
+                <p className="mt-3">
+                  <a
+                    className="text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+                    href="#resume-improvement-center"
+                  >
+                    Jump to Resume Improvement Center
+                  </a>
+                </p>
+
                 <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
                   <div className="space-y-6">
                     <ResumeProfileOverview analysis={analysis} />
@@ -96,8 +109,9 @@ export function ResumeAnalysisPage({
                 </div>
 
                 <div className="mt-6 space-y-6">
-                  <ResumeActionPlan actions={actionPlan} />
-                  <ResumeAtsRecommendations recommendations={analysis.atsRecommendations} />
+                  {improvementCenter ? (
+                    <ResumeImprovementCenter data={improvementCenter} />
+                  ) : null}
                 </div>
               </>
             ) : (

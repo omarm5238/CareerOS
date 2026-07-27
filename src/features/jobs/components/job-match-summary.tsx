@@ -1,4 +1,5 @@
 import { formatAnalyzedDate } from "@/features/resume/lib/format-resume-display";
+import { partitionRequirements } from "@/features/shared/insights";
 
 import type { RoleAlignment } from "../types";
 
@@ -15,6 +16,7 @@ export function JobMatchSummary({
   matchedSkills,
   missingSkills,
 }: JobMatchSummaryProps) {
+  const requirements = partitionRequirements(missingSkills);
   return (
     <section
       aria-labelledby="job-match-heading"
@@ -44,7 +46,22 @@ export function JobMatchSummary({
       </div>
 
       <SkillGroup label="Matched skills" skills={matchedSkills} empty="No matched skills yet." />
-      <SkillGroup label="Missing skills" skills={missingSkills} empty="No missing catalog skills." />
+      <SkillGroup label="Missing skills" skills={requirements.skill} empty="No missing technical skills." />
+      <SkillGroup
+        label="Experience gaps"
+        skills={requirements.experience_gap}
+        empty=""
+      />
+      <SkillGroup
+        label="Proof / evidence gaps"
+        skills={requirements.evidence_gap}
+        empty=""
+      />
+      <SkillGroup
+        label="Role requirements"
+        skills={requirements.context_requirement}
+        empty=""
+      />
     </section>
   );
 }
@@ -59,6 +76,7 @@ function SkillGroup({
   empty: string;
 }) {
   return (
+    skills.length === 0 && !empty ? null :
     <div className="mt-4">
       <p className="text-xs uppercase tracking-[0.14em] text-[var(--color-text-secondary)]">
         {label}

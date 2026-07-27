@@ -2,6 +2,12 @@ import type { SkillPriority, SkillsOverview } from "../types";
 
 export type SkillsInsightSource = "ai" | "rule_based";
 
+export type SkillsEvidenceStatus =
+  | "missing_from_resume"
+  | "partially_supported"
+  | "supported"
+  | "needs_proof_first";
+
 export type SkillsResumeInput = {
   detectedRole: string;
   experienceLevel: string;
@@ -38,6 +44,13 @@ export type SkillsInsightPrioritySkill = {
   reason: string;
   evidence: string;
   resumeSafe: boolean;
+  evidenceStatus: SkillsEvidenceStatus;
+  whyThisMatters: string;
+  currentEvidence: string;
+  learningTarget: string;
+  proofProject: string;
+  estimatedHours: string;
+  resumeRule: string;
 };
 
 export type SkillsInsightRoadmapItem = {
@@ -51,6 +64,11 @@ export type SkillsInsightProjectIdea = {
   title: string;
   skills: string[];
   proof: string;
+  description?: string;
+  skillsCovered?: string[];
+  output?: string;
+  estimatedHours?: string;
+  resumeProof?: string;
 };
 
 export type SkillsInsightResumeAdvice = {

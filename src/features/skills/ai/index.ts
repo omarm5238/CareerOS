@@ -12,6 +12,7 @@ export type {
 
 export {
   buildSkillsInsightInput,
+  buildZeroJobsSkillsInsight,
   mapResumeToSkillsInput,
   resolveSkillsInsight,
   isAiConfigured,

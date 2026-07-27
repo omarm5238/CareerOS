@@ -392,7 +392,8 @@ export const ModelName = {
   resumeAnalysis: 'resumeAnalysis',
   jobPosting: 'jobPosting',
   jobAnalysis: 'jobAnalysis',
-  skillsInsight: 'skillsInsight'
+  skillsInsight: 'skillsInsight',
+  careerBrief: 'careerBrief'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1078,6 +1079,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    careerBrief: {
+      payload: Prisma.$careerBriefPayload<ExtArgs>
+      fields: Prisma.careerBriefFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerBriefFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerBriefFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        findFirst: {
+          args: Prisma.careerBriefFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerBriefFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        findMany: {
+          args: Prisma.careerBriefFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>[]
+        }
+        create: {
+          args: Prisma.careerBriefCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        createMany: {
+          args: Prisma.careerBriefCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerBriefCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>[]
+        }
+        delete: {
+          args: Prisma.careerBriefDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        update: {
+          args: Prisma.careerBriefUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerBriefDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerBriefUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerBriefUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerBriefUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerBriefPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerBriefAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerBrief>
+        }
+        groupBy: {
+          args: Prisma.careerBriefGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerBriefGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerBriefCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerBriefCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1274,6 +1349,27 @@ export const SkillsInsightScalarFieldEnum = {
 } as const
 
 export type SkillsInsightScalarFieldEnum = (typeof SkillsInsightScalarFieldEnum)[keyof typeof SkillsInsightScalarFieldEnum]
+
+
+export const CareerBriefScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  analysisSource: 'analysisSource',
+  aiModel: 'aiModel',
+  healthScore: 'healthScore',
+  headline: 'headline',
+  summary: 'summary',
+  topRisks: 'topRisks',
+  topOpportunities: 'topOpportunities',
+  nextActions: 'nextActions',
+  thirtyDayPlan: 'thirtyDayPlan',
+  actionCenter: 'actionCenter',
+  warnings: 'warnings',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerBriefScalarFieldEnum = (typeof CareerBriefScalarFieldEnum)[keyof typeof CareerBriefScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1517,6 +1613,7 @@ export type GlobalOmitConfig = {
   jobPosting?: Prisma.jobPostingOmit
   jobAnalysis?: Prisma.jobAnalysisOmit
   skillsInsight?: Prisma.skillsInsightOmit
+  careerBrief?: Prisma.careerBriefOmit
 }
 
 /* Types for Logging */

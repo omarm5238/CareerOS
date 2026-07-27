@@ -1,5 +1,16 @@
 import { MAX_PRIORITY_SKILLS } from "../constants";
+import {
+  isValidSkillName,
+  estimateLearningEffort,
+  isTechnicalSkillRequirement,
+  partitionRequirements,
+  ZERO_JOBS_UNLOCK_MESSAGE,
+} from "@/features/shared/insights";
 import { countNonEmptyCategories, groupSkillsByCategory } from "./group-skills-by-category";
+import {
+  buildSelectedJobProjectIdeas,
+  shortJobDisplayTitle,
+} from "./build-selected-job-project-ideas";
 import type {
   JobSkillsSnapshot,
   PrioritySkillItem,
@@ -15,6 +26,10 @@ type GenerateSkillsOverviewInput = {
   resumeSuggestedFocus: string[];
   resumeWeaknesses: string[];
   jobs: JobSkillsSnapshot[];
+  selectedJobId?: string | null;
+  selectedJobTitle?: string | null;
+  selectedJobCompany?: string | null;
+  mode?: "selected" | "all_jobs";
 };
 
 function dedupeSkills(skills: string[]): string[] {
@@ -64,14 +79,27 @@ function restoreDisplayName(
 
 function buildMissingSkillsFromJobs(
   jobs: JobSkillsSnapshot[],
-): { skills: string[]; counts: Record<string, number> } {
+): {
+  skills: string[];
+  counts: Record<string, number>;
+  experienceGaps: string[];
+  evidenceGaps: string[];
+  contextRequirements: string[];
+} {
   const rawCounts = countMissingSkillOccurrences(jobs);
 
   const skills = Object.entries(rawCounts)
     .sort((a, b) => b[1] - a[1])
     .map(([normalized]) => restoreDisplayName(normalized, jobs));
 
-  return { skills: dedupeSkills(skills), counts: rawCounts };
+  const classified = partitionRequirements(skills);
+  return {
+    skills: dedupeSkills(classified.skill),
+    counts: rawCounts,
+    experienceGaps: classified.experience_gap,
+    evidenceGaps: classified.evidence_gap,
+    contextRequirements: classified.context_requirement,
+  };
 }
 
 function buildMatchedSkillsFromJobs(jobs: JobSkillsSnapshot[]): string[] {
@@ -87,9 +115,10 @@ function computeSkillCoverageScore(
     return resumeCompletenessScore ?? 0;
   }
 
-  const required = dedupeSkills(
+  const requiredRaw = dedupeSkills(
     jobs.flatMap((job) => [...job.matchedSkills, ...job.missingSkills]),
   );
+  const required = partitionRequirements(requiredRaw).skill;
 
   if (required.length === 0) {
     return resumeCompletenessScore ?? 0;
@@ -116,41 +145,43 @@ function buildPrioritySkills(input: GenerateSkillsOverviewInput): PrioritySkillI
   const priorities: PrioritySkillItem[] = [];
 
   for (const skill of missingSkills) {
+    if (!isValidSkillName(skill) || !isTechnicalSkillRequirement(skill)) continue;
     const normalized = skill.toLowerCase();
     if (detectedSet.has(normalized)) continue;
 
     const jobCount = counts[normalized] ?? 1;
+    const effort = estimateLearningEffort(skill);
+    const shortTitle =
+      input.mode === "selected"
+        ? shortJobDisplayTitle(input.selectedJobTitle) ?? input.selectedJobTitle
+        : null;
+    const selectedLabel =
+      shortTitle
+        ? input.selectedJobCompany
+          ? `${shortTitle} · ${input.selectedJobCompany}`
+          : shortTitle
+        : null;
     priorities.push({
       id: `priority-${normalized}`,
       skill,
-      reason: "This skill appears in saved job requirements but is missing from your resume profile.",
-      demandSignal:
-        jobCount === 1
+      reason: selectedLabel
+        ? `Missing for selected target job (${selectedLabel}).`
+        : "This skill appears in saved job requirements but is missing from your resume profile.",
+      demandSignal: selectedLabel
+        ? effort.showHours
+          ? `Selected-job live guidance · ${effort.label}`
+          : "Selected-job live guidance"
+        : jobCount === 1
           ? "Missing in 1 saved job"
           : `Missing in ${jobCount} saved jobs`,
-      priority: priorityFromCount(jobCount),
+      priority: selectedLabel ? "High" : priorityFromCount(jobCount),
+      estimatedEffort: effort.showHours ? effort.label : "",
+      effortRationale: effort.rationale,
     });
   }
 
-  if (priorities.length === 0 && input.jobs.length === 0) {
-    const fallbackSources = [
-      ...input.resumeSuggestedFocus,
-      ...input.resumeWeaknesses.map((item) =>
-        item.replace(/^Limited evidence for /i, "").trim(),
-      ),
-    ];
-
-    for (const source of dedupeSkills(fallbackSources).slice(0, MAX_PRIORITY_SKILLS)) {
-      priorities.push({
-        id: `focus-${source.toLowerCase().replace(/\s+/g, "-")}`,
-        skill: source,
-        reason: "Suggested from your resume analysis as a development focus area.",
-        demandSignal: "From resume analysis",
-        priority: "Medium",
-      });
-    }
-  }
-
+  // With zero saved jobs there is no market signal — do not invent priority
+  // skills from resume advice. The Skills module shows a Jobs CTA instead.
   return priorities
     .sort((a, b) => {
       const weight = { High: 0, Medium: 1, Low: 2 };
@@ -176,7 +207,7 @@ function buildRecommendations(
   }
 
   if (jobs.length === 0) {
-    recommendations.push("Add saved jobs to discover market-driven skill gaps.");
+    recommendations.push(ZERO_JOBS_UNLOCK_MESSAGE);
   } else if (detectedSkills.length === 0) {
     recommendations.push("Upload a more detailed resume to improve skill detection.");
   }
@@ -189,7 +220,13 @@ export function generateSkillsOverview(
 ): SkillsOverview {
   const detectedSkills = dedupeSkills(input.resumeDetectedSkills);
   const groupedSkills = groupSkillsByCategory(detectedSkills);
-  const { skills: missingSkillsFromJobs, counts: missingSkillJobCounts } =
+  const {
+    skills: missingSkillsFromJobs,
+    counts: missingSkillJobCounts,
+    experienceGaps,
+    evidenceGaps,
+    contextRequirements,
+  } =
     buildMissingSkillsFromJobs(input.jobs);
   const matchedSkillsFromJobs = buildMatchedSkillsFromJobs(input.jobs);
   const prioritySkills = buildPrioritySkills(input);
@@ -198,6 +235,9 @@ export function generateSkillsOverview(
     detectedSkills,
     groupedSkills,
     missingSkillsFromJobs,
+    experienceGaps,
+    evidenceGaps,
+    contextRequirements,
     missingSkillJobCounts,
     prioritySkills,
     matchedSkillsFromJobs,
@@ -211,6 +251,21 @@ export function generateSkillsOverview(
       input.jobs,
       prioritySkills,
     ),
+    projectIdeas: buildSelectedJobProjectIdeas({
+      jobId: input.selectedJobId ?? (input.mode === "selected" ? input.jobs[0]?.id : null),
+      jobTitle:
+        input.mode === "selected"
+          ? input.selectedJobTitle ?? input.jobs[0]?.title ?? null
+          : null,
+      company: input.mode === "selected" ? input.selectedJobCompany : null,
+      missingTechnicalSkills: prioritySkills.map((item) => item.skill),
+      evidenceGaps,
+      mode: input.mode ?? "all_jobs",
+    }),
+    sourceLabel:
+      input.mode === "selected" && input.selectedJobTitle
+        ? "Selected-job live guidance"
+        : "AI strategy: all saved jobs",
     savedJobsAnalyzedCount: input.jobs.length,
     categoryCount: countNonEmptyCategories(groupedSkills),
   };

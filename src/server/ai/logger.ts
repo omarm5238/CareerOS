@@ -11,6 +11,7 @@ type SafeAiLogPayload = {
   jsonValidationFailed?: boolean;
   errorName?: string;
   message?: string;
+  attempt?: number;
 };
 
 function toSafePayload(taskName: string, diagnostic: AiDiagnostic): SafeAiLogPayload {
@@ -30,6 +31,17 @@ function toSafePayload(taskName: string, diagnostic: AiDiagnostic): SafeAiLogPay
 
 export function logAiFallback(taskName: string, diagnostic: AiDiagnostic): void {
   console.warn(`[${taskName}] fallback`, toSafePayload(taskName, diagnostic));
+}
+
+export function logAiAttempt(
+  taskName: string,
+  attempt: number,
+  diagnostic: AiDiagnostic,
+): void {
+  console.warn(`[${taskName}] attempt failed`, {
+    ...toSafePayload(taskName, diagnostic),
+    attempt,
+  });
 }
 
 export function logAiDebug(taskName: string, diagnostic: Partial<SafeAiLogPayload>): void {

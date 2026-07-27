@@ -21,6 +21,7 @@ model user {
   resumeDocuments resumeDocument[]
   jobPostings     jobPosting[]
   skillsInsights  skillsInsight[]
+  careerBriefs    careerBrief[]
 }
 
 model session {
@@ -168,6 +169,29 @@ model skillsInsight {
   warnings           Json     @default("[]")
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model careerBrief {
+  id               String   @id @default(cuid())
+  userId           String
+  analysisSource   String   @default("rule_based")
+  aiModel          String?
+  healthScore      Int      @default(0)
+  headline         String?
+  summary          String?
+  topRisks         Json     @default("[]")
+  topOpportunities Json     @default("[]")
+  nextActions      Json     @default("[]")
+  thirtyDayPlan    Json     @default("[]")
+  actionCenter     Json     @default("[]")
+  warnings         Json     @default("[]")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   user user @relation(fields: [userId], references: [id], onDelete: Cascade)
 

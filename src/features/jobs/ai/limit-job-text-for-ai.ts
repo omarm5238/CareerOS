@@ -1,10 +1,13 @@
 import { getAiConfig } from "@/server/ai";
 
-export function limitJobDescriptionForAi(description: string): {
+export function limitJobDescriptionForAi(
+  description: string,
+  maxCharsOverride?: number,
+): {
   text: string;
   truncated: boolean;
 } {
-  const maxChars = getAiConfig().maxInputChars;
+  const maxChars = maxCharsOverride ?? getAiConfig().maxInputChars;
   const trimmed = description.trim();
 
   if (trimmed.length <= maxChars) {

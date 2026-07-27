@@ -8,6 +8,8 @@ type RouteContext = {
   params: Promise<{ jobId: string }>;
 };
 
+export const maxDuration = 90;
+
 export async function POST(_request: Request, context: RouteContext) {
   try {
     const session = await auth.api.getSession({
@@ -23,13 +25,17 @@ export async function POST(_request: Request, context: RouteContext) {
       return NextResponse.json({ message: "Job ID is required." }, { status: 400 });
     }
 
-    const job = await analyzeJobPostingForUser(session.user.id, jobId.trim());
+    const result = await analyzeJobPostingForUser(session.user.id, jobId.trim());
 
-    if (!job) {
+    if (!result) {
       return NextResponse.json({ message: "Job not found." }, { status: 404 });
     }
 
-    return NextResponse.json(job);
+    return NextResponse.json({
+      ...result.job,
+      preserved: result.preserved,
+      message: result.message,
+    });
   } catch {
     return NextResponse.json(
       { message: "Could not analyze job match. Please try again." },

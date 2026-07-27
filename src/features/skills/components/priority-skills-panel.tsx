@@ -2,6 +2,7 @@ import type { PrioritySkillItem } from "../types";
 
 type PrioritySkillsPanelProps = {
   items: PrioritySkillItem[];
+  selectedJobTitle?: string | null;
 };
 
 const priorityStyles: Record<PrioritySkillItem["priority"], string> = {
@@ -10,7 +11,7 @@ const priorityStyles: Record<PrioritySkillItem["priority"], string> = {
   Low: "border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] text-[var(--color-text-secondary)]",
 };
 
-export function PrioritySkillsPanel({ items }: PrioritySkillsPanelProps) {
+export function PrioritySkillsPanel({ items, selectedJobTitle }: PrioritySkillsPanelProps) {
   return (
     <section
       aria-labelledby="priority-skills-heading"
@@ -22,9 +23,11 @@ export function PrioritySkillsPanel({ items }: PrioritySkillsPanelProps) {
       >
         Priority Skills
       </h2>
-      <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
-        Top skills to improve next based on your resume and saved jobs.
-      </p>
+          <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+            {selectedJobTitle
+              ? `Missing for selected target job: ${selectedJobTitle}.`
+              : "Repeated technical skills to improve across all saved jobs."}
+          </p>
 
       {items.length > 0 ? (
         <ul className="mt-4 space-y-3">
@@ -49,6 +52,12 @@ export function PrioritySkillsPanel({ items }: PrioritySkillsPanelProps) {
               <p className="mt-2 text-xs text-[var(--color-text-secondary)]">
                 {item.demandSignal}
               </p>
+              {item.estimatedEffort ? (
+                <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
+                  Estimated effort: {item.estimatedEffort}
+                  {item.effortRationale ? ` · ${item.effortRationale}` : ""}
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>

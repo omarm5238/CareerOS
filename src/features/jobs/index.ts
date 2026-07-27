@@ -18,3 +18,7 @@ export type {
   UpdateJobApplicationInput,
   WorkspaceJobsStatus,
 } from "./types";
+export type {
+  TargetJobContext,
+  TargetJobContextMode,
+} from "./types/target-job-context";

@@ -5,7 +5,11 @@ import { SkillsModulePage } from "@/features/skills/components/skills-module-pag
 import { getSkillsModuleDataForUser } from "@/features/skills/server";
 import { auth } from "@/server/auth";
 
-export default async function WorkspaceSkillsPage() {
+export default async function WorkspaceSkillsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ jobId?: string }>;
+}) {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -14,7 +18,8 @@ export default async function WorkspaceSkillsPage() {
     redirect("/sign-in");
   }
 
-  const data = await getSkillsModuleDataForUser(session.user.id);
+  const { jobId } = await searchParams;
+  const data = await getSkillsModuleDataForUser(session.user.id, jobId);
 
   return <SkillsModulePage data={data} />;
 }
