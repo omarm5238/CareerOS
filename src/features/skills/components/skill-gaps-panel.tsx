@@ -25,7 +25,7 @@ export function SkillGapsPanel({
   return (
     <section
       aria-labelledby="skill-gaps-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -52,7 +52,7 @@ export function SkillGapsPanel({
             const count = resolveJobCount(skill, missingSkillJobCounts);
             return (
               <li
-                className="flex flex-wrap items-center justify-between gap-2 rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] px-3 py-2"
+                className="flex flex-wrap items-center justify-between gap-2 surface-card px-3 py-2"
                 key={skill}
               >
                 <span className="text-sm text-[var(--color-text-primary)]">{skill}</span>

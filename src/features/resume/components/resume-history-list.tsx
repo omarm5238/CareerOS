@@ -25,7 +25,7 @@ export function ResumeHistoryList({
   return (
     <section
       aria-labelledby="resume-history-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -49,8 +49,8 @@ export function ResumeHistoryList({
                 aria-current={isSelected ? "page" : undefined}
                 className={`block rounded-[var(--radius-md)] border px-3 py-3 [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
                   isSelected
-                    ? "border-[rgb(99_102_241_/_40%)] bg-[rgb(99_102_241_/_10%)]"
-                    : "border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] hover:border-[var(--color-border)]"
+                    ? "selected-row"
+                    : "border-[var(--color-border-subtle)] bg-[var(--surface-inset)] hover:border-[var(--color-border)]"
                 }`}
                 href={href}
               >

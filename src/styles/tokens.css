@@ -1,15 +1,16 @@
 /**
  * CareerOS Design Tokens
  *
- * Centralized CSS custom properties for the design system.
- * Visual foundation: Matte Graphite, Soft Glass, Subtle Accent Glow.
+ * Black Titanium / Graphite Executive SaaS foundation.
+ * Violet is reserved as a limited intelligence micro-accent.
  */
 
 :root {
-  /* Typography */
-  --font-sans: "Geist", "Geist Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  /* Typography — next/font wires --font-ibm-plex-sans / --font-inter-tight / --font-ibm-plex-mono */
+  --font-sans: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter-tight), "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
+    Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
@@ -18,29 +19,71 @@
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
   --line-height-tight: 1.15;
-  --line-height-normal: 1.5;
+  --line-height-normal: 1.55;
   --line-height-relaxed: 1.7;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --tracking-tight: -0.025em;
+  --tracking-label: 0.06em;
 
-  /* Colors */
-  --color-background: #0a0a0a;
-  --color-surface: #111111;
-  --color-surface-elevated: #171717;
-  --color-border: #262626;
-  --color-border-subtle: #262626;
-  --color-text-primary: #f5f5f5;
-  --color-text-secondary: #a3a3a3;
-  --color-accent: #6366f1;
-  --color-accent-muted: rgb(99 102 241 / 14%);
+  /* Colors — black titanium / graphite */
+  --color-background: #060708;
+  --color-surface: #0e1014;
+  --color-surface-elevated: #16181d;
+  --color-border: rgb(199 203 209 / 18%);
+  --color-border-subtle: rgb(199 203 209 / 12%);
+  --color-text-primary: #eceef2;
+  --color-text-secondary: #aeb4bf;
+  --color-silver: #c7cbd1;
+  --color-silver-muted: #aeb4bf;
 
-  /* Surfaces */
+  /* Primary product accent — muted champagne (not violet) */
+  --color-accent: #cfc19a;
+  --color-accent-soft: #d9ceb0;
+  --color-accent-muted: rgb(207 193 154 / 12%);
+  --color-champagne: #cfc19a;
+  --color-champagne-muted: rgb(184 164 109 / 14%);
+
+  /* Intelligence signal — deeper muted violet (less electric) */
+  --color-intelligence: #5b5698;
+  --color-intelligence-soft: #9b97c9;
+  --color-intelligence-muted: rgb(91 86 152 / 11%);
+  --color-intelligence-border: rgb(155 151 201 / 18%);
+
+  /* Surfaces — black glass / graphite (lifted for contrast) */
   --surface-matte-graphite: var(--color-surface);
-  --surface-soft-glass: rgb(23 23 23 / 72%);
-  --surface-soft-glass-border: rgb(245 245 245 / 8%);
-  --surface-accent-glow: 0 0 48px rgb(99 102 241 / 24%);
+  --surface-soft-glass: rgb(22 24 29 / 82%);
+  --surface-soft-glass-border: rgb(199 203 209 / 14%);
+  --surface-glass: rgb(20 22 27 / 74%);
+  --surface-inset: rgb(12 14 18 / 82%);
+  --surface-accent-glow: 0 0 34px rgb(91 86 152 / 9%);
+  --app-atmosphere:
+    radial-gradient(circle at 50% 16%, rgb(199 203 209 / 5%), transparent 38%),
+    radial-gradient(circle at 78% 72%, rgb(207 193 154 / 4%), transparent 32%),
+    radial-gradient(circle at 18% 68%, rgb(91 86 152 / 3%), transparent 26%),
+    linear-gradient(180deg, rgb(13 15 18 / 94%), rgb(6 7 8));
+
+  /* Status — muted professional */
+  --status-success-bg: rgb(74 104 72 / 12%);
+  --status-success-border: rgb(132 158 118 / 20%);
+  --status-success-text: #a3b896;
+  --status-warning-bg: rgb(184 164 109 / 10%);
+  --status-warning-border: rgb(200 185 138 / 16%);
+  --status-warning-text: #cfc19a;
+  --status-danger-bg: rgb(140 64 76 / 12%);
+  --status-danger-border: rgb(201 154 162 / 18%);
+  --status-danger-text: #c99aa2;
+  --status-info-bg: rgb(100 94 180 / 9%);
+  --status-info-border: rgb(170 166 232 / 16%);
+  --status-info-text: #aaa6e8;
+  --status-neutral-bg: rgb(199 203 209 / 7%);
+  --status-neutral-border: rgb(199 203 209 / 14%);
+  --status-neutral-text: #c7cbd1;
+
+  /* Layout */
+  --layout-module-max: 72rem;
 
   /* Spacing */
   --spacing-0: 0;
@@ -60,19 +103,19 @@
 
   /* Border radius */
   --radius-none: 0;
-  --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
   --radius-full: 9999px;
 
   /* Shadows */
   --shadow-none: none;
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 28%);
-  --shadow-md: 0 12px 32px rgb(0 0 0 / 32%);
-  --shadow-lg: 0 20px 56px rgb(0 0 0 / 38%);
-  --shadow-xl: 0 32px 80px rgb(0 0 0 / 44%);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+  --shadow-md: 0 12px 32px rgb(0 0 0 / 42%);
+  --shadow-lg: 0 20px 56px rgb(0 0 0 / 48%);
+  --shadow-xl: 0 32px 80px rgb(0 0 0 / 54%);
   --shadow-accent-glow: var(--surface-accent-glow);
 
   /* Z-index */

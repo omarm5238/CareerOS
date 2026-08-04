@@ -10,9 +10,7 @@ export function ProductPreview() {
     <section className="scroll-mt-24 px-6 py-16 lg:px-8 lg:py-20" id="preview">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.24em] text-[var(--color-text-secondary)]">
-            Operating Shell
-          </p>
+          <p className="section-eyebrow">Operating Shell</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--color-text-primary)]">
             A focused workspace built around your career data.
           </h2>
@@ -22,27 +20,26 @@ export function ProductPreview() {
           </p>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4 shadow-[var(--shadow-lg)] sm:p-6">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_38%,rgb(99_102_241_/_10%),transparent_32%)]" />
+        <div className="relative mt-10 overflow-hidden rounded-[2rem] border border-[rgb(207_193_154_/_16%)] bg-[var(--surface-glass)] p-4 shadow-[var(--shadow-xl)] sm:p-6">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_52%_38%,rgb(199_203_209_/_5%),transparent_34%),radial-gradient(circle_at_60%_42%,rgb(91_86_152_/_4%),transparent_28%)]" />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(207_193_154_/_30%)] to-transparent" />
 
           <div className="relative grid gap-4 lg:grid-cols-[220px_1fr_180px]">
-            <aside className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_62%)] p-4 backdrop-blur-xl">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
-                Profile
-              </p>
+            <aside className="surface-glass p-4">
+              <p className="section-eyebrow">Profile</p>
               <p className="mt-2 text-sm font-semibold text-[var(--color-text-primary)]">
                 Product Designer
               </p>
               <p className="mt-1 text-xs text-[var(--color-text-secondary)]">72% complete</p>
-              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[rgb(38_38_38)]">
-                <div className="h-full w-[72%] rounded-full bg-[var(--color-accent)]" />
+              <div className="progress-track mt-3 h-1.5">
+                <div className="progress-fill w-[72%]" />
               </div>
             </aside>
 
-            <div className="relative min-h-[280px] overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[linear-gradient(145deg,rgb(17_17_17_/_42%),rgb(10_10_10_/_18%))]">
-              <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(99_102_241_/_28%)] bg-[radial-gradient(circle,rgb(99_102_241_/_24%),rgb(17_17_17_/_20%))] shadow-[0_0_40px_rgb(99_102_241_/_18%)]" />
-              <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(99_102_241_/_10%)]" />
-              <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(99_102_241_/_6%)]" />
+            <div className="relative min-h-[280px] overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border)] bg-[linear-gradient(145deg,rgb(20_22_27_/_78%),rgb(8_10_13_/_50%))]">
+              <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(91_86_152_/_18%)] bg-[radial-gradient(circle,rgb(91_86_152_/_12%),rgb(14_16_20_/_20%))]" />
+              <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(91_86_152_/_8%)]" />
+              <div className="absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgb(199_203_209_/_6%)]" />
 
               {MODULES.map((module, index) => {
                 const positions = [
@@ -54,11 +51,11 @@ export function ProductPreview() {
 
                 return (
                   <div
-                    className={`absolute ${positions[index]} w-[132px] rounded-[var(--radius-lg)] border border-[rgb(245_245_245_/_8%)] bg-[rgb(17_17_17_/_68%)] px-2.5 py-2 backdrop-blur-md`}
+                    className={`absolute ${positions[index]} surface-card w-[132px] px-2.5 py-2 backdrop-blur-md`}
                     key={module.label}
                   >
                     <div className="flex items-start gap-2">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_72%)] text-[9px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)]">
+                      <span className="font-mono-meta flex h-6 w-6 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] text-[9px] font-semibold tracking-[0.12em] text-[var(--color-text-secondary)]">
                         {module.glyph}
                       </span>
                       <span className="min-w-0">
@@ -75,11 +72,9 @@ export function ProductPreview() {
               })}
             </div>
 
-            <aside className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_62%)] p-4 backdrop-blur-xl">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
-                Readiness
-              </p>
-              <p className="mt-3 text-3xl font-semibold text-[var(--color-text-primary)]">68%</p>
+            <aside className="surface-glass p-4">
+              <p className="section-eyebrow">Readiness</p>
+              <p className="metric-number mt-3 text-3xl text-[var(--color-text-primary)]">68%</p>
               <p className="mt-1 text-xs text-[var(--color-text-secondary)]">Career health</p>
               <ul className="mt-4 space-y-2 text-xs text-[var(--color-text-secondary)]">
                 <li>Resume baseline established</li>

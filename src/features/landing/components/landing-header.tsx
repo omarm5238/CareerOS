@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export function LandingHeader() {
   return (
-    <header className="sticky top-0 z-[var(--z-sticky)] border-b border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_72%)] backdrop-blur-xl">
+    <header className="sticky top-0 z-[var(--z-sticky)] border-b border-[var(--color-border-subtle)] bg-[rgb(8_10_13_/_78%)] backdrop-blur-xl">
       <div className="mx-auto grid max-w-6xl grid-cols-[1fr_auto_1fr] items-center gap-4 px-6 py-4 lg:px-8">
         <Link
-          className="text-sm font-semibold tracking-[0.22em] text-[var(--color-text-primary)] [transition:var(--motion-fade)] hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="font-display text-sm font-semibold tracking-[0.18em] text-[var(--color-text-primary)] [transition:var(--motion-fade)] hover:text-[var(--color-accent-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           href="/"
         >
           CareerOS
@@ -36,10 +36,7 @@ export function LandingHeader() {
           >
             Sign in
           </Link>
-          <Link
-            className="inline-flex rounded-[var(--radius-lg)] bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-            href="/sign-up"
-          >
+          <Link className="btn-primary px-4 py-2" href="/sign-up">
             Get started
           </Link>
         </div>

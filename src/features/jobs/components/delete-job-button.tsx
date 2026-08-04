@@ -46,7 +46,7 @@ export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
     return (
       <div className="pt-2">
         <button
-          className="text-sm text-[rgb(252_165_165)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="text-sm text-[var(--status-danger-text)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           onClick={() => {
             setError(null);
             setConfirming(true);
@@ -60,14 +60,14 @@ export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
   }
 
   return (
-    <div className="rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_25%)] bg-[rgb(239_68_68_/_8%)] p-4">
+    <div className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] p-4">
       <p className="text-sm text-[var(--color-text-primary)]">
         Delete this job? This cannot be undone. This only deletes this job. Your resume and
         skills stay intact.
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
-          className="inline-flex rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_40%)] bg-[rgb(239_68_68_/_15%)] px-3 py-1.5 text-sm text-[rgb(252_165_165)] disabled:opacity-50"
+          className="btn-danger px-3 py-1.5 text-sm"
           disabled={isDeleting}
           onClick={() => void handleDelete()}
           type="button"

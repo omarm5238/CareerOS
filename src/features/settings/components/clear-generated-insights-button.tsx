@@ -54,7 +54,7 @@ export function ClearGeneratedInsightsButton() {
     <div>
       {!confirming ? (
         <button
-          className="inline-flex rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_35%)] bg-[rgb(239_68_68_/_10%)] px-4 py-2 text-sm font-medium text-[rgb(252_165_165)] [transition:var(--motion-fade)] hover:border-[rgb(239_68_68_/_50%)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="btn-danger"
           onClick={() => {
             setError(null);
             setSuccess(null);
@@ -65,14 +65,14 @@ export function ClearGeneratedInsightsButton() {
           Clear generated insights
         </button>
       ) : (
-        <div className="rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_25%)] bg-[rgb(239_68_68_/_8%)] p-4">
+        <div className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] p-4">
           <p className="text-sm text-[var(--color-text-primary)]">
             Deletes AI-generated skills strategies and career briefs. Resume and jobs remain.
             This cannot be undone. This does not delete your account.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <button
-              className="inline-flex rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_40%)] bg-[rgb(239_68_68_/_15%)] px-3 py-1.5 text-sm text-[rgb(252_165_165)] disabled:opacity-50"
+              className="btn-danger px-3 py-1.5 text-sm"
               disabled={isClearing}
               onClick={() => void handleClear()}
               type="button"

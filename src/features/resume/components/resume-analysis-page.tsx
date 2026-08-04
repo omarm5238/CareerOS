@@ -54,9 +54,9 @@ export function ResumeAnalysisPage({
             />
           </div>
 
-          <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-8 lg:py-9">
+          <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
             {documentNotFound ? (
-              <section className="mb-8 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+              <section className="mb-8 surface-glass p-5">
                 <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">
                   Analysis not found
                 </h2>

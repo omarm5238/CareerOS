@@ -20,8 +20,8 @@ function SkillChipList({ skills, variant }: { skills: string[]; variant: "matche
           <span
             className={`inline-flex rounded-full border px-2.5 py-1 text-xs ${
               variant === "matched"
-                ? "border-[rgb(34_197_94_/_30%)] bg-[rgb(34_197_94_/_8%)] text-[rgb(134_239_172)]"
-                : "border-[rgb(239_68_68_/_30%)] bg-[rgb(239_68_68_/_8%)] text-[rgb(252_165_165)]"
+                ? "border-[var(--status-success-border)] bg-[var(--status-success-bg)] text-[var(--status-success-text)]"
+                : "border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] text-[var(--status-danger-text)]"
             }`}
           >
             {skill}
@@ -40,7 +40,7 @@ export function JobsSkillsSignalPanel({
   return (
     <section
       aria-labelledby="job-skill-signals-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"

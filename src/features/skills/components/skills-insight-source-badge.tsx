@@ -15,12 +15,12 @@ export function SkillsInsightSourceBadge({
 
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] ${
+      className={`status-chip status-chip--mono ${
         isStale
-          ? "border-[rgb(245_158_11_/_35%)] bg-[rgb(245_158_11_/_10%)] text-[rgb(253_186_116)]"
+          ? "status-chip--warning"
           : isAi
-            ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
-            : "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]"
+            ? "status-chip--info"
+            : "status-chip--neutral"
       } ${className}`}
     >
       {isStale ? "Needs refresh" : isAi ? "AI strategy" : "Rule-based fallback"}

@@ -6,9 +6,7 @@ export function WelcomeStep({ onContinue }: WelcomeStepProps) {
   return (
     <section className="space-y-6">
       <header className="space-y-3">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
-          Step 1 of 4
-        </p>
+        <p className="section-eyebrow">Step 1 of 4</p>
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--color-text-primary)]">
           Welcome to CareerOS
         </h1>
@@ -19,7 +17,7 @@ export function WelcomeStep({ onContinue }: WelcomeStepProps) {
       </header>
 
       <button
-        className="w-full rounded-[var(--radius-lg)] bg-[var(--color-accent)] px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="btn-primary w-full"
         onClick={onContinue}
         type="button"
       >

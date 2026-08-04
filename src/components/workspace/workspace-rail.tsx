@@ -38,9 +38,9 @@ export function WorkspaceRail() {
   const settingsActive = pathname === "/workspace/settings";
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-30 flex h-screen w-16 flex-col items-center border-r border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_58%)] px-2 py-5 backdrop-blur-xl">
+    <aside className="fixed inset-y-0 left-0 z-30 flex h-screen w-16 flex-col items-center border-r border-[var(--color-border-subtle)] bg-[rgb(8_10_13_/_82%)] px-2 py-5 backdrop-blur-xl">
       <Link
-        className="mb-4 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-[var(--surface-soft-glass-border)] bg-[rgb(23_23_23_/_72%)] text-[11px] font-semibold text-[var(--color-accent)] shadow-[var(--shadow-sm)] [transition:var(--motion-fade)] hover:border-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="mb-4 flex h-9 w-9 shrink-0 items-center justify-center rounded-[var(--radius-lg)] border border-[var(--surface-soft-glass-border)] bg-[var(--surface-elevated)] text-[11px] font-semibold text-[var(--color-champagne)] shadow-[var(--shadow-sm)] [transition:var(--motion-fade)] hover:border-[var(--color-champagne)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
         href="/workspace"
         title="CareerOS"
       >
@@ -57,9 +57,9 @@ export function WorkspaceRail() {
           return (
             <Link
               aria-current={isActive ? "page" : undefined}
-              className={`flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
+              className={`relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
                 isActive
-                  ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+                  ? "border-[var(--color-border)] bg-[rgb(199_203_209_/_6%)] text-[var(--color-text-primary)]"
                   : "border-transparent bg-transparent text-[var(--color-text-secondary)] hover:border-[var(--color-border)] hover:bg-[var(--surface-soft-glass)] hover:text-[var(--color-text-primary)]"
               }`}
               href={item.href}
@@ -67,6 +67,12 @@ export function WorkspaceRail() {
               title={item.label}
             >
               {item.glyph}
+              {isActive ? (
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-[var(--color-intelligence)]"
+                />
+              ) : null}
             </Link>
           );
         })}
@@ -78,7 +84,7 @@ export function WorkspaceRail() {
         <WorkspaceSettingsLink isActive={settingsActive} />
         <div
           aria-hidden="true"
-          className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] opacity-70 shadow-[var(--shadow-accent-glow)]"
+          className="h-1.5 w-1.5 rounded-full bg-[var(--color-intelligence)] opacity-70"
         />
       </div>
     </aside>

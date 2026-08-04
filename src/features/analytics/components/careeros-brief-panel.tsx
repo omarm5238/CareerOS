@@ -19,10 +19,10 @@ function formatGeneratedDate(value: string | null): string {
 
 function severityClass(level: string): string {
   if (level === "High") {
-    return "border-[rgb(239_68_68_/_30%)] bg-[rgb(239_68_68_/_10%)] text-[rgb(252_165_165)]";
+    return "border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] text-[var(--status-danger-text)]";
   }
   if (level === "Medium") {
-    return "border-[rgb(245_158_11_/_30%)] bg-[rgb(245_158_11_/_10%)] text-[rgb(253_186_116)]";
+    return "border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] text-[var(--status-warning-text)]";
   }
   return "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]";
 }
@@ -36,7 +36,7 @@ export function CareerosBriefPanel({
     <div className="space-y-6">
       <section
         aria-labelledby="careeros-brief-heading"
-        className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+        className="surface-glass p-5"
       >
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
@@ -74,8 +74,8 @@ export function CareerosBriefPanel({
             </div>
 
             {brief.isStale ? (
-              <div className="rounded-[var(--radius-md)] border border-[rgb(245_158_11_/_25%)] bg-[rgb(245_158_11_/_8%)] p-4">
-                <p className="text-sm font-medium text-[rgb(253_186_116)]">
+              <div className="surface-insight p-4">
+                <p className="text-sm font-medium text-[var(--status-warning-text)]">
                   Needs refresh
                 </p>
                 <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
@@ -85,11 +85,11 @@ export function CareerosBriefPanel({
             ) : null}
 
             {brief.warnings.length > 0 ? (
-              <div className="rounded-[var(--radius-md)] border border-[rgb(245_158_11_/_25%)] bg-[rgb(245_158_11_/_8%)] p-4">
-                <h3 className="text-sm font-medium text-[rgb(253_186_116)]">Warnings</h3>
-                <ul className="mt-2 space-y-1">
+              <div className="surface-insight p-4">
+                <h3 className="text-sm font-medium text-[var(--status-warning-text)]">Insights</h3>
+                <ul className="mt-2 space-y-1.5">
                   {brief.warnings.map((warning) => (
-                    <li className="text-sm text-[var(--color-text-secondary)]" key={warning}>
+                    <li className="text-sm leading-5 text-[var(--color-text-secondary)]" key={warning}>
                       {warning}
                     </li>
                   ))}
@@ -146,7 +146,7 @@ export function CareerosBriefPanel({
                 <ul className="mt-3 space-y-2">
                   {brief.nextActions.slice(0, 3).map((item) => (
                     <li
-                      className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3"
+                      className="surface-card p-3"
                       key={item.title}
                     >
                       <div className="flex flex-wrap items-center gap-2">
@@ -172,7 +172,7 @@ export function CareerosBriefPanel({
             ) : null}
 
             {brief.careerExecutionPlan && brief.careerExecutionPlan.weeks.length > 0 ? (
-              <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4">
+              <div className="surface-card p-4">
                 <h3 className="text-sm font-medium text-[var(--color-text-primary)]">
                   30-Day Execution Plan preview
                 </h3>
@@ -228,7 +228,7 @@ function BriefList({
       <ul className="mt-3 space-y-2">
         {items.map((item) => (
           <li
-            className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3"
+            className="surface-card p-3"
             key={item.title}
           >
             <div className="flex flex-wrap items-center gap-2">

@@ -15,11 +15,19 @@ export const colorTokens = {
   textSecondary: "var(--color-text-secondary)",
   accent: "var(--color-accent)",
   accentMuted: "var(--color-accent-muted)",
+  silver: "var(--color-silver)",
+  champagne: "var(--color-champagne)",
+  intelligence: "var(--color-intelligence)",
+  statusSuccess: "var(--status-success-text)",
+  statusWarning: "var(--status-warning-text)",
+  statusDanger: "var(--status-danger-text)",
+  statusInfo: "var(--status-info-text)",
 } as const;
 
 export const typographyTokens = {
   fontFamily: {
     sans: "var(--font-sans)",
+    display: "var(--font-display)",
     mono: "var(--font-mono)",
   },
   fontSize: {

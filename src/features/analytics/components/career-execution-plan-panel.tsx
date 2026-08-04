@@ -14,7 +14,7 @@ export function CareerExecutionPlanPanel({ plan }: CareerExecutionPlanPanelProps
     return (
       <section
         aria-labelledby="execution-plan-heading"
-        className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+        className="surface-glass p-5"
         id="execution-plan"
       >
         <h2
@@ -35,7 +35,7 @@ export function CareerExecutionPlanPanel({ plan }: CareerExecutionPlanPanelProps
   return (
     <section
       aria-labelledby="execution-plan-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
       id="execution-plan"
     >
       <h2
@@ -65,7 +65,7 @@ export function CareerExecutionPlanPanel({ plan }: CareerExecutionPlanPanelProps
             <ul className="grid gap-2 sm:grid-cols-2">
               {week.days.map((day) => (
                 <li
-                  className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3"
+                  className="surface-card p-3"
                   key={`${day.date}-${day.dayNumber}`}
                 >
                   <div className="flex flex-wrap items-center gap-2">

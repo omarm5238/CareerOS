@@ -117,7 +117,7 @@ export function ResumeReanalysisUpload({ compact = false }: ResumeReanalysisUplo
   return (
     <section
       aria-labelledby="resume-reanalysis-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -148,7 +148,7 @@ export function ResumeReanalysisUpload({ compact = false }: ResumeReanalysisUplo
         </label>
 
         <button
-          className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-accent)] px-3 py-2 text-xs font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="btn-primary px-3 py-2 text-xs"
           disabled={!selectedFile || isAnalyzing}
           onClick={() => void handleAnalyze()}
           type="button"

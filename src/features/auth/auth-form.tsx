@@ -76,7 +76,8 @@ export function AuthForm({ mode }: AuthFormProps) {
 
   return (
     <main className="relative flex min-h-screen overflow-x-hidden bg-[var(--color-background)] text-[var(--color-text-primary)]">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.34] lg:hidden">
+      <div className="pointer-events-none absolute inset-0 app-atmosphere opacity-90" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.28] lg:hidden">
         <CareerCore
           animated
           className="h-full w-full"
@@ -101,11 +102,11 @@ export function AuthForm({ mode }: AuthFormProps) {
       <div aria-hidden="true" className="hidden w-[60%] shrink-0 lg:block" />
 
       <div className="relative z-10 flex min-h-screen w-full flex-1 items-center justify-center px-6 py-12 lg:justify-start lg:px-10 lg:pr-[8vw]">
-        <section className="w-full max-w-[440px] rounded-[var(--radius-2xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_78%)] p-8 shadow-[var(--shadow-lg)] backdrop-blur-xl">
+        <section className="surface-elevated w-full max-w-[440px] p-8">
           <div className="mb-8 space-y-3">
-            <p className="text-sm font-medium text-[var(--color-accent)]">CareerOS</p>
+            <p className="section-eyebrow text-[var(--color-accent-soft)]">CareerOS</p>
             <div className="space-y-2">
-              <h1 className="text-2xl font-semibold tracking-tight">{content.title}</h1>
+              <h1 className="font-display text-2xl font-semibold tracking-tight">{content.title}</h1>
               <p className="text-sm leading-6 text-[var(--color-text-secondary)]">
                 {content.description}
               </p>
@@ -115,53 +116,49 @@ export function AuthForm({ mode }: AuthFormProps) {
           <form className="space-y-5" onSubmit={onSubmit}>
             {mode === "sign-up" ? (
               <label className="block space-y-2">
-                <span className="text-sm text-[var(--color-text-secondary)]">Name</span>
+                <span className="text-sm font-medium text-[var(--color-text-secondary)]">Name</span>
                 <input
                   required
                   name="name"
                   type="text"
                   autoComplete="name"
-                  className="w-full rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none [transition:var(--motion-fade)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-accent)]"
+                  className="input-field"
                   placeholder="Omar"
                 />
               </label>
             ) : null}
 
             <label className="block space-y-2">
-              <span className="text-sm text-[var(--color-text-secondary)]">Email</span>
+              <span className="text-sm font-medium text-[var(--color-text-secondary)]">Email</span>
               <input
                 required
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="w-full rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none [transition:var(--motion-fade)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-accent)]"
+                className="input-field"
                 placeholder="you@example.com"
               />
             </label>
 
             <label className="block space-y-2">
-              <span className="text-sm text-[var(--color-text-secondary)]">Password</span>
+              <span className="text-sm font-medium text-[var(--color-text-secondary)]">Password</span>
               <input
                 required
                 name="password"
                 type="password"
                 autoComplete={mode === "sign-up" ? "new-password" : "current-password"}
-                className="w-full rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm outline-none [transition:var(--motion-fade)] placeholder:text-[var(--color-text-secondary)] focus:border-[var(--color-accent)]"
+                className="input-field"
                 placeholder="Password"
               />
             </label>
 
             {error ? (
-              <p className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-accent-muted)] px-3 py-2 text-sm text-[var(--color-text-primary)]">
+              <p className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] px-3 py-2 text-sm text-[var(--status-danger-text)]">
                 {error}
               </p>
             ) : null}
 
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full rounded-[var(--radius-lg)] bg-[var(--color-accent)] px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] disabled:cursor-not-allowed disabled:opacity-60"
-            >
+            <button type="submit" disabled={isSubmitting} className="btn-primary w-full">
               {isSubmitting ? "Please wait..." : content.action}
             </button>
           </form>

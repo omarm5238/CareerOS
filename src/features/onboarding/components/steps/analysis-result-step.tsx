@@ -39,7 +39,7 @@ export function AnalysisResultStep({
         ) : null}
       </header>
 
-      <div className="space-y-4 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-4">
+      <div className="space-y-4 surface-glass p-4">
         <div className="grid grid-cols-2 gap-3 text-sm">
           <Metric label="Detected role" value={result.role} />
           <Metric label="Experience level" value={result.experienceLevel} />
@@ -97,7 +97,7 @@ export function AnalysisResultStep({
       </div>
 
       <button
-        className="w-full rounded-[var(--radius-lg)] bg-[var(--color-accent)] px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="btn-primary w-full"
         onClick={onEnterWorkspace}
         type="button"
       >
@@ -105,7 +105,7 @@ export function AnalysisResultStep({
       </button>
 
       <button
-        className="w-full rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm font-medium text-[var(--color-text-primary)] [transition:var(--motion-fade)] hover:border-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="btn-secondary w-full"
         onClick={onReplaceResume}
         type="button"
       >
@@ -117,9 +117,9 @@ export function AnalysisResultStep({
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
-      <p className="text-[11px] text-[var(--color-text-secondary)]">{label}</p>
-      <p className="mt-1 text-sm font-medium text-[var(--color-text-primary)]">{value}</p>
+    <div className="surface-card p-3">
+      <p className="section-eyebrow">{label}</p>
+      <p className="metric-number mt-1 text-sm text-[var(--color-text-primary)]">{value}</p>
     </div>
   );
 }
@@ -143,7 +143,7 @@ function StringListSection({
           <div className="mt-2 flex flex-wrap gap-2">
             {items.map((item) => (
               <span
-                className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]"
+                className="rounded-full border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]"
                 key={item}
               >
                 {item}

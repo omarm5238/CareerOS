@@ -6,7 +6,7 @@ type JobsEmptyStateProps = {
 
 export function JobsEmptyState({ children }: JobsEmptyStateProps) {
   return (
-    <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-6 text-center backdrop-blur-xl">
+    <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[var(--surface-glass)] p-6 text-center backdrop-blur-xl">
       <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
         Jobs Module
       </p>

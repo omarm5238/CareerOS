@@ -8,7 +8,7 @@ export function ResumeActionPlan({ actions }: ResumeActionPlanProps) {
   return (
     <section
       aria-labelledby="resume-action-plan-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -29,7 +29,7 @@ export function ResumeActionPlan({ actions }: ResumeActionPlanProps) {
         <ul className="mt-4 space-y-3">
           {actions.map((action) => (
             <li
-              className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+              className="surface-card p-4"
               key={action.id}
             >
               <div className="flex flex-wrap items-start justify-between gap-2">
@@ -63,7 +63,7 @@ export function ResumeActionPlan({ actions }: ResumeActionPlanProps) {
 function PriorityBadge({ priority }: { priority: ResumeActionPriority }) {
   const styles =
     priority === "High"
-      ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+      ? "border-[var(--status-info-border)] bg-[var(--status-info-bg)] text-[var(--status-info-text)]"
       : priority === "Medium"
         ? "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] text-[var(--color-text-primary)]"
         : "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]";

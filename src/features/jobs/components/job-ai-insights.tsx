@@ -15,7 +15,7 @@ export function JobAiInsights({ analysis }: JobAiInsightsProps) {
   return (
     <section
       aria-labelledby="job-ai-insights-heading"
-      className="rounded-[var(--radius-xl)] border border-[rgb(99_102_241_/_16%)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-premium p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -54,7 +54,7 @@ function InsightList({ label, items }: { label: string; items: string[] }) {
       <ul className="mt-2 space-y-2">
         {items.map((item) => (
           <li
-            className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] px-3 py-2 text-sm leading-6 text-[var(--color-text-secondary)]"
+            className="surface-card px-3 py-2 text-sm leading-6 text-[var(--color-text-secondary)]"
             key={item}
           >
             {item}

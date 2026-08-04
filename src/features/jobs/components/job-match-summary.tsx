@@ -20,7 +20,7 @@ export function JobMatchSummary({
   return (
     <section
       aria-labelledby="job-match-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -30,14 +30,14 @@ export function JobMatchSummary({
       </h2>
 
       <div className="mt-4 grid grid-cols-2 gap-3">
-        <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
-          <p className="text-[11px] text-[var(--color-text-secondary)]">Match score</p>
-          <p className="mt-1 text-lg font-semibold text-[var(--color-text-primary)]">
+        <div className="surface-card p-3">
+          <p className="section-eyebrow">Match score</p>
+          <p className="metric-number mt-1 text-3xl text-[var(--color-text-primary)]">
             {matchScore}%
             <span className="sr-only"> match</span>
           </p>
         </div>
-        <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+        <div className="surface-card p-3">
           <p className="text-[11px] text-[var(--color-text-secondary)]">Role alignment</p>
           <p className="mt-1 text-sm font-medium text-[var(--color-text-primary)]">
             {roleAlignment}
@@ -85,7 +85,7 @@ function SkillGroup({
         <ul className="mt-2 flex flex-wrap gap-2">
           {skills.map((skill) => (
             <li key={skill}>
-              <span className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
+              <span className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
                 {skill}
               </span>
             </li>

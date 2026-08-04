@@ -78,7 +78,7 @@ export function CareerCoreScene({ state }: CareerCoreSceneProps) {
       >
         <fog attach="fog" args={["#050505", visualConfig.fogNear, visualConfig.fogFar]} />
         <ambientLight intensity={0.5} />
-        <pointLight color="#6366f1" intensity={1.9} position={[3.2, 3.6, 5]} />
+        <pointLight color="#5B5698" intensity={1.55} position={[3.2, 3.6, 5]} />
         <pointLight color="#f5f5f5" intensity={0.14} position={[-4, -3, 5]} />
         <MotionBridge reducedMotion={state.reducedMotion} />
         <NetworkScene
@@ -228,7 +228,7 @@ function CentralNeuralMesh({
         <meshStandardMaterial
           ref={coreMaterialRef}
           color="#171717"
-          emissive="#6366f1"
+          emissive="#5B5698"
           emissiveIntensity={rootIntensity}
           metalness={0.08}
           roughness={0.62}
@@ -236,7 +236,7 @@ function CentralNeuralMesh({
       </mesh>
       <mesh rotation={[1.24, 0.16, 0.28]}>
         <torusGeometry args={[1.18, 0.007, 8, 160]} />
-        <meshBasicMaterial ref={ringMaterialRef} color="#6366f1" transparent opacity={0.12} />
+        <meshBasicMaterial ref={ringMaterialRef} color="#5B5698" transparent opacity={0.12} />
       </mesh>
       <mesh rotation={[1.52, -0.38, -0.5]}>
         <torusGeometry args={[1.48, 0.005, 8, 160]} />
@@ -245,7 +245,7 @@ function CentralNeuralMesh({
       {meshPoints.slice(0, 4).map((point, index) => (
         <mesh key={`mesh-point-${index}`} position={point}>
           <sphereGeometry args={[0.036, 16, 16]} />
-          <meshBasicMaterial color="#6366f1" transparent opacity={0.72} />
+          <meshBasicMaterial color="#5B5698" transparent opacity={0.72} />
         </mesh>
       ))}
       {meshPoints.slice(1, 4).map((point, index) => (
@@ -309,7 +309,7 @@ function NodeField({
         `,
         transparent: true,
         uniforms: {
-          uColor: { value: new THREE.Color("#6366f1") },
+          uColor: { value: new THREE.Color("#5B5698") },
           uNodeOpacity: { value: visualConfig.nodeOpacity },
           uPointScale: { value: visualConfig.pointScale },
           uPointer: { value: new THREE.Vector2(0, 0) },
@@ -439,7 +439,7 @@ function ConnectionField({
         transparent: true,
         uniforms: {
           uBaseOpacity: { value: visualConfig.connectionOpacity },
-          uColor: { value: new THREE.Color("#6366f1") },
+          uColor: { value: new THREE.Color("#5B5698") },
           uConnectionPulse: { value: visualConfig.connectionPulse },
           uPointer: { value: new THREE.Vector2(0, 0) },
           uTime: { value: 0 },
@@ -507,7 +507,7 @@ function TubeConnection({
 
   return (
     <mesh geometry={tube}>
-      <meshBasicMaterial color="#6366f1" transparent opacity={opacity} />
+      <meshBasicMaterial color="#5B5698" transparent opacity={opacity} />
     </mesh>
   );
 }
@@ -532,7 +532,7 @@ function PulseWaves() {
       {[0, 1, 2].map((item) => (
         <mesh key={item}>
           <sphereGeometry args={[0.58, 32, 32]} />
-          <meshBasicMaterial color="#6366f1" transparent opacity={0.12} wireframe />
+          <meshBasicMaterial color="#5B5698" transparent opacity={0.12} wireframe />
         </mesh>
       ))}
     </group>

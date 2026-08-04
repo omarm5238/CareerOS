@@ -73,8 +73,8 @@ export function ResumeUploadStep({
       <div
         className={`rounded-[var(--radius-xl)] border border-dashed p-6 text-center [transition:var(--motion-fade)] ${
           isDragging
-            ? "border-[var(--color-accent)] bg-[rgb(99_102_241_/_10%)]"
-            : "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_52%)]"
+            ? "border-[var(--color-champagne)] bg-[var(--color-champagne-muted)]"
+            : "border-[var(--color-border-subtle)] bg-[var(--surface-inset)]"
         }`}
         onDragEnter={(event) => {
           event.preventDefault();
@@ -106,7 +106,7 @@ export function ResumeUploadStep({
         </p>
 
         <button
-          className="mt-5 rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-sm text-[var(--color-text-primary)] [transition:var(--motion-fade)] hover:border-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="btn-secondary mt-5"
           onClick={() => inputRef.current?.click()}
           type="button"
         >
@@ -115,7 +115,7 @@ export function ResumeUploadStep({
       </div>
 
       {fileName ? (
-        <div className="rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-4">
+        <div className="surface-card p-4">
           <p className="text-sm font-medium text-[var(--color-text-primary)]">{fileName}</p>
           <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
             {formattedFileSize}
@@ -132,14 +132,14 @@ export function ResumeUploadStep({
 
       <div aria-live="polite">
         {error ? (
-          <p className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-accent-muted)] px-3 py-2 text-sm text-[var(--color-text-primary)]">
+          <p className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] px-3 py-2 text-sm text-[var(--status-danger-text)]">
             {error}
           </p>
         ) : null}
       </div>
 
       <button
-        className="w-full rounded-[var(--radius-lg)] bg-[var(--color-accent)] px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] disabled:cursor-not-allowed disabled:opacity-50"
+        className="btn-primary w-full"
         disabled={isAnalyzeDisabled}
         onClick={onAnalyze}
         type="button"

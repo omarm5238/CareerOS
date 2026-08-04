@@ -48,7 +48,7 @@ export function CareerCoreCanvas({ variant }: CareerCoreCanvasProps) {
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
         <ambientLight intensity={0.45} />
-        <pointLight color="#6366f1" intensity={isWorkspace ? 1.2 : 0.55} position={[2, 2.4, 3]} />
+        <pointLight color="#5B5698" intensity={isWorkspace ? 1.0 : 0.45} position={[2, 2.4, 3]} />
         <pointLight color="#f5f5f5" intensity={0.18} position={[-3, -2, 4]} />
         <CoreScene nodes={nodes} variant={variant} />
       </Canvas>
@@ -118,7 +118,7 @@ function CoreOrb({ variant }: { variant: CareerCoreCanvasProps["variant"] }) {
       <Sphere args={[isWorkspace ? 0.72 : 0.44, 48, 48]}>
         <meshStandardMaterial
           color="#171717"
-          emissive="#6366f1"
+          emissive="#5B5698"
           emissiveIntensity={isWorkspace ? 0.28 : 0.12}
           roughness={0.62}
           metalness={0.08}
@@ -126,7 +126,7 @@ function CoreOrb({ variant }: { variant: CareerCoreCanvasProps["variant"] }) {
       </Sphere>
       <Sphere args={[isWorkspace ? 0.98 : 0.62, 48, 48]}>
         <meshBasicMaterial
-          color="#6366f1"
+          color="#5B5698"
           transparent
           opacity={isWorkspace ? 0.08 : 0.045}
           wireframe
@@ -168,7 +168,7 @@ function Ring({
   return (
     <mesh rotation={rotation}>
       <torusGeometry args={[radius, 0.0035, 8, 160]} />
-      <meshBasicMaterial color="#6366f1" transparent opacity={opacity} />
+      <meshBasicMaterial color="#5B5698" transparent opacity={opacity} />
     </mesh>
   );
 }
@@ -188,7 +188,7 @@ function NetworkNode({
         <Sphere args={[node.size, 24, 24]}>
           <meshStandardMaterial
             color="#262626"
-            emissive="#6366f1"
+            emissive="#5B5698"
             emissiveIntensity={isWorkspace ? 0.18 : 0.07}
             roughness={0.72}
             metalness={0.04}
@@ -196,7 +196,7 @@ function NetworkNode({
         </Sphere>
         <Sphere args={[node.size * 1.9, 24, 24]}>
           <meshBasicMaterial
-            color="#6366f1"
+            color="#5B5698"
             transparent
             opacity={isWorkspace ? 0.055 : 0.025}
             wireframe
@@ -218,7 +218,7 @@ function Connection({
     const points = [new THREE.Vector3(0, 0, 0), new THREE.Vector3(...to)];
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
     const material = new THREE.LineBasicMaterial({
-      color: variant === "workspace" ? "#6366f1" : "#f5f5f5",
+      color: variant === "workspace" ? "#5B5698" : "#f5f5f5",
       transparent: true,
       opacity: variant === "workspace" ? 0.16 : 0.045,
     });
@@ -234,7 +234,7 @@ function NodeLabel({ node }: { node: CoreNode }) {
 
   return (
     <div
-      className="absolute rounded-[var(--radius-lg)] border border-[var(--surface-soft-glass-border)] bg-[rgb(17_17_17_/_58%)] px-3 py-2 text-xs text-[var(--color-text-secondary)] shadow-[var(--shadow-sm)] backdrop-blur-xl"
+      className="absolute rounded-[var(--radius-lg)] border border-[var(--surface-soft-glass-border)] bg-[var(--surface-glass)] px-3 py-2 text-xs text-[var(--color-text-secondary)] shadow-[var(--shadow-sm)] backdrop-blur-xl"
       style={{
         left: `${x}%`,
         top: `${y}%`,

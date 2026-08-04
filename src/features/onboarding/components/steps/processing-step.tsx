@@ -14,9 +14,7 @@ export function ProcessingStep({ stage, progress }: ProcessingStepProps) {
   return (
     <section aria-live="polite" className="space-y-6">
       <header className="space-y-3">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
-          Step 3 of 4
-        </p>
+        <p className="section-eyebrow">Step 3 of 4</p>
         <h1 className="text-2xl font-semibold tracking-tight text-[var(--color-text-primary)]">
           Building your profile
         </h1>
@@ -26,10 +24,10 @@ export function ProcessingStep({ stage, progress }: ProcessingStepProps) {
         </p>
       </header>
 
-      <div className="space-y-3 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-4">
-        <div className="h-2 w-full overflow-hidden rounded-full bg-[rgb(245_245_245_/_10%)]">
+      <div className="surface-card space-y-3 p-4">
+        <div className="progress-track h-2 w-full">
           <div
-            className="h-full rounded-full bg-[var(--color-accent)] [transition:width_400ms_var(--ease-standard)]"
+            className="progress-fill [transition:width_400ms_var(--ease-standard)]"
             style={{ width: `${progress}%` }}
           />
         </div>

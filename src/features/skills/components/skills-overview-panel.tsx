@@ -15,7 +15,7 @@ export function SkillsOverviewPanel({ overview }: SkillsOverviewPanelProps) {
   return (
     <section
       aria-labelledby="skills-overview-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -27,7 +27,7 @@ export function SkillsOverviewPanel({ overview }: SkillsOverviewPanelProps) {
       <dl className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
-            className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3"
+            className="surface-card p-3"
             key={stat.label}
           >
             <dt className="text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">

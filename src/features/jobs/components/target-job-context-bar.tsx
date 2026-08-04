@@ -17,10 +17,10 @@ export function TargetJobContextBar({
   const selectedShort = shortJobDisplayTitle(context.selectedJob.title);
 
   return (
-    <section className="rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-4 backdrop-blur-xl">
+    <section className="surface-panel p-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.16em] text-[var(--color-text-secondary)]">
+          <p className="section-eyebrow">
             {allJobsMode ? "Scope" : "Target job"}
           </p>
           <p className="mt-1 text-sm font-medium text-[var(--color-text-primary)]">
@@ -45,7 +45,7 @@ export function TargetJobContextBar({
             aria-current={allJobsMode ? "page" : undefined}
             className={`rounded-full border px-2.5 py-1 text-xs ${
               allJobsMode
-                ? "border-[rgb(99_102_241_/_45%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+                ? "border-[var(--color-border)] bg-[rgb(199_203_209_/_6%)] text-[var(--color-text-primary)] shadow-[inset_0_-1px_0_0_var(--color-intelligence)]"
                 : "border-[var(--color-border-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
             }`}
             href={basePath}
@@ -62,7 +62,7 @@ export function TargetJobContextBar({
                 }
                 className={`rounded-full border px-2.5 py-1 text-xs ${
                   !allJobsMode && job.id === context.selectedJobId
-                    ? "border-[rgb(99_102_241_/_45%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
+                    ? "border-[var(--color-border)] bg-[rgb(199_203_209_/_6%)] text-[var(--color-text-primary)] shadow-[inset_0_-1px_0_0_var(--color-intelligence)]"
                     : "border-[var(--color-border-subtle)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                 }`}
                 href={`${basePath}?jobId=${encodeURIComponent(job.id)}`}

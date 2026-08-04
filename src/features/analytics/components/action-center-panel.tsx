@@ -8,10 +8,10 @@ type ActionCenterPanelProps = {
 
 function priorityClass(priority: string): string {
   if (priority === "High") {
-    return "border-[rgb(239_68_68_/_30%)] bg-[rgb(239_68_68_/_10%)] text-[rgb(252_165_165)]";
+    return "border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] text-[var(--status-danger-text)]";
   }
   if (priority === "Medium") {
-    return "border-[rgb(245_158_11_/_30%)] bg-[rgb(245_158_11_/_10%)] text-[rgb(253_186_116)]";
+    return "border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] text-[var(--status-warning-text)]";
   }
   return "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]";
 }
@@ -23,7 +23,7 @@ export function ActionCenterPanel({
   return (
     <section
       aria-labelledby="action-center-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -56,7 +56,7 @@ export function ActionCenterPanel({
               <ul className="mt-3 space-y-2">
                 {section.items.map((item) => (
                   <li
-                    className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3"
+                    className="surface-card p-3"
                     key={`${section.section}-${item.title}`}
                   >
                     <div className="flex flex-wrap items-center gap-2">

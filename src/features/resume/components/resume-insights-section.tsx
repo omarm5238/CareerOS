@@ -16,6 +16,7 @@ export function ResumeInsightsSection({
         heading="Strengths"
         headingId="resume-strengths-heading"
         items={strengths}
+        tone="success"
       />
 
       <InsightList
@@ -23,16 +24,14 @@ export function ResumeInsightsSection({
         heading="Areas to strengthen"
         headingId="resume-weaknesses-heading"
         items={weaknesses}
+        tone="warning"
       />
 
       <section
         aria-labelledby="resume-focus-heading"
-        className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+        className="surface-glass p-5"
       >
-        <h2
-          className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
-          id="resume-focus-heading"
-        >
+        <h2 className="section-eyebrow" id="resume-focus-heading">
           Suggested Next Focus
         </h2>
 
@@ -40,7 +39,7 @@ export function ResumeInsightsSection({
           <ul className="mt-3 flex flex-wrap gap-2">
             {suggestedFocus.map((item) => (
               <li key={item}>
-                <span className="inline-flex rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
+                <span className="inline-flex rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
                   {item}
                 </span>
               </li>
@@ -61,32 +60,33 @@ function InsightList({
   headingId,
   items,
   emptyMessage,
+  tone,
 }: {
   heading: string;
   headingId: string;
   items: string[];
   emptyMessage: string;
+  tone: "success" | "warning";
 }) {
+  const chipClass =
+    tone === "success"
+      ? "inline-flex rounded-full border border-[var(--status-success-border)] bg-[var(--status-success-bg)] px-2.5 py-1 text-xs text-[var(--status-success-text)]"
+      : "inline-flex rounded-full border border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] px-2.5 py-1 text-xs text-[var(--status-warning-text)]";
+
   return (
     <section
       aria-labelledby={headingId}
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
-      <h2
-        className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
-        id={headingId}
-      >
+      <h2 className="section-eyebrow" id={headingId}>
         {heading}
       </h2>
 
       {items.length > 0 ? (
-        <ul className="mt-3 space-y-2 text-sm leading-6 text-[var(--color-text-primary)]">
+        <ul className="mt-3 flex flex-wrap gap-2">
           {items.map((item) => (
-            <li className="flex gap-2" key={item}>
-              <span aria-hidden="true" className="text-[var(--color-accent)]">
-                •
-              </span>
-              <span>{item}</span>
+            <li key={item}>
+              <span className={chipClass}>{item}</span>
             </li>
           ))}
         </ul>

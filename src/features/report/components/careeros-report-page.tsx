@@ -40,10 +40,8 @@ function AnalysisSourceBadge({ source }: { source: string | null | undefined }) 
   const isAi = source === "ai";
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.12em] ${
-        isAi
-          ? "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-accent)]"
-          : "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]"
+      className={`status-chip status-chip--mono ${
+        isAi ? "status-chip--info" : "status-chip--neutral"
       }`}
     >
       {label}
@@ -64,7 +62,7 @@ export function CareerosReportPage({ data }: CareerosReportPageProps) {
   const skillSummaries = data.skillsPriorityPlan.slice(0, skillCap);
 
   return (
-    <div className="careeros-report mx-auto max-w-4xl px-6 py-8 lg:px-8 lg:py-10">
+    <div className="careeros-report mx-auto max-w-5xl px-6 py-8 lg:px-8 lg:py-10">
       <style>{`
         @page {
           size: A4;
@@ -106,6 +104,15 @@ export function CareerosReportPage({ data }: CareerosReportPageProps) {
             backdrop-filter: none !important;
             box-shadow: none !important;
             margin-bottom: 6mm;
+          }
+          .careeros-report .surface-glass,
+          .careeros-report .surface-card,
+          .careeros-report .surface-panel,
+          .careeros-report .surface-elevated {
+            background: #fff !important;
+            border-color: #d4d4d4 !important;
+            backdrop-filter: none !important;
+            box-shadow: none !important;
           }
           .careeros-report .report-week {
             break-inside: avoid;
@@ -161,14 +168,12 @@ export function CareerosReportPage({ data }: CareerosReportPageProps) {
         <PrintReportButton />
       </div>
 
-      <header className="space-y-2">
-        <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
-          CareerOS Report
-        </p>
+      <header className="surface-glass space-y-2 p-5">
+        <p className="section-eyebrow">CareerOS Report</p>
         <h1 className="text-3xl font-semibold tracking-tight text-[var(--color-text-primary)]">
           CareerOS Report
         </h1>
-        <p className="text-sm text-[var(--color-text-secondary)]">
+        <p className="font-mono-meta text-sm text-[var(--color-text-secondary)]">
           Generated {formatDate(data.generatedAt)} · {data.profile.name} · {data.profile.email}
         </p>
         <p className="text-sm font-medium text-[var(--color-text-primary)]">
@@ -200,8 +205,12 @@ export function CareerosReportPage({ data }: CareerosReportPageProps) {
         ) : null}
 
         <ReportSection title="Career Health">
-          <p className="text-sm text-[var(--color-text-primary)]">
-            {data.careerHealth.score}% · {data.careerHealth.label}
+          <p className="metric-number text-3xl text-[var(--color-text-primary)]">
+            {data.careerHealth.score}
+            <span className="text-lg font-medium text-[var(--color-text-secondary)]">%</span>
+            <span className="ml-2 text-base font-medium text-[var(--color-text-secondary)]">
+              · {data.careerHealth.label}
+            </span>
           </p>
           <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
             {data.careerHealth.explanation}
@@ -523,7 +532,7 @@ function ReportSection({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+    <section className="surface-glass p-5">
       <h2 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
         {title}
       </h2>

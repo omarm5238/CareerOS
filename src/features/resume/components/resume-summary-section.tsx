@@ -17,7 +17,7 @@ export function ResumeSummarySection({ analysis }: ResumeSummarySectionProps) {
   return (
     <section
       aria-labelledby="resume-summary-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"

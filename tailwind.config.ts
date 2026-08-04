@@ -9,7 +9,18 @@ const config: Config = {
     "./src/core/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        display: ["var(--font-display)"],
+        mono: ["var(--font-mono)"],
+      },
+      colors: {
+        background: "var(--color-background)",
+        surface: "var(--color-surface)",
+        accent: "var(--color-accent)",
+      },
+    },
   },
   plugins: [],
 };

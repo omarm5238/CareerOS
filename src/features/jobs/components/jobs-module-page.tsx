@@ -38,7 +38,7 @@ export function JobsModulePage({
           />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-8 lg:py-9">
+        <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
           <header className="space-y-3">
             <Link
               className="text-xs text-[var(--color-text-secondary)] underline-offset-4 [transition:var(--motion-fade)] hover:text-[var(--color-text-primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
@@ -61,7 +61,7 @@ export function JobsModulePage({
           </header>
 
           {jobNotFound ? (
-            <section className="mt-6 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+            <section className="mt-6 surface-glass p-5">
               <h2 className="text-lg font-semibold text-[var(--color-text-primary)]">
                 Job not found
               </h2>

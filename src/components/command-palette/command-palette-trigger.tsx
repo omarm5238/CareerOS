@@ -26,7 +26,7 @@ export function CommandPaletteTrigger() {
         onClick={openPalette}
         type="button"
       >
-        <span className="hidden h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)] opacity-80 sm:block" />
+        <span className="hidden h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-intelligence)] opacity-80 sm:block" />
         <span className="min-w-0 flex-1 truncate text-xs text-[var(--color-text-secondary)]">
           Command CareerOS
         </span>

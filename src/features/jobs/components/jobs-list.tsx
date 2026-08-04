@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-import { APPLICATION_STATUS_LABELS } from "@/features/jobs/constants/application-status";
+import {
+  APPLICATION_STATUS_LABELS,
+  type ApplicationStatus,
+} from "@/features/jobs/constants/application-status";
 import type { JobListItem } from "../types";
 import { JobAnalysisSourceBadge } from "./job-analysis-source-badge";
 
@@ -9,18 +12,23 @@ type JobsListProps = {
   selectedJobId: string | null;
 };
 
+const APPLICATION_STATUS_CHIP: Record<ApplicationStatus, string> = {
+  saved: "status-chip status-chip--neutral",
+  applied: "status-chip status-chip--info",
+  interview: "status-chip status-chip--warning",
+  offer: "status-chip status-chip--success",
+  rejected: "status-chip status-chip--danger",
+};
+
 export function JobsList({ jobs, selectedJobId }: JobsListProps) {
   if (jobs.length === 0) return null;
 
   return (
     <section
       aria-labelledby="jobs-list-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
-      <h2
-        className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
-        id="jobs-list-heading"
-      >
+      <h2 className="section-eyebrow" id="jobs-list-heading">
         Saved Jobs
       </h2>
       <p className="mt-2 text-xs text-[var(--color-text-secondary)]">
@@ -36,8 +44,8 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                 aria-current={isSelected ? "page" : undefined}
                 className={`block rounded-[var(--radius-md)] border px-3 py-3 [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
                   isSelected
-                    ? "border-[rgb(99_102_241_/_40%)] bg-[rgb(99_102_241_/_10%)]"
-                    : "border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] hover:border-[var(--color-border)]"
+                    ? "selected-row"
+                    : "border-[var(--color-border-subtle)] bg-[var(--surface-inset)] hover:border-[var(--color-border)]"
                 }`}
                 href={`/workspace/jobs?jobId=${encodeURIComponent(job.id)}`}
               >
@@ -52,7 +60,7 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
+                    <span className={APPLICATION_STATUS_CHIP[job.applicationStatus]}>
                       {APPLICATION_STATUS_LABELS[job.applicationStatus]}
                     </span>
                     {job.analysis ? (
@@ -61,7 +69,7 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                           className="px-2 py-0.5 text-[10px]"
                           source={job.analysis.analysisSource}
                         />
-                        <span className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
+                        <span className="metric-number rounded-full border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2 py-0.5 text-[11px] text-[var(--color-text-primary)]">
                           {job.analysis.matchScore}%
                         </span>
                       </>

@@ -7,7 +7,7 @@ export function DataControlsPanel() {
   return (
     <section
       aria-labelledby="data-controls-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -28,7 +28,7 @@ export function DataControlsPanel() {
           </p>
           <div className="mt-3">
             <Link
-              className="inline-flex rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+              className="inline-flex surface-card px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
               href="/workspace/report"
             >
               Open Report

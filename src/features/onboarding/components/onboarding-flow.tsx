@@ -41,7 +41,8 @@ export function OnboardingFlow() {
 
   return (
     <main className="relative flex min-h-screen overflow-x-hidden bg-[var(--color-background)] text-[var(--color-text-primary)]">
-      <div className="absolute inset-0 opacity-[0.32] sm:opacity-[0.42]">
+      <div className="pointer-events-none absolute inset-0 app-atmosphere" />
+      <div className="absolute inset-0 opacity-[0.28] sm:opacity-[0.34]">
         <CareerCore
           animated
           className="h-full w-full"
@@ -53,14 +54,12 @@ export function OnboardingFlow() {
       </div>
 
       <div className="relative z-10 flex w-full items-center justify-center px-4 py-10 sm:px-8">
-        <section className="w-full max-w-[560px] rounded-[var(--radius-2xl)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_74%)] p-6 shadow-[var(--shadow-lg)] backdrop-blur-xl sm:p-8">
+        <section className="surface-elevated w-full max-w-[560px] p-6 sm:p-8">
           <div className="mb-8 space-y-3">
-            <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
-              CareerOS Onboarding
-            </p>
-            <div className="h-1.5 w-full overflow-hidden rounded-full bg-[rgb(245_245_245_/_10%)]">
+            <p className="section-eyebrow">CareerOS Onboarding</p>
+            <div className="progress-track h-1.5 w-full">
               <div
-                className="h-full rounded-full bg-[var(--color-accent)] [transition:width_320ms_var(--ease-standard)]"
+                className="progress-fill [transition:width_320ms_var(--ease-standard)]"
                 style={{ width: `${progressByStep[step]}%` }}
               />
             </div>

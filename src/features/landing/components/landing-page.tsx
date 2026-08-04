@@ -8,7 +8,7 @@ import { ProductPreview } from "./product-preview";
 export function LandingPage() {
   return (
     <div className="min-h-screen scroll-smooth bg-[var(--color-background)] text-[var(--color-text-primary)]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_52%_38%,rgb(99_102_241_/_8%),transparent_30%),linear-gradient(180deg,rgb(17_17_17_/_52%),rgb(10_10_10))]" />
+      <div className="pointer-events-none fixed inset-0 app-atmosphere" />
 
       <div className="relative">
         <LandingHeader />

@@ -111,7 +111,7 @@ export function WorkspaceProfileSetupPanel() {
         Complete onboarding to unlock your first profile baseline.
       </p>
       <Link
-        className="mt-3 inline-flex rounded-[var(--radius-md)] bg-[var(--color-accent)] px-3 py-2 text-xs font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="btn-primary mt-3 px-3 py-2 text-xs"
         href="/onboarding"
       >
         Build your career profile

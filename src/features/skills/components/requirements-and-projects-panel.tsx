@@ -15,7 +15,7 @@ export function RequirementsAndProjectsPanel({
   return (
     <div className="space-y-6">
       {groups.some((group) => group.items.length > 0) ? (
-        <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+        <section className="surface-glass p-5">
           <h2 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
             Non-skill requirements
           </h2>
@@ -55,7 +55,7 @@ export function RequirementsAndProjectsPanel({
       ) : null}
 
       {overview.projectIdeas.length > 0 ? (
-        <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+        <section className="surface-glass p-5">
           <h2 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
             Contextual Project Ideas
           </h2>
@@ -65,7 +65,7 @@ export function RequirementsAndProjectsPanel({
           <ul className="mt-4 grid gap-3 lg:grid-cols-2">
             {overview.projectIdeas.map((idea) => (
               <li
-                className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+                className="surface-card p-4"
                 key={idea.title}
               >
                 <h3 className="text-sm font-medium text-[var(--color-text-primary)]">{idea.title}</h3>

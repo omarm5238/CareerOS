@@ -12,7 +12,7 @@ export function ResumeAnalyticsPanel({ resume }: ResumeAnalyticsPanelProps) {
   return (
     <section
       aria-labelledby="resume-analytics-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -46,7 +46,7 @@ export function ResumeAnalyticsPanel({ resume }: ResumeAnalyticsPanelProps) {
             label="Detected skills"
             value={String(resume.detectedSkillsCount)}
           />
-          <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+          <div className="surface-card p-3">
             <dt className="text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
               Analysis source
             </dt>
@@ -73,7 +73,7 @@ export function ResumeAnalyticsPanel({ resume }: ResumeAnalyticsPanelProps) {
 
 function MetricItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+    <div className="surface-card p-3">
       <dt className="text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
         {label}
       </dt>

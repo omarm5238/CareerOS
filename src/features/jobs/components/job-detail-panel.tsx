@@ -22,7 +22,7 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
 
   return (
     <div className="space-y-4">
-      <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+      <section className="surface-glass p-5">
         <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
           Job detail
         </p>
@@ -66,7 +66,7 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
 
       {job.analysis ? (
         <>
-          <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+          <section className="surface-glass p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <JobAnalysisSourceBadge source={job.analysis.analysisSource} />
               <JobReanalyzeButton
@@ -91,7 +91,7 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
           <JobRecommendations recommendations={job.analysis.recommendations} />
 
           {job.analysis.aiWarnings.length > 0 ? (
-            <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+            <section className="surface-glass p-5">
               <h2 className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
                 Analysis notes
               </h2>
@@ -114,7 +114,7 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
         </p>
       )}
 
-      <section className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl">
+      <section className="surface-glass p-5">
         <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
           Danger zone
         </p>
@@ -131,7 +131,7 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
 
 function MetaItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+    <div className="surface-card p-3">
       <dt className="text-[11px] text-[var(--color-text-secondary)]">{label}</dt>
       <dd className="mt-1 text-sm text-[var(--color-text-primary)]">{value}</dd>
     </div>

@@ -102,7 +102,7 @@ export function JobApplicationTracker({ job }: JobApplicationTrackerProps) {
   return (
     <section
       aria-labelledby="application-status-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -120,7 +120,7 @@ export function JobApplicationTracker({ job }: JobApplicationTrackerProps) {
             Status
           </label>
           <select
-            className="mt-1 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[rgb(10_10_10_/_70%)] px-3 py-2 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+            className="input-field mt-1"
             id={`application-status-${job.id}`}
             onChange={(event) =>
               setApplicationStatus(event.target.value as ApplicationStatus)
@@ -143,7 +143,7 @@ export function JobApplicationTracker({ job }: JobApplicationTrackerProps) {
             Notes
           </label>
           <textarea
-            className="mt-1 min-h-24 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[rgb(10_10_10_/_70%)] px-3 py-2 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+            className="input-field mt-1 min-h-24"
             id={`application-notes-${job.id}`}
             onChange={(event) => setApplicationNotes(event.target.value)}
             placeholder="Interview prep, recruiter contact, follow-up notes…"
@@ -158,7 +158,7 @@ export function JobApplicationTracker({ job }: JobApplicationTrackerProps) {
         ) : null}
 
         <button
-          className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-accent)] px-4 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="btn-primary"
           disabled={isSaving}
           type="submit"
         >
@@ -167,7 +167,7 @@ export function JobApplicationTracker({ job }: JobApplicationTrackerProps) {
 
         <div aria-live="polite">
           {error ? (
-            <p className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-accent-muted)] px-3 py-2 text-xs text-[var(--color-text-primary)]">
+            <p className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] px-3 py-2 text-xs text-[var(--status-danger-text)]">
               {error}
             </p>
           ) : null}

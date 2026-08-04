@@ -20,7 +20,7 @@ export function SkillsAnalyticsPanel({ skills, savedJobsCount }: SkillsAnalytics
   return (
     <section
       aria-labelledby="skills-analytics-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -69,7 +69,7 @@ export function SkillsAnalyticsPanel({ skills, savedJobsCount }: SkillsAnalytics
           <ul className="mt-2 flex flex-wrap gap-2">
             {skills.topPrioritySkills.map((skill) => (
               <li key={skill}>
-                <span className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
+                <span className="inline-flex rounded-full border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2.5 py-1 text-xs text-[var(--color-text-primary)]">
                   {skill}
                 </span>
               </li>
@@ -106,7 +106,7 @@ export function SkillsAnalyticsPanel({ skills, savedJobsCount }: SkillsAnalytics
 
 function MetricItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+    <div className="surface-card p-3">
       <dt className="text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
         {label}
       </dt>

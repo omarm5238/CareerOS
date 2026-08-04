@@ -22,7 +22,7 @@ export function SkillsEmptyState({ variant }: SkillsEmptyStateProps) {
 
         <div className="mt-8 flex flex-col items-center gap-3">
           <Link
-            className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-accent)] px-4 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+            className="btn-primary"
             href="/onboarding"
           >
             Upload resume
@@ -41,7 +41,7 @@ export function SkillsEmptyState({ variant }: SkillsEmptyStateProps) {
   return (
     <section
       aria-labelledby="no-detected-skills-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-lg font-semibold text-[var(--color-text-primary)]"

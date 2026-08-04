@@ -15,7 +15,7 @@ export function JobsAnalyticsPanel({ jobs }: JobsAnalyticsPanelProps) {
   return (
     <section
       aria-labelledby="jobs-analytics-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -96,7 +96,7 @@ export function JobsAnalyticsPanel({ jobs }: JobsAnalyticsPanelProps) {
 
 function MetricItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-3">
+    <div className="surface-card p-3">
       <dt className="text-[11px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
         {label}
       </dt>
@@ -115,13 +115,13 @@ function DistributionItem({
   tone: "strong" | "partial" | "weak";
 }) {
   const toneStyles = {
-    strong: "text-[rgb(134_239_172)]",
+    strong: "text-[var(--status-success-text)]",
     partial: "text-[rgb(165_180_252)]",
-    weak: "text-[rgb(252_165_165)]",
+    weak: "text-[var(--status-danger-text)]",
   };
 
   return (
-    <li className="flex items-center justify-between rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] px-3 py-2">
+    <li className="flex items-center justify-between surface-card px-3 py-2">
       <span className="text-sm text-[var(--color-text-primary)]">{label}</span>
       <span className={`text-sm font-medium ${toneStyles[tone]}`}>{count}</span>
     </li>

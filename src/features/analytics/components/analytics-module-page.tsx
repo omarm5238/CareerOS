@@ -51,7 +51,7 @@ export function AnalyticsModulePage({ data }: AnalyticsModulePageProps) {
           />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 py-8 lg:px-8 lg:py-9">
+        <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
           <header className="space-y-3">
             <Link
               className="text-xs text-[var(--color-text-secondary)] underline-offset-4 [transition:var(--motion-fade)] hover:text-[var(--color-text-primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"

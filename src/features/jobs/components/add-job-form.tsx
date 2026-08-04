@@ -93,7 +93,7 @@ export function AddJobForm({ hasResumeProfile }: AddJobFormProps) {
   return (
     <section
       aria-labelledby="add-job-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -155,7 +155,7 @@ export function AddJobForm({ hasResumeProfile }: AddJobFormProps) {
             Job description
           </label>
           <textarea
-            className="mt-1 min-h-36 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[rgb(10_10_10_/_70%)] px-3 py-2 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+            className="input-field mt-1 min-h-36"
             id="job-description"
             onChange={(event) => setDescription(event.target.value)}
             placeholder={`Paste the full job description (min ${MIN_JOB_DESCRIPTION_LENGTH} characters)`}
@@ -168,7 +168,7 @@ export function AddJobForm({ hasResumeProfile }: AddJobFormProps) {
         </div>
 
         <button
-          className="inline-flex rounded-[var(--radius-md)] bg-[var(--color-accent)] px-4 py-2.5 text-sm font-medium text-white shadow-[var(--shadow-accent-glow)] [transition:var(--motion-fade)] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          className="btn-primary"
           disabled={isSaving}
           type="submit"
         >
@@ -177,7 +177,7 @@ export function AddJobForm({ hasResumeProfile }: AddJobFormProps) {
 
         <div aria-live="polite">
           {error ? (
-            <p className="rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[var(--color-accent-muted)] px-3 py-2 text-xs text-[var(--color-text-primary)]">
+            <p className="rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] px-3 py-2 text-xs text-[var(--status-danger-text)]">
               {error}
             </p>
           ) : null}
@@ -211,7 +211,7 @@ function Field({
         {label}
       </label>
       <input
-        className="mt-1 w-full rounded-[var(--radius-md)] border border-[var(--color-border)] bg-[rgb(10_10_10_/_70%)] px-3 py-2 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="input-field mt-1"
         id={id}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}

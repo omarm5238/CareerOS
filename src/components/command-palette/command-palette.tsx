@@ -132,7 +132,7 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
       <div
         aria-labelledby={titleId}
         aria-modal="true"
-        className="relative z-10 w-full max-w-lg overflow-hidden rounded-[var(--radius-xl)] border border-[rgb(99_102_241_/_18%)] bg-[rgb(12_12_12_/_92%)] shadow-[0_24px_80px_rgb(0_0_0_/_45%)] backdrop-blur-xl"
+        className="surface-elevated relative z-10 w-full max-w-lg overflow-hidden border-[var(--color-border)]"
         role="dialog"
       >
         <div className="border-b border-[var(--color-border-subtle)] px-4 py-3">
@@ -148,7 +148,7 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
             aria-autocomplete="list"
             aria-controls={listboxId}
             autoComplete="off"
-            className="w-full bg-transparent text-sm text-[var(--color-text-primary)] outline-none placeholder:text-[var(--color-text-secondary)]"
+            className="w-full bg-transparent text-sm text-[var(--color-text-primary)] outline-none placeholder:text-[rgb(156_163_175_/_68%)]"
             id={inputId}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={handleInputKeyDown}
@@ -172,7 +172,7 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
           ) : (
             groupedCommands.map((section) => (
               <div className="mb-1 last:mb-0" key={section.group}>
-                <p className="px-3 py-1.5 text-[10px] uppercase tracking-[0.18em] text-[var(--color-text-secondary)]">
+                <p className="section-eyebrow px-3 py-1.5">
                   {section.group}
                 </p>
                 <ul className="space-y-0.5">
@@ -187,8 +187,8 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
                           aria-selected={isActive}
                           className={`flex w-full items-center justify-between rounded-[var(--radius-md)] px-3 py-2 text-left text-sm [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
                             isActive
-                              ? "border border-[rgb(99_102_241_/_32%)] bg-[rgb(99_102_241_/_12%)] text-[var(--color-text-primary)]"
-                              : "border border-transparent text-[var(--color-text-primary)] hover:bg-[rgb(23_23_23_/_72%)]"
+                              ? "selected-row border text-[var(--color-text-primary)]"
+                              : "border border-transparent text-[var(--color-text-primary)] hover:bg-[var(--surface-inset)]"
                           }`}
                           id={`${listboxId}-option-${command.id}`}
                           onClick={() => executeCommand(command)}
@@ -200,7 +200,7 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
                           {isActive ? (
                             <span
                               aria-hidden="true"
-                              className="text-[10px] uppercase tracking-[0.14em] text-[var(--color-accent)]"
+                              className="font-mono-meta text-[10px] uppercase tracking-[0.14em] text-[var(--color-intelligence-soft)]"
                             >
                               Enter
                             </span>
@@ -216,7 +216,7 @@ export function CommandPalette({ onClose, triggerElement }: CommandPaletteProps)
         </div>
 
         <div className="border-t border-[var(--color-border-subtle)] px-4 py-2">
-          <p className="text-[10px] text-[var(--color-text-secondary)]">
+          <p className="font-mono-meta text-[10px] text-[var(--color-text-secondary)]">
             Shortcut: {shortcutLabel}
           </p>
         </div>

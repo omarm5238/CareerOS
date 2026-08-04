@@ -6,16 +6,16 @@ type PrioritySkillsPanelProps = {
 };
 
 const priorityStyles: Record<PrioritySkillItem["priority"], string> = {
-  High: "border-[rgb(239_68_68_/_35%)] bg-[rgb(239_68_68_/_8%)] text-[rgb(252_165_165)]",
-  Medium: "border-[rgb(245_158_11_/_35%)] bg-[rgb(245_158_11_/_8%)] text-[rgb(253_230_138)]",
-  Low: "border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] text-[var(--color-text-secondary)]",
+  High: "border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] text-[var(--status-danger-text)]",
+  Medium: "border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] text-[var(--status-warning-text)]",
+  Low: "border-[var(--color-border-subtle)] bg-[var(--surface-inset)] text-[var(--color-text-secondary)]",
 };
 
 export function PrioritySkillsPanel({ items, selectedJobTitle }: PrioritySkillsPanelProps) {
   return (
     <section
       aria-labelledby="priority-skills-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
@@ -33,7 +33,7 @@ export function PrioritySkillsPanel({ items, selectedJobTitle }: PrioritySkillsP
         <ul className="mt-4 space-y-3">
           {items.map((item) => (
             <li
-              className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+              className="surface-card p-4"
               key={item.id}
             >
               <div className="flex flex-wrap items-start justify-between gap-2">

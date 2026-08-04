@@ -5,21 +5,20 @@ type CareerHealthPanelProps = {
 };
 
 const labelStyles: Record<CareerHealthResult["label"], string> = {
-  Strong: "border-[rgb(34_197_94_/_35%)] bg-[rgb(34_197_94_/_8%)] text-[rgb(134_239_172)]",
-  Developing: "border-[rgb(99_102_241_/_35%)] bg-[rgb(99_102_241_/_8%)] text-[rgb(165_180_252)]",
-  "Needs Work": "border-[rgb(245_158_11_/_35%)] bg-[rgb(245_158_11_/_8%)] text-[rgb(253_230_138)]",
-  "Not Enough Data":
-    "border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_70%)] text-[var(--color-text-secondary)]",
+  Strong: "status-chip status-chip--success",
+  Developing: "status-chip status-chip--info",
+  "Needs Work": "status-chip status-chip--warning",
+  "Not Enough Data": "status-chip status-chip--neutral",
 };
 
 export function CareerHealthPanel({ careerHealth }: CareerHealthPanelProps) {
   return (
     <section
       aria-labelledby="career-health-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <h2
-        className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
+        className="section-eyebrow"
         id="career-health-heading"
       >
         Career Health
@@ -27,13 +26,11 @@ export function CareerHealthPanel({ careerHealth }: CareerHealthPanelProps) {
 
       <div className="mt-4 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-3xl font-semibold text-[var(--color-text-primary)]">
+          <p className="metric-number text-[var(--color-text-primary)]">
             {careerHealth.score}
-            <span className="text-lg text-[var(--color-text-secondary)]">/100</span>
+            <span className="text-lg font-medium text-[var(--color-text-secondary)]">/100</span>
           </p>
-          <span
-            className={`mt-2 inline-flex rounded-full border px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.1em] ${labelStyles[careerHealth.label]}`}
-          >
+          <span className={`mt-2 ${labelStyles[careerHealth.label]}`}>
             {careerHealth.label}
           </span>
         </div>
@@ -45,10 +42,10 @@ export function CareerHealthPanel({ careerHealth }: CareerHealthPanelProps) {
       <div className="mt-5">
         <div
           aria-hidden="true"
-          className="h-2 overflow-hidden rounded-full bg-[rgb(10_10_10_/_80%)]"
+          className="progress-track h-2"
         >
           <div
-            className="h-full rounded-full bg-[var(--color-accent)] [transition:var(--motion-fade)]"
+            className="progress-fill [transition:var(--motion-fade)]"
             style={{ width: `${careerHealth.score}%` }}
           />
         </div>

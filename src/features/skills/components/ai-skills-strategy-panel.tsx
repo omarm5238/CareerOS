@@ -23,10 +23,10 @@ function formatGeneratedDate(value: string | null): string {
 
 function priorityClass(priority: string): string {
   if (priority === "High") {
-    return "border-[rgb(239_68_68_/_30%)] bg-[rgb(239_68_68_/_10%)] text-[rgb(252_165_165)]";
+    return "border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] text-[var(--status-danger-text)]";
   }
   if (priority === "Medium") {
-    return "border-[rgb(245_158_11_/_30%)] bg-[rgb(245_158_11_/_10%)] text-[rgb(253_186_116)]";
+    return "border-[var(--status-warning-border)] bg-[var(--status-warning-bg)] text-[var(--status-warning-text)]";
   }
   return "border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_55%)] text-[var(--color-text-secondary)]";
 }
@@ -125,7 +125,7 @@ export function AiSkillsStrategyPanel({
   return (
     <section
       aria-labelledby="ai-skills-strategy-heading"
-      className="rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_58%)] p-5 backdrop-blur-xl"
+      className="surface-glass p-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -154,7 +154,7 @@ export function AiSkillsStrategyPanel({
           />
         ) : (
           <button
-            className="inline-flex cursor-not-allowed rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] opacity-60"
+            className="inline-flex cursor-not-allowed surface-card px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] opacity-60"
             disabled
             type="button"
           >
@@ -164,7 +164,7 @@ export function AiSkillsStrategyPanel({
       </div>
 
       {showEmptyJobsState ? (
-        <div className="mt-5 space-y-3 rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4">
+        <div className="mt-5 space-y-3 surface-card p-4">
           <p className="text-sm text-[var(--color-text-secondary)]">
             {ZERO_JOBS_BENCHMARKING_MESSAGE}
           </p>
@@ -175,7 +175,7 @@ export function AiSkillsStrategyPanel({
             Go to Jobs module
           </Link>
           {insight?.isStale ? (
-            <p className="text-sm text-[rgb(253_186_116)]">
+            <p className="text-sm text-[var(--status-warning-text)]">
               Needs refresh. Saved jobs changed since this strategy was generated.
             </p>
           ) : null}
@@ -203,8 +203,8 @@ export function AiSkillsStrategyPanel({
           </div>
 
           {insight.isStale ? (
-            <div className="rounded-[var(--radius-md)] border border-[rgb(245_158_11_/_25%)] bg-[rgb(245_158_11_/_8%)] p-4">
-              <p className="text-sm font-medium text-[rgb(253_186_116)]">Needs refresh</p>
+            <div className="surface-insight p-4">
+              <p className="text-sm font-medium text-[var(--status-warning-text)]">Needs refresh</p>
               <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
                 Saved jobs changed since this strategy was generated. Refresh to update all-jobs
                 recommendations.
@@ -213,11 +213,11 @@ export function AiSkillsStrategyPanel({
           ) : null}
 
           {insight.warnings.length > 0 ? (
-            <div className="rounded-[var(--radius-md)] border border-[rgb(245_158_11_/_25%)] bg-[rgb(245_158_11_/_8%)] p-4">
-              <h3 className="text-sm font-medium text-[rgb(253_186_116)]">Warnings</h3>
-              <ul className="mt-2 space-y-1">
+            <div className="surface-insight p-4">
+              <h3 className="text-sm font-medium text-[var(--status-warning-text)]">Insights</h3>
+              <ul className="mt-2 space-y-1.5">
                 {insight.warnings.map((warning) => (
-                  <li className="text-sm text-[var(--color-text-secondary)]" key={warning}>
+                  <li className="text-sm leading-5 text-[var(--color-text-secondary)]" key={warning}>
                     {warning}
                   </li>
                 ))}
@@ -233,7 +233,7 @@ export function AiSkillsStrategyPanel({
               <ul className="mt-3 space-y-3">
                 {insight.prioritySkills.map((item) => (
                   <li
-                    className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+                    className="surface-card p-4"
                     key={item.skill}
                   >
                     <div className="flex flex-wrap items-center gap-2">
@@ -306,7 +306,7 @@ export function AiSkillsStrategyPanel({
               <ul className="mt-3 space-y-3">
                 {insight.learningRoadmap.map((item) => (
                   <li
-                    className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+                    className="surface-card p-4"
                     key={item.title}
                   >
                     <p className="text-sm font-medium text-[var(--color-text-primary)]">
@@ -342,7 +342,7 @@ export function AiSkillsStrategyPanel({
               <ul className="mt-3 space-y-3">
                 {insight.projectIdeas.slice(0, 4).map((item) => (
                   <li
-                    className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+                    className="surface-card p-4"
                     key={item.title}
                   >
                     <p className="text-sm font-medium text-[var(--color-text-primary)]">
@@ -392,7 +392,7 @@ export function AiSkillsStrategyPanel({
               <ul className="mt-3 space-y-3">
                 {insight.resumeSkillAdvice.map((item) => (
                   <li
-                    className="rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_68%)] p-4"
+                    className="surface-card p-4"
                     key={item.skill}
                   >
                     <div className="flex flex-wrap items-center gap-2">

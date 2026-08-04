@@ -58,7 +58,7 @@ export function DeleteResumeHistoryItemButton({
   if (!confirming) {
     return (
       <button
-        className="text-[11px] text-[rgb(252_165_165)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        className="text-[11px] text-[var(--status-danger-text)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
@@ -74,7 +74,7 @@ export function DeleteResumeHistoryItemButton({
 
   return (
     <div
-      className="mt-2 rounded-[var(--radius-md)] border border-[rgb(239_68_68_/_25%)] bg-[rgb(239_68_68_/_8%)] p-2"
+      className="mt-2 rounded-[var(--radius-md)] border border-[var(--status-danger-border)] bg-[var(--status-danger-bg)] p-2"
       onClick={(event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -85,7 +85,7 @@ export function DeleteResumeHistoryItemButton({
       </p>
       <div className="mt-2 flex flex-wrap gap-2">
         <button
-          className="rounded border border-[rgb(239_68_68_/_40%)] px-2 py-1 text-[11px] text-[rgb(252_165_165)] disabled:opacity-50"
+          className="btn-danger rounded px-2 py-1 text-[11px]"
           disabled={isDeleting}
           onClick={() => void handleDelete()}
           type="button"
