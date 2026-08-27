@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
+import type { JobTailoredResumeSummary } from "@/features/resume/versions/types";
 
 import type { JobDetailView, JobListItem } from "../types";
 import { AddJobForm } from "./add-job-form";
@@ -15,6 +16,7 @@ type JobsModulePageProps = {
   selectedJobId: string | null;
   jobNotFound?: boolean;
   hasResumeProfile: boolean;
+  tailoredResume: JobTailoredResumeSummary | null;
 };
 
 export function JobsModulePage({
@@ -23,6 +25,7 @@ export function JobsModulePage({
   selectedJobId,
   jobNotFound = false,
   hasResumeProfile,
+  tailoredResume,
 }: JobsModulePageProps) {
   return (
     <WorkspaceModuleLayout title="Jobs Module">
@@ -90,7 +93,11 @@ export function JobsModulePage({
               </div>
               <div>
                 {selectedJob ? (
-                  <JobDetailPanel hasResumeProfile={hasResumeProfile} job={selectedJob} />
+                  <JobDetailPanel
+                    hasResumeProfile={hasResumeProfile}
+                    job={selectedJob}
+                    tailoredResume={tailoredResume}
+                  />
                 ) : (
                   <p className="text-sm text-[var(--color-text-secondary)]">
                     Select a saved job to view match details.

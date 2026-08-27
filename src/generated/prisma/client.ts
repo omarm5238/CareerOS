@@ -91,3 +91,13 @@ export type skillsInsight = Prisma.skillsInsightModel
  * 
  */
 export type careerBrief = Prisma.careerBriefModel
+/**
+ * Model resumeVersion
+ * Container for a tailored resume version. Original uploaded resumes are never overwritten.
+ */
+export type resumeVersion = Prisma.resumeVersionModel
+/**
+ * Model resumeVersionRevision
+ * Immutable-style content snapshot for a resume version at a specific revision point.
+ */
+export type resumeVersionRevision = Prisma.resumeVersionRevisionModel

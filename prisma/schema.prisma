@@ -16,12 +16,14 @@ model user {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  sessions        session[]
-  accounts        account[]
-  resumeDocuments resumeDocument[]
-  jobPostings     jobPosting[]
-  skillsInsights  skillsInsight[]
-  careerBriefs    careerBrief[]
+  sessions               session[]
+  accounts               account[]
+  resumeDocuments        resumeDocument[]
+  jobPostings            jobPosting[]
+  skillsInsights         skillsInsight[]
+  careerBriefs           careerBrief[]
+  resumeVersions         resumeVersion[]
+  resumeVersionRevisions resumeVersionRevision[]
 }
 
 model session {
@@ -81,8 +83,9 @@ model resumeDocument {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  user     user            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  analysis resumeAnalysis?
+  user           user            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis       resumeAnalysis?
+  resumeVersions resumeVersion[]
 
   @@index([userId])
 }
@@ -106,7 +109,8 @@ model resumeAnalysis {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  resumeDocument resumeDocument @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
+  resumeDocument resumeDocument  @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
+  resumeVersions resumeVersion[]
 }
 
 model jobPosting {
@@ -124,8 +128,9 @@ model jobPosting {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
-  user     user         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  analysis jobAnalysis?
+  user           user            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis       jobAnalysis?
+  resumeVersions resumeVersion[]
 
   @@index([userId])
   @@index([createdAt])
@@ -150,7 +155,8 @@ model jobAnalysis {
   createdAt           DateTime @default(now())
   updatedAt           DateTime @updatedAt
 
-  jobPosting jobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  jobPosting     jobPosting      @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  resumeVersions resumeVersion[]
 }
 
 model skillsInsight {
@@ -196,5 +202,105 @@ model careerBrief {
   user user @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
+  @@index([createdAt])
+}
+
+enum ResumeVersionType {
+  JOB_SPECIFIC
+  ROLE_BASED
+  GENERAL
+}
+
+enum ResumeVersionStatus {
+  DRAFT
+  READY
+  USED
+  ARCHIVED
+}
+
+enum ResumeVersionRevisionSource {
+  AI_GENERATED
+  USER_EDITED
+  RULE_BASED_FALLBACK
+  IMPORTED
+}
+
+enum ResumeVersionGenerationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+/// Container for a tailored resume version. Original uploaded resumes are never overwritten.
+model resumeVersion {
+  id     String @id @default(cuid())
+  userId String
+
+  sourceResumeDocumentId String?
+  sourceResumeAnalysisId String?
+
+  targetJobId         String?
+  targetJobAnalysisId String?
+
+  type   ResumeVersionType   @default(JOB_SPECIFIC)
+  title  String
+  status ResumeVersionStatus @default(DRAFT)
+
+  activeRevisionId String? @unique
+
+  alignmentScoreBefore Int?
+  alignmentScoreAfter  Int?
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archivedAt DateTime?
+
+  user                 user                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceResumeDocument resumeDocument?         @relation(fields: [sourceResumeDocumentId], references: [id], onDelete: SetNull)
+  sourceResumeAnalysis resumeAnalysis?         @relation(fields: [sourceResumeAnalysisId], references: [id], onDelete: SetNull)
+  targetJob            jobPosting?             @relation(fields: [targetJobId], references: [id], onDelete: SetNull)
+  targetJobAnalysis    jobAnalysis?            @relation(fields: [targetJobAnalysisId], references: [id], onDelete: SetNull)
+  revisions            resumeVersionRevision[] @relation("ResumeVersionRevisions")
+  activeRevision       resumeVersionRevision?  @relation("ActiveResumeVersionRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([targetJobId])
+  @@index([status])
+  @@index([updatedAt])
+}
+
+/// Immutable-style content snapshot for a resume version at a specific revision point.
+model resumeVersionRevision {
+  id              String @id @default(cuid())
+  resumeVersionId String
+  userId          String
+
+  revisionNumber      Int
+  source              ResumeVersionRevisionSource
+  contentJson         Json
+  keywordCoverageJson Json
+  warningsJson        Json
+  changeLogJson       Json
+  evidenceNotesJson   Json
+  inputSnapshotJson   Json
+
+  alignmentScoreBefore Int?
+  alignmentScoreAfter  Int?
+
+  model            String?
+  aiSource         String?
+  generationStatus ResumeVersionGenerationStatus @default(COMPLETED)
+  errorMessage     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user             user           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeVersion    resumeVersion  @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
+  activeForVersion resumeVersion? @relation("ActiveResumeVersionRevision")
+
+  @@unique([resumeVersionId, revisionNumber])
+  @@index([userId])
+  @@index([resumeVersionId])
   @@index([createdAt])
 }

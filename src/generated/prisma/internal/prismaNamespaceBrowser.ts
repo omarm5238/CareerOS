@@ -60,7 +60,9 @@ export const ModelName = {
   jobPosting: 'jobPosting',
   jobAnalysis: 'jobAnalysis',
   skillsInsight: 'skillsInsight',
-  careerBrief: 'careerBrief'
+  careerBrief: 'careerBrief',
+  resumeVersion: 'resumeVersion',
+  resumeVersionRevision: 'resumeVersionRevision'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -257,6 +259,52 @@ export const CareerBriefScalarFieldEnum = {
 } as const
 
 export type CareerBriefScalarFieldEnum = (typeof CareerBriefScalarFieldEnum)[keyof typeof CareerBriefScalarFieldEnum]
+
+
+export const ResumeVersionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sourceResumeDocumentId: 'sourceResumeDocumentId',
+  sourceResumeAnalysisId: 'sourceResumeAnalysisId',
+  targetJobId: 'targetJobId',
+  targetJobAnalysisId: 'targetJobAnalysisId',
+  type: 'type',
+  title: 'title',
+  status: 'status',
+  activeRevisionId: 'activeRevisionId',
+  alignmentScoreBefore: 'alignmentScoreBefore',
+  alignmentScoreAfter: 'alignmentScoreAfter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt'
+} as const
+
+export type ResumeVersionScalarFieldEnum = (typeof ResumeVersionScalarFieldEnum)[keyof typeof ResumeVersionScalarFieldEnum]
+
+
+export const ResumeVersionRevisionScalarFieldEnum = {
+  id: 'id',
+  resumeVersionId: 'resumeVersionId',
+  userId: 'userId',
+  revisionNumber: 'revisionNumber',
+  source: 'source',
+  contentJson: 'contentJson',
+  keywordCoverageJson: 'keywordCoverageJson',
+  warningsJson: 'warningsJson',
+  changeLogJson: 'changeLogJson',
+  evidenceNotesJson: 'evidenceNotesJson',
+  inputSnapshotJson: 'inputSnapshotJson',
+  alignmentScoreBefore: 'alignmentScoreBefore',
+  alignmentScoreAfter: 'alignmentScoreAfter',
+  model: 'model',
+  aiSource: 'aiSource',
+  generationStatus: 'generationStatus',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ResumeVersionRevisionScalarFieldEnum = (typeof ResumeVersionRevisionScalarFieldEnum)[keyof typeof ResumeVersionRevisionScalarFieldEnum]
 
 
 export const SortOrder = {

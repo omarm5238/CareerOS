@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+import { JobTailoredResumeSection } from "@/features/resume/versions/components/job-tailored-resume-section";
+import type { JobTailoredResumeSummary } from "@/features/resume/versions/types";
+
 import type { JobDetailView } from "../types";
 import { JobAiInsights } from "./job-ai-insights";
 import { JobAnalysisSourceBadge } from "./job-analysis-source-badge";
@@ -12,9 +15,14 @@ import { JobReanalyzeButton } from "./job-reanalyze-button";
 type JobDetailPanelProps = {
   job: JobDetailView;
   hasResumeProfile: boolean;
+  tailoredResume: JobTailoredResumeSummary | null;
 };
 
-export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
+export function JobDetailPanel({
+  job,
+  hasResumeProfile,
+  tailoredResume,
+}: JobDetailPanelProps) {
   const preview =
     job.description.length > 420
       ? `${job.description.slice(0, 420).trimEnd()}…`
@@ -61,6 +69,12 @@ export function JobDetailPanel({ job, hasResumeProfile }: JobDetailPanelProps) {
           </p>
         </div>
       </section>
+
+      <JobTailoredResumeSection
+        hasResumeProfile={hasResumeProfile}
+        jobId={job.id}
+        summary={tailoredResume ?? { primary: null, archivedCount: 0 }}
+      />
 
       <JobApplicationTracker job={job} />
 

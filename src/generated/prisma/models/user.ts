@@ -204,6 +204,8 @@ export type userWhereInput = {
   jobPostings?: Prisma.JobPostingListRelationFilter
   skillsInsights?: Prisma.SkillsInsightListRelationFilter
   careerBriefs?: Prisma.CareerBriefListRelationFilter
+  resumeVersions?: Prisma.ResumeVersionListRelationFilter
+  resumeVersionRevisions?: Prisma.ResumeVersionRevisionListRelationFilter
 }
 
 export type userOrderByWithRelationInput = {
@@ -220,6 +222,8 @@ export type userOrderByWithRelationInput = {
   jobPostings?: Prisma.jobPostingOrderByRelationAggregateInput
   skillsInsights?: Prisma.skillsInsightOrderByRelationAggregateInput
   careerBriefs?: Prisma.careerBriefOrderByRelationAggregateInput
+  resumeVersions?: Prisma.resumeVersionOrderByRelationAggregateInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionOrderByRelationAggregateInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -239,6 +243,8 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   jobPostings?: Prisma.JobPostingListRelationFilter
   skillsInsights?: Prisma.SkillsInsightListRelationFilter
   careerBriefs?: Prisma.CareerBriefListRelationFilter
+  resumeVersions?: Prisma.ResumeVersionListRelationFilter
+  resumeVersionRevisions?: Prisma.ResumeVersionRevisionListRelationFilter
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -281,6 +287,8 @@ export type userCreateInput = {
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -297,6 +305,8 @@ export type userUncheckedCreateInput = {
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -313,6 +323,8 @@ export type userUpdateInput = {
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -329,6 +341,8 @@ export type userUncheckedUpdateInput = {
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -496,6 +510,34 @@ export type userUpdateOneRequiredWithoutCareerBriefsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerBriefsInput, Prisma.userUpdateWithoutCareerBriefsInput>, Prisma.userUncheckedUpdateWithoutCareerBriefsInput>
 }
 
+export type userCreateNestedOneWithoutResumeVersionsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutResumeVersionsInput, Prisma.userUncheckedCreateWithoutResumeVersionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutResumeVersionsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutResumeVersionsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutResumeVersionsInput, Prisma.userUncheckedCreateWithoutResumeVersionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutResumeVersionsInput
+  upsert?: Prisma.userUpsertWithoutResumeVersionsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutResumeVersionsInput, Prisma.userUpdateWithoutResumeVersionsInput>, Prisma.userUncheckedUpdateWithoutResumeVersionsInput>
+}
+
+export type userCreateNestedOneWithoutResumeVersionRevisionsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedCreateWithoutResumeVersionRevisionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutResumeVersionRevisionsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutResumeVersionRevisionsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedCreateWithoutResumeVersionRevisionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutResumeVersionRevisionsInput
+  upsert?: Prisma.userUpsertWithoutResumeVersionRevisionsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutResumeVersionRevisionsInput, Prisma.userUpdateWithoutResumeVersionRevisionsInput>, Prisma.userUncheckedUpdateWithoutResumeVersionRevisionsInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -509,6 +551,8 @@ export type userCreateWithoutSessionsInput = {
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -524,6 +568,8 @@ export type userUncheckedCreateWithoutSessionsInput = {
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -555,6 +601,8 @@ export type userUpdateWithoutSessionsInput = {
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -570,6 +618,8 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -585,6 +635,8 @@ export type userCreateWithoutAccountsInput = {
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -600,6 +652,8 @@ export type userUncheckedCreateWithoutAccountsInput = {
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -631,6 +685,8 @@ export type userUpdateWithoutAccountsInput = {
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -646,6 +702,8 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -661,6 +719,8 @@ export type userCreateWithoutResumeDocumentsInput = {
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -676,6 +736,8 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -707,6 +769,8 @@ export type userUpdateWithoutResumeDocumentsInput = {
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -722,6 +786,8 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -737,6 +803,8 @@ export type userCreateWithoutJobPostingsInput = {
   resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -752,6 +820,8 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -783,6 +853,8 @@ export type userUpdateWithoutJobPostingsInput = {
   resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -798,6 +870,8 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -813,6 +887,8 @@ export type userCreateWithoutSkillsInsightsInput = {
   resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -828,6 +904,8 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -859,6 +937,8 @@ export type userUpdateWithoutSkillsInsightsInput = {
   resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -874,6 +954,8 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -889,6 +971,8 @@ export type userCreateWithoutCareerBriefsInput = {
   resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
   jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -904,6 +988,8 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
   jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
   skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -935,6 +1021,8 @@ export type userUpdateWithoutCareerBriefsInput = {
   resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
   jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -950,6 +1038,176 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
   jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
   skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutResumeVersionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutResumeVersionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutResumeVersionsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutResumeVersionsInput, Prisma.userUncheckedCreateWithoutResumeVersionsInput>
+}
+
+export type userUpsertWithoutResumeVersionsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutResumeVersionsInput, Prisma.userUncheckedUpdateWithoutResumeVersionsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutResumeVersionsInput, Prisma.userUncheckedCreateWithoutResumeVersionsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutResumeVersionsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutResumeVersionsInput, Prisma.userUncheckedUpdateWithoutResumeVersionsInput>
+}
+
+export type userUpdateWithoutResumeVersionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutResumeVersionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutResumeVersionRevisionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedCreateWithoutResumeVersionRevisionsInput>
+}
+
+export type userUpsertWithoutResumeVersionRevisionsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedUpdateWithoutResumeVersionRevisionsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedCreateWithoutResumeVersionRevisionsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutResumeVersionRevisionsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutResumeVersionRevisionsInput, Prisma.userUncheckedUpdateWithoutResumeVersionRevisionsInput>
+}
+
+export type userUpdateWithoutResumeVersionRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -964,6 +1222,8 @@ export type UserCountOutputType = {
   jobPostings: number
   skillsInsights: number
   careerBriefs: number
+  resumeVersions: number
+  resumeVersionRevisions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -973,6 +1233,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   jobPostings?: boolean | UserCountOutputTypeCountJobPostingsArgs
   skillsInsights?: boolean | UserCountOutputTypeCountSkillsInsightsArgs
   careerBriefs?: boolean | UserCountOutputTypeCountCareerBriefsArgs
+  resumeVersions?: boolean | UserCountOutputTypeCountResumeVersionsArgs
+  resumeVersionRevisions?: boolean | UserCountOutputTypeCountResumeVersionRevisionsArgs
 }
 
 /**
@@ -1027,6 +1289,20 @@ export type UserCountOutputTypeCountCareerBriefsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.careerBriefWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountResumeVersionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.resumeVersionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountResumeVersionRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.resumeVersionRevisionWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1042,6 +1318,8 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   jobPostings?: boolean | Prisma.user$jobPostingsArgs<ExtArgs>
   skillsInsights?: boolean | Prisma.user$skillsInsightsArgs<ExtArgs>
   careerBriefs?: boolean | Prisma.user$careerBriefsArgs<ExtArgs>
+  resumeVersions?: boolean | Prisma.user$resumeVersionsArgs<ExtArgs>
+  resumeVersionRevisions?: boolean | Prisma.user$resumeVersionRevisionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1083,6 +1361,8 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   jobPostings?: boolean | Prisma.user$jobPostingsArgs<ExtArgs>
   skillsInsights?: boolean | Prisma.user$skillsInsightsArgs<ExtArgs>
   careerBriefs?: boolean | Prisma.user$careerBriefsArgs<ExtArgs>
+  resumeVersions?: boolean | Prisma.user$resumeVersionsArgs<ExtArgs>
+  resumeVersionRevisions?: boolean | Prisma.user$resumeVersionRevisionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1097,6 +1377,8 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     jobPostings: Prisma.$jobPostingPayload<ExtArgs>[]
     skillsInsights: Prisma.$skillsInsightPayload<ExtArgs>[]
     careerBriefs: Prisma.$careerBriefPayload<ExtArgs>[]
+    resumeVersions: Prisma.$resumeVersionPayload<ExtArgs>[]
+    resumeVersionRevisions: Prisma.$resumeVersionRevisionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1506,6 +1788,8 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   jobPostings<T extends Prisma.user$jobPostingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$jobPostingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$jobPostingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   skillsInsights<T extends Prisma.user$skillsInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$skillsInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$skillsInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   careerBriefs<T extends Prisma.user$careerBriefsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerBriefsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerBriefPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  resumeVersions<T extends Prisma.user$resumeVersionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$resumeVersionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$resumeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  resumeVersionRevisions<T extends Prisma.user$resumeVersionRevisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$resumeVersionRevisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$resumeVersionRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2076,6 +2360,54 @@ export type user$careerBriefsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.CareerBriefScalarFieldEnum | Prisma.CareerBriefScalarFieldEnum[]
+}
+
+/**
+ * user.resumeVersions
+ */
+export type user$resumeVersionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeVersion
+   */
+  select?: Prisma.resumeVersionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeVersion
+   */
+  omit?: Prisma.resumeVersionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeVersionInclude<ExtArgs> | null
+  where?: Prisma.resumeVersionWhereInput
+  orderBy?: Prisma.resumeVersionOrderByWithRelationInput | Prisma.resumeVersionOrderByWithRelationInput[]
+  cursor?: Prisma.resumeVersionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResumeVersionScalarFieldEnum | Prisma.ResumeVersionScalarFieldEnum[]
+}
+
+/**
+ * user.resumeVersionRevisions
+ */
+export type user$resumeVersionRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeVersionRevision
+   */
+  select?: Prisma.resumeVersionRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeVersionRevision
+   */
+  omit?: Prisma.resumeVersionRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeVersionRevisionInclude<ExtArgs> | null
+  where?: Prisma.resumeVersionRevisionWhereInput
+  orderBy?: Prisma.resumeVersionRevisionOrderByWithRelationInput | Prisma.resumeVersionRevisionOrderByWithRelationInput[]
+  cursor?: Prisma.resumeVersionRevisionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResumeVersionRevisionScalarFieldEnum | Prisma.ResumeVersionRevisionScalarFieldEnum[]
 }
 
 /**

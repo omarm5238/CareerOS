@@ -7,6 +7,7 @@ import {
   getLatestResumeAnalysisForUser,
   getResumeAnalysisByDocumentIdForUser,
   getResumeAnalysisHistoryForUser,
+  getResumeVersionsForUser,
 } from "@/features/resume/server";
 import { auth } from "@/server/auth";
 
@@ -32,10 +33,14 @@ export default async function WorkspaceResumePage({
       ? rawDocumentId.trim()
       : null;
 
-  const [history, targetJobContext] = await Promise.all([
+  const [history, targetJobContext, allVersions] = await Promise.all([
     getResumeAnalysisHistoryForUser(session.user.id),
     getTargetJobContextForUser(session.user.id),
+    getResumeVersionsForUser(session.user.id, { includeArchived: true }),
   ]);
+
+  const versions = allVersions.filter((version) => version.status !== "ARCHIVED");
+  const archivedVersions = allVersions.filter((version) => version.status === "ARCHIVED");
 
   if (documentId) {
     const selected = await getResumeAnalysisByDocumentIdForUser(
@@ -47,10 +52,12 @@ export default async function WorkspaceResumePage({
       return (
         <ResumeAnalysisPage
           analysis={null}
+          archivedVersions={archivedVersions}
           documentNotFound
           history={history}
           selectedDocumentId={documentId}
           targetJobContext={targetJobContext}
+          versions={versions}
         />
       );
     }
@@ -58,9 +65,11 @@ export default async function WorkspaceResumePage({
     return (
       <ResumeAnalysisPage
         analysis={selected}
+        archivedVersions={archivedVersions}
         history={history}
         selectedDocumentId={selected.resumeDocumentId}
         targetJobContext={targetJobContext}
+        versions={versions}
       />
     );
   }
@@ -70,9 +79,11 @@ export default async function WorkspaceResumePage({
   return (
     <ResumeAnalysisPage
       analysis={latest}
+      archivedVersions={archivedVersions}
       history={history}
       selectedDocumentId={latest?.resumeDocumentId ?? null}
       targetJobContext={targetJobContext}
+      versions={versions}
     />
   );
 }

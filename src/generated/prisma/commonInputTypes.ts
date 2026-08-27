@@ -226,6 +226,101 @@ export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
   _max?: Prisma.NestedJsonFilter<$PrismaModel>
 }
 
+export type EnumResumeVersionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionType | Prisma.EnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel> | $Enums.ResumeVersionType
+}
+
+export type EnumResumeVersionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionStatus | Prisma.EnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel> | $Enums.ResumeVersionStatus
+}
+
+export type IntNullableFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableFilter<$PrismaModel> | number | null
+}
+
+export type EnumResumeVersionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionType | Prisma.EnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionTypeWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel>
+}
+
+export type EnumResumeVersionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionStatus | Prisma.EnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionStatusWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel>
+}
+
+export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type EnumResumeVersionRevisionSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionRevisionSource | Prisma.EnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel> | $Enums.ResumeVersionRevisionSource
+}
+
+export type EnumResumeVersionGenerationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionGenerationStatus | Prisma.EnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel> | $Enums.ResumeVersionGenerationStatus
+}
+
+export type EnumResumeVersionRevisionSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionRevisionSource | Prisma.EnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionRevisionSourceWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionRevisionSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel>
+}
+
+export type EnumResumeVersionGenerationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionGenerationStatus | Prisma.EnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionGenerationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionGenerationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -422,6 +517,101 @@ export type NestedJsonFilterBase<$PrismaModel = never> = {
   gt?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   gte?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
+}
+
+export type NestedEnumResumeVersionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionType | Prisma.EnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel> | $Enums.ResumeVersionType
+}
+
+export type NestedEnumResumeVersionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionStatus | Prisma.EnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel> | $Enums.ResumeVersionStatus
+}
+
+export type NestedEnumResumeVersionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionType | Prisma.EnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionType[] | Prisma.ListEnumResumeVersionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionTypeWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumResumeVersionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionStatus | Prisma.EnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionStatus[] | Prisma.ListEnumResumeVersionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionStatusWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionStatusFilter<$PrismaModel>
+}
+
+export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.IntFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListIntFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedIntNullableFilter<$PrismaModel>
+}
+
+export type NestedFloatNullableFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
+}
+
+export type NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionRevisionSource | Prisma.EnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel> | $Enums.ResumeVersionRevisionSource
+}
+
+export type NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionGenerationStatus | Prisma.EnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel> | $Enums.ResumeVersionGenerationStatus
+}
+
+export type NestedEnumResumeVersionRevisionSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionRevisionSource | Prisma.EnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionRevisionSource[] | Prisma.ListEnumResumeVersionRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionRevisionSourceWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionRevisionSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionRevisionSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumResumeVersionGenerationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeVersionGenerationStatus | Prisma.EnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ResumeVersionGenerationStatus[] | Prisma.ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumResumeVersionGenerationStatusWithAggregatesFilter<$PrismaModel> | $Enums.ResumeVersionGenerationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeVersionGenerationStatusFilter<$PrismaModel>
 }
 
 

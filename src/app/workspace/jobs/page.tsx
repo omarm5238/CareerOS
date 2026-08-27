@@ -6,7 +6,10 @@ import {
   getJobPostingByIdForUser,
   getJobPostingsForUser,
 } from "@/features/jobs/server";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import {
+  getJobTailoredResumeSummary,
+  getLatestResumeAnalysisForUser,
+} from "@/features/resume/server";
 import { auth } from "@/server/auth";
 
 type WorkspaceJobsPageProps = {
@@ -43,9 +46,12 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
           jobs={jobs}
           selectedJob={null}
           selectedJobId={jobId}
+          tailoredResume={null}
         />
       );
     }
+
+    const tailoredResume = await getJobTailoredResumeSummary(session.user.id, selected.id);
 
     return (
       <JobsModulePage
@@ -53,6 +59,7 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
         jobs={jobs}
         selectedJob={selected}
         selectedJobId={selected.id}
+        tailoredResume={tailoredResume}
       />
     );
   }
@@ -61,6 +68,9 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
   const selectedJob = latestId
     ? await getJobPostingByIdForUser(session.user.id, latestId)
     : null;
+  const tailoredResume = selectedJob
+    ? await getJobTailoredResumeSummary(session.user.id, selectedJob.id)
+    : null;
 
   return (
     <JobsModulePage
@@ -68,6 +78,7 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
       jobs={jobs}
       selectedJob={selectedJob}
       selectedJobId={latestId}
+      tailoredResume={tailoredResume}
     />
   );
 }

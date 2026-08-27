@@ -9,7 +9,39 @@
 * 🟢 You can import this file directly.
 */
 
+export const ResumeVersionType = {
+  JOB_SPECIFIC: 'JOB_SPECIFIC',
+  ROLE_BASED: 'ROLE_BASED',
+  GENERAL: 'GENERAL'
+} as const
+
+export type ResumeVersionType = (typeof ResumeVersionType)[keyof typeof ResumeVersionType]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const ResumeVersionStatus = {
+  DRAFT: 'DRAFT',
+  READY: 'READY',
+  USED: 'USED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type ResumeVersionStatus = (typeof ResumeVersionStatus)[keyof typeof ResumeVersionStatus]
+
+
+export const ResumeVersionRevisionSource = {
+  AI_GENERATED: 'AI_GENERATED',
+  USER_EDITED: 'USER_EDITED',
+  RULE_BASED_FALLBACK: 'RULE_BASED_FALLBACK',
+  IMPORTED: 'IMPORTED'
+} as const
+
+export type ResumeVersionRevisionSource = (typeof ResumeVersionRevisionSource)[keyof typeof ResumeVersionRevisionSource]
+
+
+export const ResumeVersionGenerationStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type ResumeVersionGenerationStatus = (typeof ResumeVersionGenerationStatus)[keyof typeof ResumeVersionGenerationStatus]

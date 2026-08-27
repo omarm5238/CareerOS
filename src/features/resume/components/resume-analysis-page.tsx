@@ -4,6 +4,9 @@ import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
 import type { TargetJobContext } from "@/features/jobs";
 
+import { ResumeVersionsSection } from "../versions/components/resume-versions-section";
+import type { ResumeVersionListItem } from "../versions/types";
+
 import { buildResumeImprovementCenter } from "../lib/build-resume-improvement-center";
 import type { ResumeAnalysisHistoryItem, ResumeModuleAnalysis } from "../types";
 import { ResumeAnalysisHeader } from "./resume-analysis-header";
@@ -23,6 +26,8 @@ type ResumeAnalysisPageProps = {
   selectedDocumentId: string | null;
   documentNotFound?: boolean;
   targetJobContext: TargetJobContext;
+  versions: ResumeVersionListItem[];
+  archivedVersions: ResumeVersionListItem[];
 };
 
 export function ResumeAnalysisPage({
@@ -31,6 +36,8 @@ export function ResumeAnalysisPage({
   selectedDocumentId,
   documentNotFound = false,
   targetJobContext,
+  versions,
+  archivedVersions,
 }: ResumeAnalysisPageProps) {
   const latestDocumentId = history[0]?.resumeDocumentId ?? null;
   const improvementCenter = analysis
@@ -39,7 +46,7 @@ export function ResumeAnalysisPage({
 
   return (
     <WorkspaceModuleLayout title="Resume Module">
-      {!analysis && history.length === 0 ? (
+      {!analysis && history.length === 0 && versions.length === 0 ? (
         <ResumeEmptyState />
       ) : (
         <div className="relative min-h-0 flex-1 overflow-y-auto">
@@ -109,6 +116,10 @@ export function ResumeAnalysisPage({
                 </div>
 
                 <div className="mt-6 space-y-6">
+                  <ResumeVersionsSection
+                    archivedVersions={archivedVersions}
+                    versions={versions}
+                  />
                   {improvementCenter ? (
                     <ResumeImprovementCenter data={improvementCenter} />
                   ) : null}
@@ -121,6 +132,10 @@ export function ResumeAnalysisPage({
                   items={history}
                   latestDocumentId={latestDocumentId}
                   selectedDocumentId={selectedDocumentId}
+                />
+                <ResumeVersionsSection
+                  archivedVersions={archivedVersions}
+                  versions={versions}
                 />
               </div>
             )}

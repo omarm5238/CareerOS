@@ -285,6 +285,7 @@ export type resumeAnalysisWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"resumeAnalysis"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"resumeAnalysis"> | Date | string
   resumeDocument?: Prisma.XOR<Prisma.ResumeDocumentScalarRelationFilter, Prisma.resumeDocumentWhereInput>
+  resumeVersions?: Prisma.ResumeVersionListRelationFilter
 }
 
 export type resumeAnalysisOrderByWithRelationInput = {
@@ -306,6 +307,7 @@ export type resumeAnalysisOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   resumeDocument?: Prisma.resumeDocumentOrderByWithRelationInput
+  resumeVersions?: Prisma.resumeVersionOrderByRelationAggregateInput
 }
 
 export type resumeAnalysisWhereUniqueInput = Prisma.AtLeast<{
@@ -330,6 +332,7 @@ export type resumeAnalysisWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"resumeAnalysis"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"resumeAnalysis"> | Date | string
   resumeDocument?: Prisma.XOR<Prisma.ResumeDocumentScalarRelationFilter, Prisma.resumeDocumentWhereInput>
+  resumeVersions?: Prisma.ResumeVersionListRelationFilter
 }, "id" | "resumeDocumentId">
 
 export type resumeAnalysisOrderByWithAggregationInput = {
@@ -398,6 +401,7 @@ export type resumeAnalysisCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutAnalysisInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutSourceResumeAnalysisInput
 }
 
 export type resumeAnalysisUncheckedCreateInput = {
@@ -418,6 +422,7 @@ export type resumeAnalysisUncheckedCreateInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutSourceResumeAnalysisInput
 }
 
 export type resumeAnalysisUpdateInput = {
@@ -438,6 +443,7 @@ export type resumeAnalysisUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutAnalysisNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutSourceResumeAnalysisNestedInput
 }
 
 export type resumeAnalysisUncheckedUpdateInput = {
@@ -458,6 +464,7 @@ export type resumeAnalysisUncheckedUpdateInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutSourceResumeAnalysisNestedInput
 }
 
 export type resumeAnalysisCreateManyInput = {
@@ -610,6 +617,22 @@ export type resumeAnalysisUncheckedUpdateOneWithoutResumeDocumentNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.resumeAnalysisUpdateToOneWithWhereWithoutResumeDocumentInput, Prisma.resumeAnalysisUpdateWithoutResumeDocumentInput>, Prisma.resumeAnalysisUncheckedUpdateWithoutResumeDocumentInput>
 }
 
+export type resumeAnalysisCreateNestedOneWithoutResumeVersionsInput = {
+  create?: Prisma.XOR<Prisma.resumeAnalysisCreateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedCreateWithoutResumeVersionsInput>
+  connectOrCreate?: Prisma.resumeAnalysisCreateOrConnectWithoutResumeVersionsInput
+  connect?: Prisma.resumeAnalysisWhereUniqueInput
+}
+
+export type resumeAnalysisUpdateOneWithoutResumeVersionsNestedInput = {
+  create?: Prisma.XOR<Prisma.resumeAnalysisCreateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedCreateWithoutResumeVersionsInput>
+  connectOrCreate?: Prisma.resumeAnalysisCreateOrConnectWithoutResumeVersionsInput
+  upsert?: Prisma.resumeAnalysisUpsertWithoutResumeVersionsInput
+  disconnect?: Prisma.resumeAnalysisWhereInput | boolean
+  delete?: Prisma.resumeAnalysisWhereInput | boolean
+  connect?: Prisma.resumeAnalysisWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.resumeAnalysisUpdateToOneWithWhereWithoutResumeVersionsInput, Prisma.resumeAnalysisUpdateWithoutResumeVersionsInput>, Prisma.resumeAnalysisUncheckedUpdateWithoutResumeVersionsInput>
+}
+
 export type resumeAnalysisCreateWithoutResumeDocumentInput = {
   id?: string
   detectedRole: string
@@ -627,6 +650,7 @@ export type resumeAnalysisCreateWithoutResumeDocumentInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutSourceResumeAnalysisInput
 }
 
 export type resumeAnalysisUncheckedCreateWithoutResumeDocumentInput = {
@@ -646,6 +670,7 @@ export type resumeAnalysisUncheckedCreateWithoutResumeDocumentInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutSourceResumeAnalysisInput
 }
 
 export type resumeAnalysisCreateOrConnectWithoutResumeDocumentInput = {
@@ -681,6 +706,7 @@ export type resumeAnalysisUpdateWithoutResumeDocumentInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutSourceResumeAnalysisNestedInput
 }
 
 export type resumeAnalysisUncheckedUpdateWithoutResumeDocumentInput = {
@@ -700,8 +726,134 @@ export type resumeAnalysisUncheckedUpdateWithoutResumeDocumentInput = {
   aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutSourceResumeAnalysisNestedInput
 }
 
+export type resumeAnalysisCreateWithoutResumeVersionsInput = {
+  id?: string
+  detectedRole: string
+  experienceLevel: string
+  completenessScore: number
+  detectedSkills: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  suggestedFocus: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warnings: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  profileSummary?: string | null
+  strengths?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  weaknesses?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  atsRecommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutAnalysisInput
+}
+
+export type resumeAnalysisUncheckedCreateWithoutResumeVersionsInput = {
+  id?: string
+  resumeDocumentId: string
+  detectedRole: string
+  experienceLevel: string
+  completenessScore: number
+  detectedSkills: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  suggestedFocus: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warnings: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  profileSummary?: string | null
+  strengths?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  weaknesses?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  atsRecommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: string
+  aiModel?: string | null
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type resumeAnalysisCreateOrConnectWithoutResumeVersionsInput = {
+  where: Prisma.resumeAnalysisWhereUniqueInput
+  create: Prisma.XOR<Prisma.resumeAnalysisCreateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedCreateWithoutResumeVersionsInput>
+}
+
+export type resumeAnalysisUpsertWithoutResumeVersionsInput = {
+  update: Prisma.XOR<Prisma.resumeAnalysisUpdateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedUpdateWithoutResumeVersionsInput>
+  create: Prisma.XOR<Prisma.resumeAnalysisCreateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedCreateWithoutResumeVersionsInput>
+  where?: Prisma.resumeAnalysisWhereInput
+}
+
+export type resumeAnalysisUpdateToOneWithWhereWithoutResumeVersionsInput = {
+  where?: Prisma.resumeAnalysisWhereInput
+  data: Prisma.XOR<Prisma.resumeAnalysisUpdateWithoutResumeVersionsInput, Prisma.resumeAnalysisUncheckedUpdateWithoutResumeVersionsInput>
+}
+
+export type resumeAnalysisUpdateWithoutResumeVersionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  detectedRole?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  completenessScore?: Prisma.IntFieldUpdateOperationsInput | number
+  detectedSkills?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  suggestedFocus?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  profileSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  strengths?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  weaknesses?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  atsRecommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutAnalysisNestedInput
+}
+
+export type resumeAnalysisUncheckedUpdateWithoutResumeVersionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  resumeDocumentId?: Prisma.StringFieldUpdateOperationsInput | string
+  detectedRole?: Prisma.StringFieldUpdateOperationsInput | string
+  experienceLevel?: Prisma.StringFieldUpdateOperationsInput | string
+  completenessScore?: Prisma.IntFieldUpdateOperationsInput | number
+  detectedSkills?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  suggestedFocus?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  profileSummary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  strengths?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  weaknesses?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  atsRecommendations?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  analysisSource?: Prisma.StringFieldUpdateOperationsInput | string
+  aiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiWarnings?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type ResumeAnalysisCountOutputType
+ */
+
+export type ResumeAnalysisCountOutputType = {
+  resumeVersions: number
+}
+
+export type ResumeAnalysisCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  resumeVersions?: boolean | ResumeAnalysisCountOutputTypeCountResumeVersionsArgs
+}
+
+/**
+ * ResumeAnalysisCountOutputType without action
+ */
+export type ResumeAnalysisCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ResumeAnalysisCountOutputType
+   */
+  select?: Prisma.ResumeAnalysisCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ResumeAnalysisCountOutputType without action
+ */
+export type ResumeAnalysisCountOutputTypeCountResumeVersionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.resumeVersionWhereInput
+}
 
 
 export type resumeAnalysisSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -723,6 +875,8 @@ export type resumeAnalysisSelect<ExtArgs extends runtime.Types.Extensions.Intern
   createdAt?: boolean
   updatedAt?: boolean
   resumeDocument?: boolean | Prisma.resumeDocumentDefaultArgs<ExtArgs>
+  resumeVersions?: boolean | Prisma.resumeAnalysis$resumeVersionsArgs<ExtArgs>
+  _count?: boolean | Prisma.ResumeAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resumeAnalysis"]>
 
 export type resumeAnalysisSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -790,6 +944,8 @@ export type resumeAnalysisSelectScalar = {
 export type resumeAnalysisOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "resumeDocumentId" | "detectedRole" | "experienceLevel" | "completenessScore" | "detectedSkills" | "suggestedFocus" | "warnings" | "profileSummary" | "strengths" | "weaknesses" | "atsRecommendations" | "analysisSource" | "aiModel" | "aiWarnings" | "createdAt" | "updatedAt", ExtArgs["result"]["resumeAnalysis"]>
 export type resumeAnalysisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   resumeDocument?: boolean | Prisma.resumeDocumentDefaultArgs<ExtArgs>
+  resumeVersions?: boolean | Prisma.resumeAnalysis$resumeVersionsArgs<ExtArgs>
+  _count?: boolean | Prisma.ResumeAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type resumeAnalysisIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   resumeDocument?: boolean | Prisma.resumeDocumentDefaultArgs<ExtArgs>
@@ -802,6 +958,7 @@ export type $resumeAnalysisPayload<ExtArgs extends runtime.Types.Extensions.Inte
   name: "resumeAnalysis"
   objects: {
     resumeDocument: Prisma.$resumeDocumentPayload<ExtArgs>
+    resumeVersions: Prisma.$resumeVersionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1216,6 +1373,7 @@ readonly fields: resumeAnalysisFieldRefs;
 export interface Prisma__resumeAnalysisClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   resumeDocument<T extends Prisma.resumeDocumentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeDocumentDefaultArgs<ExtArgs>>): Prisma.Prisma__resumeDocumentClient<runtime.Types.Result.GetResult<Prisma.$resumeDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  resumeVersions<T extends Prisma.resumeAnalysis$resumeVersionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeAnalysis$resumeVersionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$resumeVersionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1660,6 +1818,30 @@ export type resumeAnalysisDeleteManyArgs<ExtArgs extends runtime.Types.Extension
    * Limit how many resumeAnalyses to delete.
    */
   limit?: number
+}
+
+/**
+ * resumeAnalysis.resumeVersions
+ */
+export type resumeAnalysis$resumeVersionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeVersion
+   */
+  select?: Prisma.resumeVersionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeVersion
+   */
+  omit?: Prisma.resumeVersionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeVersionInclude<ExtArgs> | null
+  where?: Prisma.resumeVersionWhereInput
+  orderBy?: Prisma.resumeVersionOrderByWithRelationInput | Prisma.resumeVersionOrderByWithRelationInput[]
+  cursor?: Prisma.resumeVersionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ResumeVersionScalarFieldEnum | Prisma.ResumeVersionScalarFieldEnum[]
 }
 
 /**
