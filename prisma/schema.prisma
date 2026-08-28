@@ -24,6 +24,10 @@ model user {
   careerBriefs           careerBrief[]
   resumeVersions         resumeVersion[]
   resumeVersionRevisions resumeVersionRevision[]
+  applications           application[]
+  applicationEvents      applicationEvent[]
+  applicationContacts    applicationContact[]
+  applicationInsights    applicationInsight[]
 }
 
 model session {
@@ -131,6 +135,7 @@ model jobPosting {
   user           user            @relation(fields: [userId], references: [id], onDelete: Cascade)
   analysis       jobAnalysis?
   resumeVersions resumeVersion[]
+  applications   application[]
 
   @@index([userId])
   @@index([createdAt])
@@ -262,6 +267,7 @@ model resumeVersion {
   targetJobAnalysis    jobAnalysis?            @relation(fields: [targetJobAnalysisId], references: [id], onDelete: SetNull)
   revisions            resumeVersionRevision[] @relation("ResumeVersionRevisions")
   activeRevision       resumeVersionRevision?  @relation("ActiveResumeVersionRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+  applications         application[]
 
   @@index([userId])
   @@index([targetJobId])
@@ -298,9 +304,250 @@ model resumeVersionRevision {
   user             user           @relation(fields: [userId], references: [id], onDelete: Cascade)
   resumeVersion    resumeVersion  @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
   activeForVersion resumeVersion? @relation("ActiveResumeVersionRevision")
+  applications     application[]
 
   @@unique([resumeVersionId, revisionNumber])
   @@index([userId])
   @@index([resumeVersionId])
   @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 22 — Application Tracker v2
+// ---------------------------------------------------------------------------
+
+enum ApplicationStatus {
+  DRAFT
+  APPLIED
+  SCREENING
+  ASSESSMENT
+  INTERVIEW
+  OFFER
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+enum ApplicationSource {
+  JOBS_MODULE
+  MANUAL
+  IMPORTED
+  DISCOVERY_QUEUE
+}
+
+enum ApplicationEventType {
+  CREATED
+  SUBMITTED
+  STATUS_CHANGED
+  FOLLOW_UP_SCHEDULED
+  FOLLOW_UP_SENT
+  FOLLOW_UP_CLEARED
+  NOTE_ADDED
+  CONTACT_ADDED
+  CONTACT_UPDATED
+  SCREENING_SCHEDULED
+  SCREENING_COMPLETED
+  ASSESSMENT_RECEIVED
+  ASSESSMENT_SCHEDULED
+  ASSESSMENT_COMPLETED
+  INTERVIEW_SCHEDULED
+  INTERVIEW_COMPLETED
+  OFFER_RECEIVED
+  REJECTION_RECORDED
+  WITHDRAWN
+  RESUME_LINKED
+  NEXT_ACTION_UPDATED
+  OTHER
+}
+
+enum ApplicationEventSource {
+  USER
+  SYSTEM
+  AI
+  IMPORTED
+}
+
+enum ApplicationInsightType {
+  NEXT_ACTION
+  SCREENING_PREP
+  ASSESSMENT_PREP
+  INTERVIEW_PREP
+  OFFER_REVIEW
+  REJECTION_ANALYSIS
+}
+
+enum ApplicationInsightSource {
+  AI_GENERATED
+  RULE_BASED_FALLBACK
+}
+
+enum ApplicationNextActionType {
+  SUBMIT_APPLICATION
+  FOLLOW_UP
+  CONTACT_RECRUITER
+  PREPARE_SCREENING
+  PREPARE_ASSESSMENT
+  PREPARE_INTERVIEW
+  REVIEW_OFFER
+  PROVIDE_DOCUMENTS
+  UPDATE_RESUME
+  BUILD_SKILL
+  WAIT
+  REVIEW_REJECTION
+  OTHER
+}
+
+enum ApplicationNextActionSource {
+  USER
+  RULE_BASED
+  AI
+}
+
+enum ApplicationRejectionSource {
+  EMPLOYER_STATED
+  USER_CONFIRMED_FACT
+  OTHER_CONFIRMED
+}
+
+/// One real application attempt. A job may have several attempts over time.
+model application {
+  id     String @id @default(cuid())
+  userId String
+
+  jobPostingId String?
+
+  status ApplicationStatus @default(DRAFT)
+  source ApplicationSource @default(JOBS_MODULE)
+
+  /// Exact resume evidence. Mutable while DRAFT, locked once APPLIED.
+  resumeVersionId         String?
+  resumeVersionRevisionId String?
+
+  contextSnapshotJson Json
+
+  appliedAt      DateTime?
+  followUpAt     DateTime?
+  lastActivityAt DateTime  @default(now())
+
+  nextActionType   ApplicationNextActionType?
+  nextActionTitle  String?
+  nextActionReason String?
+  nextActionDueAt  DateTime?
+  nextActionSource ApplicationNextActionSource?
+
+  notes        String?
+  companyNotes String?
+  salaryNotes  String?
+
+  documentsNeededJson Json @default("[]")
+
+  confirmedRejectionReason String?
+  confirmedRejectionSource ApplicationRejectionSource?
+  rejectedAt               DateTime?
+
+  closedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                  user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting            jobPosting?            @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  resumeVersion         resumeVersion?         @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision resumeVersionRevision? @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  events                applicationEvent[]
+  contacts              applicationContact[]
+  insights              applicationInsight[]
+
+  @@index([userId])
+  @@index([jobPostingId])
+  @@index([status])
+  @@index([followUpAt])
+  @@index([nextActionDueAt])
+  @@index([lastActivityAt])
+  @@index([updatedAt])
+}
+
+/// Append-only application timeline. Existing events are never rewritten.
+model applicationEvent {
+  id            String @id @default(cuid())
+  applicationId String
+  userId        String
+
+  type   ApplicationEventType
+  source ApplicationEventSource @default(SYSTEM)
+
+  title       String
+  description String?
+
+  fromStatus ApplicationStatus?
+  toStatus   ApplicationStatus?
+
+  /// When the career event happened or is scheduled, not when CareerOS recorded it.
+  eventAt      DateTime
+  metadataJson Json     @default("{}")
+
+  createdAt DateTime @default(now())
+
+  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([applicationId])
+  @@index([type])
+  @@index([eventAt])
+  @@index([applicationId, eventAt])
+}
+
+model applicationContact {
+  id            String @id @default(cuid())
+  applicationId String
+  userId        String
+
+  name        String
+  role        String?
+  company     String?
+  email       String?
+  phone       String?
+  linkedinUrl String?
+  notes       String?
+
+  isPrimary Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([applicationId])
+}
+
+/// Persisted AI/fallback reasoning. History is retained rather than overwritten.
+model applicationInsight {
+  id            String @id @default(cuid())
+  applicationId String
+  userId        String
+
+  type   ApplicationInsightType
+  source ApplicationInsightSource @default(RULE_BASED_FALLBACK)
+
+  contentJson         Json
+  contextSnapshotJson Json
+  contextFingerprint  String?
+
+  model        String?
+  aiSource     String?
+  warningsJson Json    @default("[]")
+
+  createdAt DateTime @default(now())
+
+  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([applicationId])
+  @@index([type])
+  @@index([createdAt])
+  @@index([applicationId, type, contextFingerprint])
 }

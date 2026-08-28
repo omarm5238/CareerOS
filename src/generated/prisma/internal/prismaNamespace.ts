@@ -395,7 +395,11 @@ export const ModelName = {
   skillsInsight: 'skillsInsight',
   careerBrief: 'careerBrief',
   resumeVersion: 'resumeVersion',
-  resumeVersionRevision: 'resumeVersionRevision'
+  resumeVersionRevision: 'resumeVersionRevision',
+  application: 'application',
+  applicationEvent: 'applicationEvent',
+  applicationContact: 'applicationContact',
+  applicationInsight: 'applicationInsight'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -411,7 +415,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1303,6 +1307,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    application: {
+      payload: Prisma.$applicationPayload<ExtArgs>
+      fields: Prisma.applicationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        findFirst: {
+          args: Prisma.applicationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        findMany: {
+          args: Prisma.applicationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>[]
+        }
+        create: {
+          args: Prisma.applicationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        createMany: {
+          args: Prisma.applicationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>[]
+        }
+        delete: {
+          args: Prisma.applicationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        update: {
+          args: Prisma.applicationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplication>
+        }
+        groupBy: {
+          args: Prisma.applicationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationCountAggregateOutputType> | number
+        }
+      }
+    }
+    applicationEvent: {
+      payload: Prisma.$applicationEventPayload<ExtArgs>
+      fields: Prisma.applicationEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        findFirst: {
+          args: Prisma.applicationEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        findMany: {
+          args: Prisma.applicationEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>[]
+        }
+        create: {
+          args: Prisma.applicationEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        createMany: {
+          args: Prisma.applicationEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>[]
+        }
+        delete: {
+          args: Prisma.applicationEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        update: {
+          args: Prisma.applicationEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationEventPayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplicationEvent>
+        }
+        groupBy: {
+          args: Prisma.applicationEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    applicationContact: {
+      payload: Prisma.$applicationContactPayload<ExtArgs>
+      fields: Prisma.applicationContactFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationContactFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationContactFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        findFirst: {
+          args: Prisma.applicationContactFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationContactFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        findMany: {
+          args: Prisma.applicationContactFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>[]
+        }
+        create: {
+          args: Prisma.applicationContactCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        createMany: {
+          args: Prisma.applicationContactCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationContactCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>[]
+        }
+        delete: {
+          args: Prisma.applicationContactDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        update: {
+          args: Prisma.applicationContactUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationContactDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationContactUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationContactUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationContactUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationContactPayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationContactAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplicationContact>
+        }
+        groupBy: {
+          args: Prisma.applicationContactGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationContactGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationContactCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationContactCountAggregateOutputType> | number
+        }
+      }
+    }
+    applicationInsight: {
+      payload: Prisma.$applicationInsightPayload<ExtArgs>
+      fields: Prisma.applicationInsightFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationInsightFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationInsightFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        findFirst: {
+          args: Prisma.applicationInsightFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationInsightFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        findMany: {
+          args: Prisma.applicationInsightFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>[]
+        }
+        create: {
+          args: Prisma.applicationInsightCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        createMany: {
+          args: Prisma.applicationInsightCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationInsightCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>[]
+        }
+        delete: {
+          args: Prisma.applicationInsightDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        update: {
+          args: Prisma.applicationInsightUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationInsightDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationInsightUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationInsightUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationInsightUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationInsightPayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationInsightAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplicationInsight>
+        }
+        groupBy: {
+          args: Prisma.applicationInsightGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationInsightGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationInsightCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationInsightCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1568,6 +1868,93 @@ export const ResumeVersionRevisionScalarFieldEnum = {
 export type ResumeVersionRevisionScalarFieldEnum = (typeof ResumeVersionRevisionScalarFieldEnum)[keyof typeof ResumeVersionRevisionScalarFieldEnum]
 
 
+export const ApplicationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  status: 'status',
+  source: 'source',
+  resumeVersionId: 'resumeVersionId',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  contextSnapshotJson: 'contextSnapshotJson',
+  appliedAt: 'appliedAt',
+  followUpAt: 'followUpAt',
+  lastActivityAt: 'lastActivityAt',
+  nextActionType: 'nextActionType',
+  nextActionTitle: 'nextActionTitle',
+  nextActionReason: 'nextActionReason',
+  nextActionDueAt: 'nextActionDueAt',
+  nextActionSource: 'nextActionSource',
+  notes: 'notes',
+  companyNotes: 'companyNotes',
+  salaryNotes: 'salaryNotes',
+  documentsNeededJson: 'documentsNeededJson',
+  confirmedRejectionReason: 'confirmedRejectionReason',
+  confirmedRejectionSource: 'confirmedRejectionSource',
+  rejectedAt: 'rejectedAt',
+  closedAt: 'closedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
+
+
+export const ApplicationEventScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  userId: 'userId',
+  type: 'type',
+  source: 'source',
+  title: 'title',
+  description: 'description',
+  fromStatus: 'fromStatus',
+  toStatus: 'toStatus',
+  eventAt: 'eventAt',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt'
+} as const
+
+export type ApplicationEventScalarFieldEnum = (typeof ApplicationEventScalarFieldEnum)[keyof typeof ApplicationEventScalarFieldEnum]
+
+
+export const ApplicationContactScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  userId: 'userId',
+  name: 'name',
+  role: 'role',
+  company: 'company',
+  email: 'email',
+  phone: 'phone',
+  linkedinUrl: 'linkedinUrl',
+  notes: 'notes',
+  isPrimary: 'isPrimary',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationContactScalarFieldEnum = (typeof ApplicationContactScalarFieldEnum)[keyof typeof ApplicationContactScalarFieldEnum]
+
+
+export const ApplicationInsightScalarFieldEnum = {
+  id: 'id',
+  applicationId: 'applicationId',
+  userId: 'userId',
+  type: 'type',
+  source: 'source',
+  contentJson: 'contentJson',
+  contextSnapshotJson: 'contextSnapshotJson',
+  contextFingerprint: 'contextFingerprint',
+  model: 'model',
+  aiSource: 'aiSource',
+  warningsJson: 'warningsJson',
+  createdAt: 'createdAt'
+} as const
+
+export type ApplicationInsightScalarFieldEnum = (typeof ApplicationInsightScalarFieldEnum)[keyof typeof ApplicationInsightScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1734,6 +2121,132 @@ export type ListEnumResumeVersionGenerationStatusFieldRefInput<$PrismaModel> = F
 
 
 /**
+ * Reference to a field of type 'ApplicationStatus'
+ */
+export type EnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationStatus[]'
+ */
+export type ListEnumApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationSource'
+ */
+export type EnumApplicationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationSource'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationSource[]'
+ */
+export type ListEnumApplicationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationNextActionType'
+ */
+export type EnumApplicationNextActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationNextActionType'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationNextActionType[]'
+ */
+export type ListEnumApplicationNextActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationNextActionType[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationNextActionSource'
+ */
+export type EnumApplicationNextActionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationNextActionSource'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationNextActionSource[]'
+ */
+export type ListEnumApplicationNextActionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationNextActionSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationRejectionSource'
+ */
+export type EnumApplicationRejectionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationRejectionSource'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationRejectionSource[]'
+ */
+export type ListEnumApplicationRejectionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationRejectionSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEventType'
+ */
+export type EnumApplicationEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEventType'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEventType[]'
+ */
+export type ListEnumApplicationEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEventType[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEventSource'
+ */
+export type EnumApplicationEventSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEventSource'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEventSource[]'
+ */
+export type ListEnumApplicationEventSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEventSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationInsightType'
+ */
+export type EnumApplicationInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationInsightType'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationInsightType[]'
+ */
+export type ListEnumApplicationInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationInsightType[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationInsightSource'
+ */
+export type EnumApplicationInsightSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationInsightSource'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationInsightSource[]'
+ */
+export type ListEnumApplicationInsightSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationInsightSource[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -1868,6 +2381,10 @@ export type GlobalOmitConfig = {
   careerBrief?: Prisma.careerBriefOmit
   resumeVersion?: Prisma.resumeVersionOmit
   resumeVersionRevision?: Prisma.resumeVersionRevisionOmit
+  application?: Prisma.applicationOmit
+  applicationEvent?: Prisma.applicationEventOmit
+  applicationContact?: Prisma.applicationContactOmit
+  applicationInsight?: Prisma.applicationInsightOmit
 }
 
 /* Types for Logging */

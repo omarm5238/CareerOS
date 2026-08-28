@@ -3,6 +3,7 @@ import Link from "next/link";
 import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
 import type { JobTailoredResumeSummary } from "@/features/resume/versions/types";
+import type { JobApplicationSummary } from "@/features/applications/server";
 
 import type { JobDetailView, JobListItem } from "../types";
 import { AddJobForm } from "./add-job-form";
@@ -17,6 +18,7 @@ type JobsModulePageProps = {
   jobNotFound?: boolean;
   hasResumeProfile: boolean;
   tailoredResume: JobTailoredResumeSummary | null;
+  applicationSummary: JobApplicationSummary | null;
 };
 
 export function JobsModulePage({
@@ -26,6 +28,7 @@ export function JobsModulePage({
   jobNotFound = false,
   hasResumeProfile,
   tailoredResume,
+  applicationSummary,
 }: JobsModulePageProps) {
   return (
     <WorkspaceModuleLayout title="Jobs Module">
@@ -94,6 +97,9 @@ export function JobsModulePage({
               <div>
                 {selectedJob ? (
                   <JobDetailPanel
+                    applicationSummary={
+                      applicationSummary ?? { current: null, lastClosed: null, totalAttempts: 0 }
+                    }
                     hasResumeProfile={hasResumeProfile}
                     job={selectedJob}
                     tailoredResume={tailoredResume}

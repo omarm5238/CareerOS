@@ -27,8 +27,15 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     id: "nav-jobs",
     title: "Go to Jobs",
     group: "Navigation",
-    keywords: ["jobs", "applications", "pipeline", "tracker"],
+    keywords: ["jobs", "postings", "matching", "saved jobs"],
     href: "/workspace/jobs",
+  },
+  {
+    id: "nav-applications",
+    title: "Go to Applications",
+    group: "Navigation",
+    keywords: ["applications", "tracker", "pipeline", "interviews", "offers", "follow-up"],
+    href: "/workspace/applications",
   },
   {
     id: "nav-skills",

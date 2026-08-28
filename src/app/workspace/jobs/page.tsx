@@ -6,6 +6,7 @@ import {
   getJobPostingByIdForUser,
   getJobPostingsForUser,
 } from "@/features/jobs/server";
+import { getApplicationSummaryForJob } from "@/features/applications/server";
 import {
   getJobTailoredResumeSummary,
   getLatestResumeAnalysisForUser,
@@ -47,14 +48,17 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
           selectedJob={null}
           selectedJobId={jobId}
           tailoredResume={null}
+          applicationSummary={null}
         />
       );
     }
 
     const tailoredResume = await getJobTailoredResumeSummary(session.user.id, selected.id);
+    const applicationSummary = await getApplicationSummaryForJob(session.user.id, selected.id);
 
     return (
       <JobsModulePage
+        applicationSummary={applicationSummary}
         hasResumeProfile={!!resume}
         jobs={jobs}
         selectedJob={selected}
@@ -71,9 +75,13 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
   const tailoredResume = selectedJob
     ? await getJobTailoredResumeSummary(session.user.id, selectedJob.id)
     : null;
+  const applicationSummary = selectedJob
+    ? await getApplicationSummaryForJob(session.user.id, selectedJob.id)
+    : null;
 
   return (
     <JobsModulePage
+      applicationSummary={applicationSummary}
       hasResumeProfile={!!resume}
       jobs={jobs}
       selectedJob={selectedJob}

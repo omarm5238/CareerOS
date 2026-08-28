@@ -9,6 +9,7 @@ const navItems = [
   { label: "Core", glyph: "C", href: "/workspace" },
   { label: "Resume", glyph: "R", href: "/workspace/resume" },
   { label: "Jobs", glyph: "J", href: "/workspace/jobs" },
+  { label: "Applications", glyph: "P", href: "/workspace/applications" },
   { label: "Skills", glyph: "S", href: "/workspace/skills" },
   { label: "Analytics", glyph: "A", href: "/workspace/analytics" },
 ] as const;
@@ -16,6 +17,10 @@ const navItems = [
 type WorkspaceModuleLabel = (typeof navItems)[number]["label"];
 
 function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
+  // Application detail lives under /workspace/applications/[id], so the rail
+  // keeps the module highlighted on nested routes too.
+  if (pathname.startsWith("/workspace/applications")) return "Applications";
+
   switch (pathname) {
     case "/workspace":
       return "Core";

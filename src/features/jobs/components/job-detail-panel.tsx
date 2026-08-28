@@ -2,11 +2,12 @@ import Link from "next/link";
 
 import { JobTailoredResumeSection } from "@/features/resume/versions/components/job-tailored-resume-section";
 import type { JobTailoredResumeSummary } from "@/features/resume/versions/types";
+import { JobApplicationSection } from "@/features/applications/components/job-application-section";
+import type { JobApplicationSummary } from "@/features/applications/server";
 
 import type { JobDetailView } from "../types";
 import { JobAiInsights } from "./job-ai-insights";
 import { JobAnalysisSourceBadge } from "./job-analysis-source-badge";
-import { JobApplicationTracker } from "./job-application-tracker";
 import { DeleteJobButton } from "./delete-job-button";
 import { formatJobCreatedAt, JobMatchSummary } from "./job-match-summary";
 import { JobRecommendations } from "./job-recommendations";
@@ -16,12 +17,14 @@ type JobDetailPanelProps = {
   job: JobDetailView;
   hasResumeProfile: boolean;
   tailoredResume: JobTailoredResumeSummary | null;
+  applicationSummary: JobApplicationSummary;
 };
 
 export function JobDetailPanel({
   job,
   hasResumeProfile,
   tailoredResume,
+  applicationSummary,
 }: JobDetailPanelProps) {
   const preview =
     job.description.length > 420
@@ -76,7 +79,7 @@ export function JobDetailPanel({
         summary={tailoredResume ?? { primary: null, archivedCount: 0 }}
       />
 
-      <JobApplicationTracker job={job} />
+      <JobApplicationSection jobId={job.id} summary={applicationSummary} />
 
       {job.analysis ? (
         <>
