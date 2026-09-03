@@ -97,3 +97,28 @@ export type applicationContact = Prisma.applicationContactModel
  * Persisted AI/fallback reasoning. History is retained rather than overwritten.
  */
 export type applicationInsight = Prisma.applicationInsightModel
+/**
+ * Model jobDiscoveryProfile
+ *
+ */
+export type jobDiscoveryProfile = Prisma.jobDiscoveryProfileModel
+/**
+ * Model jobDiscoveryRun
+ *
+ */
+export type jobDiscoveryRun = Prisma.jobDiscoveryRunModel
+/**
+ * Model discoveredJob
+ *
+ */
+export type discoveredJob = Prisma.discoveredJobModel
+/**
+ * Model discoveredJobSource
+ *
+ */
+export type discoveredJobSource = Prisma.discoveredJobSourceModel
+/**
+ * Model applicationQueueItem
+ *
+ */
+export type applicationQueueItem = Prisma.applicationQueueItemModel

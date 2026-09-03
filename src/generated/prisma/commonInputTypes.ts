@@ -491,6 +491,159 @@ export type EnumApplicationInsightSourceWithAggregatesFilter<$PrismaModel = neve
   _max?: Prisma.NestedEnumApplicationInsightSourceFilter<$PrismaModel>
 }
 
+export type EnumDiscoveryRunStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryRunStatus | Prisma.EnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel> | $Enums.DiscoveryRunStatus
+}
+
+export type EnumDiscoveryRunStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryRunStatus | Prisma.EnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryRunStatusWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryRunStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel>
+}
+
+export type EnumDiscoveryWorkModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryWorkMode | Prisma.EnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel> | $Enums.DiscoveryWorkMode
+}
+
+export type EnumDiscoveryEmploymentTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryEmploymentType | Prisma.EnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel> | $Enums.DiscoveryEmploymentType
+}
+
+export type EnumDiscoveredJobStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveredJobStatus | Prisma.EnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel> | $Enums.DiscoveredJobStatus
+}
+
+export type EnumDiscoveryScoreBandNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryScoreBand | Prisma.EnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel> | $Enums.DiscoveryScoreBand | null
+}
+
+export type EnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryAnalysisSource | Prisma.EnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel> | $Enums.DiscoveryAnalysisSource | null
+}
+
+export type EnumDiscoveryWorkModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryWorkMode | Prisma.EnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryWorkModeWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryWorkMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel>
+}
+
+export type EnumDiscoveryEmploymentTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryEmploymentType | Prisma.EnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryEmploymentTypeWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryEmploymentType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel>
+}
+
+export type EnumDiscoveredJobStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveredJobStatus | Prisma.EnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveredJobStatusWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveredJobStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel>
+}
+
+export type EnumDiscoveryScoreBandNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryScoreBand | Prisma.EnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryScoreBandNullableWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryScoreBand | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel>
+}
+
+export type EnumDiscoveryAnalysisSourceNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryAnalysisSource | Prisma.EnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryAnalysisSource | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel>
+}
+
+export type EnumDiscoveryProviderFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryProvider | Prisma.EnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel> | $Enums.DiscoveryProvider
+}
+
+export type EnumDiscoveryProviderWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryProvider | Prisma.EnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryProviderWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryProvider
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel>
+}
+
+export type EnumQueuePriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueuePriority | Prisma.EnumQueuePriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel> | $Enums.QueuePriority
+}
+
+export type EnumQueueStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueueStatus | Prisma.EnumQueueStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel> | $Enums.QueueStatus
+}
+
+export type EnumQueuePriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueuePriority | Prisma.EnumQueuePriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueuePriorityWithAggregatesFilter<$PrismaModel> | $Enums.QueuePriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel>
+}
+
+export type EnumQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueueStatus | Prisma.EnumQueueStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueueStatusWithAggregatesFilter<$PrismaModel> | $Enums.QueueStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -952,6 +1105,159 @@ export type NestedEnumApplicationInsightSourceWithAggregatesFilter<$PrismaModel 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumApplicationInsightSourceFilter<$PrismaModel>
   _max?: Prisma.NestedEnumApplicationInsightSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryRunStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryRunStatus | Prisma.EnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel> | $Enums.DiscoveryRunStatus
+}
+
+export type NestedEnumDiscoveryRunStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryRunStatus | Prisma.EnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryRunStatus[] | Prisma.ListEnumDiscoveryRunStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryRunStatusWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryRunStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryRunStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryWorkModeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryWorkMode | Prisma.EnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel> | $Enums.DiscoveryWorkMode
+}
+
+export type NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryEmploymentType | Prisma.EnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel> | $Enums.DiscoveryEmploymentType
+}
+
+export type NestedEnumDiscoveredJobStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveredJobStatus | Prisma.EnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel> | $Enums.DiscoveredJobStatus
+}
+
+export type NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryScoreBand | Prisma.EnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel> | $Enums.DiscoveryScoreBand | null
+}
+
+export type NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryAnalysisSource | Prisma.EnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel> | $Enums.DiscoveryAnalysisSource | null
+}
+
+export type NestedEnumDiscoveryWorkModeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryWorkMode | Prisma.EnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryWorkMode[] | Prisma.ListEnumDiscoveryWorkModeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryWorkModeWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryWorkMode
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryWorkModeFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryEmploymentTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryEmploymentType | Prisma.EnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryEmploymentType[] | Prisma.ListEnumDiscoveryEmploymentTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryEmploymentTypeWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryEmploymentType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryEmploymentTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveredJobStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveredJobStatus | Prisma.EnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveredJobStatus[] | Prisma.ListEnumDiscoveredJobStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveredJobStatusWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveredJobStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveredJobStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryScoreBandNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryScoreBand | Prisma.EnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryScoreBand[] | Prisma.ListEnumDiscoveryScoreBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryScoreBandNullableWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryScoreBand | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryScoreBandNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryAnalysisSourceNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryAnalysisSource | Prisma.EnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DiscoveryAnalysisSource[] | Prisma.ListEnumDiscoveryAnalysisSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryAnalysisSource | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryAnalysisSourceNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumDiscoveryProviderFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryProvider | Prisma.EnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel> | $Enums.DiscoveryProvider
+}
+
+export type NestedEnumDiscoveryProviderWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DiscoveryProvider | Prisma.EnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  in?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DiscoveryProvider[] | Prisma.ListEnumDiscoveryProviderFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDiscoveryProviderWithAggregatesFilter<$PrismaModel> | $Enums.DiscoveryProvider
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDiscoveryProviderFilter<$PrismaModel>
+}
+
+export type NestedEnumQueuePriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueuePriority | Prisma.EnumQueuePriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel> | $Enums.QueuePriority
+}
+
+export type NestedEnumQueueStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueueStatus | Prisma.EnumQueueStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel> | $Enums.QueueStatus
+}
+
+export type NestedEnumQueuePriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueuePriority | Prisma.EnumQueuePriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueuePriority[] | Prisma.ListEnumQueuePriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueuePriorityWithAggregatesFilter<$PrismaModel> | $Enums.QueuePriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumQueuePriorityFilter<$PrismaModel>
+}
+
+export type NestedEnumQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.QueueStatus | Prisma.EnumQueueStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.QueueStatus[] | Prisma.ListEnumQueueStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumQueueStatusWithAggregatesFilter<$PrismaModel> | $Enums.QueueStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
 }
 
 

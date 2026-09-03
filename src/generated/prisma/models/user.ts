@@ -210,6 +210,10 @@ export type userWhereInput = {
   applicationEvents?: Prisma.ApplicationEventListRelationFilter
   applicationContacts?: Prisma.ApplicationContactListRelationFilter
   applicationInsights?: Prisma.ApplicationInsightListRelationFilter
+  jobDiscoveryProfile?: Prisma.XOR<Prisma.JobDiscoveryProfileNullableScalarRelationFilter, Prisma.jobDiscoveryProfileWhereInput> | null
+  jobDiscoveryRuns?: Prisma.JobDiscoveryRunListRelationFilter
+  discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
+  applicationQueueItems?: Prisma.ApplicationQueueItemListRelationFilter
 }
 
 export type userOrderByWithRelationInput = {
@@ -232,6 +236,10 @@ export type userOrderByWithRelationInput = {
   applicationEvents?: Prisma.applicationEventOrderByRelationAggregateInput
   applicationContacts?: Prisma.applicationContactOrderByRelationAggregateInput
   applicationInsights?: Prisma.applicationInsightOrderByRelationAggregateInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileOrderByWithRelationInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunOrderByRelationAggregateInput
+  discoveredJobs?: Prisma.discoveredJobOrderByRelationAggregateInput
+  applicationQueueItems?: Prisma.applicationQueueItemOrderByRelationAggregateInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -257,6 +265,10 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   applicationEvents?: Prisma.ApplicationEventListRelationFilter
   applicationContacts?: Prisma.ApplicationContactListRelationFilter
   applicationInsights?: Prisma.ApplicationInsightListRelationFilter
+  jobDiscoveryProfile?: Prisma.XOR<Prisma.JobDiscoveryProfileNullableScalarRelationFilter, Prisma.jobDiscoveryProfileWhereInput> | null
+  jobDiscoveryRuns?: Prisma.JobDiscoveryRunListRelationFilter
+  discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
+  applicationQueueItems?: Prisma.ApplicationQueueItemListRelationFilter
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -305,6 +317,10 @@ export type userCreateInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -327,6 +343,10 @@ export type userUncheckedCreateInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -349,6 +369,10 @@ export type userUpdateInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -371,6 +395,10 @@ export type userUncheckedUpdateInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -622,6 +650,62 @@ export type userUpdateOneRequiredWithoutApplicationInsightsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutApplicationInsightsInput, Prisma.userUpdateWithoutApplicationInsightsInput>, Prisma.userUncheckedUpdateWithoutApplicationInsightsInput>
 }
 
+export type userCreateNestedOneWithoutJobDiscoveryProfileInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedCreateWithoutJobDiscoveryProfileInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutJobDiscoveryProfileInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutJobDiscoveryProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedCreateWithoutJobDiscoveryProfileInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutJobDiscoveryProfileInput
+  upsert?: Prisma.userUpsertWithoutJobDiscoveryProfileInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutJobDiscoveryProfileInput, Prisma.userUpdateWithoutJobDiscoveryProfileInput>, Prisma.userUncheckedUpdateWithoutJobDiscoveryProfileInput>
+}
+
+export type userCreateNestedOneWithoutJobDiscoveryRunsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedCreateWithoutJobDiscoveryRunsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutJobDiscoveryRunsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutJobDiscoveryRunsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedCreateWithoutJobDiscoveryRunsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutJobDiscoveryRunsInput
+  upsert?: Prisma.userUpsertWithoutJobDiscoveryRunsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutJobDiscoveryRunsInput, Prisma.userUpdateWithoutJobDiscoveryRunsInput>, Prisma.userUncheckedUpdateWithoutJobDiscoveryRunsInput>
+}
+
+export type userCreateNestedOneWithoutDiscoveredJobsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDiscoveredJobsInput, Prisma.userUncheckedCreateWithoutDiscoveredJobsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDiscoveredJobsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutDiscoveredJobsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDiscoveredJobsInput, Prisma.userUncheckedCreateWithoutDiscoveredJobsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDiscoveredJobsInput
+  upsert?: Prisma.userUpsertWithoutDiscoveredJobsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutDiscoveredJobsInput, Prisma.userUpdateWithoutDiscoveredJobsInput>, Prisma.userUncheckedUpdateWithoutDiscoveredJobsInput>
+}
+
+export type userCreateNestedOneWithoutApplicationQueueItemsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutApplicationQueueItemsInput, Prisma.userUncheckedCreateWithoutApplicationQueueItemsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutApplicationQueueItemsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutApplicationQueueItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutApplicationQueueItemsInput, Prisma.userUncheckedCreateWithoutApplicationQueueItemsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutApplicationQueueItemsInput
+  upsert?: Prisma.userUpsertWithoutApplicationQueueItemsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutApplicationQueueItemsInput, Prisma.userUpdateWithoutApplicationQueueItemsInput>, Prisma.userUncheckedUpdateWithoutApplicationQueueItemsInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -641,6 +725,10 @@ export type userCreateWithoutSessionsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -662,6 +750,10 @@ export type userUncheckedCreateWithoutSessionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -699,6 +791,10 @@ export type userUpdateWithoutSessionsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -720,6 +816,10 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -741,6 +841,10 @@ export type userCreateWithoutAccountsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -762,6 +866,10 @@ export type userUncheckedCreateWithoutAccountsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -799,6 +907,10 @@ export type userUpdateWithoutAccountsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -820,6 +932,10 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -841,6 +957,10 @@ export type userCreateWithoutResumeDocumentsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -862,6 +982,10 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -899,6 +1023,10 @@ export type userUpdateWithoutResumeDocumentsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -920,6 +1048,10 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -941,6 +1073,10 @@ export type userCreateWithoutJobPostingsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -962,6 +1098,10 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -999,6 +1139,10 @@ export type userUpdateWithoutJobPostingsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -1020,6 +1164,10 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -1041,6 +1189,10 @@ export type userCreateWithoutSkillsInsightsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -1062,6 +1214,10 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -1099,6 +1255,10 @@ export type userUpdateWithoutSkillsInsightsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -1120,6 +1280,10 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -1141,6 +1305,10 @@ export type userCreateWithoutCareerBriefsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -1162,6 +1330,10 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -1199,6 +1371,10 @@ export type userUpdateWithoutCareerBriefsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -1220,6 +1396,10 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionsInput = {
@@ -1241,6 +1421,10 @@ export type userCreateWithoutResumeVersionsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionsInput = {
@@ -1262,6 +1446,10 @@ export type userUncheckedCreateWithoutResumeVersionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionsInput = {
@@ -1299,6 +1487,10 @@ export type userUpdateWithoutResumeVersionsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionsInput = {
@@ -1320,6 +1512,10 @@ export type userUncheckedUpdateWithoutResumeVersionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionRevisionsInput = {
@@ -1341,6 +1537,10 @@ export type userCreateWithoutResumeVersionRevisionsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
@@ -1362,6 +1562,10 @@ export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
@@ -1399,6 +1603,10 @@ export type userUpdateWithoutResumeVersionRevisionsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
@@ -1420,6 +1628,10 @@ export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationsInput = {
@@ -1441,6 +1653,10 @@ export type userCreateWithoutApplicationsInput = {
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationsInput = {
@@ -1462,6 +1678,10 @@ export type userUncheckedCreateWithoutApplicationsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationsInput = {
@@ -1499,6 +1719,10 @@ export type userUpdateWithoutApplicationsInput = {
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationsInput = {
@@ -1520,6 +1744,10 @@ export type userUncheckedUpdateWithoutApplicationsInput = {
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationEventsInput = {
@@ -1541,6 +1769,10 @@ export type userCreateWithoutApplicationEventsInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationEventsInput = {
@@ -1562,6 +1794,10 @@ export type userUncheckedCreateWithoutApplicationEventsInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationEventsInput = {
@@ -1599,6 +1835,10 @@ export type userUpdateWithoutApplicationEventsInput = {
   applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationEventsInput = {
@@ -1620,6 +1860,10 @@ export type userUncheckedUpdateWithoutApplicationEventsInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationContactsInput = {
@@ -1641,6 +1885,10 @@ export type userCreateWithoutApplicationContactsInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutUserInput
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationContactsInput = {
@@ -1662,6 +1910,10 @@ export type userUncheckedCreateWithoutApplicationContactsInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationContactsInput = {
@@ -1699,6 +1951,10 @@ export type userUpdateWithoutApplicationContactsInput = {
   applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationContactsInput = {
@@ -1720,6 +1976,10 @@ export type userUncheckedUpdateWithoutApplicationContactsInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationInsightsInput = {
@@ -1741,6 +2001,10 @@ export type userCreateWithoutApplicationInsightsInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutUserInput
   applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationInsightsInput = {
@@ -1762,6 +2026,10 @@ export type userUncheckedCreateWithoutApplicationInsightsInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
   applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
   applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationInsightsInput = {
@@ -1799,6 +2067,10 @@ export type userUpdateWithoutApplicationInsightsInput = {
   applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
   applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationInsightsInput = {
@@ -1820,6 +2092,474 @@ export type userUncheckedUpdateWithoutApplicationInsightsInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
   applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
   applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutJobDiscoveryProfileInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutJobDiscoveryProfileInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedCreateWithoutJobDiscoveryProfileInput>
+}
+
+export type userUpsertWithoutJobDiscoveryProfileInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedUpdateWithoutJobDiscoveryProfileInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedCreateWithoutJobDiscoveryProfileInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutJobDiscoveryProfileInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutJobDiscoveryProfileInput, Prisma.userUncheckedUpdateWithoutJobDiscoveryProfileInput>
+}
+
+export type userUpdateWithoutJobDiscoveryProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutJobDiscoveryRunsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutJobDiscoveryRunsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedCreateWithoutJobDiscoveryRunsInput>
+}
+
+export type userUpsertWithoutJobDiscoveryRunsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedUpdateWithoutJobDiscoveryRunsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedCreateWithoutJobDiscoveryRunsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutJobDiscoveryRunsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutJobDiscoveryRunsInput, Prisma.userUncheckedUpdateWithoutJobDiscoveryRunsInput>
+}
+
+export type userUpdateWithoutJobDiscoveryRunsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutDiscoveredJobsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutDiscoveredJobsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutDiscoveredJobsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutDiscoveredJobsInput, Prisma.userUncheckedCreateWithoutDiscoveredJobsInput>
+}
+
+export type userUpsertWithoutDiscoveredJobsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutDiscoveredJobsInput, Prisma.userUncheckedUpdateWithoutDiscoveredJobsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutDiscoveredJobsInput, Prisma.userUncheckedCreateWithoutDiscoveredJobsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutDiscoveredJobsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutDiscoveredJobsInput, Prisma.userUncheckedUpdateWithoutDiscoveredJobsInput>
+}
+
+export type userUpdateWithoutDiscoveredJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutApplicationQueueItemsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutApplicationQueueItemsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutApplicationQueueItemsInput, Prisma.userUncheckedCreateWithoutApplicationQueueItemsInput>
+}
+
+export type userUpsertWithoutApplicationQueueItemsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutApplicationQueueItemsInput, Prisma.userUncheckedUpdateWithoutApplicationQueueItemsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutApplicationQueueItemsInput, Prisma.userUncheckedCreateWithoutApplicationQueueItemsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutApplicationQueueItemsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutApplicationQueueItemsInput, Prisma.userUncheckedUpdateWithoutApplicationQueueItemsInput>
+}
+
+export type userUpdateWithoutApplicationQueueItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -1840,6 +2580,9 @@ export type UserCountOutputType = {
   applicationEvents: number
   applicationContacts: number
   applicationInsights: number
+  jobDiscoveryRuns: number
+  discoveredJobs: number
+  applicationQueueItems: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1855,6 +2598,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   applicationEvents?: boolean | UserCountOutputTypeCountApplicationEventsArgs
   applicationContacts?: boolean | UserCountOutputTypeCountApplicationContactsArgs
   applicationInsights?: boolean | UserCountOutputTypeCountApplicationInsightsArgs
+  jobDiscoveryRuns?: boolean | UserCountOutputTypeCountJobDiscoveryRunsArgs
+  discoveredJobs?: boolean | UserCountOutputTypeCountDiscoveredJobsArgs
+  applicationQueueItems?: boolean | UserCountOutputTypeCountApplicationQueueItemsArgs
 }
 
 /**
@@ -1951,6 +2697,27 @@ export type UserCountOutputTypeCountApplicationInsightsArgs<ExtArgs extends runt
   where?: Prisma.applicationInsightWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountJobDiscoveryRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.jobDiscoveryRunWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDiscoveredJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.discoveredJobWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApplicationQueueItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationQueueItemWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1972,6 +2739,10 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   applicationEvents?: boolean | Prisma.user$applicationEventsArgs<ExtArgs>
   applicationContacts?: boolean | Prisma.user$applicationContactsArgs<ExtArgs>
   applicationInsights?: boolean | Prisma.user$applicationInsightsArgs<ExtArgs>
+  jobDiscoveryProfile?: boolean | Prisma.user$jobDiscoveryProfileArgs<ExtArgs>
+  jobDiscoveryRuns?: boolean | Prisma.user$jobDiscoveryRunsArgs<ExtArgs>
+  discoveredJobs?: boolean | Prisma.user$discoveredJobsArgs<ExtArgs>
+  applicationQueueItems?: boolean | Prisma.user$applicationQueueItemsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2019,6 +2790,10 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   applicationEvents?: boolean | Prisma.user$applicationEventsArgs<ExtArgs>
   applicationContacts?: boolean | Prisma.user$applicationContactsArgs<ExtArgs>
   applicationInsights?: boolean | Prisma.user$applicationInsightsArgs<ExtArgs>
+  jobDiscoveryProfile?: boolean | Prisma.user$jobDiscoveryProfileArgs<ExtArgs>
+  jobDiscoveryRuns?: boolean | Prisma.user$jobDiscoveryRunsArgs<ExtArgs>
+  discoveredJobs?: boolean | Prisma.user$discoveredJobsArgs<ExtArgs>
+  applicationQueueItems?: boolean | Prisma.user$applicationQueueItemsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2039,6 +2814,10 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     applicationEvents: Prisma.$applicationEventPayload<ExtArgs>[]
     applicationContacts: Prisma.$applicationContactPayload<ExtArgs>[]
     applicationInsights: Prisma.$applicationInsightPayload<ExtArgs>[]
+    jobDiscoveryProfile: Prisma.$jobDiscoveryProfilePayload<ExtArgs> | null
+    jobDiscoveryRuns: Prisma.$jobDiscoveryRunPayload<ExtArgs>[]
+    discoveredJobs: Prisma.$discoveredJobPayload<ExtArgs>[]
+    applicationQueueItems: Prisma.$applicationQueueItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2454,6 +3233,10 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   applicationEvents<T extends Prisma.user$applicationEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$applicationEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applicationContacts<T extends Prisma.user$applicationContactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$applicationContactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applicationInsights<T extends Prisma.user$applicationInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$applicationInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  jobDiscoveryProfile<T extends Prisma.user$jobDiscoveryProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$jobDiscoveryProfileArgs<ExtArgs>>): Prisma.Prisma__jobDiscoveryProfileClient<runtime.Types.Result.GetResult<Prisma.$jobDiscoveryProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  jobDiscoveryRuns<T extends Prisma.user$jobDiscoveryRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$jobDiscoveryRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$jobDiscoveryRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  discoveredJobs<T extends Prisma.user$discoveredJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$discoveredJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$discoveredJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applicationQueueItems<T extends Prisma.user$applicationQueueItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$applicationQueueItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationQueueItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3168,6 +3951,97 @@ export type user$applicationInsightsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationInsightScalarFieldEnum | Prisma.ApplicationInsightScalarFieldEnum[]
+}
+
+/**
+ * user.jobDiscoveryProfile
+ */
+export type user$jobDiscoveryProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the jobDiscoveryProfile
+   */
+  select?: Prisma.jobDiscoveryProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the jobDiscoveryProfile
+   */
+  omit?: Prisma.jobDiscoveryProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.jobDiscoveryProfileInclude<ExtArgs> | null
+  where?: Prisma.jobDiscoveryProfileWhereInput
+}
+
+/**
+ * user.jobDiscoveryRuns
+ */
+export type user$jobDiscoveryRunsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the jobDiscoveryRun
+   */
+  select?: Prisma.jobDiscoveryRunSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the jobDiscoveryRun
+   */
+  omit?: Prisma.jobDiscoveryRunOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.jobDiscoveryRunInclude<ExtArgs> | null
+  where?: Prisma.jobDiscoveryRunWhereInput
+  orderBy?: Prisma.jobDiscoveryRunOrderByWithRelationInput | Prisma.jobDiscoveryRunOrderByWithRelationInput[]
+  cursor?: Prisma.jobDiscoveryRunWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobDiscoveryRunScalarFieldEnum | Prisma.JobDiscoveryRunScalarFieldEnum[]
+}
+
+/**
+ * user.discoveredJobs
+ */
+export type user$discoveredJobsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the discoveredJob
+   */
+  select?: Prisma.discoveredJobSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the discoveredJob
+   */
+  omit?: Prisma.discoveredJobOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.discoveredJobInclude<ExtArgs> | null
+  where?: Prisma.discoveredJobWhereInput
+  orderBy?: Prisma.discoveredJobOrderByWithRelationInput | Prisma.discoveredJobOrderByWithRelationInput[]
+  cursor?: Prisma.discoveredJobWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DiscoveredJobScalarFieldEnum | Prisma.DiscoveredJobScalarFieldEnum[]
+}
+
+/**
+ * user.applicationQueueItems
+ */
+export type user$applicationQueueItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationQueueItem
+   */
+  select?: Prisma.applicationQueueItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationQueueItem
+   */
+  omit?: Prisma.applicationQueueItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationQueueItemInclude<ExtArgs> | null
+  where?: Prisma.applicationQueueItemWhereInput
+  orderBy?: Prisma.applicationQueueItemOrderByWithRelationInput | Prisma.applicationQueueItemOrderByWithRelationInput[]
+  cursor?: Prisma.applicationQueueItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationQueueItemScalarFieldEnum | Prisma.ApplicationQueueItemScalarFieldEnum[]
 }
 
 /**

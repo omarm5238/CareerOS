@@ -38,6 +38,20 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     href: "/workspace/applications",
   },
   {
+    id: "nav-jobs-discover",
+    title: "Discover Jobs",
+    group: "Navigation",
+    keywords: ["discover", "jobs", "search", "external", "providers"],
+    href: "/workspace/jobs/discover",
+  },
+  {
+    id: "nav-jobs-queue",
+    title: "Application Queue",
+    group: "Navigation",
+    keywords: ["queue", "applications", "prepare", "discovery"],
+    href: "/workspace/jobs/queue",
+  },
+  {
     id: "nav-skills",
     title: "Go to Skills",
     group: "Navigation",

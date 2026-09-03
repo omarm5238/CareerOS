@@ -14,6 +14,7 @@ export type CreateApplicationForJobInput = {
   targetJobId: string;
   resumeVersionId?: string | null;
   resumeVersionRevisionId?: string | null;
+  source?: "JOBS_MODULE" | "DISCOVERY_QUEUE";
 };
 
 export type CreateApplicationForJobResult = {
@@ -139,7 +140,7 @@ export async function createApplicationForJob(
         userId: input.userId,
         jobPostingId: input.targetJobId,
         status: "DRAFT",
-        source: "JOBS_MODULE",
+        source: input.source ?? "JOBS_MODULE",
         resumeVersionId: selection?.resumeVersionId ?? null,
         resumeVersionRevisionId: selection?.resumeVersionRevisionId ?? null,
         contextSnapshotJson: toPrismaJson(snapshot),

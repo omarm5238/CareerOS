@@ -165,3 +165,95 @@ export const ApplicationRejectionSource = {
 } as const
 
 export type ApplicationRejectionSource = (typeof ApplicationRejectionSource)[keyof typeof ApplicationRejectionSource]
+
+
+export const DiscoveryRunStatus = {
+  RUNNING: 'RUNNING',
+  COMPLETED: 'COMPLETED',
+  PARTIAL: 'PARTIAL',
+  FAILED: 'FAILED'
+} as const
+
+export type DiscoveryRunStatus = (typeof DiscoveryRunStatus)[keyof typeof DiscoveryRunStatus]
+
+
+export const DiscoveredJobStatus = {
+  CANDIDATE: 'CANDIDATE',
+  FILTERED: 'FILTERED',
+  DISMISSED: 'DISMISSED',
+  STALE: 'STALE',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type DiscoveredJobStatus = (typeof DiscoveredJobStatus)[keyof typeof DiscoveredJobStatus]
+
+
+export const DiscoveryWorkMode = {
+  REMOTE: 'REMOTE',
+  HYBRID: 'HYBRID',
+  ONSITE: 'ONSITE',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type DiscoveryWorkMode = (typeof DiscoveryWorkMode)[keyof typeof DiscoveryWorkMode]
+
+
+export const DiscoveryEmploymentType = {
+  FULL_TIME: 'FULL_TIME',
+  PART_TIME: 'PART_TIME',
+  CONTRACT: 'CONTRACT',
+  INTERNSHIP: 'INTERNSHIP',
+  TEMPORARY: 'TEMPORARY',
+  OTHER: 'OTHER',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type DiscoveryEmploymentType = (typeof DiscoveryEmploymentType)[keyof typeof DiscoveryEmploymentType]
+
+
+export const DiscoveryProvider = {
+  REMOTIVE: 'REMOTIVE',
+  ARBEITNOW: 'ARBEITNOW',
+  ADZUNA: 'ADZUNA',
+  JOOBLE: 'JOOBLE'
+} as const
+
+export type DiscoveryProvider = (typeof DiscoveryProvider)[keyof typeof DiscoveryProvider]
+
+
+export const DiscoveryScoreBand = {
+  EXCELLENT: 'EXCELLENT',
+  STRONG: 'STRONG',
+  POSSIBLE: 'POSSIBLE',
+  LOW: 'LOW'
+} as const
+
+export type DiscoveryScoreBand = (typeof DiscoveryScoreBand)[keyof typeof DiscoveryScoreBand]
+
+
+export const DiscoveryAnalysisSource = {
+  AI_ENHANCED: 'AI_ENHANCED',
+  RULE_BASED: 'RULE_BASED'
+} as const
+
+export type DiscoveryAnalysisSource = (typeof DiscoveryAnalysisSource)[keyof typeof DiscoveryAnalysisSource]
+
+
+export const QueueStatus = {
+  QUEUED: 'QUEUED',
+  PREPARING: 'PREPARING',
+  HANDED_OFF: 'HANDED_OFF',
+  DISMISSED: 'DISMISSED',
+  FAILED: 'FAILED'
+} as const
+
+export type QueueStatus = (typeof QueueStatus)[keyof typeof QueueStatus]
+
+
+export const QueuePriority = {
+  HIGH: 'HIGH',
+  NORMAL: 'NORMAL',
+  LOW: 'LOW'
+} as const
+
+export type QueuePriority = (typeof QueuePriority)[keyof typeof QueuePriority]

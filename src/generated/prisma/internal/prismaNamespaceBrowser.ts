@@ -66,7 +66,12 @@ export const ModelName = {
   application: 'application',
   applicationEvent: 'applicationEvent',
   applicationContact: 'applicationContact',
-  applicationInsight: 'applicationInsight'
+  applicationInsight: 'applicationInsight',
+  jobDiscoveryProfile: 'jobDiscoveryProfile',
+  jobDiscoveryRun: 'jobDiscoveryRun',
+  discoveredJob: 'discoveredJob',
+  discoveredJobSource: 'discoveredJobSource',
+  applicationQueueItem: 'applicationQueueItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -396,6 +401,133 @@ export const ApplicationInsightScalarFieldEnum = {
 } as const
 
 export type ApplicationInsightScalarFieldEnum = (typeof ApplicationInsightScalarFieldEnum)[keyof typeof ApplicationInsightScalarFieldEnum]
+
+
+export const JobDiscoveryProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  roleTargetsJson: 'roleTargetsJson',
+  locationTargetsJson: 'locationTargetsJson',
+  workModesJson: 'workModesJson',
+  employmentTypesJson: 'employmentTypesJson',
+  experienceLevelsJson: 'experienceLevelsJson',
+  includedKeywordsJson: 'includedKeywordsJson',
+  excludedKeywordsJson: 'excludedKeywordsJson',
+  workAuthorizationJson: 'workAuthorizationJson',
+  visaPreference: 'visaPreference',
+  freshnessDays: 'freshnessDays',
+  minimumSuitabilityScore: 'minimumSuitabilityScore',
+  dailyTarget: 'dailyTarget',
+  providerPreferencesJson: 'providerPreferencesJson',
+  generatedFromContextAt: 'generatedFromContextAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobDiscoveryProfileScalarFieldEnum = (typeof JobDiscoveryProfileScalarFieldEnum)[keyof typeof JobDiscoveryProfileScalarFieldEnum]
+
+
+export const JobDiscoveryRunScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  profileId: 'profileId',
+  status: 'status',
+  startedAt: 'startedAt',
+  completedAt: 'completedAt',
+  querySnapshotJson: 'querySnapshotJson',
+  providerStatsJson: 'providerStatsJson',
+  providerErrorsJson: 'providerErrorsJson',
+  rawFoundCount: 'rawFoundCount',
+  normalizedCount: 'normalizedCount',
+  duplicateCount: 'duplicateCount',
+  hardRejectedCount: 'hardRejectedCount',
+  scoredCount: 'scoredCount',
+  strongMatchCount: 'strongMatchCount',
+  createdAt: 'createdAt'
+} as const
+
+export type JobDiscoveryRunScalarFieldEnum = (typeof JobDiscoveryRunScalarFieldEnum)[keyof typeof JobDiscoveryRunScalarFieldEnum]
+
+
+export const DiscoveredJobScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  normalizedTitle: 'normalizedTitle',
+  company: 'company',
+  normalizedCompany: 'normalizedCompany',
+  location: 'location',
+  countryCode: 'countryCode',
+  workMode: 'workMode',
+  employmentType: 'employmentType',
+  description: 'description',
+  salaryText: 'salaryText',
+  postedAt: 'postedAt',
+  expiresAt: 'expiresAt',
+  canonicalFingerprint: 'canonicalFingerprint',
+  firstSeenAt: 'firstSeenAt',
+  lastSeenAt: 'lastSeenAt',
+  timesSeen: 'timesSeen',
+  lastDiscoveryRunId: 'lastDiscoveryRunId',
+  discoveryStatus: 'discoveryStatus',
+  deterministicScore: 'deterministicScore',
+  aiScore: 'aiScore',
+  finalScore: 'finalScore',
+  scoreBand: 'scoreBand',
+  matchSummary: 'matchSummary',
+  matchedSkillsJson: 'matchedSkillsJson',
+  missingSkillsJson: 'missingSkillsJson',
+  hardBlockersJson: 'hardBlockersJson',
+  softBlockersJson: 'softBlockersJson',
+  evidenceJson: 'evidenceJson',
+  warningsJson: 'warningsJson',
+  analysisSource: 'analysisSource',
+  aiModel: 'aiModel',
+  scoreContextFingerprint: 'scoreContextFingerprint',
+  jobPostingId: 'jobPostingId',
+  dismissedAt: 'dismissedAt',
+  dismissedReason: 'dismissedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DiscoveredJobScalarFieldEnum = (typeof DiscoveredJobScalarFieldEnum)[keyof typeof DiscoveredJobScalarFieldEnum]
+
+
+export const DiscoveredJobSourceScalarFieldEnum = {
+  id: 'id',
+  discoveredJobId: 'discoveredJobId',
+  provider: 'provider',
+  externalId: 'externalId',
+  sourceUrl: 'sourceUrl',
+  applyUrl: 'applyUrl',
+  sourceMetadataJson: 'sourceMetadataJson',
+  firstSeenAt: 'firstSeenAt',
+  lastSeenAt: 'lastSeenAt'
+} as const
+
+export type DiscoveredJobSourceScalarFieldEnum = (typeof DiscoveredJobSourceScalarFieldEnum)[keyof typeof DiscoveredJobSourceScalarFieldEnum]
+
+
+export const ApplicationQueueItemScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  discoveredJobId: 'discoveredJobId',
+  priority: 'priority',
+  queueStatus: 'queueStatus',
+  jobPostingId: 'jobPostingId',
+  resumeVersionId: 'resumeVersionId',
+  applicationId: 'applicationId',
+  preparationError: 'preparationError',
+  preparationSnapshotJson: 'preparationSnapshotJson',
+  queuedAt: 'queuedAt',
+  preparedAt: 'preparedAt',
+  handedOffAt: 'handedOffAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationQueueItemScalarFieldEnum = (typeof ApplicationQueueItemScalarFieldEnum)[keyof typeof ApplicationQueueItemScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -7,6 +7,7 @@ import type { JobApplicationSummary } from "@/features/applications/server";
 
 import type { JobDetailView, JobListItem } from "../types";
 import { AddJobForm } from "./add-job-form";
+import { JobsSubNav } from "./jobs-sub-nav";
 import { JobDetailPanel } from "./job-detail-panel";
 import { JobsEmptyState } from "./jobs-empty-state";
 import { JobsList } from "./jobs-list";
@@ -45,7 +46,8 @@ export function JobsModulePage({
         </div>
 
         <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
-          <header className="space-y-3">
+          <JobsSubNav />
+          <header className="mt-6 space-y-3">
             <Link
               className="text-xs text-[var(--color-text-secondary)] underline-offset-4 [transition:var(--motion-fade)] hover:text-[var(--color-text-primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
               href="/workspace"

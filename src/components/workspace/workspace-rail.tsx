@@ -21,13 +21,13 @@ function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
   // keeps the module highlighted on nested routes too.
   if (pathname.startsWith("/workspace/applications")) return "Applications";
 
+  if (pathname.startsWith("/workspace/jobs")) return "Jobs";
+
   switch (pathname) {
     case "/workspace":
       return "Core";
     case "/workspace/resume":
       return "Resume";
-    case "/workspace/jobs":
-      return "Jobs";
     case "/workspace/skills":
       return "Skills";
     case "/workspace/analytics":
