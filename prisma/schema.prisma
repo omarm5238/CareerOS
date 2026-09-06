@@ -16,22 +16,24 @@ model user {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  sessions               session[]
-  accounts               account[]
-  resumeDocuments        resumeDocument[]
-  jobPostings            jobPosting[]
-  skillsInsights         skillsInsight[]
-  careerBriefs           careerBrief[]
-  resumeVersions         resumeVersion[]
-  resumeVersionRevisions resumeVersionRevision[]
-  applications           application[]
-  applicationEvents      applicationEvent[]
-  applicationContacts    applicationContact[]
-  applicationInsights    applicationInsight[]
-  jobDiscoveryProfile    jobDiscoveryProfile?
-  jobDiscoveryRuns       jobDiscoveryRun[]
-  discoveredJobs         discoveredJob[]
-  applicationQueueItems  applicationQueueItem[]
+  sessions                    session[]
+  accounts                    account[]
+  resumeDocuments             resumeDocument[]
+  jobPostings                 jobPosting[]
+  skillsInsights              skillsInsight[]
+  careerBriefs                careerBrief[]
+  resumeVersions              resumeVersion[]
+  resumeVersionRevisions      resumeVersionRevision[]
+  applications                application[]
+  applicationEvents           applicationEvent[]
+  applicationContacts         applicationContact[]
+  applicationInsights         applicationInsight[]
+  jobDiscoveryProfile         jobDiscoveryProfile?
+  jobDiscoveryRuns            jobDiscoveryRun[]
+  discoveredJobs              discoveredJob[]
+  applicationQueueItems       applicationQueueItem[]
+  communicationDrafts         communicationDraft[]
+  communicationDraftRevisions communicationDraftRevision[]
 }
 
 model session {
@@ -136,11 +138,12 @@ model jobPosting {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
-  user           user            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  analysis       jobAnalysis?
-  resumeVersions resumeVersion[]
-  applications   application[]
-  discoveredJobs discoveredJob[]
+  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis            jobAnalysis?
+  resumeVersions      resumeVersion[]
+  applications        application[]
+  discoveredJobs      discoveredJob[]
+  communicationDrafts communicationDraft[]
 
   @@index([userId])
   @@index([createdAt])
@@ -273,6 +276,7 @@ model resumeVersion {
   revisions            resumeVersionRevision[] @relation("ResumeVersionRevisions")
   activeRevision       resumeVersionRevision?  @relation("ActiveResumeVersionRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
   applications         application[]
+  communicationDrafts  communicationDraft[]
 
   @@index([userId])
   @@index([targetJobId])
@@ -306,10 +310,11 @@ model resumeVersionRevision {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user             user           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  resumeVersion    resumeVersion  @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
-  activeForVersion resumeVersion? @relation("ActiveResumeVersionRevision")
-  applications     application[]
+  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeVersion       resumeVersion        @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
+  activeForVersion    resumeVersion?       @relation("ActiveResumeVersionRevision")
+  applications        application[]
+  communicationDrafts communicationDraft[]
 
   @@unique([resumeVersionId, revisionNumber])
   @@index([userId])
@@ -462,6 +467,7 @@ model application {
   events                applicationEvent[]
   contacts              applicationContact[]
   insights              applicationInsight[]
+  communicationDrafts   communicationDraft[]
 
   @@index([userId])
   @@index([jobPostingId])
@@ -521,8 +527,9 @@ model applicationContact {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  application application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application         application          @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  communicationDrafts communicationDraft[]
 
   @@index([userId])
   @@index([applicationId])
@@ -810,5 +817,134 @@ model applicationQueueItem {
   @@unique([userId, discoveredJobId])
   @@index([userId])
   @@index([queueStatus])
+  @@index([createdAt])
+}
+
+enum CommunicationType {
+  COVER_LETTER
+  APPLICATION_EMAIL
+  RECRUITER_OUTREACH
+  FOLLOW_UP
+  INTERVIEW_THANK_YOU
+  POST_INTERVIEW_FOLLOW_UP
+  OFFER_RESPONSE
+  GENERAL_PROFESSIONAL_MESSAGE
+}
+
+enum CommunicationStatus {
+  DRAFT
+  READY
+  USED
+  ARCHIVED
+}
+
+enum CommunicationTone {
+  PROFESSIONAL
+  WARM
+  CONCISE
+  CONFIDENT
+  FORMAL
+}
+
+enum CommunicationLength {
+  SHORT
+  STANDARD
+  DETAILED
+}
+
+enum CommunicationLanguage {
+  ENGLISH
+  ARABIC
+  TURKISH
+}
+
+enum CommunicationRevisionSource {
+  AI_GENERATED
+  USER_EDITED
+  RULE_BASED_FALLBACK
+}
+
+enum CommunicationGenerationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+model communicationDraft {
+  id     String @id @default(cuid())
+  userId String
+
+  applicationId           String?
+  jobPostingId            String?
+  contactId               String?
+  resumeVersionId         String?
+  resumeVersionRevisionId String?
+
+  type   CommunicationType
+  status CommunicationStatus @default(DRAFT)
+
+  activeRevisionId String? @unique
+
+  usedAt     DateTime?
+  archivedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                  user                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application           application?                 @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  jobPosting            jobPosting?                  @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  contact               applicationContact?          @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  resumeVersion         resumeVersion?               @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision resumeVersionRevision?       @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  revisions             communicationDraftRevision[] @relation("CommunicationDraftRevisions")
+  activeRevision        communicationDraftRevision?  @relation("ActiveCommunicationDraftRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([applicationId])
+  @@index([jobPostingId])
+  @@index([contactId])
+  @@index([type])
+  @@index([status])
+  @@index([updatedAt])
+}
+
+model communicationDraftRevision {
+  id                   String @id @default(cuid())
+  communicationDraftId String
+  userId               String
+
+  revisionNumber Int
+  source         CommunicationRevisionSource
+
+  subject String?
+  content String
+
+  tone     CommunicationTone
+  length   CommunicationLength
+  language CommunicationLanguage
+
+  contextSnapshotJson Json
+  contextFingerprint  String
+
+  evidenceUsedJson Json @default("[]")
+  warningsJson     Json @default("[]")
+  changeLogJson    Json @default("[]")
+
+  model            String?
+  aiSource         String?
+  generationStatus CommunicationGenerationStatus @default(COMPLETED)
+  errorMessage     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user               user                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  communicationDraft communicationDraft  @relation("CommunicationDraftRevisions", fields: [communicationDraftId], references: [id], onDelete: Cascade)
+  activeForDraft     communicationDraft? @relation("ActiveCommunicationDraftRevision")
+
+  @@unique([communicationDraftId, revisionNumber])
+  @@index([userId])
+  @@index([communicationDraftId])
   @@index([createdAt])
 }

@@ -122,3 +122,13 @@ export type discoveredJobSource = Prisma.discoveredJobSourceModel
  *
  */
 export type applicationQueueItem = Prisma.applicationQueueItemModel
+/**
+ * Model communicationDraft
+ *
+ */
+export type communicationDraft = Prisma.communicationDraftModel
+/**
+ * Model communicationDraftRevision
+ *
+ */
+export type communicationDraftRevision = Prisma.communicationDraftRevisionModel

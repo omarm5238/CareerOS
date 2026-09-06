@@ -644,6 +644,125 @@ export type EnumQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
 }
 
+export type EnumCommunicationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationType | Prisma.EnumCommunicationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel> | $Enums.CommunicationType
+}
+
+export type EnumCommunicationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationStatus | Prisma.EnumCommunicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel> | $Enums.CommunicationStatus
+}
+
+export type EnumCommunicationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationType | Prisma.EnumCommunicationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationTypeWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel>
+}
+
+export type EnumCommunicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationStatus | Prisma.EnumCommunicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel>
+}
+
+export type EnumCommunicationRevisionSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationRevisionSource | Prisma.EnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel> | $Enums.CommunicationRevisionSource
+}
+
+export type EnumCommunicationToneFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationTone | Prisma.EnumCommunicationToneFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel> | $Enums.CommunicationTone
+}
+
+export type EnumCommunicationLengthFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLength | Prisma.EnumCommunicationLengthFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel> | $Enums.CommunicationLength
+}
+
+export type EnumCommunicationLanguageFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLanguage | Prisma.EnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel> | $Enums.CommunicationLanguage
+}
+
+export type EnumCommunicationGenerationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationGenerationStatus | Prisma.EnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel> | $Enums.CommunicationGenerationStatus
+}
+
+export type EnumCommunicationRevisionSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationRevisionSource | Prisma.EnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationRevisionSourceWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationRevisionSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel>
+}
+
+export type EnumCommunicationToneWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationTone | Prisma.EnumCommunicationToneFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationToneWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationTone
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel>
+}
+
+export type EnumCommunicationLengthWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLength | Prisma.EnumCommunicationLengthFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLengthWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationLength
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel>
+}
+
+export type EnumCommunicationLanguageWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLanguage | Prisma.EnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLanguageWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationLanguage
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel>
+}
+
+export type EnumCommunicationGenerationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationGenerationStatus | Prisma.EnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationGenerationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationGenerationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -1258,6 +1377,125 @@ export type NestedEnumQueueStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumQueueStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationType | Prisma.EnumCommunicationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel> | $Enums.CommunicationType
+}
+
+export type NestedEnumCommunicationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationStatus | Prisma.EnumCommunicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel> | $Enums.CommunicationStatus
+}
+
+export type NestedEnumCommunicationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationType | Prisma.EnumCommunicationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationType[] | Prisma.ListEnumCommunicationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationTypeWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationStatus | Prisma.EnumCommunicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationStatus[] | Prisma.ListEnumCommunicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationRevisionSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationRevisionSource | Prisma.EnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel> | $Enums.CommunicationRevisionSource
+}
+
+export type NestedEnumCommunicationToneFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationTone | Prisma.EnumCommunicationToneFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel> | $Enums.CommunicationTone
+}
+
+export type NestedEnumCommunicationLengthFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLength | Prisma.EnumCommunicationLengthFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel> | $Enums.CommunicationLength
+}
+
+export type NestedEnumCommunicationLanguageFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLanguage | Prisma.EnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel> | $Enums.CommunicationLanguage
+}
+
+export type NestedEnumCommunicationGenerationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationGenerationStatus | Prisma.EnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel> | $Enums.CommunicationGenerationStatus
+}
+
+export type NestedEnumCommunicationRevisionSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationRevisionSource | Prisma.EnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationRevisionSource[] | Prisma.ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationRevisionSourceWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationRevisionSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationRevisionSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationToneWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationTone | Prisma.EnumCommunicationToneFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationTone[] | Prisma.ListEnumCommunicationToneFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationToneWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationTone
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationToneFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationLengthWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLength | Prisma.EnumCommunicationLengthFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLength[] | Prisma.ListEnumCommunicationLengthFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLengthWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationLength
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationLengthFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationLanguageWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationLanguage | Prisma.EnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationLanguage[] | Prisma.ListEnumCommunicationLanguageFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationLanguageWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationLanguage
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationLanguageFilter<$PrismaModel>
+}
+
+export type NestedEnumCommunicationGenerationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CommunicationGenerationStatus | Prisma.EnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CommunicationGenerationStatus[] | Prisma.ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCommunicationGenerationStatusWithAggregatesFilter<$PrismaModel> | $Enums.CommunicationGenerationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCommunicationGenerationStatusFilter<$PrismaModel>
 }
 
 

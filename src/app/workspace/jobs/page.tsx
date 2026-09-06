@@ -11,6 +11,10 @@ import {
   getJobTailoredResumeSummary,
   getLatestResumeAnalysisForUser,
 } from "@/features/resume/server";
+import {
+  getJobCommunications,
+  getJobResumeOptionsForCommunication,
+} from "@/features/communications/server";
 import { auth } from "@/server/auth";
 
 type WorkspaceJobsPageProps = {
@@ -55,10 +59,16 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
 
     const tailoredResume = await getJobTailoredResumeSummary(session.user.id, selected.id);
     const applicationSummary = await getApplicationSummaryForJob(session.user.id, selected.id);
+    const [communicationResumeOptions, communicationDrafts] = await Promise.all([
+      getJobResumeOptionsForCommunication(session.user.id, selected.id),
+      getJobCommunications(session.user.id, selected.id),
+    ]);
 
     return (
       <JobsModulePage
         applicationSummary={applicationSummary}
+        communicationDrafts={communicationDrafts}
+        communicationResumeOptions={communicationResumeOptions}
         hasResumeProfile={!!resume}
         jobs={jobs}
         selectedJob={selected}
@@ -78,10 +88,18 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
   const applicationSummary = selectedJob
     ? await getApplicationSummaryForJob(session.user.id, selectedJob.id)
     : null;
+  const communicationResumeOptions = selectedJob
+    ? await getJobResumeOptionsForCommunication(session.user.id, selectedJob.id)
+    : [];
+  const communicationDrafts = selectedJob
+    ? await getJobCommunications(session.user.id, selectedJob.id)
+    : [];
 
   return (
     <JobsModulePage
       applicationSummary={applicationSummary}
+      communicationDrafts={communicationDrafts}
+      communicationResumeOptions={communicationResumeOptions}
       hasResumeProfile={!!resume}
       jobs={jobs}
       selectedJob={selectedJob}

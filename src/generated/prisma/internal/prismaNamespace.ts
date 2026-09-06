@@ -404,7 +404,9 @@ export const ModelName = {
   jobDiscoveryRun: 'jobDiscoveryRun',
   discoveredJob: 'discoveredJob',
   discoveredJobSource: 'discoveredJobSource',
-  applicationQueueItem: 'applicationQueueItem'
+  applicationQueueItem: 'applicationQueueItem',
+  communicationDraft: 'communicationDraft',
+  communicationDraftRevision: 'communicationDraftRevision'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +422,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1978,6 +1980,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    communicationDraft: {
+      payload: Prisma.$communicationDraftPayload<ExtArgs>
+      fields: Prisma.communicationDraftFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.communicationDraftFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.communicationDraftFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        findFirst: {
+          args: Prisma.communicationDraftFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.communicationDraftFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        findMany: {
+          args: Prisma.communicationDraftFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>[]
+        }
+        create: {
+          args: Prisma.communicationDraftCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        createMany: {
+          args: Prisma.communicationDraftCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.communicationDraftCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>[]
+        }
+        delete: {
+          args: Prisma.communicationDraftDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        update: {
+          args: Prisma.communicationDraftUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        deleteMany: {
+          args: Prisma.communicationDraftDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.communicationDraftUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.communicationDraftUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>[]
+        }
+        upsert: {
+          args: Prisma.communicationDraftUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftPayload>
+        }
+        aggregate: {
+          args: Prisma.CommunicationDraftAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCommunicationDraft>
+        }
+        groupBy: {
+          args: Prisma.communicationDraftGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommunicationDraftGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.communicationDraftCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommunicationDraftCountAggregateOutputType> | number
+        }
+      }
+    }
+    communicationDraftRevision: {
+      payload: Prisma.$communicationDraftRevisionPayload<ExtArgs>
+      fields: Prisma.communicationDraftRevisionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.communicationDraftRevisionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.communicationDraftRevisionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        findFirst: {
+          args: Prisma.communicationDraftRevisionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.communicationDraftRevisionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        findMany: {
+          args: Prisma.communicationDraftRevisionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>[]
+        }
+        create: {
+          args: Prisma.communicationDraftRevisionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        createMany: {
+          args: Prisma.communicationDraftRevisionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.communicationDraftRevisionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>[]
+        }
+        delete: {
+          args: Prisma.communicationDraftRevisionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        update: {
+          args: Prisma.communicationDraftRevisionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        deleteMany: {
+          args: Prisma.communicationDraftRevisionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.communicationDraftRevisionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.communicationDraftRevisionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>[]
+        }
+        upsert: {
+          args: Prisma.communicationDraftRevisionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$communicationDraftRevisionPayload>
+        }
+        aggregate: {
+          args: Prisma.CommunicationDraftRevisionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCommunicationDraftRevision>
+        }
+        groupBy: {
+          args: Prisma.communicationDraftRevisionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommunicationDraftRevisionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.communicationDraftRevisionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CommunicationDraftRevisionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2457,6 +2607,53 @@ export const ApplicationQueueItemScalarFieldEnum = {
 export type ApplicationQueueItemScalarFieldEnum = (typeof ApplicationQueueItemScalarFieldEnum)[keyof typeof ApplicationQueueItemScalarFieldEnum]
 
 
+export const CommunicationDraftScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  jobPostingId: 'jobPostingId',
+  contactId: 'contactId',
+  resumeVersionId: 'resumeVersionId',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  type: 'type',
+  status: 'status',
+  activeRevisionId: 'activeRevisionId',
+  usedAt: 'usedAt',
+  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunicationDraftScalarFieldEnum = (typeof CommunicationDraftScalarFieldEnum)[keyof typeof CommunicationDraftScalarFieldEnum]
+
+
+export const CommunicationDraftRevisionScalarFieldEnum = {
+  id: 'id',
+  communicationDraftId: 'communicationDraftId',
+  userId: 'userId',
+  revisionNumber: 'revisionNumber',
+  source: 'source',
+  subject: 'subject',
+  content: 'content',
+  tone: 'tone',
+  length: 'length',
+  language: 'language',
+  contextSnapshotJson: 'contextSnapshotJson',
+  contextFingerprint: 'contextFingerprint',
+  evidenceUsedJson: 'evidenceUsedJson',
+  warningsJson: 'warningsJson',
+  changeLogJson: 'changeLogJson',
+  model: 'model',
+  aiSource: 'aiSource',
+  generationStatus: 'generationStatus',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunicationDraftRevisionScalarFieldEnum = (typeof CommunicationDraftRevisionScalarFieldEnum)[keyof typeof CommunicationDraftRevisionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2875,6 +3072,104 @@ export type ListEnumQueueStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
+ * Reference to a field of type 'CommunicationType'
+ */
+export type EnumCommunicationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationType'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationType[]'
+ */
+export type ListEnumCommunicationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationStatus'
+ */
+export type EnumCommunicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationStatus'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationStatus[]'
+ */
+export type ListEnumCommunicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationRevisionSource'
+ */
+export type EnumCommunicationRevisionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationRevisionSource'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationRevisionSource[]'
+ */
+export type ListEnumCommunicationRevisionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationRevisionSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationTone'
+ */
+export type EnumCommunicationToneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationTone'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationTone[]'
+ */
+export type ListEnumCommunicationToneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationTone[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationLength'
+ */
+export type EnumCommunicationLengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationLength'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationLength[]'
+ */
+export type ListEnumCommunicationLengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationLength[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationLanguage'
+ */
+export type EnumCommunicationLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationLanguage'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationLanguage[]'
+ */
+export type ListEnumCommunicationLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationLanguage[]'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationGenerationStatus'
+ */
+export type EnumCommunicationGenerationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationGenerationStatus'>
+
+
+
+/**
+ * Reference to a field of type 'CommunicationGenerationStatus[]'
+ */
+export type ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CommunicationGenerationStatus[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3018,6 +3313,8 @@ export type GlobalOmitConfig = {
   discoveredJob?: Prisma.discoveredJobOmit
   discoveredJobSource?: Prisma.discoveredJobSourceOmit
   applicationQueueItem?: Prisma.applicationQueueItemOmit
+  communicationDraft?: Prisma.communicationDraftOmit
+  communicationDraftRevision?: Prisma.communicationDraftRevisionOmit
 }
 
 /* Types for Logging */

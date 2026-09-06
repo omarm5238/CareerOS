@@ -11,6 +11,11 @@ import { JobAnalysisSourceBadge } from "./job-analysis-source-badge";
 import { DeleteJobButton } from "./delete-job-button";
 import { formatJobCreatedAt, JobMatchSummary } from "./job-match-summary";
 import { JobRecommendations } from "./job-recommendations";
+import { JobCoverLetterEntry } from "@/features/communications/components/job-cover-letter-entry";
+import type {
+  CommunicationDraftListItem,
+  CommunicationResumeOption,
+} from "@/features/communications/types";
 import { JobReanalyzeButton } from "./job-reanalyze-button";
 
 type JobDetailPanelProps = {
@@ -18,6 +23,8 @@ type JobDetailPanelProps = {
   hasResumeProfile: boolean;
   tailoredResume: JobTailoredResumeSummary | null;
   applicationSummary: JobApplicationSummary;
+  communicationResumeOptions?: CommunicationResumeOption[];
+  communicationDrafts?: CommunicationDraftListItem[];
 };
 
 export function JobDetailPanel({
@@ -25,6 +32,8 @@ export function JobDetailPanel({
   hasResumeProfile,
   tailoredResume,
   applicationSummary,
+  communicationResumeOptions = [],
+  communicationDrafts = [],
 }: JobDetailPanelProps) {
   const preview =
     job.description.length > 420
@@ -77,6 +86,14 @@ export function JobDetailPanel({
         hasResumeProfile={hasResumeProfile}
         jobId={job.id}
         summary={tailoredResume ?? { primary: null, archivedCount: 0 }}
+      />
+
+      <JobCoverLetterEntry
+        company={job.company}
+        drafts={communicationDrafts}
+        jobId={job.id}
+        jobTitle={job.title}
+        resumeOptions={communicationResumeOptions}
       />
 
       <JobApplicationSection jobId={job.id} summary={applicationSummary} />

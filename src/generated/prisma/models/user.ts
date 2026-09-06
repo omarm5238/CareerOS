@@ -214,6 +214,8 @@ export type userWhereInput = {
   jobDiscoveryRuns?: Prisma.JobDiscoveryRunListRelationFilter
   discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
   applicationQueueItems?: Prisma.ApplicationQueueItemListRelationFilter
+  communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  communicationDraftRevisions?: Prisma.CommunicationDraftRevisionListRelationFilter
 }
 
 export type userOrderByWithRelationInput = {
@@ -240,6 +242,8 @@ export type userOrderByWithRelationInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunOrderByRelationAggregateInput
   discoveredJobs?: Prisma.discoveredJobOrderByRelationAggregateInput
   applicationQueueItems?: Prisma.applicationQueueItemOrderByRelationAggregateInput
+  communicationDrafts?: Prisma.communicationDraftOrderByRelationAggregateInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionOrderByRelationAggregateInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -269,6 +273,8 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   jobDiscoveryRuns?: Prisma.JobDiscoveryRunListRelationFilter
   discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
   applicationQueueItems?: Prisma.ApplicationQueueItemListRelationFilter
+  communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  communicationDraftRevisions?: Prisma.CommunicationDraftRevisionListRelationFilter
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -321,6 +327,8 @@ export type userCreateInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -347,6 +355,8 @@ export type userUncheckedCreateInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -373,6 +383,8 @@ export type userUpdateInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -399,6 +411,8 @@ export type userUncheckedUpdateInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -706,6 +720,34 @@ export type userUpdateOneRequiredWithoutApplicationQueueItemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutApplicationQueueItemsInput, Prisma.userUpdateWithoutApplicationQueueItemsInput>, Prisma.userUncheckedUpdateWithoutApplicationQueueItemsInput>
 }
 
+export type userCreateNestedOneWithoutCommunicationDraftsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCommunicationDraftsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCommunicationDraftsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCommunicationDraftsInput
+  upsert?: Prisma.userUpsertWithoutCommunicationDraftsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCommunicationDraftsInput, Prisma.userUpdateWithoutCommunicationDraftsInput>, Prisma.userUncheckedUpdateWithoutCommunicationDraftsInput>
+}
+
+export type userCreateNestedOneWithoutCommunicationDraftRevisionsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftRevisionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCommunicationDraftRevisionsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftRevisionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCommunicationDraftRevisionsInput
+  upsert?: Prisma.userUpsertWithoutCommunicationDraftRevisionsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCommunicationDraftRevisionsInput, Prisma.userUpdateWithoutCommunicationDraftRevisionsInput>, Prisma.userUncheckedUpdateWithoutCommunicationDraftRevisionsInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -729,6 +771,8 @@ export type userCreateWithoutSessionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -754,6 +798,8 @@ export type userUncheckedCreateWithoutSessionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -795,6 +841,8 @@ export type userUpdateWithoutSessionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -820,6 +868,8 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -845,6 +895,8 @@ export type userCreateWithoutAccountsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -870,6 +922,8 @@ export type userUncheckedCreateWithoutAccountsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -911,6 +965,8 @@ export type userUpdateWithoutAccountsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -936,6 +992,8 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -961,6 +1019,8 @@ export type userCreateWithoutResumeDocumentsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -986,6 +1046,8 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -1027,6 +1089,8 @@ export type userUpdateWithoutResumeDocumentsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -1052,6 +1116,8 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -1077,6 +1143,8 @@ export type userCreateWithoutJobPostingsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -1102,6 +1170,8 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -1143,6 +1213,8 @@ export type userUpdateWithoutJobPostingsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -1168,6 +1240,8 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -1193,6 +1267,8 @@ export type userCreateWithoutSkillsInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -1218,6 +1294,8 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -1259,6 +1337,8 @@ export type userUpdateWithoutSkillsInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -1284,6 +1364,8 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -1309,6 +1391,8 @@ export type userCreateWithoutCareerBriefsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -1334,6 +1418,8 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -1375,6 +1461,8 @@ export type userUpdateWithoutCareerBriefsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -1400,6 +1488,8 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionsInput = {
@@ -1425,6 +1515,8 @@ export type userCreateWithoutResumeVersionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionsInput = {
@@ -1450,6 +1542,8 @@ export type userUncheckedCreateWithoutResumeVersionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionsInput = {
@@ -1491,6 +1585,8 @@ export type userUpdateWithoutResumeVersionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionsInput = {
@@ -1516,6 +1612,8 @@ export type userUncheckedUpdateWithoutResumeVersionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionRevisionsInput = {
@@ -1541,6 +1639,8 @@ export type userCreateWithoutResumeVersionRevisionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
@@ -1566,6 +1666,8 @@ export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
@@ -1607,6 +1709,8 @@ export type userUpdateWithoutResumeVersionRevisionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
@@ -1632,6 +1736,8 @@ export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationsInput = {
@@ -1657,6 +1763,8 @@ export type userCreateWithoutApplicationsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationsInput = {
@@ -1682,6 +1790,8 @@ export type userUncheckedCreateWithoutApplicationsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationsInput = {
@@ -1723,6 +1833,8 @@ export type userUpdateWithoutApplicationsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationsInput = {
@@ -1748,6 +1860,8 @@ export type userUncheckedUpdateWithoutApplicationsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationEventsInput = {
@@ -1773,6 +1887,8 @@ export type userCreateWithoutApplicationEventsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationEventsInput = {
@@ -1798,6 +1914,8 @@ export type userUncheckedCreateWithoutApplicationEventsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationEventsInput = {
@@ -1839,6 +1957,8 @@ export type userUpdateWithoutApplicationEventsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationEventsInput = {
@@ -1864,6 +1984,8 @@ export type userUncheckedUpdateWithoutApplicationEventsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationContactsInput = {
@@ -1889,6 +2011,8 @@ export type userCreateWithoutApplicationContactsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationContactsInput = {
@@ -1914,6 +2038,8 @@ export type userUncheckedCreateWithoutApplicationContactsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationContactsInput = {
@@ -1955,6 +2081,8 @@ export type userUpdateWithoutApplicationContactsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationContactsInput = {
@@ -1980,6 +2108,8 @@ export type userUncheckedUpdateWithoutApplicationContactsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationInsightsInput = {
@@ -2005,6 +2135,8 @@ export type userCreateWithoutApplicationInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationInsightsInput = {
@@ -2030,6 +2162,8 @@ export type userUncheckedCreateWithoutApplicationInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationInsightsInput = {
@@ -2071,6 +2205,8 @@ export type userUpdateWithoutApplicationInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationInsightsInput = {
@@ -2096,6 +2232,8 @@ export type userUncheckedUpdateWithoutApplicationInsightsInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryProfileInput = {
@@ -2121,6 +2259,8 @@ export type userCreateWithoutJobDiscoveryProfileInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
@@ -2146,6 +2286,8 @@ export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryProfileInput = {
@@ -2187,6 +2329,8 @@ export type userUpdateWithoutJobDiscoveryProfileInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
@@ -2212,6 +2356,8 @@ export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryRunsInput = {
@@ -2237,6 +2383,8 @@ export type userCreateWithoutJobDiscoveryRunsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
@@ -2262,6 +2410,8 @@ export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryRunsInput = {
@@ -2303,6 +2453,8 @@ export type userUpdateWithoutJobDiscoveryRunsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
@@ -2328,6 +2480,8 @@ export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutDiscoveredJobsInput = {
@@ -2353,6 +2507,8 @@ export type userCreateWithoutDiscoveredJobsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDiscoveredJobsInput = {
@@ -2378,6 +2534,8 @@ export type userUncheckedCreateWithoutDiscoveredJobsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDiscoveredJobsInput = {
@@ -2419,6 +2577,8 @@ export type userUpdateWithoutDiscoveredJobsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
@@ -2444,6 +2604,8 @@ export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationQueueItemsInput = {
@@ -2469,6 +2631,8 @@ export type userCreateWithoutApplicationQueueItemsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
@@ -2494,6 +2658,8 @@ export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationQueueItemsInput = {
@@ -2535,6 +2701,8 @@ export type userUpdateWithoutApplicationQueueItemsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
@@ -2560,6 +2728,256 @@ export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
   jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
   jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutCommunicationDraftsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCommunicationDraftsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCommunicationDraftsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftsInput>
+}
+
+export type userUpsertWithoutCommunicationDraftsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCommunicationDraftsInput, Prisma.userUncheckedUpdateWithoutCommunicationDraftsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCommunicationDraftsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCommunicationDraftsInput, Prisma.userUncheckedUpdateWithoutCommunicationDraftsInput>
+}
+
+export type userUpdateWithoutCommunicationDraftsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutCommunicationDraftRevisionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCommunicationDraftRevisionsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftRevisionsInput>
+}
+
+export type userUpsertWithoutCommunicationDraftRevisionsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedUpdateWithoutCommunicationDraftRevisionsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedCreateWithoutCommunicationDraftRevisionsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCommunicationDraftRevisionsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCommunicationDraftRevisionsInput, Prisma.userUncheckedUpdateWithoutCommunicationDraftRevisionsInput>
+}
+
+export type userUpdateWithoutCommunicationDraftRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -2583,6 +3001,8 @@ export type UserCountOutputType = {
   jobDiscoveryRuns: number
   discoveredJobs: number
   applicationQueueItems: number
+  communicationDrafts: number
+  communicationDraftRevisions: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2601,6 +3021,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   jobDiscoveryRuns?: boolean | UserCountOutputTypeCountJobDiscoveryRunsArgs
   discoveredJobs?: boolean | UserCountOutputTypeCountDiscoveredJobsArgs
   applicationQueueItems?: boolean | UserCountOutputTypeCountApplicationQueueItemsArgs
+  communicationDrafts?: boolean | UserCountOutputTypeCountCommunicationDraftsArgs
+  communicationDraftRevisions?: boolean | UserCountOutputTypeCountCommunicationDraftRevisionsArgs
 }
 
 /**
@@ -2718,6 +3140,20 @@ export type UserCountOutputTypeCountApplicationQueueItemsArgs<ExtArgs extends ru
   where?: Prisma.applicationQueueItemWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunicationDraftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.communicationDraftWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCommunicationDraftRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.communicationDraftRevisionWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2743,6 +3179,8 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   jobDiscoveryRuns?: boolean | Prisma.user$jobDiscoveryRunsArgs<ExtArgs>
   discoveredJobs?: boolean | Prisma.user$discoveredJobsArgs<ExtArgs>
   applicationQueueItems?: boolean | Prisma.user$applicationQueueItemsArgs<ExtArgs>
+  communicationDrafts?: boolean | Prisma.user$communicationDraftsArgs<ExtArgs>
+  communicationDraftRevisions?: boolean | Prisma.user$communicationDraftRevisionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2794,6 +3232,8 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   jobDiscoveryRuns?: boolean | Prisma.user$jobDiscoveryRunsArgs<ExtArgs>
   discoveredJobs?: boolean | Prisma.user$discoveredJobsArgs<ExtArgs>
   applicationQueueItems?: boolean | Prisma.user$applicationQueueItemsArgs<ExtArgs>
+  communicationDrafts?: boolean | Prisma.user$communicationDraftsArgs<ExtArgs>
+  communicationDraftRevisions?: boolean | Prisma.user$communicationDraftRevisionsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2818,6 +3258,8 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     jobDiscoveryRuns: Prisma.$jobDiscoveryRunPayload<ExtArgs>[]
     discoveredJobs: Prisma.$discoveredJobPayload<ExtArgs>[]
     applicationQueueItems: Prisma.$applicationQueueItemPayload<ExtArgs>[]
+    communicationDrafts: Prisma.$communicationDraftPayload<ExtArgs>[]
+    communicationDraftRevisions: Prisma.$communicationDraftRevisionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3237,6 +3679,8 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   jobDiscoveryRuns<T extends Prisma.user$jobDiscoveryRunsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$jobDiscoveryRunsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$jobDiscoveryRunPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   discoveredJobs<T extends Prisma.user$discoveredJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$discoveredJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$discoveredJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   applicationQueueItems<T extends Prisma.user$applicationQueueItemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$applicationQueueItemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationQueueItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communicationDrafts<T extends Prisma.user$communicationDraftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$communicationDraftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  communicationDraftRevisions<T extends Prisma.user$communicationDraftRevisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$communicationDraftRevisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4042,6 +4486,54 @@ export type user$applicationQueueItemsArgs<ExtArgs extends runtime.Types.Extensi
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationQueueItemScalarFieldEnum | Prisma.ApplicationQueueItemScalarFieldEnum[]
+}
+
+/**
+ * user.communicationDrafts
+ */
+export type user$communicationDraftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the communicationDraft
+   */
+  select?: Prisma.communicationDraftSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the communicationDraft
+   */
+  omit?: Prisma.communicationDraftOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.communicationDraftInclude<ExtArgs> | null
+  where?: Prisma.communicationDraftWhereInput
+  orderBy?: Prisma.communicationDraftOrderByWithRelationInput | Prisma.communicationDraftOrderByWithRelationInput[]
+  cursor?: Prisma.communicationDraftWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunicationDraftScalarFieldEnum | Prisma.CommunicationDraftScalarFieldEnum[]
+}
+
+/**
+ * user.communicationDraftRevisions
+ */
+export type user$communicationDraftRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the communicationDraftRevision
+   */
+  select?: Prisma.communicationDraftRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the communicationDraftRevision
+   */
+  omit?: Prisma.communicationDraftRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.communicationDraftRevisionInclude<ExtArgs> | null
+  where?: Prisma.communicationDraftRevisionWhereInput
+  orderBy?: Prisma.communicationDraftRevisionOrderByWithRelationInput | Prisma.communicationDraftRevisionOrderByWithRelationInput[]
+  cursor?: Prisma.communicationDraftRevisionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunicationDraftRevisionScalarFieldEnum | Prisma.CommunicationDraftRevisionScalarFieldEnum[]
 }
 
 /**

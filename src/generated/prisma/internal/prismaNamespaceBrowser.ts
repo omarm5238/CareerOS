@@ -71,7 +71,9 @@ export const ModelName = {
   jobDiscoveryRun: 'jobDiscoveryRun',
   discoveredJob: 'discoveredJob',
   discoveredJobSource: 'discoveredJobSource',
-  applicationQueueItem: 'applicationQueueItem'
+  applicationQueueItem: 'applicationQueueItem',
+  communicationDraft: 'communicationDraft',
+  communicationDraftRevision: 'communicationDraftRevision'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -528,6 +530,53 @@ export const ApplicationQueueItemScalarFieldEnum = {
 } as const
 
 export type ApplicationQueueItemScalarFieldEnum = (typeof ApplicationQueueItemScalarFieldEnum)[keyof typeof ApplicationQueueItemScalarFieldEnum]
+
+
+export const CommunicationDraftScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  jobPostingId: 'jobPostingId',
+  contactId: 'contactId',
+  resumeVersionId: 'resumeVersionId',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  type: 'type',
+  status: 'status',
+  activeRevisionId: 'activeRevisionId',
+  usedAt: 'usedAt',
+  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunicationDraftScalarFieldEnum = (typeof CommunicationDraftScalarFieldEnum)[keyof typeof CommunicationDraftScalarFieldEnum]
+
+
+export const CommunicationDraftRevisionScalarFieldEnum = {
+  id: 'id',
+  communicationDraftId: 'communicationDraftId',
+  userId: 'userId',
+  revisionNumber: 'revisionNumber',
+  source: 'source',
+  subject: 'subject',
+  content: 'content',
+  tone: 'tone',
+  length: 'length',
+  language: 'language',
+  contextSnapshotJson: 'contextSnapshotJson',
+  contextFingerprint: 'contextFingerprint',
+  evidenceUsedJson: 'evidenceUsedJson',
+  warningsJson: 'warningsJson',
+  changeLogJson: 'changeLogJson',
+  model: 'model',
+  aiSource: 'aiSource',
+  generationStatus: 'generationStatus',
+  errorMessage: 'errorMessage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CommunicationDraftRevisionScalarFieldEnum = (typeof CommunicationDraftRevisionScalarFieldEnum)[keyof typeof CommunicationDraftRevisionScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -257,3 +257,74 @@ export const QueuePriority = {
 } as const
 
 export type QueuePriority = (typeof QueuePriority)[keyof typeof QueuePriority]
+
+
+export const CommunicationType = {
+  COVER_LETTER: 'COVER_LETTER',
+  APPLICATION_EMAIL: 'APPLICATION_EMAIL',
+  RECRUITER_OUTREACH: 'RECRUITER_OUTREACH',
+  FOLLOW_UP: 'FOLLOW_UP',
+  INTERVIEW_THANK_YOU: 'INTERVIEW_THANK_YOU',
+  POST_INTERVIEW_FOLLOW_UP: 'POST_INTERVIEW_FOLLOW_UP',
+  OFFER_RESPONSE: 'OFFER_RESPONSE',
+  GENERAL_PROFESSIONAL_MESSAGE: 'GENERAL_PROFESSIONAL_MESSAGE'
+} as const
+
+export type CommunicationType = (typeof CommunicationType)[keyof typeof CommunicationType]
+
+
+export const CommunicationStatus = {
+  DRAFT: 'DRAFT',
+  READY: 'READY',
+  USED: 'USED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type CommunicationStatus = (typeof CommunicationStatus)[keyof typeof CommunicationStatus]
+
+
+export const CommunicationTone = {
+  PROFESSIONAL: 'PROFESSIONAL',
+  WARM: 'WARM',
+  CONCISE: 'CONCISE',
+  CONFIDENT: 'CONFIDENT',
+  FORMAL: 'FORMAL'
+} as const
+
+export type CommunicationTone = (typeof CommunicationTone)[keyof typeof CommunicationTone]
+
+
+export const CommunicationLength = {
+  SHORT: 'SHORT',
+  STANDARD: 'STANDARD',
+  DETAILED: 'DETAILED'
+} as const
+
+export type CommunicationLength = (typeof CommunicationLength)[keyof typeof CommunicationLength]
+
+
+export const CommunicationLanguage = {
+  ENGLISH: 'ENGLISH',
+  ARABIC: 'ARABIC',
+  TURKISH: 'TURKISH'
+} as const
+
+export type CommunicationLanguage = (typeof CommunicationLanguage)[keyof typeof CommunicationLanguage]
+
+
+export const CommunicationRevisionSource = {
+  AI_GENERATED: 'AI_GENERATED',
+  USER_EDITED: 'USER_EDITED',
+  RULE_BASED_FALLBACK: 'RULE_BASED_FALLBACK'
+} as const
+
+export type CommunicationRevisionSource = (typeof CommunicationRevisionSource)[keyof typeof CommunicationRevisionSource]
+
+
+export const CommunicationGenerationStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type CommunicationGenerationStatus = (typeof CommunicationGenerationStatus)[keyof typeof CommunicationGenerationStatus]

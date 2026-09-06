@@ -25,12 +25,25 @@ import { ApplicationResumeSection } from "./application-resume-section";
 import type { ApplicationResumeOption } from "./application-resume-section";
 import { ApplicationStageActions } from "./application-stage-actions";
 import { ApplicationTimeline } from "./application-timeline";
+import { ApplicationCommunicationSection } from "@/features/communications/components/application-communication-section";
+import type {
+  CommunicationContactOption,
+  CommunicationDraftListItem,
+  CommunicationRecommendation,
+  CommunicationResumeOption,
+} from "@/features/communications/types";
 
 type ApplicationDetailPageProps = {
   application: ApplicationDetail;
   insightType: ApplicationInsightType | null;
   insight: ApplicationInsightDetail | null;
   resumeOptions: ApplicationResumeOption[];
+  communicationRecommendations: CommunicationRecommendation[];
+  communicationDrafts: CommunicationDraftListItem[];
+  communicationArchivedCount: number;
+  communicationContacts: CommunicationContactOption[];
+  communicationResumeOptions: CommunicationResumeOption[];
+  interviewCompleted: boolean;
 };
 
 const SOURCE_LABELS: Record<ApplicationDetail["source"], string> = {
@@ -45,6 +58,12 @@ export function ApplicationDetailPage({
   insightType,
   insight,
   resumeOptions,
+  communicationRecommendations,
+  communicationDrafts,
+  communicationArchivedCount,
+  communicationContacts,
+  communicationResumeOptions,
+  interviewCompleted,
 }: ApplicationDetailPageProps) {
   const isClosed = application.closedAt !== null;
   const canChangeResume = application.status === "DRAFT";
@@ -202,6 +221,21 @@ export function ApplicationDetailPage({
               <ApplicationContactsSection
                 applicationId={application.id}
                 contacts={application.contacts}
+              />
+              <ApplicationCommunicationSection
+                applicationId={application.id}
+                archivedCount={communicationArchivedCount}
+                company={application.company}
+                contacts={communicationContacts}
+                defaultResumeRevisionId={application.resume.resumeVersionRevisionId}
+                defaultResumeVersionId={application.resume.resumeVersionId}
+                drafts={communicationDrafts}
+                interviewCompleted={interviewCompleted}
+                jobPostingId={application.jobPostingId}
+                jobTitle={application.jobTitle}
+                recommendations={communicationRecommendations}
+                resumeOptions={communicationResumeOptions}
+                status={application.status}
               />
               <ApplicationNextStepCenter
                 applicationId={application.id}

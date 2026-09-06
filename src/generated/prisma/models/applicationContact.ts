@@ -248,6 +248,7 @@ export type applicationContactWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"applicationContact"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   application?: Prisma.XOR<Prisma.ApplicationScalarRelationFilter, Prisma.applicationWhereInput>
+  communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
 }
 
 export type applicationContactOrderByWithRelationInput = {
@@ -266,6 +267,7 @@ export type applicationContactOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   user?: Prisma.userOrderByWithRelationInput
   application?: Prisma.applicationOrderByWithRelationInput
+  communicationDrafts?: Prisma.communicationDraftOrderByRelationAggregateInput
 }
 
 export type applicationContactWhereUniqueInput = Prisma.AtLeast<{
@@ -287,6 +289,7 @@ export type applicationContactWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"applicationContact"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   application?: Prisma.XOR<Prisma.ApplicationScalarRelationFilter, Prisma.applicationWhereInput>
+  communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
 }, "id">
 
 export type applicationContactOrderByWithAggregationInput = {
@@ -341,6 +344,7 @@ export type applicationContactCreateInput = {
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutApplicationContactsInput
   application: Prisma.applicationCreateNestedOneWithoutContactsInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactUncheckedCreateInput = {
@@ -357,6 +361,7 @@ export type applicationContactUncheckedCreateInput = {
   isPrimary?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactUpdateInput = {
@@ -373,6 +378,7 @@ export type applicationContactUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutApplicationContactsNestedInput
   application?: Prisma.applicationUpdateOneRequiredWithoutContactsNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactUncheckedUpdateInput = {
@@ -389,6 +395,7 @@ export type applicationContactUncheckedUpdateInput = {
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactCreateManyInput = {
@@ -495,6 +502,11 @@ export type applicationContactMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type ApplicationContactNullableScalarRelationFilter = {
+  is?: Prisma.applicationContactWhereInput | null
+  isNot?: Prisma.applicationContactWhereInput | null
+}
+
 export type applicationContactCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.applicationContactCreateWithoutUserInput, Prisma.applicationContactUncheckedCreateWithoutUserInput> | Prisma.applicationContactCreateWithoutUserInput[] | Prisma.applicationContactUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.applicationContactCreateOrConnectWithoutUserInput | Prisma.applicationContactCreateOrConnectWithoutUserInput[]
@@ -579,6 +591,22 @@ export type applicationContactUncheckedUpdateManyWithoutApplicationNestedInput =
   deleteMany?: Prisma.applicationContactScalarWhereInput | Prisma.applicationContactScalarWhereInput[]
 }
 
+export type applicationContactCreateNestedOneWithoutCommunicationDraftsInput = {
+  create?: Prisma.XOR<Prisma.applicationContactCreateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedCreateWithoutCommunicationDraftsInput>
+  connectOrCreate?: Prisma.applicationContactCreateOrConnectWithoutCommunicationDraftsInput
+  connect?: Prisma.applicationContactWhereUniqueInput
+}
+
+export type applicationContactUpdateOneWithoutCommunicationDraftsNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationContactCreateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedCreateWithoutCommunicationDraftsInput>
+  connectOrCreate?: Prisma.applicationContactCreateOrConnectWithoutCommunicationDraftsInput
+  upsert?: Prisma.applicationContactUpsertWithoutCommunicationDraftsInput
+  disconnect?: Prisma.applicationContactWhereInput | boolean
+  delete?: Prisma.applicationContactWhereInput | boolean
+  connect?: Prisma.applicationContactWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationContactUpdateToOneWithWhereWithoutCommunicationDraftsInput, Prisma.applicationContactUpdateWithoutCommunicationDraftsInput>, Prisma.applicationContactUncheckedUpdateWithoutCommunicationDraftsInput>
+}
+
 export type applicationContactCreateWithoutUserInput = {
   id?: string
   name: string
@@ -592,6 +620,7 @@ export type applicationContactCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   application: Prisma.applicationCreateNestedOneWithoutContactsInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactUncheckedCreateWithoutUserInput = {
@@ -607,6 +636,7 @@ export type applicationContactUncheckedCreateWithoutUserInput = {
   isPrimary?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactCreateOrConnectWithoutUserInput = {
@@ -667,6 +697,7 @@ export type applicationContactCreateWithoutApplicationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutApplicationContactsInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactUncheckedCreateWithoutApplicationInput = {
@@ -682,6 +713,7 @@ export type applicationContactUncheckedCreateWithoutApplicationInput = {
   isPrimary?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutContactInput
 }
 
 export type applicationContactCreateOrConnectWithoutApplicationInput = {
@@ -708,6 +740,86 @@ export type applicationContactUpdateWithWhereUniqueWithoutApplicationInput = {
 export type applicationContactUpdateManyWithWhereWithoutApplicationInput = {
   where: Prisma.applicationContactScalarWhereInput
   data: Prisma.XOR<Prisma.applicationContactUpdateManyMutationInput, Prisma.applicationContactUncheckedUpdateManyWithoutApplicationInput>
+}
+
+export type applicationContactCreateWithoutCommunicationDraftsInput = {
+  id?: string
+  name: string
+  role?: string | null
+  company?: string | null
+  email?: string | null
+  phone?: string | null
+  linkedinUrl?: string | null
+  notes?: string | null
+  isPrimary?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationContactsInput
+  application: Prisma.applicationCreateNestedOneWithoutContactsInput
+}
+
+export type applicationContactUncheckedCreateWithoutCommunicationDraftsInput = {
+  id?: string
+  applicationId: string
+  userId: string
+  name: string
+  role?: string | null
+  company?: string | null
+  email?: string | null
+  phone?: string | null
+  linkedinUrl?: string | null
+  notes?: string | null
+  isPrimary?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationContactCreateOrConnectWithoutCommunicationDraftsInput = {
+  where: Prisma.applicationContactWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationContactCreateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedCreateWithoutCommunicationDraftsInput>
+}
+
+export type applicationContactUpsertWithoutCommunicationDraftsInput = {
+  update: Prisma.XOR<Prisma.applicationContactUpdateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedUpdateWithoutCommunicationDraftsInput>
+  create: Prisma.XOR<Prisma.applicationContactCreateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedCreateWithoutCommunicationDraftsInput>
+  where?: Prisma.applicationContactWhereInput
+}
+
+export type applicationContactUpdateToOneWithWhereWithoutCommunicationDraftsInput = {
+  where?: Prisma.applicationContactWhereInput
+  data: Prisma.XOR<Prisma.applicationContactUpdateWithoutCommunicationDraftsInput, Prisma.applicationContactUncheckedUpdateWithoutCommunicationDraftsInput>
+}
+
+export type applicationContactUpdateWithoutCommunicationDraftsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationContactsNestedInput
+  application?: Prisma.applicationUpdateOneRequiredWithoutContactsNestedInput
+}
+
+export type applicationContactUncheckedUpdateWithoutCommunicationDraftsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  company?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  linkedinUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type applicationContactCreateManyUserInput = {
@@ -738,6 +850,7 @@ export type applicationContactUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   application?: Prisma.applicationUpdateOneRequiredWithoutContactsNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactUncheckedUpdateWithoutUserInput = {
@@ -753,6 +866,7 @@ export type applicationContactUncheckedUpdateWithoutUserInput = {
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactUncheckedUpdateManyWithoutUserInput = {
@@ -798,6 +912,7 @@ export type applicationContactUpdateWithoutApplicationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutApplicationContactsNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactUncheckedUpdateWithoutApplicationInput = {
@@ -813,6 +928,7 @@ export type applicationContactUncheckedUpdateWithoutApplicationInput = {
   isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutContactNestedInput
 }
 
 export type applicationContactUncheckedUpdateManyWithoutApplicationInput = {
@@ -831,6 +947,35 @@ export type applicationContactUncheckedUpdateManyWithoutApplicationInput = {
 }
 
 
+/**
+ * Count Type ApplicationContactCountOutputType
+ */
+
+export type ApplicationContactCountOutputType = {
+  communicationDrafts: number
+}
+
+export type ApplicationContactCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  communicationDrafts?: boolean | ApplicationContactCountOutputTypeCountCommunicationDraftsArgs
+}
+
+/**
+ * ApplicationContactCountOutputType without action
+ */
+export type ApplicationContactCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApplicationContactCountOutputType
+   */
+  select?: Prisma.ApplicationContactCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ApplicationContactCountOutputType without action
+ */
+export type ApplicationContactCountOutputTypeCountCommunicationDraftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.communicationDraftWhereInput
+}
+
 
 export type applicationContactSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -848,6 +993,8 @@ export type applicationContactSelect<ExtArgs extends runtime.Types.Extensions.In
   updatedAt?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   application?: boolean | Prisma.applicationDefaultArgs<ExtArgs>
+  communicationDrafts?: boolean | Prisma.applicationContact$communicationDraftsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationContactCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["applicationContact"]>
 
 export type applicationContactSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -906,6 +1053,8 @@ export type applicationContactOmit<ExtArgs extends runtime.Types.Extensions.Inte
 export type applicationContactInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   application?: boolean | Prisma.applicationDefaultArgs<ExtArgs>
+  communicationDrafts?: boolean | Prisma.applicationContact$communicationDraftsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationContactCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationContactIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -921,6 +1070,7 @@ export type $applicationContactPayload<ExtArgs extends runtime.Types.Extensions.
   objects: {
     user: Prisma.$userPayload<ExtArgs>
     application: Prisma.$applicationPayload<ExtArgs>
+    communicationDrafts: Prisma.$communicationDraftPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1332,6 +1482,7 @@ export interface Prisma__applicationContactClient<T, Null = never, ExtArgs exten
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   application<T extends Prisma.applicationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationDefaultArgs<ExtArgs>>): Prisma.Prisma__applicationClient<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  communicationDrafts<T extends Prisma.applicationContact$communicationDraftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationContact$communicationDraftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1772,6 +1923,30 @@ export type applicationContactDeleteManyArgs<ExtArgs extends runtime.Types.Exten
    * Limit how many applicationContacts to delete.
    */
   limit?: number
+}
+
+/**
+ * applicationContact.communicationDrafts
+ */
+export type applicationContact$communicationDraftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the communicationDraft
+   */
+  select?: Prisma.communicationDraftSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the communicationDraft
+   */
+  omit?: Prisma.communicationDraftOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.communicationDraftInclude<ExtArgs> | null
+  where?: Prisma.communicationDraftWhereInput
+  orderBy?: Prisma.communicationDraftOrderByWithRelationInput | Prisma.communicationDraftOrderByWithRelationInput[]
+  cursor?: Prisma.communicationDraftWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CommunicationDraftScalarFieldEnum | Prisma.CommunicationDraftScalarFieldEnum[]
 }
 
 /**

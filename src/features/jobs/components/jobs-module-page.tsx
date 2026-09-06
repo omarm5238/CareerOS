@@ -4,6 +4,10 @@ import { CareerCore } from "@/components/core/CareerCore";
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
 import type { JobTailoredResumeSummary } from "@/features/resume/versions/types";
 import type { JobApplicationSummary } from "@/features/applications/server";
+import type {
+  CommunicationDraftListItem,
+  CommunicationResumeOption,
+} from "@/features/communications/types";
 
 import type { JobDetailView, JobListItem } from "../types";
 import { AddJobForm } from "./add-job-form";
@@ -20,6 +24,8 @@ type JobsModulePageProps = {
   hasResumeProfile: boolean;
   tailoredResume: JobTailoredResumeSummary | null;
   applicationSummary: JobApplicationSummary | null;
+  communicationResumeOptions?: CommunicationResumeOption[];
+  communicationDrafts?: CommunicationDraftListItem[];
 };
 
 export function JobsModulePage({
@@ -30,6 +36,8 @@ export function JobsModulePage({
   hasResumeProfile,
   tailoredResume,
   applicationSummary,
+  communicationResumeOptions = [],
+  communicationDrafts = [],
 }: JobsModulePageProps) {
   return (
     <WorkspaceModuleLayout title="Jobs Module">
@@ -104,6 +112,8 @@ export function JobsModulePage({
                     }
                     hasResumeProfile={hasResumeProfile}
                     job={selectedJob}
+                    communicationDrafts={communicationDrafts}
+                    communicationResumeOptions={communicationResumeOptions}
                     tailoredResume={tailoredResume}
                   />
                 ) : (

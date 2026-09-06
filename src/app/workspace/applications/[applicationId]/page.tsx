@@ -12,6 +12,7 @@ import type {
   ApplicationStagePrep,
 } from "@/features/applications/types";
 import type { ApplicationInsightType } from "@/generated/prisma/client";
+import { getApplicationCommunicationSection } from "@/features/communications/server";
 import { prisma } from "@/server/db/prisma";
 import { auth } from "@/server/auth";
 
@@ -55,11 +56,31 @@ export default async function WorkspaceApplicationDetailPage({ params }: PagePro
     ? await loadResumeOptions(session.user.id, application.jobPostingId)
     : [];
 
+  const communication = await getApplicationCommunicationSection(session.user.id, application.id);
+
   return (
     <ApplicationDetailPage
       application={application}
+      communicationArchivedCount={communication?.archivedCount ?? 0}
+      communicationContacts={communication?.contacts ?? []}
+      communicationDrafts={communication?.drafts ?? []}
+      communicationRecommendations={communication?.recommendations ?? []}
+      communicationResumeOptions={
+        application.resume.resumeVersionId && application.resume.resumeVersionRevisionId
+          ? [
+              {
+                versionId: application.resume.resumeVersionId,
+                versionTitle: application.resume.resumeVersionTitle ?? "Linked resume",
+                versionStatus: application.resume.resumeVersionStatus ?? "DRAFT",
+                revisionId: application.resume.resumeVersionRevisionId,
+                revisionNumber: application.resume.revisionNumber ?? 1,
+              },
+            ]
+          : []
+      }
       insight={insight}
       insightType={insightSpec?.type ?? null}
+      interviewCompleted={communication?.interviewCompleted ?? false}
       resumeOptions={resumeOptions}
     />
   );
