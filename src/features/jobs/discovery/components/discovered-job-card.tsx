@@ -156,6 +156,14 @@ export function DiscoveredJobCard({ job, onAddToQueue, onDismiss }: DiscoveredJo
               Discovery Suitability · {job.analysisSource === "AI_ENHANCED" ? "AI enhanced" : "Rule-based"}
             </p>
           ) : null}
+          {job.jobPostingId ? (
+            <p className="text-xs text-[var(--color-text-secondary)]">
+              Opportunity analysis available ·{" "}
+              <a className="text-[var(--color-accent)] hover:underline" href={`/workspace/jobs?jobId=${job.jobPostingId}`}>
+                Prepare Application
+              </a>
+            </p>
+          ) : null}
         </div>
       ) : null}
     </article>

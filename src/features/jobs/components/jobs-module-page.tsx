@@ -1,3 +1,4 @@
+import type { ComponentProps } from "react";
 import Link from "next/link";
 
 import { CareerCore } from "@/components/core/CareerCore";
@@ -26,6 +27,8 @@ type JobsModulePageProps = {
   applicationSummary: JobApplicationSummary | null;
   communicationResumeOptions?: CommunicationResumeOption[];
   communicationDrafts?: CommunicationDraftListItem[];
+  opportunity?: ComponentProps<typeof JobDetailPanel>["opportunity"];
+  opportunityPackageId?: string | null;
 };
 
 export function JobsModulePage({
@@ -38,6 +41,8 @@ export function JobsModulePage({
   applicationSummary,
   communicationResumeOptions = [],
   communicationDrafts = [],
+  opportunity = null,
+  opportunityPackageId = null,
 }: JobsModulePageProps) {
   return (
     <WorkspaceModuleLayout title="Jobs Module">
@@ -114,6 +119,8 @@ export function JobsModulePage({
                     job={selectedJob}
                     communicationDrafts={communicationDrafts}
                     communicationResumeOptions={communicationResumeOptions}
+                    opportunity={opportunity}
+                    opportunityPackageId={opportunityPackageId}
                     tailoredResume={tailoredResume}
                   />
                 ) : (

@@ -34,6 +34,10 @@ model user {
   applicationQueueItems       applicationQueueItem[]
   communicationDrafts         communicationDraft[]
   communicationDraftRevisions communicationDraftRevision[]
+  jobRequirements             jobRequirement[]
+  jobEvidenceMatches          jobEvidenceMatch[]
+  jobOpportunityAnalyses      jobOpportunityAnalysis[]
+  applicationPackages         applicationPackage[]
 }
 
 model session {
@@ -138,12 +142,15 @@ model jobPosting {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
-  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                user                    @relation(fields: [userId], references: [id], onDelete: Cascade)
   analysis            jobAnalysis?
   resumeVersions      resumeVersion[]
   applications        application[]
   discoveredJobs      discoveredJob[]
   communicationDrafts communicationDraft[]
+  requirements        jobRequirement[]
+  opportunityAnalysis jobOpportunityAnalysis?
+  applicationPackages applicationPackage[]
 
   @@index([userId])
   @@index([createdAt])
@@ -277,6 +284,7 @@ model resumeVersion {
   activeRevision       resumeVersionRevision?  @relation("ActiveResumeVersionRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
   applications         application[]
   communicationDrafts  communicationDraft[]
+  applicationPackages  applicationPackage[]
 
   @@index([userId])
   @@index([targetJobId])
@@ -315,6 +323,7 @@ model resumeVersionRevision {
   activeForVersion    resumeVersion?       @relation("ActiveResumeVersionRevision")
   applications        application[]
   communicationDrafts communicationDraft[]
+  applicationPackages applicationPackage[]
 
   @@unique([resumeVersionId, revisionNumber])
   @@index([userId])
@@ -468,6 +477,7 @@ model application {
   contacts              applicationContact[]
   insights              applicationInsight[]
   communicationDrafts   communicationDraft[]
+  applicationPackages   applicationPackage[]
 
   @@index([userId])
   @@index([jobPostingId])
@@ -655,6 +665,8 @@ model jobDiscoveryProfile {
 
   providerPreferencesJson Json @default("{}")
 
+  applicationPreparationMode ApplicationPreparationMode @default(ASSISTED)
+
   generatedFromContextAt DateTime?
 
   createdAt DateTime @default(now())
@@ -811,8 +823,9 @@ model applicationQueueItem {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user          user          @relation(fields: [userId], references: [id], onDelete: Cascade)
-  discoveredJob discoveredJob @relation(fields: [discoveredJobId], references: [id], onDelete: Cascade)
+  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  discoveredJob       discoveredJob        @relation(fields: [discoveredJobId], references: [id], onDelete: Cascade)
+  applicationPackages applicationPackage[]
 
   @@unique([userId, discoveredJobId])
   @@index([userId])
@@ -891,14 +904,16 @@ model communicationDraft {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user                  user                         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  application           application?                 @relation(fields: [applicationId], references: [id], onDelete: SetNull)
-  jobPosting            jobPosting?                  @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
-  contact               applicationContact?          @relation(fields: [contactId], references: [id], onDelete: SetNull)
-  resumeVersion         resumeVersion?               @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
-  resumeVersionRevision resumeVersionRevision?       @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
-  revisions             communicationDraftRevision[] @relation("CommunicationDraftRevisions")
-  activeRevision        communicationDraftRevision?  @relation("ActiveCommunicationDraftRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+  user                     user                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application              application?                 @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  jobPosting               jobPosting?                  @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  contact                  applicationContact?          @relation(fields: [contactId], references: [id], onDelete: SetNull)
+  resumeVersion            resumeVersion?               @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision    resumeVersionRevision?       @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  revisions                communicationDraftRevision[] @relation("CommunicationDraftRevisions")
+  activeRevision           communicationDraftRevision?  @relation("ActiveCommunicationDraftRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+  coverLetterPackages      applicationPackage[]         @relation("PackageCoverLetter")
+  applicationEmailPackages applicationPackage[]         @relation("PackageApplicationEmail")
 
   @@index([userId])
   @@index([applicationId])
@@ -947,4 +962,298 @@ model communicationDraftRevision {
   @@index([userId])
   @@index([communicationDraftId])
   @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 24.5A — Job Search v2: Opportunity Intelligence + Apply Now
+// ---------------------------------------------------------------------------
+
+enum JobRequirementCategory {
+  SKILL
+  EXPERIENCE
+  EDUCATION
+  LANGUAGE
+  CERTIFICATION
+  LOCATION
+  AUTHORIZATION
+  SECURITY_CLEARANCE
+  EMPLOYMENT
+  OTHER
+}
+
+enum JobRequirementImportance {
+  REQUIRED
+  STRONGLY_PREFERRED
+  PREFERRED
+  OPTIONAL
+  UNKNOWN
+}
+
+enum JobEvidenceType {
+  WORK_EXPERIENCE
+  PROJECT
+  RESUME
+  SKILL
+  EDUCATION
+  CERTIFICATION
+  PORTFOLIO
+  OTHER
+}
+
+enum JobEvidenceMatchStrength {
+  DIRECT
+  STRONG
+  PARTIAL
+  TRANSFERABLE
+  NONE
+}
+
+enum JobOpportunityAnalysisStatus {
+  PENDING
+  COMPLETED
+  PARTIAL
+  FAILED
+}
+
+enum JobOpportunityAnalysisSource {
+  RULE_BASED
+  AI_ASSISTED
+  FALLBACK
+}
+
+enum JobEligibilityStatus {
+  ELIGIBLE
+  LIKELY_ELIGIBLE
+  REVIEW_REQUIRED
+  LIKELY_INELIGIBLE
+  INELIGIBLE
+}
+
+enum OpportunityRecommendation {
+  APPLY
+  APPLY_WITH_CAUTION
+  REVIEW_FIRST
+  SKIP
+}
+
+enum ApplicationEffort {
+  LOW
+  MEDIUM
+  HIGH
+  UNKNOWN
+}
+
+enum OpportunityPriorityBand {
+  APPLY_NOW
+  HIGH_PRIORITY
+  GOOD_OPPORTUNITY
+  REVIEW_FIRST
+  LOW_PRIORITY
+  SKIP
+}
+
+enum ApplicationPreparationMode {
+  MANUAL
+  ASSISTED
+  AUTO_PREPARE
+}
+
+enum ApplicationPackageStatus {
+  PREPARING
+  READY_FOR_REVIEW
+  APPROVED
+  SUBMISSION_STARTED
+  SUBMITTED
+  FAILED
+  ARCHIVED
+}
+
+enum ApplicationReadinessStatus {
+  READY
+  NEEDS_REVIEW
+  BLOCKED
+}
+
+enum ApplicationPackageQaStatus {
+  NOT_RUN
+  PASS
+  NEEDS_REPAIR
+  USER_INPUT_REQUIRED
+  BLOCKED
+  FAILED
+}
+
+model jobRequirement {
+  id     String @id @default(cuid())
+  userId String
+
+  jobPostingId String
+
+  category       JobRequirementCategory
+  importance     JobRequirementImportance
+  normalizedName String
+  rawText        String
+  sourceExcerpt  String
+
+  yearsRequired       Int?
+  proficiencyRequired String?
+
+  isExplicit  Boolean
+  fingerprint String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user            user               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting      jobPosting         @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  evidenceMatches jobEvidenceMatch[]
+
+  @@unique([jobPostingId, fingerprint])
+  @@index([userId])
+  @@index([jobPostingId])
+  @@index([category])
+  @@index([importance])
+}
+
+model jobEvidenceMatch {
+  id     String @id @default(cuid())
+  userId String
+
+  jobRequirementId String
+
+  evidenceType     JobEvidenceType
+  evidenceSourceId String?
+  evidenceLabel    String
+  evidenceExcerpt  String?
+  matchStrength    JobEvidenceMatchStrength
+  reasoning        String?
+
+  fingerprint String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user           user           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobRequirement jobRequirement @relation(fields: [jobRequirementId], references: [id], onDelete: Cascade)
+
+  @@unique([jobRequirementId, fingerprint])
+  @@index([userId])
+  @@index([jobRequirementId])
+  @@index([matchStrength])
+}
+
+model jobOpportunityAnalysis {
+  id     String @id @default(cuid())
+  userId String
+
+  jobPostingId String @unique
+
+  status JobOpportunityAnalysisStatus @default(PENDING)
+
+  roleFit                Int
+  skillFit               Int
+  experienceFit          Int
+  evidenceFit            Int
+  locationFit            Int
+  authorizationFit       Int
+  freshnessScore         Int
+  applicationEffortScore Int
+
+  opportunityScore Int
+  priorityScore    Int
+
+  priorityBand   OpportunityPriorityBand
+  recommendation OpportunityRecommendation
+
+  eligibilityStatus JobEligibilityStatus
+  applicationEffort ApplicationEffort
+
+  evidenceCoverage Int
+
+  criticalGapCount  Int @default(0)
+  importantGapCount Int @default(0)
+  minorGapCount     Int @default(0)
+  optionalGapCount  Int @default(0)
+
+  gapsJson              Json @default("[]")
+  eligibilityChecksJson Json @default("[]")
+  warningsJson          Json @default("[]")
+
+  summary String?
+
+  contextFingerprint String
+  analysisSource     JobOpportunityAnalysisSource
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user       user       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting jobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, jobPostingId])
+  @@index([userId])
+  @@index([jobPostingId])
+  @@index([priorityBand])
+  @@index([opportunityScore])
+  @@index([priorityScore])
+  @@index([eligibilityStatus])
+  @@index([updatedAt])
+}
+
+model applicationPackage {
+  id     String @id @default(cuid())
+  userId String
+
+  jobPostingId           String?
+  applicationQueueItemId String?
+  applicationId          String?
+
+  version Int @default(1)
+
+  resumeVersionId         String?
+  resumeVersionRevisionId String?
+
+  coverLetterDraftId      String?
+  applicationEmailDraftId String?
+
+  status          ApplicationPackageStatus   @default(PREPARING)
+  readinessStatus ApplicationReadinessStatus @default(NEEDS_REVIEW)
+  qaStatus        ApplicationPackageQaStatus @default(NOT_RUN)
+
+  opportunitySnapshotJson Json @default("{}")
+  evidenceSnapshotJson    Json @default("[]")
+  gapSnapshotJson         Json @default("[]")
+  eligibilitySnapshotJson Json @default("[]")
+  requiredUserInputsJson  Json @default("[]")
+  qaSnapshotJson          Json @default("{}")
+  warningsJson            Json @default("[]")
+
+  contextFingerprint String
+
+  preparedAt          DateTime?
+  approvedAt          DateTime?
+  submissionStartedAt DateTime?
+  submittedAt         DateTime?
+  archivedAt          DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                  user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting            jobPosting?            @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  applicationQueueItem  applicationQueueItem?  @relation(fields: [applicationQueueItemId], references: [id], onDelete: SetNull)
+  application           application?           @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  resumeVersion         resumeVersion?         @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision resumeVersionRevision? @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  coverLetterDraft      communicationDraft?    @relation("PackageCoverLetter", fields: [coverLetterDraftId], references: [id], onDelete: SetNull)
+  applicationEmailDraft communicationDraft?    @relation("PackageApplicationEmail", fields: [applicationEmailDraftId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, jobPostingId, version])
+  @@index([userId])
+  @@index([jobPostingId])
+  @@index([applicationId])
+  @@index([status])
+  @@index([readinessStatus])
+  @@index([qaStatus])
+  @@index([updatedAt])
 }

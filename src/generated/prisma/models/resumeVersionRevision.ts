@@ -317,6 +317,7 @@ export type resumeVersionRevisionWhereInput = {
   activeForVersion?: Prisma.XOR<Prisma.ResumeVersionNullableScalarRelationFilter, Prisma.resumeVersionWhereInput> | null
   applications?: Prisma.ApplicationListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type resumeVersionRevisionOrderByWithRelationInput = {
@@ -344,6 +345,7 @@ export type resumeVersionRevisionOrderByWithRelationInput = {
   activeForVersion?: Prisma.resumeVersionOrderByWithRelationInput
   applications?: Prisma.applicationOrderByRelationAggregateInput
   communicationDrafts?: Prisma.communicationDraftOrderByRelationAggregateInput
+  applicationPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type resumeVersionRevisionWhereUniqueInput = Prisma.AtLeast<{
@@ -375,6 +377,7 @@ export type resumeVersionRevisionWhereUniqueInput = Prisma.AtLeast<{
   activeForVersion?: Prisma.XOR<Prisma.ResumeVersionNullableScalarRelationFilter, Prisma.resumeVersionWhereInput> | null
   applications?: Prisma.ApplicationListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id" | "resumeVersionId_revisionNumber">
 
 export type resumeVersionRevisionOrderByWithAggregationInput = {
@@ -452,6 +455,7 @@ export type resumeVersionRevisionCreateInput = {
   activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateInput = {
@@ -477,6 +481,7 @@ export type resumeVersionRevisionUncheckedCreateInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUpdateInput = {
@@ -502,6 +507,7 @@ export type resumeVersionRevisionUpdateInput = {
   activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateInput = {
@@ -527,6 +533,7 @@ export type resumeVersionRevisionUncheckedUpdateInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionCreateManyInput = {
@@ -819,6 +826,22 @@ export type resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput 
   update?: Prisma.XOR<Prisma.XOR<Prisma.resumeVersionRevisionUpdateToOneWithWhereWithoutCommunicationDraftsInput, Prisma.resumeVersionRevisionUpdateWithoutCommunicationDraftsInput>, Prisma.resumeVersionRevisionUncheckedUpdateWithoutCommunicationDraftsInput>
 }
 
+export type resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput = {
+  create?: Prisma.XOR<Prisma.resumeVersionRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.resumeVersionRevisionCreateOrConnectWithoutApplicationPackagesInput
+  connect?: Prisma.resumeVersionRevisionWhereUniqueInput
+}
+
+export type resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.resumeVersionRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.resumeVersionRevisionCreateOrConnectWithoutApplicationPackagesInput
+  upsert?: Prisma.resumeVersionRevisionUpsertWithoutApplicationPackagesInput
+  disconnect?: Prisma.resumeVersionRevisionWhereInput | boolean
+  delete?: Prisma.resumeVersionRevisionWhereInput | boolean
+  connect?: Prisma.resumeVersionRevisionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.resumeVersionRevisionUpdateToOneWithWhereWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUpdateWithoutApplicationPackagesInput>, Prisma.resumeVersionRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
 export type resumeVersionRevisionCreateWithoutUserInput = {
   id?: string
   revisionNumber: number
@@ -841,6 +864,7 @@ export type resumeVersionRevisionCreateWithoutUserInput = {
   activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateWithoutUserInput = {
@@ -865,6 +889,7 @@ export type resumeVersionRevisionUncheckedCreateWithoutUserInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionCreateOrConnectWithoutUserInput = {
@@ -940,6 +965,7 @@ export type resumeVersionRevisionCreateWithoutResumeVersionInput = {
   activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateWithoutResumeVersionInput = {
@@ -964,6 +990,7 @@ export type resumeVersionRevisionUncheckedCreateWithoutResumeVersionInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionCreateOrConnectWithoutResumeVersionInput = {
@@ -998,6 +1025,7 @@ export type resumeVersionRevisionCreateWithoutActiveForVersionInput = {
   resumeVersion: Prisma.resumeVersionCreateNestedOneWithoutRevisionsInput
   applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateWithoutActiveForVersionInput = {
@@ -1022,6 +1050,7 @@ export type resumeVersionRevisionUncheckedCreateWithoutActiveForVersionInput = {
   updatedAt?: Date | string
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionCreateOrConnectWithoutActiveForVersionInput = {
@@ -1078,6 +1107,7 @@ export type resumeVersionRevisionUpdateWithoutActiveForVersionInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneRequiredWithoutRevisionsNestedInput
   applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateWithoutActiveForVersionInput = {
@@ -1102,6 +1132,7 @@ export type resumeVersionRevisionUncheckedUpdateWithoutActiveForVersionInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionCreateWithoutApplicationsInput = {
@@ -1126,6 +1157,7 @@ export type resumeVersionRevisionCreateWithoutApplicationsInput = {
   resumeVersion: Prisma.resumeVersionCreateNestedOneWithoutRevisionsInput
   activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateWithoutApplicationsInput = {
@@ -1150,6 +1182,7 @@ export type resumeVersionRevisionUncheckedCreateWithoutApplicationsInput = {
   updatedAt?: Date | string
   activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionCreateOrConnectWithoutApplicationsInput = {
@@ -1190,6 +1223,7 @@ export type resumeVersionRevisionUpdateWithoutApplicationsInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneRequiredWithoutRevisionsNestedInput
   activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateWithoutApplicationsInput = {
@@ -1214,6 +1248,7 @@ export type resumeVersionRevisionUncheckedUpdateWithoutApplicationsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionCreateWithoutCommunicationDraftsInput = {
@@ -1238,6 +1273,7 @@ export type resumeVersionRevisionCreateWithoutCommunicationDraftsInput = {
   resumeVersion: Prisma.resumeVersionCreateNestedOneWithoutRevisionsInput
   activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -1262,6 +1298,7 @@ export type resumeVersionRevisionUncheckedCreateWithoutCommunicationDraftsInput 
   updatedAt?: Date | string
   activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
 }
 
 export type resumeVersionRevisionCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -1302,6 +1339,7 @@ export type resumeVersionRevisionUpdateWithoutCommunicationDraftsInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneRequiredWithoutRevisionsNestedInput
   activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -1326,6 +1364,123 @@ export type resumeVersionRevisionUncheckedUpdateWithoutCommunicationDraftsInput 
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+}
+
+export type resumeVersionRevisionCreateWithoutApplicationPackagesInput = {
+  id?: string
+  revisionNumber: number
+  source: $Enums.ResumeVersionRevisionSource
+  contentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  keywordCoverageJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceNotesJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  inputSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  alignmentScoreBefore?: number | null
+  alignmentScoreAfter?: number | null
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.ResumeVersionGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutResumeVersionRevisionsInput
+  resumeVersion: Prisma.resumeVersionCreateNestedOneWithoutRevisionsInput
+  activeForVersion?: Prisma.resumeVersionCreateNestedOneWithoutActiveRevisionInput
+  applications?: Prisma.applicationCreateNestedManyWithoutResumeVersionRevisionInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutResumeVersionRevisionInput
+}
+
+export type resumeVersionRevisionUncheckedCreateWithoutApplicationPackagesInput = {
+  id?: string
+  resumeVersionId: string
+  userId: string
+  revisionNumber: number
+  source: $Enums.ResumeVersionRevisionSource
+  contentJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  keywordCoverageJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceNotesJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  inputSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  alignmentScoreBefore?: number | null
+  alignmentScoreAfter?: number | null
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.ResumeVersionGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  activeForVersion?: Prisma.resumeVersionUncheckedCreateNestedOneWithoutActiveRevisionInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutResumeVersionRevisionInput
+}
+
+export type resumeVersionRevisionCreateOrConnectWithoutApplicationPackagesInput = {
+  where: Prisma.resumeVersionRevisionWhereUniqueInput
+  create: Prisma.XOR<Prisma.resumeVersionRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedCreateWithoutApplicationPackagesInput>
+}
+
+export type resumeVersionRevisionUpsertWithoutApplicationPackagesInput = {
+  update: Prisma.XOR<Prisma.resumeVersionRevisionUpdateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+  create: Prisma.XOR<Prisma.resumeVersionRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  where?: Prisma.resumeVersionRevisionWhereInput
+}
+
+export type resumeVersionRevisionUpdateToOneWithWhereWithoutApplicationPackagesInput = {
+  where?: Prisma.resumeVersionRevisionWhereInput
+  data: Prisma.XOR<Prisma.resumeVersionRevisionUpdateWithoutApplicationPackagesInput, Prisma.resumeVersionRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
+export type resumeVersionRevisionUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumResumeVersionRevisionSourceFieldUpdateOperationsInput | $Enums.ResumeVersionRevisionSource
+  contentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  keywordCoverageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceNotesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  inputSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  alignmentScoreBefore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  alignmentScoreAfter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumResumeVersionGenerationStatusFieldUpdateOperationsInput | $Enums.ResumeVersionGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutResumeVersionRevisionsNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneRequiredWithoutRevisionsNestedInput
+  activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+}
+
+export type resumeVersionRevisionUncheckedUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  resumeVersionId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumResumeVersionRevisionSourceFieldUpdateOperationsInput | $Enums.ResumeVersionRevisionSource
+  contentJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  keywordCoverageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceNotesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  inputSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  alignmentScoreBefore?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  alignmentScoreAfter?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumResumeVersionGenerationStatusFieldUpdateOperationsInput | $Enums.ResumeVersionGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionCreateManyUserInput = {
@@ -1371,6 +1526,7 @@ export type resumeVersionRevisionUpdateWithoutUserInput = {
   activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateWithoutUserInput = {
@@ -1395,6 +1551,7 @@ export type resumeVersionRevisionUncheckedUpdateWithoutUserInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateManyWithoutUserInput = {
@@ -1461,6 +1618,7 @@ export type resumeVersionRevisionUpdateWithoutResumeVersionInput = {
   activeForVersion?: Prisma.resumeVersionUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateWithoutResumeVersionInput = {
@@ -1485,6 +1643,7 @@ export type resumeVersionRevisionUncheckedUpdateWithoutResumeVersionInput = {
   activeForVersion?: Prisma.resumeVersionUncheckedUpdateOneWithoutActiveRevisionNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionNestedInput
 }
 
 export type resumeVersionRevisionUncheckedUpdateManyWithoutResumeVersionInput = {
@@ -1516,11 +1675,13 @@ export type resumeVersionRevisionUncheckedUpdateManyWithoutResumeVersionInput = 
 export type ResumeVersionRevisionCountOutputType = {
   applications: number
   communicationDrafts: number
+  applicationPackages: number
 }
 
 export type ResumeVersionRevisionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   applications?: boolean | ResumeVersionRevisionCountOutputTypeCountApplicationsArgs
   communicationDrafts?: boolean | ResumeVersionRevisionCountOutputTypeCountCommunicationDraftsArgs
+  applicationPackages?: boolean | ResumeVersionRevisionCountOutputTypeCountApplicationPackagesArgs
 }
 
 /**
@@ -1545,6 +1706,13 @@ export type ResumeVersionRevisionCountOutputTypeCountApplicationsArgs<ExtArgs ex
  */
 export type ResumeVersionRevisionCountOutputTypeCountCommunicationDraftsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.communicationDraftWhereInput
+}
+
+/**
+ * ResumeVersionRevisionCountOutputType without action
+ */
+export type ResumeVersionRevisionCountOutputTypeCountApplicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
 }
 
 
@@ -1573,6 +1741,7 @@ export type resumeVersionRevisionSelect<ExtArgs extends runtime.Types.Extensions
   activeForVersion?: boolean | Prisma.resumeVersionRevision$activeForVersionArgs<ExtArgs>
   applications?: boolean | Prisma.resumeVersionRevision$applicationsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.resumeVersionRevision$communicationDraftsArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.resumeVersionRevision$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ResumeVersionRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resumeVersionRevision"]>
 
@@ -1653,6 +1822,7 @@ export type resumeVersionRevisionInclude<ExtArgs extends runtime.Types.Extension
   activeForVersion?: boolean | Prisma.resumeVersionRevision$activeForVersionArgs<ExtArgs>
   applications?: boolean | Prisma.resumeVersionRevision$applicationsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.resumeVersionRevision$communicationDraftsArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.resumeVersionRevision$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ResumeVersionRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type resumeVersionRevisionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1672,6 +1842,7 @@ export type $resumeVersionRevisionPayload<ExtArgs extends runtime.Types.Extensio
     activeForVersion: Prisma.$resumeVersionPayload<ExtArgs> | null
     applications: Prisma.$applicationPayload<ExtArgs>[]
     communicationDrafts: Prisma.$communicationDraftPayload<ExtArgs>[]
+    applicationPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2092,6 +2263,7 @@ export interface Prisma__resumeVersionRevisionClient<T, Null = never, ExtArgs ex
   activeForVersion<T extends Prisma.resumeVersionRevision$activeForVersionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevision$activeForVersionArgs<ExtArgs>>): Prisma.Prisma__resumeVersionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applications<T extends Prisma.resumeVersionRevision$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevision$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   communicationDrafts<T extends Prisma.resumeVersionRevision$communicationDraftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevision$communicationDraftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applicationPackages<T extends Prisma.resumeVersionRevision$applicationPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevision$applicationPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2605,6 +2777,30 @@ export type resumeVersionRevision$communicationDraftsArgs<ExtArgs extends runtim
   take?: number
   skip?: number
   distinct?: Prisma.CommunicationDraftScalarFieldEnum | Prisma.CommunicationDraftScalarFieldEnum[]
+}
+
+/**
+ * resumeVersionRevision.applicationPackages
+ */
+export type resumeVersionRevision$applicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

@@ -7,6 +7,7 @@ const items = [
   { label: "Saved Jobs", href: "/workspace/jobs" },
   { label: "Discover", href: "/workspace/jobs/discover" },
   { label: "Application Queue", href: "/workspace/jobs/queue" },
+  { label: "Apply Now", href: "/workspace/jobs/apply-now" },
 ] as const;
 
 export function JobsSubNav() {

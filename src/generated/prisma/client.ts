@@ -156,3 +156,23 @@ export type communicationDraft = Prisma.communicationDraftModel
  *
  */
 export type communicationDraftRevision = Prisma.communicationDraftRevisionModel
+/**
+ * Model jobRequirement
+ *
+ */
+export type jobRequirement = Prisma.jobRequirementModel
+/**
+ * Model jobEvidenceMatch
+ *
+ */
+export type jobEvidenceMatch = Prisma.jobEvidenceMatchModel
+/**
+ * Model jobOpportunityAnalysis
+ *
+ */
+export type jobOpportunityAnalysis = Prisma.jobOpportunityAnalysisModel
+/**
+ * Model applicationPackage
+ *
+ */
+export type applicationPackage = Prisma.applicationPackageModel

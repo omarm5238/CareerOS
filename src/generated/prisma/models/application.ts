@@ -350,6 +350,7 @@ export type applicationWhereInput = {
   contacts?: Prisma.ApplicationContactListRelationFilter
   insights?: Prisma.ApplicationInsightListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type applicationOrderByWithRelationInput = {
@@ -387,6 +388,7 @@ export type applicationOrderByWithRelationInput = {
   contacts?: Prisma.applicationContactOrderByRelationAggregateInput
   insights?: Prisma.applicationInsightOrderByRelationAggregateInput
   communicationDrafts?: Prisma.communicationDraftOrderByRelationAggregateInput
+  applicationPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type applicationWhereUniqueInput = Prisma.AtLeast<{
@@ -427,6 +429,7 @@ export type applicationWhereUniqueInput = Prisma.AtLeast<{
   contacts?: Prisma.ApplicationContactListRelationFilter
   insights?: Prisma.ApplicationInsightListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id">
 
 export type applicationOrderByWithAggregationInput = {
@@ -524,6 +527,7 @@ export type applicationCreateInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateInput = {
@@ -557,6 +561,7 @@ export type applicationUncheckedCreateInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUpdateInput = {
@@ -590,6 +595,7 @@ export type applicationUpdateInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateInput = {
@@ -623,6 +629,7 @@ export type applicationUncheckedUpdateInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationCreateManyInput = {
@@ -1057,6 +1064,22 @@ export type applicationUpdateOneWithoutCommunicationDraftsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.applicationUpdateToOneWithWhereWithoutCommunicationDraftsInput, Prisma.applicationUpdateWithoutCommunicationDraftsInput>, Prisma.applicationUncheckedUpdateWithoutCommunicationDraftsInput>
 }
 
+export type applicationCreateNestedOneWithoutApplicationPackagesInput = {
+  create?: Prisma.XOR<Prisma.applicationCreateWithoutApplicationPackagesInput, Prisma.applicationUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.applicationCreateOrConnectWithoutApplicationPackagesInput
+  connect?: Prisma.applicationWhereUniqueInput
+}
+
+export type applicationUpdateOneWithoutApplicationPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationCreateWithoutApplicationPackagesInput, Prisma.applicationUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.applicationCreateOrConnectWithoutApplicationPackagesInput
+  upsert?: Prisma.applicationUpsertWithoutApplicationPackagesInput
+  disconnect?: Prisma.applicationWhereInput | boolean
+  delete?: Prisma.applicationWhereInput | boolean
+  connect?: Prisma.applicationWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationUpdateToOneWithWhereWithoutApplicationPackagesInput, Prisma.applicationUpdateWithoutApplicationPackagesInput>, Prisma.applicationUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
 export type applicationCreateWithoutUserInput = {
   id?: string
   status?: $Enums.ApplicationStatus
@@ -1087,6 +1110,7 @@ export type applicationCreateWithoutUserInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutUserInput = {
@@ -1119,6 +1143,7 @@ export type applicationUncheckedCreateWithoutUserInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutUserInput = {
@@ -1209,6 +1234,7 @@ export type applicationCreateWithoutJobPostingInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutJobPostingInput = {
@@ -1241,6 +1267,7 @@ export type applicationUncheckedCreateWithoutJobPostingInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutJobPostingInput = {
@@ -1299,6 +1326,7 @@ export type applicationCreateWithoutResumeVersionInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutResumeVersionInput = {
@@ -1331,6 +1359,7 @@ export type applicationUncheckedCreateWithoutResumeVersionInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutResumeVersionInput = {
@@ -1389,6 +1418,7 @@ export type applicationCreateWithoutResumeVersionRevisionInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutResumeVersionRevisionInput = {
@@ -1421,6 +1451,7 @@ export type applicationUncheckedCreateWithoutResumeVersionRevisionInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutResumeVersionRevisionInput = {
@@ -1479,6 +1510,7 @@ export type applicationCreateWithoutEventsInput = {
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutEventsInput = {
@@ -1511,6 +1543,7 @@ export type applicationUncheckedCreateWithoutEventsInput = {
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutEventsInput = {
@@ -1559,6 +1592,7 @@ export type applicationUpdateWithoutEventsInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutEventsInput = {
@@ -1591,6 +1625,7 @@ export type applicationUncheckedUpdateWithoutEventsInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationCreateWithoutContactsInput = {
@@ -1623,6 +1658,7 @@ export type applicationCreateWithoutContactsInput = {
   events?: Prisma.applicationEventCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutContactsInput = {
@@ -1655,6 +1691,7 @@ export type applicationUncheckedCreateWithoutContactsInput = {
   events?: Prisma.applicationEventUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutContactsInput = {
@@ -1703,6 +1740,7 @@ export type applicationUpdateWithoutContactsInput = {
   events?: Prisma.applicationEventUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutContactsInput = {
@@ -1735,6 +1773,7 @@ export type applicationUncheckedUpdateWithoutContactsInput = {
   events?: Prisma.applicationEventUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationCreateWithoutInsightsInput = {
@@ -1767,6 +1806,7 @@ export type applicationCreateWithoutInsightsInput = {
   events?: Prisma.applicationEventCreateNestedManyWithoutApplicationInput
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutInsightsInput = {
@@ -1799,6 +1839,7 @@ export type applicationUncheckedCreateWithoutInsightsInput = {
   events?: Prisma.applicationEventUncheckedCreateNestedManyWithoutApplicationInput
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutInsightsInput = {
@@ -1847,6 +1888,7 @@ export type applicationUpdateWithoutInsightsInput = {
   events?: Prisma.applicationEventUpdateManyWithoutApplicationNestedInput
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutInsightsInput = {
@@ -1879,6 +1921,7 @@ export type applicationUncheckedUpdateWithoutInsightsInput = {
   events?: Prisma.applicationEventUncheckedUpdateManyWithoutApplicationNestedInput
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationCreateWithoutCommunicationDraftsInput = {
@@ -1911,6 +1954,7 @@ export type applicationCreateWithoutCommunicationDraftsInput = {
   events?: Prisma.applicationEventCreateNestedManyWithoutApplicationInput
   contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -1943,6 +1987,7 @@ export type applicationUncheckedCreateWithoutCommunicationDraftsInput = {
   events?: Prisma.applicationEventUncheckedCreateNestedManyWithoutApplicationInput
   contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
   insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationInput
 }
 
 export type applicationCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -1991,6 +2036,7 @@ export type applicationUpdateWithoutCommunicationDraftsInput = {
   events?: Prisma.applicationEventUpdateManyWithoutApplicationNestedInput
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -2023,6 +2069,155 @@ export type applicationUncheckedUpdateWithoutCommunicationDraftsInput = {
   events?: Prisma.applicationEventUncheckedUpdateManyWithoutApplicationNestedInput
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
+}
+
+export type applicationCreateWithoutApplicationPackagesInput = {
+  id?: string
+  status?: $Enums.ApplicationStatus
+  source?: $Enums.ApplicationSource
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  appliedAt?: Date | string | null
+  followUpAt?: Date | string | null
+  lastActivityAt?: Date | string
+  nextActionType?: $Enums.ApplicationNextActionType | null
+  nextActionTitle?: string | null
+  nextActionReason?: string | null
+  nextActionDueAt?: Date | string | null
+  nextActionSource?: $Enums.ApplicationNextActionSource | null
+  notes?: string | null
+  companyNotes?: string | null
+  salaryNotes?: string | null
+  documentsNeededJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  confirmedRejectionReason?: string | null
+  confirmedRejectionSource?: $Enums.ApplicationRejectionSource | null
+  rejectedAt?: Date | string | null
+  closedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationsInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationsInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationsInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationsInput
+  events?: Prisma.applicationEventCreateNestedManyWithoutApplicationInput
+  contacts?: Prisma.applicationContactCreateNestedManyWithoutApplicationInput
+  insights?: Prisma.applicationInsightCreateNestedManyWithoutApplicationInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutApplicationInput
+}
+
+export type applicationUncheckedCreateWithoutApplicationPackagesInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  status?: $Enums.ApplicationStatus
+  source?: $Enums.ApplicationSource
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  appliedAt?: Date | string | null
+  followUpAt?: Date | string | null
+  lastActivityAt?: Date | string
+  nextActionType?: $Enums.ApplicationNextActionType | null
+  nextActionTitle?: string | null
+  nextActionReason?: string | null
+  nextActionDueAt?: Date | string | null
+  nextActionSource?: $Enums.ApplicationNextActionSource | null
+  notes?: string | null
+  companyNotes?: string | null
+  salaryNotes?: string | null
+  documentsNeededJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  confirmedRejectionReason?: string | null
+  confirmedRejectionSource?: $Enums.ApplicationRejectionSource | null
+  rejectedAt?: Date | string | null
+  closedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  events?: Prisma.applicationEventUncheckedCreateNestedManyWithoutApplicationInput
+  contacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutApplicationInput
+  insights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutApplicationInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutApplicationInput
+}
+
+export type applicationCreateOrConnectWithoutApplicationPackagesInput = {
+  where: Prisma.applicationWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationCreateWithoutApplicationPackagesInput, Prisma.applicationUncheckedCreateWithoutApplicationPackagesInput>
+}
+
+export type applicationUpsertWithoutApplicationPackagesInput = {
+  update: Prisma.XOR<Prisma.applicationUpdateWithoutApplicationPackagesInput, Prisma.applicationUncheckedUpdateWithoutApplicationPackagesInput>
+  create: Prisma.XOR<Prisma.applicationCreateWithoutApplicationPackagesInput, Prisma.applicationUncheckedCreateWithoutApplicationPackagesInput>
+  where?: Prisma.applicationWhereInput
+}
+
+export type applicationUpdateToOneWithWhereWithoutApplicationPackagesInput = {
+  where?: Prisma.applicationWhereInput
+  data: Prisma.XOR<Prisma.applicationUpdateWithoutApplicationPackagesInput, Prisma.applicationUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
+export type applicationUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+  source?: Prisma.EnumApplicationSourceFieldUpdateOperationsInput | $Enums.ApplicationSource
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nextActionType?: Prisma.NullableEnumApplicationNextActionTypeFieldUpdateOperationsInput | $Enums.ApplicationNextActionType | null
+  nextActionTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nextActionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nextActionDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nextActionSource?: Prisma.NullableEnumApplicationNextActionSourceFieldUpdateOperationsInput | $Enums.ApplicationNextActionSource | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentsNeededJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  confirmedRejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmedRejectionSource?: Prisma.NullableEnumApplicationRejectionSourceFieldUpdateOperationsInput | $Enums.ApplicationRejectionSource | null
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationsNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationsNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationsNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationsNestedInput
+  events?: Prisma.applicationEventUpdateManyWithoutApplicationNestedInput
+  contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
+  insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+}
+
+export type applicationUncheckedUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationStatusFieldUpdateOperationsInput | $Enums.ApplicationStatus
+  source?: Prisma.EnumApplicationSourceFieldUpdateOperationsInput | $Enums.ApplicationSource
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  followUpAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastActivityAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nextActionType?: Prisma.NullableEnumApplicationNextActionTypeFieldUpdateOperationsInput | $Enums.ApplicationNextActionType | null
+  nextActionTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nextActionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nextActionDueAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nextActionSource?: Prisma.NullableEnumApplicationNextActionSourceFieldUpdateOperationsInput | $Enums.ApplicationNextActionSource | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  companyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  salaryNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  documentsNeededJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  confirmedRejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmedRejectionSource?: Prisma.NullableEnumApplicationRejectionSourceFieldUpdateOperationsInput | $Enums.ApplicationRejectionSource | null
+  rejectedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  closedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  events?: Prisma.applicationEventUncheckedUpdateManyWithoutApplicationNestedInput
+  contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
+  insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationCreateManyUserInput = {
@@ -2083,6 +2278,7 @@ export type applicationUpdateWithoutUserInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutUserInput = {
@@ -2115,6 +2311,7 @@ export type applicationUncheckedUpdateWithoutUserInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateManyWithoutUserInput = {
@@ -2203,6 +2400,7 @@ export type applicationUpdateWithoutJobPostingInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutJobPostingInput = {
@@ -2235,6 +2433,7 @@ export type applicationUncheckedUpdateWithoutJobPostingInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateManyWithoutJobPostingInput = {
@@ -2323,6 +2522,7 @@ export type applicationUpdateWithoutResumeVersionInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutResumeVersionInput = {
@@ -2355,6 +2555,7 @@ export type applicationUncheckedUpdateWithoutResumeVersionInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateManyWithoutResumeVersionInput = {
@@ -2443,6 +2644,7 @@ export type applicationUpdateWithoutResumeVersionRevisionInput = {
   contacts?: Prisma.applicationContactUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateWithoutResumeVersionRevisionInput = {
@@ -2475,6 +2677,7 @@ export type applicationUncheckedUpdateWithoutResumeVersionRevisionInput = {
   contacts?: Prisma.applicationContactUncheckedUpdateManyWithoutApplicationNestedInput
   insights?: Prisma.applicationInsightUncheckedUpdateManyWithoutApplicationNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutApplicationNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput
 }
 
 export type applicationUncheckedUpdateManyWithoutResumeVersionRevisionInput = {
@@ -2515,6 +2718,7 @@ export type ApplicationCountOutputType = {
   contacts: number
   insights: number
   communicationDrafts: number
+  applicationPackages: number
 }
 
 export type ApplicationCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2522,6 +2726,7 @@ export type ApplicationCountOutputTypeSelect<ExtArgs extends runtime.Types.Exten
   contacts?: boolean | ApplicationCountOutputTypeCountContactsArgs
   insights?: boolean | ApplicationCountOutputTypeCountInsightsArgs
   communicationDrafts?: boolean | ApplicationCountOutputTypeCountCommunicationDraftsArgs
+  applicationPackages?: boolean | ApplicationCountOutputTypeCountApplicationPackagesArgs
 }
 
 /**
@@ -2562,6 +2767,13 @@ export type ApplicationCountOutputTypeCountCommunicationDraftsArgs<ExtArgs exten
   where?: Prisma.communicationDraftWhereInput
 }
 
+/**
+ * ApplicationCountOutputType without action
+ */
+export type ApplicationCountOutputTypeCountApplicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
+
 
 export type applicationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2598,6 +2810,7 @@ export type applicationSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   contacts?: boolean | Prisma.application$contactsArgs<ExtArgs>
   insights?: boolean | Prisma.application$insightsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.application$communicationDraftsArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.application$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["application"]>
 
@@ -2706,6 +2919,7 @@ export type applicationInclude<ExtArgs extends runtime.Types.Extensions.Internal
   contacts?: boolean | Prisma.application$contactsArgs<ExtArgs>
   insights?: boolean | Prisma.application$insightsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.application$communicationDraftsArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.application$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2732,6 +2946,7 @@ export type $applicationPayload<ExtArgs extends runtime.Types.Extensions.Interna
     contacts: Prisma.$applicationContactPayload<ExtArgs>[]
     insights: Prisma.$applicationInsightPayload<ExtArgs>[]
     communicationDrafts: Prisma.$communicationDraftPayload<ExtArgs>[]
+    applicationPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3165,6 +3380,7 @@ export interface Prisma__applicationClient<T, Null = never, ExtArgs extends runt
   contacts<T extends Prisma.application$contactsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.application$contactsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationContactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   insights<T extends Prisma.application$insightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.application$insightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   communicationDrafts<T extends Prisma.application$communicationDraftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.application$communicationDraftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applicationPackages<T extends Prisma.application$applicationPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.application$applicationPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3771,6 +3987,30 @@ export type application$communicationDraftsArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.CommunicationDraftScalarFieldEnum | Prisma.CommunicationDraftScalarFieldEnum[]
+}
+
+/**
+ * application.applicationPackages
+ */
+export type application$applicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

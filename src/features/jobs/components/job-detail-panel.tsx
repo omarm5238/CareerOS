@@ -12,6 +12,8 @@ import { DeleteJobButton } from "./delete-job-button";
 import { formatJobCreatedAt, JobMatchSummary } from "./job-match-summary";
 import { JobRecommendations } from "./job-recommendations";
 import { JobCoverLetterEntry } from "@/features/communications/components/job-cover-letter-entry";
+import { JobOpportunityEntry } from "@/features/jobs/opportunities/components/job-opportunity-entry";
+import type { OpportunityPriorityBand } from "@/generated/prisma/client";
 import type {
   CommunicationDraftListItem,
   CommunicationResumeOption,
@@ -25,6 +27,16 @@ type JobDetailPanelProps = {
   applicationSummary: JobApplicationSummary;
   communicationResumeOptions?: CommunicationResumeOption[];
   communicationDrafts?: CommunicationDraftListItem[];
+  opportunity?: {
+    opportunityScore: number;
+    priorityBand: OpportunityPriorityBand;
+    evidenceCoverage: number;
+    eligibilityStatus: string;
+    applicationEffort: string;
+    topEvidence: string[];
+    topGaps: Array<{ requirementName: string; severity: string }>;
+  } | null;
+  opportunityPackageId?: string | null;
 };
 
 export function JobDetailPanel({
@@ -34,6 +46,8 @@ export function JobDetailPanel({
   applicationSummary,
   communicationResumeOptions = [],
   communicationDrafts = [],
+  opportunity = null,
+  opportunityPackageId = null,
 }: JobDetailPanelProps) {
   const preview =
     job.description.length > 420
@@ -86,6 +100,12 @@ export function JobDetailPanel({
         hasResumeProfile={hasResumeProfile}
         jobId={job.id}
         summary={tailoredResume ?? { primary: null, archivedCount: 0 }}
+      />
+
+      <JobOpportunityEntry
+        analysis={opportunity}
+        jobPostingId={job.id}
+        packageId={opportunityPackageId}
       />
 
       <JobCoverLetterEntry

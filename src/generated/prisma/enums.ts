@@ -328,3 +328,160 @@ export const CommunicationGenerationStatus = {
 } as const
 
 export type CommunicationGenerationStatus = (typeof CommunicationGenerationStatus)[keyof typeof CommunicationGenerationStatus]
+
+
+export const JobRequirementCategory = {
+  SKILL: 'SKILL',
+  EXPERIENCE: 'EXPERIENCE',
+  EDUCATION: 'EDUCATION',
+  LANGUAGE: 'LANGUAGE',
+  CERTIFICATION: 'CERTIFICATION',
+  LOCATION: 'LOCATION',
+  AUTHORIZATION: 'AUTHORIZATION',
+  SECURITY_CLEARANCE: 'SECURITY_CLEARANCE',
+  EMPLOYMENT: 'EMPLOYMENT',
+  OTHER: 'OTHER'
+} as const
+
+export type JobRequirementCategory = (typeof JobRequirementCategory)[keyof typeof JobRequirementCategory]
+
+
+export const JobRequirementImportance = {
+  REQUIRED: 'REQUIRED',
+  STRONGLY_PREFERRED: 'STRONGLY_PREFERRED',
+  PREFERRED: 'PREFERRED',
+  OPTIONAL: 'OPTIONAL',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type JobRequirementImportance = (typeof JobRequirementImportance)[keyof typeof JobRequirementImportance]
+
+
+export const JobEvidenceType = {
+  WORK_EXPERIENCE: 'WORK_EXPERIENCE',
+  PROJECT: 'PROJECT',
+  RESUME: 'RESUME',
+  SKILL: 'SKILL',
+  EDUCATION: 'EDUCATION',
+  CERTIFICATION: 'CERTIFICATION',
+  PORTFOLIO: 'PORTFOLIO',
+  OTHER: 'OTHER'
+} as const
+
+export type JobEvidenceType = (typeof JobEvidenceType)[keyof typeof JobEvidenceType]
+
+
+export const JobEvidenceMatchStrength = {
+  DIRECT: 'DIRECT',
+  STRONG: 'STRONG',
+  PARTIAL: 'PARTIAL',
+  TRANSFERABLE: 'TRANSFERABLE',
+  NONE: 'NONE'
+} as const
+
+export type JobEvidenceMatchStrength = (typeof JobEvidenceMatchStrength)[keyof typeof JobEvidenceMatchStrength]
+
+
+export const JobOpportunityAnalysisStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  PARTIAL: 'PARTIAL',
+  FAILED: 'FAILED'
+} as const
+
+export type JobOpportunityAnalysisStatus = (typeof JobOpportunityAnalysisStatus)[keyof typeof JobOpportunityAnalysisStatus]
+
+
+export const JobOpportunityAnalysisSource = {
+  RULE_BASED: 'RULE_BASED',
+  AI_ASSISTED: 'AI_ASSISTED',
+  FALLBACK: 'FALLBACK'
+} as const
+
+export type JobOpportunityAnalysisSource = (typeof JobOpportunityAnalysisSource)[keyof typeof JobOpportunityAnalysisSource]
+
+
+export const JobEligibilityStatus = {
+  ELIGIBLE: 'ELIGIBLE',
+  LIKELY_ELIGIBLE: 'LIKELY_ELIGIBLE',
+  REVIEW_REQUIRED: 'REVIEW_REQUIRED',
+  LIKELY_INELIGIBLE: 'LIKELY_INELIGIBLE',
+  INELIGIBLE: 'INELIGIBLE'
+} as const
+
+export type JobEligibilityStatus = (typeof JobEligibilityStatus)[keyof typeof JobEligibilityStatus]
+
+
+export const OpportunityRecommendation = {
+  APPLY: 'APPLY',
+  APPLY_WITH_CAUTION: 'APPLY_WITH_CAUTION',
+  REVIEW_FIRST: 'REVIEW_FIRST',
+  SKIP: 'SKIP'
+} as const
+
+export type OpportunityRecommendation = (typeof OpportunityRecommendation)[keyof typeof OpportunityRecommendation]
+
+
+export const ApplicationEffort = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type ApplicationEffort = (typeof ApplicationEffort)[keyof typeof ApplicationEffort]
+
+
+export const OpportunityPriorityBand = {
+  APPLY_NOW: 'APPLY_NOW',
+  HIGH_PRIORITY: 'HIGH_PRIORITY',
+  GOOD_OPPORTUNITY: 'GOOD_OPPORTUNITY',
+  REVIEW_FIRST: 'REVIEW_FIRST',
+  LOW_PRIORITY: 'LOW_PRIORITY',
+  SKIP: 'SKIP'
+} as const
+
+export type OpportunityPriorityBand = (typeof OpportunityPriorityBand)[keyof typeof OpportunityPriorityBand]
+
+
+export const ApplicationPreparationMode = {
+  MANUAL: 'MANUAL',
+  ASSISTED: 'ASSISTED',
+  AUTO_PREPARE: 'AUTO_PREPARE'
+} as const
+
+export type ApplicationPreparationMode = (typeof ApplicationPreparationMode)[keyof typeof ApplicationPreparationMode]
+
+
+export const ApplicationPackageStatus = {
+  PREPARING: 'PREPARING',
+  READY_FOR_REVIEW: 'READY_FOR_REVIEW',
+  APPROVED: 'APPROVED',
+  SUBMISSION_STARTED: 'SUBMISSION_STARTED',
+  SUBMITTED: 'SUBMITTED',
+  FAILED: 'FAILED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type ApplicationPackageStatus = (typeof ApplicationPackageStatus)[keyof typeof ApplicationPackageStatus]
+
+
+export const ApplicationReadinessStatus = {
+  READY: 'READY',
+  NEEDS_REVIEW: 'NEEDS_REVIEW',
+  BLOCKED: 'BLOCKED'
+} as const
+
+export type ApplicationReadinessStatus = (typeof ApplicationReadinessStatus)[keyof typeof ApplicationReadinessStatus]
+
+
+export const ApplicationPackageQaStatus = {
+  NOT_RUN: 'NOT_RUN',
+  PASS: 'PASS',
+  NEEDS_REPAIR: 'NEEDS_REPAIR',
+  USER_INPUT_REQUIRED: 'USER_INPUT_REQUIRED',
+  BLOCKED: 'BLOCKED',
+  FAILED: 'FAILED'
+} as const
+
+export type ApplicationPackageQaStatus = (typeof ApplicationPackageQaStatus)[keyof typeof ApplicationPackageQaStatus]

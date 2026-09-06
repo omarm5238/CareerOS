@@ -262,6 +262,8 @@ export type communicationDraftWhereInput = {
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionNullableScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput> | null
   revisions?: Prisma.CommunicationDraftRevisionListRelationFilter
   activeRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
+  coverLetterPackages?: Prisma.ApplicationPackageListRelationFilter
+  applicationEmailPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type communicationDraftOrderByWithRelationInput = {
@@ -287,6 +289,8 @@ export type communicationDraftOrderByWithRelationInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionOrderByWithRelationInput
   revisions?: Prisma.communicationDraftRevisionOrderByRelationAggregateInput
   activeRevision?: Prisma.communicationDraftRevisionOrderByWithRelationInput
+  coverLetterPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
+  applicationEmailPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type communicationDraftWhereUniqueInput = Prisma.AtLeast<{
@@ -315,6 +319,8 @@ export type communicationDraftWhereUniqueInput = Prisma.AtLeast<{
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionNullableScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput> | null
   revisions?: Prisma.CommunicationDraftRevisionListRelationFilter
   activeRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
+  coverLetterPackages?: Prisma.ApplicationPackageListRelationFilter
+  applicationEmailPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id" | "activeRevisionId">
 
 export type communicationDraftOrderByWithAggregationInput = {
@@ -373,6 +379,8 @@ export type communicationDraftCreateInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateInput = {
@@ -391,6 +399,8 @@ export type communicationDraftUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUpdateInput = {
@@ -409,6 +419,8 @@ export type communicationDraftUpdateInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateInput = {
@@ -427,6 +439,8 @@ export type communicationDraftUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftCreateManyInput = {
@@ -850,6 +864,38 @@ export type communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.communicationDraftUpdateToOneWithWhereWithoutActiveRevisionInput, Prisma.communicationDraftUpdateWithoutActiveRevisionInput>, Prisma.communicationDraftUncheckedUpdateWithoutActiveRevisionInput>
 }
 
+export type communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftCreateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutCoverLetterPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftCreateOrConnectWithoutCoverLetterPackagesInput
+  connect?: Prisma.communicationDraftWhereUniqueInput
+}
+
+export type communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftCreateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutApplicationEmailPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftCreateOrConnectWithoutApplicationEmailPackagesInput
+  connect?: Prisma.communicationDraftWhereUniqueInput
+}
+
+export type communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftCreateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutCoverLetterPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftCreateOrConnectWithoutCoverLetterPackagesInput
+  upsert?: Prisma.communicationDraftUpsertWithoutCoverLetterPackagesInput
+  disconnect?: Prisma.communicationDraftWhereInput | boolean
+  delete?: Prisma.communicationDraftWhereInput | boolean
+  connect?: Prisma.communicationDraftWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.communicationDraftUpdateToOneWithWhereWithoutCoverLetterPackagesInput, Prisma.communicationDraftUpdateWithoutCoverLetterPackagesInput>, Prisma.communicationDraftUncheckedUpdateWithoutCoverLetterPackagesInput>
+}
+
+export type communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftCreateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutApplicationEmailPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftCreateOrConnectWithoutApplicationEmailPackagesInput
+  upsert?: Prisma.communicationDraftUpsertWithoutApplicationEmailPackagesInput
+  disconnect?: Prisma.communicationDraftWhereInput | boolean
+  delete?: Prisma.communicationDraftWhereInput | boolean
+  connect?: Prisma.communicationDraftWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.communicationDraftUpdateToOneWithWhereWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUpdateWithoutApplicationEmailPackagesInput>, Prisma.communicationDraftUncheckedUpdateWithoutApplicationEmailPackagesInput>
+}
+
 export type communicationDraftCreateWithoutUserInput = {
   id?: string
   type: $Enums.CommunicationType
@@ -865,6 +911,8 @@ export type communicationDraftCreateWithoutUserInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutUserInput = {
@@ -882,6 +930,8 @@ export type communicationDraftUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutUserInput = {
@@ -945,6 +995,8 @@ export type communicationDraftCreateWithoutJobPostingInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutJobPostingInput = {
@@ -962,6 +1014,8 @@ export type communicationDraftUncheckedCreateWithoutJobPostingInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutJobPostingInput = {
@@ -1005,6 +1059,8 @@ export type communicationDraftCreateWithoutResumeVersionInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutResumeVersionInput = {
@@ -1022,6 +1078,8 @@ export type communicationDraftUncheckedCreateWithoutResumeVersionInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutResumeVersionInput = {
@@ -1065,6 +1123,8 @@ export type communicationDraftCreateWithoutResumeVersionRevisionInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutResumeVersionRevisionInput = {
@@ -1082,6 +1142,8 @@ export type communicationDraftUncheckedCreateWithoutResumeVersionRevisionInput =
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutResumeVersionRevisionInput = {
@@ -1125,6 +1187,8 @@ export type communicationDraftCreateWithoutApplicationInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutApplicationInput = {
@@ -1142,6 +1206,8 @@ export type communicationDraftUncheckedCreateWithoutApplicationInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutApplicationInput = {
@@ -1185,6 +1251,8 @@ export type communicationDraftCreateWithoutContactInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutContactInput = {
@@ -1202,6 +1270,8 @@ export type communicationDraftUncheckedCreateWithoutContactInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutContactInput = {
@@ -1245,6 +1315,8 @@ export type communicationDraftCreateWithoutRevisionsInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutCommunicationDraftsInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutRevisionsInput = {
@@ -1262,6 +1334,8 @@ export type communicationDraftUncheckedCreateWithoutRevisionsInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutRevisionsInput = {
@@ -1284,6 +1358,8 @@ export type communicationDraftCreateWithoutActiveRevisionInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutCommunicationDraftsInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
   revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftUncheckedCreateWithoutActiveRevisionInput = {
@@ -1301,6 +1377,8 @@ export type communicationDraftUncheckedCreateWithoutActiveRevisionInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
 }
 
 export type communicationDraftCreateOrConnectWithoutActiveRevisionInput = {
@@ -1334,6 +1412,8 @@ export type communicationDraftUpdateWithoutRevisionsInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutCommunicationDraftsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutRevisionsInput = {
@@ -1351,6 +1431,8 @@ export type communicationDraftUncheckedUpdateWithoutRevisionsInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUpsertWithoutActiveRevisionInput = {
@@ -1379,6 +1461,8 @@ export type communicationDraftUpdateWithoutActiveRevisionInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutCommunicationDraftsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutActiveRevisionInput = {
@@ -1396,6 +1480,192 @@ export type communicationDraftUncheckedUpdateWithoutActiveRevisionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
+}
+
+export type communicationDraftCreateWithoutCoverLetterPackagesInput = {
+  id?: string
+  type: $Enums.CommunicationType
+  status?: $Enums.CommunicationStatus
+  usedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutCommunicationDraftsInput
+  application?: Prisma.applicationCreateNestedOneWithoutCommunicationDraftsInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutCommunicationDraftsInput
+  contact?: Prisma.applicationContactCreateNestedOneWithoutCommunicationDraftsInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutCommunicationDraftsInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
+  revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
+  activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationEmailDraftInput
+}
+
+export type communicationDraftUncheckedCreateWithoutCoverLetterPackagesInput = {
+  id?: string
+  userId: string
+  applicationId?: string | null
+  jobPostingId?: string | null
+  contactId?: string | null
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  type: $Enums.CommunicationType
+  status?: $Enums.CommunicationStatus
+  activeRevisionId?: string | null
+  usedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationEmailDraftInput
+}
+
+export type communicationDraftCreateOrConnectWithoutCoverLetterPackagesInput = {
+  where: Prisma.communicationDraftWhereUniqueInput
+  create: Prisma.XOR<Prisma.communicationDraftCreateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutCoverLetterPackagesInput>
+}
+
+export type communicationDraftCreateWithoutApplicationEmailPackagesInput = {
+  id?: string
+  type: $Enums.CommunicationType
+  status?: $Enums.CommunicationStatus
+  usedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutCommunicationDraftsInput
+  application?: Prisma.applicationCreateNestedOneWithoutCommunicationDraftsInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutCommunicationDraftsInput
+  contact?: Prisma.applicationContactCreateNestedOneWithoutCommunicationDraftsInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutCommunicationDraftsInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutCommunicationDraftsInput
+  revisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutCommunicationDraftInput
+  activeRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutActiveForDraftInput
+  coverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterDraftInput
+}
+
+export type communicationDraftUncheckedCreateWithoutApplicationEmailPackagesInput = {
+  id?: string
+  userId: string
+  applicationId?: string | null
+  jobPostingId?: string | null
+  contactId?: string | null
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  type: $Enums.CommunicationType
+  status?: $Enums.CommunicationStatus
+  activeRevisionId?: string | null
+  usedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  revisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutCommunicationDraftInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterDraftInput
+}
+
+export type communicationDraftCreateOrConnectWithoutApplicationEmailPackagesInput = {
+  where: Prisma.communicationDraftWhereUniqueInput
+  create: Prisma.XOR<Prisma.communicationDraftCreateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutApplicationEmailPackagesInput>
+}
+
+export type communicationDraftUpsertWithoutCoverLetterPackagesInput = {
+  update: Prisma.XOR<Prisma.communicationDraftUpdateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedUpdateWithoutCoverLetterPackagesInput>
+  create: Prisma.XOR<Prisma.communicationDraftCreateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutCoverLetterPackagesInput>
+  where?: Prisma.communicationDraftWhereInput
+}
+
+export type communicationDraftUpdateToOneWithWhereWithoutCoverLetterPackagesInput = {
+  where?: Prisma.communicationDraftWhereInput
+  data: Prisma.XOR<Prisma.communicationDraftUpdateWithoutCoverLetterPackagesInput, Prisma.communicationDraftUncheckedUpdateWithoutCoverLetterPackagesInput>
+}
+
+export type communicationDraftUpdateWithoutCoverLetterPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumCommunicationTypeFieldUpdateOperationsInput | $Enums.CommunicationType
+  status?: Prisma.EnumCommunicationStatusFieldUpdateOperationsInput | $Enums.CommunicationStatus
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftsNestedInput
+  application?: Prisma.applicationUpdateOneWithoutCommunicationDraftsNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutCommunicationDraftsNestedInput
+  contact?: Prisma.applicationContactUpdateOneWithoutCommunicationDraftsNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutCommunicationDraftsNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
+  revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
+  activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
+}
+
+export type communicationDraftUncheckedUpdateWithoutCoverLetterPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumCommunicationTypeFieldUpdateOperationsInput | $Enums.CommunicationType
+  status?: Prisma.EnumCommunicationStatusFieldUpdateOperationsInput | $Enums.CommunicationStatus
+  activeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
+}
+
+export type communicationDraftUpsertWithoutApplicationEmailPackagesInput = {
+  update: Prisma.XOR<Prisma.communicationDraftUpdateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedUpdateWithoutApplicationEmailPackagesInput>
+  create: Prisma.XOR<Prisma.communicationDraftCreateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedCreateWithoutApplicationEmailPackagesInput>
+  where?: Prisma.communicationDraftWhereInput
+}
+
+export type communicationDraftUpdateToOneWithWhereWithoutApplicationEmailPackagesInput = {
+  where?: Prisma.communicationDraftWhereInput
+  data: Prisma.XOR<Prisma.communicationDraftUpdateWithoutApplicationEmailPackagesInput, Prisma.communicationDraftUncheckedUpdateWithoutApplicationEmailPackagesInput>
+}
+
+export type communicationDraftUpdateWithoutApplicationEmailPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.EnumCommunicationTypeFieldUpdateOperationsInput | $Enums.CommunicationType
+  status?: Prisma.EnumCommunicationStatusFieldUpdateOperationsInput | $Enums.CommunicationStatus
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftsNestedInput
+  application?: Prisma.applicationUpdateOneWithoutCommunicationDraftsNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutCommunicationDraftsNestedInput
+  contact?: Prisma.applicationContactUpdateOneWithoutCommunicationDraftsNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutCommunicationDraftsNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
+  revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
+  activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+}
+
+export type communicationDraftUncheckedUpdateWithoutApplicationEmailPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contactId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumCommunicationTypeFieldUpdateOperationsInput | $Enums.CommunicationType
+  status?: Prisma.EnumCommunicationStatusFieldUpdateOperationsInput | $Enums.CommunicationStatus
+  activeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  usedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
 }
 
 export type communicationDraftCreateManyUserInput = {
@@ -1429,6 +1699,8 @@ export type communicationDraftUpdateWithoutUserInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutUserInput = {
@@ -1446,6 +1718,8 @@ export type communicationDraftUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutUserInput = {
@@ -1495,6 +1769,8 @@ export type communicationDraftUpdateWithoutJobPostingInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutJobPostingInput = {
@@ -1512,6 +1788,8 @@ export type communicationDraftUncheckedUpdateWithoutJobPostingInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutJobPostingInput = {
@@ -1561,6 +1839,8 @@ export type communicationDraftUpdateWithoutResumeVersionInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutResumeVersionInput = {
@@ -1578,6 +1858,8 @@ export type communicationDraftUncheckedUpdateWithoutResumeVersionInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutResumeVersionInput = {
@@ -1627,6 +1909,8 @@ export type communicationDraftUpdateWithoutResumeVersionRevisionInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutResumeVersionRevisionInput = {
@@ -1644,6 +1928,8 @@ export type communicationDraftUncheckedUpdateWithoutResumeVersionRevisionInput =
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutResumeVersionRevisionInput = {
@@ -1693,6 +1979,8 @@ export type communicationDraftUpdateWithoutApplicationInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutApplicationInput = {
@@ -1710,6 +1998,8 @@ export type communicationDraftUncheckedUpdateWithoutApplicationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutApplicationInput = {
@@ -1759,6 +2049,8 @@ export type communicationDraftUpdateWithoutContactInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutCommunicationDraftsNestedInput
   revisions?: Prisma.communicationDraftRevisionUpdateManyWithoutCommunicationDraftNestedInput
   activeRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutActiveForDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateWithoutContactInput = {
@@ -1776,6 +2068,8 @@ export type communicationDraftUncheckedUpdateWithoutContactInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   revisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftNestedInput
+  coverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftNestedInput
+  applicationEmailPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNestedInput
 }
 
 export type communicationDraftUncheckedUpdateManyWithoutContactInput = {
@@ -1801,10 +2095,14 @@ export type communicationDraftUncheckedUpdateManyWithoutContactInput = {
 
 export type CommunicationDraftCountOutputType = {
   revisions: number
+  coverLetterPackages: number
+  applicationEmailPackages: number
 }
 
 export type CommunicationDraftCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   revisions?: boolean | CommunicationDraftCountOutputTypeCountRevisionsArgs
+  coverLetterPackages?: boolean | CommunicationDraftCountOutputTypeCountCoverLetterPackagesArgs
+  applicationEmailPackages?: boolean | CommunicationDraftCountOutputTypeCountApplicationEmailPackagesArgs
 }
 
 /**
@@ -1822,6 +2120,20 @@ export type CommunicationDraftCountOutputTypeDefaultArgs<ExtArgs extends runtime
  */
 export type CommunicationDraftCountOutputTypeCountRevisionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+/**
+ * CommunicationDraftCountOutputType without action
+ */
+export type CommunicationDraftCountOutputTypeCountCoverLetterPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
+
+/**
+ * CommunicationDraftCountOutputType without action
+ */
+export type CommunicationDraftCountOutputTypeCountApplicationEmailPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
 }
 
 
@@ -1848,6 +2160,8 @@ export type communicationDraftSelect<ExtArgs extends runtime.Types.Extensions.In
   resumeVersionRevision?: boolean | Prisma.communicationDraft$resumeVersionRevisionArgs<ExtArgs>
   revisions?: boolean | Prisma.communicationDraft$revisionsArgs<ExtArgs>
   activeRevision?: boolean | Prisma.communicationDraft$activeRevisionArgs<ExtArgs>
+  coverLetterPackages?: boolean | Prisma.communicationDraft$coverLetterPackagesArgs<ExtArgs>
+  applicationEmailPackages?: boolean | Prisma.communicationDraft$applicationEmailPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.CommunicationDraftCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["communicationDraft"]>
 
@@ -1926,6 +2240,8 @@ export type communicationDraftInclude<ExtArgs extends runtime.Types.Extensions.I
   resumeVersionRevision?: boolean | Prisma.communicationDraft$resumeVersionRevisionArgs<ExtArgs>
   revisions?: boolean | Prisma.communicationDraft$revisionsArgs<ExtArgs>
   activeRevision?: boolean | Prisma.communicationDraft$activeRevisionArgs<ExtArgs>
+  coverLetterPackages?: boolean | Prisma.communicationDraft$coverLetterPackagesArgs<ExtArgs>
+  applicationEmailPackages?: boolean | Prisma.communicationDraft$applicationEmailPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.CommunicationDraftCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type communicationDraftIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1958,6 +2274,8 @@ export type $communicationDraftPayload<ExtArgs extends runtime.Types.Extensions.
     resumeVersionRevision: Prisma.$resumeVersionRevisionPayload<ExtArgs> | null
     revisions: Prisma.$communicationDraftRevisionPayload<ExtArgs>[]
     activeRevision: Prisma.$communicationDraftRevisionPayload<ExtArgs> | null
+    coverLetterPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
+    applicationEmailPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2376,6 +2694,8 @@ export interface Prisma__communicationDraftClient<T, Null = never, ExtArgs exten
   resumeVersionRevision<T extends Prisma.communicationDraft$resumeVersionRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraft$resumeVersionRevisionArgs<ExtArgs>>): Prisma.Prisma__resumeVersionRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   revisions<T extends Prisma.communicationDraft$revisionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraft$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   activeRevision<T extends Prisma.communicationDraft$activeRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraft$activeRevisionArgs<ExtArgs>>): Prisma.Prisma__communicationDraftRevisionClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  coverLetterPackages<T extends Prisma.communicationDraft$coverLetterPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraft$coverLetterPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applicationEmailPackages<T extends Prisma.communicationDraft$applicationEmailPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraft$applicationEmailPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2955,6 +3275,54 @@ export type communicationDraft$activeRevisionArgs<ExtArgs extends runtime.Types.
    */
   include?: Prisma.communicationDraftRevisionInclude<ExtArgs> | null
   where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+/**
+ * communicationDraft.coverLetterPackages
+ */
+export type communicationDraft$coverLetterPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
+}
+
+/**
+ * communicationDraft.applicationEmailPackages
+ */
+export type communicationDraft$applicationEmailPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

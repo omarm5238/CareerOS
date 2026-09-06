@@ -73,7 +73,11 @@ export const ModelName = {
   discoveredJobSource: 'discoveredJobSource',
   applicationQueueItem: 'applicationQueueItem',
   communicationDraft: 'communicationDraft',
-  communicationDraftRevision: 'communicationDraftRevision'
+  communicationDraftRevision: 'communicationDraftRevision',
+  jobRequirement: 'jobRequirement',
+  jobEvidenceMatch: 'jobEvidenceMatch',
+  jobOpportunityAnalysis: 'jobOpportunityAnalysis',
+  applicationPackage: 'applicationPackage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -421,6 +425,7 @@ export const JobDiscoveryProfileScalarFieldEnum = {
   minimumSuitabilityScore: 'minimumSuitabilityScore',
   dailyTarget: 'dailyTarget',
   providerPreferencesJson: 'providerPreferencesJson',
+  applicationPreparationMode: 'applicationPreparationMode',
   generatedFromContextAt: 'generatedFromContextAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -577,6 +582,115 @@ export const CommunicationDraftRevisionScalarFieldEnum = {
 } as const
 
 export type CommunicationDraftRevisionScalarFieldEnum = (typeof CommunicationDraftRevisionScalarFieldEnum)[keyof typeof CommunicationDraftRevisionScalarFieldEnum]
+
+
+export const JobRequirementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  category: 'category',
+  importance: 'importance',
+  normalizedName: 'normalizedName',
+  rawText: 'rawText',
+  sourceExcerpt: 'sourceExcerpt',
+  yearsRequired: 'yearsRequired',
+  proficiencyRequired: 'proficiencyRequired',
+  isExplicit: 'isExplicit',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobRequirementScalarFieldEnum = (typeof JobRequirementScalarFieldEnum)[keyof typeof JobRequirementScalarFieldEnum]
+
+
+export const JobEvidenceMatchScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobRequirementId: 'jobRequirementId',
+  evidenceType: 'evidenceType',
+  evidenceSourceId: 'evidenceSourceId',
+  evidenceLabel: 'evidenceLabel',
+  evidenceExcerpt: 'evidenceExcerpt',
+  matchStrength: 'matchStrength',
+  reasoning: 'reasoning',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobEvidenceMatchScalarFieldEnum = (typeof JobEvidenceMatchScalarFieldEnum)[keyof typeof JobEvidenceMatchScalarFieldEnum]
+
+
+export const JobOpportunityAnalysisScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  status: 'status',
+  roleFit: 'roleFit',
+  skillFit: 'skillFit',
+  experienceFit: 'experienceFit',
+  evidenceFit: 'evidenceFit',
+  locationFit: 'locationFit',
+  authorizationFit: 'authorizationFit',
+  freshnessScore: 'freshnessScore',
+  applicationEffortScore: 'applicationEffortScore',
+  opportunityScore: 'opportunityScore',
+  priorityScore: 'priorityScore',
+  priorityBand: 'priorityBand',
+  recommendation: 'recommendation',
+  eligibilityStatus: 'eligibilityStatus',
+  applicationEffort: 'applicationEffort',
+  evidenceCoverage: 'evidenceCoverage',
+  criticalGapCount: 'criticalGapCount',
+  importantGapCount: 'importantGapCount',
+  minorGapCount: 'minorGapCount',
+  optionalGapCount: 'optionalGapCount',
+  gapsJson: 'gapsJson',
+  eligibilityChecksJson: 'eligibilityChecksJson',
+  warningsJson: 'warningsJson',
+  summary: 'summary',
+  contextFingerprint: 'contextFingerprint',
+  analysisSource: 'analysisSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobOpportunityAnalysisScalarFieldEnum = (typeof JobOpportunityAnalysisScalarFieldEnum)[keyof typeof JobOpportunityAnalysisScalarFieldEnum]
+
+
+export const ApplicationPackageScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  applicationQueueItemId: 'applicationQueueItemId',
+  applicationId: 'applicationId',
+  version: 'version',
+  resumeVersionId: 'resumeVersionId',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  coverLetterDraftId: 'coverLetterDraftId',
+  applicationEmailDraftId: 'applicationEmailDraftId',
+  status: 'status',
+  readinessStatus: 'readinessStatus',
+  qaStatus: 'qaStatus',
+  opportunitySnapshotJson: 'opportunitySnapshotJson',
+  evidenceSnapshotJson: 'evidenceSnapshotJson',
+  gapSnapshotJson: 'gapSnapshotJson',
+  eligibilitySnapshotJson: 'eligibilitySnapshotJson',
+  requiredUserInputsJson: 'requiredUserInputsJson',
+  qaSnapshotJson: 'qaSnapshotJson',
+  warningsJson: 'warningsJson',
+  contextFingerprint: 'contextFingerprint',
+  preparedAt: 'preparedAt',
+  approvedAt: 'approvedAt',
+  submissionStartedAt: 'submissionStartedAt',
+  submittedAt: 'submittedAt',
+  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationPackageScalarFieldEnum = (typeof ApplicationPackageScalarFieldEnum)[keyof typeof ApplicationPackageScalarFieldEnum]
 
 
 export const SortOrder = {

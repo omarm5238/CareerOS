@@ -45,6 +45,7 @@ export type JobDiscoveryProfileMinAggregateOutputType = {
   freshnessDays: number | null
   minimumSuitabilityScore: number | null
   dailyTarget: number | null
+  applicationPreparationMode: $Enums.ApplicationPreparationMode | null
   generatedFromContextAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -57,6 +58,7 @@ export type JobDiscoveryProfileMaxAggregateOutputType = {
   freshnessDays: number | null
   minimumSuitabilityScore: number | null
   dailyTarget: number | null
+  applicationPreparationMode: $Enums.ApplicationPreparationMode | null
   generatedFromContextAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -78,6 +80,7 @@ export type JobDiscoveryProfileCountAggregateOutputType = {
   minimumSuitabilityScore: number
   dailyTarget: number
   providerPreferencesJson: number
+  applicationPreparationMode: number
   generatedFromContextAt: number
   createdAt: number
   updatedAt: number
@@ -104,6 +107,7 @@ export type JobDiscoveryProfileMinAggregateInputType = {
   freshnessDays?: true
   minimumSuitabilityScore?: true
   dailyTarget?: true
+  applicationPreparationMode?: true
   generatedFromContextAt?: true
   createdAt?: true
   updatedAt?: true
@@ -116,6 +120,7 @@ export type JobDiscoveryProfileMaxAggregateInputType = {
   freshnessDays?: true
   minimumSuitabilityScore?: true
   dailyTarget?: true
+  applicationPreparationMode?: true
   generatedFromContextAt?: true
   createdAt?: true
   updatedAt?: true
@@ -137,6 +142,7 @@ export type JobDiscoveryProfileCountAggregateInputType = {
   minimumSuitabilityScore?: true
   dailyTarget?: true
   providerPreferencesJson?: true
+  applicationPreparationMode?: true
   generatedFromContextAt?: true
   createdAt?: true
   updatedAt?: true
@@ -245,6 +251,7 @@ export type JobDiscoveryProfileGroupByOutputType = {
   minimumSuitabilityScore: number
   dailyTarget: number
   providerPreferencesJson: runtime.JsonValue
+  applicationPreparationMode: $Enums.ApplicationPreparationMode
   generatedFromContextAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -289,6 +296,7 @@ export type jobDiscoveryProfileWhereInput = {
   minimumSuitabilityScore?: Prisma.IntFilter<"jobDiscoveryProfile"> | number
   dailyTarget?: Prisma.IntFilter<"jobDiscoveryProfile"> | number
   providerPreferencesJson?: Prisma.JsonFilter<"jobDiscoveryProfile">
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFilter<"jobDiscoveryProfile"> | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.DateTimeNullableFilter<"jobDiscoveryProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"jobDiscoveryProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobDiscoveryProfile"> | Date | string
@@ -312,6 +320,7 @@ export type jobDiscoveryProfileOrderByWithRelationInput = {
   minimumSuitabilityScore?: Prisma.SortOrder
   dailyTarget?: Prisma.SortOrder
   providerPreferencesJson?: Prisma.SortOrder
+  applicationPreparationMode?: Prisma.SortOrder
   generatedFromContextAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -338,6 +347,7 @@ export type jobDiscoveryProfileWhereUniqueInput = Prisma.AtLeast<{
   minimumSuitabilityScore?: Prisma.IntFilter<"jobDiscoveryProfile"> | number
   dailyTarget?: Prisma.IntFilter<"jobDiscoveryProfile"> | number
   providerPreferencesJson?: Prisma.JsonFilter<"jobDiscoveryProfile">
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFilter<"jobDiscoveryProfile"> | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.DateTimeNullableFilter<"jobDiscoveryProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"jobDiscoveryProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobDiscoveryProfile"> | Date | string
@@ -361,6 +371,7 @@ export type jobDiscoveryProfileOrderByWithAggregationInput = {
   minimumSuitabilityScore?: Prisma.SortOrder
   dailyTarget?: Prisma.SortOrder
   providerPreferencesJson?: Prisma.SortOrder
+  applicationPreparationMode?: Prisma.SortOrder
   generatedFromContextAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -390,6 +401,7 @@ export type jobDiscoveryProfileScalarWhereWithAggregatesInput = {
   minimumSuitabilityScore?: Prisma.IntWithAggregatesFilter<"jobDiscoveryProfile"> | number
   dailyTarget?: Prisma.IntWithAggregatesFilter<"jobDiscoveryProfile"> | number
   providerPreferencesJson?: Prisma.JsonWithAggregatesFilter<"jobDiscoveryProfile">
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeWithAggregatesFilter<"jobDiscoveryProfile"> | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.DateTimeNullableWithAggregatesFilter<"jobDiscoveryProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"jobDiscoveryProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"jobDiscoveryProfile"> | Date | string
@@ -410,6 +422,7 @@ export type jobDiscoveryProfileCreateInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -433,6 +446,7 @@ export type jobDiscoveryProfileUncheckedCreateInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -454,6 +468,7 @@ export type jobDiscoveryProfileUpdateInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -477,6 +492,7 @@ export type jobDiscoveryProfileUncheckedUpdateInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -499,6 +515,7 @@ export type jobDiscoveryProfileCreateManyInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -519,6 +536,7 @@ export type jobDiscoveryProfileUpdateManyMutationInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -540,6 +558,7 @@ export type jobDiscoveryProfileUncheckedUpdateManyInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -566,6 +585,7 @@ export type jobDiscoveryProfileCountOrderByAggregateInput = {
   minimumSuitabilityScore?: Prisma.SortOrder
   dailyTarget?: Prisma.SortOrder
   providerPreferencesJson?: Prisma.SortOrder
+  applicationPreparationMode?: Prisma.SortOrder
   generatedFromContextAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -584,6 +604,7 @@ export type jobDiscoveryProfileMaxOrderByAggregateInput = {
   freshnessDays?: Prisma.SortOrder
   minimumSuitabilityScore?: Prisma.SortOrder
   dailyTarget?: Prisma.SortOrder
+  applicationPreparationMode?: Prisma.SortOrder
   generatedFromContextAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -596,6 +617,7 @@ export type jobDiscoveryProfileMinOrderByAggregateInput = {
   freshnessDays?: Prisma.SortOrder
   minimumSuitabilityScore?: Prisma.SortOrder
   dailyTarget?: Prisma.SortOrder
+  applicationPreparationMode?: Prisma.SortOrder
   generatedFromContextAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -639,6 +661,10 @@ export type jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.jobDiscoveryProfileUpdateToOneWithWhereWithoutUserInput, Prisma.jobDiscoveryProfileUpdateWithoutUserInput>, Prisma.jobDiscoveryProfileUncheckedUpdateWithoutUserInput>
 }
 
+export type EnumApplicationPreparationModeFieldUpdateOperationsInput = {
+  set?: $Enums.ApplicationPreparationMode
+}
+
 export type jobDiscoveryProfileCreateNestedOneWithoutRunsInput = {
   create?: Prisma.XOR<Prisma.jobDiscoveryProfileCreateWithoutRunsInput, Prisma.jobDiscoveryProfileUncheckedCreateWithoutRunsInput>
   connectOrCreate?: Prisma.jobDiscoveryProfileCreateOrConnectWithoutRunsInput
@@ -670,6 +696,7 @@ export type jobDiscoveryProfileCreateWithoutUserInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -691,6 +718,7 @@ export type jobDiscoveryProfileUncheckedCreateWithoutUserInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -728,6 +756,7 @@ export type jobDiscoveryProfileUpdateWithoutUserInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -749,6 +778,7 @@ export type jobDiscoveryProfileUncheckedUpdateWithoutUserInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -770,6 +800,7 @@ export type jobDiscoveryProfileCreateWithoutRunsInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -792,6 +823,7 @@ export type jobDiscoveryProfileUncheckedCreateWithoutRunsInput = {
   minimumSuitabilityScore?: number
   dailyTarget?: number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -828,6 +860,7 @@ export type jobDiscoveryProfileUpdateWithoutRunsInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -850,6 +883,7 @@ export type jobDiscoveryProfileUncheckedUpdateWithoutRunsInput = {
   minimumSuitabilityScore?: Prisma.IntFieldUpdateOperationsInput | number
   dailyTarget?: Prisma.IntFieldUpdateOperationsInput | number
   providerPreferencesJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  applicationPreparationMode?: Prisma.EnumApplicationPreparationModeFieldUpdateOperationsInput | $Enums.ApplicationPreparationMode
   generatedFromContextAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -902,6 +936,7 @@ export type jobDiscoveryProfileSelect<ExtArgs extends runtime.Types.Extensions.I
   minimumSuitabilityScore?: boolean
   dailyTarget?: boolean
   providerPreferencesJson?: boolean
+  applicationPreparationMode?: boolean
   generatedFromContextAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -926,6 +961,7 @@ export type jobDiscoveryProfileSelectCreateManyAndReturn<ExtArgs extends runtime
   minimumSuitabilityScore?: boolean
   dailyTarget?: boolean
   providerPreferencesJson?: boolean
+  applicationPreparationMode?: boolean
   generatedFromContextAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -948,6 +984,7 @@ export type jobDiscoveryProfileSelectUpdateManyAndReturn<ExtArgs extends runtime
   minimumSuitabilityScore?: boolean
   dailyTarget?: boolean
   providerPreferencesJson?: boolean
+  applicationPreparationMode?: boolean
   generatedFromContextAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -970,12 +1007,13 @@ export type jobDiscoveryProfileSelectScalar = {
   minimumSuitabilityScore?: boolean
   dailyTarget?: boolean
   providerPreferencesJson?: boolean
+  applicationPreparationMode?: boolean
   generatedFromContextAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type jobDiscoveryProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "roleTargetsJson" | "locationTargetsJson" | "workModesJson" | "employmentTypesJson" | "experienceLevelsJson" | "includedKeywordsJson" | "excludedKeywordsJson" | "workAuthorizationJson" | "visaPreference" | "freshnessDays" | "minimumSuitabilityScore" | "dailyTarget" | "providerPreferencesJson" | "generatedFromContextAt" | "createdAt" | "updatedAt", ExtArgs["result"]["jobDiscoveryProfile"]>
+export type jobDiscoveryProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "roleTargetsJson" | "locationTargetsJson" | "workModesJson" | "employmentTypesJson" | "experienceLevelsJson" | "includedKeywordsJson" | "excludedKeywordsJson" | "workAuthorizationJson" | "visaPreference" | "freshnessDays" | "minimumSuitabilityScore" | "dailyTarget" | "providerPreferencesJson" | "applicationPreparationMode" | "generatedFromContextAt" | "createdAt" | "updatedAt", ExtArgs["result"]["jobDiscoveryProfile"]>
 export type jobDiscoveryProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   runs?: boolean | Prisma.jobDiscoveryProfile$runsArgs<ExtArgs>
@@ -1010,6 +1048,7 @@ export type $jobDiscoveryProfilePayload<ExtArgs extends runtime.Types.Extensions
     minimumSuitabilityScore: number
     dailyTarget: number
     providerPreferencesJson: runtime.JsonValue
+    applicationPreparationMode: $Enums.ApplicationPreparationMode
     generatedFromContextAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -1453,6 +1492,7 @@ export interface jobDiscoveryProfileFieldRefs {
   readonly minimumSuitabilityScore: Prisma.FieldRef<"jobDiscoveryProfile", 'Int'>
   readonly dailyTarget: Prisma.FieldRef<"jobDiscoveryProfile", 'Int'>
   readonly providerPreferencesJson: Prisma.FieldRef<"jobDiscoveryProfile", 'Json'>
+  readonly applicationPreparationMode: Prisma.FieldRef<"jobDiscoveryProfile", 'ApplicationPreparationMode'>
   readonly generatedFromContextAt: Prisma.FieldRef<"jobDiscoveryProfile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"jobDiscoveryProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"jobDiscoveryProfile", 'DateTime'>

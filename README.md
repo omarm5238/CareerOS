@@ -112,6 +112,9 @@ OPENAI_JOB_MATCH_RETRY_TIMEOUT_MS="25000"
 
 # Optional communication generation override.
 OPENAI_COMMUNICATIONS_MODEL=""
+
+# Optional opportunity intelligence override.
+OPENAI_OPPORTUNITY_MODEL=""
 ```
 
 ### Scripts

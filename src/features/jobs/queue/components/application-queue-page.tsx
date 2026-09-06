@@ -167,6 +167,14 @@ export function ApplicationQueuePage({ items: initialItems }: QueuePageProps) {
                           Start Application
                         </button>
                       ) : null}
+                      {item.jobPostingId ? (
+                        <Link
+                          href={`/workspace/jobs?jobId=${item.jobPostingId}`}
+                          className="rounded-lg px-3 py-1.5 text-sm text-[var(--color-accent)] hover:underline"
+                        >
+                          Prepare Application
+                        </Link>
+                      ) : null}
                       {item.applicationId ? (
                         <Link
                           href={`/workspace/applications/${item.applicationId}`}

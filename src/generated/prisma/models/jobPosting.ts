@@ -252,6 +252,9 @@ export type jobPostingWhereInput = {
   applications?: Prisma.ApplicationListRelationFilter
   discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  requirements?: Prisma.JobRequirementListRelationFilter
+  opportunityAnalysis?: Prisma.XOR<Prisma.JobOpportunityAnalysisNullableScalarRelationFilter, Prisma.jobOpportunityAnalysisWhereInput> | null
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type jobPostingOrderByWithRelationInput = {
@@ -274,6 +277,9 @@ export type jobPostingOrderByWithRelationInput = {
   applications?: Prisma.applicationOrderByRelationAggregateInput
   discoveredJobs?: Prisma.discoveredJobOrderByRelationAggregateInput
   communicationDrafts?: Prisma.communicationDraftOrderByRelationAggregateInput
+  requirements?: Prisma.jobRequirementOrderByRelationAggregateInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisOrderByWithRelationInput
+  applicationPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type jobPostingWhereUniqueInput = Prisma.AtLeast<{
@@ -299,6 +305,9 @@ export type jobPostingWhereUniqueInput = Prisma.AtLeast<{
   applications?: Prisma.ApplicationListRelationFilter
   discoveredJobs?: Prisma.DiscoveredJobListRelationFilter
   communicationDrafts?: Prisma.CommunicationDraftListRelationFilter
+  requirements?: Prisma.JobRequirementListRelationFilter
+  opportunityAnalysis?: Prisma.XOR<Prisma.JobOpportunityAnalysisNullableScalarRelationFilter, Prisma.jobOpportunityAnalysisWhereInput> | null
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id">
 
 export type jobPostingOrderByWithAggregationInput = {
@@ -358,6 +367,9 @@ export type jobPostingCreateInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateInput = {
@@ -379,6 +391,9 @@ export type jobPostingUncheckedCreateInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUpdateInput = {
@@ -400,6 +415,9 @@ export type jobPostingUpdateInput = {
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateInput = {
@@ -421,6 +439,9 @@ export type jobPostingUncheckedUpdateInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateManyInput = {
@@ -658,6 +679,50 @@ export type jobPostingUpdateOneWithoutCommunicationDraftsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.jobPostingUpdateToOneWithWhereWithoutCommunicationDraftsInput, Prisma.jobPostingUpdateWithoutCommunicationDraftsInput>, Prisma.jobPostingUncheckedUpdateWithoutCommunicationDraftsInput>
 }
 
+export type jobPostingCreateNestedOneWithoutRequirementsInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutRequirementsInput, Prisma.jobPostingUncheckedCreateWithoutRequirementsInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutRequirementsInput
+  connect?: Prisma.jobPostingWhereUniqueInput
+}
+
+export type jobPostingUpdateOneRequiredWithoutRequirementsNestedInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutRequirementsInput, Prisma.jobPostingUncheckedCreateWithoutRequirementsInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutRequirementsInput
+  upsert?: Prisma.jobPostingUpsertWithoutRequirementsInput
+  connect?: Prisma.jobPostingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.jobPostingUpdateToOneWithWhereWithoutRequirementsInput, Prisma.jobPostingUpdateWithoutRequirementsInput>, Prisma.jobPostingUncheckedUpdateWithoutRequirementsInput>
+}
+
+export type jobPostingCreateNestedOneWithoutOpportunityAnalysisInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedCreateWithoutOpportunityAnalysisInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutOpportunityAnalysisInput
+  connect?: Prisma.jobPostingWhereUniqueInput
+}
+
+export type jobPostingUpdateOneRequiredWithoutOpportunityAnalysisNestedInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedCreateWithoutOpportunityAnalysisInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutOpportunityAnalysisInput
+  upsert?: Prisma.jobPostingUpsertWithoutOpportunityAnalysisInput
+  connect?: Prisma.jobPostingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.jobPostingUpdateToOneWithWhereWithoutOpportunityAnalysisInput, Prisma.jobPostingUpdateWithoutOpportunityAnalysisInput>, Prisma.jobPostingUncheckedUpdateWithoutOpportunityAnalysisInput>
+}
+
+export type jobPostingCreateNestedOneWithoutApplicationPackagesInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutApplicationPackagesInput
+  connect?: Prisma.jobPostingWhereUniqueInput
+}
+
+export type jobPostingUpdateOneWithoutApplicationPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.jobPostingCreateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.jobPostingCreateOrConnectWithoutApplicationPackagesInput
+  upsert?: Prisma.jobPostingUpsertWithoutApplicationPackagesInput
+  disconnect?: Prisma.jobPostingWhereInput | boolean
+  delete?: Prisma.jobPostingWhereInput | boolean
+  connect?: Prisma.jobPostingWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.jobPostingUpdateToOneWithWhereWithoutApplicationPackagesInput, Prisma.jobPostingUpdateWithoutApplicationPackagesInput>, Prisma.jobPostingUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
 export type jobPostingCreateWithoutUserInput = {
   id?: string
   title: string
@@ -676,6 +741,9 @@ export type jobPostingCreateWithoutUserInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutUserInput = {
@@ -696,6 +764,9 @@ export type jobPostingUncheckedCreateWithoutUserInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutUserInput = {
@@ -761,6 +832,9 @@ export type jobPostingCreateWithoutAnalysisInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutAnalysisInput = {
@@ -781,6 +855,9 @@ export type jobPostingUncheckedCreateWithoutAnalysisInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutAnalysisInput = {
@@ -817,6 +894,9 @@ export type jobPostingUpdateWithoutAnalysisInput = {
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutAnalysisInput = {
@@ -837,6 +917,9 @@ export type jobPostingUncheckedUpdateWithoutAnalysisInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateWithoutResumeVersionsInput = {
@@ -857,6 +940,9 @@ export type jobPostingCreateWithoutResumeVersionsInput = {
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutResumeVersionsInput = {
@@ -877,6 +963,9 @@ export type jobPostingUncheckedCreateWithoutResumeVersionsInput = {
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutResumeVersionsInput = {
@@ -913,6 +1002,9 @@ export type jobPostingUpdateWithoutResumeVersionsInput = {
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutResumeVersionsInput = {
@@ -933,6 +1025,9 @@ export type jobPostingUncheckedUpdateWithoutResumeVersionsInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateWithoutApplicationsInput = {
@@ -953,6 +1048,9 @@ export type jobPostingCreateWithoutApplicationsInput = {
   resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutApplicationsInput = {
@@ -973,6 +1071,9 @@ export type jobPostingUncheckedCreateWithoutApplicationsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutApplicationsInput = {
@@ -1009,6 +1110,9 @@ export type jobPostingUpdateWithoutApplicationsInput = {
   resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutApplicationsInput = {
@@ -1029,6 +1133,9 @@ export type jobPostingUncheckedUpdateWithoutApplicationsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateWithoutDiscoveredJobsInput = {
@@ -1049,6 +1156,9 @@ export type jobPostingCreateWithoutDiscoveredJobsInput = {
   resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutDiscoveredJobsInput = {
@@ -1069,6 +1179,9 @@ export type jobPostingUncheckedCreateWithoutDiscoveredJobsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutDiscoveredJobsInput = {
@@ -1105,6 +1218,9 @@ export type jobPostingUpdateWithoutDiscoveredJobsInput = {
   resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutDiscoveredJobsInput = {
@@ -1125,6 +1241,9 @@ export type jobPostingUncheckedUpdateWithoutDiscoveredJobsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateWithoutCommunicationDraftsInput = {
@@ -1145,6 +1264,9 @@ export type jobPostingCreateWithoutCommunicationDraftsInput = {
   resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
   applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -1165,6 +1287,9 @@ export type jobPostingUncheckedCreateWithoutCommunicationDraftsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
   applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
   discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
 }
 
 export type jobPostingCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -1201,6 +1326,9 @@ export type jobPostingUpdateWithoutCommunicationDraftsInput = {
   resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -1221,6 +1349,333 @@ export type jobPostingUncheckedUpdateWithoutCommunicationDraftsInput = {
   resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
+}
+
+export type jobPostingCreateWithoutRequirementsInput = {
+  id?: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutJobPostingsInput
+  analysis?: Prisma.jobAnalysisCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
+}
+
+export type jobPostingUncheckedCreateWithoutRequirementsInput = {
+  id?: string
+  userId: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  analysis?: Prisma.jobAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
+}
+
+export type jobPostingCreateOrConnectWithoutRequirementsInput = {
+  where: Prisma.jobPostingWhereUniqueInput
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutRequirementsInput, Prisma.jobPostingUncheckedCreateWithoutRequirementsInput>
+}
+
+export type jobPostingUpsertWithoutRequirementsInput = {
+  update: Prisma.XOR<Prisma.jobPostingUpdateWithoutRequirementsInput, Prisma.jobPostingUncheckedUpdateWithoutRequirementsInput>
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutRequirementsInput, Prisma.jobPostingUncheckedCreateWithoutRequirementsInput>
+  where?: Prisma.jobPostingWhereInput
+}
+
+export type jobPostingUpdateToOneWithWhereWithoutRequirementsInput = {
+  where?: Prisma.jobPostingWhereInput
+  data: Prisma.XOR<Prisma.jobPostingUpdateWithoutRequirementsInput, Prisma.jobPostingUncheckedUpdateWithoutRequirementsInput>
+}
+
+export type jobPostingUpdateWithoutRequirementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutJobPostingsNestedInput
+  analysis?: Prisma.jobAnalysisUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
+}
+
+export type jobPostingUncheckedUpdateWithoutRequirementsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  analysis?: Prisma.jobAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
+}
+
+export type jobPostingCreateWithoutOpportunityAnalysisInput = {
+  id?: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutJobPostingsInput
+  analysis?: Prisma.jobAnalysisCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutJobPostingInput
+}
+
+export type jobPostingUncheckedCreateWithoutOpportunityAnalysisInput = {
+  id?: string
+  userId: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  analysis?: Prisma.jobAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutJobPostingInput
+}
+
+export type jobPostingCreateOrConnectWithoutOpportunityAnalysisInput = {
+  where: Prisma.jobPostingWhereUniqueInput
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedCreateWithoutOpportunityAnalysisInput>
+}
+
+export type jobPostingUpsertWithoutOpportunityAnalysisInput = {
+  update: Prisma.XOR<Prisma.jobPostingUpdateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedUpdateWithoutOpportunityAnalysisInput>
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedCreateWithoutOpportunityAnalysisInput>
+  where?: Prisma.jobPostingWhereInput
+}
+
+export type jobPostingUpdateToOneWithWhereWithoutOpportunityAnalysisInput = {
+  where?: Prisma.jobPostingWhereInput
+  data: Prisma.XOR<Prisma.jobPostingUpdateWithoutOpportunityAnalysisInput, Prisma.jobPostingUncheckedUpdateWithoutOpportunityAnalysisInput>
+}
+
+export type jobPostingUpdateWithoutOpportunityAnalysisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutJobPostingsNestedInput
+  analysis?: Prisma.jobAnalysisUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
+}
+
+export type jobPostingUncheckedUpdateWithoutOpportunityAnalysisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  analysis?: Prisma.jobAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
+}
+
+export type jobPostingCreateWithoutApplicationPackagesInput = {
+  id?: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutJobPostingsInput
+  analysis?: Prisma.jobAnalysisCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisCreateNestedOneWithoutJobPostingInput
+}
+
+export type jobPostingUncheckedCreateWithoutApplicationPackagesInput = {
+  id?: string
+  userId: string
+  title: string
+  company: string
+  location?: string | null
+  jobUrl?: string | null
+  description: string
+  source?: string | null
+  applicationStatus?: string
+  applicationNotes?: string | null
+  appliedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  analysis?: Prisma.jobAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutTargetJobInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutJobPostingInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutJobPostingInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutJobPostingInput
+  requirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutJobPostingInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedOneWithoutJobPostingInput
+}
+
+export type jobPostingCreateOrConnectWithoutApplicationPackagesInput = {
+  where: Prisma.jobPostingWhereUniqueInput
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedCreateWithoutApplicationPackagesInput>
+}
+
+export type jobPostingUpsertWithoutApplicationPackagesInput = {
+  update: Prisma.XOR<Prisma.jobPostingUpdateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedUpdateWithoutApplicationPackagesInput>
+  create: Prisma.XOR<Prisma.jobPostingCreateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedCreateWithoutApplicationPackagesInput>
+  where?: Prisma.jobPostingWhereInput
+}
+
+export type jobPostingUpdateToOneWithWhereWithoutApplicationPackagesInput = {
+  where?: Prisma.jobPostingWhereInput
+  data: Prisma.XOR<Prisma.jobPostingUpdateWithoutApplicationPackagesInput, Prisma.jobPostingUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
+export type jobPostingUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutJobPostingsNestedInput
+  analysis?: Prisma.jobAnalysisUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+}
+
+export type jobPostingUncheckedUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  company?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  jobUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationStatus?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  appliedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  analysis?: Prisma.jobAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutTargetJobNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
 }
 
 export type jobPostingCreateManyUserInput = {
@@ -1256,6 +1711,9 @@ export type jobPostingUpdateWithoutUserInput = {
   applications?: Prisma.applicationUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateWithoutUserInput = {
@@ -1276,6 +1734,9 @@ export type jobPostingUncheckedUpdateWithoutUserInput = {
   applications?: Prisma.applicationUncheckedUpdateManyWithoutJobPostingNestedInput
   discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutJobPostingNestedInput
   communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutJobPostingNestedInput
+  requirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutJobPostingNestedInput
+  opportunityAnalysis?: Prisma.jobOpportunityAnalysisUncheckedUpdateOneWithoutJobPostingNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutJobPostingNestedInput
 }
 
 export type jobPostingUncheckedUpdateManyWithoutUserInput = {
@@ -1303,6 +1764,8 @@ export type JobPostingCountOutputType = {
   applications: number
   discoveredJobs: number
   communicationDrafts: number
+  requirements: number
+  applicationPackages: number
 }
 
 export type JobPostingCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1310,6 +1773,8 @@ export type JobPostingCountOutputTypeSelect<ExtArgs extends runtime.Types.Extens
   applications?: boolean | JobPostingCountOutputTypeCountApplicationsArgs
   discoveredJobs?: boolean | JobPostingCountOutputTypeCountDiscoveredJobsArgs
   communicationDrafts?: boolean | JobPostingCountOutputTypeCountCommunicationDraftsArgs
+  requirements?: boolean | JobPostingCountOutputTypeCountRequirementsArgs
+  applicationPackages?: boolean | JobPostingCountOutputTypeCountApplicationPackagesArgs
 }
 
 /**
@@ -1350,6 +1815,20 @@ export type JobPostingCountOutputTypeCountCommunicationDraftsArgs<ExtArgs extend
   where?: Prisma.communicationDraftWhereInput
 }
 
+/**
+ * JobPostingCountOutputType without action
+ */
+export type JobPostingCountOutputTypeCountRequirementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.jobRequirementWhereInput
+}
+
+/**
+ * JobPostingCountOutputType without action
+ */
+export type JobPostingCountOutputTypeCountApplicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
+
 
 export type jobPostingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1371,6 +1850,9 @@ export type jobPostingSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   applications?: boolean | Prisma.jobPosting$applicationsArgs<ExtArgs>
   discoveredJobs?: boolean | Prisma.jobPosting$discoveredJobsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.jobPosting$communicationDraftsArgs<ExtArgs>
+  requirements?: boolean | Prisma.jobPosting$requirementsArgs<ExtArgs>
+  opportunityAnalysis?: boolean | Prisma.jobPosting$opportunityAnalysisArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.jobPosting$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.JobPostingCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["jobPosting"]>
 
@@ -1432,6 +1914,9 @@ export type jobPostingInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   applications?: boolean | Prisma.jobPosting$applicationsArgs<ExtArgs>
   discoveredJobs?: boolean | Prisma.jobPosting$discoveredJobsArgs<ExtArgs>
   communicationDrafts?: boolean | Prisma.jobPosting$communicationDraftsArgs<ExtArgs>
+  requirements?: boolean | Prisma.jobPosting$requirementsArgs<ExtArgs>
+  opportunityAnalysis?: boolean | Prisma.jobPosting$opportunityAnalysisArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.jobPosting$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.JobPostingCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type jobPostingIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1450,6 +1935,9 @@ export type $jobPostingPayload<ExtArgs extends runtime.Types.Extensions.Internal
     applications: Prisma.$applicationPayload<ExtArgs>[]
     discoveredJobs: Prisma.$discoveredJobPayload<ExtArgs>[]
     communicationDrafts: Prisma.$communicationDraftPayload<ExtArgs>[]
+    requirements: Prisma.$jobRequirementPayload<ExtArgs>[]
+    opportunityAnalysis: Prisma.$jobOpportunityAnalysisPayload<ExtArgs> | null
+    applicationPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1865,6 +2353,9 @@ export interface Prisma__jobPostingClient<T, Null = never, ExtArgs extends runti
   applications<T extends Prisma.jobPosting$applicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$applicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   discoveredJobs<T extends Prisma.jobPosting$discoveredJobsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$discoveredJobsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$discoveredJobPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   communicationDrafts<T extends Prisma.jobPosting$communicationDraftsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$communicationDraftsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  requirements<T extends Prisma.jobPosting$requirementsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$requirementsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$jobRequirementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  opportunityAnalysis<T extends Prisma.jobPosting$opportunityAnalysisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$opportunityAnalysisArgs<ExtArgs>>): Prisma.Prisma__jobOpportunityAnalysisClient<runtime.Types.Result.GetResult<Prisma.$jobOpportunityAnalysisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  applicationPackages<T extends Prisma.jobPosting$applicationPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPosting$applicationPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2420,6 +2911,73 @@ export type jobPosting$communicationDraftsArgs<ExtArgs extends runtime.Types.Ext
   take?: number
   skip?: number
   distinct?: Prisma.CommunicationDraftScalarFieldEnum | Prisma.CommunicationDraftScalarFieldEnum[]
+}
+
+/**
+ * jobPosting.requirements
+ */
+export type jobPosting$requirementsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the jobRequirement
+   */
+  select?: Prisma.jobRequirementSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the jobRequirement
+   */
+  omit?: Prisma.jobRequirementOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.jobRequirementInclude<ExtArgs> | null
+  where?: Prisma.jobRequirementWhereInput
+  orderBy?: Prisma.jobRequirementOrderByWithRelationInput | Prisma.jobRequirementOrderByWithRelationInput[]
+  cursor?: Prisma.jobRequirementWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.JobRequirementScalarFieldEnum | Prisma.JobRequirementScalarFieldEnum[]
+}
+
+/**
+ * jobPosting.opportunityAnalysis
+ */
+export type jobPosting$opportunityAnalysisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the jobOpportunityAnalysis
+   */
+  select?: Prisma.jobOpportunityAnalysisSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the jobOpportunityAnalysis
+   */
+  omit?: Prisma.jobOpportunityAnalysisOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.jobOpportunityAnalysisInclude<ExtArgs> | null
+  where?: Prisma.jobOpportunityAnalysisWhereInput
+}
+
+/**
+ * jobPosting.applicationPackages
+ */
+export type jobPosting$applicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

@@ -406,7 +406,11 @@ export const ModelName = {
   discoveredJobSource: 'discoveredJobSource',
   applicationQueueItem: 'applicationQueueItem',
   communicationDraft: 'communicationDraft',
-  communicationDraftRevision: 'communicationDraftRevision'
+  communicationDraftRevision: 'communicationDraftRevision',
+  jobRequirement: 'jobRequirement',
+  jobEvidenceMatch: 'jobEvidenceMatch',
+  jobOpportunityAnalysis: 'jobOpportunityAnalysis',
+  applicationPackage: 'applicationPackage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -422,7 +426,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2128,6 +2132,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    jobRequirement: {
+      payload: Prisma.$jobRequirementPayload<ExtArgs>
+      fields: Prisma.jobRequirementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.jobRequirementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.jobRequirementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        findFirst: {
+          args: Prisma.jobRequirementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.jobRequirementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        findMany: {
+          args: Prisma.jobRequirementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>[]
+        }
+        create: {
+          args: Prisma.jobRequirementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        createMany: {
+          args: Prisma.jobRequirementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.jobRequirementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>[]
+        }
+        delete: {
+          args: Prisma.jobRequirementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        update: {
+          args: Prisma.jobRequirementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        deleteMany: {
+          args: Prisma.jobRequirementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.jobRequirementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.jobRequirementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>[]
+        }
+        upsert: {
+          args: Prisma.jobRequirementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobRequirementPayload>
+        }
+        aggregate: {
+          args: Prisma.JobRequirementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateJobRequirement>
+        }
+        groupBy: {
+          args: Prisma.jobRequirementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobRequirementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.jobRequirementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobRequirementCountAggregateOutputType> | number
+        }
+      }
+    }
+    jobEvidenceMatch: {
+      payload: Prisma.$jobEvidenceMatchPayload<ExtArgs>
+      fields: Prisma.jobEvidenceMatchFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.jobEvidenceMatchFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.jobEvidenceMatchFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        findFirst: {
+          args: Prisma.jobEvidenceMatchFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.jobEvidenceMatchFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        findMany: {
+          args: Prisma.jobEvidenceMatchFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>[]
+        }
+        create: {
+          args: Prisma.jobEvidenceMatchCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        createMany: {
+          args: Prisma.jobEvidenceMatchCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.jobEvidenceMatchCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>[]
+        }
+        delete: {
+          args: Prisma.jobEvidenceMatchDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        update: {
+          args: Prisma.jobEvidenceMatchUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        deleteMany: {
+          args: Prisma.jobEvidenceMatchDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.jobEvidenceMatchUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.jobEvidenceMatchUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>[]
+        }
+        upsert: {
+          args: Prisma.jobEvidenceMatchUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobEvidenceMatchPayload>
+        }
+        aggregate: {
+          args: Prisma.JobEvidenceMatchAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateJobEvidenceMatch>
+        }
+        groupBy: {
+          args: Prisma.jobEvidenceMatchGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobEvidenceMatchGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.jobEvidenceMatchCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobEvidenceMatchCountAggregateOutputType> | number
+        }
+      }
+    }
+    jobOpportunityAnalysis: {
+      payload: Prisma.$jobOpportunityAnalysisPayload<ExtArgs>
+      fields: Prisma.jobOpportunityAnalysisFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.jobOpportunityAnalysisFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.jobOpportunityAnalysisFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        findFirst: {
+          args: Prisma.jobOpportunityAnalysisFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.jobOpportunityAnalysisFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        findMany: {
+          args: Prisma.jobOpportunityAnalysisFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>[]
+        }
+        create: {
+          args: Prisma.jobOpportunityAnalysisCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        createMany: {
+          args: Prisma.jobOpportunityAnalysisCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.jobOpportunityAnalysisCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>[]
+        }
+        delete: {
+          args: Prisma.jobOpportunityAnalysisDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        update: {
+          args: Prisma.jobOpportunityAnalysisUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        deleteMany: {
+          args: Prisma.jobOpportunityAnalysisDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.jobOpportunityAnalysisUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.jobOpportunityAnalysisUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>[]
+        }
+        upsert: {
+          args: Prisma.jobOpportunityAnalysisUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$jobOpportunityAnalysisPayload>
+        }
+        aggregate: {
+          args: Prisma.JobOpportunityAnalysisAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateJobOpportunityAnalysis>
+        }
+        groupBy: {
+          args: Prisma.jobOpportunityAnalysisGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobOpportunityAnalysisGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.jobOpportunityAnalysisCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.JobOpportunityAnalysisCountAggregateOutputType> | number
+        }
+      }
+    }
+    applicationPackage: {
+      payload: Prisma.$applicationPackagePayload<ExtArgs>
+      fields: Prisma.applicationPackageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationPackageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationPackageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        findFirst: {
+          args: Prisma.applicationPackageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationPackageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        findMany: {
+          args: Prisma.applicationPackageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>[]
+        }
+        create: {
+          args: Prisma.applicationPackageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        createMany: {
+          args: Prisma.applicationPackageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationPackageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>[]
+        }
+        delete: {
+          args: Prisma.applicationPackageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        update: {
+          args: Prisma.applicationPackageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationPackageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationPackageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationPackageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationPackageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationPackagePayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationPackageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplicationPackage>
+        }
+        groupBy: {
+          args: Prisma.applicationPackageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationPackageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationPackageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationPackageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2496,6 +2796,7 @@ export const JobDiscoveryProfileScalarFieldEnum = {
   minimumSuitabilityScore: 'minimumSuitabilityScore',
   dailyTarget: 'dailyTarget',
   providerPreferencesJson: 'providerPreferencesJson',
+  applicationPreparationMode: 'applicationPreparationMode',
   generatedFromContextAt: 'generatedFromContextAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -2652,6 +2953,115 @@ export const CommunicationDraftRevisionScalarFieldEnum = {
 } as const
 
 export type CommunicationDraftRevisionScalarFieldEnum = (typeof CommunicationDraftRevisionScalarFieldEnum)[keyof typeof CommunicationDraftRevisionScalarFieldEnum]
+
+
+export const JobRequirementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  category: 'category',
+  importance: 'importance',
+  normalizedName: 'normalizedName',
+  rawText: 'rawText',
+  sourceExcerpt: 'sourceExcerpt',
+  yearsRequired: 'yearsRequired',
+  proficiencyRequired: 'proficiencyRequired',
+  isExplicit: 'isExplicit',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobRequirementScalarFieldEnum = (typeof JobRequirementScalarFieldEnum)[keyof typeof JobRequirementScalarFieldEnum]
+
+
+export const JobEvidenceMatchScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobRequirementId: 'jobRequirementId',
+  evidenceType: 'evidenceType',
+  evidenceSourceId: 'evidenceSourceId',
+  evidenceLabel: 'evidenceLabel',
+  evidenceExcerpt: 'evidenceExcerpt',
+  matchStrength: 'matchStrength',
+  reasoning: 'reasoning',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobEvidenceMatchScalarFieldEnum = (typeof JobEvidenceMatchScalarFieldEnum)[keyof typeof JobEvidenceMatchScalarFieldEnum]
+
+
+export const JobOpportunityAnalysisScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  status: 'status',
+  roleFit: 'roleFit',
+  skillFit: 'skillFit',
+  experienceFit: 'experienceFit',
+  evidenceFit: 'evidenceFit',
+  locationFit: 'locationFit',
+  authorizationFit: 'authorizationFit',
+  freshnessScore: 'freshnessScore',
+  applicationEffortScore: 'applicationEffortScore',
+  opportunityScore: 'opportunityScore',
+  priorityScore: 'priorityScore',
+  priorityBand: 'priorityBand',
+  recommendation: 'recommendation',
+  eligibilityStatus: 'eligibilityStatus',
+  applicationEffort: 'applicationEffort',
+  evidenceCoverage: 'evidenceCoverage',
+  criticalGapCount: 'criticalGapCount',
+  importantGapCount: 'importantGapCount',
+  minorGapCount: 'minorGapCount',
+  optionalGapCount: 'optionalGapCount',
+  gapsJson: 'gapsJson',
+  eligibilityChecksJson: 'eligibilityChecksJson',
+  warningsJson: 'warningsJson',
+  summary: 'summary',
+  contextFingerprint: 'contextFingerprint',
+  analysisSource: 'analysisSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type JobOpportunityAnalysisScalarFieldEnum = (typeof JobOpportunityAnalysisScalarFieldEnum)[keyof typeof JobOpportunityAnalysisScalarFieldEnum]
+
+
+export const ApplicationPackageScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  applicationQueueItemId: 'applicationQueueItemId',
+  applicationId: 'applicationId',
+  version: 'version',
+  resumeVersionId: 'resumeVersionId',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  coverLetterDraftId: 'coverLetterDraftId',
+  applicationEmailDraftId: 'applicationEmailDraftId',
+  status: 'status',
+  readinessStatus: 'readinessStatus',
+  qaStatus: 'qaStatus',
+  opportunitySnapshotJson: 'opportunitySnapshotJson',
+  evidenceSnapshotJson: 'evidenceSnapshotJson',
+  gapSnapshotJson: 'gapSnapshotJson',
+  eligibilitySnapshotJson: 'eligibilitySnapshotJson',
+  requiredUserInputsJson: 'requiredUserInputsJson',
+  qaSnapshotJson: 'qaSnapshotJson',
+  warningsJson: 'warningsJson',
+  contextFingerprint: 'contextFingerprint',
+  preparedAt: 'preparedAt',
+  approvedAt: 'approvedAt',
+  submissionStartedAt: 'submissionStartedAt',
+  submittedAt: 'submittedAt',
+  archivedAt: 'archivedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationPackageScalarFieldEnum = (typeof ApplicationPackageScalarFieldEnum)[keyof typeof ApplicationPackageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2946,6 +3356,20 @@ export type ListEnumApplicationInsightSourceFieldRefInput<$PrismaModel> = FieldR
 
 
 /**
+ * Reference to a field of type 'ApplicationPreparationMode'
+ */
+export type EnumApplicationPreparationModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPreparationMode'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationPreparationMode[]'
+ */
+export type ListEnumApplicationPreparationModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPreparationMode[]'>
+
+
+
+/**
  * Reference to a field of type 'DiscoveryRunStatus'
  */
 export type EnumDiscoveryRunStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DiscoveryRunStatus'>
@@ -3170,6 +3594,188 @@ export type ListEnumCommunicationGenerationStatusFieldRefInput<$PrismaModel> = F
 
 
 /**
+ * Reference to a field of type 'JobRequirementCategory'
+ */
+export type EnumJobRequirementCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobRequirementCategory'>
+
+
+
+/**
+ * Reference to a field of type 'JobRequirementCategory[]'
+ */
+export type ListEnumJobRequirementCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobRequirementCategory[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobRequirementImportance'
+ */
+export type EnumJobRequirementImportanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobRequirementImportance'>
+
+
+
+/**
+ * Reference to a field of type 'JobRequirementImportance[]'
+ */
+export type ListEnumJobRequirementImportanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobRequirementImportance[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobEvidenceType'
+ */
+export type EnumJobEvidenceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEvidenceType'>
+
+
+
+/**
+ * Reference to a field of type 'JobEvidenceType[]'
+ */
+export type ListEnumJobEvidenceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEvidenceType[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobEvidenceMatchStrength'
+ */
+export type EnumJobEvidenceMatchStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEvidenceMatchStrength'>
+
+
+
+/**
+ * Reference to a field of type 'JobEvidenceMatchStrength[]'
+ */
+export type ListEnumJobEvidenceMatchStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEvidenceMatchStrength[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobOpportunityAnalysisStatus'
+ */
+export type EnumJobOpportunityAnalysisStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobOpportunityAnalysisStatus'>
+
+
+
+/**
+ * Reference to a field of type 'JobOpportunityAnalysisStatus[]'
+ */
+export type ListEnumJobOpportunityAnalysisStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobOpportunityAnalysisStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'OpportunityPriorityBand'
+ */
+export type EnumOpportunityPriorityBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OpportunityPriorityBand'>
+
+
+
+/**
+ * Reference to a field of type 'OpportunityPriorityBand[]'
+ */
+export type ListEnumOpportunityPriorityBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OpportunityPriorityBand[]'>
+
+
+
+/**
+ * Reference to a field of type 'OpportunityRecommendation'
+ */
+export type EnumOpportunityRecommendationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OpportunityRecommendation'>
+
+
+
+/**
+ * Reference to a field of type 'OpportunityRecommendation[]'
+ */
+export type ListEnumOpportunityRecommendationFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OpportunityRecommendation[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobEligibilityStatus'
+ */
+export type EnumJobEligibilityStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEligibilityStatus'>
+
+
+
+/**
+ * Reference to a field of type 'JobEligibilityStatus[]'
+ */
+export type ListEnumJobEligibilityStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobEligibilityStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEffort'
+ */
+export type EnumApplicationEffortFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEffort'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationEffort[]'
+ */
+export type ListEnumApplicationEffortFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationEffort[]'>
+
+
+
+/**
+ * Reference to a field of type 'JobOpportunityAnalysisSource'
+ */
+export type EnumJobOpportunityAnalysisSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobOpportunityAnalysisSource'>
+
+
+
+/**
+ * Reference to a field of type 'JobOpportunityAnalysisSource[]'
+ */
+export type ListEnumJobOpportunityAnalysisSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'JobOpportunityAnalysisSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationPackageStatus'
+ */
+export type EnumApplicationPackageStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPackageStatus'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationPackageStatus[]'
+ */
+export type ListEnumApplicationPackageStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPackageStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationReadinessStatus'
+ */
+export type EnumApplicationReadinessStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationReadinessStatus'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationReadinessStatus[]'
+ */
+export type ListEnumApplicationReadinessStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationReadinessStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationPackageQaStatus'
+ */
+export type EnumApplicationPackageQaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPackageQaStatus'>
+
+
+
+/**
+ * Reference to a field of type 'ApplicationPackageQaStatus[]'
+ */
+export type ListEnumApplicationPackageQaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationPackageQaStatus[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3315,6 +3921,10 @@ export type GlobalOmitConfig = {
   applicationQueueItem?: Prisma.applicationQueueItemOmit
   communicationDraft?: Prisma.communicationDraftOmit
   communicationDraftRevision?: Prisma.communicationDraftRevisionOmit
+  jobRequirement?: Prisma.jobRequirementOmit
+  jobEvidenceMatch?: Prisma.jobEvidenceMatchOmit
+  jobOpportunityAnalysis?: Prisma.jobOpportunityAnalysisOmit
+  applicationPackage?: Prisma.applicationPackageOmit
 }
 
 /* Types for Logging */

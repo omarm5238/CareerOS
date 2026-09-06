@@ -15,7 +15,35 @@ import {
   getJobCommunications,
   getJobResumeOptionsForCommunication,
 } from "@/features/communications/server";
+import { getOpportunitySummaryForJob } from "@/features/jobs/opportunities/server";
+import { prisma } from "@/server/db/prisma";
 import { auth } from "@/server/auth";
+
+async function getJobOpportunityProps(userId: string, jobPostingId: string) {
+  const [opportunity, latestPackage] = await Promise.all([
+    getOpportunitySummaryForJob(userId, jobPostingId),
+    prisma.applicationPackage.findFirst({
+      where: { userId, jobPostingId, status: { not: "ARCHIVED" } },
+      orderBy: [{ version: "desc" }, { updatedAt: "desc" }],
+      select: { id: true },
+    }),
+  ]);
+
+  return {
+    opportunity: opportunity
+      ? {
+          opportunityScore: opportunity.opportunityScore,
+          priorityBand: opportunity.priorityBand,
+          evidenceCoverage: opportunity.evidenceCoverage,
+          eligibilityStatus: opportunity.eligibilityStatus,
+          applicationEffort: opportunity.applicationEffort,
+          topEvidence: opportunity.topEvidence,
+          topGaps: opportunity.topGaps,
+        }
+      : null,
+    opportunityPackageId: latestPackage?.id ?? null,
+  };
+}
 
 type WorkspaceJobsPageProps = {
   searchParams: Promise<{ jobId?: string | string[] }>;
@@ -59,9 +87,10 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
 
     const tailoredResume = await getJobTailoredResumeSummary(session.user.id, selected.id);
     const applicationSummary = await getApplicationSummaryForJob(session.user.id, selected.id);
-    const [communicationResumeOptions, communicationDrafts] = await Promise.all([
+    const [communicationResumeOptions, communicationDrafts, opportunityProps] = await Promise.all([
       getJobResumeOptionsForCommunication(session.user.id, selected.id),
       getJobCommunications(session.user.id, selected.id),
+      getJobOpportunityProps(session.user.id, selected.id),
     ]);
 
     return (
@@ -71,6 +100,8 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
         communicationResumeOptions={communicationResumeOptions}
         hasResumeProfile={!!resume}
         jobs={jobs}
+        opportunity={opportunityProps.opportunity}
+        opportunityPackageId={opportunityProps.opportunityPackageId}
         selectedJob={selected}
         selectedJobId={selected.id}
         tailoredResume={tailoredResume}
@@ -94,6 +125,9 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
   const communicationDrafts = selectedJob
     ? await getJobCommunications(session.user.id, selectedJob.id)
     : [];
+  const opportunityProps = selectedJob
+    ? await getJobOpportunityProps(session.user.id, selectedJob.id)
+    : { opportunity: null, opportunityPackageId: null };
 
   return (
     <JobsModulePage
@@ -102,6 +136,8 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
       communicationResumeOptions={communicationResumeOptions}
       hasResumeProfile={!!resume}
       jobs={jobs}
+      opportunity={opportunityProps.opportunity}
+      opportunityPackageId={opportunityProps.opportunityPackageId}
       selectedJob={selectedJob}
       selectedJobId={latestId}
       tailoredResume={tailoredResume}

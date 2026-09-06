@@ -260,6 +260,7 @@ export type applicationQueueItemWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"applicationQueueItem"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   discoveredJob?: Prisma.XOR<Prisma.DiscoveredJobScalarRelationFilter, Prisma.discoveredJobWhereInput>
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type applicationQueueItemOrderByWithRelationInput = {
@@ -280,6 +281,7 @@ export type applicationQueueItemOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   user?: Prisma.userOrderByWithRelationInput
   discoveredJob?: Prisma.discoveredJobOrderByWithRelationInput
+  applicationPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type applicationQueueItemWhereUniqueInput = Prisma.AtLeast<{
@@ -304,6 +306,7 @@ export type applicationQueueItemWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"applicationQueueItem"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   discoveredJob?: Prisma.XOR<Prisma.DiscoveredJobScalarRelationFilter, Prisma.discoveredJobWhereInput>
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id" | "userId_discoveredJobId">
 
 export type applicationQueueItemOrderByWithAggregationInput = {
@@ -364,6 +367,7 @@ export type applicationQueueItemCreateInput = {
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutApplicationQueueItemsInput
   discoveredJob: Prisma.discoveredJobCreateNestedOneWithoutQueueItemsInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemUncheckedCreateInput = {
@@ -382,6 +386,7 @@ export type applicationQueueItemUncheckedCreateInput = {
   handedOffAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemUpdateInput = {
@@ -400,6 +405,7 @@ export type applicationQueueItemUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutApplicationQueueItemsNestedInput
   discoveredJob?: Prisma.discoveredJobUpdateOneRequiredWithoutQueueItemsNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemUncheckedUpdateInput = {
@@ -418,6 +424,7 @@ export type applicationQueueItemUncheckedUpdateInput = {
   handedOffAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemCreateManyInput = {
@@ -539,6 +546,11 @@ export type applicationQueueItemMinOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
+export type ApplicationQueueItemNullableScalarRelationFilter = {
+  is?: Prisma.applicationQueueItemWhereInput | null
+  isNot?: Prisma.applicationQueueItemWhereInput | null
+}
+
 export type applicationQueueItemCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.applicationQueueItemCreateWithoutUserInput, Prisma.applicationQueueItemUncheckedCreateWithoutUserInput> | Prisma.applicationQueueItemCreateWithoutUserInput[] | Prisma.applicationQueueItemUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.applicationQueueItemCreateOrConnectWithoutUserInput | Prisma.applicationQueueItemCreateOrConnectWithoutUserInput[]
@@ -631,6 +643,22 @@ export type EnumQueueStatusFieldUpdateOperationsInput = {
   set?: $Enums.QueueStatus
 }
 
+export type applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput = {
+  create?: Prisma.XOR<Prisma.applicationQueueItemCreateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.applicationQueueItemCreateOrConnectWithoutApplicationPackagesInput
+  connect?: Prisma.applicationQueueItemWhereUniqueInput
+}
+
+export type applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationQueueItemCreateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.applicationQueueItemCreateOrConnectWithoutApplicationPackagesInput
+  upsert?: Prisma.applicationQueueItemUpsertWithoutApplicationPackagesInput
+  disconnect?: Prisma.applicationQueueItemWhereInput | boolean
+  delete?: Prisma.applicationQueueItemWhereInput | boolean
+  connect?: Prisma.applicationQueueItemWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationQueueItemUpdateToOneWithWhereWithoutApplicationPackagesInput, Prisma.applicationQueueItemUpdateWithoutApplicationPackagesInput>, Prisma.applicationQueueItemUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
 export type applicationQueueItemCreateWithoutUserInput = {
   id?: string
   priority?: $Enums.QueuePriority
@@ -646,6 +674,7 @@ export type applicationQueueItemCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   discoveredJob: Prisma.discoveredJobCreateNestedOneWithoutQueueItemsInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemUncheckedCreateWithoutUserInput = {
@@ -663,6 +692,7 @@ export type applicationQueueItemUncheckedCreateWithoutUserInput = {
   handedOffAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemCreateOrConnectWithoutUserInput = {
@@ -727,6 +757,7 @@ export type applicationQueueItemCreateWithoutDiscoveredJobInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutApplicationQueueItemsInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemUncheckedCreateWithoutDiscoveredJobInput = {
@@ -744,6 +775,7 @@ export type applicationQueueItemUncheckedCreateWithoutDiscoveredJobInput = {
   handedOffAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutApplicationQueueItemInput
 }
 
 export type applicationQueueItemCreateOrConnectWithoutDiscoveredJobInput = {
@@ -770,6 +802,94 @@ export type applicationQueueItemUpdateWithWhereUniqueWithoutDiscoveredJobInput =
 export type applicationQueueItemUpdateManyWithWhereWithoutDiscoveredJobInput = {
   where: Prisma.applicationQueueItemScalarWhereInput
   data: Prisma.XOR<Prisma.applicationQueueItemUpdateManyMutationInput, Prisma.applicationQueueItemUncheckedUpdateManyWithoutDiscoveredJobInput>
+}
+
+export type applicationQueueItemCreateWithoutApplicationPackagesInput = {
+  id?: string
+  priority?: $Enums.QueuePriority
+  queueStatus?: $Enums.QueueStatus
+  jobPostingId?: string | null
+  resumeVersionId?: string | null
+  applicationId?: string | null
+  preparationError?: string | null
+  preparationSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  queuedAt?: Date | string
+  preparedAt?: Date | string | null
+  handedOffAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationQueueItemsInput
+  discoveredJob: Prisma.discoveredJobCreateNestedOneWithoutQueueItemsInput
+}
+
+export type applicationQueueItemUncheckedCreateWithoutApplicationPackagesInput = {
+  id?: string
+  userId: string
+  discoveredJobId: string
+  priority?: $Enums.QueuePriority
+  queueStatus?: $Enums.QueueStatus
+  jobPostingId?: string | null
+  resumeVersionId?: string | null
+  applicationId?: string | null
+  preparationError?: string | null
+  preparationSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  queuedAt?: Date | string
+  preparedAt?: Date | string | null
+  handedOffAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationQueueItemCreateOrConnectWithoutApplicationPackagesInput = {
+  where: Prisma.applicationQueueItemWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationQueueItemCreateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedCreateWithoutApplicationPackagesInput>
+}
+
+export type applicationQueueItemUpsertWithoutApplicationPackagesInput = {
+  update: Prisma.XOR<Prisma.applicationQueueItemUpdateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedUpdateWithoutApplicationPackagesInput>
+  create: Prisma.XOR<Prisma.applicationQueueItemCreateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedCreateWithoutApplicationPackagesInput>
+  where?: Prisma.applicationQueueItemWhereInput
+}
+
+export type applicationQueueItemUpdateToOneWithWhereWithoutApplicationPackagesInput = {
+  where?: Prisma.applicationQueueItemWhereInput
+  data: Prisma.XOR<Prisma.applicationQueueItemUpdateWithoutApplicationPackagesInput, Prisma.applicationQueueItemUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
+export type applicationQueueItemUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumQueuePriorityFieldUpdateOperationsInput | $Enums.QueuePriority
+  queueStatus?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preparationError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preparationSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  queuedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  handedOffAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationQueueItemsNestedInput
+  discoveredJob?: Prisma.discoveredJobUpdateOneRequiredWithoutQueueItemsNestedInput
+}
+
+export type applicationQueueItemUncheckedUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  discoveredJobId?: Prisma.StringFieldUpdateOperationsInput | string
+  priority?: Prisma.EnumQueuePriorityFieldUpdateOperationsInput | $Enums.QueuePriority
+  queueStatus?: Prisma.EnumQueueStatusFieldUpdateOperationsInput | $Enums.QueueStatus
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preparationError?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preparationSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  queuedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  handedOffAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type applicationQueueItemCreateManyUserInput = {
@@ -804,6 +924,7 @@ export type applicationQueueItemUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   discoveredJob?: Prisma.discoveredJobUpdateOneRequiredWithoutQueueItemsNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemUncheckedUpdateWithoutUserInput = {
@@ -821,6 +942,7 @@ export type applicationQueueItemUncheckedUpdateWithoutUserInput = {
   handedOffAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemUncheckedUpdateManyWithoutUserInput = {
@@ -872,6 +994,7 @@ export type applicationQueueItemUpdateWithoutDiscoveredJobInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutApplicationQueueItemsNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemUncheckedUpdateWithoutDiscoveredJobInput = {
@@ -889,6 +1012,7 @@ export type applicationQueueItemUncheckedUpdateWithoutDiscoveredJobInput = {
   handedOffAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemNestedInput
 }
 
 export type applicationQueueItemUncheckedUpdateManyWithoutDiscoveredJobInput = {
@@ -909,6 +1033,35 @@ export type applicationQueueItemUncheckedUpdateManyWithoutDiscoveredJobInput = {
 }
 
 
+/**
+ * Count Type ApplicationQueueItemCountOutputType
+ */
+
+export type ApplicationQueueItemCountOutputType = {
+  applicationPackages: number
+}
+
+export type ApplicationQueueItemCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  applicationPackages?: boolean | ApplicationQueueItemCountOutputTypeCountApplicationPackagesArgs
+}
+
+/**
+ * ApplicationQueueItemCountOutputType without action
+ */
+export type ApplicationQueueItemCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApplicationQueueItemCountOutputType
+   */
+  select?: Prisma.ApplicationQueueItemCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ApplicationQueueItemCountOutputType without action
+ */
+export type ApplicationQueueItemCountOutputTypeCountApplicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
+
 
 export type applicationQueueItemSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -928,6 +1081,8 @@ export type applicationQueueItemSelect<ExtArgs extends runtime.Types.Extensions.
   updatedAt?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   discoveredJob?: boolean | Prisma.discoveredJobDefaultArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.applicationQueueItem$applicationPackagesArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationQueueItemCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["applicationQueueItem"]>
 
 export type applicationQueueItemSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -992,6 +1147,8 @@ export type applicationQueueItemOmit<ExtArgs extends runtime.Types.Extensions.In
 export type applicationQueueItemInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   discoveredJob?: boolean | Prisma.discoveredJobDefaultArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.applicationQueueItem$applicationPackagesArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationQueueItemCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationQueueItemIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -1007,6 +1164,7 @@ export type $applicationQueueItemPayload<ExtArgs extends runtime.Types.Extension
   objects: {
     user: Prisma.$userPayload<ExtArgs>
     discoveredJob: Prisma.$discoveredJobPayload<ExtArgs>
+    applicationPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1420,6 +1578,7 @@ export interface Prisma__applicationQueueItemClient<T, Null = never, ExtArgs ext
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   discoveredJob<T extends Prisma.discoveredJobDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.discoveredJobDefaultArgs<ExtArgs>>): Prisma.Prisma__discoveredJobClient<runtime.Types.Result.GetResult<Prisma.$discoveredJobPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  applicationPackages<T extends Prisma.applicationQueueItem$applicationPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationQueueItem$applicationPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1862,6 +2021,30 @@ export type applicationQueueItemDeleteManyArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many applicationQueueItems to delete.
    */
   limit?: number
+}
+
+/**
+ * applicationQueueItem.applicationPackages
+ */
+export type applicationQueueItem$applicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**
