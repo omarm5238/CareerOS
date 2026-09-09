@@ -16,28 +16,32 @@ model user {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  sessions                    session[]
-  accounts                    account[]
-  resumeDocuments             resumeDocument[]
-  jobPostings                 jobPosting[]
-  skillsInsights              skillsInsight[]
-  careerBriefs                careerBrief[]
-  resumeVersions              resumeVersion[]
-  resumeVersionRevisions      resumeVersionRevision[]
-  applications                application[]
-  applicationEvents           applicationEvent[]
-  applicationContacts         applicationContact[]
-  applicationInsights         applicationInsight[]
-  jobDiscoveryProfile         jobDiscoveryProfile?
-  jobDiscoveryRuns            jobDiscoveryRun[]
-  discoveredJobs              discoveredJob[]
-  applicationQueueItems       applicationQueueItem[]
-  communicationDrafts         communicationDraft[]
-  communicationDraftRevisions communicationDraftRevision[]
-  jobRequirements             jobRequirement[]
-  jobEvidenceMatches          jobEvidenceMatch[]
-  jobOpportunityAnalyses      jobOpportunityAnalysis[]
-  applicationPackages         applicationPackage[]
+  sessions                      session[]
+  accounts                      account[]
+  resumeDocuments               resumeDocument[]
+  jobPostings                   jobPosting[]
+  skillsInsights                skillsInsight[]
+  careerBriefs                  careerBrief[]
+  resumeVersions                resumeVersion[]
+  resumeVersionRevisions        resumeVersionRevision[]
+  applications                  application[]
+  applicationEvents             applicationEvent[]
+  applicationContacts           applicationContact[]
+  applicationInsights           applicationInsight[]
+  jobDiscoveryProfile           jobDiscoveryProfile?
+  jobDiscoveryRuns              jobDiscoveryRun[]
+  discoveredJobs                discoveredJob[]
+  applicationQueueItems         applicationQueueItem[]
+  communicationDrafts           communicationDraft[]
+  communicationDraftRevisions   communicationDraftRevision[]
+  jobRequirements               jobRequirement[]
+  jobEvidenceMatches            jobEvidenceMatch[]
+  jobOpportunityAnalyses        jobOpportunityAnalysis[]
+  applicationPackages           applicationPackage[]
+  applicationExecutionSessions  applicationExecutionSession[]
+  applicationExecutionEvents    applicationExecutionEvent[]
+  applicationSubmissionAttempts applicationSubmissionAttempt[]
+  applicationAnswerPreferences  applicationAnswerPreference[]
 }
 
 model session {
@@ -142,15 +146,16 @@ model jobPosting {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
 
-  user                user                    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  analysis            jobAnalysis?
-  resumeVersions      resumeVersion[]
-  applications        application[]
-  discoveredJobs      discoveredJob[]
-  communicationDrafts communicationDraft[]
-  requirements        jobRequirement[]
-  opportunityAnalysis jobOpportunityAnalysis?
-  applicationPackages applicationPackage[]
+  user                         user                          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis                     jobAnalysis?
+  resumeVersions               resumeVersion[]
+  applications                 application[]
+  discoveredJobs               discoveredJob[]
+  communicationDrafts          communicationDraft[]
+  requirements                 jobRequirement[]
+  opportunityAnalysis          jobOpportunityAnalysis?
+  applicationPackages          applicationPackage[]
+  applicationExecutionSessions applicationExecutionSession[]
 
   @@index([userId])
   @@index([createdAt])
@@ -318,12 +323,13 @@ model resumeVersionRevision {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user                user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  resumeVersion       resumeVersion        @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
-  activeForVersion    resumeVersion?       @relation("ActiveResumeVersionRevision")
-  applications        application[]
-  communicationDrafts communicationDraft[]
-  applicationPackages applicationPackage[]
+  user                        user                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeVersion               resumeVersion                  @relation("ResumeVersionRevisions", fields: [resumeVersionId], references: [id], onDelete: Cascade)
+  activeForVersion            resumeVersion?                 @relation("ActiveResumeVersionRevision")
+  applications                application[]
+  communicationDrafts         communicationDraft[]
+  applicationPackages         applicationPackage[]
+  executionSubmissionAttempts applicationSubmissionAttempt[] @relation("AttemptResumeRevision")
 
   @@unique([resumeVersionId, revisionNumber])
   @@index([userId])
@@ -469,15 +475,17 @@ model application {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user                  user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  jobPosting            jobPosting?            @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
-  resumeVersion         resumeVersion?         @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
-  resumeVersionRevision resumeVersionRevision? @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
-  events                applicationEvent[]
-  contacts              applicationContact[]
-  insights              applicationInsight[]
-  communicationDrafts   communicationDraft[]
-  applicationPackages   applicationPackage[]
+  user                          user                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting                    jobPosting?                    @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  resumeVersion                 resumeVersion?                 @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision         resumeVersionRevision?         @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  events                        applicationEvent[]
+  contacts                      applicationContact[]
+  insights                      applicationInsight[]
+  communicationDrafts           communicationDraft[]
+  applicationPackages           applicationPackage[]
+  applicationExecutionSessions  applicationExecutionSession[]
+  applicationSubmissionAttempts applicationSubmissionAttempt[]
 
   @@index([userId])
   @@index([jobPostingId])
@@ -954,9 +962,11 @@ model communicationDraftRevision {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user               user                @relation(fields: [userId], references: [id], onDelete: Cascade)
-  communicationDraft communicationDraft  @relation("CommunicationDraftRevisions", fields: [communicationDraftId], references: [id], onDelete: Cascade)
-  activeForDraft     communicationDraft? @relation("ActiveCommunicationDraftRevision")
+  user                         user                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  communicationDraft           communicationDraft             @relation("CommunicationDraftRevisions", fields: [communicationDraftId], references: [id], onDelete: Cascade)
+  activeForDraft               communicationDraft?            @relation("ActiveCommunicationDraftRevision")
+  executionCoverLetterAttempts applicationSubmissionAttempt[] @relation("AttemptCoverLetterRevision")
+  approvedCoverLetterPackages  applicationPackage[]           @relation("PackageCoverLetterRevision")
 
   @@unique([communicationDraftId, revisionNumber])
   @@index([userId])
@@ -1214,6 +1224,7 @@ model applicationPackage {
   resumeVersionRevisionId String?
 
   coverLetterDraftId      String?
+  coverLetterRevisionId   String?
   applicationEmailDraftId String?
 
   status          ApplicationPackageStatus   @default(PREPARING)
@@ -1239,14 +1250,17 @@ model applicationPackage {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user                  user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  jobPosting            jobPosting?            @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
-  applicationQueueItem  applicationQueueItem?  @relation(fields: [applicationQueueItemId], references: [id], onDelete: SetNull)
-  application           application?           @relation(fields: [applicationId], references: [id], onDelete: SetNull)
-  resumeVersion         resumeVersion?         @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
-  resumeVersionRevision resumeVersionRevision? @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
-  coverLetterDraft      communicationDraft?    @relation("PackageCoverLetter", fields: [coverLetterDraftId], references: [id], onDelete: SetNull)
-  applicationEmailDraft communicationDraft?    @relation("PackageApplicationEmail", fields: [applicationEmailDraftId], references: [id], onDelete: SetNull)
+  user                  user                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting            jobPosting?                    @relation(fields: [jobPostingId], references: [id], onDelete: SetNull)
+  applicationQueueItem  applicationQueueItem?          @relation(fields: [applicationQueueItemId], references: [id], onDelete: SetNull)
+  application           application?                   @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  resumeVersion         resumeVersion?                 @relation(fields: [resumeVersionId], references: [id], onDelete: SetNull)
+  resumeVersionRevision resumeVersionRevision?         @relation(fields: [resumeVersionRevisionId], references: [id], onDelete: SetNull)
+  coverLetterDraft      communicationDraft?            @relation("PackageCoverLetter", fields: [coverLetterDraftId], references: [id], onDelete: SetNull)
+  coverLetterRevision   communicationDraftRevision?    @relation("PackageCoverLetterRevision", fields: [coverLetterRevisionId], references: [id], onDelete: SetNull)
+  applicationEmailDraft communicationDraft?            @relation("PackageApplicationEmail", fields: [applicationEmailDraftId], references: [id], onDelete: SetNull)
+  executionSessions     applicationExecutionSession[]
+  submissionAttempts    applicationSubmissionAttempt[]
 
   @@unique([userId, jobPostingId, version])
   @@index([userId])
@@ -1256,4 +1270,290 @@ model applicationPackage {
   @@index([readinessStatus])
   @@index([qaStatus])
   @@index([updatedAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 24.5B — External Application Execution
+// ---------------------------------------------------------------------------
+
+enum ApplicationProvider {
+  GREENHOUSE
+  LEVER
+  ASHBY
+  WORKABLE
+  SMARTRECRUITERS
+  GENERIC
+  UNKNOWN
+}
+
+enum ApplicationExecutionMode {
+  MANUAL_EXTERNAL
+  ASSISTED_BROWSER
+  CONFIRMED_BROWSER_SUBMIT
+  OFFICIAL_API
+}
+
+enum ApplicationExecutionStatus {
+  CREATED
+  DETECTING_ATS
+  INSPECTING
+  READY_TO_FILL
+  FILLING
+  NEEDS_USER_INPUT
+  PAUSED_FOR_LOGIN
+  PAUSED_FOR_MFA
+  PAUSED_FOR_CAPTCHA
+  PAUSED_FOR_ASSESSMENT
+  READY_FOR_REVIEW
+  READY_TO_SUBMIT
+  SUBMITTING
+  VERIFYING
+  SUBMITTED
+  INTERRUPTED
+  FAILED
+  BLOCKED
+  CANCELLED
+}
+
+enum ApplicationExecutionEventType {
+  SESSION_CREATED
+  BROWSER_STARTED
+  ATS_DETECTED
+  FORM_INSPECTED
+  FILL_PLAN_BUILT
+  FIELD_FILLED
+  FIELD_PROPOSED
+  FILE_UPLOADED
+  USER_INPUT_REQUIRED
+  LOGIN_REQUIRED
+  MFA_REQUIRED
+  CAPTCHA_REQUIRED
+  ASSESSMENT_REQUIRED
+  UNSUPPORTED_WIDGET
+  STEP_VALIDATED
+  STEP_ADVANCED
+  VALIDATION_ERROR
+  ADAPTER_FALLBACK
+  READY_FOR_REVIEW
+  READY_FOR_SUBMIT
+  SUBMISSION_APPROVED
+  SUBMIT_STARTED
+  SUBMIT_RESPONSE
+  VERIFICATION_RESULT
+  SESSION_INTERRUPTED
+  SESSION_FAILED
+  SESSION_CANCELLED
+  SESSION_COMPLETED
+}
+
+enum ApplicationSubmissionMethod {
+  USER_MANUAL
+  BROWSER_CONFIRMED
+  OFFICIAL_API
+}
+
+enum ApplicationSubmissionAttemptStatus {
+  APPROVAL_GRANTED
+  SUBMITTING
+  VERIFYING
+  COMPLETED
+  FAILED
+  UNCERTAIN
+  CANCELLED
+}
+
+enum ApplicationSubmissionVerificationStatus {
+  NOT_RUN
+  VERIFIED
+  PROBABLE
+  UNVERIFIED
+  FAILED
+}
+
+enum ApplicationAnswerScope {
+  GLOBAL
+  COUNTRY
+  PROVIDER
+  JOB_SPECIFIC
+}
+
+enum ApplicationExecutionFailureCode {
+  ATS_UNSUPPORTED
+  ADAPTER_DRIFT
+  LOGIN_REQUIRED
+  MFA_REQUIRED
+  CAPTCHA_REQUIRED
+  ASSESSMENT_REQUIRED
+  USER_INPUT_REQUIRED
+  CONSENT_REQUIRED
+  UNKNOWN_FIELD
+  UNSUPPORTED_WIDGET
+  VALIDATION_FAILED
+  RESUME_UPLOAD_FAILED
+  COVER_LETTER_UPLOAD_FAILED
+  NETWORK_ERROR
+  RATE_LIMITED
+  NAVIGATION_TIMEOUT
+  SESSION_EXPIRED
+  JOB_CLOSED
+  DUPLICATE_APPLICATION
+  SUBMISSION_REJECTED
+  SUBMISSION_UNCERTAIN
+  BROWSER_CRASHED
+}
+
+model applicationExecutionSession {
+  id     String @id @default(cuid())
+  userId String
+
+  applicationPackageId String
+  applicationId        String
+  jobPostingId         String
+
+  provider       ApplicationProvider      @default(UNKNOWN)
+  adapterVersion String                   @default("1.0.0")
+  executionMode  ApplicationExecutionMode @default(ASSISTED_BROWSER)
+
+  status ApplicationExecutionStatus @default(CREATED)
+
+  currentUrl  String?
+  currentStep Int?
+  totalSteps  Int?
+
+  formFingerprint String?
+
+  formSnapshotJson   Json @default("{}")
+  fillPlanJson       Json @default("{}")
+  pendingActionsJson Json @default("[]")
+  warningsJson       Json @default("[]")
+
+  failureCode    ApplicationExecutionFailureCode?
+  failureMessage String?
+
+  startedAt      DateTime?
+  lastActivityAt DateTime?
+  completedAt    DateTime?
+  cancelledAt    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user               user                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  applicationPackage applicationPackage             @relation(fields: [applicationPackageId], references: [id], onDelete: Cascade)
+  application        application                    @relation(fields: [applicationId], references: [id], onDelete: Restrict)
+  jobPosting         jobPosting                     @relation(fields: [jobPostingId], references: [id], onDelete: Restrict)
+  events             applicationExecutionEvent[]
+  submissionAttempts applicationSubmissionAttempt[]
+
+  @@index([userId])
+  @@index([applicationPackageId])
+  @@index([applicationId])
+  @@index([jobPostingId])
+  @@index([status])
+  @@index([updatedAt])
+}
+
+model applicationExecutionEvent {
+  id                 String @id @default(cuid())
+  userId             String
+  executionSessionId String
+
+  type         ApplicationExecutionEventType
+  message      String
+  metadataJson Json                          @default("{}")
+
+  createdAt DateTime @default(now())
+
+  user             user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  executionSession applicationExecutionSession @relation(fields: [executionSessionId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([executionSessionId])
+  @@index([createdAt])
+  @@index([executionSessionId, createdAt])
+}
+
+model applicationSubmissionAttempt {
+  id     String @id @default(cuid())
+  userId String
+
+  executionSessionId   String
+  applicationPackageId String
+  applicationId        String
+
+  attemptNumber Int
+
+  method             ApplicationSubmissionMethod
+  status             ApplicationSubmissionAttemptStatus      @default(APPROVAL_GRANTED)
+  verificationStatus ApplicationSubmissionVerificationStatus @default(NOT_RUN)
+
+  approvalFingerprint String
+  approvalTokenHash   String?
+  approvalExpiresAt   DateTime?
+  approvalUsedAt      DateTime?
+
+  finalSubmissionSnapshotJson Json @default("{}")
+
+  providerApplicationId String?
+  confirmationUrl       String?
+
+  verificationEvidenceJson Json @default("{}")
+
+  failureCode    ApplicationExecutionFailureCode?
+  failureMessage String?
+
+  resumeVersionRevisionId String
+  resumeFileHash          String
+
+  coverLetterRevisionId String?
+  coverLetterFileHash   String?
+
+  startedAt   DateTime?
+  submittedAt DateTime?
+  verifiedAt  DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                  user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  executionSession      applicationExecutionSession @relation(fields: [executionSessionId], references: [id], onDelete: Cascade)
+  applicationPackage    applicationPackage          @relation(fields: [applicationPackageId], references: [id], onDelete: Cascade)
+  application           application                 @relation(fields: [applicationId], references: [id], onDelete: Restrict)
+  resumeVersionRevision resumeVersionRevision       @relation("AttemptResumeRevision", fields: [resumeVersionRevisionId], references: [id], onDelete: Restrict)
+  coverLetterRevision   communicationDraftRevision? @relation("AttemptCoverLetterRevision", fields: [coverLetterRevisionId], references: [id], onDelete: Restrict)
+
+  @@unique([executionSessionId, attemptNumber])
+  @@index([userId])
+  @@index([applicationPackageId])
+  @@index([applicationId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model applicationAnswerPreference {
+  id     String @id @default(cuid())
+  userId String
+
+  key      String
+  category String
+
+  scopeType  ApplicationAnswerScope
+  scopeValue String                 @default("")
+
+  valueJson Json
+
+  requiresPerApplicationConfirmation Boolean @default(false)
+
+  confirmedAt DateTime
+  expiresAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, key, scopeType, scopeValue])
+  @@index([userId])
+  @@index([key])
+  @@index([expiresAt])
 }

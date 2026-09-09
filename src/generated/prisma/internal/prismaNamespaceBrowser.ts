@@ -77,7 +77,11 @@ export const ModelName = {
   jobRequirement: 'jobRequirement',
   jobEvidenceMatch: 'jobEvidenceMatch',
   jobOpportunityAnalysis: 'jobOpportunityAnalysis',
-  applicationPackage: 'applicationPackage'
+  applicationPackage: 'applicationPackage',
+  applicationExecutionSession: 'applicationExecutionSession',
+  applicationExecutionEvent: 'applicationExecutionEvent',
+  applicationSubmissionAttempt: 'applicationSubmissionAttempt',
+  applicationAnswerPreference: 'applicationAnswerPreference'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -669,6 +673,7 @@ export const ApplicationPackageScalarFieldEnum = {
   resumeVersionId: 'resumeVersionId',
   resumeVersionRevisionId: 'resumeVersionRevisionId',
   coverLetterDraftId: 'coverLetterDraftId',
+  coverLetterRevisionId: 'coverLetterRevisionId',
   applicationEmailDraftId: 'applicationEmailDraftId',
   status: 'status',
   readinessStatus: 'readinessStatus',
@@ -691,6 +696,102 @@ export const ApplicationPackageScalarFieldEnum = {
 } as const
 
 export type ApplicationPackageScalarFieldEnum = (typeof ApplicationPackageScalarFieldEnum)[keyof typeof ApplicationPackageScalarFieldEnum]
+
+
+export const ApplicationExecutionSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationPackageId: 'applicationPackageId',
+  applicationId: 'applicationId',
+  jobPostingId: 'jobPostingId',
+  provider: 'provider',
+  adapterVersion: 'adapterVersion',
+  executionMode: 'executionMode',
+  status: 'status',
+  currentUrl: 'currentUrl',
+  currentStep: 'currentStep',
+  totalSteps: 'totalSteps',
+  formFingerprint: 'formFingerprint',
+  formSnapshotJson: 'formSnapshotJson',
+  fillPlanJson: 'fillPlanJson',
+  pendingActionsJson: 'pendingActionsJson',
+  warningsJson: 'warningsJson',
+  failureCode: 'failureCode',
+  failureMessage: 'failureMessage',
+  startedAt: 'startedAt',
+  lastActivityAt: 'lastActivityAt',
+  completedAt: 'completedAt',
+  cancelledAt: 'cancelledAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationExecutionSessionScalarFieldEnum = (typeof ApplicationExecutionSessionScalarFieldEnum)[keyof typeof ApplicationExecutionSessionScalarFieldEnum]
+
+
+export const ApplicationExecutionEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  executionSessionId: 'executionSessionId',
+  type: 'type',
+  message: 'message',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt'
+} as const
+
+export type ApplicationExecutionEventScalarFieldEnum = (typeof ApplicationExecutionEventScalarFieldEnum)[keyof typeof ApplicationExecutionEventScalarFieldEnum]
+
+
+export const ApplicationSubmissionAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  executionSessionId: 'executionSessionId',
+  applicationPackageId: 'applicationPackageId',
+  applicationId: 'applicationId',
+  attemptNumber: 'attemptNumber',
+  method: 'method',
+  status: 'status',
+  verificationStatus: 'verificationStatus',
+  approvalFingerprint: 'approvalFingerprint',
+  approvalTokenHash: 'approvalTokenHash',
+  approvalExpiresAt: 'approvalExpiresAt',
+  approvalUsedAt: 'approvalUsedAt',
+  finalSubmissionSnapshotJson: 'finalSubmissionSnapshotJson',
+  providerApplicationId: 'providerApplicationId',
+  confirmationUrl: 'confirmationUrl',
+  verificationEvidenceJson: 'verificationEvidenceJson',
+  failureCode: 'failureCode',
+  failureMessage: 'failureMessage',
+  resumeVersionRevisionId: 'resumeVersionRevisionId',
+  resumeFileHash: 'resumeFileHash',
+  coverLetterRevisionId: 'coverLetterRevisionId',
+  coverLetterFileHash: 'coverLetterFileHash',
+  startedAt: 'startedAt',
+  submittedAt: 'submittedAt',
+  verifiedAt: 'verifiedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationSubmissionAttemptScalarFieldEnum = (typeof ApplicationSubmissionAttemptScalarFieldEnum)[keyof typeof ApplicationSubmissionAttemptScalarFieldEnum]
+
+
+export const ApplicationAnswerPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  key: 'key',
+  category: 'category',
+  scopeType: 'scopeType',
+  scopeValue: 'scopeValue',
+  valueJson: 'valueJson',
+  requiresPerApplicationConfirmation: 'requiresPerApplicationConfirmation',
+  confirmedAt: 'confirmedAt',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationAnswerPreferenceScalarFieldEnum = (typeof ApplicationAnswerPreferenceScalarFieldEnum)[keyof typeof ApplicationAnswerPreferenceScalarFieldEnum]
 
 
 export const SortOrder = {

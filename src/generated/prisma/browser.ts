@@ -152,3 +152,23 @@ export type jobOpportunityAnalysis = Prisma.jobOpportunityAnalysisModel
  *
  */
 export type applicationPackage = Prisma.applicationPackageModel
+/**
+ * Model applicationExecutionSession
+ *
+ */
+export type applicationExecutionSession = Prisma.applicationExecutionSessionModel
+/**
+ * Model applicationExecutionEvent
+ *
+ */
+export type applicationExecutionEvent = Prisma.applicationExecutionEventModel
+/**
+ * Model applicationSubmissionAttempt
+ *
+ */
+export type applicationSubmissionAttempt = Prisma.applicationSubmissionAttemptModel
+/**
+ * Model applicationAnswerPreference
+ *
+ */
+export type applicationAnswerPreference = Prisma.applicationAnswerPreferenceModel

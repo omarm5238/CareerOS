@@ -258,6 +258,7 @@ export async function prepareApplicationPackage(
       resumeVersionId: resume.id,
       resumeVersionRevisionId: revision.id,
       coverLetterDraftId,
+      coverLetterRevisionId: coverLetter?.activeRevisionId ?? null,
       applicationEmailDraftId,
       status: "READY_FOR_REVIEW" as const,
       readinessStatus: readiness,

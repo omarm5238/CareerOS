@@ -245,20 +245,37 @@ export function ApplicationReviewPage({
             ) : null}
 
             {detail.status === "APPROVED" || detail.status === "SUBMISSION_STARTED" ? (
-              <button
-                className="btn-primary mt-4 w-full"
-                disabled={pending !== null}
-                onClick={async () => {
-                  const result = await post(`/api/application-packages/${detail.id}/start-submission`);
-                  if (result && typeof result.applyUrl === "string") {
-                    setApplyUrl(result.applyUrl);
-                    window.open(result.applyUrl, "_blank", "noopener,noreferrer");
-                  }
-                }}
-                type="button"
-              >
-                Open Application
-              </button>
+              <>
+                <button
+                  className="btn-primary mt-4 w-full"
+                  disabled={pending !== null}
+                  onClick={async () => {
+                    const result = await post("/api/application-execution/sessions", {
+                      applicationPackageId: detail.id,
+                    });
+                    if (result && typeof result.sessionId === "string") {
+                      router.push(`/workspace/jobs/apply-now/executions/${result.sessionId}`);
+                    }
+                  }}
+                  type="button"
+                >
+                  Start Assisted Application
+                </button>
+                <button
+                  className="btn-secondary mt-2 w-full"
+                  disabled={pending !== null}
+                  onClick={async () => {
+                    const result = await post(`/api/application-packages/${detail.id}/start-submission`);
+                    if (result && typeof result.applyUrl === "string") {
+                      setApplyUrl(result.applyUrl);
+                      window.open(result.applyUrl, "_blank", "noopener,noreferrer");
+                    }
+                  }}
+                  type="button"
+                >
+                  Open Manually
+                </button>
+              </>
             ) : null}
 
             {applyUrl ? (

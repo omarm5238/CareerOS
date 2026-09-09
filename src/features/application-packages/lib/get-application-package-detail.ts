@@ -29,6 +29,7 @@ export async function getApplicationPackageDetail(
       resumeVersion: { select: { id: true, title: true, status: true, activeRevisionId: true } },
       resumeVersionRevision: { select: { id: true, revisionNumber: true } },
       coverLetterDraft: { select: { id: true, status: true, activeRevisionId: true, activeRevision: { select: { content: true } } } },
+      coverLetterRevision: { select: { id: true, revisionNumber: true } },
       application: { select: { id: true, status: true } },
     },
   });
@@ -135,6 +136,8 @@ export async function getApplicationPackageDetail(
     resumeRevisionNumber: row.resumeVersionRevision?.revisionNumber ?? null,
     resumeStatus: row.resumeVersion?.status ?? null,
     coverLetterDraftId: row.coverLetterDraftId,
+    coverLetterRevisionId: row.coverLetterRevisionId,
+    coverLetterRevisionNumber: row.coverLetterRevision?.revisionNumber ?? null,
     coverLetterRequired,
     coverLetterStatus: row.coverLetterDraft?.status ?? null,
     applicationEmailDraftId: row.applicationEmailDraftId,

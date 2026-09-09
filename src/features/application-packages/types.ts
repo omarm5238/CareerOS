@@ -84,6 +84,8 @@ export type ApplicationPackageView = {
   resumeRevisionNumber: number | null;
   resumeStatus: string | null;
   coverLetterDraftId: string | null;
+  coverLetterRevisionId: string | null;
+  coverLetterRevisionNumber: number | null;
   coverLetterRequired: boolean;
   coverLetterStatus: string | null;
   applicationEmailDraftId: string | null;

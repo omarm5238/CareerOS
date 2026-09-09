@@ -115,7 +115,31 @@ OPENAI_COMMUNICATIONS_MODEL=""
 
 # Optional opportunity intelligence override.
 OPENAI_OPPORTUNITY_MODEL=""
+
+# Optional assisted-application free-text override.
+OPENAI_APPLICATION_EXECUTION_MODEL=""
 ```
+
+### Milestone 24.5B — External Application Execution
+
+Assisted browser execution is **not serverless-friendly**. It needs a long-lived
+Node process, Chromium, and in-memory browser sessions.
+
+```bash
+npx playwright install chromium
+```
+
+Product execution defaults to a **headed** Chromium window (`headless: false`).
+Set `CAREEROS_BROWSER_HEADLESS=1` only for automated environments.
+
+Controlled ATS fixtures (never used in production navigation):
+
+```bash
+npm run m245b:fixtures
+```
+
+Do not treat this as a mass auto-apply system. Final submit is always a
+specific user action for one application.
 
 ### Scripts
 
@@ -125,6 +149,7 @@ OPENAI_OPPORTUNITY_MODEL=""
 | `npm run build` | Production build           |
 | `npm run start` | Run the production build   |
 | `npm run lint`  | Lint with ESLint           |
+| `npm run m245b:fixtures` | Start local ATS fixtures (dev/QA only) |
 
 ---
 

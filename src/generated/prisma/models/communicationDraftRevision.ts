@@ -331,6 +331,8 @@ export type communicationDraftRevisionWhereInput = {
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   communicationDraft?: Prisma.XOR<Prisma.CommunicationDraftScalarRelationFilter, Prisma.communicationDraftWhereInput>
   activeForDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  executionCoverLetterAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
+  approvedCoverLetterPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type communicationDraftRevisionOrderByWithRelationInput = {
@@ -358,6 +360,8 @@ export type communicationDraftRevisionOrderByWithRelationInput = {
   user?: Prisma.userOrderByWithRelationInput
   communicationDraft?: Prisma.communicationDraftOrderByWithRelationInput
   activeForDraft?: Prisma.communicationDraftOrderByWithRelationInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptOrderByRelationAggregateInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type communicationDraftRevisionWhereUniqueInput = Prisma.AtLeast<{
@@ -389,6 +393,8 @@ export type communicationDraftRevisionWhereUniqueInput = Prisma.AtLeast<{
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   communicationDraft?: Prisma.XOR<Prisma.CommunicationDraftScalarRelationFilter, Prisma.communicationDraftWhereInput>
   activeForDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  executionCoverLetterAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
+  approvedCoverLetterPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id" | "communicationDraftId_revisionNumber">
 
 export type communicationDraftRevisionOrderByWithAggregationInput = {
@@ -470,6 +476,8 @@ export type communicationDraftRevisionCreateInput = {
   user: Prisma.userCreateNestedOneWithoutCommunicationDraftRevisionsInput
   communicationDraft: Prisma.communicationDraftCreateNestedOneWithoutRevisionsInput
   activeForDraft?: Prisma.communicationDraftCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionUncheckedCreateInput = {
@@ -495,6 +503,8 @@ export type communicationDraftRevisionUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionUpdateInput = {
@@ -520,6 +530,8 @@ export type communicationDraftRevisionUpdateInput = {
   user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput
   communicationDraft?: Prisma.communicationDraftUpdateOneRequiredWithoutRevisionsNestedInput
   activeForDraft?: Prisma.communicationDraftUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateInput = {
@@ -545,6 +557,8 @@ export type communicationDraftRevisionUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionCreateManyInput = {
@@ -829,6 +843,38 @@ export type EnumCommunicationGenerationStatusFieldUpdateOperationsInput = {
   set?: $Enums.CommunicationGenerationStatus
 }
 
+export type communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutApprovedCoverLetterPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftRevisionCreateOrConnectWithoutApprovedCoverLetterPackagesInput
+  connect?: Prisma.communicationDraftRevisionWhereUniqueInput
+}
+
+export type communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutApprovedCoverLetterPackagesInput>
+  connectOrCreate?: Prisma.communicationDraftRevisionCreateOrConnectWithoutApprovedCoverLetterPackagesInput
+  upsert?: Prisma.communicationDraftRevisionUpsertWithoutApprovedCoverLetterPackagesInput
+  disconnect?: Prisma.communicationDraftRevisionWhereInput | boolean
+  delete?: Prisma.communicationDraftRevisionWhereInput | boolean
+  connect?: Prisma.communicationDraftRevisionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.communicationDraftRevisionUpdateToOneWithWhereWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUpdateWithoutApprovedCoverLetterPackagesInput>, Prisma.communicationDraftRevisionUncheckedUpdateWithoutApprovedCoverLetterPackagesInput>
+}
+
+export type communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutExecutionCoverLetterAttemptsInput>
+  connectOrCreate?: Prisma.communicationDraftRevisionCreateOrConnectWithoutExecutionCoverLetterAttemptsInput
+  connect?: Prisma.communicationDraftRevisionWhereUniqueInput
+}
+
+export type communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput = {
+  create?: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutExecutionCoverLetterAttemptsInput>
+  connectOrCreate?: Prisma.communicationDraftRevisionCreateOrConnectWithoutExecutionCoverLetterAttemptsInput
+  upsert?: Prisma.communicationDraftRevisionUpsertWithoutExecutionCoverLetterAttemptsInput
+  disconnect?: Prisma.communicationDraftRevisionWhereInput | boolean
+  delete?: Prisma.communicationDraftRevisionWhereInput | boolean
+  connect?: Prisma.communicationDraftRevisionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.communicationDraftRevisionUpdateToOneWithWhereWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUpdateWithoutExecutionCoverLetterAttemptsInput>, Prisma.communicationDraftRevisionUncheckedUpdateWithoutExecutionCoverLetterAttemptsInput>
+}
+
 export type communicationDraftRevisionCreateWithoutUserInput = {
   id?: string
   revisionNumber: number
@@ -851,6 +897,8 @@ export type communicationDraftRevisionCreateWithoutUserInput = {
   updatedAt?: Date | string
   communicationDraft: Prisma.communicationDraftCreateNestedOneWithoutRevisionsInput
   activeForDraft?: Prisma.communicationDraftCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionUncheckedCreateWithoutUserInput = {
@@ -875,6 +923,8 @@ export type communicationDraftRevisionUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionCreateOrConnectWithoutUserInput = {
@@ -952,6 +1002,8 @@ export type communicationDraftRevisionCreateWithoutCommunicationDraftInput = {
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutCommunicationDraftRevisionsInput
   activeForDraft?: Prisma.communicationDraftCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionUncheckedCreateWithoutCommunicationDraftInput = {
@@ -976,6 +1028,8 @@ export type communicationDraftRevisionUncheckedCreateWithoutCommunicationDraftIn
   createdAt?: Date | string
   updatedAt?: Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionCreateOrConnectWithoutCommunicationDraftInput = {
@@ -1010,6 +1064,8 @@ export type communicationDraftRevisionCreateWithoutActiveForDraftInput = {
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutCommunicationDraftRevisionsInput
   communicationDraft: Prisma.communicationDraftCreateNestedOneWithoutRevisionsInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionUncheckedCreateWithoutActiveForDraftInput = {
@@ -1034,6 +1090,8 @@ export type communicationDraftRevisionUncheckedCreateWithoutActiveForDraftInput 
   errorMessage?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
 }
 
 export type communicationDraftRevisionCreateOrConnectWithoutActiveForDraftInput = {
@@ -1090,6 +1148,8 @@ export type communicationDraftRevisionUpdateWithoutActiveForDraftInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput
   communicationDraft?: Prisma.communicationDraftUpdateOneRequiredWithoutRevisionsNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateWithoutActiveForDraftInput = {
@@ -1114,6 +1174,248 @@ export type communicationDraftRevisionUncheckedUpdateWithoutActiveForDraftInput 
   errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+}
+
+export type communicationDraftRevisionCreateWithoutApprovedCoverLetterPackagesInput = {
+  id?: string
+  revisionNumber: number
+  source: $Enums.CommunicationRevisionSource
+  subject?: string | null
+  content: string
+  tone: $Enums.CommunicationTone
+  length: $Enums.CommunicationLength
+  language: $Enums.CommunicationLanguage
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.CommunicationGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutCommunicationDraftRevisionsInput
+  communicationDraft: Prisma.communicationDraftCreateNestedOneWithoutRevisionsInput
+  activeForDraft?: Prisma.communicationDraftCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutCoverLetterRevisionInput
+}
+
+export type communicationDraftRevisionUncheckedCreateWithoutApprovedCoverLetterPackagesInput = {
+  id?: string
+  communicationDraftId: string
+  userId: string
+  revisionNumber: number
+  source: $Enums.CommunicationRevisionSource
+  subject?: string | null
+  content: string
+  tone: $Enums.CommunicationTone
+  length: $Enums.CommunicationLength
+  language: $Enums.CommunicationLanguage
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.CommunicationGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  activeForDraft?: Prisma.communicationDraftUncheckedCreateNestedOneWithoutActiveRevisionInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+}
+
+export type communicationDraftRevisionCreateOrConnectWithoutApprovedCoverLetterPackagesInput = {
+  where: Prisma.communicationDraftRevisionWhereUniqueInput
+  create: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutApprovedCoverLetterPackagesInput>
+}
+
+export type communicationDraftRevisionUpsertWithoutApprovedCoverLetterPackagesInput = {
+  update: Prisma.XOR<Prisma.communicationDraftRevisionUpdateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedUpdateWithoutApprovedCoverLetterPackagesInput>
+  create: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutApprovedCoverLetterPackagesInput>
+  where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+export type communicationDraftRevisionUpdateToOneWithWhereWithoutApprovedCoverLetterPackagesInput = {
+  where?: Prisma.communicationDraftRevisionWhereInput
+  data: Prisma.XOR<Prisma.communicationDraftRevisionUpdateWithoutApprovedCoverLetterPackagesInput, Prisma.communicationDraftRevisionUncheckedUpdateWithoutApprovedCoverLetterPackagesInput>
+}
+
+export type communicationDraftRevisionUpdateWithoutApprovedCoverLetterPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumCommunicationRevisionSourceFieldUpdateOperationsInput | $Enums.CommunicationRevisionSource
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  tone?: Prisma.EnumCommunicationToneFieldUpdateOperationsInput | $Enums.CommunicationTone
+  length?: Prisma.EnumCommunicationLengthFieldUpdateOperationsInput | $Enums.CommunicationLength
+  language?: Prisma.EnumCommunicationLanguageFieldUpdateOperationsInput | $Enums.CommunicationLanguage
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumCommunicationGenerationStatusFieldUpdateOperationsInput | $Enums.CommunicationGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput
+  communicationDraft?: Prisma.communicationDraftUpdateOneRequiredWithoutRevisionsNestedInput
+  activeForDraft?: Prisma.communicationDraftUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutCoverLetterRevisionNestedInput
+}
+
+export type communicationDraftRevisionUncheckedUpdateWithoutApprovedCoverLetterPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  communicationDraftId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumCommunicationRevisionSourceFieldUpdateOperationsInput | $Enums.CommunicationRevisionSource
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  tone?: Prisma.EnumCommunicationToneFieldUpdateOperationsInput | $Enums.CommunicationTone
+  length?: Prisma.EnumCommunicationLengthFieldUpdateOperationsInput | $Enums.CommunicationLength
+  language?: Prisma.EnumCommunicationLanguageFieldUpdateOperationsInput | $Enums.CommunicationLanguage
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumCommunicationGenerationStatusFieldUpdateOperationsInput | $Enums.CommunicationGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activeForDraft?: Prisma.communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+}
+
+export type communicationDraftRevisionCreateWithoutExecutionCoverLetterAttemptsInput = {
+  id?: string
+  revisionNumber: number
+  source: $Enums.CommunicationRevisionSource
+  subject?: string | null
+  content: string
+  tone: $Enums.CommunicationTone
+  length: $Enums.CommunicationLength
+  language: $Enums.CommunicationLanguage
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.CommunicationGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutCommunicationDraftRevisionsInput
+  communicationDraft: Prisma.communicationDraftCreateNestedOneWithoutRevisionsInput
+  activeForDraft?: Prisma.communicationDraftCreateNestedOneWithoutActiveRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput
+}
+
+export type communicationDraftRevisionUncheckedCreateWithoutExecutionCoverLetterAttemptsInput = {
+  id?: string
+  communicationDraftId: string
+  userId: string
+  revisionNumber: number
+  source: $Enums.CommunicationRevisionSource
+  subject?: string | null
+  content: string
+  tone: $Enums.CommunicationTone
+  length: $Enums.CommunicationLength
+  language: $Enums.CommunicationLanguage
+  contextSnapshotJson: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: string | null
+  aiSource?: string | null
+  generationStatus?: $Enums.CommunicationGenerationStatus
+  errorMessage?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  activeForDraft?: Prisma.communicationDraftUncheckedCreateNestedOneWithoutActiveRevisionInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput
+}
+
+export type communicationDraftRevisionCreateOrConnectWithoutExecutionCoverLetterAttemptsInput = {
+  where: Prisma.communicationDraftRevisionWhereUniqueInput
+  create: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutExecutionCoverLetterAttemptsInput>
+}
+
+export type communicationDraftRevisionUpsertWithoutExecutionCoverLetterAttemptsInput = {
+  update: Prisma.XOR<Prisma.communicationDraftRevisionUpdateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedUpdateWithoutExecutionCoverLetterAttemptsInput>
+  create: Prisma.XOR<Prisma.communicationDraftRevisionCreateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedCreateWithoutExecutionCoverLetterAttemptsInput>
+  where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+export type communicationDraftRevisionUpdateToOneWithWhereWithoutExecutionCoverLetterAttemptsInput = {
+  where?: Prisma.communicationDraftRevisionWhereInput
+  data: Prisma.XOR<Prisma.communicationDraftRevisionUpdateWithoutExecutionCoverLetterAttemptsInput, Prisma.communicationDraftRevisionUncheckedUpdateWithoutExecutionCoverLetterAttemptsInput>
+}
+
+export type communicationDraftRevisionUpdateWithoutExecutionCoverLetterAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumCommunicationRevisionSourceFieldUpdateOperationsInput | $Enums.CommunicationRevisionSource
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  tone?: Prisma.EnumCommunicationToneFieldUpdateOperationsInput | $Enums.CommunicationTone
+  length?: Prisma.EnumCommunicationLengthFieldUpdateOperationsInput | $Enums.CommunicationLength
+  language?: Prisma.EnumCommunicationLanguageFieldUpdateOperationsInput | $Enums.CommunicationLanguage
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumCommunicationGenerationStatusFieldUpdateOperationsInput | $Enums.CommunicationGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput
+  communicationDraft?: Prisma.communicationDraftUpdateOneRequiredWithoutRevisionsNestedInput
+  activeForDraft?: Prisma.communicationDraftUpdateOneWithoutActiveRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput
+}
+
+export type communicationDraftRevisionUncheckedUpdateWithoutExecutionCoverLetterAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  communicationDraftId?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  source?: Prisma.EnumCommunicationRevisionSourceFieldUpdateOperationsInput | $Enums.CommunicationRevisionSource
+  subject?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  tone?: Prisma.EnumCommunicationToneFieldUpdateOperationsInput | $Enums.CommunicationTone
+  length?: Prisma.EnumCommunicationLengthFieldUpdateOperationsInput | $Enums.CommunicationLength
+  language?: Prisma.EnumCommunicationLanguageFieldUpdateOperationsInput | $Enums.CommunicationLanguage
+  contextSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceUsedJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  changeLogJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  model?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiSource?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  generationStatus?: Prisma.EnumCommunicationGenerationStatusFieldUpdateOperationsInput | $Enums.CommunicationGenerationStatus
+  errorMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activeForDraft?: Prisma.communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionCreateManyUserInput = {
@@ -1161,6 +1463,8 @@ export type communicationDraftRevisionUpdateWithoutUserInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   communicationDraft?: Prisma.communicationDraftUpdateOneRequiredWithoutRevisionsNestedInput
   activeForDraft?: Prisma.communicationDraftUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateWithoutUserInput = {
@@ -1185,6 +1489,8 @@ export type communicationDraftRevisionUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateManyWithoutUserInput = {
@@ -1255,6 +1561,8 @@ export type communicationDraftRevisionUpdateWithoutCommunicationDraftInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutCommunicationDraftRevisionsNestedInput
   activeForDraft?: Prisma.communicationDraftUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateWithoutCommunicationDraftInput = {
@@ -1279,6 +1587,8 @@ export type communicationDraftRevisionUncheckedUpdateWithoutCommunicationDraftIn
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activeForDraft?: Prisma.communicationDraftUncheckedUpdateOneWithoutActiveRevisionNestedInput
+  executionCoverLetterAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
+  approvedCoverLetterPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput
 }
 
 export type communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDraftInput = {
@@ -1304,6 +1614,44 @@ export type communicationDraftRevisionUncheckedUpdateManyWithoutCommunicationDra
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type CommunicationDraftRevisionCountOutputType
+ */
+
+export type CommunicationDraftRevisionCountOutputType = {
+  executionCoverLetterAttempts: number
+  approvedCoverLetterPackages: number
+}
+
+export type CommunicationDraftRevisionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  executionCoverLetterAttempts?: boolean | CommunicationDraftRevisionCountOutputTypeCountExecutionCoverLetterAttemptsArgs
+  approvedCoverLetterPackages?: boolean | CommunicationDraftRevisionCountOutputTypeCountApprovedCoverLetterPackagesArgs
+}
+
+/**
+ * CommunicationDraftRevisionCountOutputType without action
+ */
+export type CommunicationDraftRevisionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CommunicationDraftRevisionCountOutputType
+   */
+  select?: Prisma.CommunicationDraftRevisionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CommunicationDraftRevisionCountOutputType without action
+ */
+export type CommunicationDraftRevisionCountOutputTypeCountExecutionCoverLetterAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+}
+
+/**
+ * CommunicationDraftRevisionCountOutputType without action
+ */
+export type CommunicationDraftRevisionCountOutputTypeCountApprovedCoverLetterPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
 
 
 export type communicationDraftRevisionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1331,6 +1679,9 @@ export type communicationDraftRevisionSelect<ExtArgs extends runtime.Types.Exten
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   communicationDraft?: boolean | Prisma.communicationDraftDefaultArgs<ExtArgs>
   activeForDraft?: boolean | Prisma.communicationDraftRevision$activeForDraftArgs<ExtArgs>
+  executionCoverLetterAttempts?: boolean | Prisma.communicationDraftRevision$executionCoverLetterAttemptsArgs<ExtArgs>
+  approvedCoverLetterPackages?: boolean | Prisma.communicationDraftRevision$approvedCoverLetterPackagesArgs<ExtArgs>
+  _count?: boolean | Prisma.CommunicationDraftRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["communicationDraftRevision"]>
 
 export type communicationDraftRevisionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1414,6 +1765,9 @@ export type communicationDraftRevisionInclude<ExtArgs extends runtime.Types.Exte
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   communicationDraft?: boolean | Prisma.communicationDraftDefaultArgs<ExtArgs>
   activeForDraft?: boolean | Prisma.communicationDraftRevision$activeForDraftArgs<ExtArgs>
+  executionCoverLetterAttempts?: boolean | Prisma.communicationDraftRevision$executionCoverLetterAttemptsArgs<ExtArgs>
+  approvedCoverLetterPackages?: boolean | Prisma.communicationDraftRevision$approvedCoverLetterPackagesArgs<ExtArgs>
+  _count?: boolean | Prisma.CommunicationDraftRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type communicationDraftRevisionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -1430,6 +1784,8 @@ export type $communicationDraftRevisionPayload<ExtArgs extends runtime.Types.Ext
     user: Prisma.$userPayload<ExtArgs>
     communicationDraft: Prisma.$communicationDraftPayload<ExtArgs>
     activeForDraft: Prisma.$communicationDraftPayload<ExtArgs> | null
+    executionCoverLetterAttempts: Prisma.$applicationSubmissionAttemptPayload<ExtArgs>[]
+    approvedCoverLetterPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1850,6 +2206,8 @@ export interface Prisma__communicationDraftRevisionClient<T, Null = never, ExtAr
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   communicationDraft<T extends Prisma.communicationDraftDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraftDefaultArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   activeForDraft<T extends Prisma.communicationDraftRevision$activeForDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraftRevision$activeForDraftArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  executionCoverLetterAttempts<T extends Prisma.communicationDraftRevision$executionCoverLetterAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraftRevision$executionCoverLetterAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationSubmissionAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvedCoverLetterPackages<T extends Prisma.communicationDraftRevision$approvedCoverLetterPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.communicationDraftRevision$approvedCoverLetterPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2317,6 +2675,54 @@ export type communicationDraftRevision$activeForDraftArgs<ExtArgs extends runtim
    */
   include?: Prisma.communicationDraftInclude<ExtArgs> | null
   where?: Prisma.communicationDraftWhereInput
+}
+
+/**
+ * communicationDraftRevision.executionCoverLetterAttempts
+ */
+export type communicationDraftRevision$executionCoverLetterAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationSubmissionAttempt
+   */
+  select?: Prisma.applicationSubmissionAttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationSubmissionAttempt
+   */
+  omit?: Prisma.applicationSubmissionAttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationSubmissionAttemptInclude<ExtArgs> | null
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+  orderBy?: Prisma.applicationSubmissionAttemptOrderByWithRelationInput | Prisma.applicationSubmissionAttemptOrderByWithRelationInput[]
+  cursor?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationSubmissionAttemptScalarFieldEnum | Prisma.ApplicationSubmissionAttemptScalarFieldEnum[]
+}
+
+/**
+ * communicationDraftRevision.approvedCoverLetterPackages
+ */
+export type communicationDraftRevision$approvedCoverLetterPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

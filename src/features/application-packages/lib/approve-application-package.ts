@@ -55,6 +55,18 @@ export async function approveApplicationPackage(userId: string, packageId: strin
     throw new OpportunityAccessError("CONFLICT", "Required user inputs still need confirmation.");
   }
 
+  let coverLetterRevisionId: string | null = row.coverLetterRevisionId;
+  if (row.coverLetterDraftId) {
+    const draft = await prisma.communicationDraft.findFirst({
+      where: { id: row.coverLetterDraftId, userId },
+      select: { activeRevisionId: true },
+    });
+    coverLetterRevisionId = draft?.activeRevisionId ?? null;
+    if (detail.coverLetterRequired && !coverLetterRevisionId) {
+      throw new OpportunityAccessError("CONFLICT", "Required cover letter revision is missing.");
+    }
+  }
+
   const created = await createApplicationForJob({
     userId,
     targetJobId: detail.jobPostingId,
@@ -69,6 +81,7 @@ export async function approveApplicationPackage(userId: string, packageId: strin
       status: "APPROVED",
       approvedAt: new Date(),
       applicationId: created.applicationId,
+      coverLetterRevisionId,
     },
   });
 

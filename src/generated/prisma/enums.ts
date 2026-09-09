@@ -485,3 +485,156 @@ export const ApplicationPackageQaStatus = {
 } as const
 
 export type ApplicationPackageQaStatus = (typeof ApplicationPackageQaStatus)[keyof typeof ApplicationPackageQaStatus]
+
+
+export const ApplicationProvider = {
+  GREENHOUSE: 'GREENHOUSE',
+  LEVER: 'LEVER',
+  ASHBY: 'ASHBY',
+  WORKABLE: 'WORKABLE',
+  SMARTRECRUITERS: 'SMARTRECRUITERS',
+  GENERIC: 'GENERIC',
+  UNKNOWN: 'UNKNOWN'
+} as const
+
+export type ApplicationProvider = (typeof ApplicationProvider)[keyof typeof ApplicationProvider]
+
+
+export const ApplicationExecutionMode = {
+  MANUAL_EXTERNAL: 'MANUAL_EXTERNAL',
+  ASSISTED_BROWSER: 'ASSISTED_BROWSER',
+  CONFIRMED_BROWSER_SUBMIT: 'CONFIRMED_BROWSER_SUBMIT',
+  OFFICIAL_API: 'OFFICIAL_API'
+} as const
+
+export type ApplicationExecutionMode = (typeof ApplicationExecutionMode)[keyof typeof ApplicationExecutionMode]
+
+
+export const ApplicationExecutionStatus = {
+  CREATED: 'CREATED',
+  DETECTING_ATS: 'DETECTING_ATS',
+  INSPECTING: 'INSPECTING',
+  READY_TO_FILL: 'READY_TO_FILL',
+  FILLING: 'FILLING',
+  NEEDS_USER_INPUT: 'NEEDS_USER_INPUT',
+  PAUSED_FOR_LOGIN: 'PAUSED_FOR_LOGIN',
+  PAUSED_FOR_MFA: 'PAUSED_FOR_MFA',
+  PAUSED_FOR_CAPTCHA: 'PAUSED_FOR_CAPTCHA',
+  PAUSED_FOR_ASSESSMENT: 'PAUSED_FOR_ASSESSMENT',
+  READY_FOR_REVIEW: 'READY_FOR_REVIEW',
+  READY_TO_SUBMIT: 'READY_TO_SUBMIT',
+  SUBMITTING: 'SUBMITTING',
+  VERIFYING: 'VERIFYING',
+  SUBMITTED: 'SUBMITTED',
+  INTERRUPTED: 'INTERRUPTED',
+  FAILED: 'FAILED',
+  BLOCKED: 'BLOCKED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ApplicationExecutionStatus = (typeof ApplicationExecutionStatus)[keyof typeof ApplicationExecutionStatus]
+
+
+export const ApplicationExecutionEventType = {
+  SESSION_CREATED: 'SESSION_CREATED',
+  BROWSER_STARTED: 'BROWSER_STARTED',
+  ATS_DETECTED: 'ATS_DETECTED',
+  FORM_INSPECTED: 'FORM_INSPECTED',
+  FILL_PLAN_BUILT: 'FILL_PLAN_BUILT',
+  FIELD_FILLED: 'FIELD_FILLED',
+  FIELD_PROPOSED: 'FIELD_PROPOSED',
+  FILE_UPLOADED: 'FILE_UPLOADED',
+  USER_INPUT_REQUIRED: 'USER_INPUT_REQUIRED',
+  LOGIN_REQUIRED: 'LOGIN_REQUIRED',
+  MFA_REQUIRED: 'MFA_REQUIRED',
+  CAPTCHA_REQUIRED: 'CAPTCHA_REQUIRED',
+  ASSESSMENT_REQUIRED: 'ASSESSMENT_REQUIRED',
+  UNSUPPORTED_WIDGET: 'UNSUPPORTED_WIDGET',
+  STEP_VALIDATED: 'STEP_VALIDATED',
+  STEP_ADVANCED: 'STEP_ADVANCED',
+  VALIDATION_ERROR: 'VALIDATION_ERROR',
+  ADAPTER_FALLBACK: 'ADAPTER_FALLBACK',
+  READY_FOR_REVIEW: 'READY_FOR_REVIEW',
+  READY_FOR_SUBMIT: 'READY_FOR_SUBMIT',
+  SUBMISSION_APPROVED: 'SUBMISSION_APPROVED',
+  SUBMIT_STARTED: 'SUBMIT_STARTED',
+  SUBMIT_RESPONSE: 'SUBMIT_RESPONSE',
+  VERIFICATION_RESULT: 'VERIFICATION_RESULT',
+  SESSION_INTERRUPTED: 'SESSION_INTERRUPTED',
+  SESSION_FAILED: 'SESSION_FAILED',
+  SESSION_CANCELLED: 'SESSION_CANCELLED',
+  SESSION_COMPLETED: 'SESSION_COMPLETED'
+} as const
+
+export type ApplicationExecutionEventType = (typeof ApplicationExecutionEventType)[keyof typeof ApplicationExecutionEventType]
+
+
+export const ApplicationSubmissionMethod = {
+  USER_MANUAL: 'USER_MANUAL',
+  BROWSER_CONFIRMED: 'BROWSER_CONFIRMED',
+  OFFICIAL_API: 'OFFICIAL_API'
+} as const
+
+export type ApplicationSubmissionMethod = (typeof ApplicationSubmissionMethod)[keyof typeof ApplicationSubmissionMethod]
+
+
+export const ApplicationSubmissionAttemptStatus = {
+  APPROVAL_GRANTED: 'APPROVAL_GRANTED',
+  SUBMITTING: 'SUBMITTING',
+  VERIFYING: 'VERIFYING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED',
+  UNCERTAIN: 'UNCERTAIN',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type ApplicationSubmissionAttemptStatus = (typeof ApplicationSubmissionAttemptStatus)[keyof typeof ApplicationSubmissionAttemptStatus]
+
+
+export const ApplicationSubmissionVerificationStatus = {
+  NOT_RUN: 'NOT_RUN',
+  VERIFIED: 'VERIFIED',
+  PROBABLE: 'PROBABLE',
+  UNVERIFIED: 'UNVERIFIED',
+  FAILED: 'FAILED'
+} as const
+
+export type ApplicationSubmissionVerificationStatus = (typeof ApplicationSubmissionVerificationStatus)[keyof typeof ApplicationSubmissionVerificationStatus]
+
+
+export const ApplicationAnswerScope = {
+  GLOBAL: 'GLOBAL',
+  COUNTRY: 'COUNTRY',
+  PROVIDER: 'PROVIDER',
+  JOB_SPECIFIC: 'JOB_SPECIFIC'
+} as const
+
+export type ApplicationAnswerScope = (typeof ApplicationAnswerScope)[keyof typeof ApplicationAnswerScope]
+
+
+export const ApplicationExecutionFailureCode = {
+  ATS_UNSUPPORTED: 'ATS_UNSUPPORTED',
+  ADAPTER_DRIFT: 'ADAPTER_DRIFT',
+  LOGIN_REQUIRED: 'LOGIN_REQUIRED',
+  MFA_REQUIRED: 'MFA_REQUIRED',
+  CAPTCHA_REQUIRED: 'CAPTCHA_REQUIRED',
+  ASSESSMENT_REQUIRED: 'ASSESSMENT_REQUIRED',
+  USER_INPUT_REQUIRED: 'USER_INPUT_REQUIRED',
+  CONSENT_REQUIRED: 'CONSENT_REQUIRED',
+  UNKNOWN_FIELD: 'UNKNOWN_FIELD',
+  UNSUPPORTED_WIDGET: 'UNSUPPORTED_WIDGET',
+  VALIDATION_FAILED: 'VALIDATION_FAILED',
+  RESUME_UPLOAD_FAILED: 'RESUME_UPLOAD_FAILED',
+  COVER_LETTER_UPLOAD_FAILED: 'COVER_LETTER_UPLOAD_FAILED',
+  NETWORK_ERROR: 'NETWORK_ERROR',
+  RATE_LIMITED: 'RATE_LIMITED',
+  NAVIGATION_TIMEOUT: 'NAVIGATION_TIMEOUT',
+  SESSION_EXPIRED: 'SESSION_EXPIRED',
+  JOB_CLOSED: 'JOB_CLOSED',
+  DUPLICATE_APPLICATION: 'DUPLICATE_APPLICATION',
+  SUBMISSION_REJECTED: 'SUBMISSION_REJECTED',
+  SUBMISSION_UNCERTAIN: 'SUBMISSION_UNCERTAIN',
+  BROWSER_CRASHED: 'BROWSER_CRASHED'
+} as const
+
+export type ApplicationExecutionFailureCode = (typeof ApplicationExecutionFailureCode)[keyof typeof ApplicationExecutionFailureCode]

@@ -44,6 +44,7 @@ export type ApplicationPackageMinAggregateOutputType = {
   resumeVersionId: string | null
   resumeVersionRevisionId: string | null
   coverLetterDraftId: string | null
+  coverLetterRevisionId: string | null
   applicationEmailDraftId: string | null
   status: $Enums.ApplicationPackageStatus | null
   readinessStatus: $Enums.ApplicationReadinessStatus | null
@@ -68,6 +69,7 @@ export type ApplicationPackageMaxAggregateOutputType = {
   resumeVersionId: string | null
   resumeVersionRevisionId: string | null
   coverLetterDraftId: string | null
+  coverLetterRevisionId: string | null
   applicationEmailDraftId: string | null
   status: $Enums.ApplicationPackageStatus | null
   readinessStatus: $Enums.ApplicationReadinessStatus | null
@@ -92,6 +94,7 @@ export type ApplicationPackageCountAggregateOutputType = {
   resumeVersionId: number
   resumeVersionRevisionId: number
   coverLetterDraftId: number
+  coverLetterRevisionId: number
   applicationEmailDraftId: number
   status: number
   readinessStatus: number
@@ -133,6 +136,7 @@ export type ApplicationPackageMinAggregateInputType = {
   resumeVersionId?: true
   resumeVersionRevisionId?: true
   coverLetterDraftId?: true
+  coverLetterRevisionId?: true
   applicationEmailDraftId?: true
   status?: true
   readinessStatus?: true
@@ -157,6 +161,7 @@ export type ApplicationPackageMaxAggregateInputType = {
   resumeVersionId?: true
   resumeVersionRevisionId?: true
   coverLetterDraftId?: true
+  coverLetterRevisionId?: true
   applicationEmailDraftId?: true
   status?: true
   readinessStatus?: true
@@ -181,6 +186,7 @@ export type ApplicationPackageCountAggregateInputType = {
   resumeVersionId?: true
   resumeVersionRevisionId?: true
   coverLetterDraftId?: true
+  coverLetterRevisionId?: true
   applicationEmailDraftId?: true
   status?: true
   readinessStatus?: true
@@ -299,6 +305,7 @@ export type ApplicationPackageGroupByOutputType = {
   resumeVersionId: string | null
   resumeVersionRevisionId: string | null
   coverLetterDraftId: string | null
+  coverLetterRevisionId: string | null
   applicationEmailDraftId: string | null
   status: $Enums.ApplicationPackageStatus
   readinessStatus: $Enums.ApplicationReadinessStatus
@@ -353,6 +360,7 @@ export type applicationPackageWhereInput = {
   resumeVersionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   resumeVersionRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   coverLetterDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   applicationEmailDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   status?: Prisma.EnumApplicationPackageStatusFilter<"applicationPackage"> | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFilter<"applicationPackage"> | $Enums.ApplicationReadinessStatus
@@ -379,7 +387,10 @@ export type applicationPackageWhereInput = {
   resumeVersion?: Prisma.XOR<Prisma.ResumeVersionNullableScalarRelationFilter, Prisma.resumeVersionWhereInput> | null
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionNullableScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput> | null
   coverLetterDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   applicationEmailDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  executionSessions?: Prisma.ApplicationExecutionSessionListRelationFilter
+  submissionAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
 }
 
 export type applicationPackageOrderByWithRelationInput = {
@@ -392,6 +403,7 @@ export type applicationPackageOrderByWithRelationInput = {
   resumeVersionId?: Prisma.SortOrderInput | Prisma.SortOrder
   resumeVersionRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   coverLetterDraftId?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverLetterRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   applicationEmailDraftId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   readinessStatus?: Prisma.SortOrder
@@ -418,7 +430,10 @@ export type applicationPackageOrderByWithRelationInput = {
   resumeVersion?: Prisma.resumeVersionOrderByWithRelationInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionOrderByWithRelationInput
   coverLetterDraft?: Prisma.communicationDraftOrderByWithRelationInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionOrderByWithRelationInput
   applicationEmailDraft?: Prisma.communicationDraftOrderByWithRelationInput
+  executionSessions?: Prisma.applicationExecutionSessionOrderByRelationAggregateInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptOrderByRelationAggregateInput
 }
 
 export type applicationPackageWhereUniqueInput = Prisma.AtLeast<{
@@ -435,6 +450,7 @@ export type applicationPackageWhereUniqueInput = Prisma.AtLeast<{
   resumeVersionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   resumeVersionRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   coverLetterDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   applicationEmailDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   status?: Prisma.EnumApplicationPackageStatusFilter<"applicationPackage"> | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFilter<"applicationPackage"> | $Enums.ApplicationReadinessStatus
@@ -461,7 +477,10 @@ export type applicationPackageWhereUniqueInput = Prisma.AtLeast<{
   resumeVersion?: Prisma.XOR<Prisma.ResumeVersionNullableScalarRelationFilter, Prisma.resumeVersionWhereInput> | null
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionNullableScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput> | null
   coverLetterDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   applicationEmailDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  executionSessions?: Prisma.ApplicationExecutionSessionListRelationFilter
+  submissionAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
 }, "id" | "userId_jobPostingId_version">
 
 export type applicationPackageOrderByWithAggregationInput = {
@@ -474,6 +493,7 @@ export type applicationPackageOrderByWithAggregationInput = {
   resumeVersionId?: Prisma.SortOrderInput | Prisma.SortOrder
   resumeVersionRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   coverLetterDraftId?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverLetterRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   applicationEmailDraftId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   readinessStatus?: Prisma.SortOrder
@@ -513,6 +533,7 @@ export type applicationPackageScalarWhereWithAggregatesInput = {
   resumeVersionId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
   resumeVersionRevisionId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
   coverLetterDraftId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  coverLetterRevisionId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
   applicationEmailDraftId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
   status?: Prisma.EnumApplicationPackageStatusWithAggregatesFilter<"applicationPackage"> | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusWithAggregatesFilter<"applicationPackage"> | $Enums.ApplicationReadinessStatus
@@ -562,7 +583,10 @@ export type applicationPackageCreateInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateInput = {
@@ -575,6 +599,7 @@ export type applicationPackageUncheckedCreateInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -594,6 +619,8 @@ export type applicationPackageUncheckedCreateInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUpdateInput = {
@@ -624,7 +651,10 @@ export type applicationPackageUpdateInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateInput = {
@@ -637,6 +667,7 @@ export type applicationPackageUncheckedUpdateInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -656,6 +687,8 @@ export type applicationPackageUncheckedUpdateInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageCreateManyInput = {
@@ -668,6 +701,7 @@ export type applicationPackageCreateManyInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -722,6 +756,7 @@ export type applicationPackageUncheckedUpdateManyInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -769,6 +804,7 @@ export type applicationPackageCountOrderByAggregateInput = {
   resumeVersionId?: Prisma.SortOrder
   resumeVersionRevisionId?: Prisma.SortOrder
   coverLetterDraftId?: Prisma.SortOrder
+  coverLetterRevisionId?: Prisma.SortOrder
   applicationEmailDraftId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readinessStatus?: Prisma.SortOrder
@@ -804,6 +840,7 @@ export type applicationPackageMaxOrderByAggregateInput = {
   resumeVersionId?: Prisma.SortOrder
   resumeVersionRevisionId?: Prisma.SortOrder
   coverLetterDraftId?: Prisma.SortOrder
+  coverLetterRevisionId?: Prisma.SortOrder
   applicationEmailDraftId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readinessStatus?: Prisma.SortOrder
@@ -828,6 +865,7 @@ export type applicationPackageMinOrderByAggregateInput = {
   resumeVersionId?: Prisma.SortOrder
   resumeVersionRevisionId?: Prisma.SortOrder
   coverLetterDraftId?: Prisma.SortOrder
+  coverLetterRevisionId?: Prisma.SortOrder
   applicationEmailDraftId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readinessStatus?: Prisma.SortOrder
@@ -844,6 +882,11 @@ export type applicationPackageMinOrderByAggregateInput = {
 
 export type applicationPackageSumOrderByAggregateInput = {
   version?: Prisma.SortOrder
+}
+
+export type ApplicationPackageScalarRelationFilter = {
+  is?: Prisma.applicationPackageWhereInput
+  isNot?: Prisma.applicationPackageWhereInput
 }
 
 export type applicationPackageCreateNestedManyWithoutUserInput = {
@@ -1182,6 +1225,48 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftNes
   deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
 }
 
+export type applicationPackageCreateNestedManyWithoutCoverLetterRevisionInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput> | Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManyCoverLetterRevisionInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUncheckedCreateNestedManyWithoutCoverLetterRevisionInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput> | Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManyCoverLetterRevisionInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUpdateManyWithoutCoverLetterRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput> | Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutCoverLetterRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManyCoverLetterRevisionInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutCoverLetterRevisionInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput> | Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutCoverLetterRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManyCoverLetterRevisionInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutCoverLetterRevisionInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput | Prisma.applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
 export type EnumApplicationPackageStatusFieldUpdateOperationsInput = {
   set?: $Enums.ApplicationPackageStatus
 }
@@ -1192,6 +1277,34 @@ export type EnumApplicationReadinessStatusFieldUpdateOperationsInput = {
 
 export type EnumApplicationPackageQaStatusFieldUpdateOperationsInput = {
   set?: $Enums.ApplicationPackageQaStatus
+}
+
+export type applicationPackageCreateNestedOneWithoutExecutionSessionsInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedCreateWithoutExecutionSessionsInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutExecutionSessionsInput
+  connect?: Prisma.applicationPackageWhereUniqueInput
+}
+
+export type applicationPackageUpdateOneRequiredWithoutExecutionSessionsNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedCreateWithoutExecutionSessionsInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutExecutionSessionsInput
+  upsert?: Prisma.applicationPackageUpsertWithoutExecutionSessionsInput
+  connect?: Prisma.applicationPackageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationPackageUpdateToOneWithWhereWithoutExecutionSessionsInput, Prisma.applicationPackageUpdateWithoutExecutionSessionsInput>, Prisma.applicationPackageUncheckedUpdateWithoutExecutionSessionsInput>
+}
+
+export type applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSubmissionAttemptsInput
+  connect?: Prisma.applicationPackageWhereUniqueInput
+}
+
+export type applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSubmissionAttemptsInput
+  upsert?: Prisma.applicationPackageUpsertWithoutSubmissionAttemptsInput
+  connect?: Prisma.applicationPackageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationPackageUpdateToOneWithWhereWithoutSubmissionAttemptsInput, Prisma.applicationPackageUpdateWithoutSubmissionAttemptsInput>, Prisma.applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput>
 }
 
 export type applicationPackageCreateWithoutUserInput = {
@@ -1221,7 +1334,10 @@ export type applicationPackageCreateWithoutUserInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutUserInput = {
@@ -1233,6 +1349,7 @@ export type applicationPackageUncheckedCreateWithoutUserInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1252,6 +1369,8 @@ export type applicationPackageUncheckedCreateWithoutUserInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutUserInput = {
@@ -1293,6 +1412,7 @@ export type applicationPackageScalarWhereInput = {
   resumeVersionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   resumeVersionRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   coverLetterDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   applicationEmailDraftId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
   status?: Prisma.EnumApplicationPackageStatusFilter<"applicationPackage"> | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFilter<"applicationPackage"> | $Enums.ApplicationReadinessStatus
@@ -1341,7 +1461,10 @@ export type applicationPackageCreateWithoutJobPostingInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutJobPostingInput = {
@@ -1353,6 +1476,7 @@ export type applicationPackageUncheckedCreateWithoutJobPostingInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1372,6 +1496,8 @@ export type applicationPackageUncheckedCreateWithoutJobPostingInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutJobPostingInput = {
@@ -1427,7 +1553,10 @@ export type applicationPackageCreateWithoutResumeVersionInput = {
   application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutResumeVersionInput = {
@@ -1439,6 +1568,7 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionInput = {
   version?: number
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1458,6 +1588,8 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutResumeVersionInput = {
@@ -1513,7 +1645,10 @@ export type applicationPackageCreateWithoutResumeVersionRevisionInput = {
   application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutResumeVersionRevisionInput = {
@@ -1525,6 +1660,7 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionRevisionInput =
   version?: number
   resumeVersionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1544,6 +1680,8 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionRevisionInput =
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutResumeVersionRevisionInput = {
@@ -1599,7 +1737,10 @@ export type applicationPackageCreateWithoutApplicationInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutApplicationInput = {
@@ -1611,6 +1752,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1630,6 +1772,8 @@ export type applicationPackageUncheckedCreateWithoutApplicationInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutApplicationInput = {
@@ -1685,7 +1829,10 @@ export type applicationPackageCreateWithoutApplicationQueueItemInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutApplicationQueueItemInput = {
@@ -1697,6 +1844,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationQueueItemInput = 
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1716,6 +1864,8 @@ export type applicationPackageUncheckedCreateWithoutApplicationQueueItemInput = 
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutApplicationQueueItemInput = {
@@ -1771,7 +1921,10 @@ export type applicationPackageCreateWithoutCoverLetterDraftInput = {
   application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutCoverLetterDraftInput = {
@@ -1783,6 +1936,7 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterDraftInput = {
   version?: number
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1802,6 +1956,8 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterDraftInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutCoverLetterDraftInput = {
@@ -1842,6 +1998,9 @@ export type applicationPackageCreateWithoutApplicationEmailDraftInput = {
   resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageUncheckedCreateWithoutApplicationEmailDraftInput = {
@@ -1854,6 +2013,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationEmailDraftInput =
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
   qaStatus?: $Enums.ApplicationPackageQaStatus
@@ -1872,6 +2032,8 @@ export type applicationPackageUncheckedCreateWithoutApplicationEmailDraftInput =
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
 export type applicationPackageCreateOrConnectWithoutApplicationEmailDraftInput = {
@@ -1916,6 +2078,394 @@ export type applicationPackageUpdateManyWithWhereWithoutApplicationEmailDraftInp
   data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftInput>
 }
 
+export type applicationPackageCreateWithoutCoverLetterRevisionInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutCoverLetterRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput>
+}
+
+export type applicationPackageCreateManyCoverLetterRevisionInputEnvelope = {
+  data: Prisma.applicationPackageCreateManyCoverLetterRevisionInput | Prisma.applicationPackageCreateManyCoverLetterRevisionInput[]
+  skipDuplicates?: boolean
+}
+
+export type applicationPackageUpsertWithWhereUniqueWithoutCoverLetterRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedUpdateWithoutCoverLetterRevisionInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput>
+}
+
+export type applicationPackageUpdateWithWhereUniqueWithoutCoverLetterRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutCoverLetterRevisionInput, Prisma.applicationPackageUncheckedUpdateWithoutCoverLetterRevisionInput>
+}
+
+export type applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput = {
+  where: Prisma.applicationPackageScalarWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionInput>
+}
+
+export type applicationPackageCreateWithoutExecutionSessionsInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutExecutionSessionsInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutExecutionSessionsInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedCreateWithoutExecutionSessionsInput>
+}
+
+export type applicationPackageUpsertWithoutExecutionSessionsInput = {
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedUpdateWithoutExecutionSessionsInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedCreateWithoutExecutionSessionsInput>
+  where?: Prisma.applicationPackageWhereInput
+}
+
+export type applicationPackageUpdateToOneWithWhereWithoutExecutionSessionsInput = {
+  where?: Prisma.applicationPackageWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutExecutionSessionsInput, Prisma.applicationPackageUncheckedUpdateWithoutExecutionSessionsInput>
+}
+
+export type applicationPackageUpdateWithoutExecutionSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutExecutionSessionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageCreateWithoutSubmissionAttemptsInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutSubmissionAttemptsInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput>
+}
+
+export type applicationPackageUpsertWithoutSubmissionAttemptsInput = {
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput>
+  where?: Prisma.applicationPackageWhereInput
+}
+
+export type applicationPackageUpdateToOneWithWhereWithoutSubmissionAttemptsInput = {
+  where?: Prisma.applicationPackageWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSubmissionAttemptsInput, Prisma.applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput>
+}
+
+export type applicationPackageUpdateWithoutSubmissionAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
 export type applicationPackageCreateManyUserInput = {
   id?: string
   jobPostingId?: string | null
@@ -1925,6 +2475,7 @@ export type applicationPackageCreateManyUserInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -1973,7 +2524,10 @@ export type applicationPackageUpdateWithoutUserInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutUserInput = {
@@ -1985,6 +2539,7 @@ export type applicationPackageUncheckedUpdateWithoutUserInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2004,6 +2559,8 @@ export type applicationPackageUncheckedUpdateWithoutUserInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutUserInput = {
@@ -2015,6 +2572,7 @@ export type applicationPackageUncheckedUpdateManyWithoutUserInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2045,6 +2603,7 @@ export type applicationPackageCreateManyJobPostingInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2093,7 +2652,10 @@ export type applicationPackageUpdateWithoutJobPostingInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutJobPostingInput = {
@@ -2105,6 +2667,7 @@ export type applicationPackageUncheckedUpdateWithoutJobPostingInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2124,6 +2687,8 @@ export type applicationPackageUncheckedUpdateWithoutJobPostingInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutJobPostingInput = {
@@ -2135,6 +2700,7 @@ export type applicationPackageUncheckedUpdateManyWithoutJobPostingInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2165,6 +2731,7 @@ export type applicationPackageCreateManyResumeVersionInput = {
   version?: number
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2213,7 +2780,10 @@ export type applicationPackageUpdateWithoutResumeVersionInput = {
   application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutResumeVersionInput = {
@@ -2225,6 +2795,7 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionInput = {
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2244,6 +2815,8 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutResumeVersionInput = {
@@ -2255,6 +2828,7 @@ export type applicationPackageUncheckedUpdateManyWithoutResumeVersionInput = {
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2285,6 +2859,7 @@ export type applicationPackageCreateManyResumeVersionRevisionInput = {
   version?: number
   resumeVersionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2333,7 +2908,10 @@ export type applicationPackageUpdateWithoutResumeVersionRevisionInput = {
   application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutResumeVersionRevisionInput = {
@@ -2345,6 +2923,7 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionRevisionInput =
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2364,6 +2943,8 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionRevisionInput =
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionInput = {
@@ -2375,6 +2956,7 @@ export type applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionInp
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2405,6 +2987,7 @@ export type applicationPackageCreateManyApplicationInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2453,7 +3036,10 @@ export type applicationPackageUpdateWithoutApplicationInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutApplicationInput = {
@@ -2465,6 +3051,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2484,6 +3071,8 @@ export type applicationPackageUncheckedUpdateWithoutApplicationInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutApplicationInput = {
@@ -2495,6 +3084,7 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationInput = {
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2525,6 +3115,7 @@ export type applicationPackageCreateManyApplicationQueueItemInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2573,7 +3164,10 @@ export type applicationPackageUpdateWithoutApplicationQueueItemInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutApplicationQueueItemInput = {
@@ -2585,6 +3179,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationQueueItemInput = 
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2604,6 +3199,8 @@ export type applicationPackageUncheckedUpdateWithoutApplicationQueueItemInput = 
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemInput = {
@@ -2615,6 +3212,7 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemInpu
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2645,6 +3243,7 @@ export type applicationPackageCreateManyCoverLetterDraftInput = {
   version?: number
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
+  coverLetterRevisionId?: string | null
   applicationEmailDraftId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
@@ -2676,6 +3275,7 @@ export type applicationPackageCreateManyApplicationEmailDraftInput = {
   resumeVersionId?: string | null
   resumeVersionRevisionId?: string | null
   coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
   status?: $Enums.ApplicationPackageStatus
   readinessStatus?: $Enums.ApplicationReadinessStatus
   qaStatus?: $Enums.ApplicationPackageQaStatus
@@ -2723,7 +3323,10 @@ export type applicationPackageUpdateWithoutCoverLetterDraftInput = {
   application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutCoverLetterDraftInput = {
@@ -2735,6 +3338,7 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterDraftInput = {
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2754,6 +3358,8 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterDraftInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftInput = {
@@ -2765,6 +3371,7 @@ export type applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftInput = 
   version?: Prisma.IntFieldUpdateOperationsInput | number
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
@@ -2814,6 +3421,9 @@ export type applicationPackageUpdateWithoutApplicationEmailDraftInput = {
   resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateWithoutApplicationEmailDraftInput = {
@@ -2826,6 +3436,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationEmailDraftInput =
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
   qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
@@ -2844,6 +3455,8 @@ export type applicationPackageUncheckedUpdateWithoutApplicationEmailDraftInput =
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftInput = {
@@ -2856,6 +3469,135 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftInp
   resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type applicationPackageCreateManyCoverLetterRevisionInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationPackageUpdateWithoutCoverLetterRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutCoverLetterRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
   readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
   qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
@@ -2877,6 +3619,44 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftInp
 }
 
 
+/**
+ * Count Type ApplicationPackageCountOutputType
+ */
+
+export type ApplicationPackageCountOutputType = {
+  executionSessions: number
+  submissionAttempts: number
+}
+
+export type ApplicationPackageCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  executionSessions?: boolean | ApplicationPackageCountOutputTypeCountExecutionSessionsArgs
+  submissionAttempts?: boolean | ApplicationPackageCountOutputTypeCountSubmissionAttemptsArgs
+}
+
+/**
+ * ApplicationPackageCountOutputType without action
+ */
+export type ApplicationPackageCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApplicationPackageCountOutputType
+   */
+  select?: Prisma.ApplicationPackageCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ApplicationPackageCountOutputType without action
+ */
+export type ApplicationPackageCountOutputTypeCountExecutionSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationExecutionSessionWhereInput
+}
+
+/**
+ * ApplicationPackageCountOutputType without action
+ */
+export type ApplicationPackageCountOutputTypeCountSubmissionAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+}
+
 
 export type applicationPackageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -2888,6 +3668,7 @@ export type applicationPackageSelect<ExtArgs extends runtime.Types.Extensions.In
   resumeVersionId?: boolean
   resumeVersionRevisionId?: boolean
   coverLetterDraftId?: boolean
+  coverLetterRevisionId?: boolean
   applicationEmailDraftId?: boolean
   status?: boolean
   readinessStatus?: boolean
@@ -2914,7 +3695,11 @@ export type applicationPackageSelect<ExtArgs extends runtime.Types.Extensions.In
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  executionSessions?: boolean | Prisma.applicationPackage$executionSessionsArgs<ExtArgs>
+  submissionAttempts?: boolean | Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationPackageCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["applicationPackage"]>
 
 export type applicationPackageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2927,6 +3712,7 @@ export type applicationPackageSelectCreateManyAndReturn<ExtArgs extends runtime.
   resumeVersionId?: boolean
   resumeVersionRevisionId?: boolean
   coverLetterDraftId?: boolean
+  coverLetterRevisionId?: boolean
   applicationEmailDraftId?: boolean
   status?: boolean
   readinessStatus?: boolean
@@ -2953,6 +3739,7 @@ export type applicationPackageSelectCreateManyAndReturn<ExtArgs extends runtime.
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
 }, ExtArgs["result"]["applicationPackage"]>
 
@@ -2966,6 +3753,7 @@ export type applicationPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.
   resumeVersionId?: boolean
   resumeVersionRevisionId?: boolean
   coverLetterDraftId?: boolean
+  coverLetterRevisionId?: boolean
   applicationEmailDraftId?: boolean
   status?: boolean
   readinessStatus?: boolean
@@ -2992,6 +3780,7 @@ export type applicationPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
 }, ExtArgs["result"]["applicationPackage"]>
 
@@ -3005,6 +3794,7 @@ export type applicationPackageSelectScalar = {
   resumeVersionId?: boolean
   resumeVersionRevisionId?: boolean
   coverLetterDraftId?: boolean
+  coverLetterRevisionId?: boolean
   applicationEmailDraftId?: boolean
   status?: boolean
   readinessStatus?: boolean
@@ -3026,7 +3816,7 @@ export type applicationPackageSelectScalar = {
   updatedAt?: boolean
 }
 
-export type applicationPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobPostingId" | "applicationQueueItemId" | "applicationId" | "version" | "resumeVersionId" | "resumeVersionRevisionId" | "coverLetterDraftId" | "applicationEmailDraftId" | "status" | "readinessStatus" | "qaStatus" | "opportunitySnapshotJson" | "evidenceSnapshotJson" | "gapSnapshotJson" | "eligibilitySnapshotJson" | "requiredUserInputsJson" | "qaSnapshotJson" | "warningsJson" | "contextFingerprint" | "preparedAt" | "approvedAt" | "submissionStartedAt" | "submittedAt" | "archivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationPackage"]>
+export type applicationPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobPostingId" | "applicationQueueItemId" | "applicationId" | "version" | "resumeVersionId" | "resumeVersionRevisionId" | "coverLetterDraftId" | "coverLetterRevisionId" | "applicationEmailDraftId" | "status" | "readinessStatus" | "qaStatus" | "opportunitySnapshotJson" | "evidenceSnapshotJson" | "gapSnapshotJson" | "eligibilitySnapshotJson" | "requiredUserInputsJson" | "qaSnapshotJson" | "warningsJson" | "contextFingerprint" | "preparedAt" | "approvedAt" | "submissionStartedAt" | "submittedAt" | "archivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationPackage"]>
 export type applicationPackageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobPosting?: boolean | Prisma.applicationPackage$jobPostingArgs<ExtArgs>
@@ -3035,7 +3825,11 @@ export type applicationPackageInclude<ExtArgs extends runtime.Types.Extensions.I
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  executionSessions?: boolean | Prisma.applicationPackage$executionSessionsArgs<ExtArgs>
+  submissionAttempts?: boolean | Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationPackageCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationPackageIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -3045,6 +3839,7 @@ export type applicationPackageIncludeCreateManyAndReturn<ExtArgs extends runtime
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
 }
 export type applicationPackageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3055,6 +3850,7 @@ export type applicationPackageIncludeUpdateManyAndReturn<ExtArgs extends runtime
   resumeVersion?: boolean | Prisma.applicationPackage$resumeVersionArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
+  coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
 }
 
@@ -3068,7 +3864,10 @@ export type $applicationPackagePayload<ExtArgs extends runtime.Types.Extensions.
     resumeVersion: Prisma.$resumeVersionPayload<ExtArgs> | null
     resumeVersionRevision: Prisma.$resumeVersionRevisionPayload<ExtArgs> | null
     coverLetterDraft: Prisma.$communicationDraftPayload<ExtArgs> | null
+    coverLetterRevision: Prisma.$communicationDraftRevisionPayload<ExtArgs> | null
     applicationEmailDraft: Prisma.$communicationDraftPayload<ExtArgs> | null
+    executionSessions: Prisma.$applicationExecutionSessionPayload<ExtArgs>[]
+    submissionAttempts: Prisma.$applicationSubmissionAttemptPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3080,6 +3879,7 @@ export type $applicationPackagePayload<ExtArgs extends runtime.Types.Extensions.
     resumeVersionId: string | null
     resumeVersionRevisionId: string | null
     coverLetterDraftId: string | null
+    coverLetterRevisionId: string | null
     applicationEmailDraftId: string | null
     status: $Enums.ApplicationPackageStatus
     readinessStatus: $Enums.ApplicationReadinessStatus
@@ -3500,7 +4300,10 @@ export interface Prisma__applicationPackageClient<T, Null = never, ExtArgs exten
   resumeVersion<T extends Prisma.applicationPackage$resumeVersionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$resumeVersionArgs<ExtArgs>>): Prisma.Prisma__resumeVersionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   resumeVersionRevision<T extends Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$resumeVersionRevisionArgs<ExtArgs>>): Prisma.Prisma__resumeVersionRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   coverLetterDraft<T extends Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  coverLetterRevision<T extends Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>>): Prisma.Prisma__communicationDraftRevisionClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applicationEmailDraft<T extends Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  executionSessions<T extends Prisma.applicationPackage$executionSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$executionSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationExecutionSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  submissionAttempts<T extends Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationSubmissionAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3539,6 +4342,7 @@ export interface applicationPackageFieldRefs {
   readonly resumeVersionId: Prisma.FieldRef<"applicationPackage", 'String'>
   readonly resumeVersionRevisionId: Prisma.FieldRef<"applicationPackage", 'String'>
   readonly coverLetterDraftId: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly coverLetterRevisionId: Prisma.FieldRef<"applicationPackage", 'String'>
   readonly applicationEmailDraftId: Prisma.FieldRef<"applicationPackage", 'String'>
   readonly status: Prisma.FieldRef<"applicationPackage", 'ApplicationPackageStatus'>
   readonly readinessStatus: Prisma.FieldRef<"applicationPackage", 'ApplicationReadinessStatus'>
@@ -4073,6 +4877,25 @@ export type applicationPackage$coverLetterDraftArgs<ExtArgs extends runtime.Type
 }
 
 /**
+ * applicationPackage.coverLetterRevision
+ */
+export type applicationPackage$coverLetterRevisionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the communicationDraftRevision
+   */
+  select?: Prisma.communicationDraftRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the communicationDraftRevision
+   */
+  omit?: Prisma.communicationDraftRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.communicationDraftRevisionInclude<ExtArgs> | null
+  where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+/**
  * applicationPackage.applicationEmailDraft
  */
 export type applicationPackage$applicationEmailDraftArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -4089,6 +4912,54 @@ export type applicationPackage$applicationEmailDraftArgs<ExtArgs extends runtime
    */
   include?: Prisma.communicationDraftInclude<ExtArgs> | null
   where?: Prisma.communicationDraftWhereInput
+}
+
+/**
+ * applicationPackage.executionSessions
+ */
+export type applicationPackage$executionSessionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationExecutionSession
+   */
+  select?: Prisma.applicationExecutionSessionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationExecutionSession
+   */
+  omit?: Prisma.applicationExecutionSessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationExecutionSessionInclude<ExtArgs> | null
+  where?: Prisma.applicationExecutionSessionWhereInput
+  orderBy?: Prisma.applicationExecutionSessionOrderByWithRelationInput | Prisma.applicationExecutionSessionOrderByWithRelationInput[]
+  cursor?: Prisma.applicationExecutionSessionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationExecutionSessionScalarFieldEnum | Prisma.ApplicationExecutionSessionScalarFieldEnum[]
+}
+
+/**
+ * applicationPackage.submissionAttempts
+ */
+export type applicationPackage$submissionAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationSubmissionAttempt
+   */
+  select?: Prisma.applicationSubmissionAttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationSubmissionAttempt
+   */
+  omit?: Prisma.applicationSubmissionAttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationSubmissionAttemptInclude<ExtArgs> | null
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+  orderBy?: Prisma.applicationSubmissionAttemptOrderByWithRelationInput | Prisma.applicationSubmissionAttemptOrderByWithRelationInput[]
+  cursor?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationSubmissionAttemptScalarFieldEnum | Prisma.ApplicationSubmissionAttemptScalarFieldEnum[]
 }
 
 /**
