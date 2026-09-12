@@ -9,7 +9,9 @@
     "lint": "next lint",
     "m245b:fixtures": "npx tsx src/features/application-execution/fixtures/start-server.ts",
     "m245c:qa": "npx tsx scripts/m245c-qa.ts",
-    "m245c:live": "npx tsx scripts/m245c-live-provider-validation.ts"
+    "m245c:live": "npx tsx scripts/m245c-live-provider-validation.ts",
+    "m25a:qa": "npx tsx scripts/m25a-qa.ts",
+    "m25a:headed": "npx tsx scripts/m25a-headed-qa.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

@@ -42,6 +42,14 @@ model user {
   applicationExecutionEvents    applicationExecutionEvent[]
   applicationSubmissionAttempts applicationSubmissionAttempt[]
   applicationAnswerPreferences  applicationAnswerPreference[]
+  linkedinGrowthProfiles        linkedinGrowthProfile[]
+  linkedinContentPillars        linkedinContentPillar[]
+  linkedinContentIdeas          linkedinContentIdea[]
+  linkedinPosts                 linkedinPost[]
+  linkedinPostRevisions         linkedinPostRevision[]
+  linkedinPublishingPlans       linkedinPublishingPlan[]
+  linkedinPostPerformances      linkedinPostPerformance[]
+  linkedinGrowthInsights        linkedinGrowthInsight[]
 }
 
 model session {
@@ -1556,4 +1564,470 @@ model applicationAnswerPreference {
   @@index([userId])
   @@index([key])
   @@index([expiresAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 25A — LinkedIn Growth System
+// ---------------------------------------------------------------------------
+
+enum LinkedinGrowthGoal {
+  GET_HIRED
+  ATTRACT_RECRUITERS
+  BUILD_AUTHORITY
+  SHOWCASE_PROJECTS
+  GROW_NETWORK
+  CAREER_TRANSITION
+  PERSONAL_BRAND
+  LEARN_IN_PUBLIC
+}
+
+enum LinkedinGrowthStrategyStatus {
+  DRAFT
+  ACTIVE
+  NEEDS_REFRESH
+  ARCHIVED
+}
+
+enum LinkedinContentPillarPriority {
+  CORE
+  SECONDARY
+  EXPERIMENTAL
+}
+
+enum LinkedinContentIdeaStatus {
+  NEW
+  SHORTLISTED
+  DRAFTED
+  DISMISSED
+  ARCHIVED
+}
+
+enum LinkedinContentFormat {
+  TEXT_POST
+  STORY_POST
+  TECHNICAL_BREAKDOWN
+  PROJECT_SHOWCASE
+  LESSON_LEARNED
+  CAREER_REFLECTION
+  OPINION
+  CHECKLIST
+  HOW_TO
+  CASE_STUDY
+  MILESTONE
+  QUESTION
+  RESOURCE_SHARE
+}
+
+enum LinkedinPostObjective {
+  SHOW_EXPERTISE
+  SHOW_PROJECT_EVIDENCE
+  SHOW_LEARNING
+  BUILD_TRUST
+  START_DISCUSSION
+  CAREER_POSITIONING
+  NETWORKING
+  MILESTONE
+}
+
+enum LinkedinPostStatus {
+  DRAFT
+  REVIEW
+  READY
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LinkedinPostRevisionSource {
+  AI_GENERATED
+  USER_EDITED
+  REGENERATED
+  SHORTENED
+  EXPANDED
+  TONE_CHANGED
+  HOOK_REWRITTEN
+  CTA_REWRITTEN
+  REPURPOSED
+  TRANSLATED
+  RULE_BASED_FALLBACK
+}
+
+enum LinkedinPublishingPlanStatus {
+  DRAFT
+  READY
+  SCHEDULED
+  PUBLISHED
+  CANCELLED
+  STALE
+}
+
+enum LinkedinPublishMode {
+  MANUAL
+  LINKEDIN_OFFICIAL
+}
+
+enum LinkedinPublishingSource {
+  USER_CONFIRMED
+  LINKEDIN_OFFICIAL
+}
+
+enum LinkedinPerformanceSource {
+  USER_ENTERED
+  LINKEDIN_OFFICIAL
+}
+
+enum LinkedinGrowthInsightType {
+  PILLAR_PERFORMANCE
+  FORMAT_PERFORMANCE
+  AUDIENCE_RESPONSE
+  POSTING_FREQUENCY
+  HOOK_PATTERN
+  CONTENT_GAP
+  RECRUITER_SIGNAL
+  PROFILE_RECOMMENDATION
+  NEXT_POST_RECOMMENDATION
+}
+
+enum LinkedinGrowthInsightStatus {
+  ACTIVE
+  DISMISSED
+}
+
+enum LinkedinEvidenceStrength {
+  STRONG
+  MODERATE
+  WEAK
+}
+
+enum LinkedinRecruiterRelevance {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum LinkedinTimeliness {
+  EVERGREEN
+  TIMELY
+  EXPIRED
+}
+
+enum LinkedinContentTone {
+  PROFESSIONAL
+  CONVERSATIONAL
+  TECHNICAL
+  REFLECTIVE
+  DIRECT
+  EDUCATIONAL
+}
+
+enum LinkedinContentLanguage {
+  ENGLISH
+  ARABIC
+  TURKISH
+}
+
+enum LinkedinPostQaStatus {
+  PASS
+  NEEDS_REVIEW
+  BLOCKED
+}
+
+enum LinkedinPostGenerationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+model linkedinGrowthProfile {
+  id     String @id @default(cuid())
+  userId String
+
+  primaryGoal        LinkedinGrowthGoal
+  secondaryGoalsJson Json               @default("[]")
+
+  targetRoleTitlesJson Json @default("[]")
+  targetAudienceJson   Json @default("[]")
+
+  positioningStatement   String?
+  professionalThemesJson Json    @default("[]")
+
+  contentTone            LinkedinContentTone     @default(PROFESSIONAL)
+  preferredLanguage      LinkedinContentLanguage @default(ENGLISH)
+  postingFrequencyTarget Int?
+
+  visibilityGoal String?
+  recruiterGoal  String?
+  networkGoal    String?
+
+  profileSnapshotJson Json?
+
+  status                LinkedinGrowthStrategyStatus @default(DRAFT)
+  lastStrategyRefreshAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     user                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  pillars  linkedinContentPillar[]
+  ideas    linkedinContentIdea[]
+  posts    linkedinPost[]
+  insights linkedinGrowthInsight[]
+
+  @@index([userId])
+  @@index([userId, status])
+  @@index([updatedAt])
+}
+
+model linkedinContentPillar {
+  id                      String @id @default(cuid())
+  userId                  String
+  linkedinGrowthProfileId String
+
+  name        String
+  slug        String
+  description String
+
+  goal     String?
+  audience String?
+  priority LinkedinContentPillarPriority @default(SECONDARY)
+
+  evidenceSourcesJson Json @default("[]")
+  exampleAnglesJson   Json @default("[]")
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user          user                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  growthProfile linkedinGrowthProfile @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
+  ideas         linkedinContentIdea[]
+  posts         linkedinPost[]
+
+  @@unique([linkedinGrowthProfileId, slug])
+  @@index([userId])
+  @@index([linkedinGrowthProfileId])
+  @@index([isActive])
+}
+
+model linkedinContentIdea {
+  id                      String  @id @default(cuid())
+  userId                  String
+  linkedinGrowthProfileId String
+  pillarId                String?
+
+  title   String
+  angle   String
+  summary String
+
+  format    LinkedinContentFormat
+  objective LinkedinPostObjective
+  audience  String?
+
+  sourceContextJson Json @default("{}")
+  evidenceJson      Json @default("[]")
+
+  evidenceStrength   LinkedinEvidenceStrength
+  recruiterRelevance LinkedinRecruiterRelevance @default(MEDIUM)
+
+  timeliness LinkedinTimeliness @default(EVERGREEN)
+  expiresAt  DateTime?
+
+  priorityScore      Int
+  contextFingerprint String?
+
+  status LinkedinContentIdeaStatus @default(NEW)
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archivedAt DateTime?
+
+  user          user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  growthProfile linkedinGrowthProfile  @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
+  pillar        linkedinContentPillar? @relation(fields: [pillarId], references: [id], onDelete: SetNull)
+  posts         linkedinPost[]
+
+  @@index([userId])
+  @@index([linkedinGrowthProfileId])
+  @@index([pillarId])
+  @@index([status])
+  @@index([contextFingerprint])
+  @@index([updatedAt])
+}
+
+model linkedinPost {
+  id     String @id @default(cuid())
+  userId String
+
+  linkedinGrowthProfileId String
+  contentIdeaId           String?
+  pillarId                String?
+
+  status           LinkedinPostStatus @default(DRAFT)
+  activeRevisionId String?            @unique
+
+  objective        LinkedinPostObjective
+  format           LinkedinContentFormat
+  intendedAudience String?
+
+  plannedPublishAt DateTime?
+  publishedAt      DateTime?
+
+  publishingSource LinkedinPublishingSource?
+
+  externalLinkedInPostId String?
+  externalLinkedInUrl    String?
+
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  archivedAt DateTime?
+
+  user            user                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  growthProfile   linkedinGrowthProfile     @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
+  contentIdea     linkedinContentIdea?      @relation(fields: [contentIdeaId], references: [id], onDelete: SetNull)
+  pillar          linkedinContentPillar?    @relation(fields: [pillarId], references: [id], onDelete: SetNull)
+  revisions       linkedinPostRevision[]    @relation("LinkedinPostRevisions")
+  activeRevision  linkedinPostRevision?     @relation("ActiveLinkedinPostRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+  publishingPlans linkedinPublishingPlan[]
+  performances    linkedinPostPerformance[]
+
+  @@index([userId])
+  @@index([linkedinGrowthProfileId])
+  @@index([contentIdeaId])
+  @@index([pillarId])
+  @@index([status])
+  @@index([updatedAt])
+}
+
+model linkedinPostRevision {
+  id             String @id @default(cuid())
+  userId         String
+  linkedinPostId String
+
+  revisionNumber Int
+  source         LinkedinPostRevisionSource
+
+  hook String
+  body String
+  cta  String?
+
+  tone     LinkedinContentTone
+  language LinkedinContentLanguage
+
+  hashtagsJson Json @default("[]")
+  mentionsJson Json @default("[]")
+
+  evidenceJson              Json @default("[]")
+  sourceContextSnapshotJson Json @default("{}")
+  warningsJson              Json @default("[]")
+
+  qaStatus      LinkedinPostQaStatus?
+  qaFingerprint String?
+
+  generationStatus LinkedinPostGenerationStatus @default(COMPLETED)
+  aiSource         String?
+  model            String?
+
+  createdAt DateTime @default(now())
+
+  user            user                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinPost    linkedinPost             @relation("LinkedinPostRevisions", fields: [linkedinPostId], references: [id], onDelete: Cascade)
+  activeForPost   linkedinPost?            @relation("ActiveLinkedinPostRevision")
+  publishingPlans linkedinPublishingPlan[]
+
+  @@unique([linkedinPostId, revisionNumber])
+  @@index([userId])
+  @@index([linkedinPostId])
+  @@index([createdAt])
+}
+
+model linkedinPublishingPlan {
+  id     String @id @default(cuid())
+  userId String
+
+  linkedinPostId         String
+  linkedinPostRevisionId String
+
+  status      LinkedinPublishingPlanStatus @default(DRAFT)
+  publishMode LinkedinPublishMode          @default(MANUAL)
+
+  plannedPublishAt DateTime?
+  timezone         String?
+
+  approvedAt  DateTime?
+  publishedAt DateTime?
+  cancelledAt DateTime?
+
+  publishingSource LinkedinPublishingSource?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user                 user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinPost         linkedinPost         @relation(fields: [linkedinPostId], references: [id], onDelete: Cascade)
+  linkedinPostRevision linkedinPostRevision @relation(fields: [linkedinPostRevisionId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([linkedinPostId])
+  @@index([linkedinPostRevisionId])
+  @@index([status])
+  @@index([plannedPublishAt])
+}
+
+model linkedinPostPerformance {
+  id     String @id @default(cuid())
+  userId String
+
+  linkedinPostId String
+
+  capturedAt DateTime
+
+  impressions        Int?
+  views              Int?
+  likes              Int?
+  comments           Int?
+  reposts            Int?
+  saves              Int?
+  profileViews       Int?
+  newFollowers       Int?
+  connectionRequests Int?
+  recruiterMessages  Int?
+
+  source LinkedinPerformanceSource @default(USER_ENTERED)
+  notes  String?
+
+  createdAt DateTime @default(now())
+
+  user         user         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinPost linkedinPost @relation(fields: [linkedinPostId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([linkedinPostId])
+  @@index([capturedAt])
+}
+
+model linkedinGrowthInsight {
+  id                      String @id @default(cuid())
+  userId                  String
+  linkedinGrowthProfileId String
+
+  type    LinkedinGrowthInsightType
+  title   String
+  summary String
+
+  evidenceJson Json                        @default("{}")
+  confidence   String
+  status       LinkedinGrowthInsightStatus @default(ACTIVE)
+
+  createdAt   DateTime  @default(now())
+  dismissedAt DateTime?
+
+  user          user                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  growthProfile linkedinGrowthProfile @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([linkedinGrowthProfileId])
+  @@index([type])
+  @@index([status])
+  @@index([createdAt])
 }

@@ -638,3 +638,234 @@ export const ApplicationExecutionFailureCode = {
 } as const
 
 export type ApplicationExecutionFailureCode = (typeof ApplicationExecutionFailureCode)[keyof typeof ApplicationExecutionFailureCode]
+
+
+export const LinkedinGrowthGoal = {
+  GET_HIRED: 'GET_HIRED',
+  ATTRACT_RECRUITERS: 'ATTRACT_RECRUITERS',
+  BUILD_AUTHORITY: 'BUILD_AUTHORITY',
+  SHOWCASE_PROJECTS: 'SHOWCASE_PROJECTS',
+  GROW_NETWORK: 'GROW_NETWORK',
+  CAREER_TRANSITION: 'CAREER_TRANSITION',
+  PERSONAL_BRAND: 'PERSONAL_BRAND',
+  LEARN_IN_PUBLIC: 'LEARN_IN_PUBLIC'
+} as const
+
+export type LinkedinGrowthGoal = (typeof LinkedinGrowthGoal)[keyof typeof LinkedinGrowthGoal]
+
+
+export const LinkedinGrowthStrategyStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  NEEDS_REFRESH: 'NEEDS_REFRESH',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type LinkedinGrowthStrategyStatus = (typeof LinkedinGrowthStrategyStatus)[keyof typeof LinkedinGrowthStrategyStatus]
+
+
+export const LinkedinContentPillarPriority = {
+  CORE: 'CORE',
+  SECONDARY: 'SECONDARY',
+  EXPERIMENTAL: 'EXPERIMENTAL'
+} as const
+
+export type LinkedinContentPillarPriority = (typeof LinkedinContentPillarPriority)[keyof typeof LinkedinContentPillarPriority]
+
+
+export const LinkedinContentIdeaStatus = {
+  NEW: 'NEW',
+  SHORTLISTED: 'SHORTLISTED',
+  DRAFTED: 'DRAFTED',
+  DISMISSED: 'DISMISSED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type LinkedinContentIdeaStatus = (typeof LinkedinContentIdeaStatus)[keyof typeof LinkedinContentIdeaStatus]
+
+
+export const LinkedinContentFormat = {
+  TEXT_POST: 'TEXT_POST',
+  STORY_POST: 'STORY_POST',
+  TECHNICAL_BREAKDOWN: 'TECHNICAL_BREAKDOWN',
+  PROJECT_SHOWCASE: 'PROJECT_SHOWCASE',
+  LESSON_LEARNED: 'LESSON_LEARNED',
+  CAREER_REFLECTION: 'CAREER_REFLECTION',
+  OPINION: 'OPINION',
+  CHECKLIST: 'CHECKLIST',
+  HOW_TO: 'HOW_TO',
+  CASE_STUDY: 'CASE_STUDY',
+  MILESTONE: 'MILESTONE',
+  QUESTION: 'QUESTION',
+  RESOURCE_SHARE: 'RESOURCE_SHARE'
+} as const
+
+export type LinkedinContentFormat = (typeof LinkedinContentFormat)[keyof typeof LinkedinContentFormat]
+
+
+export const LinkedinPostObjective = {
+  SHOW_EXPERTISE: 'SHOW_EXPERTISE',
+  SHOW_PROJECT_EVIDENCE: 'SHOW_PROJECT_EVIDENCE',
+  SHOW_LEARNING: 'SHOW_LEARNING',
+  BUILD_TRUST: 'BUILD_TRUST',
+  START_DISCUSSION: 'START_DISCUSSION',
+  CAREER_POSITIONING: 'CAREER_POSITIONING',
+  NETWORKING: 'NETWORKING',
+  MILESTONE: 'MILESTONE'
+} as const
+
+export type LinkedinPostObjective = (typeof LinkedinPostObjective)[keyof typeof LinkedinPostObjective]
+
+
+export const LinkedinPostStatus = {
+  DRAFT: 'DRAFT',
+  REVIEW: 'REVIEW',
+  READY: 'READY',
+  SCHEDULED: 'SCHEDULED',
+  PUBLISHED: 'PUBLISHED',
+  ARCHIVED: 'ARCHIVED'
+} as const
+
+export type LinkedinPostStatus = (typeof LinkedinPostStatus)[keyof typeof LinkedinPostStatus]
+
+
+export const LinkedinPostRevisionSource = {
+  AI_GENERATED: 'AI_GENERATED',
+  USER_EDITED: 'USER_EDITED',
+  REGENERATED: 'REGENERATED',
+  SHORTENED: 'SHORTENED',
+  EXPANDED: 'EXPANDED',
+  TONE_CHANGED: 'TONE_CHANGED',
+  HOOK_REWRITTEN: 'HOOK_REWRITTEN',
+  CTA_REWRITTEN: 'CTA_REWRITTEN',
+  REPURPOSED: 'REPURPOSED',
+  TRANSLATED: 'TRANSLATED',
+  RULE_BASED_FALLBACK: 'RULE_BASED_FALLBACK'
+} as const
+
+export type LinkedinPostRevisionSource = (typeof LinkedinPostRevisionSource)[keyof typeof LinkedinPostRevisionSource]
+
+
+export const LinkedinPublishingPlanStatus = {
+  DRAFT: 'DRAFT',
+  READY: 'READY',
+  SCHEDULED: 'SCHEDULED',
+  PUBLISHED: 'PUBLISHED',
+  CANCELLED: 'CANCELLED',
+  STALE: 'STALE'
+} as const
+
+export type LinkedinPublishingPlanStatus = (typeof LinkedinPublishingPlanStatus)[keyof typeof LinkedinPublishingPlanStatus]
+
+
+export const LinkedinPublishMode = {
+  MANUAL: 'MANUAL',
+  LINKEDIN_OFFICIAL: 'LINKEDIN_OFFICIAL'
+} as const
+
+export type LinkedinPublishMode = (typeof LinkedinPublishMode)[keyof typeof LinkedinPublishMode]
+
+
+export const LinkedinPublishingSource = {
+  USER_CONFIRMED: 'USER_CONFIRMED',
+  LINKEDIN_OFFICIAL: 'LINKEDIN_OFFICIAL'
+} as const
+
+export type LinkedinPublishingSource = (typeof LinkedinPublishingSource)[keyof typeof LinkedinPublishingSource]
+
+
+export const LinkedinPerformanceSource = {
+  USER_ENTERED: 'USER_ENTERED',
+  LINKEDIN_OFFICIAL: 'LINKEDIN_OFFICIAL'
+} as const
+
+export type LinkedinPerformanceSource = (typeof LinkedinPerformanceSource)[keyof typeof LinkedinPerformanceSource]
+
+
+export const LinkedinGrowthInsightType = {
+  PILLAR_PERFORMANCE: 'PILLAR_PERFORMANCE',
+  FORMAT_PERFORMANCE: 'FORMAT_PERFORMANCE',
+  AUDIENCE_RESPONSE: 'AUDIENCE_RESPONSE',
+  POSTING_FREQUENCY: 'POSTING_FREQUENCY',
+  HOOK_PATTERN: 'HOOK_PATTERN',
+  CONTENT_GAP: 'CONTENT_GAP',
+  RECRUITER_SIGNAL: 'RECRUITER_SIGNAL',
+  PROFILE_RECOMMENDATION: 'PROFILE_RECOMMENDATION',
+  NEXT_POST_RECOMMENDATION: 'NEXT_POST_RECOMMENDATION'
+} as const
+
+export type LinkedinGrowthInsightType = (typeof LinkedinGrowthInsightType)[keyof typeof LinkedinGrowthInsightType]
+
+
+export const LinkedinGrowthInsightStatus = {
+  ACTIVE: 'ACTIVE',
+  DISMISSED: 'DISMISSED'
+} as const
+
+export type LinkedinGrowthInsightStatus = (typeof LinkedinGrowthInsightStatus)[keyof typeof LinkedinGrowthInsightStatus]
+
+
+export const LinkedinEvidenceStrength = {
+  STRONG: 'STRONG',
+  MODERATE: 'MODERATE',
+  WEAK: 'WEAK'
+} as const
+
+export type LinkedinEvidenceStrength = (typeof LinkedinEvidenceStrength)[keyof typeof LinkedinEvidenceStrength]
+
+
+export const LinkedinRecruiterRelevance = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type LinkedinRecruiterRelevance = (typeof LinkedinRecruiterRelevance)[keyof typeof LinkedinRecruiterRelevance]
+
+
+export const LinkedinTimeliness = {
+  EVERGREEN: 'EVERGREEN',
+  TIMELY: 'TIMELY',
+  EXPIRED: 'EXPIRED'
+} as const
+
+export type LinkedinTimeliness = (typeof LinkedinTimeliness)[keyof typeof LinkedinTimeliness]
+
+
+export const LinkedinContentTone = {
+  PROFESSIONAL: 'PROFESSIONAL',
+  CONVERSATIONAL: 'CONVERSATIONAL',
+  TECHNICAL: 'TECHNICAL',
+  REFLECTIVE: 'REFLECTIVE',
+  DIRECT: 'DIRECT',
+  EDUCATIONAL: 'EDUCATIONAL'
+} as const
+
+export type LinkedinContentTone = (typeof LinkedinContentTone)[keyof typeof LinkedinContentTone]
+
+
+export const LinkedinContentLanguage = {
+  ENGLISH: 'ENGLISH',
+  ARABIC: 'ARABIC',
+  TURKISH: 'TURKISH'
+} as const
+
+export type LinkedinContentLanguage = (typeof LinkedinContentLanguage)[keyof typeof LinkedinContentLanguage]
+
+
+export const LinkedinPostQaStatus = {
+  PASS: 'PASS',
+  NEEDS_REVIEW: 'NEEDS_REVIEW',
+  BLOCKED: 'BLOCKED'
+} as const
+
+export type LinkedinPostQaStatus = (typeof LinkedinPostQaStatus)[keyof typeof LinkedinPostQaStatus]
+
+
+export const LinkedinPostGenerationStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  FAILED: 'FAILED'
+} as const
+
+export type LinkedinPostGenerationStatus = (typeof LinkedinPostGenerationStatus)[keyof typeof LinkedinPostGenerationStatus]

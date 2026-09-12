@@ -66,6 +66,13 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     href: "/workspace/analytics",
   },
   {
+    id: "nav-linkedin",
+    title: "Go to LinkedIn",
+    group: "Navigation",
+    keywords: ["linkedin", "posts", "strategy", "content", "growth"],
+    href: "/workspace/linkedin",
+  },
+  {
     id: "nav-settings",
     title: "Open Settings",
     group: "Navigation",

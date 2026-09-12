@@ -414,7 +414,15 @@ export const ModelName = {
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
   applicationSubmissionAttempt: 'applicationSubmissionAttempt',
-  applicationAnswerPreference: 'applicationAnswerPreference'
+  applicationAnswerPreference: 'applicationAnswerPreference',
+  linkedinGrowthProfile: 'linkedinGrowthProfile',
+  linkedinContentPillar: 'linkedinContentPillar',
+  linkedinContentIdea: 'linkedinContentIdea',
+  linkedinPost: 'linkedinPost',
+  linkedinPostRevision: 'linkedinPostRevision',
+  linkedinPublishingPlan: 'linkedinPublishingPlan',
+  linkedinPostPerformance: 'linkedinPostPerformance',
+  linkedinGrowthInsight: 'linkedinGrowthInsight'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -430,7 +438,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2728,6 +2736,598 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    linkedinGrowthProfile: {
+      payload: Prisma.$linkedinGrowthProfilePayload<ExtArgs>
+      fields: Prisma.linkedinGrowthProfileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinGrowthProfileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinGrowthProfileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinGrowthProfileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinGrowthProfileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        findMany: {
+          args: Prisma.linkedinGrowthProfileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>[]
+        }
+        create: {
+          args: Prisma.linkedinGrowthProfileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        createMany: {
+          args: Prisma.linkedinGrowthProfileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinGrowthProfileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinGrowthProfileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        update: {
+          args: Prisma.linkedinGrowthProfileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinGrowthProfileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinGrowthProfileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinGrowthProfileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinGrowthProfileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthProfilePayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinGrowthProfileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinGrowthProfile>
+        }
+        groupBy: {
+          args: Prisma.linkedinGrowthProfileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinGrowthProfileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinGrowthProfileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinGrowthProfileCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinContentPillar: {
+      payload: Prisma.$linkedinContentPillarPayload<ExtArgs>
+      fields: Prisma.linkedinContentPillarFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinContentPillarFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinContentPillarFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinContentPillarFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinContentPillarFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinContentPillarFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinContentPillarCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinContentPillarCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinContentPillarCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinContentPillarDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        update: {
+          args: Prisma.linkedinContentPillarUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinContentPillarDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinContentPillarUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinContentPillarUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinContentPillarUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentPillarPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinContentPillarAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinContentPillar>
+        }
+        groupBy: {
+          args: Prisma.linkedinContentPillarGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinContentPillarGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinContentPillarCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinContentPillarCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinContentIdea: {
+      payload: Prisma.$linkedinContentIdeaPayload<ExtArgs>
+      fields: Prisma.linkedinContentIdeaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinContentIdeaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinContentIdeaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinContentIdeaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinContentIdeaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinContentIdeaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinContentIdeaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinContentIdeaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinContentIdeaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinContentIdeaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        update: {
+          args: Prisma.linkedinContentIdeaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinContentIdeaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinContentIdeaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinContentIdeaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinContentIdeaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinContentIdeaPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinContentIdeaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinContentIdea>
+        }
+        groupBy: {
+          args: Prisma.linkedinContentIdeaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinContentIdeaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinContentIdeaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinContentIdeaCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinPost: {
+      payload: Prisma.$linkedinPostPayload<ExtArgs>
+      fields: Prisma.linkedinPostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinPostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinPostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinPostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinPostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinPostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinPostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinPostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinPostCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinPostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        update: {
+          args: Prisma.linkedinPostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinPostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinPostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinPostUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinPostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinPostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinPost>
+        }
+        groupBy: {
+          args: Prisma.linkedinPostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinPostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinPostRevision: {
+      payload: Prisma.$linkedinPostRevisionPayload<ExtArgs>
+      fields: Prisma.linkedinPostRevisionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinPostRevisionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinPostRevisionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinPostRevisionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinPostRevisionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinPostRevisionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinPostRevisionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinPostRevisionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinPostRevisionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinPostRevisionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        update: {
+          args: Prisma.linkedinPostRevisionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinPostRevisionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinPostRevisionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinPostRevisionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinPostRevisionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostRevisionPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinPostRevisionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinPostRevision>
+        }
+        groupBy: {
+          args: Prisma.linkedinPostRevisionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostRevisionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinPostRevisionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostRevisionCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinPublishingPlan: {
+      payload: Prisma.$linkedinPublishingPlanPayload<ExtArgs>
+      fields: Prisma.linkedinPublishingPlanFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinPublishingPlanFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinPublishingPlanFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinPublishingPlanFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinPublishingPlanFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinPublishingPlanFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinPublishingPlanCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinPublishingPlanCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinPublishingPlanCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinPublishingPlanDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        update: {
+          args: Prisma.linkedinPublishingPlanUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinPublishingPlanDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinPublishingPlanUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinPublishingPlanUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinPublishingPlanUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPublishingPlanPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinPublishingPlanAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinPublishingPlan>
+        }
+        groupBy: {
+          args: Prisma.linkedinPublishingPlanGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPublishingPlanGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinPublishingPlanCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPublishingPlanCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinPostPerformance: {
+      payload: Prisma.$linkedinPostPerformancePayload<ExtArgs>
+      fields: Prisma.linkedinPostPerformanceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinPostPerformanceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinPostPerformanceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinPostPerformanceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinPostPerformanceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        findMany: {
+          args: Prisma.linkedinPostPerformanceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>[]
+        }
+        create: {
+          args: Prisma.linkedinPostPerformanceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        createMany: {
+          args: Prisma.linkedinPostPerformanceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinPostPerformanceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinPostPerformanceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        update: {
+          args: Prisma.linkedinPostPerformanceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinPostPerformanceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinPostPerformanceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinPostPerformanceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinPostPerformanceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinPostPerformancePayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinPostPerformanceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinPostPerformance>
+        }
+        groupBy: {
+          args: Prisma.linkedinPostPerformanceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostPerformanceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinPostPerformanceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinPostPerformanceCountAggregateOutputType> | number
+        }
+      }
+    }
+    linkedinGrowthInsight: {
+      payload: Prisma.$linkedinGrowthInsightPayload<ExtArgs>
+      fields: Prisma.linkedinGrowthInsightFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.linkedinGrowthInsightFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.linkedinGrowthInsightFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        findFirst: {
+          args: Prisma.linkedinGrowthInsightFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.linkedinGrowthInsightFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        findMany: {
+          args: Prisma.linkedinGrowthInsightFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>[]
+        }
+        create: {
+          args: Prisma.linkedinGrowthInsightCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        createMany: {
+          args: Prisma.linkedinGrowthInsightCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.linkedinGrowthInsightCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>[]
+        }
+        delete: {
+          args: Prisma.linkedinGrowthInsightDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        update: {
+          args: Prisma.linkedinGrowthInsightUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        deleteMany: {
+          args: Prisma.linkedinGrowthInsightDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.linkedinGrowthInsightUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.linkedinGrowthInsightUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>[]
+        }
+        upsert: {
+          args: Prisma.linkedinGrowthInsightUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$linkedinGrowthInsightPayload>
+        }
+        aggregate: {
+          args: Prisma.LinkedinGrowthInsightAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLinkedinGrowthInsight>
+        }
+        groupBy: {
+          args: Prisma.linkedinGrowthInsightGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinGrowthInsightGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.linkedinGrowthInsightCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LinkedinGrowthInsightCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -3461,6 +4061,190 @@ export const ApplicationAnswerPreferenceScalarFieldEnum = {
 export type ApplicationAnswerPreferenceScalarFieldEnum = (typeof ApplicationAnswerPreferenceScalarFieldEnum)[keyof typeof ApplicationAnswerPreferenceScalarFieldEnum]
 
 
+export const LinkedinGrowthProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  primaryGoal: 'primaryGoal',
+  secondaryGoalsJson: 'secondaryGoalsJson',
+  targetRoleTitlesJson: 'targetRoleTitlesJson',
+  targetAudienceJson: 'targetAudienceJson',
+  positioningStatement: 'positioningStatement',
+  professionalThemesJson: 'professionalThemesJson',
+  contentTone: 'contentTone',
+  preferredLanguage: 'preferredLanguage',
+  postingFrequencyTarget: 'postingFrequencyTarget',
+  visibilityGoal: 'visibilityGoal',
+  recruiterGoal: 'recruiterGoal',
+  networkGoal: 'networkGoal',
+  profileSnapshotJson: 'profileSnapshotJson',
+  status: 'status',
+  lastStrategyRefreshAt: 'lastStrategyRefreshAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinGrowthProfileScalarFieldEnum = (typeof LinkedinGrowthProfileScalarFieldEnum)[keyof typeof LinkedinGrowthProfileScalarFieldEnum]
+
+
+export const LinkedinContentPillarScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  goal: 'goal',
+  audience: 'audience',
+  priority: 'priority',
+  evidenceSourcesJson: 'evidenceSourcesJson',
+  exampleAnglesJson: 'exampleAnglesJson',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinContentPillarScalarFieldEnum = (typeof LinkedinContentPillarScalarFieldEnum)[keyof typeof LinkedinContentPillarScalarFieldEnum]
+
+
+export const LinkedinContentIdeaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  pillarId: 'pillarId',
+  title: 'title',
+  angle: 'angle',
+  summary: 'summary',
+  format: 'format',
+  objective: 'objective',
+  audience: 'audience',
+  sourceContextJson: 'sourceContextJson',
+  evidenceJson: 'evidenceJson',
+  evidenceStrength: 'evidenceStrength',
+  recruiterRelevance: 'recruiterRelevance',
+  timeliness: 'timeliness',
+  expiresAt: 'expiresAt',
+  priorityScore: 'priorityScore',
+  contextFingerprint: 'contextFingerprint',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt'
+} as const
+
+export type LinkedinContentIdeaScalarFieldEnum = (typeof LinkedinContentIdeaScalarFieldEnum)[keyof typeof LinkedinContentIdeaScalarFieldEnum]
+
+
+export const LinkedinPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  contentIdeaId: 'contentIdeaId',
+  pillarId: 'pillarId',
+  status: 'status',
+  activeRevisionId: 'activeRevisionId',
+  objective: 'objective',
+  format: 'format',
+  intendedAudience: 'intendedAudience',
+  plannedPublishAt: 'plannedPublishAt',
+  publishedAt: 'publishedAt',
+  publishingSource: 'publishingSource',
+  externalLinkedInPostId: 'externalLinkedInPostId',
+  externalLinkedInUrl: 'externalLinkedInUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt'
+} as const
+
+export type LinkedinPostScalarFieldEnum = (typeof LinkedinPostScalarFieldEnum)[keyof typeof LinkedinPostScalarFieldEnum]
+
+
+export const LinkedinPostRevisionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  revisionNumber: 'revisionNumber',
+  source: 'source',
+  hook: 'hook',
+  body: 'body',
+  cta: 'cta',
+  tone: 'tone',
+  language: 'language',
+  hashtagsJson: 'hashtagsJson',
+  mentionsJson: 'mentionsJson',
+  evidenceJson: 'evidenceJson',
+  sourceContextSnapshotJson: 'sourceContextSnapshotJson',
+  warningsJson: 'warningsJson',
+  qaStatus: 'qaStatus',
+  qaFingerprint: 'qaFingerprint',
+  generationStatus: 'generationStatus',
+  aiSource: 'aiSource',
+  model: 'model',
+  createdAt: 'createdAt'
+} as const
+
+export type LinkedinPostRevisionScalarFieldEnum = (typeof LinkedinPostRevisionScalarFieldEnum)[keyof typeof LinkedinPostRevisionScalarFieldEnum]
+
+
+export const LinkedinPublishingPlanScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  linkedinPostRevisionId: 'linkedinPostRevisionId',
+  status: 'status',
+  publishMode: 'publishMode',
+  plannedPublishAt: 'plannedPublishAt',
+  timezone: 'timezone',
+  approvedAt: 'approvedAt',
+  publishedAt: 'publishedAt',
+  cancelledAt: 'cancelledAt',
+  publishingSource: 'publishingSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinPublishingPlanScalarFieldEnum = (typeof LinkedinPublishingPlanScalarFieldEnum)[keyof typeof LinkedinPublishingPlanScalarFieldEnum]
+
+
+export const LinkedinPostPerformanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  capturedAt: 'capturedAt',
+  impressions: 'impressions',
+  views: 'views',
+  likes: 'likes',
+  comments: 'comments',
+  reposts: 'reposts',
+  saves: 'saves',
+  profileViews: 'profileViews',
+  newFollowers: 'newFollowers',
+  connectionRequests: 'connectionRequests',
+  recruiterMessages: 'recruiterMessages',
+  source: 'source',
+  notes: 'notes',
+  createdAt: 'createdAt'
+} as const
+
+export type LinkedinPostPerformanceScalarFieldEnum = (typeof LinkedinPostPerformanceScalarFieldEnum)[keyof typeof LinkedinPostPerformanceScalarFieldEnum]
+
+
+export const LinkedinGrowthInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  type: 'type',
+  title: 'title',
+  summary: 'summary',
+  evidenceJson: 'evidenceJson',
+  confidence: 'confidence',
+  status: 'status',
+  createdAt: 'createdAt',
+  dismissedAt: 'dismissedAt'
+} as const
+
+export type LinkedinGrowthInsightScalarFieldEnum = (typeof LinkedinGrowthInsightScalarFieldEnum)[keyof typeof LinkedinGrowthInsightScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -3474,6 +4258,14 @@ export const JsonNullValueInput = {
 } as const
 
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -4299,6 +5091,300 @@ export type ListEnumApplicationAnswerScopeFieldRefInput<$PrismaModel> = FieldRef
 
 
 /**
+ * Reference to a field of type 'LinkedinGrowthGoal'
+ */
+export type EnumLinkedinGrowthGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthGoal'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthGoal[]'
+ */
+export type ListEnumLinkedinGrowthGoalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthGoal[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentTone'
+ */
+export type EnumLinkedinContentToneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentTone'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentTone[]'
+ */
+export type ListEnumLinkedinContentToneFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentTone[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentLanguage'
+ */
+export type EnumLinkedinContentLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentLanguage'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentLanguage[]'
+ */
+export type ListEnumLinkedinContentLanguageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentLanguage[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthStrategyStatus'
+ */
+export type EnumLinkedinGrowthStrategyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthStrategyStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthStrategyStatus[]'
+ */
+export type ListEnumLinkedinGrowthStrategyStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthStrategyStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentPillarPriority'
+ */
+export type EnumLinkedinContentPillarPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentPillarPriority'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentPillarPriority[]'
+ */
+export type ListEnumLinkedinContentPillarPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentPillarPriority[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentFormat'
+ */
+export type EnumLinkedinContentFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentFormat'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentFormat[]'
+ */
+export type ListEnumLinkedinContentFormatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentFormat[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostObjective'
+ */
+export type EnumLinkedinPostObjectiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostObjective'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostObjective[]'
+ */
+export type ListEnumLinkedinPostObjectiveFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostObjective[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinEvidenceStrength'
+ */
+export type EnumLinkedinEvidenceStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinEvidenceStrength'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinEvidenceStrength[]'
+ */
+export type ListEnumLinkedinEvidenceStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinEvidenceStrength[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinRecruiterRelevance'
+ */
+export type EnumLinkedinRecruiterRelevanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinRecruiterRelevance'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinRecruiterRelevance[]'
+ */
+export type ListEnumLinkedinRecruiterRelevanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinRecruiterRelevance[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinTimeliness'
+ */
+export type EnumLinkedinTimelinessFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinTimeliness'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinTimeliness[]'
+ */
+export type ListEnumLinkedinTimelinessFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinTimeliness[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentIdeaStatus'
+ */
+export type EnumLinkedinContentIdeaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentIdeaStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinContentIdeaStatus[]'
+ */
+export type ListEnumLinkedinContentIdeaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinContentIdeaStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostStatus'
+ */
+export type EnumLinkedinPostStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostStatus[]'
+ */
+export type ListEnumLinkedinPostStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishingSource'
+ */
+export type EnumLinkedinPublishingSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishingSource'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishingSource[]'
+ */
+export type ListEnumLinkedinPublishingSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishingSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostRevisionSource'
+ */
+export type EnumLinkedinPostRevisionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostRevisionSource'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostRevisionSource[]'
+ */
+export type ListEnumLinkedinPostRevisionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostRevisionSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostQaStatus'
+ */
+export type EnumLinkedinPostQaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostQaStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostQaStatus[]'
+ */
+export type ListEnumLinkedinPostQaStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostQaStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostGenerationStatus'
+ */
+export type EnumLinkedinPostGenerationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostGenerationStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPostGenerationStatus[]'
+ */
+export type ListEnumLinkedinPostGenerationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPostGenerationStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishingPlanStatus'
+ */
+export type EnumLinkedinPublishingPlanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishingPlanStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishingPlanStatus[]'
+ */
+export type ListEnumLinkedinPublishingPlanStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishingPlanStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishMode'
+ */
+export type EnumLinkedinPublishModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishMode'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPublishMode[]'
+ */
+export type ListEnumLinkedinPublishModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPublishMode[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPerformanceSource'
+ */
+export type EnumLinkedinPerformanceSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPerformanceSource'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinPerformanceSource[]'
+ */
+export type ListEnumLinkedinPerformanceSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinPerformanceSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthInsightType'
+ */
+export type EnumLinkedinGrowthInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthInsightType'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthInsightType[]'
+ */
+export type ListEnumLinkedinGrowthInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthInsightType[]'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthInsightStatus'
+ */
+export type EnumLinkedinGrowthInsightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthInsightStatus'>
+
+
+
+/**
+ * Reference to a field of type 'LinkedinGrowthInsightStatus[]'
+ */
+export type ListEnumLinkedinGrowthInsightStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'LinkedinGrowthInsightStatus[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -4452,6 +5538,14 @@ export type GlobalOmitConfig = {
   applicationExecutionEvent?: Prisma.applicationExecutionEventOmit
   applicationSubmissionAttempt?: Prisma.applicationSubmissionAttemptOmit
   applicationAnswerPreference?: Prisma.applicationAnswerPreferenceOmit
+  linkedinGrowthProfile?: Prisma.linkedinGrowthProfileOmit
+  linkedinContentPillar?: Prisma.linkedinContentPillarOmit
+  linkedinContentIdea?: Prisma.linkedinContentIdeaOmit
+  linkedinPost?: Prisma.linkedinPostOmit
+  linkedinPostRevision?: Prisma.linkedinPostRevisionOmit
+  linkedinPublishingPlan?: Prisma.linkedinPublishingPlanOmit
+  linkedinPostPerformance?: Prisma.linkedinPostPerformanceOmit
+  linkedinGrowthInsight?: Prisma.linkedinGrowthInsightOmit
 }
 
 /* Types for Logging */

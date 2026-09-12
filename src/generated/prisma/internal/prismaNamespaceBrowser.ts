@@ -81,7 +81,15 @@ export const ModelName = {
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
   applicationSubmissionAttempt: 'applicationSubmissionAttempt',
-  applicationAnswerPreference: 'applicationAnswerPreference'
+  applicationAnswerPreference: 'applicationAnswerPreference',
+  linkedinGrowthProfile: 'linkedinGrowthProfile',
+  linkedinContentPillar: 'linkedinContentPillar',
+  linkedinContentIdea: 'linkedinContentIdea',
+  linkedinPost: 'linkedinPost',
+  linkedinPostRevision: 'linkedinPostRevision',
+  linkedinPublishingPlan: 'linkedinPublishingPlan',
+  linkedinPostPerformance: 'linkedinPostPerformance',
+  linkedinGrowthInsight: 'linkedinGrowthInsight'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -794,6 +802,190 @@ export const ApplicationAnswerPreferenceScalarFieldEnum = {
 export type ApplicationAnswerPreferenceScalarFieldEnum = (typeof ApplicationAnswerPreferenceScalarFieldEnum)[keyof typeof ApplicationAnswerPreferenceScalarFieldEnum]
 
 
+export const LinkedinGrowthProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  primaryGoal: 'primaryGoal',
+  secondaryGoalsJson: 'secondaryGoalsJson',
+  targetRoleTitlesJson: 'targetRoleTitlesJson',
+  targetAudienceJson: 'targetAudienceJson',
+  positioningStatement: 'positioningStatement',
+  professionalThemesJson: 'professionalThemesJson',
+  contentTone: 'contentTone',
+  preferredLanguage: 'preferredLanguage',
+  postingFrequencyTarget: 'postingFrequencyTarget',
+  visibilityGoal: 'visibilityGoal',
+  recruiterGoal: 'recruiterGoal',
+  networkGoal: 'networkGoal',
+  profileSnapshotJson: 'profileSnapshotJson',
+  status: 'status',
+  lastStrategyRefreshAt: 'lastStrategyRefreshAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinGrowthProfileScalarFieldEnum = (typeof LinkedinGrowthProfileScalarFieldEnum)[keyof typeof LinkedinGrowthProfileScalarFieldEnum]
+
+
+export const LinkedinContentPillarScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  goal: 'goal',
+  audience: 'audience',
+  priority: 'priority',
+  evidenceSourcesJson: 'evidenceSourcesJson',
+  exampleAnglesJson: 'exampleAnglesJson',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinContentPillarScalarFieldEnum = (typeof LinkedinContentPillarScalarFieldEnum)[keyof typeof LinkedinContentPillarScalarFieldEnum]
+
+
+export const LinkedinContentIdeaScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  pillarId: 'pillarId',
+  title: 'title',
+  angle: 'angle',
+  summary: 'summary',
+  format: 'format',
+  objective: 'objective',
+  audience: 'audience',
+  sourceContextJson: 'sourceContextJson',
+  evidenceJson: 'evidenceJson',
+  evidenceStrength: 'evidenceStrength',
+  recruiterRelevance: 'recruiterRelevance',
+  timeliness: 'timeliness',
+  expiresAt: 'expiresAt',
+  priorityScore: 'priorityScore',
+  contextFingerprint: 'contextFingerprint',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt'
+} as const
+
+export type LinkedinContentIdeaScalarFieldEnum = (typeof LinkedinContentIdeaScalarFieldEnum)[keyof typeof LinkedinContentIdeaScalarFieldEnum]
+
+
+export const LinkedinPostScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  contentIdeaId: 'contentIdeaId',
+  pillarId: 'pillarId',
+  status: 'status',
+  activeRevisionId: 'activeRevisionId',
+  objective: 'objective',
+  format: 'format',
+  intendedAudience: 'intendedAudience',
+  plannedPublishAt: 'plannedPublishAt',
+  publishedAt: 'publishedAt',
+  publishingSource: 'publishingSource',
+  externalLinkedInPostId: 'externalLinkedInPostId',
+  externalLinkedInUrl: 'externalLinkedInUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  archivedAt: 'archivedAt'
+} as const
+
+export type LinkedinPostScalarFieldEnum = (typeof LinkedinPostScalarFieldEnum)[keyof typeof LinkedinPostScalarFieldEnum]
+
+
+export const LinkedinPostRevisionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  revisionNumber: 'revisionNumber',
+  source: 'source',
+  hook: 'hook',
+  body: 'body',
+  cta: 'cta',
+  tone: 'tone',
+  language: 'language',
+  hashtagsJson: 'hashtagsJson',
+  mentionsJson: 'mentionsJson',
+  evidenceJson: 'evidenceJson',
+  sourceContextSnapshotJson: 'sourceContextSnapshotJson',
+  warningsJson: 'warningsJson',
+  qaStatus: 'qaStatus',
+  qaFingerprint: 'qaFingerprint',
+  generationStatus: 'generationStatus',
+  aiSource: 'aiSource',
+  model: 'model',
+  createdAt: 'createdAt'
+} as const
+
+export type LinkedinPostRevisionScalarFieldEnum = (typeof LinkedinPostRevisionScalarFieldEnum)[keyof typeof LinkedinPostRevisionScalarFieldEnum]
+
+
+export const LinkedinPublishingPlanScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  linkedinPostRevisionId: 'linkedinPostRevisionId',
+  status: 'status',
+  publishMode: 'publishMode',
+  plannedPublishAt: 'plannedPublishAt',
+  timezone: 'timezone',
+  approvedAt: 'approvedAt',
+  publishedAt: 'publishedAt',
+  cancelledAt: 'cancelledAt',
+  publishingSource: 'publishingSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinPublishingPlanScalarFieldEnum = (typeof LinkedinPublishingPlanScalarFieldEnum)[keyof typeof LinkedinPublishingPlanScalarFieldEnum]
+
+
+export const LinkedinPostPerformanceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinPostId: 'linkedinPostId',
+  capturedAt: 'capturedAt',
+  impressions: 'impressions',
+  views: 'views',
+  likes: 'likes',
+  comments: 'comments',
+  reposts: 'reposts',
+  saves: 'saves',
+  profileViews: 'profileViews',
+  newFollowers: 'newFollowers',
+  connectionRequests: 'connectionRequests',
+  recruiterMessages: 'recruiterMessages',
+  source: 'source',
+  notes: 'notes',
+  createdAt: 'createdAt'
+} as const
+
+export type LinkedinPostPerformanceScalarFieldEnum = (typeof LinkedinPostPerformanceScalarFieldEnum)[keyof typeof LinkedinPostPerformanceScalarFieldEnum]
+
+
+export const LinkedinGrowthInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinGrowthProfileId: 'linkedinGrowthProfileId',
+  type: 'type',
+  title: 'title',
+  summary: 'summary',
+  evidenceJson: 'evidenceJson',
+  confidence: 'confidence',
+  status: 'status',
+  createdAt: 'createdAt',
+  dismissedAt: 'dismissedAt'
+} as const
+
+export type LinkedinGrowthInsightScalarFieldEnum = (typeof LinkedinGrowthInsightScalarFieldEnum)[keyof typeof LinkedinGrowthInsightScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -807,6 +999,14 @@ export const JsonNullValueInput = {
 } as const
 
 export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {

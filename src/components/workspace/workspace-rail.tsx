@@ -12,6 +12,7 @@ const navItems = [
   { label: "Applications", glyph: "P", href: "/workspace/applications" },
   { label: "Skills", glyph: "S", href: "/workspace/skills" },
   { label: "Analytics", glyph: "A", href: "/workspace/analytics" },
+  { label: "LinkedIn", glyph: "L", href: "/workspace/linkedin" },
 ] as const;
 
 type WorkspaceModuleLabel = (typeof navItems)[number]["label"];
@@ -22,6 +23,7 @@ function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
   if (pathname.startsWith("/workspace/applications")) return "Applications";
 
   if (pathname.startsWith("/workspace/jobs")) return "Jobs";
+  if (pathname.startsWith("/workspace/linkedin")) return "LinkedIn";
 
   switch (pathname) {
     case "/workspace":

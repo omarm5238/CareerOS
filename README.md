@@ -118,6 +118,9 @@ OPENAI_OPPORTUNITY_MODEL=""
 
 # Optional assisted-application free-text override.
 OPENAI_APPLICATION_EXECUTION_MODEL=""
+
+# Optional LinkedIn growth generation override (M25A).
+OPENAI_LINKEDIN_MODEL=""
 ```
 
 ### Milestone 24.5B — External Application Execution
@@ -177,6 +180,19 @@ Controlled ATS fixtures (never used in production navigation):
 npm run m245b:fixtures
 ```
 
+### Milestone 25A — LinkedIn Growth System
+
+M25A prepares and decides LinkedIn strategy, ideas, drafts, factual QA,
+publishing plans, and manual performance. It does **not** connect to LinkedIn.
+
+There is no LinkedIn OAuth, login, scraping, browser automation, or automatic
+publishing. Copy is not publication. Mark Published is an explicit user
+confirmation (`USER_CONFIRMED`). Performance snapshots are manual until M25B.
+
+```bash
+npm run m25a:qa
+```
+
 ### Scripts
 
 | Script          | Description                |
@@ -186,6 +202,8 @@ npm run m245b:fixtures
 | `npm run start` | Run the production build   |
 | `npm run lint`  | Lint with ESLint           |
 | `npm run m245b:fixtures` | Start local ATS fixtures (dev/QA only) |
+| `npm run m25a:qa` | M25A LinkedIn growth QA |
+| `npm run m25a:headed` | M25A headed UI checks |
 
 ---
 

@@ -196,3 +196,43 @@ export type applicationSubmissionAttempt = Prisma.applicationSubmissionAttemptMo
  *
  */
 export type applicationAnswerPreference = Prisma.applicationAnswerPreferenceModel
+/**
+ * Model linkedinGrowthProfile
+ *
+ */
+export type linkedinGrowthProfile = Prisma.linkedinGrowthProfileModel
+/**
+ * Model linkedinContentPillar
+ *
+ */
+export type linkedinContentPillar = Prisma.linkedinContentPillarModel
+/**
+ * Model linkedinContentIdea
+ *
+ */
+export type linkedinContentIdea = Prisma.linkedinContentIdeaModel
+/**
+ * Model linkedinPost
+ *
+ */
+export type linkedinPost = Prisma.linkedinPostModel
+/**
+ * Model linkedinPostRevision
+ *
+ */
+export type linkedinPostRevision = Prisma.linkedinPostRevisionModel
+/**
+ * Model linkedinPublishingPlan
+ *
+ */
+export type linkedinPublishingPlan = Prisma.linkedinPublishingPlanModel
+/**
+ * Model linkedinPostPerformance
+ *
+ */
+export type linkedinPostPerformance = Prisma.linkedinPostPerformanceModel
+/**
+ * Model linkedinGrowthInsight
+ *
+ */
+export type linkedinGrowthInsight = Prisma.linkedinGrowthInsightModel
