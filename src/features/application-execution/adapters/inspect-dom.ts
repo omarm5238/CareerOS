@@ -10,14 +10,31 @@ export type RawInspectedField = {
   unsupported: boolean;
   hidden: boolean;
   documentHint: string | null;
+  currentValue: string;
+};
+
+export type RawPageAction = {
+  selector: string;
+  label: string;
+  type: string;
+  insideForm: boolean;
+  formHasFields: boolean;
+  isSubmitType: boolean;
+  dataOpen: boolean;
+  dataNext: boolean;
+  dataFinal: boolean;
+  dataCancel: boolean;
 };
 
 export type RawInspectResult = {
   fields: RawInspectedField[];
+  actions: RawPageAction[];
   nextSelector: string | null;
   nextLabel: string | null;
   submitSelector: string | null;
   submitLabel: string | null;
+  openSelector: string | null;
+  openLabel: string | null;
   step: number;
   totalSteps: number | null;
   providerRootFound: boolean;
@@ -29,10 +46,13 @@ export function inspectDomScript(rootSelector: unknown): RawInspectResult {
   if (!root) {
     return {
       fields: [],
+      actions: [],
       nextSelector: null,
       nextLabel: null,
       submitSelector: null,
       submitLabel: null,
+      openSelector: null,
+      openLabel: null,
       step: 1,
       totalSteps: null,
       providerRootFound: false,
@@ -111,6 +131,9 @@ export function inspectDomScript(rootSelector: unknown): RawInspectResult {
               label: labelFor(radio),
             }))
           : [];
+    let currentValue = "";
+    if (type === "CHECKBOX" || type === "RADIO") currentValue = el.checked ? el.value || "true" : "";
+    else currentValue = el.value || "";
     fields.push({
       externalId: el.getAttribute("name") || el.id || selector,
       selector,
@@ -121,35 +144,63 @@ export function inspectDomScript(rootSelector: unknown): RawInspectResult {
       unsupported,
       hidden: el.type === "hidden",
       documentHint: /resume|cv|cover/i.test(label) ? label : null,
+      currentValue,
     });
   });
 
-  const buttons = Array.from(root.querySelectorAll("button, input[type=submit], [role=button]"));
+  const clickable = Array.from(root.querySelectorAll("button, input[type=submit], a, [role=button]"));
+  const actions: RawPageAction[] = clickable
+    .map((button) => {
+      const text = (button.textContent || (button as HTMLInputElement).value || "").trim();
+      const form = button.closest("form");
+      return {
+        selector: button.getAttribute("data-careeros-final-submit") === "true"
+          ? "[data-careeros-final-submit='true']"
+          : button.getAttribute("data-careeros-open") === "true"
+            ? "[data-careeros-open='true']"
+            : button.getAttribute("data-careeros-next") === "true"
+              ? "[data-careeros-next='true']"
+              : cssPath(button),
+        label: text.slice(0, 80),
+        type: (button as HTMLInputElement).type || button.tagName.toLowerCase(),
+        insideForm: Boolean(form),
+        formHasFields: Boolean(form && form.querySelectorAll("input, select, textarea").length > 0),
+        isSubmitType: (button as HTMLInputElement).type === "submit" || button.getAttribute("type") === "submit",
+        dataOpen: button.getAttribute("data-careeros-open") === "true",
+        dataNext: button.getAttribute("data-careeros-next") === "true",
+        dataFinal: button.getAttribute("data-careeros-final-submit") === "true",
+        dataCancel: button.getAttribute("data-careeros-cancel") === "true",
+      };
+    })
+    .filter((item) => item.label);
   let nextSelector: string | null = null;
   let nextLabel: string | null = null;
   let submitSelector: string | null = null;
   let submitLabel: string | null = null;
-  for (const button of buttons) {
-    const text = (button.textContent || (button as HTMLInputElement).value || "").trim();
-    const finalAttr = button.getAttribute("data-careeros-final-submit") === "true";
-    const nextAttr = button.getAttribute("data-careeros-next") === "true";
-    if (finalAttr || /^submit( application)?$/i.test(text) || /submit your application/i.test(text)) {
-      submitSelector = button.getAttribute("data-careeros-final-submit") === "true"
-        ? "[data-careeros-final-submit='true']"
-        : cssPath(button);
-      submitLabel = text || "Submit";
-    } else if (nextAttr || /^(next|continue|save and continue|save & continue)$/i.test(text)) {
-      nextSelector = button.getAttribute("data-careeros-next") === "true" ? "[data-careeros-next='true']" : cssPath(button);
-      nextLabel = text || "Next";
+  let openSelector: string | null = null;
+  let openLabel: string | null = null;
+  for (const action of actions) {
+    if (action.dataFinal || /^submit( application)?$/i.test(action.label) || /submit your application/i.test(action.label)) {
+      submitSelector = action.selector;
+      submitLabel = action.label || "Submit";
+    } else if (action.dataNext || /^(next|continue|save and continue|save & continue)$/i.test(action.label)) {
+      nextSelector = action.selector;
+      nextLabel = action.label || "Next";
+    } else if (action.dataOpen || /^(apply( now| for this job)?|i['’]?m interested)$/i.test(action.label)) {
+      openSelector = action.selector;
+      openLabel = action.label;
     }
   }
 
   return {
     fields,
+    actions,
     nextSelector,
     nextLabel,
     submitSelector,
     submitLabel,
+    openSelector,
+    openLabel,
     step,
     totalSteps: total,
     providerRootFound: true,
@@ -160,7 +211,7 @@ export const inspectDomSource = `function (rootSelector) {
   const selector = typeof rootSelector === "string" ? rootSelector : null;
   const root = selector ? document.querySelector(selector) : document;
   if (!root) {
-    return { fields: [], nextSelector: null, nextLabel: null, submitSelector: null, submitLabel: null, step: 1, totalSteps: null, providerRootFound: false };
+    return { fields: [], actions: [], nextSelector: null, nextLabel: null, submitSelector: null, submitLabel: null, openSelector: null, openLabel: null, step: 1, totalSteps: null, providerRootFound: false };
   }
   const stepEl = document.querySelector("[data-careeros-step]");
   const step = Number(stepEl && stepEl.getAttribute("data-careeros-step") || "1") || 1;
@@ -228,6 +279,9 @@ export const inspectDomSource = `function (rootSelector) {
             label: labelFor(radio),
           }))
         : [];
+    let currentValue = "";
+    if (type === "CHECKBOX" || type === "RADIO") currentValue = el.checked ? (el.value || "true") : "";
+    else currentValue = el.value || "";
     fields.push({
       externalId: el.getAttribute("name") || el.id || selectorValue,
       selector: selectorValue,
@@ -238,24 +292,47 @@ export const inspectDomSource = `function (rootSelector) {
       unsupported: unsupported,
       hidden: el.type === "hidden",
       documentHint: /resume|cv|cover/i.test(label) ? label : null,
+      currentValue: currentValue,
     });
   });
-  const buttons = Array.from(root.querySelectorAll("button, input[type=submit], [role=button]"));
+  const clickable = Array.from(root.querySelectorAll("button, input[type=submit], a, [role=button]"));
+  const actions = clickable.map((button) => {
+    const text = (button.textContent || button.value || "").trim();
+    const form = button.closest("form");
+    let selectorValue = cssPath(button);
+    if (button.getAttribute("data-careeros-final-submit") === "true") selectorValue = "[data-careeros-final-submit='true']";
+    else if (button.getAttribute("data-careeros-open") === "true") selectorValue = "[data-careeros-open='true']";
+    else if (button.getAttribute("data-careeros-next") === "true") selectorValue = "[data-careeros-next='true']";
+    return {
+      selector: selectorValue,
+      label: text.slice(0, 80),
+      type: button.type || button.tagName.toLowerCase(),
+      insideForm: Boolean(form),
+      formHasFields: Boolean(form && form.querySelectorAll("input, select, textarea").length > 0),
+      isSubmitType: button.type === "submit" || button.getAttribute("type") === "submit",
+      dataOpen: button.getAttribute("data-careeros-open") === "true",
+      dataNext: button.getAttribute("data-careeros-next") === "true",
+      dataFinal: button.getAttribute("data-careeros-final-submit") === "true",
+      dataCancel: button.getAttribute("data-careeros-cancel") === "true",
+    };
+  }).filter((item) => item.label);
   let nextSelector = null;
   let nextLabel = null;
   let submitSelector = null;
   let submitLabel = null;
-  for (const button of buttons) {
-    const text = (button.textContent || button.value || "").trim();
-    const finalAttr = button.getAttribute("data-careeros-final-submit") === "true";
-    const nextAttr = button.getAttribute("data-careeros-next") === "true";
-    if (finalAttr || /^submit( application)?$/i.test(text) || /submit your application/i.test(text)) {
-      submitSelector = finalAttr ? "[data-careeros-final-submit='true']" : cssPath(button);
-      submitLabel = text || "Submit";
-    } else if (nextAttr || /^(next|continue|save and continue|save & continue)$/i.test(text)) {
-      nextSelector = nextAttr ? "[data-careeros-next='true']" : cssPath(button);
-      nextLabel = text || "Next";
+  let openSelector = null;
+  let openLabel = null;
+  for (const action of actions) {
+    if (action.dataFinal || /^submit( application)?$/i.test(action.label) || /submit your application/i.test(action.label)) {
+      submitSelector = action.selector;
+      submitLabel = action.label || "Submit";
+    } else if (action.dataNext || /^(next|continue|save and continue|save & continue)$/i.test(action.label)) {
+      nextSelector = action.selector;
+      nextLabel = action.label || "Next";
+    } else if (action.dataOpen || /^(apply( now| for this job)?|i['’]?m interested)$/i.test(action.label)) {
+      openSelector = action.selector;
+      openLabel = action.label;
     }
   }
-  return { fields: fields, nextSelector: nextSelector, nextLabel: nextLabel, submitSelector: submitSelector, submitLabel: submitLabel, step: step, totalSteps: total, providerRootFound: true };
+  return { fields: fields, actions: actions, nextSelector: nextSelector, nextLabel: nextLabel, submitSelector: submitSelector, submitLabel: submitLabel, openSelector: openSelector, openLabel: openLabel, step: step, totalSteps: total, providerRootFound: true };
 }`;

@@ -75,11 +75,14 @@ export async function continueApplication(userId: string, sessionId: string) {
   const adapter = selectAdapter(row.provider, false);
   const next = await adapter.locateNextControl(page);
   const submit = await adapter.locateFinalSubmit(page);
-  if (submit && (!next || submit.confidence >= next.confidence) && !next) {
+  if (submit?.isFinal && (!next || submit.confidence >= (next.confidence ?? 0)) && !next) {
     throw new ExecutionAccessError("CONFLICT", "Final submit remains manual or requires explicit submit approval.");
   }
   if (!next) {
     throw new ExecutionAccessError("CONFLICT", "No trusted Next control was found.");
+  }
+  if (submit && next.selector.value === submit.selector.value) {
+    throw new ExecutionAccessError("CONFLICT", "Refusing to click a control that looks like final submit.");
   }
   await adapter.advanceStep(page, next.selector.value);
   await recordExecutionEvent(prisma, {

@@ -132,14 +132,50 @@ npx playwright install chromium
 Product execution defaults to a **headed** Chromium window (`headless: false`).
 Set `CAREEROS_BROWSER_HEADLESS=1` only for automated environments.
 
+### Confirmed browser submit kill switches (M24.5C)
+
+Confirmed submit is **disabled by default**. A fresh CareerOS install does not
+gain live confirmed submit just because this code is deployed.
+
+CareerOS may still assist with filling a public application form. If any gate
+fails, final submission must be completed **manually** in the application
+browser.
+
+Confirmed submit requires **all three**:
+
+1. Global switch enabled
+2. Provider switch enabled
+3. Runtime session capability trusted for that specific live form
+
+```bash
+# Global kill switch. Unset / any value other than 1|true|yes = disabled.
+CAREEROS_CONFIRMED_BROWSER_SUBMIT=1
+
+# Provider switches. Each defaults to disabled.
+CAREEROS_SUBMIT_GREENHOUSE=1
+CAREEROS_SUBMIT_LEVER=1
+CAREEROS_SUBMIT_ASHBY=1
+CAREEROS_SUBMIT_WORKABLE=1
+CAREEROS_SUBMIT_SMARTRECRUITERS=1
+```
+
+Accepted enabled values: `1`, `true`, or `yes` (case-insensitive).
+
+The Generic adapter can never confirmed-submit. Provider environment flags
+cannot override Generic to true.
+
+Public live inspection is **not** enough to enable a provider. Without a
+sandbox, demo tenant, or other controlled submit environment, dedicated
+providers remain ineligible even when their final button is visible.
+
+Do not treat this as a mass auto-apply system. Final submit is always a
+specific user action for one application.
+
 Controlled ATS fixtures (never used in production navigation):
 
 ```bash
 npm run m245b:fixtures
 ```
-
-Do not treat this as a mass auto-apply system. Final submit is always a
-specific user action for one application.
 
 ### Scripts
 

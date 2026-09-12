@@ -11,4 +11,5 @@ export const smartrecruitersAdapter = createBrowserAdapter({
     if (/smartrecruiters\.com/i.test(url)) return 0.93;
     return markers.some((row) => /smartrecruiters/.test(row)) ? 0.96 : 0;
   },
+  version: "smartrecruiters-v2",
 });

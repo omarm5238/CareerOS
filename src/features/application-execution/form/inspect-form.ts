@@ -1,13 +1,18 @@
 import { prisma } from "@/server/db/prisma";
 
-import { detectProvider, selectAdapter, adapterSupportsConfirmedSubmit } from "../adapters/adapter-registry";
+import { detectProvider, selectAdapter } from "../adapters/adapter-registry";
+import { inspectWithRoot } from "../adapters/application-execution-adapter";
+import { pickTrustedAction } from "../classification/classify-application-action";
+import { detectProviderPageBlock } from "../classification/detect-provider-page-block";
+import { isSafeOpenApplicationHref } from "./safe-open-application";
+import { computeRuntimeSubmissionCapability } from "../submission/runtime-submission-capability";
 import { getApplicationBrowserRunner } from "../browser/browser-runtime-registry";
 import { resolveApplicationAnswer } from "../answers/resolve-application-answer";
+import { applyLiveValue } from "./apply-live-value";
 import { buildFormFingerprint } from "../form/form-fingerprint";
 import { toPrismaJson } from "../lib/json-parsers";
 import { withBoundedRetry } from "../lib/bounded-retry";
 import type { FillPlan, PendingAction, ResolvedApplicationAnswer } from "../types";
-import { ADAPTER_VERSION } from "../types";
 import { recordExecutionEvent } from "../sessions/execution-event";
 import { applyUrlFromJob, loadOwnedSession, sessionJson } from "../sessions/load-owned-session";
 import { assertTransition } from "../sessions/execution-state-machine";
@@ -89,6 +94,56 @@ export async function inspectAndPlan(userId: string, sessionId: string, options?
 
   await setStatus(sessionId, row.status, "DETECTING_ATS");
   let detection = await detectProvider(page);
+  let pageSurvey = await inspectWithRoot(page, detection.provider, "body");
+  const openCta = pickTrustedAction(pageSurvey.actions, "OPEN_APPLICATION");
+  if (
+    openCta &&
+    pageSurvey.fields.length < 3 &&
+    pickTrustedAction(pageSurvey.actions, "FINAL_SUBMIT") == null &&
+    (await isSafeOpenApplicationHref(page, openCta.selector.value, detection.provider))
+  ) {
+    await page.click(openCta.selector.value);
+    await page.waitForTimeout(800);
+    await recordExecutionEvent(prisma, {
+      userId,
+      executionSessionId: sessionId,
+      type: "STEP_ADVANCED",
+      message: `Opened the application via trusted ${openCta.label} control.`,
+      metadata: { action: "OPEN_APPLICATION", selector: openCta.selector.value },
+    });
+    detection = await detectProvider(page);
+    pageSurvey = await inspectWithRoot(page, detection.provider, "body");
+  }
+
+  const earlySignals = await page.contentSignals();
+  const earlyBlock = detectProviderPageBlock(`${earlySignals.url} ${earlySignals.title} ${earlySignals.bodyTextSample}`);
+  if (earlyBlock === "JOB_CLOSED" || earlyBlock === "DUPLICATE_APPLICATION") {
+    await prisma.applicationExecutionSession.update({
+      where: { id: sessionId },
+      data: {
+        status: "BLOCKED",
+        failureCode: earlyBlock,
+        failureMessage:
+          earlyBlock === "JOB_CLOSED"
+            ? "This job is no longer available."
+            : "The provider reports an application already exists.",
+        provider: detection.provider,
+        currentUrl: page.url(),
+        lastActivityAt: new Date(),
+      },
+    });
+    await recordExecutionEvent(prisma, {
+      userId,
+      executionSessionId: sessionId,
+      type: "SESSION_FAILED",
+      message:
+        earlyBlock === "JOB_CLOSED"
+          ? "Provider reports the job is closed. CareerOS will not submit."
+          : "Provider reports a duplicate application. CareerOS will not mark this DRAFT application APPLIED.",
+    });
+    return loadOwnedSession(userId, sessionId);
+  }
+
   let drifted = false;
   let adapter = selectAdapter(detection.provider, false);
   try {
@@ -164,11 +219,39 @@ export async function inspectAndPlan(userId: string, sessionId: string, options?
 
   const snapshot = await adapter.inspect(page);
   snapshot.provider = detection.provider;
+  const signals = await page.contentSignals();
+  const pageBlock = detectProviderPageBlock(`${signals.url} ${signals.title} ${signals.bodyTextSample}`);
+  if (pageBlock === "JOB_CLOSED" || pageBlock === "DUPLICATE_APPLICATION") {
+    await prisma.applicationExecutionSession.update({
+      where: { id: sessionId },
+      data: {
+        status: "BLOCKED",
+        failureCode: pageBlock,
+        failureMessage:
+          pageBlock === "JOB_CLOSED"
+            ? "This job is no longer available."
+            : "The provider reports an application already exists.",
+        provider: detection.provider,
+        currentUrl: page.url(),
+        lastActivityAt: new Date(),
+      },
+    });
+    await recordExecutionEvent(prisma, {
+      userId,
+      executionSessionId: sessionId,
+      type: "SESSION_FAILED",
+      message:
+        pageBlock === "JOB_CLOSED"
+          ? "Provider reports the job is closed. CareerOS will not submit."
+          : "Provider reports a duplicate application. CareerOS will not mark this DRAFT application APPLIED.",
+    });
+    return loadOwnedSession(userId, sessionId);
+  }
   const fingerprint = buildFormFingerprint(snapshot, row.jobPostingId);
   const previous = sessionJson(row);
   const answers: ResolvedApplicationAnswer[] = [];
   for (const field of snapshot.fields) {
-    const existing = previous.plan.answers.find((item) => item.fieldId === field.externalId) ?? null;
+    const existing = applyLiveValue(previous.plan.answers.find((item) => item.fieldId === field.externalId) ?? null, field);
     answers.push(
       await resolveApplicationAnswer({
         userId,
@@ -183,16 +266,38 @@ export async function inspectAndPlan(userId: string, sessionId: string, options?
     answers,
     uploadedDocuments: previous.plan.uploadedDocuments,
     lockedCoverLetterRevisionId: previous.plan.lockedCoverLetterRevisionId ?? null,
+    detectionConfidence: detection.confidence,
   };
   const pending = pendingFromPlan(plan, snapshot.fields);
-  const confirmedSubmit = adapterSupportsConfirmedSubmit(detection.provider, drifted) && Boolean(snapshot.submitControl?.isFinal);
+  const reviewComplete = pending.length === 0;
+  const runtimeCapability = computeRuntimeSubmissionCapability({
+    provider: detection.provider,
+    detection,
+    snapshot,
+    actions: snapshot.actions ?? [],
+    interruption: interruption.kind,
+    drifted,
+    unsupportedWidget: pending.some((item) => item.kind === "UNSUPPORTED_WIDGET"),
+    formFingerprintStable: true,
+    reviewComplete,
+  });
+  plan.runtimeCapability = runtimeCapability;
+  if (previous.plan.runtimeCapability?.confirmedBrowserSubmit && !runtimeCapability.confirmedBrowserSubmit) {
+    await recordExecutionEvent(prisma, {
+      userId,
+      executionSessionId: sessionId,
+      type: "ADAPTER_FALLBACK",
+      message: "Runtime confirmed submit was downgraded. Assisted browser remains available.",
+      metadata: { reasons: runtimeCapability.reasons },
+    });
+  }
 
   await prisma.applicationExecutionSession.update({
     where: { id: sessionId },
     data: {
       provider: detection.provider,
-      adapterVersion: ADAPTER_VERSION,
-      executionMode: confirmedSubmit ? "CONFIRMED_BROWSER_SUBMIT" : "ASSISTED_BROWSER",
+      adapterVersion: adapter.version,
+      executionMode: runtimeCapability.confirmedBrowserSubmit ? "CONFIRMED_BROWSER_SUBMIT" : "ASSISTED_BROWSER",
       currentUrl: page.url(),
       currentStep: snapshot.step,
       totalSteps: snapshot.totalSteps,
@@ -203,7 +308,9 @@ export async function inspectAndPlan(userId: string, sessionId: string, options?
       warningsJson: toPrismaJson(
         drifted
           ? [{ code: "ADAPTER_DRIFT", message: "Dedicated adapter drifted. Using Generic. Confirmed submit is disabled." }]
-          : previous.warnings,
+          : runtimeCapability.confirmedBrowserSubmit
+            ? previous.warnings.filter((item) => item.code !== "ADAPTER_DRIFT")
+            : previous.warnings,
       ),
       lastActivityAt: new Date(),
       status: pending.some((item) => item.kind === "UNSUPPORTED_WIDGET")

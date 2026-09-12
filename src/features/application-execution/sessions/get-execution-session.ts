@@ -1,10 +1,16 @@
 import { prisma } from "@/server/db/prisma";
 
 import { getApplicationBrowserRunner } from "../browser/browser-runtime-registry";
-import { adapterSupportsConfirmedSubmit } from "../adapters/adapter-registry";
-import type { ExecutionProgressCategory, ExecutionSessionView, FinalReviewView } from "../types";
+import type { ExecutionProgressCategory, ExecutionSessionView, FinalReviewView, RuntimeSubmissionCapability } from "../types";
 import { loadOwnedSession, sessionJson } from "./load-owned-session";
 import { buildFinalReview } from "../submission/build-final-submission-snapshot";
+
+function confirmedSubmitMessage(runtime: RuntimeSubmissionCapability | null): string {
+  if (runtime?.confirmedBrowserSubmit) {
+    return "CareerOS can submit this application after your approval.";
+  }
+  return "CareerOS can assist with this application, but final submission must be completed manually.";
+}
 
 export async function getExecutionSession(userId: string, sessionId: string): Promise<ExecutionSessionView> {
   const row = await loadOwnedSession(userId, sessionId);
@@ -18,8 +24,8 @@ export async function getExecutionSession(userId: string, sessionId: string): Pr
       currentDomain = null;
     }
   }
-  const drifted = warnings.some((item) => item.code === "ADAPTER_DRIFT") || row.provider === "GENERIC";
-  const confirmed = adapterSupportsConfirmedSubmit(row.provider, drifted) && row.status === "READY_TO_SUBMIT";
+  const runtime = plan.runtimeCapability ?? null;
+  const confirmed = Boolean(runtime?.confirmedBrowserSubmit) && row.status === "READY_TO_SUBMIT";
   const latestAttempt = row.submissionAttempts[0] ?? null;
   const review = snapshot ? buildFinalReview(row, snapshot, plan) : null;
   if (review?.resumeRevisionId) {
@@ -43,7 +49,7 @@ export async function getExecutionSession(userId: string, sessionId: string): Pr
     provider: row.provider,
     executionMode: row.executionMode,
     adapterVersion: row.adapterVersion,
-    detectionConfidence: null,
+    detectionConfidence: plan.detectionConfidence ?? null,
     jobTitle: row.jobPosting.title,
     company: row.jobPosting.company,
     currentUrl: row.currentUrl,
@@ -85,7 +91,9 @@ export async function getExecutionSession(userId: string, sessionId: string): Pr
       status: latestAttempt?.status ?? null,
       verificationStatus: latestAttempt?.verificationStatus ?? null,
       method: latestAttempt?.method ?? null,
-      confirmedBrowserSubmitAvailable: confirmed || (adapterSupportsConfirmedSubmit(row.provider, drifted) && row.status === "READY_FOR_REVIEW"),
+      confirmedBrowserSubmitAvailable: confirmed,
+      confirmedBrowserSubmitMessage: confirmedSubmitMessage(runtime),
+      runtimeCapability: runtime,
       resumeRevisionId: latestAttempt?.resumeVersionRevisionId ?? plan.uploadedDocuments.find((item) => item.kind === "resume")?.revisionId ?? null,
       resumeFileHash: latestAttempt?.resumeFileHash ?? plan.uploadedDocuments.find((item) => item.kind === "resume")?.fileHash ?? null,
       coverLetterRevisionId: latestAttempt?.coverLetterRevisionId ?? plan.uploadedDocuments.find((item) => item.kind === "cover_letter")?.revisionId ?? null,

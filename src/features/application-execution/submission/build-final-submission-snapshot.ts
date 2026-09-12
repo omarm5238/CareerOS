@@ -2,9 +2,8 @@ import { createHash } from "node:crypto";
 
 import type { applicationExecutionSession, applicationPackage } from "@/generated/prisma/client";
 
-import { adapterSupportsConfirmedSubmit } from "../adapters/adapter-registry";
 import { hashValue } from "../form/form-fingerprint";
-import type { ApplicationFormSnapshot, FillPlan, FinalReviewView, FinalSubmissionSnapshot } from "../types";
+import type { ApplicationFormSnapshot, FillPlan, FinalReviewView, FinalSubmissionSnapshot, RuntimeSubmissionCapability } from "../types";
 import { ExecutionAccessError } from "../lib/permissions";
 
 type SessionRow = applicationExecutionSession & { applicationPackage: applicationPackage };
@@ -26,12 +25,16 @@ export function buildFinalSubmissionSnapshot(
     formFingerprint: row.formFingerprint ?? "",
     fields: snapshot.fields.map((field) => {
       const answer = plan.answers.find((item) => item.fieldId === field.externalId);
+      const live = field.currentValuePreview;
+      const planned = answer?.value;
+      const actual =
+        live != null && live !== "" ? live : planned != null && planned !== "" ? String(planned) : "";
       const raw =
         field.classification === "SENSITIVE" || field.classification === "LEGAL"
           ? answer?.confirmed
-            ? "confirmed"
+            ? actual || "confirmed"
             : ""
-          : answer?.value ?? "";
+          : actual;
       return {
         fieldId: field.externalId,
         normalizedLabel: field.normalizedLabel,
@@ -98,7 +101,13 @@ export function buildFinalReview(row: SessionRow, snapshot: ApplicationFormSnaps
   };
 }
 
-export function assertReadyToSubmit(row: SessionRow, snapshot: ApplicationFormSnapshot, plan: FillPlan, drifted: boolean) {
+export function assertReadyToSubmit(
+  row: SessionRow,
+  snapshot: ApplicationFormSnapshot,
+  plan: FillPlan,
+  drifted: boolean,
+  runtime?: RuntimeSubmissionCapability | null,
+) {
   if (row.applicationPackage.status !== "APPROVED" && row.applicationPackage.status !== "SUBMISSION_STARTED") {
     throw new ExecutionAccessError("CONFLICT", "Package is not approved.");
   }
@@ -106,8 +115,11 @@ export function assertReadyToSubmit(row: SessionRow, snapshot: ApplicationFormSn
   if (review.unresolved.length > 0) {
     throw new ExecutionAccessError("CONFLICT", "Required fields are still unresolved.");
   }
-  if (!adapterSupportsConfirmedSubmit(row.provider, drifted)) {
-    throw new ExecutionAccessError("CONFLICT", "This adapter does not support confirmed browser submit. Submit manually in the application browser.");
+  if (drifted) {
+    throw new ExecutionAccessError("CONFLICT", "Adapter drift disables confirmed browser submit. Submit manually in the application browser.");
+  }
+  if (!runtime?.confirmedBrowserSubmit) {
+    throw new ExecutionAccessError("CONFLICT", "Confirmed browser submit is not trusted for this session. Submit manually in the application browser.");
   }
   if (!snapshot.submitControl?.isFinal || snapshot.submitControl.confidence < 0.8) {
     throw new ExecutionAccessError("CONFLICT", "No trusted final submit control is available.");

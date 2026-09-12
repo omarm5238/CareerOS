@@ -30,6 +30,7 @@ export async function resolveApplicationAnswer(input: {
   const field = input.field;
   const existing = input.existing;
   if (existing?.confirmed || existing?.reviewed) return existing;
+  if (existing && existing.value != null && existing.value !== "") return existing;
 
   const base: ResolvedApplicationAnswer = {
     fieldId: field.externalId,

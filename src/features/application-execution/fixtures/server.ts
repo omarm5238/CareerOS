@@ -78,6 +78,23 @@ function genericPage(search: URLSearchParams) {
   if (variant === "failed") {
     return html("Error", `<div data-provider-error="careeros-generic-error">Submission rejected</div>`);
   }
+  if (variant === "actions") {
+    return html(
+      "Actions",
+      `<div data-ats="generic">
+        <button type="button" data-careeros-open="true">Apply</button>
+        <button type="button" data-careeros-open="true">I'm interested</button>
+      </div>
+      <form data-ats="generic" data-careeros-step="1">
+        ${fields("g")}
+        <button type="button" data-careeros-next="true">Continue</button>
+        <button type="button" data-careeros-next="true">Save &amp; Continue</button>
+        <button type="button">Review</button>
+        <button type="submit" data-careeros-final-submit="true">Submit application</button>
+        <button type="button" data-careeros-cancel="true">Cancel</button>
+      </form>`,
+    );
+  }
   return html(
     "Generic apply",
     `<form data-ats="generic" data-careeros-step="1" data-careeros-total-steps="2">
@@ -122,11 +139,62 @@ function providerPage(provider: string, search: URLSearchParams) {
   if (variant === "success") {
     return html(`${provider} success`, `<div data-provider-success="${spec.success}">Application id: ${provider}-123 confirmed.</div>`);
   }
+  if (variant === "wrong-success") {
+    return html(
+      `${provider} foreign success`,
+      `<form ${spec.root}></form><div data-provider-success="lever-application-success">Thank you for applying.</div>`,
+    );
+  }
   if (variant === "error") {
     return html(`${provider} error`, `<div data-provider-error="${spec.error}">Submission rejected</div>`);
   }
   if (variant === "drift") {
     return html(`${provider} drift`, `<form data-ats="generic"><p>Broken ${provider} fixture</p><label>First name <input name="x"></label></form>`);
+  }
+  if (variant === "closed") {
+    return html(`${provider} closed`, `<div data-ats="${provider}"><h1>This job is closed</h1><p>This job is no longer available.</p></div>`);
+  }
+  if (variant === "duplicate") {
+    return html(`${provider} duplicate`, `<div data-ats="${provider}"><h1>Already applied</h1><p>You've already applied. An application already exists.</p></div>`);
+  }
+  if (variant === "open") {
+    const cta = provider === "smartrecruiters" ? "I'm interested" : "Apply";
+    return html(
+      `${provider} job`,
+      `<div data-ats="${provider}">
+        <h1>${provider} job</h1>
+        <p>Public job description. This is not the application form.</p>
+        <button type="button" data-careeros-open="true">${cta}</button>
+      </div>
+      <script>
+        document.querySelector('[data-careeros-open]').addEventListener('click', () => {
+          window.location.href = '/${provider}?variant=form';
+        });
+      </script>`,
+    );
+  }
+  if (variant === "final-step") {
+    const prefix = provider.slice(0, 2);
+    return html(
+      `${provider} final`,
+      `<form ${spec.root} data-careeros-step="2" class="${spec.extraClass}">
+        ${fields(prefix)}
+        <button type="button" data-careeros-next="true">Continue</button>
+        <button type="button">Review</button>
+        <button type="submit" data-careeros-final-submit="true">Submit application</button>
+      </form>`,
+    );
+  }
+  if (variant === "captcha-before-submit") {
+    const prefix = provider.slice(0, 2);
+    return html(
+      `${provider} captcha`,
+      `<form ${spec.root} data-careeros-step="1" class="${spec.extraClass}">
+        ${fields(prefix)}
+        <div class="g-recaptcha" data-careeros-captcha="true"></div>
+        <button type="submit" data-careeros-final-submit="true">Submit application</button>
+      </form>`,
+    );
   }
   const prefix = provider.slice(0, 2);
   const drop = search.get("drop") === "1";

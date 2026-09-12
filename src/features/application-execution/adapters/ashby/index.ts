@@ -11,4 +11,5 @@ export const ashbyAdapter = createBrowserAdapter({
     if (/ashbyhq\.com/i.test(url)) return 0.93;
     return markers.some((row) => /ashby/.test(row)) ? 0.96 : 0;
   },
+  version: "ashby-v2",
 });

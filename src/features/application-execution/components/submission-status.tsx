@@ -53,13 +53,25 @@ export function SubmissionStatus({
         </div>
       ) : null}
 
-      {dedicated && (view.status === "READY_TO_SUBMIT" || view.status === "READY_FOR_REVIEW") && view.review && view.review.unresolved.length === 0 ? (
+      {view.submission.confirmedBrowserSubmitAvailable && view.status === "READY_TO_SUBMIT" && view.review && view.review.unresolved.length === 0 ? (
         <div className="mt-3 space-y-3">
           <p className="text-sm text-[var(--color-text-secondary)]">
-            CareerOS will submit this specific application only.
+            {view.submission.confirmedBrowserSubmitMessage}
           </p>
           <button className="btn-primary w-full" onClick={onApproveSubmit} type="button">
             Submit This Application Now
+          </button>
+        </div>
+      ) : null}
+
+      {dedicated && !view.submission.confirmedBrowserSubmitAvailable && (view.status === "READY_TO_SUBMIT" || view.status === "READY_FOR_REVIEW") && view.review && view.review.unresolved.length === 0 ? (
+        <div className="mt-3 space-y-3 text-sm text-[var(--color-text-secondary)]">
+          <p>{view.submission.confirmedBrowserSubmitMessage}</p>
+          <button className="btn-primary w-full" onClick={() => onConfirm("SUBMITTED")} type="button">
+            I&apos;ve Submitted It
+          </button>
+          <button className="btn-secondary w-full" onClick={() => onConfirm("NOT_SUBMITTED")} type="button">
+            Not Submitted
           </button>
         </div>
       ) : null}

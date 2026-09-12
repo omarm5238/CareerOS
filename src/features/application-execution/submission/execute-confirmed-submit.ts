@@ -5,10 +5,12 @@ import { prisma } from "@/server/db/prisma";
 import { selectAdapter } from "../adapters/adapter-registry";
 import { getApplicationBrowserRunner } from "../browser/browser-runtime-registry";
 import { nowMs } from "../lib/clock";
+import { toPrismaJson } from "../lib/json-parsers";
 import { ExecutionAccessError } from "../lib/permissions";
 import { recordExecutionEvent } from "../sessions/execution-event";
-import { loadOwnedSession, sessionJson } from "../sessions/load-owned-session";
+import { loadOwnedSession } from "../sessions/load-owned-session";
 import { buildFinalSubmissionSnapshot, submissionFingerprint } from "./build-final-submission-snapshot";
+import { readLiveSubmissionState } from "./read-live-submission-state";
 import { withSubmissionLock } from "./submission-lock";
 import { applyVerifiedSuccess } from "./verify-submission";
 
@@ -39,21 +41,63 @@ export async function executeConfirmedSubmit(userId: string, sessionId: string, 
       throw new ExecutionAccessError("CONFLICT", "Application must still be DRAFT immediately before submit.");
     }
 
-    const { snapshot, plan } = sessionJson(row);
-    if (!snapshot) throw new ExecutionAccessError("CONFLICT", "Form inspection is missing.");
-    const current = submissionFingerprint(buildFinalSubmissionSnapshot(row, snapshot, plan));
-    if (current !== attempt.approvalFingerprint) {
+    const live = await readLiveSubmissionState(userId, sessionId);
+    await prisma.applicationExecutionSession.update({
+      where: { id: sessionId },
+      data: {
+        formSnapshotJson: toPrismaJson(live.snapshot),
+        fillPlanJson: toPrismaJson(live.plan),
+        formFingerprint: live.fingerprint,
+        lastActivityAt: new Date(),
+      },
+    });
+
+    if (live.interruption.kind === "CAPTCHA" || live.interruption.kind === "CHALLENGE_FRAME") {
+      await prisma.applicationExecutionSession.update({
+        where: { id: sessionId },
+        data: { status: "PAUSED_FOR_CAPTCHA", failureCode: "CAPTCHA_REQUIRED", failureMessage: live.interruption.message },
+      });
+      throw new ExecutionAccessError("CONFLICT", "CAPTCHA appeared before submit. CareerOS will not click Submit.");
+    }
+    if (live.block === "JOB_CLOSED") {
+      await prisma.applicationExecutionSession.update({
+        where: { id: sessionId },
+        data: { status: "BLOCKED", failureCode: "JOB_CLOSED", failureMessage: "This job is no longer available." },
+      });
+      throw new ExecutionAccessError("CONFLICT", "This job is closed. CareerOS will not submit.");
+    }
+    if (live.block === "DUPLICATE_APPLICATION") {
+      await prisma.applicationExecutionSession.update({
+        where: { id: sessionId },
+        data: {
+          status: "BLOCKED",
+          failureCode: "DUPLICATE_APPLICATION",
+          failureMessage: "The provider reports an application already exists.",
+        },
+      });
+      throw new ExecutionAccessError("CONFLICT", "Provider reports a duplicate application. CareerOS will not submit.");
+    }
+    if (!live.runtimeCapability.confirmedBrowserSubmit) {
+      await prisma.applicationExecutionSession.update({
+        where: { id: sessionId },
+        data: { status: "READY_FOR_REVIEW", executionMode: "ASSISTED_BROWSER" },
+      });
+      throw new ExecutionAccessError("CONFLICT", "Confirmed browser submit is no longer trusted. Submit manually.");
+    }
+
+    const current = submissionFingerprint(
+      buildFinalSubmissionSnapshot({ ...live.row, formFingerprint: live.fingerprint }, live.snapshot, live.plan),
+    );
+    if (current !== attempt.approvalFingerprint || (row.formFingerprint && live.fingerprint !== row.formFingerprint)) {
+      await prisma.applicationExecutionSession.update({
+        where: { id: sessionId },
+        data: { status: "READY_FOR_REVIEW", failureMessage: "The application form changed. Review it again." },
+      });
       throw new ExecutionAccessError("CONFLICT", "Application changed. Review it again.");
     }
 
-    const page = getApplicationBrowserRunner().getPage(sessionId);
-    if (!page) throw new ExecutionAccessError("CONFLICT", "Browser is not connected.");
-    const adapter = selectAdapter(row.provider, false);
-    if (!adapter.capabilities().confirmedBrowserSubmit) {
-      throw new ExecutionAccessError("CONFLICT", "Confirmed browser submit is not available.");
-    }
-    const control = await adapter.locateFinalSubmit(page);
-    if (!control?.isFinal) {
+    const control = await live.adapter.locateFinalSubmit(live.page);
+    if (!control?.isFinal || control.confidence < 0.85) {
       throw new ExecutionAccessError("CONFLICT", "No trusted final submit control is available.");
     }
 
@@ -75,23 +119,16 @@ export async function executeConfirmedSubmit(userId: string, sessionId: string, 
     });
 
     try {
-      await adapter.executeConfirmedSubmit(page, control.selector.value);
+      await live.adapter.executeConfirmedSubmit(live.page, control.selector.value);
     } catch (error) {
-      await prisma.applicationSubmissionAttempt.update({
-        where: { id: attempt.id },
-        data: { status: "UNCERTAIN", failureCode: "SUBMISSION_UNCERTAIN", failureMessage: "Submit action may have reached the provider." },
-      });
-      await prisma.applicationExecutionSession.update({
-        where: { id: sessionId },
-        data: { status: "VERIFYING", failureCode: "SUBMISSION_UNCERTAIN" },
-      });
-      await recordExecutionEvent(prisma, {
-        userId,
-        executionSessionId: sessionId,
-        type: "SUBMIT_RESPONSE",
-        message: "Submit response was uncertain. CareerOS will not click Submit again.",
-      });
+      await markUncertain(userId, sessionId, attempt.id, "Submit action may have reached the provider.");
       throw error;
+    }
+
+    const after = await live.adapter.detectInterruptions(live.page);
+    if (after.kind === "CAPTCHA" || after.kind === "CHALLENGE_FRAME") {
+      await markUncertain(userId, sessionId, attempt.id, "Provider intercepted submit with a CAPTCHA or challenge. CareerOS will not click Submit again.");
+      return loadOwnedSession(userId, sessionId);
     }
 
     await prisma.applicationSubmissionAttempt.update({
@@ -113,6 +150,23 @@ export async function executeConfirmedSubmit(userId: string, sessionId: string, 
   });
 }
 
+async function markUncertain(userId: string, sessionId: string, attemptId: string, message: string) {
+  await prisma.applicationSubmissionAttempt.update({
+    where: { id: attemptId },
+    data: { status: "UNCERTAIN", verificationStatus: "UNVERIFIED", failureCode: "SUBMISSION_UNCERTAIN", failureMessage: message },
+  });
+  await prisma.applicationExecutionSession.update({
+    where: { id: sessionId },
+    data: { status: "VERIFYING", failureCode: "SUBMISSION_UNCERTAIN", failureMessage: message },
+  });
+  await recordExecutionEvent(prisma, {
+    userId,
+    executionSessionId: sessionId,
+    type: "SUBMIT_RESPONSE",
+    message,
+  });
+}
+
 async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: string) {
   const row = await loadOwnedSession(userId, sessionId);
   const page = getApplicationBrowserRunner().getPage(sessionId);
@@ -125,6 +179,16 @@ async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: s
   }
   const adapter = selectAdapter(row.provider, false);
   const result = await adapter.verifySubmission(page);
+  const failureCode =
+    result.successMarkerCode === "JOB_CLOSED"
+      ? "JOB_CLOSED"
+      : result.successMarkerCode === "DUPLICATE_APPLICATION"
+        ? "DUPLICATE_APPLICATION"
+        : result.status === "FAILED"
+          ? "SUBMISSION_REJECTED"
+          : result.status === "VERIFIED"
+            ? null
+            : "SUBMISSION_UNCERTAIN";
   await prisma.applicationSubmissionAttempt.update({
     where: { id: attemptId },
     data: {
@@ -142,7 +206,7 @@ async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: s
         verifiedAt: new Date().toISOString(),
       },
       verifiedAt: result.status === "VERIFIED" ? new Date() : null,
-      failureCode: result.status === "FAILED" ? "SUBMISSION_REJECTED" : result.status === "VERIFIED" ? null : "SUBMISSION_UNCERTAIN",
+      failureCode,
     },
   });
   await recordExecutionEvent(prisma, {
@@ -157,7 +221,7 @@ async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: s
   } else if (result.status === "FAILED") {
     await prisma.applicationExecutionSession.update({
       where: { id: sessionId },
-      data: { status: "FAILED", failureCode: "SUBMISSION_REJECTED", failureMessage: result.message },
+      data: { status: "FAILED", failureCode, failureMessage: result.message },
     });
   }
   return loadOwnedSession(userId, sessionId);

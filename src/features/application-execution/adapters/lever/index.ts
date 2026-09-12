@@ -11,4 +11,5 @@ export const leverAdapter = createBrowserAdapter({
     if (/lever\.co/i.test(url)) return 0.93;
     return markers.some((row) => /lever/.test(row)) ? 0.96 : 0;
   },
+  version: "lever-v2",
 });

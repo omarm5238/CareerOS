@@ -11,4 +11,5 @@ export const workableAdapter = createBrowserAdapter({
     if (/workable\.com/i.test(url)) return 0.93;
     return markers.some((row) => /workable/.test(row)) ? 0.96 : 0;
   },
+  version: "workable-v2",
 });

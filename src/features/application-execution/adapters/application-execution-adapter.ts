@@ -1,13 +1,14 @@
 import type { ApplicationProvider } from "@/generated/prisma/client";
 
 import { classifyApplicationField, detectDocumentKind, normalizeLabel } from "../classification/classify-application-field";
+import { classifyPageActions, pickTrustedAction } from "../classification/classify-application-action";
 import { detectInterruptionsFromDom } from "../classification/detect-interruptions";
+import { detectProviderPageBlock } from "../classification/detect-provider-page-block";
 import type { ApplicationBrowserPage, ApplicationExecutionAdapter, UploadedFileSpec } from "../browser/application-browser-runner";
-import { ADAPTER_VERSION } from "../types";
-import type {
-  AdapterCapabilities,
-  ApplicationFormSnapshot,
-} from "../types";
+import { getProviderCapability } from "./provider-submission-capabilities";
+import { isConfirmedSubmitEnabledForProvider } from "./confirmed-submit-policy";
+import { foreignSuccessMarkerPresent, verificationProfileFor } from "./provider-verification-profiles";
+import type { AdapterCapabilities, ApplicationFormSnapshot } from "../types";
 import type { RawInspectResult } from "./inspect-dom";
 import { inspectDomSource } from "./inspect-dom";
 
@@ -38,6 +39,7 @@ export async function inspectWithRoot(
     .filter((field) => !field.hidden)
     .map((field) => {
       const classified = classifyApplicationField({ label: field.label, type: field.type, name: field.externalId });
+      const live = field.currentValue?.trim() ?? "";
       return {
         externalId: field.externalId,
         selector: { strategy: "css" as const, value: field.selector },
@@ -49,11 +51,15 @@ export async function inspectWithRoot(
         step: raw.step,
         classification: classified.classification,
         confidence: field.unsupported ? 0.2 : classified.confidence,
-        currentValueState: "unknown" as const,
-        currentValuePreview: null,
+        currentValueState: live ? ("filled" as const) : ("empty" as const),
+        currentValuePreview: live || null,
         documentKind: detectDocumentKind(field.label),
       };
     });
+  const actions = classifyPageActions(raw.actions ?? []);
+  const final = pickTrustedAction(actions, "FINAL_SUBMIT");
+  const next = pickTrustedAction(actions, "NEXT_STEP") ?? pickTrustedAction(actions, "SAVE_AND_CONTINUE");
+  const open = pickTrustedAction(actions, "OPEN_APPLICATION");
 
   return {
     provider,
@@ -61,12 +67,22 @@ export async function inspectWithRoot(
     step: raw.step,
     totalSteps: raw.totalSteps,
     fields,
-    submitControl: raw.submitSelector
-      ? { selector: { strategy: "css", value: raw.submitSelector }, label: raw.submitLabel ?? "Submit", isFinal: true, confidence: 0.9 }
+    submitControl: final
+      ? { selector: final.selector, label: final.label, isFinal: true, confidence: final.confidence }
+      : raw.submitSelector
+        ? { selector: { strategy: "css", value: raw.submitSelector }, label: raw.submitLabel ?? "Submit", isFinal: true, confidence: 0.6 }
       : null,
-    nextControl: raw.nextSelector
-      ? { selector: { strategy: "css", value: raw.nextSelector }, label: raw.nextLabel ?? "Next", isFinal: false, confidence: 0.9 }
-      : null,
+    nextControl: next
+      ? { selector: next.selector, label: next.label, isFinal: false, confidence: next.confidence }
+      : raw.nextSelector
+        ? { selector: { strategy: "css", value: raw.nextSelector }, label: raw.nextLabel ?? "Next", isFinal: false, confidence: 0.6 }
+        : null,
+    openApplicationControl: open
+      ? { selector: open.selector, label: open.label, isFinal: false, confidence: open.confidence }
+      : raw.openSelector
+        ? { selector: { strategy: "css", value: raw.openSelector }, label: raw.openLabel ?? "Apply", isFinal: false, confidence: 0.6 }
+        : null,
+    actions,
     inspectedAt: new Date().toISOString(),
   };
 }
@@ -99,8 +115,10 @@ export function createBrowserAdapter(options: {
   successMarker: string;
   errorMarker: string;
   confirmedBrowserSubmit: boolean;
+  version?: string;
   extraDetect?: (url: string, htmlMarkers: string[]) => number;
 }): ApplicationExecutionAdapter {
+  const version = options.version ?? getProviderCapability(options.provider).adapterVersion;
   const capabilities = (): AdapterCapabilities => ({
     inspectForm: true,
     fillFields: true,
@@ -109,14 +127,17 @@ export function createBrowserAdapter(options: {
     detectLogin: true,
     detectCaptcha: true,
     detectAssessment: true,
-    confirmedBrowserSubmit: options.confirmedBrowserSubmit,
+    confirmedBrowserSubmit:
+      options.provider === "GENERIC" || options.provider === "UNKNOWN"
+        ? false
+        : isConfirmedSubmitEnabledForProvider(options.provider),
     verificationStrength: options.provider === "GENERIC" || options.provider === "UNKNOWN" ? "generic" : "provider",
     officialApiSubmit: false,
   });
 
   return {
     provider: options.provider,
-    version: ADAPTER_VERSION,
+    version,
     capabilities,
     async detect(page) {
       const url = page.url();
@@ -195,19 +216,27 @@ export function createBrowserAdapter(options: {
     },
     async locateNextControl(page) {
       const snapshot = await inspectWithRoot(page, options.provider, options.rootSelectors[0] ?? "body");
+      const next = pickTrustedAction(snapshot.actions, "NEXT_STEP") ?? pickTrustedAction(snapshot.actions, "SAVE_AND_CONTINUE");
+      if (next) return { selector: next.selector, label: next.label, isFinal: false, confidence: next.confidence };
       return snapshot.nextControl;
     },
     async locateFinalSubmit(page) {
       const snapshot = await inspectWithRoot(page, options.provider, options.rootSelectors[0] ?? "body");
-      return snapshot.submitControl;
+      const final = pickTrustedAction(snapshot.actions, "FINAL_SUBMIT");
+      if (final) return { selector: final.selector, label: final.label, isFinal: true, confidence: final.confidence };
+      if (snapshot.submitControl && snapshot.submitControl.confidence >= 0.85 && snapshot.submitControl.isFinal) return snapshot.submitControl;
+      return null;
     },
     async advanceStep(page, selector) {
       await page.click(selector);
       await page.waitForTimeout(250);
     },
     async executeConfirmedSubmit(page, selector) {
-      if (!options.confirmedBrowserSubmit) {
+      if (options.provider === "GENERIC" || options.provider === "UNKNOWN") {
         throw new Error("Generic adapter does not automatically submit.");
+      }
+      if (!isConfirmedSubmitEnabledForProvider(options.provider)) {
+        throw new Error("Confirmed browser submit is disabled.");
       }
       await page.click(selector);
       await page.waitForTimeout(500);
@@ -215,7 +244,30 @@ export function createBrowserAdapter(options: {
     async verifySubmission(page) {
       const signals = await page.contentSignals();
       const blob = `${signals.url} ${signals.title} ${signals.markers.join(" ")} ${signals.bodyTextSample}`.toLowerCase();
-      if (blob.includes(options.errorMarker.toLowerCase()) || /submission rejected|job closed|duplicate application/.test(blob)) {
+      const block = detectProviderPageBlock(blob);
+      if (block === "JOB_CLOSED") {
+        return {
+          status: "FAILED",
+          method: "provider_error",
+          successMarkerCode: "JOB_CLOSED",
+          confirmationUrl: safeUrl(page.url()),
+          providerApplicationId: null,
+          pageFingerprint: null,
+          message: "Provider reports this job is closed.",
+        };
+      }
+      if (block === "DUPLICATE_APPLICATION") {
+        return {
+          status: "FAILED",
+          method: "provider_error",
+          successMarkerCode: "DUPLICATE_APPLICATION",
+          confirmationUrl: safeUrl(page.url()),
+          providerApplicationId: null,
+          pageFingerprint: null,
+          message: "Provider reports an application already exists.",
+        };
+      }
+      if (blob.includes(options.errorMarker.toLowerCase()) || /submission rejected/.test(blob)) {
         return {
           status: "FAILED",
           method: "provider_error",
@@ -226,8 +278,29 @@ export function createBrowserAdapter(options: {
           message: "Provider reported a submission failure.",
         };
       }
-      if (blob.includes(options.successMarker.toLowerCase())) {
-        const idMatch = blob.match(/application id[:\s]+([a-z0-9-]+)/i);
+      if (foreignSuccessMarkerPresent(options.provider, blob) && !blob.includes(options.successMarker.toLowerCase())) {
+        return {
+          status: "UNVERIFIED",
+          method: "ambiguous",
+          successMarkerCode: null,
+          confirmationUrl: safeUrl(page.url()),
+          providerApplicationId: null,
+          pageFingerprint: hashish(signals.bodyTextSample),
+          message: "Success marker belongs to a different provider.",
+        };
+      }
+      const profile = verificationProfileFor(options.provider);
+      const ownMarker = blob.includes(options.successMarker.toLowerCase());
+      const successElement = profile
+        ? profile.successSelectors.some((selector) => {
+            const token = selector.match(/'([^']+)'/)?.[1];
+            return token ? blob.includes(token.toLowerCase()) : false;
+          })
+        : false;
+      const successUrl = profile ? profile.successUrlPatterns.some((pattern) => pattern.test(signals.url)) : false;
+      const idMatch = blob.match(/application id[:\s]+([a-z0-9-]+)/i);
+      const twoSignals = (ownMarker || successElement) && (successUrl || Boolean(idMatch));
+      if (twoSignals) {
         return {
           status: "VERIFIED",
           method: "provider_marker",
@@ -236,6 +309,17 @@ export function createBrowserAdapter(options: {
           providerApplicationId: idMatch?.[1] ?? null,
           pageFingerprint: hashish(signals.bodyTextSample),
           message: `Verified by ${options.provider} adapter.`,
+        };
+      }
+      if (ownMarker && !twoSignals) {
+        return {
+          status: "PROBABLE",
+          method: "generic_thank_you",
+          successMarkerCode: options.successMarker,
+          confirmationUrl: safeUrl(page.url()),
+          providerApplicationId: idMatch?.[1] ?? null,
+          pageFingerprint: hashish(signals.bodyTextSample),
+          message: "Provider marker present without a second trusted success signal.",
         };
       }
       if (/thank you|application received|successfully submitted/.test(blob)) {

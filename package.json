@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "m245b:fixtures": "npx tsx src/features/application-execution/fixtures/start-server.ts"
+    "m245b:fixtures": "npx tsx src/features/application-execution/fixtures/start-server.ts",
+    "m245c:qa": "npx tsx scripts/m245c-qa.ts",
+    "m245c:live": "npx tsx scripts/m245c-live-provider-validation.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

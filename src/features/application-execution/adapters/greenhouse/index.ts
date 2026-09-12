@@ -11,4 +11,5 @@ export const greenhouseAdapter = createBrowserAdapter({
     if (/greenhouse\.io|grnh\.se|job-boards\.greenhouse/i.test(url)) return 0.93;
     return markers.some((row) => /greenhouse/.test(row)) ? 0.96 : 0;
   },
+  version: "greenhouse-v2",
 });

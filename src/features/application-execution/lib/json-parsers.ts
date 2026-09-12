@@ -20,7 +20,12 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 export function parseFormSnapshot(value: unknown): ApplicationFormSnapshot | null {
   if (!isRecord(value) || !Array.isArray(value.fields)) return null;
-  return value as ApplicationFormSnapshot;
+  const snapshot = value as ApplicationFormSnapshot;
+  return {
+    ...snapshot,
+    actions: Array.isArray(snapshot.actions) ? snapshot.actions : [],
+    fields: snapshot.fields,
+  };
 }
 
 export function parseFillPlan(value: unknown): FillPlan {
@@ -34,6 +39,11 @@ export function parseFillPlan(value: unknown): FillPlan {
       : [],
     lockedCoverLetterRevisionId:
       typeof value.lockedCoverLetterRevisionId === "string" ? value.lockedCoverLetterRevisionId : null,
+    detectionConfidence: typeof value.detectionConfidence === "number" ? value.detectionConfidence : null,
+    runtimeCapability:
+      isRecord(value.runtimeCapability) && typeof value.runtimeCapability.provider === "string"
+        ? (value.runtimeCapability as FillPlan["runtimeCapability"])
+        : null,
   };
 }
 

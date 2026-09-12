@@ -3,6 +3,7 @@ import type { ApplicationProvider } from "@/generated/prisma/client";
 import type { ApplicationBrowserPage, ApplicationExecutionAdapter } from "../browser/application-browser-runner";
 import type { DetectionResult } from "../types";
 import { genericAdapter, hostnameProvider } from "./application-execution-adapter";
+import { isConfirmedSubmitEnabledForProvider } from "./confirmed-submit-policy";
 import { greenhouseAdapter } from "./greenhouse";
 import { leverAdapter } from "./lever";
 import { ashbyAdapter } from "./ashby";
@@ -44,7 +45,8 @@ export function selectAdapter(provider: ApplicationProvider, drifted: boolean): 
 
 export function adapterSupportsConfirmedSubmit(provider: ApplicationProvider, drifted: boolean): boolean {
   if (drifted) return false;
-  return selectAdapter(provider, false).capabilities().confirmedBrowserSubmit;
+  if (provider === "GENERIC" || provider === "UNKNOWN") return false;
+  return isConfirmedSubmitEnabledForProvider(provider);
 }
 
 export { genericAdapter };

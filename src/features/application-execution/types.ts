@@ -1,3 +1,4 @@
+import type { ApplicationActionAssessment } from "./classification/classify-application-action";
 import type {
   ApplicationExecutionFailureCode,
   ApplicationExecutionMode,
@@ -40,6 +41,14 @@ export type ApplicationFieldClassification =
   | "CONSENT"
   | "ASSESSMENT"
   | "REFERENCE"
+  | "UNKNOWN";
+
+export type ApplicationActionKind =
+  | "OPEN_APPLICATION"
+  | "NEXT_STEP"
+  | "SAVE_AND_CONTINUE"
+  | "FINAL_SUBMIT"
+  | "CANCEL"
   | "UNKNOWN";
 
 export type ApplicationAnswerSource =
@@ -101,6 +110,8 @@ export type ApplicationFormSnapshot = {
   fields: ApplicationFormField[];
   submitControl: SubmitControlDescriptor | null;
   nextControl: SubmitControlDescriptor | null;
+  openApplicationControl: SubmitControlDescriptor | null;
+  actions: ApplicationActionAssessment[];
   inspectedAt: string;
 };
 
@@ -118,10 +129,25 @@ export type ResolvedApplicationAnswer = {
   savePreference: boolean;
 };
 
+export type RuntimeSubmissionCapability = {
+  provider: ApplicationProvider;
+  adapterVersion: string;
+  providerDetected: boolean;
+  formRecognized: boolean;
+  finalStepRecognized: boolean;
+  submitControlTrusted: boolean;
+  verificationStrategyTrusted: boolean;
+  confirmedBrowserSubmit: boolean;
+  confidence: number;
+  reasons: string[];
+};
+
 export type FillPlan = {
   answers: ResolvedApplicationAnswer[];
   uploadedDocuments: UploadedDocumentRecord[];
   lockedCoverLetterRevisionId?: string | null;
+  runtimeCapability?: RuntimeSubmissionCapability | null;
+  detectionConfidence?: number | null;
 };
 
 export type UploadedDocumentRecord = {
@@ -271,6 +297,8 @@ export type ExecutionSessionView = {
     verificationStatus: ApplicationSubmissionVerificationStatus | null;
     method: ApplicationSubmissionMethod | null;
     confirmedBrowserSubmitAvailable: boolean;
+    confirmedBrowserSubmitMessage: string;
+    runtimeCapability: RuntimeSubmissionCapability | null;
     resumeRevisionId: string | null;
     resumeFileHash: string | null;
     coverLetterRevisionId: string | null;
