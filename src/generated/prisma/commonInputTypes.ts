@@ -1562,6 +1562,40 @@ export type EnumLinkedinGrowthInsightStatusWithAggregatesFilter<$PrismaModel = n
   _max?: Prisma.NestedEnumLinkedinGrowthInsightStatusFilter<$PrismaModel>
 }
 
+export type EnumLinkedinConnectionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinConnectionStatus | Prisma.EnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel> | $Enums.LinkedinConnectionStatus
+}
+
+export type EnumLinkedinConnectionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinConnectionStatus | Prisma.EnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinConnectionStatusWithAggregatesFilter<$PrismaModel> | $Enums.LinkedinConnectionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel>
+}
+
+export type EnumLinkedinPublishingAttemptStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinPublishingAttemptStatus | Prisma.EnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel> | $Enums.LinkedinPublishingAttemptStatus
+}
+
+export type EnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinPublishingAttemptStatus | Prisma.EnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$PrismaModel> | $Enums.LinkedinPublishingAttemptStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -3067,6 +3101,40 @@ export type NestedEnumLinkedinGrowthInsightStatusWithAggregatesFilter<$PrismaMod
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumLinkedinGrowthInsightStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumLinkedinGrowthInsightStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumLinkedinConnectionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinConnectionStatus | Prisma.EnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel> | $Enums.LinkedinConnectionStatus
+}
+
+export type NestedEnumLinkedinConnectionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinConnectionStatus | Prisma.EnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinConnectionStatus[] | Prisma.ListEnumLinkedinConnectionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinConnectionStatusWithAggregatesFilter<$PrismaModel> | $Enums.LinkedinConnectionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLinkedinConnectionStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinPublishingAttemptStatus | Prisma.EnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel> | $Enums.LinkedinPublishingAttemptStatus
+}
+
+export type NestedEnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.LinkedinPublishingAttemptStatus | Prisma.EnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.LinkedinPublishingAttemptStatus[] | Prisma.ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$PrismaModel> | $Enums.LinkedinPublishingAttemptStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
 }
 
 

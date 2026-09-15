@@ -89,7 +89,10 @@ export const ModelName = {
   linkedinPostRevision: 'linkedinPostRevision',
   linkedinPublishingPlan: 'linkedinPublishingPlan',
   linkedinPostPerformance: 'linkedinPostPerformance',
-  linkedinGrowthInsight: 'linkedinGrowthInsight'
+  linkedinGrowthInsight: 'linkedinGrowthInsight',
+  linkedinConnection: 'linkedinConnection',
+  linkedinOAuthAttempt: 'linkedinOAuthAttempt',
+  linkedinPublishingAttempt: 'linkedinPublishingAttempt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -984,6 +987,70 @@ export const LinkedinGrowthInsightScalarFieldEnum = {
 } as const
 
 export type LinkedinGrowthInsightScalarFieldEnum = (typeof LinkedinGrowthInsightScalarFieldEnum)[keyof typeof LinkedinGrowthInsightScalarFieldEnum]
+
+
+export const LinkedinConnectionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  providerSubject: 'providerSubject',
+  displayName: 'displayName',
+  email: 'email',
+  profileImageUrl: 'profileImageUrl',
+  status: 'status',
+  encryptedAccessToken: 'encryptedAccessToken',
+  tokenExpiresAt: 'tokenExpiresAt',
+  grantedScopesJson: 'grantedScopesJson',
+  capabilitySnapshotJson: 'capabilitySnapshotJson',
+  connectedAt: 'connectedAt',
+  lastValidatedAt: 'lastValidatedAt',
+  reauthRequiredAt: 'reauthRequiredAt',
+  disconnectedAt: 'disconnectedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinConnectionScalarFieldEnum = (typeof LinkedinConnectionScalarFieldEnum)[keyof typeof LinkedinConnectionScalarFieldEnum]
+
+
+export const LinkedinOAuthAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  stateHash: 'stateHash',
+  redirectUri: 'redirectUri',
+  pkceVerifierEncrypted: 'pkceVerifierEncrypted',
+  expiresAt: 'expiresAt',
+  usedAt: 'usedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type LinkedinOAuthAttemptScalarFieldEnum = (typeof LinkedinOAuthAttemptScalarFieldEnum)[keyof typeof LinkedinOAuthAttemptScalarFieldEnum]
+
+
+export const LinkedinPublishingAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  linkedinConnectionId: 'linkedinConnectionId',
+  linkedinPublishingPlanId: 'linkedinPublishingPlanId',
+  linkedinPostId: 'linkedinPostId',
+  linkedinPostRevisionId: 'linkedinPostRevisionId',
+  status: 'status',
+  contentFingerprint: 'contentFingerprint',
+  capabilitySnapshotJson: 'capabilitySnapshotJson',
+  providerRequestId: 'providerRequestId',
+  externalLinkedInPostId: 'externalLinkedInPostId',
+  externalLinkedInUrl: 'externalLinkedInUrl',
+  errorCode: 'errorCode',
+  providerErrorJson: 'providerErrorJson',
+  createdAt: 'createdAt',
+  validatedAt: 'validatedAt',
+  submittedAt: 'submittedAt',
+  verifiedAt: 'verifiedAt',
+  failedAt: 'failedAt',
+  resolvedAt: 'resolvedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LinkedinPublishingAttemptScalarFieldEnum = (typeof LinkedinPublishingAttemptScalarFieldEnum)[keyof typeof LinkedinPublishingAttemptScalarFieldEnum]
 
 
 export const SortOrder = {

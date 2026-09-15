@@ -470,3 +470,14 @@ export type LinkedinOverviewView = {
   visibilityGaps: LinkedinVisibilityGap[];
   recentPerformance: LinkedinPerformanceSnapshotView[];
 };
+
+export type LinkedinCapabilityCardId =
+  | "IDENTITY"
+  | "EMAIL"
+  | "PUBLISH_MEMBER_POST"
+  | "POST_ANALYTICS"
+  | "PROFILE_ANALYTICS"
+  | "HISTORICAL_POST_READ"
+  | "COMMENTS_READ"
+  | "REACTIONS_READ"
+  | "ORGANIZATION_PUBLISH";

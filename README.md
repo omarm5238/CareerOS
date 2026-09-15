@@ -193,6 +193,48 @@ confirmation (`USER_CONFIRMED`). Performance snapshots are manual until M25B.
 npm run m25a:qa
 ```
 
+### Milestone 25B — Official LinkedIn Connection + Verified Publishing
+
+M25B adds official LinkedIn OAuth/OIDC connection and exact-revision official
+publishing on top of M25A. CareerOS uses official LinkedIn APIs only. There is
+no scraping, browser automation, password/cookie capture, DMs, likes, comments,
+connection requests, or background/mass publishing.
+
+M25A still owns content. Official publish always uses the frozen publishing-plan
+revision (`linkedinPostRevisionId`), never the post's later `activeRevisionId`.
+No AI runs between an approved plan and the LinkedIn create call.
+
+If LinkedIn may have received a post but CareerOS cannot verify the result, the
+attempt becomes `UNCERTAIN`. CareerOS does not retry that create call.
+
+Optional member analytics require additional LinkedIn API approval. When
+approval is absent, the UI stays informational and M25A manual metrics remain.
+
+Required environment variables (server-only; never commit secrets):
+
+| Variable | Purpose |
+| --- | --- |
+| `LINKEDIN_CLIENT_ID` | Official LinkedIn app client id |
+| `LINKEDIN_CLIENT_SECRET` | Official LinkedIn app secret |
+| `LINKEDIN_REDIRECT_URI` | OAuth callback, typically `/api/linkedin/connection/callback` |
+| `LINKEDIN_TOKEN_ENCRYPTION_KEY` | 32-byte AES-GCM key as 64-char hex or base64 |
+| `LINKEDIN_API_BASE_URL` | Optional API host override |
+| `CAREEROS_LINKEDIN_PROVIDER` | `fixture` for QA only. Production default is `official` |
+| `CAREEROS_LINKEDIN_ANALYTICS_APPROVED` | Set `1` only if the app actually has analytics approval |
+| `CAREEROS_LINKEDIN_ALLOW_LIVE_TEST_PUBLISH` | Never enable in normal QA. Live publish still requires explicit user authorization |
+
+```bash
+npm run m25b:qa
+npm run m25b:security
+npm run m25b:live
+```
+
+`m25b:live` never publishes. If LinkedIn credentials are absent it reports
+`LIVE_NOT_CONFIGURED`. That does not block Core architecture.
+
+Manual M25A Copy / Mark Published remains available when LinkedIn is
+disconnected, missing publish permission, or needs reconnect.
+
 ### Scripts
 
 | Script          | Description                |
@@ -204,6 +246,10 @@ npm run m25a:qa
 | `npm run m245b:fixtures` | Start local ATS fixtures (dev/QA only) |
 | `npm run m25a:qa` | M25A LinkedIn growth QA |
 | `npm run m25a:headed` | M25A headed UI checks |
+| `npm run m25b:qa` | M25B fixture connection/publishing QA |
+| `npm run m25b:security` | M25B OAuth/token/ownership security QA |
+| `npm run m25b:live` | Safe live smoke (no publish) |
+| `npm run m25b:headed` | M25B headed 390×844 + desktop checks |
 
 ---
 

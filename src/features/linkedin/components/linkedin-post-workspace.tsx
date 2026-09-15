@@ -1,14 +1,24 @@
 import type { LinkedinPostView } from "../types";
+import type { LinkedinConnectionView } from "../integration/connection/types";
 import { CopyPostButton, LinkedinActionButton } from "./linkedin-actions";
 import { LinkedinSubNav } from "./linkedin-sub-nav";
 
-export function LinkedinPostWorkspace({ post }: { post: LinkedinPostView }) {
+export function LinkedinPostWorkspace({
+  post,
+  connection,
+}: {
+  post: LinkedinPostView;
+  connection: LinkedinConnectionView;
+}) {
   const revision = post.activeRevision;
   const plan = post.publishingPlans[0] ?? null;
   const copyText = revision ? `${revision.hook}\n\n${revision.body}${revision.cta ? `\n\n${revision.cta}` : ""}` : "";
   const planCopy = plan
     ? post.revisions.find((item) => item.id === plan.revisionId)
     : revision;
+  const publishState = connection.capabilities.find((item) => item.capability === "PUBLISH_MEMBER_POST")?.state;
+  const analyticsState = connection.capabilities.find((item) => item.capability === "POST_ANALYTICS")?.state;
+  const officialAvailable = publishState === "AVAILABLE";
 
   return (
     <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
@@ -70,11 +80,33 @@ export function LinkedinPostWorkspace({ post }: { post: LinkedinPostView }) {
       </section>
       {plan ? (
         <section className="surface-glass mt-4 p-5">
-          <p className="section-eyebrow">Publishing plan · {plan.status} · MANUAL</p>
+          <p className="section-eyebrow">Publishing plan · {plan.status} · {plan.publishMode}</p>
           <p className="mt-2 text-sm">Exact frozen revision: {plan.revisionId} (Rev {plan.revisionNumber})</p>
           {plan.newerRevisionWarning ? <p className="mt-2 text-sm">{plan.newerRevisionWarning}</p> : null}
+          {officialAvailable ? (
+            <p className="mt-2 text-sm">Official publishing available</p>
+          ) : (
+            <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
+              Official publishing unavailable. Copy and publish manually.
+            </p>
+          )}
           <p className="mt-2 whitespace-pre-wrap text-sm">{planCopy ? `${planCopy.hook}\n\n${planCopy.body}` : ""}</p>
           <div className="mt-4 grid gap-2 sm:grid-cols-3">
+            {officialAvailable && (plan.status === "READY" || plan.status === "SCHEDULED") ? (
+              <a
+                href={`/workspace/linkedin/publish/${plan.id}`}
+                className="rounded-[var(--radius-lg)] border border-[var(--color-border)] px-3 py-2 text-center text-sm"
+              >
+                Publish to LinkedIn
+              </a>
+            ) : (
+              <a
+                href={`/workspace/linkedin/publish/${plan.id}`}
+                className="rounded-[var(--radius-lg)] border border-[var(--color-border)] px-3 py-2 text-center text-sm"
+              >
+                Copy & Publish Manually
+              </a>
+            )}
             <CopyPostButton text={planCopy ? `${planCopy.hook}\n\n${planCopy.body}` : copyText} />
             <LinkedinActionButton label="Mark Published" href={`/api/linkedin/publishing-plans/${plan.id}/mark-published`} />
             <LinkedinActionButton label="Cancel Plan" href={`/api/linkedin/publishing-plans/${plan.id}/cancel`} />
@@ -87,12 +119,25 @@ export function LinkedinPostWorkspace({ post }: { post: LinkedinPostView }) {
           <p className="mt-2 text-sm">Published {post.publishedAt ?? "—"}</p>
           <p className="mt-1 text-sm">LinkedIn URL {post.externalLinkedInUrl || "optional, not set"}</p>
           <p className="mt-1 text-sm">Exact revision {post.publishingPlans.find((item) => item.status === "PUBLISHED")?.revisionId}</p>
-          <div className="mt-4">
+          <p className="mt-4 text-sm text-[var(--color-text-secondary)]">
+            {analyticsState === "AVAILABLE"
+              ? "Official analytics can be synced without replacing manual snapshots."
+              : analyticsState === "APPROVAL_REQUIRED"
+                ? "Official LinkedIn analytics require additional API approval. Manual performance tracking remains available."
+                : "Manual performance tracking remains available."}
+          </p>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2">
             <LinkedinActionButton
               label="Add Performance Snapshot"
               href={`/api/linkedin/posts/${post.id}/performance`}
               body={{ likes: 0, comments: 0, impressions: 100 }}
             />
+            {analyticsState === "AVAILABLE" ? (
+              <LinkedinActionButton
+                label="Sync Official Analytics"
+                href={`/api/linkedin/posts/${post.id}/analytics/sync`}
+              />
+            ) : null}
           </div>
           <ul className="mt-3 space-y-2 text-sm">
             {post.performances.map((item) => (

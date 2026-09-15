@@ -232,6 +232,9 @@ export type userWhereInput = {
   linkedinPublishingPlans?: Prisma.LinkedinPublishingPlanListRelationFilter
   linkedinPostPerformances?: Prisma.LinkedinPostPerformanceListRelationFilter
   linkedinGrowthInsights?: Prisma.LinkedinGrowthInsightListRelationFilter
+  linkedinConnections?: Prisma.LinkedinConnectionListRelationFilter
+  linkedinOAuthAttempts?: Prisma.LinkedinOAuthAttemptListRelationFilter
+  linkedinPublishingAttempts?: Prisma.LinkedinPublishingAttemptListRelationFilter
 }
 
 export type userOrderByWithRelationInput = {
@@ -276,6 +279,9 @@ export type userOrderByWithRelationInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanOrderByRelationAggregateInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceOrderByRelationAggregateInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightOrderByRelationAggregateInput
+  linkedinConnections?: Prisma.linkedinConnectionOrderByRelationAggregateInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptOrderByRelationAggregateInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptOrderByRelationAggregateInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -323,6 +329,9 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   linkedinPublishingPlans?: Prisma.LinkedinPublishingPlanListRelationFilter
   linkedinPostPerformances?: Prisma.LinkedinPostPerformanceListRelationFilter
   linkedinGrowthInsights?: Prisma.LinkedinGrowthInsightListRelationFilter
+  linkedinConnections?: Prisma.LinkedinConnectionListRelationFilter
+  linkedinOAuthAttempts?: Prisma.LinkedinOAuthAttemptListRelationFilter
+  linkedinPublishingAttempts?: Prisma.LinkedinPublishingAttemptListRelationFilter
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -393,6 +402,9 @@ export type userCreateInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -437,6 +449,9 @@ export type userUncheckedCreateInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -481,6 +496,9 @@ export type userUpdateInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -525,6 +543,9 @@ export type userUncheckedUpdateInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -1084,6 +1105,48 @@ export type userUpdateOneRequiredWithoutLinkedinGrowthInsightsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutLinkedinGrowthInsightsInput, Prisma.userUpdateWithoutLinkedinGrowthInsightsInput>, Prisma.userUncheckedUpdateWithoutLinkedinGrowthInsightsInput>
 }
 
+export type userCreateNestedOneWithoutLinkedinConnectionsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinConnectionsInput, Prisma.userUncheckedCreateWithoutLinkedinConnectionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinConnectionsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutLinkedinConnectionsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinConnectionsInput, Prisma.userUncheckedCreateWithoutLinkedinConnectionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinConnectionsInput
+  upsert?: Prisma.userUpsertWithoutLinkedinConnectionsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutLinkedinConnectionsInput, Prisma.userUpdateWithoutLinkedinConnectionsInput>, Prisma.userUncheckedUpdateWithoutLinkedinConnectionsInput>
+}
+
+export type userCreateNestedOneWithoutLinkedinOAuthAttemptsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinOAuthAttemptsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinOAuthAttemptsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutLinkedinOAuthAttemptsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinOAuthAttemptsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinOAuthAttemptsInput
+  upsert?: Prisma.userUpsertWithoutLinkedinOAuthAttemptsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutLinkedinOAuthAttemptsInput, Prisma.userUpdateWithoutLinkedinOAuthAttemptsInput>, Prisma.userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput>
+}
+
+export type userCreateNestedOneWithoutLinkedinPublishingAttemptsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinPublishingAttemptsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinPublishingAttemptsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutLinkedinPublishingAttemptsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinPublishingAttemptsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutLinkedinPublishingAttemptsInput
+  upsert?: Prisma.userUpsertWithoutLinkedinPublishingAttemptsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutLinkedinPublishingAttemptsInput, Prisma.userUpdateWithoutLinkedinPublishingAttemptsInput>, Prisma.userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -1125,6 +1188,9 @@ export type userCreateWithoutSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -1168,6 +1234,9 @@ export type userUncheckedCreateWithoutSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -1227,6 +1296,9 @@ export type userUpdateWithoutSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -1270,6 +1342,9 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -1313,6 +1388,9 @@ export type userCreateWithoutAccountsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -1356,6 +1434,9 @@ export type userUncheckedCreateWithoutAccountsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -1415,6 +1496,9 @@ export type userUpdateWithoutAccountsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -1458,6 +1542,9 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -1501,6 +1588,9 @@ export type userCreateWithoutResumeDocumentsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -1544,6 +1634,9 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -1603,6 +1696,9 @@ export type userUpdateWithoutResumeDocumentsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -1646,6 +1742,9 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -1689,6 +1788,9 @@ export type userCreateWithoutJobPostingsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -1732,6 +1834,9 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -1791,6 +1896,9 @@ export type userUpdateWithoutJobPostingsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -1834,6 +1942,9 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -1877,6 +1988,9 @@ export type userCreateWithoutSkillsInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -1920,6 +2034,9 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -1979,6 +2096,9 @@ export type userUpdateWithoutSkillsInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -2022,6 +2142,9 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -2065,6 +2188,9 @@ export type userCreateWithoutCareerBriefsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -2108,6 +2234,9 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -2167,6 +2296,9 @@ export type userUpdateWithoutCareerBriefsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -2210,6 +2342,9 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionsInput = {
@@ -2253,6 +2388,9 @@ export type userCreateWithoutResumeVersionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionsInput = {
@@ -2296,6 +2434,9 @@ export type userUncheckedCreateWithoutResumeVersionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionsInput = {
@@ -2355,6 +2496,9 @@ export type userUpdateWithoutResumeVersionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionsInput = {
@@ -2398,6 +2542,9 @@ export type userUncheckedUpdateWithoutResumeVersionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionRevisionsInput = {
@@ -2441,6 +2588,9 @@ export type userCreateWithoutResumeVersionRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
@@ -2484,6 +2634,9 @@ export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
@@ -2543,6 +2696,9 @@ export type userUpdateWithoutResumeVersionRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
@@ -2586,6 +2742,9 @@ export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationsInput = {
@@ -2629,6 +2788,9 @@ export type userCreateWithoutApplicationsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationsInput = {
@@ -2672,6 +2834,9 @@ export type userUncheckedCreateWithoutApplicationsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationsInput = {
@@ -2731,6 +2896,9 @@ export type userUpdateWithoutApplicationsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationsInput = {
@@ -2774,6 +2942,9 @@ export type userUncheckedUpdateWithoutApplicationsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationEventsInput = {
@@ -2817,6 +2988,9 @@ export type userCreateWithoutApplicationEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationEventsInput = {
@@ -2860,6 +3034,9 @@ export type userUncheckedCreateWithoutApplicationEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationEventsInput = {
@@ -2919,6 +3096,9 @@ export type userUpdateWithoutApplicationEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationEventsInput = {
@@ -2962,6 +3142,9 @@ export type userUncheckedUpdateWithoutApplicationEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationContactsInput = {
@@ -3005,6 +3188,9 @@ export type userCreateWithoutApplicationContactsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationContactsInput = {
@@ -3048,6 +3234,9 @@ export type userUncheckedCreateWithoutApplicationContactsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationContactsInput = {
@@ -3107,6 +3296,9 @@ export type userUpdateWithoutApplicationContactsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationContactsInput = {
@@ -3150,6 +3342,9 @@ export type userUncheckedUpdateWithoutApplicationContactsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationInsightsInput = {
@@ -3193,6 +3388,9 @@ export type userCreateWithoutApplicationInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationInsightsInput = {
@@ -3236,6 +3434,9 @@ export type userUncheckedCreateWithoutApplicationInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationInsightsInput = {
@@ -3295,6 +3496,9 @@ export type userUpdateWithoutApplicationInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationInsightsInput = {
@@ -3338,6 +3542,9 @@ export type userUncheckedUpdateWithoutApplicationInsightsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryProfileInput = {
@@ -3381,6 +3588,9 @@ export type userCreateWithoutJobDiscoveryProfileInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
@@ -3424,6 +3634,9 @@ export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryProfileInput = {
@@ -3483,6 +3696,9 @@ export type userUpdateWithoutJobDiscoveryProfileInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
@@ -3526,6 +3742,9 @@ export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryRunsInput = {
@@ -3569,6 +3788,9 @@ export type userCreateWithoutJobDiscoveryRunsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
@@ -3612,6 +3834,9 @@ export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryRunsInput = {
@@ -3671,6 +3896,9 @@ export type userUpdateWithoutJobDiscoveryRunsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
@@ -3714,6 +3942,9 @@ export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutDiscoveredJobsInput = {
@@ -3757,6 +3988,9 @@ export type userCreateWithoutDiscoveredJobsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDiscoveredJobsInput = {
@@ -3800,6 +4034,9 @@ export type userUncheckedCreateWithoutDiscoveredJobsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDiscoveredJobsInput = {
@@ -3859,6 +4096,9 @@ export type userUpdateWithoutDiscoveredJobsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
@@ -3902,6 +4142,9 @@ export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationQueueItemsInput = {
@@ -3945,6 +4188,9 @@ export type userCreateWithoutApplicationQueueItemsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
@@ -3988,6 +4234,9 @@ export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationQueueItemsInput = {
@@ -4047,6 +4296,9 @@ export type userUpdateWithoutApplicationQueueItemsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
@@ -4090,6 +4342,9 @@ export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftsInput = {
@@ -4133,6 +4388,9 @@ export type userCreateWithoutCommunicationDraftsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -4176,6 +4434,9 @@ export type userUncheckedCreateWithoutCommunicationDraftsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -4235,6 +4496,9 @@ export type userUpdateWithoutCommunicationDraftsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -4278,6 +4542,9 @@ export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftRevisionsInput = {
@@ -4321,6 +4588,9 @@ export type userCreateWithoutCommunicationDraftRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
@@ -4364,6 +4634,9 @@ export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftRevisionsInput = {
@@ -4423,6 +4696,9 @@ export type userUpdateWithoutCommunicationDraftRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
@@ -4466,6 +4742,9 @@ export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobRequirementsInput = {
@@ -4509,6 +4788,9 @@ export type userCreateWithoutJobRequirementsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobRequirementsInput = {
@@ -4552,6 +4834,9 @@ export type userUncheckedCreateWithoutJobRequirementsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobRequirementsInput = {
@@ -4611,6 +4896,9 @@ export type userUpdateWithoutJobRequirementsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobRequirementsInput = {
@@ -4654,6 +4942,9 @@ export type userUncheckedUpdateWithoutJobRequirementsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobEvidenceMatchesInput = {
@@ -4697,6 +4988,9 @@ export type userCreateWithoutJobEvidenceMatchesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
@@ -4740,6 +5034,9 @@ export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobEvidenceMatchesInput = {
@@ -4799,6 +5096,9 @@ export type userUpdateWithoutJobEvidenceMatchesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
@@ -4842,6 +5142,9 @@ export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobOpportunityAnalysesInput = {
@@ -4885,6 +5188,9 @@ export type userCreateWithoutJobOpportunityAnalysesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
@@ -4928,6 +5234,9 @@ export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobOpportunityAnalysesInput = {
@@ -4987,6 +5296,9 @@ export type userUpdateWithoutJobOpportunityAnalysesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
@@ -5030,6 +5342,9 @@ export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationPackagesInput = {
@@ -5073,6 +5388,9 @@ export type userCreateWithoutApplicationPackagesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationPackagesInput = {
@@ -5116,6 +5434,9 @@ export type userUncheckedCreateWithoutApplicationPackagesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationPackagesInput = {
@@ -5175,6 +5496,9 @@ export type userUpdateWithoutApplicationPackagesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationPackagesInput = {
@@ -5218,6 +5542,9 @@ export type userUncheckedUpdateWithoutApplicationPackagesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionSessionsInput = {
@@ -5261,6 +5588,9 @@ export type userCreateWithoutApplicationExecutionSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
@@ -5304,6 +5634,9 @@ export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionSessionsInput = {
@@ -5363,6 +5696,9 @@ export type userUpdateWithoutApplicationExecutionSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
@@ -5406,6 +5742,9 @@ export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionEventsInput = {
@@ -5449,6 +5788,9 @@ export type userCreateWithoutApplicationExecutionEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
@@ -5492,6 +5834,9 @@ export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionEventsInput = {
@@ -5551,6 +5896,9 @@ export type userUpdateWithoutApplicationExecutionEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
@@ -5594,6 +5942,9 @@ export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -5637,6 +5988,9 @@ export type userCreateWithoutApplicationSubmissionAttemptsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -5680,6 +6034,9 @@ export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationSubmissionAttemptsInput = {
@@ -5739,6 +6096,9 @@ export type userUpdateWithoutApplicationSubmissionAttemptsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
@@ -5782,6 +6142,9 @@ export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationAnswerPreferencesInput = {
@@ -5825,6 +6188,9 @@ export type userCreateWithoutApplicationAnswerPreferencesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
@@ -5868,6 +6234,9 @@ export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationAnswerPreferencesInput = {
@@ -5927,6 +6296,9 @@ export type userUpdateWithoutApplicationAnswerPreferencesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
@@ -5970,6 +6342,9 @@ export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthProfilesInput = {
@@ -6013,6 +6388,9 @@ export type userCreateWithoutLinkedinGrowthProfilesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
@@ -6056,6 +6434,9 @@ export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthProfilesInput = {
@@ -6115,6 +6496,9 @@ export type userUpdateWithoutLinkedinGrowthProfilesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
@@ -6158,6 +6542,9 @@ export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentPillarsInput = {
@@ -6201,6 +6588,9 @@ export type userCreateWithoutLinkedinContentPillarsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
@@ -6244,6 +6634,9 @@ export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentPillarsInput = {
@@ -6303,6 +6696,9 @@ export type userUpdateWithoutLinkedinContentPillarsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
@@ -6346,6 +6742,9 @@ export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentIdeasInput = {
@@ -6389,6 +6788,9 @@ export type userCreateWithoutLinkedinContentIdeasInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
@@ -6432,6 +6834,9 @@ export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentIdeasInput = {
@@ -6491,6 +6896,9 @@ export type userUpdateWithoutLinkedinContentIdeasInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
@@ -6534,6 +6942,9 @@ export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostsInput = {
@@ -6577,6 +6988,9 @@ export type userCreateWithoutLinkedinPostsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostsInput = {
@@ -6620,6 +7034,9 @@ export type userUncheckedCreateWithoutLinkedinPostsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostsInput = {
@@ -6679,6 +7096,9 @@ export type userUpdateWithoutLinkedinPostsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostsInput = {
@@ -6722,6 +7142,9 @@ export type userUncheckedUpdateWithoutLinkedinPostsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostRevisionsInput = {
@@ -6765,6 +7188,9 @@ export type userCreateWithoutLinkedinPostRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
@@ -6808,6 +7234,9 @@ export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostRevisionsInput = {
@@ -6867,6 +7296,9 @@ export type userUpdateWithoutLinkedinPostRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
@@ -6910,6 +7342,9 @@ export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPublishingPlansInput = {
@@ -6953,6 +7388,9 @@ export type userCreateWithoutLinkedinPublishingPlansInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
@@ -6996,6 +7434,9 @@ export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPublishingPlansInput = {
@@ -7055,6 +7496,9 @@ export type userUpdateWithoutLinkedinPublishingPlansInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
@@ -7098,6 +7542,9 @@ export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostPerformancesInput = {
@@ -7141,6 +7588,9 @@ export type userCreateWithoutLinkedinPostPerformancesInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
@@ -7184,6 +7634,9 @@ export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostPerformancesInput = {
@@ -7243,6 +7696,9 @@ export type userUpdateWithoutLinkedinPostPerformancesInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
@@ -7286,6 +7742,9 @@ export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthInsightsInput = {
@@ -7329,6 +7788,9 @@ export type userCreateWithoutLinkedinGrowthInsightsInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
@@ -7372,6 +7834,9 @@ export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthInsightsInput = {
@@ -7431,6 +7896,9 @@ export type userUpdateWithoutLinkedinGrowthInsightsInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
@@ -7474,6 +7942,609 @@ export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
   linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
   linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutLinkedinConnectionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutLinkedinConnectionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutLinkedinConnectionsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinConnectionsInput, Prisma.userUncheckedCreateWithoutLinkedinConnectionsInput>
+}
+
+export type userUpsertWithoutLinkedinConnectionsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutLinkedinConnectionsInput, Prisma.userUncheckedUpdateWithoutLinkedinConnectionsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinConnectionsInput, Prisma.userUncheckedCreateWithoutLinkedinConnectionsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutLinkedinConnectionsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutLinkedinConnectionsInput, Prisma.userUncheckedUpdateWithoutLinkedinConnectionsInput>
+}
+
+export type userUpdateWithoutLinkedinConnectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutLinkedinConnectionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutLinkedinOAuthAttemptsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutLinkedinOAuthAttemptsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutLinkedinOAuthAttemptsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinOAuthAttemptsInput>
+}
+
+export type userUpsertWithoutLinkedinOAuthAttemptsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinOAuthAttemptsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutLinkedinOAuthAttemptsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutLinkedinOAuthAttemptsInput, Prisma.userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput>
+}
+
+export type userUpdateWithoutLinkedinOAuthAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutLinkedinPublishingAttemptsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutLinkedinPublishingAttemptsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutLinkedinPublishingAttemptsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinPublishingAttemptsInput>
+}
+
+export type userUpsertWithoutLinkedinPublishingAttemptsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedCreateWithoutLinkedinPublishingAttemptsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutLinkedinPublishingAttemptsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutLinkedinPublishingAttemptsInput, Prisma.userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput>
+}
+
+export type userUpdateWithoutLinkedinPublishingAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -7515,6 +8586,9 @@ export type UserCountOutputType = {
   linkedinPublishingPlans: number
   linkedinPostPerformances: number
   linkedinGrowthInsights: number
+  linkedinConnections: number
+  linkedinOAuthAttempts: number
+  linkedinPublishingAttempts: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -7551,6 +8625,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   linkedinPublishingPlans?: boolean | UserCountOutputTypeCountLinkedinPublishingPlansArgs
   linkedinPostPerformances?: boolean | UserCountOutputTypeCountLinkedinPostPerformancesArgs
   linkedinGrowthInsights?: boolean | UserCountOutputTypeCountLinkedinGrowthInsightsArgs
+  linkedinConnections?: boolean | UserCountOutputTypeCountLinkedinConnectionsArgs
+  linkedinOAuthAttempts?: boolean | UserCountOutputTypeCountLinkedinOAuthAttemptsArgs
+  linkedinPublishingAttempts?: boolean | UserCountOutputTypeCountLinkedinPublishingAttemptsArgs
 }
 
 /**
@@ -7794,6 +8871,27 @@ export type UserCountOutputTypeCountLinkedinGrowthInsightsArgs<ExtArgs extends r
   where?: Prisma.linkedinGrowthInsightWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLinkedinConnectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.linkedinConnectionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLinkedinOAuthAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.linkedinOAuthAttemptWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountLinkedinPublishingAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.linkedinPublishingAttemptWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -7837,6 +8935,9 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   linkedinPublishingPlans?: boolean | Prisma.user$linkedinPublishingPlansArgs<ExtArgs>
   linkedinPostPerformances?: boolean | Prisma.user$linkedinPostPerformancesArgs<ExtArgs>
   linkedinGrowthInsights?: boolean | Prisma.user$linkedinGrowthInsightsArgs<ExtArgs>
+  linkedinConnections?: boolean | Prisma.user$linkedinConnectionsArgs<ExtArgs>
+  linkedinOAuthAttempts?: boolean | Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>
+  linkedinPublishingAttempts?: boolean | Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -7906,6 +9007,9 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   linkedinPublishingPlans?: boolean | Prisma.user$linkedinPublishingPlansArgs<ExtArgs>
   linkedinPostPerformances?: boolean | Prisma.user$linkedinPostPerformancesArgs<ExtArgs>
   linkedinGrowthInsights?: boolean | Prisma.user$linkedinGrowthInsightsArgs<ExtArgs>
+  linkedinConnections?: boolean | Prisma.user$linkedinConnectionsArgs<ExtArgs>
+  linkedinOAuthAttempts?: boolean | Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>
+  linkedinPublishingAttempts?: boolean | Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -7948,6 +9052,9 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     linkedinPublishingPlans: Prisma.$linkedinPublishingPlanPayload<ExtArgs>[]
     linkedinPostPerformances: Prisma.$linkedinPostPerformancePayload<ExtArgs>[]
     linkedinGrowthInsights: Prisma.$linkedinGrowthInsightPayload<ExtArgs>[]
+    linkedinConnections: Prisma.$linkedinConnectionPayload<ExtArgs>[]
+    linkedinOAuthAttempts: Prisma.$linkedinOAuthAttemptPayload<ExtArgs>[]
+    linkedinPublishingAttempts: Prisma.$linkedinPublishingAttemptPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -8385,6 +9492,9 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   linkedinPublishingPlans<T extends Prisma.user$linkedinPublishingPlansArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinPublishingPlansArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinPublishingPlanPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkedinPostPerformances<T extends Prisma.user$linkedinPostPerformancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinPostPerformancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinPostPerformancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkedinGrowthInsights<T extends Prisma.user$linkedinGrowthInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinGrowthInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinGrowthInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkedinConnections<T extends Prisma.user$linkedinConnectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinConnectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkedinOAuthAttempts<T extends Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinOAuthAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  linkedinPublishingAttempts<T extends Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinPublishingAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9622,6 +10732,78 @@ export type user$linkedinGrowthInsightsArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.LinkedinGrowthInsightScalarFieldEnum | Prisma.LinkedinGrowthInsightScalarFieldEnum[]
+}
+
+/**
+ * user.linkedinConnections
+ */
+export type user$linkedinConnectionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the linkedinConnection
+   */
+  select?: Prisma.linkedinConnectionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the linkedinConnection
+   */
+  omit?: Prisma.linkedinConnectionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.linkedinConnectionInclude<ExtArgs> | null
+  where?: Prisma.linkedinConnectionWhereInput
+  orderBy?: Prisma.linkedinConnectionOrderByWithRelationInput | Prisma.linkedinConnectionOrderByWithRelationInput[]
+  cursor?: Prisma.linkedinConnectionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkedinConnectionScalarFieldEnum | Prisma.LinkedinConnectionScalarFieldEnum[]
+}
+
+/**
+ * user.linkedinOAuthAttempts
+ */
+export type user$linkedinOAuthAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the linkedinOAuthAttempt
+   */
+  select?: Prisma.linkedinOAuthAttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the linkedinOAuthAttempt
+   */
+  omit?: Prisma.linkedinOAuthAttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.linkedinOAuthAttemptInclude<ExtArgs> | null
+  where?: Prisma.linkedinOAuthAttemptWhereInput
+  orderBy?: Prisma.linkedinOAuthAttemptOrderByWithRelationInput | Prisma.linkedinOAuthAttemptOrderByWithRelationInput[]
+  cursor?: Prisma.linkedinOAuthAttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkedinOAuthAttemptScalarFieldEnum | Prisma.LinkedinOAuthAttemptScalarFieldEnum[]
+}
+
+/**
+ * user.linkedinPublishingAttempts
+ */
+export type user$linkedinPublishingAttemptsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the linkedinPublishingAttempt
+   */
+  select?: Prisma.linkedinPublishingAttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the linkedinPublishingAttempt
+   */
+  omit?: Prisma.linkedinPublishingAttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.linkedinPublishingAttemptInclude<ExtArgs> | null
+  where?: Prisma.linkedinPublishingAttemptWhereInput
+  orderBy?: Prisma.linkedinPublishingAttemptOrderByWithRelationInput | Prisma.linkedinPublishingAttemptOrderByWithRelationInput[]
+  cursor?: Prisma.linkedinPublishingAttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.LinkedinPublishingAttemptScalarFieldEnum | Prisma.LinkedinPublishingAttemptScalarFieldEnum[]
 }
 
 /**

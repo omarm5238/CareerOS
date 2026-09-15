@@ -43,6 +43,30 @@ export {
 } from "./publishing/m25b-handoff";
 export { markLinkedinPostPublishedManually } from "./publishing/mark-linkedin-post-published-manually";
 export {
+  completeLinkedinOAuthCallback,
+  disconnectLinkedinConnection,
+  getSafeLinkedinConnection,
+  reconnectLinkedinConnection,
+  refreshLinkedinConnectionMetadata,
+  startLinkedinConnection,
+} from "./integration/connection/lifecycle";
+export { currentCapabilities } from "./integration/connection/lifecycle";
+export { capabilityList, resolveLinkedinCapabilities } from "./integration/capabilities/resolve-capabilities";
+export { getLinkedinCapabilities } from "./integration/capabilities/get-capabilities";
+export { buildLinkedinPublishText } from "./integration/publishing/build-publish-text";
+export { linkedinContentFingerprint } from "./integration/publishing/content-fingerprint";
+export {
+  executeLinkedinOfficialPublish,
+  getLinkedinPublishingAttempt,
+  prepareLinkedinOfficialPublish,
+  resolveLinkedinPublishingAttempt,
+} from "./integration/publishing/official-publish";
+export {
+  syncOfficialLinkedinPostAnalytics,
+  syncOfficialLinkedinProfileAnalytics,
+} from "./integration/analytics/sync-official-analytics";
+export { LinkedinIntegrationError } from "./integration/errors";
+export {
   addLinkedinPostPerformance,
   getLinkedinPostPerformanceHistory,
   calculateLinkedinPerformanceMetrics,

@@ -1,14 +1,25 @@
 import Link from "next/link";
 
 import type { LinkedinOverviewView } from "../types";
+import type { LinkedinConnectionView } from "../integration/connection/types";
+import { LinkedinConnectionCard } from "../integration/components/linkedin-connection-card";
 import { LinkedinActionButton } from "./linkedin-actions";
 import { LinkedinSubNav } from "./linkedin-sub-nav";
 
-export function LinkedinOverviewPage({ data }: { data: LinkedinOverviewView }) {
+export function LinkedinOverviewPage({
+  data,
+  connection,
+}: {
+  data: LinkedinOverviewView;
+  connection: LinkedinConnectionView;
+}) {
   if (!data.strategy) {
     return (
       <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
         <LinkedinSubNav />
+        <div className="mt-6">
+          <LinkedinConnectionCard connection={connection} compact />
+        </div>
         <div className="mx-auto mt-16 max-w-xl text-center">
           <p className="section-eyebrow">LinkedIn</p>
           <h2 className="mt-3 font-display text-2xl">Build your LinkedIn growth strategy</h2>
@@ -27,7 +38,10 @@ export function LinkedinOverviewPage({ data }: { data: LinkedinOverviewView }) {
   return (
     <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
       <LinkedinSubNav />
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
+      <div className="mt-6">
+        <LinkedinConnectionCard connection={connection} />
+      </div>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
         <section className="surface-glass p-5">
           <p className="section-eyebrow">Active strategy</p>
           <h2 className="mt-2 font-display text-xl">{data.strategy.primaryGoal.replaceAll("_", " ")}</h2>

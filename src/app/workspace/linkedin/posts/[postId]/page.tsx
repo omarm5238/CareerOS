@@ -3,7 +3,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { WorkspaceModuleLayout } from "@/components/workspace/workspace-module-layout";
 import { LinkedinPostWorkspace } from "@/features/linkedin/components/linkedin-post-workspace";
-import { getLinkedinPost, LinkedinAccessError } from "@/features/linkedin/server";
+import { getLinkedinPost, getSafeLinkedinConnection, LinkedinAccessError } from "@/features/linkedin/server";
 import { auth } from "@/server/auth";
 
 type PageContext = { params: Promise<{ postId: string }> };
@@ -13,11 +13,14 @@ export default async function LinkedinPostRoute({ params }: PageContext) {
   if (!session) redirect("/sign-in");
   const { postId } = await params;
   try {
-    const post = await getLinkedinPost(session.user.id, postId);
+    const [post, connection] = await Promise.all([
+      getLinkedinPost(session.user.id, postId),
+      getSafeLinkedinConnection(session.user.id),
+    ]);
     return (
       <WorkspaceModuleLayout title="LinkedIn Post">
         <div className="relative min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
-          <LinkedinPostWorkspace post={post} />
+          <LinkedinPostWorkspace post={post} connection={connection} />
         </div>
       </WorkspaceModuleLayout>
     );

@@ -18,7 +18,7 @@ export function LinkedinInsightsPage({
     <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
       <LinkedinSubNav />
       <p className="mt-6 text-sm text-[var(--color-text-secondary)]">
-        Metrics are manual until M25B. CareerOS does not fetch LinkedIn analytics automatically.
+        Metrics stay manual unless official analytics are approved for this CareerOS app. Missing official analytics is not a system error.
       </p>
       <div className="mt-4 max-w-xs">
         <LinkedinActionButton label="Generate insights" href="/api/linkedin/insights/generate" />

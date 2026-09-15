@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 import { auth } from "@/server/auth";
 
+import { isLinkedinIntegrationError } from "../integration/errors";
 import { toLinkedinErrorResponse } from "./permissions";
 
 export async function requireLinkedinUser() {
@@ -14,6 +15,12 @@ export async function requireLinkedinUser() {
 }
 
 export function handleLinkedinError(error: unknown) {
+  if (isLinkedinIntegrationError(error)) {
+    return NextResponse.json(
+      { message: error.message, errorCode: error.code },
+      { status: error.httpStatus },
+    );
+  }
   const mapped = toLinkedinErrorResponse(error);
   if (mapped) return NextResponse.json({ message: mapped.message }, { status: mapped.status });
   return NextResponse.json({ message: "Could not complete this request." }, { status: 500 });

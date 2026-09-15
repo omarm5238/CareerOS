@@ -10,6 +10,7 @@ const items = [
   { label: "Drafts", href: "/workspace/linkedin/drafts" },
   { label: "Calendar", href: "/workspace/linkedin/calendar" },
   { label: "Insights", href: "/workspace/linkedin/insights" },
+  { label: "Settings", href: "/workspace/linkedin/settings" },
 ] as const;
 
 export function LinkedinSubNav() {

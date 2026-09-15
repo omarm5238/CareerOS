@@ -11,7 +11,11 @@
     "m245c:qa": "npx tsx scripts/m245c-qa.ts",
     "m245c:live": "npx tsx scripts/m245c-live-provider-validation.ts",
     "m25a:qa": "npx tsx scripts/m25a-qa.ts",
-    "m25a:headed": "npx tsx scripts/m25a-headed-qa.ts"
+    "m25a:headed": "npx tsx scripts/m25a-headed-qa.ts",
+    "m25b:qa": "npx tsx scripts/m25b-qa.ts",
+    "m25b:security": "npx tsx scripts/m25b-security-qa.ts",
+    "m25b:live": "npx tsx scripts/m25b-live-smoke.ts",
+    "m25b:headed": "npx tsx scripts/m25b-headed-qa.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

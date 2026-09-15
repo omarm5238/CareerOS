@@ -50,6 +50,9 @@ model user {
   linkedinPublishingPlans       linkedinPublishingPlan[]
   linkedinPostPerformances      linkedinPostPerformance[]
   linkedinGrowthInsights        linkedinGrowthInsight[]
+  linkedinConnections           linkedinConnection[]
+  linkedinOAuthAttempts         linkedinOAuthAttempt[]
+  linkedinPublishingAttempts    linkedinPublishingAttempt[]
 }
 
 model session {
@@ -1882,14 +1885,15 @@ model linkedinPost {
   updatedAt  DateTime  @updatedAt
   archivedAt DateTime?
 
-  user            user                      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  growthProfile   linkedinGrowthProfile     @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
-  contentIdea     linkedinContentIdea?      @relation(fields: [contentIdeaId], references: [id], onDelete: SetNull)
-  pillar          linkedinContentPillar?    @relation(fields: [pillarId], references: [id], onDelete: SetNull)
-  revisions       linkedinPostRevision[]    @relation("LinkedinPostRevisions")
-  activeRevision  linkedinPostRevision?     @relation("ActiveLinkedinPostRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
-  publishingPlans linkedinPublishingPlan[]
-  performances    linkedinPostPerformance[]
+  user               user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  growthProfile      linkedinGrowthProfile       @relation(fields: [linkedinGrowthProfileId], references: [id], onDelete: Cascade)
+  contentIdea        linkedinContentIdea?        @relation(fields: [contentIdeaId], references: [id], onDelete: SetNull)
+  pillar             linkedinContentPillar?      @relation(fields: [pillarId], references: [id], onDelete: SetNull)
+  revisions          linkedinPostRevision[]      @relation("LinkedinPostRevisions")
+  activeRevision     linkedinPostRevision?       @relation("ActiveLinkedinPostRevision", fields: [activeRevisionId], references: [id], onDelete: SetNull)
+  publishingPlans    linkedinPublishingPlan[]
+  performances       linkedinPostPerformance[]
+  publishingAttempts linkedinPublishingAttempt[]
 
   @@index([userId])
   @@index([linkedinGrowthProfileId])
@@ -1930,10 +1934,11 @@ model linkedinPostRevision {
 
   createdAt DateTime @default(now())
 
-  user            user                     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  linkedinPost    linkedinPost             @relation("LinkedinPostRevisions", fields: [linkedinPostId], references: [id], onDelete: Cascade)
-  activeForPost   linkedinPost?            @relation("ActiveLinkedinPostRevision")
-  publishingPlans linkedinPublishingPlan[]
+  user               user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinPost       linkedinPost                @relation("LinkedinPostRevisions", fields: [linkedinPostId], references: [id], onDelete: Cascade)
+  activeForPost      linkedinPost?               @relation("ActiveLinkedinPostRevision")
+  publishingPlans    linkedinPublishingPlan[]
+  publishingAttempts linkedinPublishingAttempt[]
 
   @@unique([linkedinPostId, revisionNumber])
   @@index([userId])
@@ -1963,9 +1968,10 @@ model linkedinPublishingPlan {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user                 user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  linkedinPost         linkedinPost         @relation(fields: [linkedinPostId], references: [id], onDelete: Cascade)
-  linkedinPostRevision linkedinPostRevision @relation(fields: [linkedinPostRevisionId], references: [id], onDelete: Restrict)
+  user                 user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinPost         linkedinPost                @relation(fields: [linkedinPostId], references: [id], onDelete: Cascade)
+  linkedinPostRevision linkedinPostRevision        @relation(fields: [linkedinPostRevisionId], references: [id], onDelete: Restrict)
+  publishingAttempts   linkedinPublishingAttempt[]
 
   @@index([userId])
   @@index([linkedinPostId])
@@ -2029,5 +2035,125 @@ model linkedinGrowthInsight {
   @@index([linkedinGrowthProfileId])
   @@index([type])
   @@index([status])
+  @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 25B — Official LinkedIn Connection + Verified Publishing
+// ---------------------------------------------------------------------------
+
+enum LinkedinConnectionStatus {
+  DISCONNECTED
+  CONNECTING
+  CONNECTED
+  REAUTH_REQUIRED
+  CONNECTION_ERROR
+  DISCONNECTING
+}
+
+enum LinkedinPublishingAttemptStatus {
+  CREATED
+  VALIDATING
+  READY_TO_PUBLISH
+  SUBMITTING
+  VERIFYING
+  PUBLISHED
+  FAILED
+  UNCERTAIN
+  CANCELLED
+}
+
+model linkedinConnection {
+  id     String @id @default(cuid())
+  userId String
+
+  providerSubject String?
+  displayName     String?
+  email           String?
+  profileImageUrl String?
+
+  status LinkedinConnectionStatus @default(DISCONNECTED)
+
+  encryptedAccessToken String?
+  tokenExpiresAt       DateTime?
+
+  grantedScopesJson      Json  @default("[]")
+  capabilitySnapshotJson Json?
+
+  connectedAt      DateTime?
+  lastValidatedAt  DateTime?
+  reauthRequiredAt DateTime?
+  disconnectedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user               user                        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  publishingAttempts linkedinPublishingAttempt[]
+
+  @@unique([userId])
+  @@index([status])
+  @@index([providerSubject])
+}
+
+model linkedinOAuthAttempt {
+  id     String @id @default(cuid())
+  userId String
+
+  stateHash             String    @unique
+  redirectUri           String
+  pkceVerifierEncrypted String?
+  expiresAt             DateTime
+  usedAt                DateTime?
+
+  createdAt DateTime @default(now())
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model linkedinPublishingAttempt {
+  id     String @id @default(cuid())
+  userId String
+
+  linkedinConnectionId     String?
+  linkedinPublishingPlanId String
+  linkedinPostId           String
+  linkedinPostRevisionId   String
+
+  status LinkedinPublishingAttemptStatus @default(CREATED)
+
+  contentFingerprint     String
+  capabilitySnapshotJson Json?
+
+  providerRequestId      String?
+  externalLinkedInPostId String?
+  externalLinkedInUrl    String?
+
+  errorCode         String?
+  providerErrorJson Json?
+
+  createdAt   DateTime  @default(now())
+  validatedAt DateTime?
+  submittedAt DateTime?
+  verifiedAt  DateTime?
+  failedAt    DateTime?
+  resolvedAt  DateTime?
+
+  updatedAt DateTime @updatedAt
+
+  user                   user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  linkedinConnection     linkedinConnection?    @relation(fields: [linkedinConnectionId], references: [id], onDelete: SetNull)
+  linkedinPublishingPlan linkedinPublishingPlan @relation(fields: [linkedinPublishingPlanId], references: [id], onDelete: Cascade)
+  linkedinPost           linkedinPost           @relation(fields: [linkedinPostId], references: [id], onDelete: Cascade)
+  linkedinPostRevision   linkedinPostRevision   @relation(fields: [linkedinPostRevisionId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([linkedinPublishingPlanId, status])
+  @@index([linkedinPostId])
+  @@index([linkedinPostRevisionId])
+  @@index([linkedinConnectionId])
   @@index([createdAt])
 }

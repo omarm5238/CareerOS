@@ -869,3 +869,30 @@ export const LinkedinPostGenerationStatus = {
 } as const
 
 export type LinkedinPostGenerationStatus = (typeof LinkedinPostGenerationStatus)[keyof typeof LinkedinPostGenerationStatus]
+
+
+export const LinkedinConnectionStatus = {
+  DISCONNECTED: 'DISCONNECTED',
+  CONNECTING: 'CONNECTING',
+  CONNECTED: 'CONNECTED',
+  REAUTH_REQUIRED: 'REAUTH_REQUIRED',
+  CONNECTION_ERROR: 'CONNECTION_ERROR',
+  DISCONNECTING: 'DISCONNECTING'
+} as const
+
+export type LinkedinConnectionStatus = (typeof LinkedinConnectionStatus)[keyof typeof LinkedinConnectionStatus]
+
+
+export const LinkedinPublishingAttemptStatus = {
+  CREATED: 'CREATED',
+  VALIDATING: 'VALIDATING',
+  READY_TO_PUBLISH: 'READY_TO_PUBLISH',
+  SUBMITTING: 'SUBMITTING',
+  VERIFYING: 'VERIFYING',
+  PUBLISHED: 'PUBLISHED',
+  FAILED: 'FAILED',
+  UNCERTAIN: 'UNCERTAIN',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type LinkedinPublishingAttemptStatus = (typeof LinkedinPublishingAttemptStatus)[keyof typeof LinkedinPublishingAttemptStatus]

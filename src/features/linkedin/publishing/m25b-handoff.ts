@@ -1,6 +1,7 @@
 import { prisma } from "@/server/db/prisma";
 
 import { LinkedinAccessError } from "../lib/permissions";
+import { syncOfficialLinkedinPostAnalytics } from "../integration/analytics/sync-official-analytics";
 
 export async function getReadyLinkedinPublishingPlan(userId: string, planId: string) {
   const plan = await prisma.linkedinPublishingPlan.findFirst({
@@ -14,18 +15,5 @@ export function getPublishingRevision(plan: { linkedinPostRevisionId: string }) 
   return plan.linkedinPostRevisionId;
 }
 
-export async function markPublishingPlanExternallyPublished(userId: string, planId: string) {
-  throw new LinkedinAccessError(
-    "CONFLICT",
-    "M25A cannot mark a plan as LinkedIn-official. That belongs to M25B.",
-  );
-  void userId;
-  void planId;
-}
-
-export async function upsertOfficialLinkedinPerformance() {
-  throw new LinkedinAccessError(
-    "CONFLICT",
-    "M25A cannot upsert official LinkedIn analytics. That belongs to M25B.",
-  );
-}
+export { executeLinkedinOfficialPublish as markPublishingPlanExternallyPublished } from "../integration/publishing/official-publish";
+export { syncOfficialLinkedinPostAnalytics as upsertOfficialLinkedinPerformance };

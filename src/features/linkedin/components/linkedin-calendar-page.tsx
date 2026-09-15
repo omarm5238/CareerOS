@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { LinkedinPostView } from "../types";
+import type { LinkedinConnectionView } from "../integration/connection/types";
 import { LinkedinSubNav } from "./linkedin-sub-nav";
 
 function bucket(date: string | null): "This Week" | "Next Week" | "Later" {
@@ -13,7 +14,15 @@ function bucket(date: string | null): "This Week" | "Next Week" | "Later" {
   return "Later";
 }
 
-export function LinkedinCalendarPage({ posts }: { posts: LinkedinPostView[] }) {
+export function LinkedinCalendarPage({
+  posts,
+  connection,
+}: {
+  posts: LinkedinPostView[];
+  connection: LinkedinConnectionView;
+}) {
+  const official =
+    connection.capabilities.find((item) => item.capability === "PUBLISH_MEMBER_POST")?.state === "AVAILABLE";
   const plans = posts.flatMap((post) =>
     post.publishingPlans
       .filter((plan) => plan.status === "READY" || plan.status === "SCHEDULED")
@@ -33,13 +42,23 @@ export function LinkedinCalendarPage({ posts }: { posts: LinkedinPostView[] }) {
               plans
                 .filter((item) => item.group === group)
                 .map((item) => (
-                  <li key={item.plan.id}>
-                    <Link href={`/workspace/linkedin/posts/${item.post.id}`} className="block rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] p-3">
+                  <li key={item.plan.id} className="rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] p-3">
+                    <Link href={`/workspace/linkedin/posts/${item.post.id}`} className="block">
                       <p className="text-sm font-medium">{item.post.activeRevision?.hook ?? item.post.objective}</p>
                       <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
-                        Frozen Rev {item.plan.revisionNumber} · {item.plan.status} · MANUAL
+                        Frozen Rev {item.plan.revisionNumber} · {item.plan.status} · {item.plan.publishMode}
                       </p>
                     </Link>
+                    <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                      {official ? (
+                        <Link className="underline" href={`/workspace/linkedin/publish/${item.plan.id}`}>
+                          Publish to LinkedIn
+                        </Link>
+                      ) : null}
+                      <Link className="underline" href={`/workspace/linkedin/publish/${item.plan.id}`}>
+                        Copy / Manual Publish
+                      </Link>
+                    </div>
                   </li>
                 ))
             )}

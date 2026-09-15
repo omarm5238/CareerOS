@@ -212,3 +212,18 @@ export type linkedinPostPerformance = Prisma.linkedinPostPerformanceModel
  *
  */
 export type linkedinGrowthInsight = Prisma.linkedinGrowthInsightModel
+/**
+ * Model linkedinConnection
+ *
+ */
+export type linkedinConnection = Prisma.linkedinConnectionModel
+/**
+ * Model linkedinOAuthAttempt
+ *
+ */
+export type linkedinOAuthAttempt = Prisma.linkedinOAuthAttemptModel
+/**
+ * Model linkedinPublishingAttempt
+ *
+ */
+export type linkedinPublishingAttempt = Prisma.linkedinPublishingAttemptModel
