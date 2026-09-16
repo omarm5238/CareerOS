@@ -7,6 +7,7 @@ import { WorkspaceSettingsLink } from "./workspace-settings-link";
 
 const navItems = [
   { label: "Core", glyph: "C", href: "/workspace" },
+  { label: "Today", glyph: "T", href: "/workspace/today" },
   { label: "Resume", glyph: "R", href: "/workspace/resume" },
   { label: "Jobs", glyph: "J", href: "/workspace/jobs" },
   { label: "Applications", glyph: "P", href: "/workspace/applications" },
@@ -24,6 +25,7 @@ function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
 
   if (pathname.startsWith("/workspace/jobs")) return "Jobs";
   if (pathname.startsWith("/workspace/linkedin")) return "LinkedIn";
+  if (pathname.startsWith("/workspace/today")) return "Today";
 
   switch (pathname) {
     case "/workspace":

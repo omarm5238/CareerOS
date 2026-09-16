@@ -92,7 +92,12 @@ export const ModelName = {
   linkedinGrowthInsight: 'linkedinGrowthInsight',
   linkedinConnection: 'linkedinConnection',
   linkedinOAuthAttempt: 'linkedinOAuthAttempt',
-  linkedinPublishingAttempt: 'linkedinPublishingAttempt'
+  linkedinPublishingAttempt: 'linkedinPublishingAttempt',
+  dailyRoadmapPreference: 'dailyRoadmapPreference',
+  dailyRoadmap: 'dailyRoadmap',
+  dailyRoadmapAction: 'dailyRoadmapAction',
+  careerActivityRecord: 'careerActivityRecord',
+  careerActivityDay: 'careerActivityDay'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1051,6 +1056,109 @@ export const LinkedinPublishingAttemptScalarFieldEnum = {
 } as const
 
 export type LinkedinPublishingAttemptScalarFieldEnum = (typeof LinkedinPublishingAttemptScalarFieldEnum)[keyof typeof LinkedinPublishingAttemptScalarFieldEnum]
+
+
+export const DailyRoadmapPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  timezone: 'timezone',
+  dailyMinutesTarget: 'dailyMinutesTarget',
+  maxCoreActions: 'maxCoreActions',
+  activeWeekdaysJson: 'activeWeekdaysJson',
+  includeLinkedIn: 'includeLinkedIn',
+  includeSkillDevelopment: 'includeSkillDevelopment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapPreferenceScalarFieldEnum = (typeof DailyRoadmapPreferenceScalarFieldEnum)[keyof typeof DailyRoadmapPreferenceScalarFieldEnum]
+
+
+export const DailyRoadmapScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  status: 'status',
+  generatedAt: 'generatedAt',
+  refreshedAt: 'refreshedAt',
+  plannedMinutes: 'plannedMinutes',
+  contextFingerprint: 'contextFingerprint',
+  generationSource: 'generationSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapScalarFieldEnum = (typeof DailyRoadmapScalarFieldEnum)[keyof typeof DailyRoadmapScalarFieldEnum]
+
+
+export const DailyRoadmapActionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  dailyRoadmapId: 'dailyRoadmapId',
+  type: 'type',
+  origin: 'origin',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  title: 'title',
+  summary: 'summary',
+  whyNow: 'whyNow',
+  priorityScore: 'priorityScore',
+  priorityBand: 'priorityBand',
+  estimatedMinutes: 'estimatedMinutes',
+  status: 'status',
+  isMeaningful: 'isMeaningful',
+  isActionable: 'isActionable',
+  blockedReason: 'blockedReason',
+  sortOrder: 'sortOrder',
+  deferredUntil: 'deferredUntil',
+  completedAt: 'completedAt',
+  completionSource: 'completionSource',
+  deepLink: 'deepLink',
+  contextSnapshotJson: 'contextSnapshotJson',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapActionScalarFieldEnum = (typeof DailyRoadmapActionScalarFieldEnum)[keyof typeof DailyRoadmapActionScalarFieldEnum]
+
+
+export const CareerActivityRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  activityType: 'activityType',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  meaningful: 'meaningful',
+  minutes: 'minutes',
+  occurredAt: 'occurredAt',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerActivityRecordScalarFieldEnum = (typeof CareerActivityRecordScalarFieldEnum)[keyof typeof CareerActivityRecordScalarFieldEnum]
+
+
+export const CareerActivityDayScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  meaningfulActionCount: 'meaningfulActionCount',
+  completedActionCount: 'completedActionCount',
+  plannedActionCount: 'plannedActionCount',
+  completedMinutes: 'completedMinutes',
+  qualifiesForStreak: 'qualifiesForStreak',
+  firstMeaningfulActivityAt: 'firstMeaningfulActivityAt',
+  lastMeaningfulActivityAt: 'lastMeaningfulActivityAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerActivityDayScalarFieldEnum = (typeof CareerActivityDayScalarFieldEnum)[keyof typeof CareerActivityDayScalarFieldEnum]
 
 
 export const SortOrder = {

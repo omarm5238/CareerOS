@@ -425,7 +425,12 @@ export const ModelName = {
   linkedinGrowthInsight: 'linkedinGrowthInsight',
   linkedinConnection: 'linkedinConnection',
   linkedinOAuthAttempt: 'linkedinOAuthAttempt',
-  linkedinPublishingAttempt: 'linkedinPublishingAttempt'
+  linkedinPublishingAttempt: 'linkedinPublishingAttempt',
+  dailyRoadmapPreference: 'dailyRoadmapPreference',
+  dailyRoadmap: 'dailyRoadmap',
+  dailyRoadmapAction: 'dailyRoadmapAction',
+  careerActivityRecord: 'careerActivityRecord',
+  careerActivityDay: 'careerActivityDay'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -441,7 +446,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3553,6 +3558,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    dailyRoadmapPreference: {
+      payload: Prisma.$dailyRoadmapPreferencePayload<ExtArgs>
+      fields: Prisma.dailyRoadmapPreferenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.dailyRoadmapPreferenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.dailyRoadmapPreferenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        findFirst: {
+          args: Prisma.dailyRoadmapPreferenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.dailyRoadmapPreferenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        findMany: {
+          args: Prisma.dailyRoadmapPreferenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>[]
+        }
+        create: {
+          args: Prisma.dailyRoadmapPreferenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        createMany: {
+          args: Prisma.dailyRoadmapPreferenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.dailyRoadmapPreferenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>[]
+        }
+        delete: {
+          args: Prisma.dailyRoadmapPreferenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        update: {
+          args: Prisma.dailyRoadmapPreferenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        deleteMany: {
+          args: Prisma.dailyRoadmapPreferenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.dailyRoadmapPreferenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.dailyRoadmapPreferenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>[]
+        }
+        upsert: {
+          args: Prisma.dailyRoadmapPreferenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPreferencePayload>
+        }
+        aggregate: {
+          args: Prisma.DailyRoadmapPreferenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDailyRoadmapPreference>
+        }
+        groupBy: {
+          args: Prisma.dailyRoadmapPreferenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapPreferenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.dailyRoadmapPreferenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapPreferenceCountAggregateOutputType> | number
+        }
+      }
+    }
+    dailyRoadmap: {
+      payload: Prisma.$dailyRoadmapPayload<ExtArgs>
+      fields: Prisma.dailyRoadmapFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.dailyRoadmapFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.dailyRoadmapFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        findFirst: {
+          args: Prisma.dailyRoadmapFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.dailyRoadmapFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        findMany: {
+          args: Prisma.dailyRoadmapFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>[]
+        }
+        create: {
+          args: Prisma.dailyRoadmapCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        createMany: {
+          args: Prisma.dailyRoadmapCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.dailyRoadmapCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>[]
+        }
+        delete: {
+          args: Prisma.dailyRoadmapDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        update: {
+          args: Prisma.dailyRoadmapUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        deleteMany: {
+          args: Prisma.dailyRoadmapDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.dailyRoadmapUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.dailyRoadmapUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>[]
+        }
+        upsert: {
+          args: Prisma.dailyRoadmapUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapPayload>
+        }
+        aggregate: {
+          args: Prisma.DailyRoadmapAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDailyRoadmap>
+        }
+        groupBy: {
+          args: Prisma.dailyRoadmapGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.dailyRoadmapCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapCountAggregateOutputType> | number
+        }
+      }
+    }
+    dailyRoadmapAction: {
+      payload: Prisma.$dailyRoadmapActionPayload<ExtArgs>
+      fields: Prisma.dailyRoadmapActionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.dailyRoadmapActionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.dailyRoadmapActionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        findFirst: {
+          args: Prisma.dailyRoadmapActionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.dailyRoadmapActionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        findMany: {
+          args: Prisma.dailyRoadmapActionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>[]
+        }
+        create: {
+          args: Prisma.dailyRoadmapActionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        createMany: {
+          args: Prisma.dailyRoadmapActionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.dailyRoadmapActionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>[]
+        }
+        delete: {
+          args: Prisma.dailyRoadmapActionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        update: {
+          args: Prisma.dailyRoadmapActionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        deleteMany: {
+          args: Prisma.dailyRoadmapActionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.dailyRoadmapActionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.dailyRoadmapActionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>[]
+        }
+        upsert: {
+          args: Prisma.dailyRoadmapActionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$dailyRoadmapActionPayload>
+        }
+        aggregate: {
+          args: Prisma.DailyRoadmapActionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDailyRoadmapAction>
+        }
+        groupBy: {
+          args: Prisma.dailyRoadmapActionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapActionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.dailyRoadmapActionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DailyRoadmapActionCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerActivityRecord: {
+      payload: Prisma.$careerActivityRecordPayload<ExtArgs>
+      fields: Prisma.careerActivityRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerActivityRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerActivityRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.careerActivityRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerActivityRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        findMany: {
+          args: Prisma.careerActivityRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>[]
+        }
+        create: {
+          args: Prisma.careerActivityRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        createMany: {
+          args: Prisma.careerActivityRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerActivityRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.careerActivityRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        update: {
+          args: Prisma.careerActivityRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerActivityRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerActivityRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerActivityRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerActivityRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerActivityRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerActivityRecord>
+        }
+        groupBy: {
+          args: Prisma.careerActivityRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerActivityRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerActivityRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerActivityRecordCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerActivityDay: {
+      payload: Prisma.$careerActivityDayPayload<ExtArgs>
+      fields: Prisma.careerActivityDayFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerActivityDayFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerActivityDayFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        findFirst: {
+          args: Prisma.careerActivityDayFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerActivityDayFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        findMany: {
+          args: Prisma.careerActivityDayFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>[]
+        }
+        create: {
+          args: Prisma.careerActivityDayCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        createMany: {
+          args: Prisma.careerActivityDayCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerActivityDayCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>[]
+        }
+        delete: {
+          args: Prisma.careerActivityDayDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        update: {
+          args: Prisma.careerActivityDayUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerActivityDayDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerActivityDayUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerActivityDayUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerActivityDayUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerActivityDayPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerActivityDayAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerActivityDay>
+        }
+        groupBy: {
+          args: Prisma.careerActivityDayGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerActivityDayGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerActivityDayCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerActivityDayCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4532,6 +4907,109 @@ export const LinkedinPublishingAttemptScalarFieldEnum = {
 } as const
 
 export type LinkedinPublishingAttemptScalarFieldEnum = (typeof LinkedinPublishingAttemptScalarFieldEnum)[keyof typeof LinkedinPublishingAttemptScalarFieldEnum]
+
+
+export const DailyRoadmapPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  timezone: 'timezone',
+  dailyMinutesTarget: 'dailyMinutesTarget',
+  maxCoreActions: 'maxCoreActions',
+  activeWeekdaysJson: 'activeWeekdaysJson',
+  includeLinkedIn: 'includeLinkedIn',
+  includeSkillDevelopment: 'includeSkillDevelopment',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapPreferenceScalarFieldEnum = (typeof DailyRoadmapPreferenceScalarFieldEnum)[keyof typeof DailyRoadmapPreferenceScalarFieldEnum]
+
+
+export const DailyRoadmapScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  status: 'status',
+  generatedAt: 'generatedAt',
+  refreshedAt: 'refreshedAt',
+  plannedMinutes: 'plannedMinutes',
+  contextFingerprint: 'contextFingerprint',
+  generationSource: 'generationSource',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapScalarFieldEnum = (typeof DailyRoadmapScalarFieldEnum)[keyof typeof DailyRoadmapScalarFieldEnum]
+
+
+export const DailyRoadmapActionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  dailyRoadmapId: 'dailyRoadmapId',
+  type: 'type',
+  origin: 'origin',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  title: 'title',
+  summary: 'summary',
+  whyNow: 'whyNow',
+  priorityScore: 'priorityScore',
+  priorityBand: 'priorityBand',
+  estimatedMinutes: 'estimatedMinutes',
+  status: 'status',
+  isMeaningful: 'isMeaningful',
+  isActionable: 'isActionable',
+  blockedReason: 'blockedReason',
+  sortOrder: 'sortOrder',
+  deferredUntil: 'deferredUntil',
+  completedAt: 'completedAt',
+  completionSource: 'completionSource',
+  deepLink: 'deepLink',
+  contextSnapshotJson: 'contextSnapshotJson',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DailyRoadmapActionScalarFieldEnum = (typeof DailyRoadmapActionScalarFieldEnum)[keyof typeof DailyRoadmapActionScalarFieldEnum]
+
+
+export const CareerActivityRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  activityType: 'activityType',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  meaningful: 'meaningful',
+  minutes: 'minutes',
+  occurredAt: 'occurredAt',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerActivityRecordScalarFieldEnum = (typeof CareerActivityRecordScalarFieldEnum)[keyof typeof CareerActivityRecordScalarFieldEnum]
+
+
+export const CareerActivityDayScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  localDate: 'localDate',
+  timezone: 'timezone',
+  meaningfulActionCount: 'meaningfulActionCount',
+  completedActionCount: 'completedActionCount',
+  plannedActionCount: 'plannedActionCount',
+  completedMinutes: 'completedMinutes',
+  qualifiesForStreak: 'qualifiesForStreak',
+  firstMeaningfulActivityAt: 'firstMeaningfulActivityAt',
+  lastMeaningfulActivityAt: 'lastMeaningfulActivityAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerActivityDayScalarFieldEnum = (typeof CareerActivityDayScalarFieldEnum)[keyof typeof CareerActivityDayScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -5702,6 +6180,132 @@ export type ListEnumLinkedinPublishingAttemptStatusFieldRefInput<$PrismaModel> =
 
 
 /**
+ * Reference to a field of type 'DailyRoadmapStatus'
+ */
+export type EnumDailyRoadmapStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapStatus'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapStatus[]'
+ */
+export type ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapGenerationSource'
+ */
+export type EnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapGenerationSource'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapGenerationSource[]'
+ */
+export type ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapGenerationSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionType'
+ */
+export type EnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionType'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionType[]'
+ */
+export type ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionType[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionOrigin'
+ */
+export type EnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionOrigin'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionOrigin[]'
+ */
+export type ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionOrigin[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapSourceEntityType'
+ */
+export type EnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapSourceEntityType'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapSourceEntityType[]'
+ */
+export type ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapSourceEntityType[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapPriorityBand'
+ */
+export type EnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapPriorityBand'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapPriorityBand[]'
+ */
+export type ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapPriorityBand[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionStatus'
+ */
+export type EnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionStatus'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapActionStatus[]'
+ */
+export type ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapActionStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapCompletionSource'
+ */
+export type EnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapCompletionSource'>
+
+
+
+/**
+ * Reference to a field of type 'DailyRoadmapCompletionSource[]'
+ */
+export type ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DailyRoadmapCompletionSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerActivityType'
+ */
+export type EnumCareerActivityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerActivityType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerActivityType[]'
+ */
+export type ListEnumCareerActivityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerActivityType[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5866,6 +6470,11 @@ export type GlobalOmitConfig = {
   linkedinConnection?: Prisma.linkedinConnectionOmit
   linkedinOAuthAttempt?: Prisma.linkedinOAuthAttemptOmit
   linkedinPublishingAttempt?: Prisma.linkedinPublishingAttemptOmit
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceOmit
+  dailyRoadmap?: Prisma.dailyRoadmapOmit
+  dailyRoadmapAction?: Prisma.dailyRoadmapActionOmit
+  careerActivityRecord?: Prisma.careerActivityRecordOmit
+  careerActivityDay?: Prisma.careerActivityDayOmit
 }
 
 /* Types for Logging */

@@ -896,3 +896,117 @@ export const LinkedinPublishingAttemptStatus = {
 } as const
 
 export type LinkedinPublishingAttemptStatus = (typeof LinkedinPublishingAttemptStatus)[keyof typeof LinkedinPublishingAttemptStatus]
+
+
+export const DailyRoadmapStatus = {
+  ACTIVE: 'ACTIVE',
+  CLOSED: 'CLOSED'
+} as const
+
+export type DailyRoadmapStatus = (typeof DailyRoadmapStatus)[keyof typeof DailyRoadmapStatus]
+
+
+export const DailyRoadmapGenerationSource = {
+  DETERMINISTIC: 'DETERMINISTIC',
+  AI_ASSISTED: 'AI_ASSISTED',
+  FALLBACK: 'FALLBACK'
+} as const
+
+export type DailyRoadmapGenerationSource = (typeof DailyRoadmapGenerationSource)[keyof typeof DailyRoadmapGenerationSource]
+
+
+export const DailyRoadmapActionType = {
+  JOB_REVIEW: 'JOB_REVIEW',
+  JOB_PREPARE: 'JOB_PREPARE',
+  JOB_APPLY: 'JOB_APPLY',
+  APPLICATION_FOLLOW_UP: 'APPLICATION_FOLLOW_UP',
+  APPLICATION_NEXT_STEP: 'APPLICATION_NEXT_STEP',
+  INTERVIEW_PREP: 'INTERVIEW_PREP',
+  ASSESSMENT_PREP: 'ASSESSMENT_PREP',
+  RESUME_REVIEW: 'RESUME_REVIEW',
+  COMMUNICATION_REVIEW: 'COMMUNICATION_REVIEW',
+  LINKEDIN_POST_REVIEW: 'LINKEDIN_POST_REVIEW',
+  LINKEDIN_PUBLISH: 'LINKEDIN_PUBLISH',
+  LINKEDIN_ANALYTICS_REVIEW: 'LINKEDIN_ANALYTICS_REVIEW',
+  LINKEDIN_RECONNECT: 'LINKEDIN_RECONNECT',
+  SKILL_DEVELOPMENT: 'SKILL_DEVELOPMENT',
+  EVIDENCE_BUILDING: 'EVIDENCE_BUILDING',
+  PROFILE_IMPROVEMENT: 'PROFILE_IMPROVEMENT',
+  WEEKLY_PREP: 'WEEKLY_PREP',
+  CUSTOM_CAREER_ACTION: 'CUSTOM_CAREER_ACTION'
+} as const
+
+export type DailyRoadmapActionType = (typeof DailyRoadmapActionType)[keyof typeof DailyRoadmapActionType]
+
+
+export const DailyRoadmapActionOrigin = {
+  SYSTEM_GENERATED: 'SYSTEM_GENERATED',
+  USER_CREATED: 'USER_CREATED',
+  SYSTEM_RECOMMENDED: 'SYSTEM_RECOMMENDED',
+  CARRIED_OVER: 'CARRIED_OVER'
+} as const
+
+export type DailyRoadmapActionOrigin = (typeof DailyRoadmapActionOrigin)[keyof typeof DailyRoadmapActionOrigin]
+
+
+export const DailyRoadmapSourceEntityType = {
+  JOB: 'JOB',
+  APPLICATION: 'APPLICATION',
+  RESUME_VERSION: 'RESUME_VERSION',
+  COMMUNICATION: 'COMMUNICATION',
+  LINKEDIN_POST: 'LINKEDIN_POST',
+  LINKEDIN_PLAN: 'LINKEDIN_PLAN',
+  SKILL: 'SKILL',
+  PROJECT: 'PROJECT',
+  CAREER_CONTEXT: 'CAREER_CONTEXT',
+  NONE: 'NONE'
+} as const
+
+export type DailyRoadmapSourceEntityType = (typeof DailyRoadmapSourceEntityType)[keyof typeof DailyRoadmapSourceEntityType]
+
+
+export const DailyRoadmapActionStatus = {
+  PLANNED: 'PLANNED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  SKIPPED: 'SKIPPED',
+  DEFERRED: 'DEFERRED',
+  EXPIRED: 'EXPIRED',
+  BLOCKED: 'BLOCKED'
+} as const
+
+export type DailyRoadmapActionStatus = (typeof DailyRoadmapActionStatus)[keyof typeof DailyRoadmapActionStatus]
+
+
+export const DailyRoadmapCompletionSource = {
+  USER_CONFIRMED: 'USER_CONFIRMED',
+  DOMAIN_EVENT: 'DOMAIN_EVENT',
+  SYSTEM_RECONCILED: 'SYSTEM_RECONCILED'
+} as const
+
+export type DailyRoadmapCompletionSource = (typeof DailyRoadmapCompletionSource)[keyof typeof DailyRoadmapCompletionSource]
+
+
+export const DailyRoadmapPriorityBand = {
+  CRITICAL: 'CRITICAL',
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW'
+} as const
+
+export type DailyRoadmapPriorityBand = (typeof DailyRoadmapPriorityBand)[keyof typeof DailyRoadmapPriorityBand]
+
+
+export const CareerActivityType = {
+  APPLICATION_SUBMITTED: 'APPLICATION_SUBMITTED',
+  RESUME_READY: 'RESUME_READY',
+  COMMUNICATION_USED: 'COMMUNICATION_USED',
+  LINKEDIN_PUBLISHED: 'LINKEDIN_PUBLISHED',
+  ROADMAP_ACTION_COMPLETED: 'ROADMAP_ACTION_COMPLETED',
+  SKILL_ACTION_COMPLETED: 'SKILL_ACTION_COMPLETED',
+  EVIDENCE_ACTION_COMPLETED: 'EVIDENCE_ACTION_COMPLETED',
+  INTERVIEW_PREP_COMPLETED: 'INTERVIEW_PREP_COMPLETED',
+  ASSESSMENT_PREP_COMPLETED: 'ASSESSMENT_PREP_COMPLETED'
+} as const
+
+export type CareerActivityType = (typeof CareerActivityType)[keyof typeof CareerActivityType]

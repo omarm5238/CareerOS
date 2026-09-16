@@ -329,6 +329,18 @@ export async function executeLinkedinOfficialPublish(
       return nextAttempt;
     });
 
+    const { tryRecordMeaningfulCareerActivity } = await import(
+      "@/features/daily-roadmap/activity/record-activity"
+    );
+    await tryRecordMeaningfulCareerActivity({
+      userId,
+      activityType: "LINKEDIN_PUBLISHED",
+      fingerprint: `LINKEDIN_PUBLISHED:${plan.linkedinPostId}:${plan.id}`,
+      sourceEntityType: "LINKEDIN_PLAN",
+      sourceEntityId: plan.id,
+      occurredAt: verifiedAt,
+    });
+
     return toPublishResult(success, "PUBLISHED");
   } catch (error) {
     if (error instanceof LinkedinProviderRequestError) {

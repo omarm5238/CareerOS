@@ -251,3 +251,28 @@ export type linkedinOAuthAttempt = Prisma.linkedinOAuthAttemptModel
  *
  */
 export type linkedinPublishingAttempt = Prisma.linkedinPublishingAttemptModel
+/**
+ * Model dailyRoadmapPreference
+ *
+ */
+export type dailyRoadmapPreference = Prisma.dailyRoadmapPreferenceModel
+/**
+ * Model dailyRoadmap
+ *
+ */
+export type dailyRoadmap = Prisma.dailyRoadmapModel
+/**
+ * Model dailyRoadmapAction
+ *
+ */
+export type dailyRoadmapAction = Prisma.dailyRoadmapActionModel
+/**
+ * Model careerActivityRecord
+ *
+ */
+export type careerActivityRecord = Prisma.careerActivityRecordModel
+/**
+ * Model careerActivityDay
+ *
+ */
+export type careerActivityDay = Prisma.careerActivityDayModel

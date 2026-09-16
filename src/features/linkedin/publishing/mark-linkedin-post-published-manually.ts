@@ -52,6 +52,18 @@ export async function markLinkedinPostPublishedManually(
     return nextPlan;
   });
 
+  const { tryRecordMeaningfulCareerActivity } = await import(
+    "@/features/daily-roadmap/activity/record-activity"
+  );
+  await tryRecordMeaningfulCareerActivity({
+    userId,
+    activityType: "LINKEDIN_PUBLISHED",
+    fingerprint: `LINKEDIN_PUBLISHED:${updated.linkedinPostId}:${updated.id}`,
+    sourceEntityType: "LINKEDIN_PLAN",
+    sourceEntityId: updated.id,
+    occurredAt: updated.publishedAt ?? publishedAt,
+  });
+
   return {
     alreadyPublished: false,
     plan: toPlanView(updated, updated.linkedinPost.activeRevisionId),

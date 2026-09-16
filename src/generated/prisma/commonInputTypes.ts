@@ -1596,6 +1596,159 @@ export type EnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$PrismaModel
   _max?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
 }
 
+export type EnumDailyRoadmapStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapStatus | Prisma.EnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel> | $Enums.DailyRoadmapStatus
+}
+
+export type EnumDailyRoadmapGenerationSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapGenerationSource | Prisma.EnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel> | $Enums.DailyRoadmapGenerationSource
+}
+
+export type EnumDailyRoadmapStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapStatus | Prisma.EnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapStatusWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapGenerationSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapGenerationSource | Prisma.EnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapGenerationSourceWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapGenerationSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapActionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionType | Prisma.EnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel> | $Enums.DailyRoadmapActionType
+}
+
+export type EnumDailyRoadmapActionOriginFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionOrigin | Prisma.EnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel> | $Enums.DailyRoadmapActionOrigin
+}
+
+export type EnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapSourceEntityType | Prisma.EnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel> | $Enums.DailyRoadmapSourceEntityType
+}
+
+export type EnumDailyRoadmapPriorityBandFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapPriorityBand | Prisma.EnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel> | $Enums.DailyRoadmapPriorityBand
+}
+
+export type EnumDailyRoadmapActionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionStatus | Prisma.EnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel> | $Enums.DailyRoadmapActionStatus
+}
+
+export type EnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapCompletionSource | Prisma.EnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel> | $Enums.DailyRoadmapCompletionSource | null
+}
+
+export type EnumDailyRoadmapActionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionType | Prisma.EnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionTypeWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapActionOriginWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionOrigin | Prisma.EnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionOriginWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionOrigin
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapSourceEntityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapSourceEntityType | Prisma.EnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapSourceEntityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapPriorityBandWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapPriorityBand | Prisma.EnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapPriorityBandWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapPriorityBand
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapActionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionStatus | Prisma.EnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionStatusWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel>
+}
+
+export type EnumDailyRoadmapCompletionSourceNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapCompletionSource | Prisma.EnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapCompletionSource | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel>
+}
+
+export type EnumCareerActivityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerActivityType | Prisma.EnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel> | $Enums.CareerActivityType
+}
+
+export type EnumCareerActivityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerActivityType | Prisma.EnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerActivityTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerActivityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -3135,6 +3288,159 @@ export type NestedEnumLinkedinPublishingAttemptStatusWithAggregatesFilter<$Prism
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumLinkedinPublishingAttemptStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapStatus | Prisma.EnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel> | $Enums.DailyRoadmapStatus
+}
+
+export type NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapGenerationSource | Prisma.EnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel> | $Enums.DailyRoadmapGenerationSource
+}
+
+export type NestedEnumDailyRoadmapStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapStatus | Prisma.EnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapStatus[] | Prisma.ListEnumDailyRoadmapStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapStatusWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapGenerationSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapGenerationSource | Prisma.EnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapGenerationSource[] | Prisma.ListEnumDailyRoadmapGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapGenerationSourceWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapGenerationSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapGenerationSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionType | Prisma.EnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel> | $Enums.DailyRoadmapActionType
+}
+
+export type NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionOrigin | Prisma.EnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel> | $Enums.DailyRoadmapActionOrigin
+}
+
+export type NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapSourceEntityType | Prisma.EnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel> | $Enums.DailyRoadmapSourceEntityType
+}
+
+export type NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapPriorityBand | Prisma.EnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel> | $Enums.DailyRoadmapPriorityBand
+}
+
+export type NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionStatus | Prisma.EnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel> | $Enums.DailyRoadmapActionStatus
+}
+
+export type NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapCompletionSource | Prisma.EnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel> | $Enums.DailyRoadmapCompletionSource | null
+}
+
+export type NestedEnumDailyRoadmapActionTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionType | Prisma.EnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionType[] | Prisma.ListEnumDailyRoadmapActionTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionTypeWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapActionOriginWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionOrigin | Prisma.EnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionOrigin[] | Prisma.ListEnumDailyRoadmapActionOriginFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionOriginWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionOrigin
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionOriginFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapSourceEntityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapSourceEntityType | Prisma.EnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapSourceEntityType[] | Prisma.ListEnumDailyRoadmapSourceEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapSourceEntityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapSourceEntityTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapPriorityBandWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapPriorityBand | Prisma.EnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapPriorityBand[] | Prisma.ListEnumDailyRoadmapPriorityBandFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapPriorityBandWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapPriorityBand
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapPriorityBandFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapActionStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapActionStatus | Prisma.EnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DailyRoadmapActionStatus[] | Prisma.ListEnumDailyRoadmapActionStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDailyRoadmapActionStatusWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapActionStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapActionStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumDailyRoadmapCompletionSourceNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DailyRoadmapCompletionSource | Prisma.EnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  in?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.DailyRoadmapCompletionSource[] | Prisma.ListEnumDailyRoadmapCompletionSourceFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableWithAggregatesFilter<$PrismaModel> | $Enums.DailyRoadmapCompletionSource | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDailyRoadmapCompletionSourceNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerActivityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerActivityType | Prisma.EnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel> | $Enums.CareerActivityType
+}
+
+export type NestedEnumCareerActivityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerActivityType | Prisma.EnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerActivityType[] | Prisma.ListEnumCareerActivityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerActivityTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerActivityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
 }
 
 

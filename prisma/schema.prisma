@@ -53,6 +53,11 @@ model user {
   linkedinConnections           linkedinConnection[]
   linkedinOAuthAttempts         linkedinOAuthAttempt[]
   linkedinPublishingAttempts    linkedinPublishingAttempt[]
+  dailyRoadmapPreference        dailyRoadmapPreference?
+  dailyRoadmaps                 dailyRoadmap[]
+  dailyRoadmapActions           dailyRoadmapAction[]
+  careerActivityRecords         careerActivityRecord[]
+  careerActivityDays            careerActivityDay[]
 }
 
 model session {
@@ -2156,4 +2161,252 @@ model linkedinPublishingAttempt {
   @@index([linkedinPostRevisionId])
   @@index([linkedinConnectionId])
   @@index([createdAt])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 26 — Daily Roadmap + Career Streak
+// ---------------------------------------------------------------------------
+
+enum DailyRoadmapStatus {
+  ACTIVE
+  CLOSED
+}
+
+enum DailyRoadmapGenerationSource {
+  DETERMINISTIC
+  AI_ASSISTED
+  FALLBACK
+}
+
+enum DailyRoadmapActionType {
+  JOB_REVIEW
+  JOB_PREPARE
+  JOB_APPLY
+  APPLICATION_FOLLOW_UP
+  APPLICATION_NEXT_STEP
+  INTERVIEW_PREP
+  ASSESSMENT_PREP
+  RESUME_REVIEW
+  COMMUNICATION_REVIEW
+  LINKEDIN_POST_REVIEW
+  LINKEDIN_PUBLISH
+  LINKEDIN_ANALYTICS_REVIEW
+  LINKEDIN_RECONNECT
+  SKILL_DEVELOPMENT
+  EVIDENCE_BUILDING
+  PROFILE_IMPROVEMENT
+  WEEKLY_PREP
+  CUSTOM_CAREER_ACTION
+}
+
+enum DailyRoadmapActionOrigin {
+  SYSTEM_GENERATED
+  USER_CREATED
+  SYSTEM_RECOMMENDED
+  CARRIED_OVER
+}
+
+enum DailyRoadmapSourceEntityType {
+  JOB
+  APPLICATION
+  RESUME_VERSION
+  COMMUNICATION
+  LINKEDIN_POST
+  LINKEDIN_PLAN
+  SKILL
+  PROJECT
+  CAREER_CONTEXT
+  NONE
+}
+
+enum DailyRoadmapActionStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  SKIPPED
+  DEFERRED
+  EXPIRED
+  BLOCKED
+}
+
+enum DailyRoadmapCompletionSource {
+  USER_CONFIRMED
+  DOMAIN_EVENT
+  SYSTEM_RECONCILED
+}
+
+enum DailyRoadmapPriorityBand {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum CareerActivityType {
+  APPLICATION_SUBMITTED
+  RESUME_READY
+  COMMUNICATION_USED
+  LINKEDIN_PUBLISHED
+  ROADMAP_ACTION_COMPLETED
+  SKILL_ACTION_COMPLETED
+  EVIDENCE_ACTION_COMPLETED
+  INTERVIEW_PREP_COMPLETED
+  ASSESSMENT_PREP_COMPLETED
+}
+
+model dailyRoadmapPreference {
+  id     String @id @default(cuid())
+  userId String @unique
+
+  timezone           String @default("UTC")
+  dailyMinutesTarget Int    @default(60)
+  maxCoreActions     Int    @default(4)
+  activeWeekdaysJson Json   @default("[\"MON\",\"TUE\",\"WED\",\"THU\",\"FRI\"]")
+
+  includeLinkedIn         Boolean @default(true)
+  includeSkillDevelopment Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model dailyRoadmap {
+  id     String @id @default(cuid())
+  userId String
+
+  /// User-local career day as YYYY-MM-DD. Never rewritten after creation.
+  localDate String
+  timezone  String
+
+  status DailyRoadmapStatus @default(ACTIVE)
+
+  generatedAt DateTime  @default(now())
+  refreshedAt DateTime?
+
+  plannedMinutes     Int
+  contextFingerprint String
+  generationSource   DailyRoadmapGenerationSource @default(DETERMINISTIC)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    user                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  actions dailyRoadmapAction[]
+
+  @@unique([userId, localDate])
+  @@index([userId])
+  @@index([localDate])
+  @@index([status])
+}
+
+model dailyRoadmapAction {
+  id             String @id @default(cuid())
+  userId         String
+  dailyRoadmapId String
+
+  type   DailyRoadmapActionType
+  origin DailyRoadmapActionOrigin
+
+  sourceEntityType DailyRoadmapSourceEntityType
+  sourceEntityId   String?
+
+  title   String
+  summary String?
+  whyNow  String?
+
+  priorityScore Int
+  priorityBand  DailyRoadmapPriorityBand
+
+  estimatedMinutes Int
+
+  status DailyRoadmapActionStatus @default(PLANNED)
+
+  isMeaningful  Boolean @default(false)
+  isActionable  Boolean @default(true)
+  blockedReason String?
+
+  sortOrder Int
+
+  deferredUntil    String?
+  completedAt      DateTime?
+  completionSource DailyRoadmapCompletionSource?
+
+  deepLink String?
+
+  contextSnapshotJson Json   @default("{}")
+  fingerprint         String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user         user         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  dailyRoadmap dailyRoadmap @relation(fields: [dailyRoadmapId], references: [id], onDelete: Cascade)
+
+  @@unique([dailyRoadmapId, fingerprint])
+  @@index([userId])
+  @@index([dailyRoadmapId])
+  @@index([status])
+  @@index([type])
+  @@index([sourceEntityType, sourceEntityId])
+}
+
+model careerActivityRecord {
+  id     String @id @default(cuid())
+  userId String
+
+  localDate String
+  timezone  String
+
+  activityType CareerActivityType
+
+  sourceEntityType DailyRoadmapSourceEntityType
+  sourceEntityId   String?
+
+  meaningful Boolean @default(true)
+  minutes    Int?
+
+  occurredAt  DateTime
+  fingerprint String
+
+  createdAt DateTime @default(now())
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, fingerprint])
+  @@index([userId])
+  @@index([localDate])
+  @@index([activityType])
+  @@index([occurredAt])
+}
+
+model careerActivityDay {
+  id     String @id @default(cuid())
+  userId String
+
+  localDate String
+  timezone  String
+
+  meaningfulActionCount Int  @default(0)
+  completedActionCount  Int  @default(0)
+  plannedActionCount    Int  @default(0)
+  completedMinutes      Int?
+
+  qualifiesForStreak Boolean @default(false)
+
+  firstMeaningfulActivityAt DateTime?
+  lastMeaningfulActivityAt  DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, localDate])
+  @@index([userId])
+  @@index([localDate])
+  @@index([qualifiesForStreak])
 }

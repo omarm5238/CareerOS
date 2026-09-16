@@ -17,6 +17,13 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     href: "/workspace",
   },
   {
+    id: "nav-today",
+    title: "Go to Today",
+    group: "Navigation",
+    keywords: ["today", "roadmap", "daily", "streak", "priorities"],
+    href: "/workspace/today",
+  },
+  {
     id: "nav-resume",
     title: "Go to Resume",
     group: "Navigation",

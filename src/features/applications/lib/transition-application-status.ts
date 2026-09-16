@@ -235,6 +235,20 @@ export async function transitionApplicationStatus(
     return { updated, markedUsed };
   });
 
+  if (isSubmitting) {
+    const { tryRecordMeaningfulCareerActivity } = await import(
+      "@/features/daily-roadmap/activity/record-activity"
+    );
+    await tryRecordMeaningfulCareerActivity({
+      userId: input.userId,
+      activityType: "APPLICATION_SUBMITTED",
+      fingerprint: `APPLICATION_SUBMITTED:${result.updated.id}:APPLIED`,
+      sourceEntityType: "APPLICATION",
+      sourceEntityId: result.updated.id,
+      occurredAt: result.updated.appliedAt ?? now,
+    });
+  }
+
   return {
     applicationId: result.updated.id,
     status: result.updated.status,

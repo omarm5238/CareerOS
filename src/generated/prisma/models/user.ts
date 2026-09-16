@@ -235,6 +235,11 @@ export type userWhereInput = {
   linkedinConnections?: Prisma.LinkedinConnectionListRelationFilter
   linkedinOAuthAttempts?: Prisma.LinkedinOAuthAttemptListRelationFilter
   linkedinPublishingAttempts?: Prisma.LinkedinPublishingAttemptListRelationFilter
+  dailyRoadmapPreference?: Prisma.XOR<Prisma.DailyRoadmapPreferenceNullableScalarRelationFilter, Prisma.dailyRoadmapPreferenceWhereInput> | null
+  dailyRoadmaps?: Prisma.DailyRoadmapListRelationFilter
+  dailyRoadmapActions?: Prisma.DailyRoadmapActionListRelationFilter
+  careerActivityRecords?: Prisma.CareerActivityRecordListRelationFilter
+  careerActivityDays?: Prisma.CareerActivityDayListRelationFilter
 }
 
 export type userOrderByWithRelationInput = {
@@ -282,6 +287,11 @@ export type userOrderByWithRelationInput = {
   linkedinConnections?: Prisma.linkedinConnectionOrderByRelationAggregateInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptOrderByRelationAggregateInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptOrderByRelationAggregateInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceOrderByWithRelationInput
+  dailyRoadmaps?: Prisma.dailyRoadmapOrderByRelationAggregateInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionOrderByRelationAggregateInput
+  careerActivityRecords?: Prisma.careerActivityRecordOrderByRelationAggregateInput
+  careerActivityDays?: Prisma.careerActivityDayOrderByRelationAggregateInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -332,6 +342,11 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   linkedinConnections?: Prisma.LinkedinConnectionListRelationFilter
   linkedinOAuthAttempts?: Prisma.LinkedinOAuthAttemptListRelationFilter
   linkedinPublishingAttempts?: Prisma.LinkedinPublishingAttemptListRelationFilter
+  dailyRoadmapPreference?: Prisma.XOR<Prisma.DailyRoadmapPreferenceNullableScalarRelationFilter, Prisma.dailyRoadmapPreferenceWhereInput> | null
+  dailyRoadmaps?: Prisma.DailyRoadmapListRelationFilter
+  dailyRoadmapActions?: Prisma.DailyRoadmapActionListRelationFilter
+  careerActivityRecords?: Prisma.CareerActivityRecordListRelationFilter
+  careerActivityDays?: Prisma.CareerActivityDayListRelationFilter
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -405,6 +420,11 @@ export type userCreateInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -452,6 +472,11 @@ export type userUncheckedCreateInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -499,6 +524,11 @@ export type userUpdateInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -546,6 +576,11 @@ export type userUncheckedUpdateInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -1147,6 +1182,76 @@ export type userUpdateOneRequiredWithoutLinkedinPublishingAttemptsNestedInput = 
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutLinkedinPublishingAttemptsInput, Prisma.userUpdateWithoutLinkedinPublishingAttemptsInput>, Prisma.userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput>
 }
 
+export type userCreateNestedOneWithoutDailyRoadmapPreferenceInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedCreateWithoutDailyRoadmapPreferenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapPreferenceInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutDailyRoadmapPreferenceNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedCreateWithoutDailyRoadmapPreferenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapPreferenceInput
+  upsert?: Prisma.userUpsertWithoutDailyRoadmapPreferenceInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutDailyRoadmapPreferenceInput, Prisma.userUpdateWithoutDailyRoadmapPreferenceInput>, Prisma.userUncheckedUpdateWithoutDailyRoadmapPreferenceInput>
+}
+
+export type userCreateNestedOneWithoutDailyRoadmapsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutDailyRoadmapsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapsInput
+  upsert?: Prisma.userUpsertWithoutDailyRoadmapsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutDailyRoadmapsInput, Prisma.userUpdateWithoutDailyRoadmapsInput>, Prisma.userUncheckedUpdateWithoutDailyRoadmapsInput>
+}
+
+export type userCreateNestedOneWithoutDailyRoadmapActionsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapActionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapActionsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutDailyRoadmapActionsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapActionsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutDailyRoadmapActionsInput
+  upsert?: Prisma.userUpsertWithoutDailyRoadmapActionsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutDailyRoadmapActionsInput, Prisma.userUpdateWithoutDailyRoadmapActionsInput>, Prisma.userUncheckedUpdateWithoutDailyRoadmapActionsInput>
+}
+
+export type userCreateNestedOneWithoutCareerActivityRecordsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerActivityRecordsInput, Prisma.userUncheckedCreateWithoutCareerActivityRecordsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerActivityRecordsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerActivityRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerActivityRecordsInput, Prisma.userUncheckedCreateWithoutCareerActivityRecordsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerActivityRecordsInput
+  upsert?: Prisma.userUpsertWithoutCareerActivityRecordsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerActivityRecordsInput, Prisma.userUpdateWithoutCareerActivityRecordsInput>, Prisma.userUncheckedUpdateWithoutCareerActivityRecordsInput>
+}
+
+export type userCreateNestedOneWithoutCareerActivityDaysInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerActivityDaysInput, Prisma.userUncheckedCreateWithoutCareerActivityDaysInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerActivityDaysInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerActivityDaysNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerActivityDaysInput, Prisma.userUncheckedCreateWithoutCareerActivityDaysInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerActivityDaysInput
+  upsert?: Prisma.userUpsertWithoutCareerActivityDaysInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerActivityDaysInput, Prisma.userUpdateWithoutCareerActivityDaysInput>, Prisma.userUncheckedUpdateWithoutCareerActivityDaysInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -1191,6 +1296,11 @@ export type userCreateWithoutSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -1237,6 +1347,11 @@ export type userUncheckedCreateWithoutSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -1299,6 +1414,11 @@ export type userUpdateWithoutSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -1345,6 +1465,11 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -1391,6 +1516,11 @@ export type userCreateWithoutAccountsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -1437,6 +1567,11 @@ export type userUncheckedCreateWithoutAccountsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -1499,6 +1634,11 @@ export type userUpdateWithoutAccountsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -1545,6 +1685,11 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -1591,6 +1736,11 @@ export type userCreateWithoutResumeDocumentsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -1637,6 +1787,11 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -1699,6 +1854,11 @@ export type userUpdateWithoutResumeDocumentsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -1745,6 +1905,11 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -1791,6 +1956,11 @@ export type userCreateWithoutJobPostingsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -1837,6 +2007,11 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -1899,6 +2074,11 @@ export type userUpdateWithoutJobPostingsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -1945,6 +2125,11 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -1991,6 +2176,11 @@ export type userCreateWithoutSkillsInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -2037,6 +2227,11 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -2099,6 +2294,11 @@ export type userUpdateWithoutSkillsInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -2145,6 +2345,11 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -2191,6 +2396,11 @@ export type userCreateWithoutCareerBriefsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -2237,6 +2447,11 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -2299,6 +2514,11 @@ export type userUpdateWithoutCareerBriefsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -2345,6 +2565,11 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionsInput = {
@@ -2391,6 +2616,11 @@ export type userCreateWithoutResumeVersionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionsInput = {
@@ -2437,6 +2667,11 @@ export type userUncheckedCreateWithoutResumeVersionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionsInput = {
@@ -2499,6 +2734,11 @@ export type userUpdateWithoutResumeVersionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionsInput = {
@@ -2545,6 +2785,11 @@ export type userUncheckedUpdateWithoutResumeVersionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionRevisionsInput = {
@@ -2591,6 +2836,11 @@ export type userCreateWithoutResumeVersionRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
@@ -2637,6 +2887,11 @@ export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
@@ -2699,6 +2954,11 @@ export type userUpdateWithoutResumeVersionRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
@@ -2745,6 +3005,11 @@ export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationsInput = {
@@ -2791,6 +3056,11 @@ export type userCreateWithoutApplicationsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationsInput = {
@@ -2837,6 +3107,11 @@ export type userUncheckedCreateWithoutApplicationsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationsInput = {
@@ -2899,6 +3174,11 @@ export type userUpdateWithoutApplicationsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationsInput = {
@@ -2945,6 +3225,11 @@ export type userUncheckedUpdateWithoutApplicationsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationEventsInput = {
@@ -2991,6 +3276,11 @@ export type userCreateWithoutApplicationEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationEventsInput = {
@@ -3037,6 +3327,11 @@ export type userUncheckedCreateWithoutApplicationEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationEventsInput = {
@@ -3099,6 +3394,11 @@ export type userUpdateWithoutApplicationEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationEventsInput = {
@@ -3145,6 +3445,11 @@ export type userUncheckedUpdateWithoutApplicationEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationContactsInput = {
@@ -3191,6 +3496,11 @@ export type userCreateWithoutApplicationContactsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationContactsInput = {
@@ -3237,6 +3547,11 @@ export type userUncheckedCreateWithoutApplicationContactsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationContactsInput = {
@@ -3299,6 +3614,11 @@ export type userUpdateWithoutApplicationContactsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationContactsInput = {
@@ -3345,6 +3665,11 @@ export type userUncheckedUpdateWithoutApplicationContactsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationInsightsInput = {
@@ -3391,6 +3716,11 @@ export type userCreateWithoutApplicationInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationInsightsInput = {
@@ -3437,6 +3767,11 @@ export type userUncheckedCreateWithoutApplicationInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationInsightsInput = {
@@ -3499,6 +3834,11 @@ export type userUpdateWithoutApplicationInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationInsightsInput = {
@@ -3545,6 +3885,11 @@ export type userUncheckedUpdateWithoutApplicationInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryProfileInput = {
@@ -3591,6 +3936,11 @@ export type userCreateWithoutJobDiscoveryProfileInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
@@ -3637,6 +3987,11 @@ export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryProfileInput = {
@@ -3699,6 +4054,11 @@ export type userUpdateWithoutJobDiscoveryProfileInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
@@ -3745,6 +4105,11 @@ export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryRunsInput = {
@@ -3791,6 +4156,11 @@ export type userCreateWithoutJobDiscoveryRunsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
@@ -3837,6 +4207,11 @@ export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryRunsInput = {
@@ -3899,6 +4274,11 @@ export type userUpdateWithoutJobDiscoveryRunsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
@@ -3945,6 +4325,11 @@ export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutDiscoveredJobsInput = {
@@ -3991,6 +4376,11 @@ export type userCreateWithoutDiscoveredJobsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDiscoveredJobsInput = {
@@ -4037,6 +4427,11 @@ export type userUncheckedCreateWithoutDiscoveredJobsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDiscoveredJobsInput = {
@@ -4099,6 +4494,11 @@ export type userUpdateWithoutDiscoveredJobsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
@@ -4145,6 +4545,11 @@ export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationQueueItemsInput = {
@@ -4191,6 +4596,11 @@ export type userCreateWithoutApplicationQueueItemsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
@@ -4237,6 +4647,11 @@ export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationQueueItemsInput = {
@@ -4299,6 +4714,11 @@ export type userUpdateWithoutApplicationQueueItemsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
@@ -4345,6 +4765,11 @@ export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftsInput = {
@@ -4391,6 +4816,11 @@ export type userCreateWithoutCommunicationDraftsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -4437,6 +4867,11 @@ export type userUncheckedCreateWithoutCommunicationDraftsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -4499,6 +4934,11 @@ export type userUpdateWithoutCommunicationDraftsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -4545,6 +4985,11 @@ export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftRevisionsInput = {
@@ -4591,6 +5036,11 @@ export type userCreateWithoutCommunicationDraftRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
@@ -4637,6 +5087,11 @@ export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftRevisionsInput = {
@@ -4699,6 +5154,11 @@ export type userUpdateWithoutCommunicationDraftRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
@@ -4745,6 +5205,11 @@ export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobRequirementsInput = {
@@ -4791,6 +5256,11 @@ export type userCreateWithoutJobRequirementsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobRequirementsInput = {
@@ -4837,6 +5307,11 @@ export type userUncheckedCreateWithoutJobRequirementsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobRequirementsInput = {
@@ -4899,6 +5374,11 @@ export type userUpdateWithoutJobRequirementsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobRequirementsInput = {
@@ -4945,6 +5425,11 @@ export type userUncheckedUpdateWithoutJobRequirementsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobEvidenceMatchesInput = {
@@ -4991,6 +5476,11 @@ export type userCreateWithoutJobEvidenceMatchesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
@@ -5037,6 +5527,11 @@ export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobEvidenceMatchesInput = {
@@ -5099,6 +5594,11 @@ export type userUpdateWithoutJobEvidenceMatchesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
@@ -5145,6 +5645,11 @@ export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobOpportunityAnalysesInput = {
@@ -5191,6 +5696,11 @@ export type userCreateWithoutJobOpportunityAnalysesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
@@ -5237,6 +5747,11 @@ export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobOpportunityAnalysesInput = {
@@ -5299,6 +5814,11 @@ export type userUpdateWithoutJobOpportunityAnalysesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
@@ -5345,6 +5865,11 @@ export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationPackagesInput = {
@@ -5391,6 +5916,11 @@ export type userCreateWithoutApplicationPackagesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationPackagesInput = {
@@ -5437,6 +5967,11 @@ export type userUncheckedCreateWithoutApplicationPackagesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationPackagesInput = {
@@ -5499,6 +6034,11 @@ export type userUpdateWithoutApplicationPackagesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationPackagesInput = {
@@ -5545,6 +6085,11 @@ export type userUncheckedUpdateWithoutApplicationPackagesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionSessionsInput = {
@@ -5591,6 +6136,11 @@ export type userCreateWithoutApplicationExecutionSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
@@ -5637,6 +6187,11 @@ export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionSessionsInput = {
@@ -5699,6 +6254,11 @@ export type userUpdateWithoutApplicationExecutionSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
@@ -5745,6 +6305,11 @@ export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionEventsInput = {
@@ -5791,6 +6356,11 @@ export type userCreateWithoutApplicationExecutionEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
@@ -5837,6 +6407,11 @@ export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionEventsInput = {
@@ -5899,6 +6474,11 @@ export type userUpdateWithoutApplicationExecutionEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
@@ -5945,6 +6525,11 @@ export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -5991,6 +6576,11 @@ export type userCreateWithoutApplicationSubmissionAttemptsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -6037,6 +6627,11 @@ export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationSubmissionAttemptsInput = {
@@ -6099,6 +6694,11 @@ export type userUpdateWithoutApplicationSubmissionAttemptsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
@@ -6145,6 +6745,11 @@ export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationAnswerPreferencesInput = {
@@ -6191,6 +6796,11 @@ export type userCreateWithoutApplicationAnswerPreferencesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
@@ -6237,6 +6847,11 @@ export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationAnswerPreferencesInput = {
@@ -6299,6 +6914,11 @@ export type userUpdateWithoutApplicationAnswerPreferencesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
@@ -6345,6 +6965,11 @@ export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthProfilesInput = {
@@ -6391,6 +7016,11 @@ export type userCreateWithoutLinkedinGrowthProfilesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
@@ -6437,6 +7067,11 @@ export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthProfilesInput = {
@@ -6499,6 +7134,11 @@ export type userUpdateWithoutLinkedinGrowthProfilesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
@@ -6545,6 +7185,11 @@ export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentPillarsInput = {
@@ -6591,6 +7236,11 @@ export type userCreateWithoutLinkedinContentPillarsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
@@ -6637,6 +7287,11 @@ export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentPillarsInput = {
@@ -6699,6 +7354,11 @@ export type userUpdateWithoutLinkedinContentPillarsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
@@ -6745,6 +7405,11 @@ export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentIdeasInput = {
@@ -6791,6 +7456,11 @@ export type userCreateWithoutLinkedinContentIdeasInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
@@ -6837,6 +7507,11 @@ export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentIdeasInput = {
@@ -6899,6 +7574,11 @@ export type userUpdateWithoutLinkedinContentIdeasInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
@@ -6945,6 +7625,11 @@ export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostsInput = {
@@ -6991,6 +7676,11 @@ export type userCreateWithoutLinkedinPostsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostsInput = {
@@ -7037,6 +7727,11 @@ export type userUncheckedCreateWithoutLinkedinPostsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostsInput = {
@@ -7099,6 +7794,11 @@ export type userUpdateWithoutLinkedinPostsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostsInput = {
@@ -7145,6 +7845,11 @@ export type userUncheckedUpdateWithoutLinkedinPostsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostRevisionsInput = {
@@ -7191,6 +7896,11 @@ export type userCreateWithoutLinkedinPostRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
@@ -7237,6 +7947,11 @@ export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostRevisionsInput = {
@@ -7299,6 +8014,11 @@ export type userUpdateWithoutLinkedinPostRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
@@ -7345,6 +8065,11 @@ export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPublishingPlansInput = {
@@ -7391,6 +8116,11 @@ export type userCreateWithoutLinkedinPublishingPlansInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
@@ -7437,6 +8167,11 @@ export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPublishingPlansInput = {
@@ -7499,6 +8234,11 @@ export type userUpdateWithoutLinkedinPublishingPlansInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
@@ -7545,6 +8285,11 @@ export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostPerformancesInput = {
@@ -7591,6 +8336,11 @@ export type userCreateWithoutLinkedinPostPerformancesInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
@@ -7637,6 +8387,11 @@ export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostPerformancesInput = {
@@ -7699,6 +8454,11 @@ export type userUpdateWithoutLinkedinPostPerformancesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
@@ -7745,6 +8505,11 @@ export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthInsightsInput = {
@@ -7791,6 +8556,11 @@ export type userCreateWithoutLinkedinGrowthInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
@@ -7837,6 +8607,11 @@ export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthInsightsInput = {
@@ -7899,6 +8674,11 @@ export type userUpdateWithoutLinkedinGrowthInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
@@ -7945,6 +8725,11 @@ export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinConnectionsInput = {
@@ -7991,6 +8776,11 @@ export type userCreateWithoutLinkedinConnectionsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinConnectionsInput = {
@@ -8037,6 +8827,11 @@ export type userUncheckedCreateWithoutLinkedinConnectionsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinConnectionsInput = {
@@ -8099,6 +8894,11 @@ export type userUpdateWithoutLinkedinConnectionsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinConnectionsInput = {
@@ -8145,6 +8945,11 @@ export type userUncheckedUpdateWithoutLinkedinConnectionsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinOAuthAttemptsInput = {
@@ -8191,6 +8996,11 @@ export type userCreateWithoutLinkedinOAuthAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinOAuthAttemptsInput = {
@@ -8237,6 +9047,11 @@ export type userUncheckedCreateWithoutLinkedinOAuthAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinOAuthAttemptsInput = {
@@ -8299,6 +9114,11 @@ export type userUpdateWithoutLinkedinOAuthAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput = {
@@ -8345,6 +9165,11 @@ export type userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPublishingAttemptsInput = {
@@ -8391,6 +9216,11 @@ export type userCreateWithoutLinkedinPublishingAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
   linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPublishingAttemptsInput = {
@@ -8437,6 +9267,11 @@ export type userUncheckedCreateWithoutLinkedinPublishingAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
   linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPublishingAttemptsInput = {
@@ -8499,6 +9334,11 @@ export type userUpdateWithoutLinkedinPublishingAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
   linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput = {
@@ -8545,6 +9385,1111 @@ export type userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput = {
   linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
   linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
   linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutDailyRoadmapPreferenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutDailyRoadmapPreferenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutDailyRoadmapPreferenceInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedCreateWithoutDailyRoadmapPreferenceInput>
+}
+
+export type userUpsertWithoutDailyRoadmapPreferenceInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapPreferenceInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedCreateWithoutDailyRoadmapPreferenceInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutDailyRoadmapPreferenceInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapPreferenceInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapPreferenceInput>
+}
+
+export type userUpdateWithoutDailyRoadmapPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutDailyRoadmapPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutDailyRoadmapsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutDailyRoadmapsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutDailyRoadmapsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapsInput>
+}
+
+export type userUpsertWithoutDailyRoadmapsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapsInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutDailyRoadmapsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapsInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapsInput>
+}
+
+export type userUpdateWithoutDailyRoadmapsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutDailyRoadmapsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutDailyRoadmapActionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutDailyRoadmapActionsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutDailyRoadmapActionsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapActionsInput>
+}
+
+export type userUpsertWithoutDailyRoadmapActionsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapActionsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedCreateWithoutDailyRoadmapActionsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutDailyRoadmapActionsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutDailyRoadmapActionsInput, Prisma.userUncheckedUpdateWithoutDailyRoadmapActionsInput>
+}
+
+export type userUpdateWithoutDailyRoadmapActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutDailyRoadmapActionsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerActivityRecordsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerActivityRecordsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerActivityRecordsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerActivityRecordsInput, Prisma.userUncheckedCreateWithoutCareerActivityRecordsInput>
+}
+
+export type userUpsertWithoutCareerActivityRecordsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerActivityRecordsInput, Prisma.userUncheckedUpdateWithoutCareerActivityRecordsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerActivityRecordsInput, Prisma.userUncheckedCreateWithoutCareerActivityRecordsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerActivityRecordsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerActivityRecordsInput, Prisma.userUncheckedUpdateWithoutCareerActivityRecordsInput>
+}
+
+export type userUpdateWithoutCareerActivityRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerActivityRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerActivityDaysInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerActivityDaysInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerActivityDaysInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerActivityDaysInput, Prisma.userUncheckedCreateWithoutCareerActivityDaysInput>
+}
+
+export type userUpsertWithoutCareerActivityDaysInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerActivityDaysInput, Prisma.userUncheckedUpdateWithoutCareerActivityDaysInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerActivityDaysInput, Prisma.userUncheckedCreateWithoutCareerActivityDaysInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerActivityDaysInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerActivityDaysInput, Prisma.userUncheckedUpdateWithoutCareerActivityDaysInput>
+}
+
+export type userUpdateWithoutCareerActivityDaysInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerActivityDaysInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -8589,6 +10534,10 @@ export type UserCountOutputType = {
   linkedinConnections: number
   linkedinOAuthAttempts: number
   linkedinPublishingAttempts: number
+  dailyRoadmaps: number
+  dailyRoadmapActions: number
+  careerActivityRecords: number
+  careerActivityDays: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -8628,6 +10577,10 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   linkedinConnections?: boolean | UserCountOutputTypeCountLinkedinConnectionsArgs
   linkedinOAuthAttempts?: boolean | UserCountOutputTypeCountLinkedinOAuthAttemptsArgs
   linkedinPublishingAttempts?: boolean | UserCountOutputTypeCountLinkedinPublishingAttemptsArgs
+  dailyRoadmaps?: boolean | UserCountOutputTypeCountDailyRoadmapsArgs
+  dailyRoadmapActions?: boolean | UserCountOutputTypeCountDailyRoadmapActionsArgs
+  careerActivityRecords?: boolean | UserCountOutputTypeCountCareerActivityRecordsArgs
+  careerActivityDays?: boolean | UserCountOutputTypeCountCareerActivityDaysArgs
 }
 
 /**
@@ -8892,6 +10845,34 @@ export type UserCountOutputTypeCountLinkedinPublishingAttemptsArgs<ExtArgs exten
   where?: Prisma.linkedinPublishingAttemptWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDailyRoadmapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.dailyRoadmapWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountDailyRoadmapActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.dailyRoadmapActionWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerActivityRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerActivityRecordWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerActivityDaysArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerActivityDayWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -8938,6 +10919,11 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   linkedinConnections?: boolean | Prisma.user$linkedinConnectionsArgs<ExtArgs>
   linkedinOAuthAttempts?: boolean | Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>
   linkedinPublishingAttempts?: boolean | Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>
+  dailyRoadmapPreference?: boolean | Prisma.user$dailyRoadmapPreferenceArgs<ExtArgs>
+  dailyRoadmaps?: boolean | Prisma.user$dailyRoadmapsArgs<ExtArgs>
+  dailyRoadmapActions?: boolean | Prisma.user$dailyRoadmapActionsArgs<ExtArgs>
+  careerActivityRecords?: boolean | Prisma.user$careerActivityRecordsArgs<ExtArgs>
+  careerActivityDays?: boolean | Prisma.user$careerActivityDaysArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -9010,6 +10996,11 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   linkedinConnections?: boolean | Prisma.user$linkedinConnectionsArgs<ExtArgs>
   linkedinOAuthAttempts?: boolean | Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>
   linkedinPublishingAttempts?: boolean | Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>
+  dailyRoadmapPreference?: boolean | Prisma.user$dailyRoadmapPreferenceArgs<ExtArgs>
+  dailyRoadmaps?: boolean | Prisma.user$dailyRoadmapsArgs<ExtArgs>
+  dailyRoadmapActions?: boolean | Prisma.user$dailyRoadmapActionsArgs<ExtArgs>
+  careerActivityRecords?: boolean | Prisma.user$careerActivityRecordsArgs<ExtArgs>
+  careerActivityDays?: boolean | Prisma.user$careerActivityDaysArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -9055,6 +11046,11 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     linkedinConnections: Prisma.$linkedinConnectionPayload<ExtArgs>[]
     linkedinOAuthAttempts: Prisma.$linkedinOAuthAttemptPayload<ExtArgs>[]
     linkedinPublishingAttempts: Prisma.$linkedinPublishingAttemptPayload<ExtArgs>[]
+    dailyRoadmapPreference: Prisma.$dailyRoadmapPreferencePayload<ExtArgs> | null
+    dailyRoadmaps: Prisma.$dailyRoadmapPayload<ExtArgs>[]
+    dailyRoadmapActions: Prisma.$dailyRoadmapActionPayload<ExtArgs>[]
+    careerActivityRecords: Prisma.$careerActivityRecordPayload<ExtArgs>[]
+    careerActivityDays: Prisma.$careerActivityDayPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -9495,6 +11491,11 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   linkedinConnections<T extends Prisma.user$linkedinConnectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinConnectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkedinOAuthAttempts<T extends Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinOAuthAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinOAuthAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   linkedinPublishingAttempts<T extends Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$linkedinPublishingAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$linkedinPublishingAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dailyRoadmapPreference<T extends Prisma.user$dailyRoadmapPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$dailyRoadmapPreferenceArgs<ExtArgs>>): Prisma.Prisma__dailyRoadmapPreferenceClient<runtime.Types.Result.GetResult<Prisma.$dailyRoadmapPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  dailyRoadmaps<T extends Prisma.user$dailyRoadmapsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$dailyRoadmapsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$dailyRoadmapPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  dailyRoadmapActions<T extends Prisma.user$dailyRoadmapActionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$dailyRoadmapActionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$dailyRoadmapActionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerActivityRecords<T extends Prisma.user$careerActivityRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerActivityRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerActivityRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerActivityDays<T extends Prisma.user$careerActivityDaysArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerActivityDaysArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerActivityDayPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10804,6 +12805,121 @@ export type user$linkedinPublishingAttemptsArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.LinkedinPublishingAttemptScalarFieldEnum | Prisma.LinkedinPublishingAttemptScalarFieldEnum[]
+}
+
+/**
+ * user.dailyRoadmapPreference
+ */
+export type user$dailyRoadmapPreferenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the dailyRoadmapPreference
+   */
+  select?: Prisma.dailyRoadmapPreferenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the dailyRoadmapPreference
+   */
+  omit?: Prisma.dailyRoadmapPreferenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.dailyRoadmapPreferenceInclude<ExtArgs> | null
+  where?: Prisma.dailyRoadmapPreferenceWhereInput
+}
+
+/**
+ * user.dailyRoadmaps
+ */
+export type user$dailyRoadmapsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the dailyRoadmap
+   */
+  select?: Prisma.dailyRoadmapSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the dailyRoadmap
+   */
+  omit?: Prisma.dailyRoadmapOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.dailyRoadmapInclude<ExtArgs> | null
+  where?: Prisma.dailyRoadmapWhereInput
+  orderBy?: Prisma.dailyRoadmapOrderByWithRelationInput | Prisma.dailyRoadmapOrderByWithRelationInput[]
+  cursor?: Prisma.dailyRoadmapWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DailyRoadmapScalarFieldEnum | Prisma.DailyRoadmapScalarFieldEnum[]
+}
+
+/**
+ * user.dailyRoadmapActions
+ */
+export type user$dailyRoadmapActionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the dailyRoadmapAction
+   */
+  select?: Prisma.dailyRoadmapActionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the dailyRoadmapAction
+   */
+  omit?: Prisma.dailyRoadmapActionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.dailyRoadmapActionInclude<ExtArgs> | null
+  where?: Prisma.dailyRoadmapActionWhereInput
+  orderBy?: Prisma.dailyRoadmapActionOrderByWithRelationInput | Prisma.dailyRoadmapActionOrderByWithRelationInput[]
+  cursor?: Prisma.dailyRoadmapActionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DailyRoadmapActionScalarFieldEnum | Prisma.DailyRoadmapActionScalarFieldEnum[]
+}
+
+/**
+ * user.careerActivityRecords
+ */
+export type user$careerActivityRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerActivityRecord
+   */
+  select?: Prisma.careerActivityRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerActivityRecord
+   */
+  omit?: Prisma.careerActivityRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerActivityRecordInclude<ExtArgs> | null
+  where?: Prisma.careerActivityRecordWhereInput
+  orderBy?: Prisma.careerActivityRecordOrderByWithRelationInput | Prisma.careerActivityRecordOrderByWithRelationInput[]
+  cursor?: Prisma.careerActivityRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerActivityRecordScalarFieldEnum | Prisma.CareerActivityRecordScalarFieldEnum[]
+}
+
+/**
+ * user.careerActivityDays
+ */
+export type user$careerActivityDaysArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerActivityDay
+   */
+  select?: Prisma.careerActivityDaySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerActivityDay
+   */
+  omit?: Prisma.careerActivityDayOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerActivityDayInclude<ExtArgs> | null
+  where?: Prisma.careerActivityDayWhereInput
+  orderBy?: Prisma.careerActivityDayOrderByWithRelationInput | Prisma.careerActivityDayOrderByWithRelationInput[]
+  cursor?: Prisma.careerActivityDayWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerActivityDayScalarFieldEnum | Prisma.CareerActivityDayScalarFieldEnum[]
 }
 
 /**

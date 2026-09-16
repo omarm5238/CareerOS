@@ -65,6 +65,18 @@ export async function markCommunicationUsed(
     return { updated, timelineEventCreated };
   });
 
+  const { tryRecordMeaningfulCareerActivity } = await import(
+    "@/features/daily-roadmap/activity/record-activity"
+  );
+  await tryRecordMeaningfulCareerActivity({
+    userId,
+    activityType: "COMMUNICATION_USED",
+    fingerprint: `COMMUNICATION_USED:${result.updated.id}:${draft.activeRevisionId ?? "used"}`,
+    sourceEntityType: "COMMUNICATION",
+    sourceEntityId: result.updated.id,
+    occurredAt: result.updated.usedAt ?? new Date(),
+  });
+
   return {
     draftId: result.updated.id,
     status: result.updated.status,

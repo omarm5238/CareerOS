@@ -235,6 +235,56 @@ npm run m25b:live
 Manual M25A Copy / Mark Published remains available when LinkedIn is
 disconnected, missing publish permission, or needs reconnect.
 
+### Milestone 26 — Daily Roadmap + Career Streak
+
+M26 is the daily operating layer. It answers what to do today by reading existing
+CareerOS domain truth from resume, applications, jobs, communications, and LinkedIn.
+It does **not** replace those systems.
+
+Route: `/workspace/today`
+
+Philosophy: 3–5 core actions, Top 3 highlighted, quality over backlog. One roadmap
+per user per local career day (`unique(userId, localDate)`). Historical roadmaps keep
+the timezone they were created with.
+
+Timezone uses IANA identifiers (`Europe/Istanbul`, `UTC`). Career days and streaks
+are local to the user, not raw UTC. Default timezone is UTC until the user sets one.
+Active weekdays default to Monday–Friday. Inactive weekdays do not break streak
+continuity; a missed scheduled day does.
+
+Priority is deterministic (100 points):
+
+| Component | Points |
+| --- | --- |
+| Urgency | 30 |
+| Career impact | 25 |
+| Readiness | 15 |
+| Opportunity quality (stored) | 15 |
+| Momentum / neglect | 10 |
+| Effort efficiency | 5 |
+
+AI (`OPENAI_DAILY_ROADMAP_MODEL`) may only rewrite wording. It cannot change scores,
+selected entities, or invent deadlines. If AI fails, deterministic fallback remains.
+
+Manual Complete on Today never mutates domain state (an Apply task does not set
+`Application.status = APPLIED`). Actual domain events can reconcile the matching
+roadmap action to `COMPLETED` with `completionSource = DOMAIN_EVENT`.
+
+Meaningful activity is idempotent (`unique(userId, fingerprint)`). Login, page view,
+roadmap generate/refresh, copy, and job dismiss do not count. Streak = consecutive
+scheduled career days with at least one meaningful activity.
+
+M26 exposes current/longest streak and this week's active/scheduled days. It does
+**not** implement weekly review, Career Momentum, or week-over-week strategy (M27).
+
+There is no cron, Redis, BullMQ, or background roadmap generation.
+
+```bash
+npm run m26:qa
+npm run m26:security
+npm run m26:headed
+```
+
 ### Scripts
 
 | Script          | Description                |
@@ -250,6 +300,9 @@ disconnected, missing publish permission, or needs reconnect.
 | `npm run m25b:security` | M25B OAuth/token/ownership security QA |
 | `npm run m25b:live` | Safe live smoke (no publish) |
 | `npm run m25b:headed` | M25B headed 390×844 + desktop checks |
+| `npm run m26:qa` | M26 daily roadmap + streak QA |
+| `npm run m26:security` | M26 ownership and forgery QA |
+| `npm run m26:headed` | M26 headed Today + 390×844 checks |
 
 ---
 

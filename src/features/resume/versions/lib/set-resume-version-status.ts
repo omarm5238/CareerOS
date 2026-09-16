@@ -42,11 +42,26 @@ export async function setResumeVersionStatus(
     );
   }
 
-  return prisma.resumeVersion.update({
+  const updated = await prisma.resumeVersion.update({
     where: { id: versionId },
     data: {
       status,
       archivedAt: status === "ARCHIVED" ? new Date() : null,
     },
   });
+
+  if (status === "READY" && version.status !== "READY") {
+    const { tryRecordMeaningfulCareerActivity } = await import(
+      "@/features/daily-roadmap/activity/record-activity"
+    );
+    await tryRecordMeaningfulCareerActivity({
+      userId,
+      activityType: "RESUME_READY",
+      fingerprint: `RESUME_READY:${updated.id}:${updated.activeRevisionId ?? "none"}`,
+      sourceEntityType: "RESUME_VERSION",
+      sourceEntityId: updated.id,
+    });
+  }
+
+  return updated;
 }
