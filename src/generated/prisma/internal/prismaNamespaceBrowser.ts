@@ -97,7 +97,11 @@ export const ModelName = {
   dailyRoadmap: 'dailyRoadmap',
   dailyRoadmapAction: 'dailyRoadmapAction',
   careerActivityRecord: 'careerActivityRecord',
-  careerActivityDay: 'careerActivityDay'
+  careerActivityDay: 'careerActivityDay',
+  weeklyCareerReview: 'weeklyCareerReview',
+  weeklyCareerMetric: 'weeklyCareerMetric',
+  weeklyCareerInsight: 'weeklyCareerInsight',
+  weeklyCareerRecommendation: 'weeklyCareerRecommendation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1159,6 +1163,92 @@ export const CareerActivityDayScalarFieldEnum = {
 } as const
 
 export type CareerActivityDayScalarFieldEnum = (typeof CareerActivityDayScalarFieldEnum)[keyof typeof CareerActivityDayScalarFieldEnum]
+
+
+export const WeeklyCareerReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weekStartLocalDate: 'weekStartLocalDate',
+  weekEndLocalDate: 'weekEndLocalDate',
+  timezone: 'timezone',
+  status: 'status',
+  generatedAt: 'generatedAt',
+  refreshedAt: 'refreshedAt',
+  finalizedAt: 'finalizedAt',
+  contextFingerprint: 'contextFingerprint',
+  generationSource: 'generationSource',
+  overallMomentumScore: 'overallMomentumScore',
+  overallMomentumBand: 'overallMomentumBand',
+  summary: 'summary',
+  winsSummary: 'winsSummary',
+  frictionSummary: 'frictionSummary',
+  componentsJson: 'componentsJson',
+  comparisonJson: 'comparisonJson',
+  winsJson: 'winsJson',
+  frictionJson: 'frictionJson',
+  limitationsJson: 'limitationsJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WeeklyCareerReviewScalarFieldEnum = (typeof WeeklyCareerReviewScalarFieldEnum)[keyof typeof WeeklyCareerReviewScalarFieldEnum]
+
+
+export const WeeklyCareerMetricScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  category: 'category',
+  metricKey: 'metricKey',
+  numericValue: 'numericValue',
+  textValue: 'textValue',
+  denominatorValue: 'denominatorValue',
+  applicability: 'applicability',
+  sourceSubsystem: 'sourceSubsystem',
+  evidenceJson: 'evidenceJson',
+  createdAt: 'createdAt'
+} as const
+
+export type WeeklyCareerMetricScalarFieldEnum = (typeof WeeklyCareerMetricScalarFieldEnum)[keyof typeof WeeklyCareerMetricScalarFieldEnum]
+
+
+export const WeeklyCareerInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  type: 'type',
+  category: 'category',
+  title: 'title',
+  summary: 'summary',
+  evidenceJson: 'evidenceJson',
+  confidence: 'confidence',
+  severity: 'severity',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type WeeklyCareerInsightScalarFieldEnum = (typeof WeeklyCareerInsightScalarFieldEnum)[keyof typeof WeeklyCareerInsightScalarFieldEnum]
+
+
+export const WeeklyCareerRecommendationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  category: 'category',
+  title: 'title',
+  reason: 'reason',
+  priority: 'priority',
+  sourceEvidenceJson: 'sourceEvidenceJson',
+  recommendedActionType: 'recommendedActionType',
+  deepLink: 'deepLink',
+  status: 'status',
+  adoptedAt: 'adoptedAt',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WeeklyCareerRecommendationScalarFieldEnum = (typeof WeeklyCareerRecommendationScalarFieldEnum)[keyof typeof WeeklyCareerRecommendationScalarFieldEnum]
 
 
 export const SortOrder = {

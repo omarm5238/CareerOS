@@ -1010,3 +1010,116 @@ export const CareerActivityType = {
 } as const
 
 export type CareerActivityType = (typeof CareerActivityType)[keyof typeof CareerActivityType]
+
+
+export const WeeklyCareerReviewStatus = {
+  DRAFT: 'DRAFT',
+  FINALIZED: 'FINALIZED'
+} as const
+
+export type WeeklyCareerReviewStatus = (typeof WeeklyCareerReviewStatus)[keyof typeof WeeklyCareerReviewStatus]
+
+
+export const WeeklyCareerGenerationSource = {
+  DETERMINISTIC: 'DETERMINISTIC',
+  AI_ASSISTED: 'AI_ASSISTED',
+  FALLBACK: 'FALLBACK'
+} as const
+
+export type WeeklyCareerGenerationSource = (typeof WeeklyCareerGenerationSource)[keyof typeof WeeklyCareerGenerationSource]
+
+
+export const WeeklyCareerMomentumBand = {
+  STRONG: 'STRONG',
+  STEADY: 'STEADY',
+  MIXED: 'MIXED',
+  LOW: 'LOW'
+} as const
+
+export type WeeklyCareerMomentumBand = (typeof WeeklyCareerMomentumBand)[keyof typeof WeeklyCareerMomentumBand]
+
+
+export const WeeklyCareerMetricCategory = {
+  EXECUTION: 'EXECUTION',
+  OPPORTUNITIES: 'OPPORTUNITIES',
+  APPLICATIONS: 'APPLICATIONS',
+  FOLLOW_UP: 'FOLLOW_UP',
+  RESUME: 'RESUME',
+  COMMUNICATION: 'COMMUNICATION',
+  LINKEDIN: 'LINKEDIN',
+  SKILLS_EVIDENCE: 'SKILLS_EVIDENCE'
+} as const
+
+export type WeeklyCareerMetricCategory = (typeof WeeklyCareerMetricCategory)[keyof typeof WeeklyCareerMetricCategory]
+
+
+export const WeeklyCareerMetricApplicability = {
+  DATA_AVAILABLE: 'DATA_AVAILABLE',
+  NO_ACTIVITY: 'NO_ACTIVITY',
+  NOT_APPLICABLE: 'NOT_APPLICABLE'
+} as const
+
+export type WeeklyCareerMetricApplicability = (typeof WeeklyCareerMetricApplicability)[keyof typeof WeeklyCareerMetricApplicability]
+
+
+export const WeeklyCareerMetricSourceSubsystem = {
+  M21_RESUME: 'M21_RESUME',
+  M22_APPLICATION: 'M22_APPLICATION',
+  M23_JOBS: 'M23_JOBS',
+  M24_COMMUNICATION: 'M24_COMMUNICATION',
+  M25_LINKEDIN: 'M25_LINKEDIN',
+  M26_DAILY: 'M26_DAILY'
+} as const
+
+export type WeeklyCareerMetricSourceSubsystem = (typeof WeeklyCareerMetricSourceSubsystem)[keyof typeof WeeklyCareerMetricSourceSubsystem]
+
+
+export const WeeklyCareerInsightType = {
+  PROGRESS_PATTERN: 'PROGRESS_PATTERN',
+  STALL_PATTERN: 'STALL_PATTERN',
+  CONSISTENCY_PATTERN: 'CONSISTENCY_PATTERN',
+  OPPORTUNITY_GAP: 'OPPORTUNITY_GAP',
+  FOLLOW_UP_GAP: 'FOLLOW_UP_GAP',
+  EXECUTION_GAP: 'EXECUTION_GAP',
+  VISIBILITY_GAP: 'VISIBILITY_GAP',
+  EVIDENCE_GAP: 'EVIDENCE_GAP',
+  APPLICATION_FUNNEL_PATTERN: 'APPLICATION_FUNNEL_PATTERN',
+  NEXT_WEEK_FOCUS: 'NEXT_WEEK_FOCUS'
+} as const
+
+export type WeeklyCareerInsightType = (typeof WeeklyCareerInsightType)[keyof typeof WeeklyCareerInsightType]
+
+
+export const WeeklyCareerInsightConfidence = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type WeeklyCareerInsightConfidence = (typeof WeeklyCareerInsightConfidence)[keyof typeof WeeklyCareerInsightConfidence]
+
+
+export const WeeklyCareerInsightSeverity = {
+  INFO: 'INFO',
+  ATTENTION: 'ATTENTION'
+} as const
+
+export type WeeklyCareerInsightSeverity = (typeof WeeklyCareerInsightSeverity)[keyof typeof WeeklyCareerInsightSeverity]
+
+
+export const WeeklyCareerRecommendationStatus = {
+  OPEN: 'OPEN',
+  ADOPTED: 'ADOPTED',
+  DISMISSED: 'DISMISSED'
+} as const
+
+export type WeeklyCareerRecommendationStatus = (typeof WeeklyCareerRecommendationStatus)[keyof typeof WeeklyCareerRecommendationStatus]
+
+
+export const WeeklyCareerRecommendationPriority = {
+  HIGH: 'HIGH',
+  MEDIUM: 'MEDIUM',
+  LOW: 'LOW'
+} as const
+
+export type WeeklyCareerRecommendationPriority = (typeof WeeklyCareerRecommendationPriority)[keyof typeof WeeklyCareerRecommendationPriority]

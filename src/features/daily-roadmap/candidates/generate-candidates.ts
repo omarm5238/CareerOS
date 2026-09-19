@@ -5,6 +5,7 @@ import { getCareerLocalDate, addLocalDays, compareLocalDates } from "../lib/time
 import { parseStringArray } from "../lib/json";
 import { isMeaningfulActionType } from "../activity/classifier";
 import { getSafeLinkedinConnection } from "@/features/linkedin/server";
+import { loadAdoptedWeeklyHandoffCandidates } from "@/features/weekly-review/handoff/adopted-candidates";
 import type {
   DailyActionCandidate,
   DailyActionCategory,
@@ -767,6 +768,43 @@ export async function generateDailyActionCandidates(input: {
   }
 
   void resumeVersions;
+
+  const weeklyHandoff = await loadAdoptedWeeklyHandoffCandidates({
+    userId: input.userId,
+    timezone: input.preferences.timezone,
+    now,
+  });
+  for (const item of weeklyHandoff) {
+    const type = (
+      [
+        "JOB_APPLY",
+        "JOB_PREPARE",
+        "APPLICATION_FOLLOW_UP",
+        "LINKEDIN_PUBLISH",
+        "EVIDENCE_BUILDING",
+        "SKILL_DEVELOPMENT",
+        "WEEKLY_PREP",
+        "CUSTOM_CAREER_ACTION",
+      ] as DailyRoadmapActionType[]
+    ).includes(item.type as DailyRoadmapActionType)
+      ? (item.type as DailyRoadmapActionType)
+      : "CUSTOM_CAREER_ACTION";
+    collected.push(
+      candidate({
+        type,
+        origin: "SYSTEM_RECOMMENDED",
+        sourceEntityType: item.sourceEntityType,
+        sourceEntityId: item.sourceEntityId,
+        intent: item.intent,
+        title: item.title,
+        whyNowFacts: item.whyNowFacts,
+        estimatedMinutes: item.estimatedMinutes,
+        deepLink: item.deepLink,
+        category: item.category,
+        neglectSignals: ["weekly review focus"],
+      }),
+    );
+  }
 
   const deduped = new Map<string, DailyActionCandidate>();
   for (const item of collected) {

@@ -1749,6 +1749,220 @@ export type EnumCareerActivityTypeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
 }
 
+export type EnumWeeklyCareerReviewStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerReviewStatus | Prisma.EnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel> | $Enums.WeeklyCareerReviewStatus
+}
+
+export type EnumWeeklyCareerGenerationSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerGenerationSource | Prisma.EnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel> | $Enums.WeeklyCareerGenerationSource
+}
+
+export type EnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMomentumBand | Prisma.EnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel> | $Enums.WeeklyCareerMomentumBand | null
+}
+
+export type EnumWeeklyCareerReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerReviewStatus | Prisma.EnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerReviewStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerGenerationSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerGenerationSource | Prisma.EnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerGenerationSourceWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerGenerationSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerMomentumBandNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMomentumBand | Prisma.EnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMomentumBand | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerMetricCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricCategory | Prisma.EnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel> | $Enums.WeeklyCareerMetricCategory
+}
+
+export type FloatNullableFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatNullableFilter<$PrismaModel> | number | null
+}
+
+export type EnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricApplicability | Prisma.EnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel> | $Enums.WeeklyCareerMetricApplicability
+}
+
+export type EnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricSourceSubsystem | Prisma.EnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel> | $Enums.WeeklyCareerMetricSourceSubsystem
+}
+
+export type EnumWeeklyCareerMetricCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricCategory | Prisma.EnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricCategoryWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel>
+}
+
+export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerMetricApplicabilityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricApplicability | Prisma.EnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricApplicability
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerMetricSourceSubsystemWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricSourceSubsystem | Prisma.EnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricSourceSubsystem
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerInsightTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightType | Prisma.EnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel> | $Enums.WeeklyCareerInsightType
+}
+
+export type EnumWeeklyCareerInsightConfidenceFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightConfidence | Prisma.EnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel> | $Enums.WeeklyCareerInsightConfidence
+}
+
+export type EnumWeeklyCareerInsightSeverityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightSeverity | Prisma.EnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel> | $Enums.WeeklyCareerInsightSeverity
+}
+
+export type EnumWeeklyCareerInsightTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightType | Prisma.EnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightTypeWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerInsightConfidenceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightConfidence | Prisma.EnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightConfidenceWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightConfidence
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerInsightSeverityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightSeverity | Prisma.EnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightSeverityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightSeverity
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationPriority | Prisma.EnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationPriority
+}
+
+export type EnumWeeklyCareerRecommendationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationStatus | Prisma.EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationStatus
+}
+
+export type EnumWeeklyCareerRecommendationPriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationPriority | Prisma.EnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationPriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel>
+}
+
+export type EnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationStatus | Prisma.EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -3441,6 +3655,209 @@ export type NestedEnumCareerActivityTypeWithAggregatesFilter<$PrismaModel = neve
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumCareerActivityTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerReviewStatus | Prisma.EnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel> | $Enums.WeeklyCareerReviewStatus
+}
+
+export type NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerGenerationSource | Prisma.EnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel> | $Enums.WeeklyCareerGenerationSource
+}
+
+export type NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMomentumBand | Prisma.EnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel> | $Enums.WeeklyCareerMomentumBand | null
+}
+
+export type NestedEnumWeeklyCareerReviewStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerReviewStatus | Prisma.EnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerReviewStatus[] | Prisma.ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerReviewStatusWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerReviewStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerReviewStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerGenerationSourceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerGenerationSource | Prisma.EnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerGenerationSource[] | Prisma.ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerGenerationSourceWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerGenerationSource
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerGenerationSourceFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerMomentumBandNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMomentumBand | Prisma.EnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  in?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.WeeklyCareerMomentumBand[] | Prisma.ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMomentumBand | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMomentumBandNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricCategory | Prisma.EnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel> | $Enums.WeeklyCareerMetricCategory
+}
+
+export type NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricApplicability | Prisma.EnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel> | $Enums.WeeklyCareerMetricApplicability
+}
+
+export type NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricSourceSubsystem | Prisma.EnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel> | $Enums.WeeklyCareerMetricSourceSubsystem
+}
+
+export type NestedEnumWeeklyCareerMetricCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricCategory | Prisma.EnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricCategory[] | Prisma.ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricCategoryWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricCategoryFilter<$PrismaModel>
+}
+
+export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: number | Prisma.FloatFieldRefInput<$PrismaModel> | null
+  in?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  notIn?: number[] | Prisma.ListFloatFieldRefInput<$PrismaModel> | null
+  lt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  lte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gt?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  gte?: number | Prisma.FloatFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _avg?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _sum?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedFloatNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerMetricApplicabilityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricApplicability | Prisma.EnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricApplicability[] | Prisma.ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricApplicability
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricApplicabilityFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerMetricSourceSubsystemWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerMetricSourceSubsystem | Prisma.EnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerMetricSourceSubsystem[] | Prisma.ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerMetricSourceSubsystem
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerMetricSourceSubsystemFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightType | Prisma.EnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel> | $Enums.WeeklyCareerInsightType
+}
+
+export type NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightConfidence | Prisma.EnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel> | $Enums.WeeklyCareerInsightConfidence
+}
+
+export type NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightSeverity | Prisma.EnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel> | $Enums.WeeklyCareerInsightSeverity
+}
+
+export type NestedEnumWeeklyCareerInsightTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightType | Prisma.EnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightType[] | Prisma.ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightTypeWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerInsightConfidenceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightConfidence | Prisma.EnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightConfidence[] | Prisma.ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightConfidenceWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightConfidence
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightConfidenceFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerInsightSeverityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerInsightSeverity | Prisma.EnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerInsightSeverity[] | Prisma.ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerInsightSeverityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerInsightSeverity
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerInsightSeverityFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationPriority | Prisma.EnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationPriority
+}
+
+export type NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationStatus | Prisma.EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationStatus
+}
+
+export type NestedEnumWeeklyCareerRecommendationPriorityWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationPriority | Prisma.EnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationPriority[] | Prisma.ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationPriority
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerRecommendationPriorityFilter<$PrismaModel>
+}
+
+export type NestedEnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.WeeklyCareerRecommendationStatus | Prisma.EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.WeeklyCareerRecommendationStatus[] | Prisma.ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$PrismaModel> | $Enums.WeeklyCareerRecommendationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
 }
 
 

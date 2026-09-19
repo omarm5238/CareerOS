@@ -58,6 +58,10 @@ model user {
   dailyRoadmapActions           dailyRoadmapAction[]
   careerActivityRecords         careerActivityRecord[]
   careerActivityDays            careerActivityDay[]
+  weeklyCareerReviews           weeklyCareerReview[]
+  weeklyCareerMetrics           weeklyCareerMetric[]
+  weeklyCareerInsights          weeklyCareerInsight[]
+  weeklyCareerRecommendations   weeklyCareerRecommendation[]
 }
 
 model session {
@@ -2409,4 +2413,216 @@ model careerActivityDay {
   @@index([userId])
   @@index([localDate])
   @@index([qualifiesForStreak])
+}
+
+enum WeeklyCareerReviewStatus {
+  DRAFT
+  FINALIZED
+}
+
+enum WeeklyCareerGenerationSource {
+  DETERMINISTIC
+  AI_ASSISTED
+  FALLBACK
+}
+
+enum WeeklyCareerMomentumBand {
+  STRONG
+  STEADY
+  MIXED
+  LOW
+}
+
+enum WeeklyCareerMetricCategory {
+  EXECUTION
+  OPPORTUNITIES
+  APPLICATIONS
+  FOLLOW_UP
+  RESUME
+  COMMUNICATION
+  LINKEDIN
+  SKILLS_EVIDENCE
+}
+
+enum WeeklyCareerMetricApplicability {
+  DATA_AVAILABLE
+  NO_ACTIVITY
+  NOT_APPLICABLE
+}
+
+enum WeeklyCareerMetricSourceSubsystem {
+  M21_RESUME
+  M22_APPLICATION
+  M23_JOBS
+  M24_COMMUNICATION
+  M25_LINKEDIN
+  M26_DAILY
+}
+
+enum WeeklyCareerInsightType {
+  PROGRESS_PATTERN
+  STALL_PATTERN
+  CONSISTENCY_PATTERN
+  OPPORTUNITY_GAP
+  FOLLOW_UP_GAP
+  EXECUTION_GAP
+  VISIBILITY_GAP
+  EVIDENCE_GAP
+  APPLICATION_FUNNEL_PATTERN
+  NEXT_WEEK_FOCUS
+}
+
+enum WeeklyCareerInsightConfidence {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum WeeklyCareerInsightSeverity {
+  INFO
+  ATTENTION
+}
+
+enum WeeklyCareerRecommendationStatus {
+  OPEN
+  ADOPTED
+  DISMISSED
+}
+
+enum WeeklyCareerRecommendationPriority {
+  HIGH
+  MEDIUM
+  LOW
+}
+
+model weeklyCareerReview {
+  id     String @id @default(cuid())
+  userId String
+
+  weekStartLocalDate String
+  weekEndLocalDate   String
+  timezone           String
+
+  status WeeklyCareerReviewStatus @default(DRAFT)
+
+  generatedAt DateTime  @default(now())
+  refreshedAt DateTime?
+  finalizedAt DateTime?
+
+  contextFingerprint String
+  generationSource   WeeklyCareerGenerationSource @default(DETERMINISTIC)
+
+  overallMomentumScore Int?
+  overallMomentumBand  WeeklyCareerMomentumBand?
+
+  summary         String?
+  winsSummary     String?
+  frictionSummary String?
+
+  componentsJson  Json @default("{}")
+  comparisonJson  Json @default("{}")
+  winsJson        Json @default("[]")
+  frictionJson    Json @default("[]")
+  limitationsJson Json @default("[]")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user            user                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  metrics         weeklyCareerMetric[]
+  insights        weeklyCareerInsight[]
+  recommendations weeklyCareerRecommendation[]
+
+  @@unique([userId, weekStartLocalDate])
+  @@index([userId])
+  @@index([weekStartLocalDate])
+  @@index([status])
+}
+
+model weeklyCareerMetric {
+  id                   String @id @default(cuid())
+  userId               String
+  weeklyCareerReviewId String
+
+  category  WeeklyCareerMetricCategory
+  metricKey String
+
+  numericValue     Float?
+  textValue        String?
+  denominatorValue Float?
+
+  applicability   WeeklyCareerMetricApplicability
+  sourceSubsystem WeeklyCareerMetricSourceSubsystem
+  evidenceJson    Json                              @default("{}")
+
+  createdAt DateTime @default(now())
+
+  user   user               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  review weeklyCareerReview @relation(fields: [weeklyCareerReviewId], references: [id], onDelete: Cascade)
+
+  @@unique([weeklyCareerReviewId, metricKey])
+  @@index([userId])
+  @@index([weeklyCareerReviewId])
+  @@index([category])
+}
+
+model weeklyCareerInsight {
+  id                   String @id @default(cuid())
+  userId               String
+  weeklyCareerReviewId String
+
+  type     WeeklyCareerInsightType
+  category WeeklyCareerMetricCategory
+
+  title   String
+  summary String
+
+  evidenceJson Json                          @default("{}")
+  confidence   WeeklyCareerInsightConfidence
+  severity     WeeklyCareerInsightSeverity
+
+  fingerprint String
+
+  createdAt DateTime @default(now())
+
+  user   user               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  review weeklyCareerReview @relation(fields: [weeklyCareerReviewId], references: [id], onDelete: Cascade)
+
+  @@unique([weeklyCareerReviewId, fingerprint])
+  @@index([userId])
+  @@index([weeklyCareerReviewId])
+  @@index([type])
+}
+
+model weeklyCareerRecommendation {
+  id                   String @id @default(cuid())
+  userId               String
+  weeklyCareerReviewId String
+
+  category WeeklyCareerMetricCategory
+
+  title    String
+  reason   String
+  priority WeeklyCareerRecommendationPriority
+
+  sourceEvidenceJson Json @default("{}")
+
+  recommendedActionType String?
+  deepLink              String?
+
+  status    WeeklyCareerRecommendationStatus @default(OPEN)
+  adoptedAt DateTime?
+
+  fingerprint String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   user               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  review weeklyCareerReview @relation(fields: [weeklyCareerReviewId], references: [id], onDelete: Cascade)
+
+  @@unique([weeklyCareerReviewId, fingerprint])
+  @@index([userId])
+  @@index([weeklyCareerReviewId])
+  @@index([status])
 }

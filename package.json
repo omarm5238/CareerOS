@@ -18,7 +18,10 @@
     "m25b:headed": "npx tsx scripts/m25b-headed-qa.ts",
     "m26:qa": "npx tsx scripts/m26-qa.ts",
     "m26:security": "npx tsx scripts/m26-security-qa.ts",
-    "m26:headed": "npx tsx scripts/m26-headed-qa.ts"
+    "m26:headed": "npx tsx scripts/m26-headed-qa.ts",
+    "m27:qa": "npx tsx scripts/m27-qa.ts",
+    "m27:security": "npx tsx scripts/m27-security-qa.ts",
+    "m27:headed": "npx tsx scripts/m27-headed-qa.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

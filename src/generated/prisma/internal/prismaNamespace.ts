@@ -430,7 +430,11 @@ export const ModelName = {
   dailyRoadmap: 'dailyRoadmap',
   dailyRoadmapAction: 'dailyRoadmapAction',
   careerActivityRecord: 'careerActivityRecord',
-  careerActivityDay: 'careerActivityDay'
+  careerActivityDay: 'careerActivityDay',
+  weeklyCareerReview: 'weeklyCareerReview',
+  weeklyCareerMetric: 'weeklyCareerMetric',
+  weeklyCareerInsight: 'weeklyCareerInsight',
+  weeklyCareerRecommendation: 'weeklyCareerRecommendation'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -446,7 +450,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3928,6 +3932,302 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    weeklyCareerReview: {
+      payload: Prisma.$weeklyCareerReviewPayload<ExtArgs>
+      fields: Prisma.weeklyCareerReviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.weeklyCareerReviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.weeklyCareerReviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        findFirst: {
+          args: Prisma.weeklyCareerReviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.weeklyCareerReviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        findMany: {
+          args: Prisma.weeklyCareerReviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>[]
+        }
+        create: {
+          args: Prisma.weeklyCareerReviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        createMany: {
+          args: Prisma.weeklyCareerReviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.weeklyCareerReviewCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>[]
+        }
+        delete: {
+          args: Prisma.weeklyCareerReviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        update: {
+          args: Prisma.weeklyCareerReviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.weeklyCareerReviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.weeklyCareerReviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.weeklyCareerReviewUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>[]
+        }
+        upsert: {
+          args: Prisma.weeklyCareerReviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerReviewPayload>
+        }
+        aggregate: {
+          args: Prisma.WeeklyCareerReviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWeeklyCareerReview>
+        }
+        groupBy: {
+          args: Prisma.weeklyCareerReviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerReviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.weeklyCareerReviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    weeklyCareerMetric: {
+      payload: Prisma.$weeklyCareerMetricPayload<ExtArgs>
+      fields: Prisma.weeklyCareerMetricFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.weeklyCareerMetricFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.weeklyCareerMetricFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        findFirst: {
+          args: Prisma.weeklyCareerMetricFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.weeklyCareerMetricFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        findMany: {
+          args: Prisma.weeklyCareerMetricFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>[]
+        }
+        create: {
+          args: Prisma.weeklyCareerMetricCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        createMany: {
+          args: Prisma.weeklyCareerMetricCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.weeklyCareerMetricCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>[]
+        }
+        delete: {
+          args: Prisma.weeklyCareerMetricDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        update: {
+          args: Prisma.weeklyCareerMetricUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        deleteMany: {
+          args: Prisma.weeklyCareerMetricDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.weeklyCareerMetricUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.weeklyCareerMetricUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>[]
+        }
+        upsert: {
+          args: Prisma.weeklyCareerMetricUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerMetricPayload>
+        }
+        aggregate: {
+          args: Prisma.WeeklyCareerMetricAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWeeklyCareerMetric>
+        }
+        groupBy: {
+          args: Prisma.weeklyCareerMetricGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerMetricGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.weeklyCareerMetricCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerMetricCountAggregateOutputType> | number
+        }
+      }
+    }
+    weeklyCareerInsight: {
+      payload: Prisma.$weeklyCareerInsightPayload<ExtArgs>
+      fields: Prisma.weeklyCareerInsightFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.weeklyCareerInsightFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.weeklyCareerInsightFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        findFirst: {
+          args: Prisma.weeklyCareerInsightFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.weeklyCareerInsightFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        findMany: {
+          args: Prisma.weeklyCareerInsightFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>[]
+        }
+        create: {
+          args: Prisma.weeklyCareerInsightCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        createMany: {
+          args: Prisma.weeklyCareerInsightCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.weeklyCareerInsightCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>[]
+        }
+        delete: {
+          args: Prisma.weeklyCareerInsightDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        update: {
+          args: Prisma.weeklyCareerInsightUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        deleteMany: {
+          args: Prisma.weeklyCareerInsightDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.weeklyCareerInsightUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.weeklyCareerInsightUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>[]
+        }
+        upsert: {
+          args: Prisma.weeklyCareerInsightUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerInsightPayload>
+        }
+        aggregate: {
+          args: Prisma.WeeklyCareerInsightAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWeeklyCareerInsight>
+        }
+        groupBy: {
+          args: Prisma.weeklyCareerInsightGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerInsightGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.weeklyCareerInsightCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerInsightCountAggregateOutputType> | number
+        }
+      }
+    }
+    weeklyCareerRecommendation: {
+      payload: Prisma.$weeklyCareerRecommendationPayload<ExtArgs>
+      fields: Prisma.weeklyCareerRecommendationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.weeklyCareerRecommendationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.weeklyCareerRecommendationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        findFirst: {
+          args: Prisma.weeklyCareerRecommendationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.weeklyCareerRecommendationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        findMany: {
+          args: Prisma.weeklyCareerRecommendationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>[]
+        }
+        create: {
+          args: Prisma.weeklyCareerRecommendationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        createMany: {
+          args: Prisma.weeklyCareerRecommendationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.weeklyCareerRecommendationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>[]
+        }
+        delete: {
+          args: Prisma.weeklyCareerRecommendationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        update: {
+          args: Prisma.weeklyCareerRecommendationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        deleteMany: {
+          args: Prisma.weeklyCareerRecommendationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.weeklyCareerRecommendationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.weeklyCareerRecommendationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>[]
+        }
+        upsert: {
+          args: Prisma.weeklyCareerRecommendationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$weeklyCareerRecommendationPayload>
+        }
+        aggregate: {
+          args: Prisma.WeeklyCareerRecommendationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateWeeklyCareerRecommendation>
+        }
+        groupBy: {
+          args: Prisma.weeklyCareerRecommendationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerRecommendationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.weeklyCareerRecommendationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.WeeklyCareerRecommendationCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5010,6 +5310,92 @@ export const CareerActivityDayScalarFieldEnum = {
 } as const
 
 export type CareerActivityDayScalarFieldEnum = (typeof CareerActivityDayScalarFieldEnum)[keyof typeof CareerActivityDayScalarFieldEnum]
+
+
+export const WeeklyCareerReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weekStartLocalDate: 'weekStartLocalDate',
+  weekEndLocalDate: 'weekEndLocalDate',
+  timezone: 'timezone',
+  status: 'status',
+  generatedAt: 'generatedAt',
+  refreshedAt: 'refreshedAt',
+  finalizedAt: 'finalizedAt',
+  contextFingerprint: 'contextFingerprint',
+  generationSource: 'generationSource',
+  overallMomentumScore: 'overallMomentumScore',
+  overallMomentumBand: 'overallMomentumBand',
+  summary: 'summary',
+  winsSummary: 'winsSummary',
+  frictionSummary: 'frictionSummary',
+  componentsJson: 'componentsJson',
+  comparisonJson: 'comparisonJson',
+  winsJson: 'winsJson',
+  frictionJson: 'frictionJson',
+  limitationsJson: 'limitationsJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WeeklyCareerReviewScalarFieldEnum = (typeof WeeklyCareerReviewScalarFieldEnum)[keyof typeof WeeklyCareerReviewScalarFieldEnum]
+
+
+export const WeeklyCareerMetricScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  category: 'category',
+  metricKey: 'metricKey',
+  numericValue: 'numericValue',
+  textValue: 'textValue',
+  denominatorValue: 'denominatorValue',
+  applicability: 'applicability',
+  sourceSubsystem: 'sourceSubsystem',
+  evidenceJson: 'evidenceJson',
+  createdAt: 'createdAt'
+} as const
+
+export type WeeklyCareerMetricScalarFieldEnum = (typeof WeeklyCareerMetricScalarFieldEnum)[keyof typeof WeeklyCareerMetricScalarFieldEnum]
+
+
+export const WeeklyCareerInsightScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  type: 'type',
+  category: 'category',
+  title: 'title',
+  summary: 'summary',
+  evidenceJson: 'evidenceJson',
+  confidence: 'confidence',
+  severity: 'severity',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type WeeklyCareerInsightScalarFieldEnum = (typeof WeeklyCareerInsightScalarFieldEnum)[keyof typeof WeeklyCareerInsightScalarFieldEnum]
+
+
+export const WeeklyCareerRecommendationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  weeklyCareerReviewId: 'weeklyCareerReviewId',
+  category: 'category',
+  title: 'title',
+  reason: 'reason',
+  priority: 'priority',
+  sourceEvidenceJson: 'sourceEvidenceJson',
+  recommendedActionType: 'recommendedActionType',
+  deepLink: 'deepLink',
+  status: 'status',
+  adoptedAt: 'adoptedAt',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type WeeklyCareerRecommendationScalarFieldEnum = (typeof WeeklyCareerRecommendationScalarFieldEnum)[keyof typeof WeeklyCareerRecommendationScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -6306,6 +6692,62 @@ export type ListEnumCareerActivityTypeFieldRefInput<$PrismaModel> = FieldRefInpu
 
 
 /**
+ * Reference to a field of type 'WeeklyCareerReviewStatus'
+ */
+export type EnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerReviewStatus'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerReviewStatus[]'
+ */
+export type ListEnumWeeklyCareerReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerReviewStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerGenerationSource'
+ */
+export type EnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerGenerationSource'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerGenerationSource[]'
+ */
+export type ListEnumWeeklyCareerGenerationSourceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerGenerationSource[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMomentumBand'
+ */
+export type EnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMomentumBand'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMomentumBand[]'
+ */
+export type ListEnumWeeklyCareerMomentumBandFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMomentumBand[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricCategory'
+ */
+export type EnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricCategory'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricCategory[]'
+ */
+export type ListEnumWeeklyCareerMetricCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricCategory[]'>
+
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -6316,6 +6758,104 @@ export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, '
  * Reference to a field of type 'Float[]'
  */
 export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricApplicability'
+ */
+export type EnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricApplicability'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricApplicability[]'
+ */
+export type ListEnumWeeklyCareerMetricApplicabilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricApplicability[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricSourceSubsystem'
+ */
+export type EnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricSourceSubsystem'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerMetricSourceSubsystem[]'
+ */
+export type ListEnumWeeklyCareerMetricSourceSubsystemFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerMetricSourceSubsystem[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightType'
+ */
+export type EnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightType'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightType[]'
+ */
+export type ListEnumWeeklyCareerInsightTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightType[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightConfidence'
+ */
+export type EnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightConfidence'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightConfidence[]'
+ */
+export type ListEnumWeeklyCareerInsightConfidenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightConfidence[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightSeverity'
+ */
+export type EnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightSeverity'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerInsightSeverity[]'
+ */
+export type ListEnumWeeklyCareerInsightSeverityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerInsightSeverity[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerRecommendationPriority'
+ */
+export type EnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerRecommendationPriority'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerRecommendationPriority[]'
+ */
+export type ListEnumWeeklyCareerRecommendationPriorityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerRecommendationPriority[]'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerRecommendationStatus'
+ */
+export type EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerRecommendationStatus'>
+
+
+
+/**
+ * Reference to a field of type 'WeeklyCareerRecommendationStatus[]'
+ */
+export type ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerRecommendationStatus[]'>
 
 
 /**
@@ -6475,6 +7015,10 @@ export type GlobalOmitConfig = {
   dailyRoadmapAction?: Prisma.dailyRoadmapActionOmit
   careerActivityRecord?: Prisma.careerActivityRecordOmit
   careerActivityDay?: Prisma.careerActivityDayOmit
+  weeklyCareerReview?: Prisma.weeklyCareerReviewOmit
+  weeklyCareerMetric?: Prisma.weeklyCareerMetricOmit
+  weeklyCareerInsight?: Prisma.weeklyCareerInsightOmit
+  weeklyCareerRecommendation?: Prisma.weeklyCareerRecommendationOmit
 }
 
 /* Types for Logging */

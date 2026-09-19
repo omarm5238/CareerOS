@@ -252,3 +252,23 @@ export type careerActivityRecord = Prisma.careerActivityRecordModel
  *
  */
 export type careerActivityDay = Prisma.careerActivityDayModel
+/**
+ * Model weeklyCareerReview
+ *
+ */
+export type weeklyCareerReview = Prisma.weeklyCareerReviewModel
+/**
+ * Model weeklyCareerMetric
+ *
+ */
+export type weeklyCareerMetric = Prisma.weeklyCareerMetricModel
+/**
+ * Model weeklyCareerInsight
+ *
+ */
+export type weeklyCareerInsight = Prisma.weeklyCareerInsightModel
+/**
+ * Model weeklyCareerRecommendation
+ *
+ */
+export type weeklyCareerRecommendation = Prisma.weeklyCareerRecommendationModel

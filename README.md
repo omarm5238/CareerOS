@@ -285,6 +285,52 @@ npm run m26:security
 npm run m26:headed
 ```
 
+### Milestone 27 — Weekly Review + Career Momentum
+
+M27 is the weekly operating review. It answers what moved forward, what stalled,
+where execution gained or lost momentum, and what should change next week.
+
+It reads M21–M26 facts. It does **not** mutate applications, resumes, communications,
+LinkedIn, jobs, daily actions, or streak records.
+
+Route: `/workspace/review` and `/workspace/review/[reviewId]`
+
+Weeks are local Monday 00:00 through Sunday 23:59:59.999 in the stored IANA
+timezone from M26 preferences. Current week stays `DRAFT` and can refresh.
+A completed week can be explicitly `FINALIZED`. Finalized metrics, scores, insight
+content, and recommendation content never silently rewrite. Adopt/Dismiss remain
+allowed after finalization because they are user decisions.
+
+Career Momentum is a personal 0–100 execution/progress indicator, not a hiring or
+employability probability.
+
+| Component | Weight |
+| --- | --- |
+| Execution consistency | 25 |
+| Application progress | 25 |
+| Opportunity pipeline | 20 |
+| Visibility / networking | 15 |
+| Skills / evidence growth | 15 |
+
+`NOT_APPLICABLE` is excluded from the denominator. `NO_ACTIVITY` stays applicable and
+can score zero. If no components apply, the overall score is empty rather than fake 0.
+
+AI (`OPENAI_WEEKLY_REVIEW_MODEL`) may only rewrite wording. Invalid models fall back
+to deterministic text without changing metrics, scores, insight types, or recommendation
+intent.
+
+Adopted recommendations can inform the next M26 Today plan as `SYSTEM_RECOMMENDED`
+candidates. Adoption does not execute domain actions. M26 still revalidates current
+truth, caps handoff at 3, and keeps hard urgency first.
+
+M28 will later own long-term AI memory / knowledge graph. M27 does not.
+
+```bash
+npm run m27:qa
+npm run m27:security
+npm run m27:headed
+```
+
 ### Scripts
 
 | Script          | Description                |
@@ -303,6 +349,9 @@ npm run m26:headed
 | `npm run m26:qa` | M26 daily roadmap + streak QA |
 | `npm run m26:security` | M26 ownership and forgery QA |
 | `npm run m26:headed` | M26 headed Today + 390×844 checks |
+| `npm run m27:qa` | M27 weekly review + momentum QA |
+| `npm run m27:security` | M27 ownership and forgery QA |
+| `npm run m27:headed` | M27 headed Review + 390×844 checks |
 
 ---
 
