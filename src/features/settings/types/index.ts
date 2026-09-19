@@ -13,9 +13,17 @@ export type AccountSummary = {
   applicationSummary: string;
 };
 
+export type SettingsProviderStatus = {
+  aiConfigured: boolean;
+  linkedinMode: "official" | "fixture";
+  linkedinStatus: string;
+  linkedinPublishAvailable: boolean;
+};
+
 export type SettingsModuleData = {
   profile: UserProfile;
   accountSummary: AccountSummary;
+  providerStatus: SettingsProviderStatus;
 };
 
 export type ProfileUpdateInput = {

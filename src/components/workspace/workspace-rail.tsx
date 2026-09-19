@@ -21,36 +21,23 @@ const navItems = [
 type WorkspaceModuleLabel = (typeof navItems)[number]["label"];
 
 function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
-  // Application detail lives under /workspace/applications/[id], so the rail
-  // keeps the module highlighted on nested routes too.
   if (pathname.startsWith("/workspace/applications")) return "Applications";
-
   if (pathname.startsWith("/workspace/jobs")) return "Jobs";
   if (pathname.startsWith("/workspace/linkedin")) return "LinkedIn";
   if (pathname.startsWith("/workspace/today")) return "Today";
   if (pathname.startsWith("/workspace/review")) return "Review";
   if (pathname.startsWith("/workspace/memory")) return "Memory";
-
-  switch (pathname) {
-    case "/workspace":
-      return "Core";
-    case "/workspace/memory":
-      return "Memory";
-    case "/workspace/resume":
-      return "Resume";
-    case "/workspace/skills":
-      return "Skills";
-    case "/workspace/analytics":
-      return "Analytics";
-    default:
-      return null;
-  }
+  if (pathname.startsWith("/workspace/resume")) return "Resume";
+  if (pathname.startsWith("/workspace/skills")) return "Skills";
+  if (pathname.startsWith("/workspace/analytics")) return "Analytics";
+  if (pathname === "/workspace") return "Core";
+  return null;
 }
 
 export function WorkspaceRail() {
   const pathname = usePathname();
   const activeModule = resolveActiveModule(pathname);
-  const settingsActive = pathname === "/workspace/settings";
+  const settingsActive = pathname.startsWith("/workspace/settings");
 
   return (
     <aside className="fixed inset-y-0 left-0 z-30 flex h-screen w-16 flex-col items-center border-r border-[var(--color-border-subtle)] bg-[rgb(8_10_13_/_82%)] px-2 py-5 backdrop-blur-xl">
@@ -72,6 +59,7 @@ export function WorkspaceRail() {
           return (
             <Link
               aria-current={isActive ? "page" : undefined}
+              aria-label={item.label}
               className={`relative flex h-9 w-9 cursor-pointer items-center justify-center rounded-[var(--radius-lg)] border text-[10px] font-medium [transition:var(--motion-fade)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
                 isActive
                   ? "border-[var(--color-border)] bg-[rgb(199_203_209_/_6%)] text-[var(--color-text-primary)]"

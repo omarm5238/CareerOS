@@ -12,7 +12,7 @@ export function LinkedinDraftsPage({ posts }: { posts: LinkedinPostView[] }) {
   };
 
   return (
-    <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
+    <div className="relative mx-auto module-shell min-w-0 overflow-x-hidden px-4 py-8 sm:px-6 lg:px-8 lg:py-9">
       <LinkedinSubNav />
       {Object.entries(groups).map(([status, items]) => (
         <section key={status} className="surface-glass mt-4 p-5">

@@ -79,7 +79,10 @@ export async function upsertGraphFromSuggestions(input: {
 }
 
 export async function deactivateRelationsForMemory(userId: string, memoryId: string) {
-  const relations = await prisma.careerGraphRelation.findMany({ where: { userId, status: "ACTIVE" } });
+  const relations = await prisma.careerGraphRelation.findMany({
+    where: { userId, status: "ACTIVE" },
+    take: 200,
+  });
   for (const relation of relations) {
     const payload = asRecord(relation.evidenceJson);
     const memoryIds = asStringArray(payload.memoryIds).filter((id) => id !== memoryId);

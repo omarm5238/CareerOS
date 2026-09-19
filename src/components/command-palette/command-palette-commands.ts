@@ -97,8 +97,15 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     id: "nav-settings",
     title: "Open Settings",
     group: "Navigation",
-    keywords: ["settings", "account", "profile", "preferences"],
+    keywords: ["settings", "account", "profile", "preferences", "export", "privacy"],
     href: "/workspace/settings",
+  },
+  {
+    id: "nav-memory-privacy",
+    title: "Memory & Privacy",
+    group: "Navigation",
+    keywords: ["memory", "privacy", "delete", "preferences"],
+    href: "/workspace/memory",
   },
   {
     id: "action-upload-resume",

@@ -51,7 +51,8 @@ export function ExportWorkspaceDataButton() {
   return (
     <div>
       <button
-        className="inline-flex surface-card px-4 py-2 text-sm font-medium text-[var(--color-text-primary)] [transition:var(--motion-fade)] hover:border-[var(--color-border)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
+        className="btn-secondary disabled:cursor-not-allowed"
+        data-testid="export-workspace-data"
         disabled={isExporting}
         onClick={() => void handleExport()}
         type="button"

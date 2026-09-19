@@ -46,7 +46,7 @@ export function JobsModulePage({
 }: JobsModulePageProps) {
   return (
     <WorkspaceModuleLayout title="Jobs Module">
-      <div className="relative min-h-0 flex-1 overflow-y-auto">
+      <div className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
         <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
           <CareerCore
             animated={false}
@@ -58,7 +58,7 @@ export function JobsModulePage({
           />
         </div>
 
-        <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
+        <div className="relative mx-auto min-w-0 module-shell overflow-x-hidden px-4 py-8 sm:px-6 lg:px-8 lg:py-9">
           <JobsSubNav />
           <header className="mt-6 space-y-3">
             <Link

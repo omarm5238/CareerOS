@@ -41,6 +41,7 @@ export async function getApplicationsForUser(userId: string): Promise<Applicatio
   const applications = await prisma.application.findMany({
     where: { userId },
     orderBy: [{ lastActivityAt: "desc" }, { createdAt: "desc" }],
+    take: 100,
     select: {
       id: true,
       status: true,

@@ -32,6 +32,7 @@ export function LinkedinActionButton({
   const [error, setError] = useState<string | null>(null);
 
   async function run() {
+    if (pending) return;
     setPending(true);
     setError(null);
     try {
@@ -57,11 +58,11 @@ export function LinkedinActionButton({
         type="button"
         onClick={() => void run()}
         disabled={pending}
-        className="w-full rounded-[var(--radius-lg)] border border-[var(--color-border)] bg-[var(--surface-elevated)] px-3 py-2 text-sm text-[var(--color-text-primary)] disabled:opacity-60"
+        className="btn-secondary w-full disabled:opacity-60"
       >
         {pending ? "Working…" : label}
       </button>
-      {error ? <p className="mt-1 text-xs text-[var(--color-danger)]">{error}</p> : null}
+      {error ? <p className="mt-1 text-xs text-[var(--status-danger-text)]">{error}</p> : null}
     </div>
   );
 }

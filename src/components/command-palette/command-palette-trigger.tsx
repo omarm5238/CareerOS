@@ -17,7 +17,7 @@ export function CommandPaletteTrigger() {
   }, [setTriggerElement]);
 
   return (
-    <div className="ml-auto flex min-w-0 max-w-md shrink items-center gap-2 rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_54%)] px-3 py-2.5 shadow-[var(--shadow-sm)] sm:gap-3 sm:px-4">
+    <div className="ml-auto flex min-w-0 max-w-md shrink items-center gap-2 overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_54%)] px-2 py-2.5 shadow-[var(--shadow-sm)] sm:gap-3 sm:px-4">
       <button
         ref={buttonRef}
         aria-haspopup="dialog"
@@ -30,7 +30,7 @@ export function CommandPaletteTrigger() {
         <span className="min-w-0 flex-1 truncate text-xs text-[var(--color-text-secondary)]">
           Command CareerOS
         </span>
-        <kbd className="shrink-0 rounded-[var(--radius-md)] border border-[var(--color-border)] px-2 py-1 text-[11px] text-[var(--color-text-secondary)]">
+        <kbd className="hidden shrink-0 rounded-[var(--radius-md)] border border-[var(--color-border)] px-2 py-1 text-[11px] text-[var(--color-text-secondary)] sm:inline">
           {shortcutLabel}
         </kbd>
       </button>

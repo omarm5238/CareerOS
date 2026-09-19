@@ -27,21 +27,27 @@ export function JobOpportunityEntry({ jobPostingId, analysis, packageId }: JobOp
   const [error, setError] = useState<string | null>(null);
 
   async function run(path: string, then?: (json: Record<string, unknown>) => void) {
+    if (pending) return;
     setPending(true);
     setError(null);
-    const response = await fetch(path, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: "{}",
-    });
-    const json = (await response.json()) as Record<string, unknown>;
-    setPending(false);
-    if (!response.ok) {
-      setError(typeof json.message === "string" ? json.message : "Request failed.");
-      return;
+    try {
+      const response = await fetch(path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+      });
+      const json = (await response.json()) as Record<string, unknown>;
+      if (!response.ok) {
+        setError(typeof json.message === "string" ? json.message : "Request failed.");
+        return;
+      }
+      then?.(json);
+      router.refresh();
+    } catch {
+      setError("Request failed.");
+    } finally {
+      setPending(false);
     }
-    then?.(json);
-    router.refresh();
   }
 
   return (
@@ -69,14 +75,16 @@ export function JobOpportunityEntry({ jobPostingId, analysis, packageId }: JobOp
       <div className="flex flex-wrap gap-2">
         <button
           className="btn-secondary"
+          data-testid="analyze-opportunity"
           disabled={pending}
           onClick={() => void run(`/api/jobs/opportunities/${jobPostingId}/analyze`)}
           type="button"
         >
-          Analyze Opportunity
+          {pending ? "Working…" : "Analyze Opportunity"}
         </button>
         <button
           className="btn-primary"
+          data-testid="prepare-application"
           disabled={pending}
           onClick={() =>
             void run(`/api/jobs/opportunities/${jobPostingId}/prepare`, (json) => {

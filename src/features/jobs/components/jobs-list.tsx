@@ -51,7 +51,7 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
               >
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-medium text-[var(--color-text-primary)]">
+                    <p className="break-words text-sm font-medium text-[var(--color-text-primary)]">
                       {job.title}
                     </p>
                     <p className="mt-1 text-xs text-[var(--color-text-secondary)]">

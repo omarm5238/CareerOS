@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 
+import { ConfirmDialog } from "@/components/workspace/confirm-dialog";
+
 import type { CareerMemoryView, MemoryWorkspaceView } from "../types";
 
 async function api<T>(url: string, init?: RequestInit): Promise<T> {
@@ -45,7 +47,7 @@ function MemoryCard({
       </details>
       {memory.status === "ACTIVE" ? (
         <div className="mt-3 flex min-w-0 flex-wrap gap-2">
-          <button className="min-h-9 rounded border border-[var(--color-border)] px-3 text-sm" disabled={busy} onClick={() => onAction("confirm", memory)} type="button">
+          <button className="btn-secondary min-h-9" disabled={busy} onClick={() => onAction("confirm", memory)} type="button">
             Confirm
           </button>
           <button className="min-h-9 px-3 text-sm underline" disabled={busy} onClick={() => setCorrecting((open) => !open)} type="button">
@@ -75,30 +77,35 @@ function MemoryCard({
             setCorrecting(false);
           }}
         >
-          <p className="text-sm text-[var(--color-text-secondary)]">The current memory will be superseded.</p>
+          <label className="text-sm text-[var(--color-text-secondary)]" htmlFor={`correct-${memory.id}`}>
+            Replacement value
+          </label>
           <input
-            className="min-h-9 rounded border border-[var(--color-border)] bg-transparent px-3 text-sm"
+            className="input-field min-h-9"
             data-testid="correct-memory-input"
+            id={`correct-${memory.id}`}
             onChange={(event) => setValue(event.target.value)}
             value={value}
           />
-          <button className="min-h-9 rounded border border-[var(--color-border)] px-3 text-sm" type="submit">
+          <button className="btn-secondary min-h-9" disabled={busy} type="submit">
             Save correction
           </button>
         </form>
       ) : null}
       {confirmDelete ? (
-        <div className="mt-3 text-sm">
-          <p>Delete this career memory? Original applications, resumes, jobs, and weekly reviews stay.</p>
-          <div className="mt-2 flex gap-2">
-            <button className="min-h-9 rounded border border-[var(--color-border)] px-3" data-testid="confirm-delete-memory" onClick={() => onAction("delete", memory)} type="button">
-              Delete this career memory
-            </button>
-            <button className="underline" onClick={() => setConfirmDelete(false)} type="button">
-              Cancel
-            </button>
-          </div>
-        </div>
+        <ConfirmDialog
+          confirmLabel="Delete this career memory"
+          confirmTestId="confirm-delete-memory"
+          danger
+          onCancel={() => setConfirmDelete(false)}
+          onConfirm={() => {
+            setConfirmDelete(false);
+            onAction("delete", memory);
+          }}
+          title="Delete this career memory?"
+        >
+          Original applications, resumes, jobs, and weekly reviews stay.
+        </ConfirmDialog>
       ) : null}
     </article>
   );
@@ -166,7 +173,7 @@ export function MemoryPageClient({ initial }: { initial: MemoryWorkspaceView }) 
       </header>
 
       <div className="mt-4 flex min-w-0 flex-wrap gap-2">
-        <button className="min-h-9 rounded border border-[var(--color-border)] px-3 text-sm" data-testid="refresh-memory" disabled={busy} onClick={() => run(async () => { await api("/api/memory/refresh", { method: "POST" }); })} type="button">
+        <button className="btn-secondary min-h-9" data-testid="refresh-memory" disabled={busy} onClick={() => run(async () => { await api("/api/memory/refresh", { method: "POST" }); })} type="button">
           {data.empty ? "Build Memory" : "Refresh Memory"}
         </button>
         <button className="min-h-9 px-3 text-sm underline" data-testid="rebuild-memory" disabled={busy} onClick={() => setConfirmRebuild(true)} type="button">
@@ -270,7 +277,10 @@ export function MemoryPageClient({ initial }: { initial: MemoryWorkspaceView }) 
             });
           }}
         >
-          <select className="min-h-9 rounded border border-[var(--color-border)] bg-transparent px-2 text-sm" data-testid="manual-memory-category" onChange={(event) => setManualCategory(event.target.value)} value={manualCategory}>
+          <label className="sr-only" htmlFor="manual-memory-category">
+            Memory category
+          </label>
+          <select className="input-field min-h-9 sm:max-w-40" data-testid="manual-memory-category" id="manual-memory-category" onChange={(event) => setManualCategory(event.target.value)} value={manualCategory}>
             <option value="role">Role</option>
             <option value="skill">Skill</option>
             <option value="goal">Goal</option>
@@ -281,72 +291,58 @@ export function MemoryPageClient({ initial }: { initial: MemoryWorkspaceView }) 
             <option value="project">Project/evidence</option>
             <option value="preference">Preference</option>
           </select>
-          <input className="min-h-9 min-w-0 flex-1 rounded border border-[var(--color-border)] bg-transparent px-3 text-sm" data-testid="manual-memory-value" onChange={(event) => setManualValue(event.target.value)} placeholder="Short career fact" value={manualValue} />
-          <button className="min-h-9 rounded border border-[var(--color-border)] px-3 text-sm" data-testid="create-memory" type="submit">
+          <label className="sr-only" htmlFor="manual-memory-value">
+            Career fact
+          </label>
+          <input className="input-field min-h-9 min-w-0 flex-1" data-testid="manual-memory-value" id="manual-memory-value" onChange={(event) => setManualValue(event.target.value)} placeholder="Short career fact" value={manualValue} />
+          <button className="btn-secondary min-h-9" data-testid="create-memory" disabled={busy} type="submit">
             Save
           </button>
         </form>
       </section>
 
       <section className="mt-10">
-        <button className="min-h-9 text-sm underline" data-testid="delete-all-memory" onClick={() => setConfirmDeleteAll(true)} type="button">
+        <button className="btn-danger min-h-9" data-testid="delete-all-memory" onClick={() => setConfirmDeleteAll(true)} type="button">
           Delete All Career Memory
         </button>
       </section>
 
       {confirmDeleteAll ? (
-        <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/50 p-4 sm:items-center">
-          <div className="surface-glass w-full max-w-md p-5">
-            <h3 className="font-display text-lg">Delete all career memory?</h3>
-            <p className="mt-3 text-sm leading-6 text-[var(--color-text-secondary)]">
-              This removes CareerOS long-term memory and knowledge graph data. Applications, resumes, jobs, LinkedIn data,
-              Today history, and weekly reviews remain.
-            </p>
-            <div className="mt-5 flex gap-3">
-              <button
-                className="rounded border border-[var(--color-border)] px-3 py-2 text-sm"
-                data-testid="confirm-delete-all"
-                onClick={() => {
-                  setConfirmDeleteAll(false);
-                  void run(async () => { await api("/api/memory/all", { method: "DELETE" }); });
-                }}
-                type="button"
-              >
-                Delete all career memory
-              </button>
-              <button className="text-sm underline" onClick={() => setConfirmDeleteAll(false)} type="button">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
+        <ConfirmDialog
+          busy={busy}
+          confirmLabel="Delete all career memory"
+          confirmTestId="confirm-delete-all"
+          danger
+          onCancel={() => setConfirmDeleteAll(false)}
+          onConfirm={() => {
+            setConfirmDeleteAll(false);
+            void run(async () => {
+              await api("/api/memory/all", { method: "DELETE" });
+            });
+          }}
+          title="Delete all career memory?"
+        >
+          This removes CareerOS long-term memory and knowledge graph data. Applications, resumes, jobs, LinkedIn data,
+          Today history, and weekly reviews remain.
+        </ConfirmDialog>
       ) : null}
 
       {confirmRebuild ? (
-        <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/50 p-4 sm:items-center">
-          <div className="surface-glass w-full max-w-md p-5">
-            <h3 className="font-display text-lg">Rebuild from CareerOS history?</h3>
-            <p className="mt-3 text-sm leading-6 text-[var(--color-text-secondary)]">
-              CareerOS will reprocess recent existing career history to rebuild long-term memory.
-            </p>
-            <div className="mt-5 flex gap-3">
-              <button
-                className="rounded border border-[var(--color-border)] px-3 py-2 text-sm"
-                data-testid="confirm-rebuild"
-                onClick={() => {
-                  setConfirmRebuild(false);
-                  void run(async () => { await api("/api/memory/rebuild", { method: "POST" }); });
-                }}
-                type="button"
-              >
-                Rebuild from CareerOS History
-              </button>
-              <button className="text-sm underline" onClick={() => setConfirmRebuild(false)} type="button">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
+        <ConfirmDialog
+          busy={busy}
+          confirmLabel="Rebuild from CareerOS History"
+          confirmTestId="confirm-rebuild"
+          onCancel={() => setConfirmRebuild(false)}
+          onConfirm={() => {
+            setConfirmRebuild(false);
+            void run(async () => {
+              await api("/api/memory/rebuild", { method: "POST" });
+            });
+          }}
+          title="Rebuild from CareerOS history?"
+        >
+          CareerOS will reprocess recent existing career history to rebuild long-term memory.
+        </ConfirmDialog>
       ) : null}
     </div>
   );

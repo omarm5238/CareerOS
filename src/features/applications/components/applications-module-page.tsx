@@ -65,7 +65,7 @@ export function ApplicationsModulePage({
 
   return (
     <WorkspaceModuleLayout title="Applications Module">
-      <div className="relative min-h-0 flex-1 overflow-y-auto">
+      <div className="relative min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto">
         <div className="pointer-events-none absolute inset-0 opacity-[0.14]">
           <CareerCore
             animated={false}
@@ -77,7 +77,7 @@ export function ApplicationsModulePage({
           />
         </div>
 
-        <div className="relative mx-auto module-shell px-6 py-8 lg:px-8 lg:py-9">
+        <div className="relative mx-auto min-w-0 module-shell overflow-x-hidden px-4 py-8 sm:px-6 lg:px-8 lg:py-9">
           <header className="space-y-3">
             <Link
               className="text-xs text-[var(--color-text-secondary)] underline-offset-4 [transition:var(--motion-fade)] hover:text-[var(--color-text-primary)] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
@@ -183,7 +183,7 @@ function ApplicationRow({ application }: { application: ApplicationListItem }) {
     <li className={`surface-card p-4 ${isClosed ? "opacity-70" : ""}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <h2 className="text-base font-semibold tracking-tight text-[var(--color-text-primary)]">
+          <h2 className="break-words text-base font-semibold tracking-tight text-[var(--color-text-primary)]">
             {application.jobTitle}
           </h2>
           <p className="mt-1 text-sm text-[var(--color-text-secondary)]">{application.company}</p>

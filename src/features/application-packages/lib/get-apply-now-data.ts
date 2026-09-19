@@ -29,8 +29,10 @@ export async function getApplyNowData(userId: string): Promise<ApplyNowData> {
       where: {
         userId,
         status: { in: ["APPLIED", "SCREENING", "ASSESSMENT", "INTERVIEW", "OFFER", "ACCEPTED"] },
+        jobPostingId: { not: null },
       },
       select: { jobPostingId: true },
+      take: 200,
     }),
   ]);
   const appliedJobIds = new Set(

@@ -10,14 +10,14 @@ export function DataControlsPanel() {
       className="surface-glass p-5"
     >
       <h2
-        className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
+        className="font-display text-lg"
         id="data-controls-heading"
       >
-        Data Controls
+        Data & Export
       </h2>
       <p className="mt-2 text-sm leading-6 text-[var(--color-text-secondary)]">
-        Export your CareerOS workspace data or clear generated AI insights. These actions do not
-        delete your account.
+        Export a user-owned JSON backup of CareerOS records. Secrets, sessions, and provider tokens
+        are excluded. These actions do not delete your account.
       </p>
 
       <div className="mt-5 space-y-5">
@@ -39,8 +39,9 @@ export function DataControlsPanel() {
         <div>
           <h3 className="text-sm font-medium text-[var(--color-text-primary)]">Export</h3>
           <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
-            Download a JSON export of profile, resumes, jobs, skills insights, career briefs, and
-            refined report fields.
+            Download a JSON export of your CareerOS data: profile, resume metadata, jobs,
+            applications, communications metadata, LinkedIn publishing metadata, Today/Review,
+            and career memory. Passwords, sessions, and OAuth tokens are never included.
           </p>
           <div className="mt-3">
             <ExportWorkspaceDataButton />

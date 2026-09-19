@@ -24,9 +24,11 @@ export async function listLinkedinPosts(userId: string) {
     include: {
       pillar: true,
       activeRevision: true,
-      revisions: { orderBy: { revisionNumber: "asc" } },
-      publishingPlans: { include: { linkedinPostRevision: true }, orderBy: { createdAt: "desc" } },
-      performances: { orderBy: { capturedAt: "desc" } },
+      publishingPlans: {
+        include: { linkedinPostRevision: true },
+        orderBy: { createdAt: "desc" },
+        take: 2,
+      },
     },
     orderBy: { updatedAt: "desc" },
     take: 50,

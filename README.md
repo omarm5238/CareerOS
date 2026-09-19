@@ -368,12 +368,54 @@ resolve conflicts, delete, suppress, or invent facts. Invalid models fall back.
 
 Route: `/workspace/memory`
 
-M29 will later consolidate global settings. M28 owns only memory/privacy controls.
+M29 later consolidates global settings discoverability. M28 owns only memory/privacy controls.
 
 ```bash
 npm run m28:qa
 npm run m28:security
 npm run m28:headed
+```
+
+### Milestone 29 — Personal Experience Hardening
+
+M29 is the final Phase-2 polish milestone. It does not add a product domain.
+It hardens visual consistency, responsive/accessibility basics, bounded queries,
+settings discoverability, user-owned JSON export, and security.
+
+Settings remain a grouped entry point at `/workspace/settings`. Domain pages stay
+the source of truth for Career Planning, Integrations, Memory & Privacy, and
+provider status.
+
+#### Backup / data portability
+
+Signed-in users can export a JSON backup from **Settings → Data & Export**.
+
+The file uses this root:
+
+```json
+{
+  "schemaVersion": "m29.1",
+  "exportedAt": "...",
+  "careerOSVersion": "0.1.0",
+  "data": {}
+}
+```
+
+Included: profile/preferences metadata, resume/revision metadata, jobs and
+discovery/queue metadata, applications and events, communication metadata,
+LinkedIn post/publishing metadata, Today/activity, weekly reviews, career
+memory, and graph summaries. The JSON export includes all safe records owned
+by the signed-in user. Workspace list views stay bounded for performance;
+export paginates in batches instead of inheriting those `take` limits.
+
+Never included: passwords, session tokens, OAuth/refresh tokens, API keys,
+authorization codes, encryption keys, or Better Auth internals. Export is
+always scoped to the signed-in session user.
+
+```bash
+npm run m29:qa
+npm run m29:security
+npm run m29:headed
 ```
 
 ### Scripts
@@ -400,6 +442,9 @@ npm run m28:headed
 | `npm run m28:qa` | M28 memory + knowledge graph QA |
 | `npm run m28:security` | M28 ownership and forgery QA |
 | `npm run m28:headed` | M28 headed Memory + 390×844 checks |
+| `npm run m29:qa` | M29 hardening, export, dataset, and regression QA |
+| `npm run m29:security` | M29 export/settings ownership and secret QA |
+| `npm run m29:headed` | M29 Phase-2 E2E + 390×844 checks |
 
 ---
 

@@ -18,6 +18,7 @@ export async function getResumeVersionsForUser(
       ...(includeArchived ? {} : { status: { not: "ARCHIVED" } }),
     },
     orderBy: { updatedAt: "desc" },
+    take: 40,
     include: {
       targetJob: {
         select: {

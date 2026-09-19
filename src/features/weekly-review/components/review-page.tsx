@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import { ConfirmDialog } from "@/components/workspace/confirm-dialog";
+
 import type { WeeklyComponentResult, WeeklyReviewView, WeeklyWorkspaceView } from "../types";
 
 async function api<T>(url: string, init?: RequestInit): Promise<T> {
@@ -284,30 +286,18 @@ export function ReviewBody({
       </section>
 
       {confirmFinalize ? (
-        <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/50 p-4 sm:items-center">
-          <div className="surface-glass w-full max-w-md p-5">
-            <h3 className="font-display text-lg">Finalize Review</h3>
-            <p className="mt-3 text-sm leading-6 text-[var(--color-text-secondary)]">
-              Finalizing freezes this weekly snapshot. Future career activity will not rewrite this review.
-            </p>
-            <div className="mt-5 flex gap-3">
-              <button
-                className="rounded border border-[var(--color-border)] px-3 py-2 text-sm"
-                data-testid="confirm-finalize"
-                onClick={() => {
-                  setConfirmFinalize(false);
-                  onFinalize?.();
-                }}
-                type="button"
-              >
-                Finalize Review
-              </button>
-              <button className="text-sm underline" onClick={() => setConfirmFinalize(false)} type="button">
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
+        <ConfirmDialog
+          confirmLabel="Finalize Review"
+          confirmTestId="confirm-finalize"
+          onCancel={() => setConfirmFinalize(false)}
+          onConfirm={() => {
+            setConfirmFinalize(false);
+            onFinalize?.();
+          }}
+          title="Finalize Review"
+        >
+          Finalizing freezes this weekly snapshot. Future career activity will not rewrite this review.
+        </ConfirmDialog>
       ) : null}
     </div>
   );

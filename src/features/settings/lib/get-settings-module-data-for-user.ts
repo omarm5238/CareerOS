@@ -1,5 +1,8 @@
 import { getWorkspaceJobsStatusForUser } from "@/features/jobs/server";
+import { getSafeLinkedinConnection } from "@/features/linkedin/server";
 import { getResumeAnalysisHistoryForUser } from "@/features/resume/server";
+import { getLinkedinProviderMode } from "@/features/linkedin/integration/config";
+import { isAiConfigured } from "@/server/ai/client";
 
 import { getUserProfile } from "./get-user-profile";
 import type { AccountSummary, SettingsModuleData } from "../types";
@@ -30,12 +33,23 @@ async function getAccountSummary(userId: string): Promise<AccountSummary> {
 export async function getSettingsModuleDataForUser(
   userId: string,
 ): Promise<SettingsModuleData | null> {
-  const [profile, accountSummary] = await Promise.all([
+  const [profile, accountSummary, connection] = await Promise.all([
     getUserProfile(userId),
     getAccountSummary(userId),
+    getSafeLinkedinConnection(userId),
   ]);
 
   if (!profile) return null;
 
-  return { profile, accountSummary };
+  const publish = connection.capabilities.find((item) => item.capability === "PUBLISH_MEMBER_POST");
+  return {
+    profile,
+    accountSummary,
+    providerStatus: {
+      aiConfigured: isAiConfigured(),
+      linkedinMode: getLinkedinProviderMode(),
+      linkedinStatus: connection.status,
+      linkedinPublishAvailable: publish?.state === "AVAILABLE",
+    },
+  };
 }
