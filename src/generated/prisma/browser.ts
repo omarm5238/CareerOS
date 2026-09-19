@@ -272,3 +272,33 @@ export type weeklyCareerInsight = Prisma.weeklyCareerInsightModel
  *
  */
 export type weeklyCareerRecommendation = Prisma.weeklyCareerRecommendationModel
+/**
+ * Model careerMemory
+ *
+ */
+export type careerMemory = Prisma.careerMemoryModel
+/**
+ * Model careerMemoryEvidence
+ *
+ */
+export type careerMemoryEvidence = Prisma.careerMemoryEvidenceModel
+/**
+ * Model careerGraphEntity
+ *
+ */
+export type careerGraphEntity = Prisma.careerGraphEntityModel
+/**
+ * Model careerGraphRelation
+ *
+ */
+export type careerGraphRelation = Prisma.careerGraphRelationModel
+/**
+ * Model careerMemoryEvent
+ *
+ */
+export type careerMemoryEvent = Prisma.careerMemoryEventModel
+/**
+ * Model careerMemoryPreference
+ *
+ */
+export type careerMemoryPreference = Prisma.careerMemoryPreferenceModel

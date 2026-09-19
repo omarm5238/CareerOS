@@ -101,7 +101,13 @@ export const ModelName = {
   weeklyCareerReview: 'weeklyCareerReview',
   weeklyCareerMetric: 'weeklyCareerMetric',
   weeklyCareerInsight: 'weeklyCareerInsight',
-  weeklyCareerRecommendation: 'weeklyCareerRecommendation'
+  weeklyCareerRecommendation: 'weeklyCareerRecommendation',
+  careerMemory: 'careerMemory',
+  careerMemoryEvidence: 'careerMemoryEvidence',
+  careerGraphEntity: 'careerGraphEntity',
+  careerGraphRelation: 'careerGraphRelation',
+  careerMemoryEvent: 'careerMemoryEvent',
+  careerMemoryPreference: 'careerMemoryPreference'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1249,6 +1255,124 @@ export const WeeklyCareerRecommendationScalarFieldEnum = {
 } as const
 
 export type WeeklyCareerRecommendationScalarFieldEnum = (typeof WeeklyCareerRecommendationScalarFieldEnum)[keyof typeof WeeklyCareerRecommendationScalarFieldEnum]
+
+
+export const CareerMemoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  category: 'category',
+  subjectKey: 'subjectKey',
+  normalizedValueKey: 'normalizedValueKey',
+  valueJson: 'valueJson',
+  normalizedText: 'normalizedText',
+  semanticKey: 'semanticKey',
+  status: 'status',
+  confidence: 'confidence',
+  confidenceScore: 'confidenceScore',
+  importance: 'importance',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  firstObservedAt: 'firstObservedAt',
+  lastObservedAt: 'lastObservedAt',
+  lastConfirmedAt: 'lastConfirmedAt',
+  sourceType: 'sourceType',
+  isUserDeclared: 'isUserDeclared',
+  isUserCorrected: 'isUserCorrected',
+  isSensitive: 'isSensitive',
+  isPinned: 'isPinned',
+  supersedesMemoryId: 'supersedesMemoryId',
+  contradictedByMemoryId: 'contradictedByMemoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerMemoryScalarFieldEnum = (typeof CareerMemoryScalarFieldEnum)[keyof typeof CareerMemoryScalarFieldEnum]
+
+
+export const CareerMemoryEvidenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  careerMemoryId: 'careerMemoryId',
+  sourceSubsystem: 'sourceSubsystem',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  sourceEventId: 'sourceEventId',
+  observedAt: 'observedAt',
+  evidenceType: 'evidenceType',
+  evidenceJson: 'evidenceJson',
+  weight: 'weight',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerMemoryEvidenceScalarFieldEnum = (typeof CareerMemoryEvidenceScalarFieldEnum)[keyof typeof CareerMemoryEvidenceScalarFieldEnum]
+
+
+export const CareerGraphEntityScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  entityType: 'entityType',
+  canonicalKey: 'canonicalKey',
+  displayName: 'displayName',
+  metadataJson: 'metadataJson',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerGraphEntityScalarFieldEnum = (typeof CareerGraphEntityScalarFieldEnum)[keyof typeof CareerGraphEntityScalarFieldEnum]
+
+
+export const CareerGraphRelationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  fromEntityId: 'fromEntityId',
+  toEntityId: 'toEntityId',
+  relationType: 'relationType',
+  confidence: 'confidence',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  evidenceJson: 'evidenceJson',
+  status: 'status',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerGraphRelationScalarFieldEnum = (typeof CareerGraphRelationScalarFieldEnum)[keyof typeof CareerGraphRelationScalarFieldEnum]
+
+
+export const CareerMemoryEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  careerMemoryId: 'careerMemoryId',
+  eventType: 'eventType',
+  beforeJson: 'beforeJson',
+  afterJson: 'afterJson',
+  reason: 'reason',
+  source: 'source',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerMemoryEventScalarFieldEnum = (typeof CareerMemoryEventScalarFieldEnum)[keyof typeof CareerMemoryEventScalarFieldEnum]
+
+
+export const CareerMemoryPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  memoryEnabled: 'memoryEnabled',
+  allowBehavioralMemory: 'allowBehavioralMemory',
+  allowDerivedPatterns: 'allowDerivedPatterns',
+  allowLongTermPreferences: 'allowLongTermPreferences',
+  retentionMode: 'retentionMode',
+  memoryResetAt: 'memoryResetAt',
+  lastRefreshedAt: 'lastRefreshedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerMemoryPreferenceScalarFieldEnum = (typeof CareerMemoryPreferenceScalarFieldEnum)[keyof typeof CareerMemoryPreferenceScalarFieldEnum]
 
 
 export const SortOrder = {

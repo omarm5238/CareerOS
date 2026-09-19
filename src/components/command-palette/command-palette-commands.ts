@@ -31,6 +31,13 @@ export const COMMAND_PALETTE_COMMANDS: CommandPaletteCommand[] = [
     href: "/workspace/review",
   },
   {
+    id: "nav-memory",
+    title: "Go to Memory",
+    group: "Navigation",
+    keywords: ["memory", "knowledge graph", "preferences", "career memory"],
+    href: "/workspace/memory",
+  },
+  {
     id: "nav-resume",
     title: "Go to Resume",
     group: "Navigation",

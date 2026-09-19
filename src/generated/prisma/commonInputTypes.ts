@@ -1963,6 +1963,193 @@ export type EnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$PrismaMode
   _max?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
 }
 
+export type EnumCareerMemoryTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryType | Prisma.EnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel> | $Enums.CareerMemoryType
+}
+
+export type EnumCareerMemoryCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryCategory | Prisma.EnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel> | $Enums.CareerMemoryCategory
+}
+
+export type EnumCareerMemoryStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryStatus | Prisma.EnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel> | $Enums.CareerMemoryStatus
+}
+
+export type EnumCareerMemoryConfidenceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryConfidence | Prisma.EnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel> | $Enums.CareerMemoryConfidence
+}
+
+export type EnumCareerMemoryImportanceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryImportance | Prisma.EnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel> | $Enums.CareerMemoryImportance
+}
+
+export type EnumCareerMemorySourceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemorySourceType | Prisma.EnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel> | $Enums.CareerMemorySourceType
+}
+
+export type EnumCareerMemoryTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryType | Prisma.EnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryCategory | Prisma.EnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryCategoryWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryStatus | Prisma.EnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryStatusWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryConfidenceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryConfidence | Prisma.EnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryConfidenceWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryConfidence
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryImportanceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryImportance | Prisma.EnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryImportanceWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryImportance
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel>
+}
+
+export type EnumCareerMemorySourceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemorySourceType | Prisma.EnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemorySourceTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemorySourceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryEvidenceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEvidenceType | Prisma.EnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel> | $Enums.CareerMemoryEvidenceType
+}
+
+export type EnumCareerMemoryEvidenceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEvidenceType | Prisma.EnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEvidenceTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryEvidenceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel>
+}
+
+export type EnumCareerGraphEntityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphEntityType | Prisma.EnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel> | $Enums.CareerGraphEntityType
+}
+
+export type EnumCareerGraphStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphStatus | Prisma.EnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel> | $Enums.CareerGraphStatus
+}
+
+export type EnumCareerGraphEntityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphEntityType | Prisma.EnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphEntityTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphEntityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel>
+}
+
+export type EnumCareerGraphStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphStatus | Prisma.EnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphStatusWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel>
+}
+
+export type EnumCareerGraphRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphRelationType | Prisma.EnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel> | $Enums.CareerGraphRelationType
+}
+
+export type EnumCareerGraphRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphRelationType | Prisma.EnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel>
+}
+
+export type EnumCareerMemoryEventTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEventType | Prisma.EnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel> | $Enums.CareerMemoryEventType
+}
+
+export type EnumCareerMemoryEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEventType | Prisma.EnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryEventType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -3858,6 +4045,193 @@ export type NestedEnumWeeklyCareerRecommendationStatusWithAggregatesFilter<$Pris
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumWeeklyCareerRecommendationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryType | Prisma.EnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel> | $Enums.CareerMemoryType
+}
+
+export type NestedEnumCareerMemoryCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryCategory | Prisma.EnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel> | $Enums.CareerMemoryCategory
+}
+
+export type NestedEnumCareerMemoryStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryStatus | Prisma.EnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel> | $Enums.CareerMemoryStatus
+}
+
+export type NestedEnumCareerMemoryConfidenceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryConfidence | Prisma.EnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel> | $Enums.CareerMemoryConfidence
+}
+
+export type NestedEnumCareerMemoryImportanceFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryImportance | Prisma.EnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel> | $Enums.CareerMemoryImportance
+}
+
+export type NestedEnumCareerMemorySourceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemorySourceType | Prisma.EnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel> | $Enums.CareerMemorySourceType
+}
+
+export type NestedEnumCareerMemoryTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryType | Prisma.EnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryType[] | Prisma.ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryCategory | Prisma.EnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryCategory[] | Prisma.ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryCategoryWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryStatus | Prisma.EnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryStatus[] | Prisma.ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryStatusWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryConfidenceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryConfidence | Prisma.EnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryConfidence[] | Prisma.ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryConfidenceWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryConfidence
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryConfidenceFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryImportanceWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryImportance | Prisma.EnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryImportance[] | Prisma.ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryImportanceWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryImportance
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryImportanceFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemorySourceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemorySourceType | Prisma.EnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemorySourceType[] | Prisma.ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemorySourceTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemorySourceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemorySourceTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEvidenceType | Prisma.EnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel> | $Enums.CareerMemoryEvidenceType
+}
+
+export type NestedEnumCareerMemoryEvidenceTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEvidenceType | Prisma.EnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEvidenceType[] | Prisma.ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEvidenceTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryEvidenceType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryEvidenceTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerGraphEntityTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphEntityType | Prisma.EnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel> | $Enums.CareerGraphEntityType
+}
+
+export type NestedEnumCareerGraphStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphStatus | Prisma.EnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel> | $Enums.CareerGraphStatus
+}
+
+export type NestedEnumCareerGraphEntityTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphEntityType | Prisma.EnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphEntityType[] | Prisma.ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphEntityTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphEntityType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphEntityTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerGraphStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphStatus | Prisma.EnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphStatus[] | Prisma.ListEnumCareerGraphStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphStatusWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerGraphRelationTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphRelationType | Prisma.EnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel> | $Enums.CareerGraphRelationType
+}
+
+export type NestedEnumCareerGraphRelationTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerGraphRelationType | Prisma.EnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerGraphRelationType[] | Prisma.ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerGraphRelationTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerGraphRelationType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerGraphRelationTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumCareerMemoryEventTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEventType | Prisma.EnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel> | $Enums.CareerMemoryEventType
+}
+
+export type NestedEnumCareerMemoryEventTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CareerMemoryEventType | Prisma.EnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CareerMemoryEventType[] | Prisma.ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCareerMemoryEventTypeWithAggregatesFilter<$PrismaModel> | $Enums.CareerMemoryEventType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
 }
 
 

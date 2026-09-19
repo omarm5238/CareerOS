@@ -76,6 +76,8 @@ export async function markCommunicationUsed(
     sourceEntityId: result.updated.id,
     occurredAt: result.updated.usedAt ?? new Date(),
   });
+  const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+  await ingestCareerMemorySafe(userId, "EVENT_DRIVEN");
 
   return {
     draftId: result.updated.id,

@@ -244,6 +244,12 @@ export type userWhereInput = {
   weeklyCareerMetrics?: Prisma.WeeklyCareerMetricListRelationFilter
   weeklyCareerInsights?: Prisma.WeeklyCareerInsightListRelationFilter
   weeklyCareerRecommendations?: Prisma.WeeklyCareerRecommendationListRelationFilter
+  careerMemories?: Prisma.CareerMemoryListRelationFilter
+  careerMemoryEvidence?: Prisma.CareerMemoryEvidenceListRelationFilter
+  careerGraphEntities?: Prisma.CareerGraphEntityListRelationFilter
+  careerGraphRelations?: Prisma.CareerGraphRelationListRelationFilter
+  careerMemoryEvents?: Prisma.CareerMemoryEventListRelationFilter
+  careerMemoryPreference?: Prisma.XOR<Prisma.CareerMemoryPreferenceNullableScalarRelationFilter, Prisma.careerMemoryPreferenceWhereInput> | null
 }
 
 export type userOrderByWithRelationInput = {
@@ -300,6 +306,12 @@ export type userOrderByWithRelationInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricOrderByRelationAggregateInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightOrderByRelationAggregateInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationOrderByRelationAggregateInput
+  careerMemories?: Prisma.careerMemoryOrderByRelationAggregateInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceOrderByRelationAggregateInput
+  careerGraphEntities?: Prisma.careerGraphEntityOrderByRelationAggregateInput
+  careerGraphRelations?: Prisma.careerGraphRelationOrderByRelationAggregateInput
+  careerMemoryEvents?: Prisma.careerMemoryEventOrderByRelationAggregateInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceOrderByWithRelationInput
 }
 
 export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -359,6 +371,12 @@ export type userWhereUniqueInput = Prisma.AtLeast<{
   weeklyCareerMetrics?: Prisma.WeeklyCareerMetricListRelationFilter
   weeklyCareerInsights?: Prisma.WeeklyCareerInsightListRelationFilter
   weeklyCareerRecommendations?: Prisma.WeeklyCareerRecommendationListRelationFilter
+  careerMemories?: Prisma.CareerMemoryListRelationFilter
+  careerMemoryEvidence?: Prisma.CareerMemoryEvidenceListRelationFilter
+  careerGraphEntities?: Prisma.CareerGraphEntityListRelationFilter
+  careerGraphRelations?: Prisma.CareerGraphRelationListRelationFilter
+  careerMemoryEvents?: Prisma.CareerMemoryEventListRelationFilter
+  careerMemoryPreference?: Prisma.XOR<Prisma.CareerMemoryPreferenceNullableScalarRelationFilter, Prisma.careerMemoryPreferenceWhereInput> | null
 }, "id" | "email">
 
 export type userOrderByWithAggregationInput = {
@@ -441,6 +459,12 @@ export type userCreateInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateInput = {
@@ -497,6 +521,12 @@ export type userUncheckedCreateInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userUpdateInput = {
@@ -553,6 +583,12 @@ export type userUpdateInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateInput = {
@@ -609,6 +645,12 @@ export type userUncheckedUpdateInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateManyInput = {
@@ -1336,6 +1378,90 @@ export type userUpdateOneRequiredWithoutWeeklyCareerRecommendationsNestedInput =
   update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutWeeklyCareerRecommendationsInput, Prisma.userUpdateWithoutWeeklyCareerRecommendationsInput>, Prisma.userUncheckedUpdateWithoutWeeklyCareerRecommendationsInput>
 }
 
+export type userCreateNestedOneWithoutCareerMemoriesInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoriesInput, Prisma.userUncheckedCreateWithoutCareerMemoriesInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoriesInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerMemoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoriesInput, Prisma.userUncheckedCreateWithoutCareerMemoriesInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoriesInput
+  upsert?: Prisma.userUpsertWithoutCareerMemoriesInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerMemoriesInput, Prisma.userUpdateWithoutCareerMemoriesInput>, Prisma.userUncheckedUpdateWithoutCareerMemoriesInput>
+}
+
+export type userCreateNestedOneWithoutCareerMemoryEvidenceInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryEvidenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryEvidenceInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerMemoryEvidenceNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryEvidenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryEvidenceInput
+  upsert?: Prisma.userUpsertWithoutCareerMemoryEvidenceInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerMemoryEvidenceInput, Prisma.userUpdateWithoutCareerMemoryEvidenceInput>, Prisma.userUncheckedUpdateWithoutCareerMemoryEvidenceInput>
+}
+
+export type userCreateNestedOneWithoutCareerGraphEntitiesInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedCreateWithoutCareerGraphEntitiesInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerGraphEntitiesInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerGraphEntitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedCreateWithoutCareerGraphEntitiesInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerGraphEntitiesInput
+  upsert?: Prisma.userUpsertWithoutCareerGraphEntitiesInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerGraphEntitiesInput, Prisma.userUpdateWithoutCareerGraphEntitiesInput>, Prisma.userUncheckedUpdateWithoutCareerGraphEntitiesInput>
+}
+
+export type userCreateNestedOneWithoutCareerGraphRelationsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerGraphRelationsInput, Prisma.userUncheckedCreateWithoutCareerGraphRelationsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerGraphRelationsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerGraphRelationsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerGraphRelationsInput, Prisma.userUncheckedCreateWithoutCareerGraphRelationsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerGraphRelationsInput
+  upsert?: Prisma.userUpsertWithoutCareerGraphRelationsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerGraphRelationsInput, Prisma.userUpdateWithoutCareerGraphRelationsInput>, Prisma.userUncheckedUpdateWithoutCareerGraphRelationsInput>
+}
+
+export type userCreateNestedOneWithoutCareerMemoryEventsInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEventsInput, Prisma.userUncheckedCreateWithoutCareerMemoryEventsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryEventsInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerMemoryEventsNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEventsInput, Prisma.userUncheckedCreateWithoutCareerMemoryEventsInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryEventsInput
+  upsert?: Prisma.userUpsertWithoutCareerMemoryEventsInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerMemoryEventsInput, Prisma.userUpdateWithoutCareerMemoryEventsInput>, Prisma.userUncheckedUpdateWithoutCareerMemoryEventsInput>
+}
+
+export type userCreateNestedOneWithoutCareerMemoryPreferenceInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryPreferenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryPreferenceInput
+  connect?: Prisma.userWhereUniqueInput
+}
+
+export type userUpdateOneRequiredWithoutCareerMemoryPreferenceNestedInput = {
+  create?: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryPreferenceInput>
+  connectOrCreate?: Prisma.userCreateOrConnectWithoutCareerMemoryPreferenceInput
+  upsert?: Prisma.userUpsertWithoutCareerMemoryPreferenceInput
+  connect?: Prisma.userWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.userUpdateToOneWithWhereWithoutCareerMemoryPreferenceInput, Prisma.userUpdateWithoutCareerMemoryPreferenceInput>, Prisma.userUncheckedUpdateWithoutCareerMemoryPreferenceInput>
+}
+
 export type userCreateWithoutSessionsInput = {
   id?: string
   name: string
@@ -1389,6 +1515,12 @@ export type userCreateWithoutSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSessionsInput = {
@@ -1444,6 +1576,12 @@ export type userUncheckedCreateWithoutSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSessionsInput = {
@@ -1515,6 +1653,12 @@ export type userUpdateWithoutSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSessionsInput = {
@@ -1570,6 +1714,12 @@ export type userUncheckedUpdateWithoutSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutAccountsInput = {
@@ -1625,6 +1775,12 @@ export type userCreateWithoutAccountsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutAccountsInput = {
@@ -1680,6 +1836,12 @@ export type userUncheckedCreateWithoutAccountsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutAccountsInput = {
@@ -1751,6 +1913,12 @@ export type userUpdateWithoutAccountsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutAccountsInput = {
@@ -1806,6 +1974,12 @@ export type userUncheckedUpdateWithoutAccountsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeDocumentsInput = {
@@ -1861,6 +2035,12 @@ export type userCreateWithoutResumeDocumentsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeDocumentsInput = {
@@ -1916,6 +2096,12 @@ export type userUncheckedCreateWithoutResumeDocumentsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeDocumentsInput = {
@@ -1987,6 +2173,12 @@ export type userUpdateWithoutResumeDocumentsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeDocumentsInput = {
@@ -2042,6 +2234,12 @@ export type userUncheckedUpdateWithoutResumeDocumentsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobPostingsInput = {
@@ -2097,6 +2295,12 @@ export type userCreateWithoutJobPostingsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobPostingsInput = {
@@ -2152,6 +2356,12 @@ export type userUncheckedCreateWithoutJobPostingsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobPostingsInput = {
@@ -2223,6 +2433,12 @@ export type userUpdateWithoutJobPostingsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobPostingsInput = {
@@ -2278,6 +2494,12 @@ export type userUncheckedUpdateWithoutJobPostingsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutSkillsInsightsInput = {
@@ -2333,6 +2555,12 @@ export type userCreateWithoutSkillsInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutSkillsInsightsInput = {
@@ -2388,6 +2616,12 @@ export type userUncheckedCreateWithoutSkillsInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutSkillsInsightsInput = {
@@ -2459,6 +2693,12 @@ export type userUpdateWithoutSkillsInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutSkillsInsightsInput = {
@@ -2514,6 +2754,12 @@ export type userUncheckedUpdateWithoutSkillsInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerBriefsInput = {
@@ -2569,6 +2815,12 @@ export type userCreateWithoutCareerBriefsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerBriefsInput = {
@@ -2624,6 +2876,12 @@ export type userUncheckedCreateWithoutCareerBriefsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerBriefsInput = {
@@ -2695,6 +2953,12 @@ export type userUpdateWithoutCareerBriefsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerBriefsInput = {
@@ -2750,6 +3014,12 @@ export type userUncheckedUpdateWithoutCareerBriefsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionsInput = {
@@ -2805,6 +3075,12 @@ export type userCreateWithoutResumeVersionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionsInput = {
@@ -2860,6 +3136,12 @@ export type userUncheckedCreateWithoutResumeVersionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionsInput = {
@@ -2931,6 +3213,12 @@ export type userUpdateWithoutResumeVersionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionsInput = {
@@ -2986,6 +3274,12 @@ export type userUncheckedUpdateWithoutResumeVersionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutResumeVersionRevisionsInput = {
@@ -3041,6 +3335,12 @@ export type userCreateWithoutResumeVersionRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
@@ -3096,6 +3396,12 @@ export type userUncheckedCreateWithoutResumeVersionRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutResumeVersionRevisionsInput = {
@@ -3167,6 +3473,12 @@ export type userUpdateWithoutResumeVersionRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
@@ -3222,6 +3534,12 @@ export type userUncheckedUpdateWithoutResumeVersionRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationsInput = {
@@ -3277,6 +3595,12 @@ export type userCreateWithoutApplicationsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationsInput = {
@@ -3332,6 +3656,12 @@ export type userUncheckedCreateWithoutApplicationsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationsInput = {
@@ -3403,6 +3733,12 @@ export type userUpdateWithoutApplicationsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationsInput = {
@@ -3458,6 +3794,12 @@ export type userUncheckedUpdateWithoutApplicationsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationEventsInput = {
@@ -3513,6 +3855,12 @@ export type userCreateWithoutApplicationEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationEventsInput = {
@@ -3568,6 +3916,12 @@ export type userUncheckedCreateWithoutApplicationEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationEventsInput = {
@@ -3639,6 +3993,12 @@ export type userUpdateWithoutApplicationEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationEventsInput = {
@@ -3694,6 +4054,12 @@ export type userUncheckedUpdateWithoutApplicationEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationContactsInput = {
@@ -3749,6 +4115,12 @@ export type userCreateWithoutApplicationContactsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationContactsInput = {
@@ -3804,6 +4176,12 @@ export type userUncheckedCreateWithoutApplicationContactsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationContactsInput = {
@@ -3875,6 +4253,12 @@ export type userUpdateWithoutApplicationContactsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationContactsInput = {
@@ -3930,6 +4314,12 @@ export type userUncheckedUpdateWithoutApplicationContactsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationInsightsInput = {
@@ -3985,6 +4375,12 @@ export type userCreateWithoutApplicationInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationInsightsInput = {
@@ -4040,6 +4436,12 @@ export type userUncheckedCreateWithoutApplicationInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationInsightsInput = {
@@ -4111,6 +4513,12 @@ export type userUpdateWithoutApplicationInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationInsightsInput = {
@@ -4166,6 +4574,12 @@ export type userUncheckedUpdateWithoutApplicationInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryProfileInput = {
@@ -4221,6 +4635,12 @@ export type userCreateWithoutJobDiscoveryProfileInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
@@ -4276,6 +4696,12 @@ export type userUncheckedCreateWithoutJobDiscoveryProfileInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryProfileInput = {
@@ -4347,6 +4773,12 @@ export type userUpdateWithoutJobDiscoveryProfileInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
@@ -4402,6 +4834,12 @@ export type userUncheckedUpdateWithoutJobDiscoveryProfileInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobDiscoveryRunsInput = {
@@ -4457,6 +4895,12 @@ export type userCreateWithoutJobDiscoveryRunsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
@@ -4512,6 +4956,12 @@ export type userUncheckedCreateWithoutJobDiscoveryRunsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobDiscoveryRunsInput = {
@@ -4583,6 +5033,12 @@ export type userUpdateWithoutJobDiscoveryRunsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
@@ -4638,6 +5094,12 @@ export type userUncheckedUpdateWithoutJobDiscoveryRunsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutDiscoveredJobsInput = {
@@ -4693,6 +5155,12 @@ export type userCreateWithoutDiscoveredJobsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDiscoveredJobsInput = {
@@ -4748,6 +5216,12 @@ export type userUncheckedCreateWithoutDiscoveredJobsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDiscoveredJobsInput = {
@@ -4819,6 +5293,12 @@ export type userUpdateWithoutDiscoveredJobsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
@@ -4874,6 +5354,12 @@ export type userUncheckedUpdateWithoutDiscoveredJobsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationQueueItemsInput = {
@@ -4929,6 +5415,12 @@ export type userCreateWithoutApplicationQueueItemsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
@@ -4984,6 +5476,12 @@ export type userUncheckedCreateWithoutApplicationQueueItemsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationQueueItemsInput = {
@@ -5055,6 +5553,12 @@ export type userUpdateWithoutApplicationQueueItemsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
@@ -5110,6 +5614,12 @@ export type userUncheckedUpdateWithoutApplicationQueueItemsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftsInput = {
@@ -5165,6 +5675,12 @@ export type userCreateWithoutCommunicationDraftsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftsInput = {
@@ -5220,6 +5736,12 @@ export type userUncheckedCreateWithoutCommunicationDraftsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftsInput = {
@@ -5291,6 +5813,12 @@ export type userUpdateWithoutCommunicationDraftsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
@@ -5346,6 +5874,12 @@ export type userUncheckedUpdateWithoutCommunicationDraftsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutCommunicationDraftRevisionsInput = {
@@ -5401,6 +5935,12 @@ export type userCreateWithoutCommunicationDraftRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
@@ -5456,6 +5996,12 @@ export type userUncheckedCreateWithoutCommunicationDraftRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCommunicationDraftRevisionsInput = {
@@ -5527,6 +6073,12 @@ export type userUpdateWithoutCommunicationDraftRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
@@ -5582,6 +6134,12 @@ export type userUncheckedUpdateWithoutCommunicationDraftRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobRequirementsInput = {
@@ -5637,6 +6195,12 @@ export type userCreateWithoutJobRequirementsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobRequirementsInput = {
@@ -5692,6 +6256,12 @@ export type userUncheckedCreateWithoutJobRequirementsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobRequirementsInput = {
@@ -5763,6 +6333,12 @@ export type userUpdateWithoutJobRequirementsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobRequirementsInput = {
@@ -5818,6 +6394,12 @@ export type userUncheckedUpdateWithoutJobRequirementsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobEvidenceMatchesInput = {
@@ -5873,6 +6455,12 @@ export type userCreateWithoutJobEvidenceMatchesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
@@ -5928,6 +6516,12 @@ export type userUncheckedCreateWithoutJobEvidenceMatchesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobEvidenceMatchesInput = {
@@ -5999,6 +6593,12 @@ export type userUpdateWithoutJobEvidenceMatchesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
@@ -6054,6 +6654,12 @@ export type userUncheckedUpdateWithoutJobEvidenceMatchesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutJobOpportunityAnalysesInput = {
@@ -6109,6 +6715,12 @@ export type userCreateWithoutJobOpportunityAnalysesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
@@ -6164,6 +6776,12 @@ export type userUncheckedCreateWithoutJobOpportunityAnalysesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutJobOpportunityAnalysesInput = {
@@ -6235,6 +6853,12 @@ export type userUpdateWithoutJobOpportunityAnalysesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
@@ -6290,6 +6914,12 @@ export type userUncheckedUpdateWithoutJobOpportunityAnalysesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationPackagesInput = {
@@ -6345,6 +6975,12 @@ export type userCreateWithoutApplicationPackagesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationPackagesInput = {
@@ -6400,6 +7036,12 @@ export type userUncheckedCreateWithoutApplicationPackagesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationPackagesInput = {
@@ -6471,6 +7113,12 @@ export type userUpdateWithoutApplicationPackagesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationPackagesInput = {
@@ -6526,6 +7174,12 @@ export type userUncheckedUpdateWithoutApplicationPackagesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionSessionsInput = {
@@ -6581,6 +7235,12 @@ export type userCreateWithoutApplicationExecutionSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
@@ -6636,6 +7296,12 @@ export type userUncheckedCreateWithoutApplicationExecutionSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionSessionsInput = {
@@ -6707,6 +7373,12 @@ export type userUpdateWithoutApplicationExecutionSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
@@ -6762,6 +7434,12 @@ export type userUncheckedUpdateWithoutApplicationExecutionSessionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationExecutionEventsInput = {
@@ -6817,6 +7495,12 @@ export type userCreateWithoutApplicationExecutionEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
@@ -6872,6 +7556,12 @@ export type userUncheckedCreateWithoutApplicationExecutionEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationExecutionEventsInput = {
@@ -6943,6 +7633,12 @@ export type userUpdateWithoutApplicationExecutionEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
@@ -6998,6 +7694,12 @@ export type userUncheckedUpdateWithoutApplicationExecutionEventsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -7053,6 +7755,12 @@ export type userCreateWithoutApplicationSubmissionAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
@@ -7108,6 +7816,12 @@ export type userUncheckedCreateWithoutApplicationSubmissionAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationSubmissionAttemptsInput = {
@@ -7179,6 +7893,12 @@ export type userUpdateWithoutApplicationSubmissionAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
@@ -7234,6 +7954,12 @@ export type userUncheckedUpdateWithoutApplicationSubmissionAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutApplicationAnswerPreferencesInput = {
@@ -7289,6 +8015,12 @@ export type userCreateWithoutApplicationAnswerPreferencesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
@@ -7344,6 +8076,12 @@ export type userUncheckedCreateWithoutApplicationAnswerPreferencesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutApplicationAnswerPreferencesInput = {
@@ -7415,6 +8153,12 @@ export type userUpdateWithoutApplicationAnswerPreferencesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
@@ -7470,6 +8214,12 @@ export type userUncheckedUpdateWithoutApplicationAnswerPreferencesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthProfilesInput = {
@@ -7525,6 +8275,12 @@ export type userCreateWithoutLinkedinGrowthProfilesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
@@ -7580,6 +8336,12 @@ export type userUncheckedCreateWithoutLinkedinGrowthProfilesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthProfilesInput = {
@@ -7651,6 +8413,12 @@ export type userUpdateWithoutLinkedinGrowthProfilesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
@@ -7706,6 +8474,12 @@ export type userUncheckedUpdateWithoutLinkedinGrowthProfilesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentPillarsInput = {
@@ -7761,6 +8535,12 @@ export type userCreateWithoutLinkedinContentPillarsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
@@ -7816,6 +8596,12 @@ export type userUncheckedCreateWithoutLinkedinContentPillarsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentPillarsInput = {
@@ -7887,6 +8673,12 @@ export type userUpdateWithoutLinkedinContentPillarsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
@@ -7942,6 +8734,12 @@ export type userUncheckedUpdateWithoutLinkedinContentPillarsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinContentIdeasInput = {
@@ -7997,6 +8795,12 @@ export type userCreateWithoutLinkedinContentIdeasInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
@@ -8052,6 +8856,12 @@ export type userUncheckedCreateWithoutLinkedinContentIdeasInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinContentIdeasInput = {
@@ -8123,6 +8933,12 @@ export type userUpdateWithoutLinkedinContentIdeasInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
@@ -8178,6 +8994,12 @@ export type userUncheckedUpdateWithoutLinkedinContentIdeasInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostsInput = {
@@ -8233,6 +9055,12 @@ export type userCreateWithoutLinkedinPostsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostsInput = {
@@ -8288,6 +9116,12 @@ export type userUncheckedCreateWithoutLinkedinPostsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostsInput = {
@@ -8359,6 +9193,12 @@ export type userUpdateWithoutLinkedinPostsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostsInput = {
@@ -8414,6 +9254,12 @@ export type userUncheckedUpdateWithoutLinkedinPostsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostRevisionsInput = {
@@ -8469,6 +9315,12 @@ export type userCreateWithoutLinkedinPostRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
@@ -8524,6 +9376,12 @@ export type userUncheckedCreateWithoutLinkedinPostRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostRevisionsInput = {
@@ -8595,6 +9453,12 @@ export type userUpdateWithoutLinkedinPostRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
@@ -8650,6 +9514,12 @@ export type userUncheckedUpdateWithoutLinkedinPostRevisionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPublishingPlansInput = {
@@ -8705,6 +9575,12 @@ export type userCreateWithoutLinkedinPublishingPlansInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
@@ -8760,6 +9636,12 @@ export type userUncheckedCreateWithoutLinkedinPublishingPlansInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPublishingPlansInput = {
@@ -8831,6 +9713,12 @@ export type userUpdateWithoutLinkedinPublishingPlansInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
@@ -8886,6 +9774,12 @@ export type userUncheckedUpdateWithoutLinkedinPublishingPlansInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPostPerformancesInput = {
@@ -8941,6 +9835,12 @@ export type userCreateWithoutLinkedinPostPerformancesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
@@ -8996,6 +9896,12 @@ export type userUncheckedCreateWithoutLinkedinPostPerformancesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPostPerformancesInput = {
@@ -9067,6 +9973,12 @@ export type userUpdateWithoutLinkedinPostPerformancesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
@@ -9122,6 +10034,12 @@ export type userUncheckedUpdateWithoutLinkedinPostPerformancesInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinGrowthInsightsInput = {
@@ -9177,6 +10095,12 @@ export type userCreateWithoutLinkedinGrowthInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
@@ -9232,6 +10156,12 @@ export type userUncheckedCreateWithoutLinkedinGrowthInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinGrowthInsightsInput = {
@@ -9303,6 +10233,12 @@ export type userUpdateWithoutLinkedinGrowthInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
@@ -9358,6 +10294,12 @@ export type userUncheckedUpdateWithoutLinkedinGrowthInsightsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinConnectionsInput = {
@@ -9413,6 +10355,12 @@ export type userCreateWithoutLinkedinConnectionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinConnectionsInput = {
@@ -9468,6 +10416,12 @@ export type userUncheckedCreateWithoutLinkedinConnectionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinConnectionsInput = {
@@ -9539,6 +10493,12 @@ export type userUpdateWithoutLinkedinConnectionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinConnectionsInput = {
@@ -9594,6 +10554,12 @@ export type userUncheckedUpdateWithoutLinkedinConnectionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinOAuthAttemptsInput = {
@@ -9649,6 +10615,12 @@ export type userCreateWithoutLinkedinOAuthAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinOAuthAttemptsInput = {
@@ -9704,6 +10676,12 @@ export type userUncheckedCreateWithoutLinkedinOAuthAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinOAuthAttemptsInput = {
@@ -9775,6 +10753,12 @@ export type userUpdateWithoutLinkedinOAuthAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput = {
@@ -9830,6 +10814,12 @@ export type userUncheckedUpdateWithoutLinkedinOAuthAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutLinkedinPublishingAttemptsInput = {
@@ -9885,6 +10875,12 @@ export type userCreateWithoutLinkedinPublishingAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutLinkedinPublishingAttemptsInput = {
@@ -9940,6 +10936,12 @@ export type userUncheckedCreateWithoutLinkedinPublishingAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutLinkedinPublishingAttemptsInput = {
@@ -10011,6 +11013,12 @@ export type userUpdateWithoutLinkedinPublishingAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput = {
@@ -10066,6 +11074,12 @@ export type userUncheckedUpdateWithoutLinkedinPublishingAttemptsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutDailyRoadmapPreferenceInput = {
@@ -10121,6 +11135,12 @@ export type userCreateWithoutDailyRoadmapPreferenceInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDailyRoadmapPreferenceInput = {
@@ -10176,6 +11196,12 @@ export type userUncheckedCreateWithoutDailyRoadmapPreferenceInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDailyRoadmapPreferenceInput = {
@@ -10247,6 +11273,12 @@ export type userUpdateWithoutDailyRoadmapPreferenceInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDailyRoadmapPreferenceInput = {
@@ -10302,6 +11334,12 @@ export type userUncheckedUpdateWithoutDailyRoadmapPreferenceInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutDailyRoadmapsInput = {
@@ -10357,6 +11395,12 @@ export type userCreateWithoutDailyRoadmapsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDailyRoadmapsInput = {
@@ -10412,6 +11456,12 @@ export type userUncheckedCreateWithoutDailyRoadmapsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDailyRoadmapsInput = {
@@ -10483,6 +11533,12 @@ export type userUpdateWithoutDailyRoadmapsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDailyRoadmapsInput = {
@@ -10538,6 +11594,12 @@ export type userUncheckedUpdateWithoutDailyRoadmapsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutDailyRoadmapActionsInput = {
@@ -10593,6 +11655,12 @@ export type userCreateWithoutDailyRoadmapActionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutDailyRoadmapActionsInput = {
@@ -10648,6 +11716,12 @@ export type userUncheckedCreateWithoutDailyRoadmapActionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutDailyRoadmapActionsInput = {
@@ -10719,6 +11793,12 @@ export type userUpdateWithoutDailyRoadmapActionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutDailyRoadmapActionsInput = {
@@ -10774,6 +11854,12 @@ export type userUncheckedUpdateWithoutDailyRoadmapActionsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerActivityRecordsInput = {
@@ -10829,6 +11915,12 @@ export type userCreateWithoutCareerActivityRecordsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerActivityRecordsInput = {
@@ -10884,6 +11976,12 @@ export type userUncheckedCreateWithoutCareerActivityRecordsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerActivityRecordsInput = {
@@ -10955,6 +12053,12 @@ export type userUpdateWithoutCareerActivityRecordsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerActivityRecordsInput = {
@@ -11010,6 +12114,12 @@ export type userUncheckedUpdateWithoutCareerActivityRecordsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutCareerActivityDaysInput = {
@@ -11065,6 +12175,12 @@ export type userCreateWithoutCareerActivityDaysInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutCareerActivityDaysInput = {
@@ -11120,6 +12236,12 @@ export type userUncheckedCreateWithoutCareerActivityDaysInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutCareerActivityDaysInput = {
@@ -11191,6 +12313,12 @@ export type userUpdateWithoutCareerActivityDaysInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutCareerActivityDaysInput = {
@@ -11246,6 +12374,12 @@ export type userUncheckedUpdateWithoutCareerActivityDaysInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutWeeklyCareerReviewsInput = {
@@ -11301,6 +12435,12 @@ export type userCreateWithoutWeeklyCareerReviewsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutWeeklyCareerReviewsInput = {
@@ -11356,6 +12496,12 @@ export type userUncheckedCreateWithoutWeeklyCareerReviewsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutWeeklyCareerReviewsInput = {
@@ -11427,6 +12573,12 @@ export type userUpdateWithoutWeeklyCareerReviewsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutWeeklyCareerReviewsInput = {
@@ -11482,6 +12634,12 @@ export type userUncheckedUpdateWithoutWeeklyCareerReviewsInput = {
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutWeeklyCareerMetricsInput = {
@@ -11537,6 +12695,12 @@ export type userCreateWithoutWeeklyCareerMetricsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutWeeklyCareerMetricsInput = {
@@ -11592,6 +12756,12 @@ export type userUncheckedCreateWithoutWeeklyCareerMetricsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutWeeklyCareerMetricsInput = {
@@ -11663,6 +12833,12 @@ export type userUpdateWithoutWeeklyCareerMetricsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutWeeklyCareerMetricsInput = {
@@ -11718,6 +12894,12 @@ export type userUncheckedUpdateWithoutWeeklyCareerMetricsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutWeeklyCareerInsightsInput = {
@@ -11773,6 +12955,12 @@ export type userCreateWithoutWeeklyCareerInsightsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutWeeklyCareerInsightsInput = {
@@ -11828,6 +13016,12 @@ export type userUncheckedCreateWithoutWeeklyCareerInsightsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutWeeklyCareerInsightsInput = {
@@ -11899,6 +13093,12 @@ export type userUpdateWithoutWeeklyCareerInsightsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutWeeklyCareerInsightsInput = {
@@ -11954,6 +13154,12 @@ export type userUncheckedUpdateWithoutWeeklyCareerInsightsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
 }
 
 export type userCreateWithoutWeeklyCareerRecommendationsInput = {
@@ -12009,6 +13215,12 @@ export type userCreateWithoutWeeklyCareerRecommendationsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
 }
 
 export type userUncheckedCreateWithoutWeeklyCareerRecommendationsInput = {
@@ -12064,6 +13276,12 @@ export type userUncheckedCreateWithoutWeeklyCareerRecommendationsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
 }
 
 export type userCreateOrConnectWithoutWeeklyCareerRecommendationsInput = {
@@ -12135,6 +13353,12 @@ export type userUpdateWithoutWeeklyCareerRecommendationsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
 }
 
 export type userUncheckedUpdateWithoutWeeklyCareerRecommendationsInput = {
@@ -12190,6 +13414,1572 @@ export type userUncheckedUpdateWithoutWeeklyCareerRecommendationsInput = {
   weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
   weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerMemoriesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerMemoriesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerMemoriesInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoriesInput, Prisma.userUncheckedCreateWithoutCareerMemoriesInput>
+}
+
+export type userUpsertWithoutCareerMemoriesInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoriesInput, Prisma.userUncheckedUpdateWithoutCareerMemoriesInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoriesInput, Prisma.userUncheckedCreateWithoutCareerMemoriesInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerMemoriesInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoriesInput, Prisma.userUncheckedUpdateWithoutCareerMemoriesInput>
+}
+
+export type userUpdateWithoutCareerMemoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerMemoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerMemoryEvidenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerMemoryEvidenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerMemoryEvidenceInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryEvidenceInput>
+}
+
+export type userUpsertWithoutCareerMemoryEvidenceInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedUpdateWithoutCareerMemoryEvidenceInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryEvidenceInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerMemoryEvidenceInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryEvidenceInput, Prisma.userUncheckedUpdateWithoutCareerMemoryEvidenceInput>
+}
+
+export type userUpdateWithoutCareerMemoryEvidenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerMemoryEvidenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerGraphEntitiesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerGraphEntitiesInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerGraphEntitiesInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedCreateWithoutCareerGraphEntitiesInput>
+}
+
+export type userUpsertWithoutCareerGraphEntitiesInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedUpdateWithoutCareerGraphEntitiesInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedCreateWithoutCareerGraphEntitiesInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerGraphEntitiesInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerGraphEntitiesInput, Prisma.userUncheckedUpdateWithoutCareerGraphEntitiesInput>
+}
+
+export type userUpdateWithoutCareerGraphEntitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerGraphEntitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerGraphRelationsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerGraphRelationsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerGraphRelationsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerGraphRelationsInput, Prisma.userUncheckedCreateWithoutCareerGraphRelationsInput>
+}
+
+export type userUpsertWithoutCareerGraphRelationsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerGraphRelationsInput, Prisma.userUncheckedUpdateWithoutCareerGraphRelationsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerGraphRelationsInput, Prisma.userUncheckedCreateWithoutCareerGraphRelationsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerGraphRelationsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerGraphRelationsInput, Prisma.userUncheckedUpdateWithoutCareerGraphRelationsInput>
+}
+
+export type userUpdateWithoutCareerGraphRelationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerGraphRelationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerMemoryEventsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceCreateNestedOneWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerMemoryEventsInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedCreateNestedOneWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerMemoryEventsInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEventsInput, Prisma.userUncheckedCreateWithoutCareerMemoryEventsInput>
+}
+
+export type userUpsertWithoutCareerMemoryEventsInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryEventsInput, Prisma.userUncheckedUpdateWithoutCareerMemoryEventsInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryEventsInput, Prisma.userUncheckedCreateWithoutCareerMemoryEventsInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerMemoryEventsInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryEventsInput, Prisma.userUncheckedUpdateWithoutCareerMemoryEventsInput>
+}
+
+export type userUpdateWithoutCareerMemoryEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUpdateOneWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerMemoryEventsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceUncheckedUpdateOneWithoutUserNestedInput
+}
+
+export type userCreateWithoutCareerMemoryPreferenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventCreateNestedManyWithoutUserInput
+}
+
+export type userUncheckedCreateWithoutCareerMemoryPreferenceInput = {
+  id?: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.sessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.accountUncheckedCreateNestedManyWithoutUserInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedCreateNestedManyWithoutUserInput
+  jobPostings?: Prisma.jobPostingUncheckedCreateNestedManyWithoutUserInput
+  skillsInsights?: Prisma.skillsInsightUncheckedCreateNestedManyWithoutUserInput
+  careerBriefs?: Prisma.careerBriefUncheckedCreateNestedManyWithoutUserInput
+  resumeVersions?: Prisma.resumeVersionUncheckedCreateNestedManyWithoutUserInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedCreateNestedManyWithoutUserInput
+  applications?: Prisma.applicationUncheckedCreateNestedManyWithoutUserInput
+  applicationEvents?: Prisma.applicationEventUncheckedCreateNestedManyWithoutUserInput
+  applicationContacts?: Prisma.applicationContactUncheckedCreateNestedManyWithoutUserInput
+  applicationInsights?: Prisma.applicationInsightUncheckedCreateNestedManyWithoutUserInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedCreateNestedOneWithoutUserInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedCreateNestedManyWithoutUserInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedCreateNestedManyWithoutUserInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedCreateNestedManyWithoutUserInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedCreateNestedManyWithoutUserInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedCreateNestedManyWithoutUserInput
+  jobRequirements?: Prisma.jobRequirementUncheckedCreateNestedManyWithoutUserInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutUserInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedCreateNestedManyWithoutUserInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutUserInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedCreateNestedManyWithoutUserInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutUserInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedCreateNestedManyWithoutUserInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedCreateNestedManyWithoutUserInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedCreateNestedManyWithoutUserInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedCreateNestedManyWithoutUserInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedCreateNestedManyWithoutUserInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedCreateNestedManyWithoutUserInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedCreateNestedManyWithoutUserInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedCreateNestedOneWithoutUserInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedCreateNestedManyWithoutUserInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedCreateNestedManyWithoutUserInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedCreateNestedManyWithoutUserInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedCreateNestedManyWithoutUserInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedCreateNestedManyWithoutUserInput
+  careerMemories?: Prisma.careerMemoryUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedCreateNestedManyWithoutUserInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedCreateNestedManyWithoutUserInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedCreateNestedManyWithoutUserInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type userCreateOrConnectWithoutCareerMemoryPreferenceInput = {
+  where: Prisma.userWhereUniqueInput
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryPreferenceInput>
+}
+
+export type userUpsertWithoutCareerMemoryPreferenceInput = {
+  update: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedUpdateWithoutCareerMemoryPreferenceInput>
+  create: Prisma.XOR<Prisma.userCreateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedCreateWithoutCareerMemoryPreferenceInput>
+  where?: Prisma.userWhereInput
+}
+
+export type userUpdateToOneWithWhereWithoutCareerMemoryPreferenceInput = {
+  where?: Prisma.userWhereInput
+  data: Prisma.XOR<Prisma.userUpdateWithoutCareerMemoryPreferenceInput, Prisma.userUncheckedUpdateWithoutCareerMemoryPreferenceInput>
+}
+
+export type userUpdateWithoutCareerMemoryPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUpdateManyWithoutUserNestedInput
+}
+
+export type userUncheckedUpdateWithoutCareerMemoryPreferenceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.sessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.accountUncheckedUpdateManyWithoutUserNestedInput
+  resumeDocuments?: Prisma.resumeDocumentUncheckedUpdateManyWithoutUserNestedInput
+  jobPostings?: Prisma.jobPostingUncheckedUpdateManyWithoutUserNestedInput
+  skillsInsights?: Prisma.skillsInsightUncheckedUpdateManyWithoutUserNestedInput
+  careerBriefs?: Prisma.careerBriefUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersions?: Prisma.resumeVersionUncheckedUpdateManyWithoutUserNestedInput
+  resumeVersionRevisions?: Prisma.resumeVersionRevisionUncheckedUpdateManyWithoutUserNestedInput
+  applications?: Prisma.applicationUncheckedUpdateManyWithoutUserNestedInput
+  applicationEvents?: Prisma.applicationEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationContacts?: Prisma.applicationContactUncheckedUpdateManyWithoutUserNestedInput
+  applicationInsights?: Prisma.applicationInsightUncheckedUpdateManyWithoutUserNestedInput
+  jobDiscoveryProfile?: Prisma.jobDiscoveryProfileUncheckedUpdateOneWithoutUserNestedInput
+  jobDiscoveryRuns?: Prisma.jobDiscoveryRunUncheckedUpdateManyWithoutUserNestedInput
+  discoveredJobs?: Prisma.discoveredJobUncheckedUpdateManyWithoutUserNestedInput
+  applicationQueueItems?: Prisma.applicationQueueItemUncheckedUpdateManyWithoutUserNestedInput
+  communicationDrafts?: Prisma.communicationDraftUncheckedUpdateManyWithoutUserNestedInput
+  communicationDraftRevisions?: Prisma.communicationDraftRevisionUncheckedUpdateManyWithoutUserNestedInput
+  jobRequirements?: Prisma.jobRequirementUncheckedUpdateManyWithoutUserNestedInput
+  jobEvidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutUserNestedInput
+  jobOpportunityAnalyses?: Prisma.jobOpportunityAnalysisUncheckedUpdateManyWithoutUserNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutUserNestedInput
+  applicationExecutionEvents?: Prisma.applicationExecutionEventUncheckedUpdateManyWithoutUserNestedInput
+  applicationSubmissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutUserNestedInput
+  applicationAnswerPreferences?: Prisma.applicationAnswerPreferenceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthProfiles?: Prisma.linkedinGrowthProfileUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentPillars?: Prisma.linkedinContentPillarUncheckedUpdateManyWithoutUserNestedInput
+  linkedinContentIdeas?: Prisma.linkedinContentIdeaUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPosts?: Prisma.linkedinPostUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostRevisions?: Prisma.linkedinPostRevisionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingPlans?: Prisma.linkedinPublishingPlanUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPostPerformances?: Prisma.linkedinPostPerformanceUncheckedUpdateManyWithoutUserNestedInput
+  linkedinGrowthInsights?: Prisma.linkedinGrowthInsightUncheckedUpdateManyWithoutUserNestedInput
+  linkedinConnections?: Prisma.linkedinConnectionUncheckedUpdateManyWithoutUserNestedInput
+  linkedinOAuthAttempts?: Prisma.linkedinOAuthAttemptUncheckedUpdateManyWithoutUserNestedInput
+  linkedinPublishingAttempts?: Prisma.linkedinPublishingAttemptUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapPreference?: Prisma.dailyRoadmapPreferenceUncheckedUpdateOneWithoutUserNestedInput
+  dailyRoadmaps?: Prisma.dailyRoadmapUncheckedUpdateManyWithoutUserNestedInput
+  dailyRoadmapActions?: Prisma.dailyRoadmapActionUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityRecords?: Prisma.careerActivityRecordUncheckedUpdateManyWithoutUserNestedInput
+  careerActivityDays?: Prisma.careerActivityDayUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerReviews?: Prisma.weeklyCareerReviewUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerMetrics?: Prisma.weeklyCareerMetricUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerInsights?: Prisma.weeklyCareerInsightUncheckedUpdateManyWithoutUserNestedInput
+  weeklyCareerRecommendations?: Prisma.weeklyCareerRecommendationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemories?: Prisma.careerMemoryUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphEntities?: Prisma.careerGraphEntityUncheckedUpdateManyWithoutUserNestedInput
+  careerGraphRelations?: Prisma.careerGraphRelationUncheckedUpdateManyWithoutUserNestedInput
+  careerMemoryEvents?: Prisma.careerMemoryEventUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -12242,6 +15032,11 @@ export type UserCountOutputType = {
   weeklyCareerMetrics: number
   weeklyCareerInsights: number
   weeklyCareerRecommendations: number
+  careerMemories: number
+  careerMemoryEvidence: number
+  careerGraphEntities: number
+  careerGraphRelations: number
+  careerMemoryEvents: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -12289,6 +15084,11 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   weeklyCareerMetrics?: boolean | UserCountOutputTypeCountWeeklyCareerMetricsArgs
   weeklyCareerInsights?: boolean | UserCountOutputTypeCountWeeklyCareerInsightsArgs
   weeklyCareerRecommendations?: boolean | UserCountOutputTypeCountWeeklyCareerRecommendationsArgs
+  careerMemories?: boolean | UserCountOutputTypeCountCareerMemoriesArgs
+  careerMemoryEvidence?: boolean | UserCountOutputTypeCountCareerMemoryEvidenceArgs
+  careerGraphEntities?: boolean | UserCountOutputTypeCountCareerGraphEntitiesArgs
+  careerGraphRelations?: boolean | UserCountOutputTypeCountCareerGraphRelationsArgs
+  careerMemoryEvents?: boolean | UserCountOutputTypeCountCareerMemoryEventsArgs
 }
 
 /**
@@ -12609,6 +15409,41 @@ export type UserCountOutputTypeCountWeeklyCareerRecommendationsArgs<ExtArgs exte
   where?: Prisma.weeklyCareerRecommendationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerMemoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerMemoryWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerMemoryEvidenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerMemoryEvidenceWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerGraphEntitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerGraphEntityWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerGraphRelationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerGraphRelationWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCareerMemoryEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.careerMemoryEventWhereInput
+}
+
 
 export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -12664,6 +15499,12 @@ export type userSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   weeklyCareerMetrics?: boolean | Prisma.user$weeklyCareerMetricsArgs<ExtArgs>
   weeklyCareerInsights?: boolean | Prisma.user$weeklyCareerInsightsArgs<ExtArgs>
   weeklyCareerRecommendations?: boolean | Prisma.user$weeklyCareerRecommendationsArgs<ExtArgs>
+  careerMemories?: boolean | Prisma.user$careerMemoriesArgs<ExtArgs>
+  careerMemoryEvidence?: boolean | Prisma.user$careerMemoryEvidenceArgs<ExtArgs>
+  careerGraphEntities?: boolean | Prisma.user$careerGraphEntitiesArgs<ExtArgs>
+  careerGraphRelations?: boolean | Prisma.user$careerGraphRelationsArgs<ExtArgs>
+  careerMemoryEvents?: boolean | Prisma.user$careerMemoryEventsArgs<ExtArgs>
+  careerMemoryPreference?: boolean | Prisma.user$careerMemoryPreferenceArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -12745,6 +15586,12 @@ export type userInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   weeklyCareerMetrics?: boolean | Prisma.user$weeklyCareerMetricsArgs<ExtArgs>
   weeklyCareerInsights?: boolean | Prisma.user$weeklyCareerInsightsArgs<ExtArgs>
   weeklyCareerRecommendations?: boolean | Prisma.user$weeklyCareerRecommendationsArgs<ExtArgs>
+  careerMemories?: boolean | Prisma.user$careerMemoriesArgs<ExtArgs>
+  careerMemoryEvidence?: boolean | Prisma.user$careerMemoryEvidenceArgs<ExtArgs>
+  careerGraphEntities?: boolean | Prisma.user$careerGraphEntitiesArgs<ExtArgs>
+  careerGraphRelations?: boolean | Prisma.user$careerGraphRelationsArgs<ExtArgs>
+  careerMemoryEvents?: boolean | Prisma.user$careerMemoryEventsArgs<ExtArgs>
+  careerMemoryPreference?: boolean | Prisma.user$careerMemoryPreferenceArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type userIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -12799,6 +15646,12 @@ export type $userPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     weeklyCareerMetrics: Prisma.$weeklyCareerMetricPayload<ExtArgs>[]
     weeklyCareerInsights: Prisma.$weeklyCareerInsightPayload<ExtArgs>[]
     weeklyCareerRecommendations: Prisma.$weeklyCareerRecommendationPayload<ExtArgs>[]
+    careerMemories: Prisma.$careerMemoryPayload<ExtArgs>[]
+    careerMemoryEvidence: Prisma.$careerMemoryEvidencePayload<ExtArgs>[]
+    careerGraphEntities: Prisma.$careerGraphEntityPayload<ExtArgs>[]
+    careerGraphRelations: Prisma.$careerGraphRelationPayload<ExtArgs>[]
+    careerMemoryEvents: Prisma.$careerMemoryEventPayload<ExtArgs>[]
+    careerMemoryPreference: Prisma.$careerMemoryPreferencePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -13248,6 +16101,12 @@ export interface Prisma__userClient<T, Null = never, ExtArgs extends runtime.Typ
   weeklyCareerMetrics<T extends Prisma.user$weeklyCareerMetricsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$weeklyCareerMetricsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$weeklyCareerMetricPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   weeklyCareerInsights<T extends Prisma.user$weeklyCareerInsightsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$weeklyCareerInsightsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$weeklyCareerInsightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   weeklyCareerRecommendations<T extends Prisma.user$weeklyCareerRecommendationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$weeklyCareerRecommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$weeklyCareerRecommendationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerMemories<T extends Prisma.user$careerMemoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerMemoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerMemoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerMemoryEvidence<T extends Prisma.user$careerMemoryEvidenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerMemoryEvidenceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerMemoryEvidencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerGraphEntities<T extends Prisma.user$careerGraphEntitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerGraphEntitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerGraphEntityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerGraphRelations<T extends Prisma.user$careerGraphRelationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerGraphRelationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerGraphRelationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerMemoryEvents<T extends Prisma.user$careerMemoryEventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerMemoryEventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$careerMemoryEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  careerMemoryPreference<T extends Prisma.user$careerMemoryPreferenceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.user$careerMemoryPreferenceArgs<ExtArgs>>): Prisma.Prisma__careerMemoryPreferenceClient<runtime.Types.Result.GetResult<Prisma.$careerMemoryPreferencePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14768,6 +17627,145 @@ export type user$weeklyCareerRecommendationsArgs<ExtArgs extends runtime.Types.E
   take?: number
   skip?: number
   distinct?: Prisma.WeeklyCareerRecommendationScalarFieldEnum | Prisma.WeeklyCareerRecommendationScalarFieldEnum[]
+}
+
+/**
+ * user.careerMemories
+ */
+export type user$careerMemoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerMemory
+   */
+  select?: Prisma.careerMemorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerMemory
+   */
+  omit?: Prisma.careerMemoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerMemoryInclude<ExtArgs> | null
+  where?: Prisma.careerMemoryWhereInput
+  orderBy?: Prisma.careerMemoryOrderByWithRelationInput | Prisma.careerMemoryOrderByWithRelationInput[]
+  cursor?: Prisma.careerMemoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerMemoryScalarFieldEnum | Prisma.CareerMemoryScalarFieldEnum[]
+}
+
+/**
+ * user.careerMemoryEvidence
+ */
+export type user$careerMemoryEvidenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerMemoryEvidence
+   */
+  select?: Prisma.careerMemoryEvidenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerMemoryEvidence
+   */
+  omit?: Prisma.careerMemoryEvidenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerMemoryEvidenceInclude<ExtArgs> | null
+  where?: Prisma.careerMemoryEvidenceWhereInput
+  orderBy?: Prisma.careerMemoryEvidenceOrderByWithRelationInput | Prisma.careerMemoryEvidenceOrderByWithRelationInput[]
+  cursor?: Prisma.careerMemoryEvidenceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerMemoryEvidenceScalarFieldEnum | Prisma.CareerMemoryEvidenceScalarFieldEnum[]
+}
+
+/**
+ * user.careerGraphEntities
+ */
+export type user$careerGraphEntitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerGraphEntity
+   */
+  select?: Prisma.careerGraphEntitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerGraphEntity
+   */
+  omit?: Prisma.careerGraphEntityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerGraphEntityInclude<ExtArgs> | null
+  where?: Prisma.careerGraphEntityWhereInput
+  orderBy?: Prisma.careerGraphEntityOrderByWithRelationInput | Prisma.careerGraphEntityOrderByWithRelationInput[]
+  cursor?: Prisma.careerGraphEntityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerGraphEntityScalarFieldEnum | Prisma.CareerGraphEntityScalarFieldEnum[]
+}
+
+/**
+ * user.careerGraphRelations
+ */
+export type user$careerGraphRelationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerGraphRelation
+   */
+  select?: Prisma.careerGraphRelationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerGraphRelation
+   */
+  omit?: Prisma.careerGraphRelationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerGraphRelationInclude<ExtArgs> | null
+  where?: Prisma.careerGraphRelationWhereInput
+  orderBy?: Prisma.careerGraphRelationOrderByWithRelationInput | Prisma.careerGraphRelationOrderByWithRelationInput[]
+  cursor?: Prisma.careerGraphRelationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerGraphRelationScalarFieldEnum | Prisma.CareerGraphRelationScalarFieldEnum[]
+}
+
+/**
+ * user.careerMemoryEvents
+ */
+export type user$careerMemoryEventsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerMemoryEvent
+   */
+  select?: Prisma.careerMemoryEventSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerMemoryEvent
+   */
+  omit?: Prisma.careerMemoryEventOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerMemoryEventInclude<ExtArgs> | null
+  where?: Prisma.careerMemoryEventWhereInput
+  orderBy?: Prisma.careerMemoryEventOrderByWithRelationInput | Prisma.careerMemoryEventOrderByWithRelationInput[]
+  cursor?: Prisma.careerMemoryEventWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CareerMemoryEventScalarFieldEnum | Prisma.CareerMemoryEventScalarFieldEnum[]
+}
+
+/**
+ * user.careerMemoryPreference
+ */
+export type user$careerMemoryPreferenceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the careerMemoryPreference
+   */
+  select?: Prisma.careerMemoryPreferenceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the careerMemoryPreference
+   */
+  omit?: Prisma.careerMemoryPreferenceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.careerMemoryPreferenceInclude<ExtArgs> | null
+  where?: Prisma.careerMemoryPreferenceWhereInput
 }
 
 /**

@@ -62,6 +62,12 @@ model user {
   weeklyCareerMetrics           weeklyCareerMetric[]
   weeklyCareerInsights          weeklyCareerInsight[]
   weeklyCareerRecommendations   weeklyCareerRecommendation[]
+  careerMemories                careerMemory[]
+  careerMemoryEvidence          careerMemoryEvidence[]
+  careerGraphEntities           careerGraphEntity[]
+  careerGraphRelations          careerGraphRelation[]
+  careerMemoryEvents            careerMemoryEvent[]
+  careerMemoryPreference        careerMemoryPreference?
 }
 
 model session {
@@ -2625,4 +2631,336 @@ model weeklyCareerRecommendation {
   @@index([userId])
   @@index([weeklyCareerReviewId])
   @@index([status])
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 28 — AI Memory + Knowledge Graph
+// ---------------------------------------------------------------------------
+
+enum CareerMemoryType {
+  FACT
+  PREFERENCE
+  GOAL
+  SKILL_SIGNAL
+  EVIDENCE_SIGNAL
+  BEHAVIOR_PATTERN
+  CAREER_PATTERN
+  CONSTRAINT
+  MILESTONE
+  FOCUS
+}
+
+enum CareerMemoryCategory {
+  CAREER_TARGET
+  ROLE
+  SKILL
+  EVIDENCE
+  APPLICATION
+  JOB_SEARCH
+  LINKEDIN
+  EXECUTION
+  COMMUNICATION
+  PREFERENCE
+  GOAL
+  CONSTRAINT
+  PROJECT
+  ACHIEVEMENT
+}
+
+enum CareerMemoryStatus {
+  ACTIVE
+  SUPERSEDED
+  CONTRADICTED
+  EXPIRED
+  SUPPRESSED
+  DELETED
+}
+
+enum CareerMemoryConfidence {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum CareerMemoryImportance {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum CareerMemorySourceType {
+  USER_DECLARED
+  M21_RESUME
+  M22_APPLICATION
+  M23_JOBS
+  M24_COMMUNICATION
+  M25_LINKEDIN
+  M26_DAILY
+  M27_WEEKLY
+  SYSTEM_DERIVED
+  USER_CORRECTED
+}
+
+enum CareerMemoryEvidenceType {
+  USER_STATEMENT
+  DOMAIN_EVENT
+  WEEKLY_PATTERN
+  DAILY_PATTERN
+  SYSTEM_DERIVATION
+  USER_CORRECTION
+  USER_CONFIRMATION
+}
+
+enum CareerGraphEntityType {
+  USER
+  ROLE
+  SKILL
+  COMPANY
+  JOB
+  APPLICATION
+  RESUME
+  PROJECT
+  LINKEDIN_POST
+  CAREER_GOAL
+  EVIDENCE_AREA
+  LOCATION
+  WORK_STYLE
+}
+
+enum CareerGraphRelationType {
+  TARGETS_ROLE
+  HAS_SKILL
+  NEEDS_SKILL
+  HAS_EVIDENCE_FOR
+  LACKS_EVIDENCE_FOR
+  APPLIED_TO
+  INTERVIEWED_WITH
+  USED_RESUME_FOR
+  PUBLISHED_ABOUT
+  WORKED_ON_PROJECT
+  PREFERS_LOCATION
+  PREFERS_WORK_STYLE
+  FOCUSES_ON
+  RELATED_TO
+}
+
+enum CareerGraphStatus {
+  ACTIVE
+  SUPERSEDED
+  EXPIRED
+  SUPPRESSED
+}
+
+enum CareerMemoryEventType {
+  CREATED
+  CONFIRMED
+  UPDATED
+  CONFIDENCE_CHANGED
+  CONTRADICTED
+  SUPERSEDED
+  EXPIRED
+  SUPPRESSED
+  RESTORED
+  USER_CORRECTED
+  DELETED
+  RESET
+  REBUILT
+}
+
+enum CareerMemoryContradictionClass {
+  HARD_CONTRADICTION
+  SOFT_CONFLICT
+  TEMPORAL_CHANGE
+}
+
+model careerMemory {
+  id     String @id @default(cuid())
+  userId String
+
+  type     CareerMemoryType
+  category CareerMemoryCategory
+
+  subjectKey         String
+  normalizedValueKey String?
+  valueJson          Json    @default("{}")
+  normalizedText     String
+  semanticKey        String
+
+  status CareerMemoryStatus @default(ACTIVE)
+
+  confidence      CareerMemoryConfidence
+  confidenceScore Int?
+
+  importance CareerMemoryImportance
+
+  validFrom  DateTime?
+  validUntil DateTime?
+
+  firstObservedAt DateTime
+  lastObservedAt  DateTime
+  lastConfirmedAt DateTime?
+
+  sourceType CareerMemorySourceType
+
+  isUserDeclared  Boolean @default(false)
+  isUserCorrected Boolean @default(false)
+  isSensitive     Boolean @default(false)
+  isPinned        Boolean @default(false)
+
+  supersedesMemoryId     String?
+  contradictedByMemoryId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user           user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  evidence       careerMemoryEvidence[]
+  events         careerMemoryEvent[]
+  supersedes     careerMemory?          @relation("MemorySupersession", fields: [supersedesMemoryId], references: [id], onDelete: SetNull)
+  supersededBy   careerMemory[]         @relation("MemorySupersession")
+  contradictedBy careerMemory?          @relation("MemoryContradiction", fields: [contradictedByMemoryId], references: [id], onDelete: SetNull)
+  contradicts    careerMemory[]         @relation("MemoryContradiction")
+
+  @@index([userId])
+  @@index([status])
+  @@index([category])
+  @@index([subjectKey])
+  @@index([semanticKey])
+  @@index([confidence])
+  @@index([lastObservedAt])
+  @@index([userId, semanticKey, status])
+}
+
+model careerMemoryEvidence {
+  id             String @id @default(cuid())
+  userId         String
+  careerMemoryId String
+
+  sourceSubsystem  CareerMemorySourceType
+  sourceEntityType String?
+  sourceEntityId   String?
+  sourceEventId    String?
+
+  observedAt DateTime
+
+  evidenceType CareerMemoryEvidenceType
+  evidenceJson Json                     @default("{}")
+
+  weight      Int
+  fingerprint String
+
+  createdAt DateTime @default(now())
+
+  user   user         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  memory careerMemory @relation(fields: [careerMemoryId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, fingerprint])
+  @@index([userId])
+  @@index([careerMemoryId])
+  @@index([sourceSubsystem])
+  @@index([observedAt])
+  @@index([fingerprint])
+}
+
+model careerGraphEntity {
+  id     String @id @default(cuid())
+  userId String
+
+  entityType   CareerGraphEntityType
+  canonicalKey String
+  displayName  String
+
+  metadataJson Json @default("{}")
+
+  status CareerGraphStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user     user                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  outgoing careerGraphRelation[] @relation("GraphFrom")
+  incoming careerGraphRelation[] @relation("GraphTo")
+
+  @@unique([userId, canonicalKey])
+  @@index([userId])
+  @@index([canonicalKey])
+  @@index([entityType])
+}
+
+model careerGraphRelation {
+  id     String @id @default(cuid())
+  userId String
+
+  fromEntityId String
+  toEntityId   String
+
+  relationType CareerGraphRelationType
+
+  confidence CareerMemoryConfidence
+
+  validFrom  DateTime?
+  validUntil DateTime?
+
+  evidenceJson Json @default("{}")
+
+  status      CareerGraphStatus @default(ACTIVE)
+  fingerprint String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user user              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  from careerGraphEntity @relation("GraphFrom", fields: [fromEntityId], references: [id], onDelete: Cascade)
+  to   careerGraphEntity @relation("GraphTo", fields: [toEntityId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, fingerprint])
+  @@index([userId])
+  @@index([relationType])
+  @@index([fromEntityId])
+  @@index([toEntityId])
+  @@index([status])
+}
+
+model careerMemoryEvent {
+  id             String  @id @default(cuid())
+  userId         String
+  careerMemoryId String?
+
+  eventType CareerMemoryEventType
+
+  beforeJson Json?
+  afterJson  Json?
+
+  reason String?
+  source String
+
+  createdAt DateTime @default(now())
+
+  user   user          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  memory careerMemory? @relation(fields: [careerMemoryId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([careerMemoryId])
+  @@index([createdAt])
+}
+
+model careerMemoryPreference {
+  id     String @id @default(cuid())
+  userId String @unique
+
+  memoryEnabled            Boolean @default(true)
+  allowBehavioralMemory    Boolean @default(true)
+  allowDerivedPatterns     Boolean @default(true)
+  allowLongTermPreferences Boolean @default(true)
+
+  retentionMode   String?
+  memoryResetAt   DateTime?
+  lastRefreshedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }

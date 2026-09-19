@@ -61,6 +61,8 @@ export async function setResumeVersionStatus(
       sourceEntityType: "RESUME_VERSION",
       sourceEntityId: updated.id,
     });
+    const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+    await ingestCareerMemorySafe(userId, "EVENT_DRIVEN");
   }
 
   return updated;

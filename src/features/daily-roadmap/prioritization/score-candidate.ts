@@ -106,6 +106,8 @@ export function scoreDailyActionCandidate(
 
   let total = urgency + careerImpact + readiness + opportunityQuality + momentumNeglect + effortEfficiency;
   if (hardOverride) total = Math.max(total, 85);
+  const memoryBonus = Math.max(0, Math.min(5, Number(candidate.contextSnapshot.memoryBonus) || 0));
+  if (!hardOverride && memoryBonus > 0) total += memoryBonus;
   total = clampScore(total);
 
   const priority: PriorityEvidence = {

@@ -63,6 +63,8 @@ export async function markLinkedinPostPublishedManually(
     sourceEntityId: updated.id,
     occurredAt: updated.publishedAt ?? publishedAt,
   });
+  const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+  await ingestCareerMemorySafe(userId, "EVENT_DRIVEN");
 
   return {
     alreadyPublished: false,

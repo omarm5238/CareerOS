@@ -1123,3 +1123,175 @@ export const WeeklyCareerRecommendationPriority = {
 } as const
 
 export type WeeklyCareerRecommendationPriority = (typeof WeeklyCareerRecommendationPriority)[keyof typeof WeeklyCareerRecommendationPriority]
+
+
+export const CareerMemoryType = {
+  FACT: 'FACT',
+  PREFERENCE: 'PREFERENCE',
+  GOAL: 'GOAL',
+  SKILL_SIGNAL: 'SKILL_SIGNAL',
+  EVIDENCE_SIGNAL: 'EVIDENCE_SIGNAL',
+  BEHAVIOR_PATTERN: 'BEHAVIOR_PATTERN',
+  CAREER_PATTERN: 'CAREER_PATTERN',
+  CONSTRAINT: 'CONSTRAINT',
+  MILESTONE: 'MILESTONE',
+  FOCUS: 'FOCUS'
+} as const
+
+export type CareerMemoryType = (typeof CareerMemoryType)[keyof typeof CareerMemoryType]
+
+
+export const CareerMemoryCategory = {
+  CAREER_TARGET: 'CAREER_TARGET',
+  ROLE: 'ROLE',
+  SKILL: 'SKILL',
+  EVIDENCE: 'EVIDENCE',
+  APPLICATION: 'APPLICATION',
+  JOB_SEARCH: 'JOB_SEARCH',
+  LINKEDIN: 'LINKEDIN',
+  EXECUTION: 'EXECUTION',
+  COMMUNICATION: 'COMMUNICATION',
+  PREFERENCE: 'PREFERENCE',
+  GOAL: 'GOAL',
+  CONSTRAINT: 'CONSTRAINT',
+  PROJECT: 'PROJECT',
+  ACHIEVEMENT: 'ACHIEVEMENT'
+} as const
+
+export type CareerMemoryCategory = (typeof CareerMemoryCategory)[keyof typeof CareerMemoryCategory]
+
+
+export const CareerMemoryStatus = {
+  ACTIVE: 'ACTIVE',
+  SUPERSEDED: 'SUPERSEDED',
+  CONTRADICTED: 'CONTRADICTED',
+  EXPIRED: 'EXPIRED',
+  SUPPRESSED: 'SUPPRESSED',
+  DELETED: 'DELETED'
+} as const
+
+export type CareerMemoryStatus = (typeof CareerMemoryStatus)[keyof typeof CareerMemoryStatus]
+
+
+export const CareerMemoryConfidence = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type CareerMemoryConfidence = (typeof CareerMemoryConfidence)[keyof typeof CareerMemoryConfidence]
+
+
+export const CareerMemoryImportance = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+} as const
+
+export type CareerMemoryImportance = (typeof CareerMemoryImportance)[keyof typeof CareerMemoryImportance]
+
+
+export const CareerMemorySourceType = {
+  USER_DECLARED: 'USER_DECLARED',
+  M21_RESUME: 'M21_RESUME',
+  M22_APPLICATION: 'M22_APPLICATION',
+  M23_JOBS: 'M23_JOBS',
+  M24_COMMUNICATION: 'M24_COMMUNICATION',
+  M25_LINKEDIN: 'M25_LINKEDIN',
+  M26_DAILY: 'M26_DAILY',
+  M27_WEEKLY: 'M27_WEEKLY',
+  SYSTEM_DERIVED: 'SYSTEM_DERIVED',
+  USER_CORRECTED: 'USER_CORRECTED'
+} as const
+
+export type CareerMemorySourceType = (typeof CareerMemorySourceType)[keyof typeof CareerMemorySourceType]
+
+
+export const CareerMemoryEvidenceType = {
+  USER_STATEMENT: 'USER_STATEMENT',
+  DOMAIN_EVENT: 'DOMAIN_EVENT',
+  WEEKLY_PATTERN: 'WEEKLY_PATTERN',
+  DAILY_PATTERN: 'DAILY_PATTERN',
+  SYSTEM_DERIVATION: 'SYSTEM_DERIVATION',
+  USER_CORRECTION: 'USER_CORRECTION',
+  USER_CONFIRMATION: 'USER_CONFIRMATION'
+} as const
+
+export type CareerMemoryEvidenceType = (typeof CareerMemoryEvidenceType)[keyof typeof CareerMemoryEvidenceType]
+
+
+export const CareerGraphEntityType = {
+  USER: 'USER',
+  ROLE: 'ROLE',
+  SKILL: 'SKILL',
+  COMPANY: 'COMPANY',
+  JOB: 'JOB',
+  APPLICATION: 'APPLICATION',
+  RESUME: 'RESUME',
+  PROJECT: 'PROJECT',
+  LINKEDIN_POST: 'LINKEDIN_POST',
+  CAREER_GOAL: 'CAREER_GOAL',
+  EVIDENCE_AREA: 'EVIDENCE_AREA',
+  LOCATION: 'LOCATION',
+  WORK_STYLE: 'WORK_STYLE'
+} as const
+
+export type CareerGraphEntityType = (typeof CareerGraphEntityType)[keyof typeof CareerGraphEntityType]
+
+
+export const CareerGraphRelationType = {
+  TARGETS_ROLE: 'TARGETS_ROLE',
+  HAS_SKILL: 'HAS_SKILL',
+  NEEDS_SKILL: 'NEEDS_SKILL',
+  HAS_EVIDENCE_FOR: 'HAS_EVIDENCE_FOR',
+  LACKS_EVIDENCE_FOR: 'LACKS_EVIDENCE_FOR',
+  APPLIED_TO: 'APPLIED_TO',
+  INTERVIEWED_WITH: 'INTERVIEWED_WITH',
+  USED_RESUME_FOR: 'USED_RESUME_FOR',
+  PUBLISHED_ABOUT: 'PUBLISHED_ABOUT',
+  WORKED_ON_PROJECT: 'WORKED_ON_PROJECT',
+  PREFERS_LOCATION: 'PREFERS_LOCATION',
+  PREFERS_WORK_STYLE: 'PREFERS_WORK_STYLE',
+  FOCUSES_ON: 'FOCUSES_ON',
+  RELATED_TO: 'RELATED_TO'
+} as const
+
+export type CareerGraphRelationType = (typeof CareerGraphRelationType)[keyof typeof CareerGraphRelationType]
+
+
+export const CareerGraphStatus = {
+  ACTIVE: 'ACTIVE',
+  SUPERSEDED: 'SUPERSEDED',
+  EXPIRED: 'EXPIRED',
+  SUPPRESSED: 'SUPPRESSED'
+} as const
+
+export type CareerGraphStatus = (typeof CareerGraphStatus)[keyof typeof CareerGraphStatus]
+
+
+export const CareerMemoryEventType = {
+  CREATED: 'CREATED',
+  CONFIRMED: 'CONFIRMED',
+  UPDATED: 'UPDATED',
+  CONFIDENCE_CHANGED: 'CONFIDENCE_CHANGED',
+  CONTRADICTED: 'CONTRADICTED',
+  SUPERSEDED: 'SUPERSEDED',
+  EXPIRED: 'EXPIRED',
+  SUPPRESSED: 'SUPPRESSED',
+  RESTORED: 'RESTORED',
+  USER_CORRECTED: 'USER_CORRECTED',
+  DELETED: 'DELETED',
+  RESET: 'RESET',
+  REBUILT: 'REBUILT'
+} as const
+
+export type CareerMemoryEventType = (typeof CareerMemoryEventType)[keyof typeof CareerMemoryEventType]
+
+
+export const CareerMemoryContradictionClass = {
+  HARD_CONTRADICTION: 'HARD_CONTRADICTION',
+  SOFT_CONFLICT: 'SOFT_CONFLICT',
+  TEMPORAL_CHANGE: 'TEMPORAL_CHANGE'
+} as const
+
+export type CareerMemoryContradictionClass = (typeof CareerMemoryContradictionClass)[keyof typeof CareerMemoryContradictionClass]

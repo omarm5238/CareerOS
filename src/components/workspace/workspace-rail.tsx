@@ -9,6 +9,7 @@ const navItems = [
   { label: "Core", glyph: "C", href: "/workspace" },
   { label: "Today", glyph: "T", href: "/workspace/today" },
   { label: "Review", glyph: "W", href: "/workspace/review" },
+  { label: "Memory", glyph: "M", href: "/workspace/memory" },
   { label: "Resume", glyph: "R", href: "/workspace/resume" },
   { label: "Jobs", glyph: "J", href: "/workspace/jobs" },
   { label: "Applications", glyph: "P", href: "/workspace/applications" },
@@ -28,10 +29,13 @@ function resolveActiveModule(pathname: string): WorkspaceModuleLabel | null {
   if (pathname.startsWith("/workspace/linkedin")) return "LinkedIn";
   if (pathname.startsWith("/workspace/today")) return "Today";
   if (pathname.startsWith("/workspace/review")) return "Review";
+  if (pathname.startsWith("/workspace/memory")) return "Memory";
 
   switch (pathname) {
     case "/workspace":
       return "Core";
+    case "/workspace/memory":
+      return "Memory";
     case "/workspace/resume":
       return "Resume";
     case "/workspace/skills":

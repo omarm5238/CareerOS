@@ -434,7 +434,13 @@ export const ModelName = {
   weeklyCareerReview: 'weeklyCareerReview',
   weeklyCareerMetric: 'weeklyCareerMetric',
   weeklyCareerInsight: 'weeklyCareerInsight',
-  weeklyCareerRecommendation: 'weeklyCareerRecommendation'
+  weeklyCareerRecommendation: 'weeklyCareerRecommendation',
+  careerMemory: 'careerMemory',
+  careerMemoryEvidence: 'careerMemoryEvidence',
+  careerGraphEntity: 'careerGraphEntity',
+  careerGraphRelation: 'careerGraphRelation',
+  careerMemoryEvent: 'careerMemoryEvent',
+  careerMemoryPreference: 'careerMemoryPreference'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -450,7 +456,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation" | "careerMemory" | "careerMemoryEvidence" | "careerGraphEntity" | "careerGraphRelation" | "careerMemoryEvent" | "careerMemoryPreference"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4228,6 +4234,450 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    careerMemory: {
+      payload: Prisma.$careerMemoryPayload<ExtArgs>
+      fields: Prisma.careerMemoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerMemoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerMemoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        findFirst: {
+          args: Prisma.careerMemoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerMemoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        findMany: {
+          args: Prisma.careerMemoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>[]
+        }
+        create: {
+          args: Prisma.careerMemoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        createMany: {
+          args: Prisma.careerMemoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerMemoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>[]
+        }
+        delete: {
+          args: Prisma.careerMemoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        update: {
+          args: Prisma.careerMemoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerMemoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerMemoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerMemoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerMemoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerMemoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerMemory>
+        }
+        groupBy: {
+          args: Prisma.careerMemoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerMemoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerMemoryEvidence: {
+      payload: Prisma.$careerMemoryEvidencePayload<ExtArgs>
+      fields: Prisma.careerMemoryEvidenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerMemoryEvidenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerMemoryEvidenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        findFirst: {
+          args: Prisma.careerMemoryEvidenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerMemoryEvidenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        findMany: {
+          args: Prisma.careerMemoryEvidenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>[]
+        }
+        create: {
+          args: Prisma.careerMemoryEvidenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        createMany: {
+          args: Prisma.careerMemoryEvidenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerMemoryEvidenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>[]
+        }
+        delete: {
+          args: Prisma.careerMemoryEvidenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        update: {
+          args: Prisma.careerMemoryEvidenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        deleteMany: {
+          args: Prisma.careerMemoryEvidenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerMemoryEvidenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerMemoryEvidenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>[]
+        }
+        upsert: {
+          args: Prisma.careerMemoryEvidenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEvidencePayload>
+        }
+        aggregate: {
+          args: Prisma.CareerMemoryEvidenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerMemoryEvidence>
+        }
+        groupBy: {
+          args: Prisma.careerMemoryEvidenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryEvidenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerMemoryEvidenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryEvidenceCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerGraphEntity: {
+      payload: Prisma.$careerGraphEntityPayload<ExtArgs>
+      fields: Prisma.careerGraphEntityFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerGraphEntityFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerGraphEntityFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        findFirst: {
+          args: Prisma.careerGraphEntityFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerGraphEntityFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        findMany: {
+          args: Prisma.careerGraphEntityFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>[]
+        }
+        create: {
+          args: Prisma.careerGraphEntityCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        createMany: {
+          args: Prisma.careerGraphEntityCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerGraphEntityCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>[]
+        }
+        delete: {
+          args: Prisma.careerGraphEntityDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        update: {
+          args: Prisma.careerGraphEntityUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerGraphEntityDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerGraphEntityUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerGraphEntityUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerGraphEntityUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphEntityPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerGraphEntityAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerGraphEntity>
+        }
+        groupBy: {
+          args: Prisma.careerGraphEntityGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerGraphEntityGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerGraphEntityCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerGraphEntityCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerGraphRelation: {
+      payload: Prisma.$careerGraphRelationPayload<ExtArgs>
+      fields: Prisma.careerGraphRelationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerGraphRelationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerGraphRelationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        findFirst: {
+          args: Prisma.careerGraphRelationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerGraphRelationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        findMany: {
+          args: Prisma.careerGraphRelationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>[]
+        }
+        create: {
+          args: Prisma.careerGraphRelationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        createMany: {
+          args: Prisma.careerGraphRelationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerGraphRelationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>[]
+        }
+        delete: {
+          args: Prisma.careerGraphRelationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        update: {
+          args: Prisma.careerGraphRelationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerGraphRelationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerGraphRelationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerGraphRelationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerGraphRelationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerGraphRelationPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerGraphRelationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerGraphRelation>
+        }
+        groupBy: {
+          args: Prisma.careerGraphRelationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerGraphRelationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerGraphRelationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerGraphRelationCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerMemoryEvent: {
+      payload: Prisma.$careerMemoryEventPayload<ExtArgs>
+      fields: Prisma.careerMemoryEventFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerMemoryEventFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerMemoryEventFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        findFirst: {
+          args: Prisma.careerMemoryEventFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerMemoryEventFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        findMany: {
+          args: Prisma.careerMemoryEventFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>[]
+        }
+        create: {
+          args: Prisma.careerMemoryEventCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        createMany: {
+          args: Prisma.careerMemoryEventCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerMemoryEventCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>[]
+        }
+        delete: {
+          args: Prisma.careerMemoryEventDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        update: {
+          args: Prisma.careerMemoryEventUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        deleteMany: {
+          args: Prisma.careerMemoryEventDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerMemoryEventUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerMemoryEventUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>[]
+        }
+        upsert: {
+          args: Prisma.careerMemoryEventUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryEventPayload>
+        }
+        aggregate: {
+          args: Prisma.CareerMemoryEventAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerMemoryEvent>
+        }
+        groupBy: {
+          args: Prisma.careerMemoryEventGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryEventGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerMemoryEventCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryEventCountAggregateOutputType> | number
+        }
+      }
+    }
+    careerMemoryPreference: {
+      payload: Prisma.$careerMemoryPreferencePayload<ExtArgs>
+      fields: Prisma.careerMemoryPreferenceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.careerMemoryPreferenceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.careerMemoryPreferenceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        findFirst: {
+          args: Prisma.careerMemoryPreferenceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.careerMemoryPreferenceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        findMany: {
+          args: Prisma.careerMemoryPreferenceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>[]
+        }
+        create: {
+          args: Prisma.careerMemoryPreferenceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        createMany: {
+          args: Prisma.careerMemoryPreferenceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.careerMemoryPreferenceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>[]
+        }
+        delete: {
+          args: Prisma.careerMemoryPreferenceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        update: {
+          args: Prisma.careerMemoryPreferenceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        deleteMany: {
+          args: Prisma.careerMemoryPreferenceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.careerMemoryPreferenceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.careerMemoryPreferenceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>[]
+        }
+        upsert: {
+          args: Prisma.careerMemoryPreferenceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$careerMemoryPreferencePayload>
+        }
+        aggregate: {
+          args: Prisma.CareerMemoryPreferenceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCareerMemoryPreference>
+        }
+        groupBy: {
+          args: Prisma.careerMemoryPreferenceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryPreferenceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.careerMemoryPreferenceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CareerMemoryPreferenceCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5396,6 +5846,124 @@ export const WeeklyCareerRecommendationScalarFieldEnum = {
 } as const
 
 export type WeeklyCareerRecommendationScalarFieldEnum = (typeof WeeklyCareerRecommendationScalarFieldEnum)[keyof typeof WeeklyCareerRecommendationScalarFieldEnum]
+
+
+export const CareerMemoryScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  category: 'category',
+  subjectKey: 'subjectKey',
+  normalizedValueKey: 'normalizedValueKey',
+  valueJson: 'valueJson',
+  normalizedText: 'normalizedText',
+  semanticKey: 'semanticKey',
+  status: 'status',
+  confidence: 'confidence',
+  confidenceScore: 'confidenceScore',
+  importance: 'importance',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  firstObservedAt: 'firstObservedAt',
+  lastObservedAt: 'lastObservedAt',
+  lastConfirmedAt: 'lastConfirmedAt',
+  sourceType: 'sourceType',
+  isUserDeclared: 'isUserDeclared',
+  isUserCorrected: 'isUserCorrected',
+  isSensitive: 'isSensitive',
+  isPinned: 'isPinned',
+  supersedesMemoryId: 'supersedesMemoryId',
+  contradictedByMemoryId: 'contradictedByMemoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerMemoryScalarFieldEnum = (typeof CareerMemoryScalarFieldEnum)[keyof typeof CareerMemoryScalarFieldEnum]
+
+
+export const CareerMemoryEvidenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  careerMemoryId: 'careerMemoryId',
+  sourceSubsystem: 'sourceSubsystem',
+  sourceEntityType: 'sourceEntityType',
+  sourceEntityId: 'sourceEntityId',
+  sourceEventId: 'sourceEventId',
+  observedAt: 'observedAt',
+  evidenceType: 'evidenceType',
+  evidenceJson: 'evidenceJson',
+  weight: 'weight',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerMemoryEvidenceScalarFieldEnum = (typeof CareerMemoryEvidenceScalarFieldEnum)[keyof typeof CareerMemoryEvidenceScalarFieldEnum]
+
+
+export const CareerGraphEntityScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  entityType: 'entityType',
+  canonicalKey: 'canonicalKey',
+  displayName: 'displayName',
+  metadataJson: 'metadataJson',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerGraphEntityScalarFieldEnum = (typeof CareerGraphEntityScalarFieldEnum)[keyof typeof CareerGraphEntityScalarFieldEnum]
+
+
+export const CareerGraphRelationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  fromEntityId: 'fromEntityId',
+  toEntityId: 'toEntityId',
+  relationType: 'relationType',
+  confidence: 'confidence',
+  validFrom: 'validFrom',
+  validUntil: 'validUntil',
+  evidenceJson: 'evidenceJson',
+  status: 'status',
+  fingerprint: 'fingerprint',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerGraphRelationScalarFieldEnum = (typeof CareerGraphRelationScalarFieldEnum)[keyof typeof CareerGraphRelationScalarFieldEnum]
+
+
+export const CareerMemoryEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  careerMemoryId: 'careerMemoryId',
+  eventType: 'eventType',
+  beforeJson: 'beforeJson',
+  afterJson: 'afterJson',
+  reason: 'reason',
+  source: 'source',
+  createdAt: 'createdAt'
+} as const
+
+export type CareerMemoryEventScalarFieldEnum = (typeof CareerMemoryEventScalarFieldEnum)[keyof typeof CareerMemoryEventScalarFieldEnum]
+
+
+export const CareerMemoryPreferenceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  memoryEnabled: 'memoryEnabled',
+  allowBehavioralMemory: 'allowBehavioralMemory',
+  allowDerivedPatterns: 'allowDerivedPatterns',
+  allowLongTermPreferences: 'allowLongTermPreferences',
+  retentionMode: 'retentionMode',
+  memoryResetAt: 'memoryResetAt',
+  lastRefreshedAt: 'lastRefreshedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CareerMemoryPreferenceScalarFieldEnum = (typeof CareerMemoryPreferenceScalarFieldEnum)[keyof typeof CareerMemoryPreferenceScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -6858,6 +7426,160 @@ export type EnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel> = Fi
 export type ListEnumWeeklyCareerRecommendationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WeeklyCareerRecommendationStatus[]'>
 
 
+
+/**
+ * Reference to a field of type 'CareerMemoryType'
+ */
+export type EnumCareerMemoryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryType[]'
+ */
+export type ListEnumCareerMemoryTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryCategory'
+ */
+export type EnumCareerMemoryCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryCategory'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryCategory[]'
+ */
+export type ListEnumCareerMemoryCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryCategory[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryStatus'
+ */
+export type EnumCareerMemoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryStatus'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryStatus[]'
+ */
+export type ListEnumCareerMemoryStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryConfidence'
+ */
+export type EnumCareerMemoryConfidenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryConfidence'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryConfidence[]'
+ */
+export type ListEnumCareerMemoryConfidenceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryConfidence[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryImportance'
+ */
+export type EnumCareerMemoryImportanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryImportance'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryImportance[]'
+ */
+export type ListEnumCareerMemoryImportanceFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryImportance[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemorySourceType'
+ */
+export type EnumCareerMemorySourceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemorySourceType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemorySourceType[]'
+ */
+export type ListEnumCareerMemorySourceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemorySourceType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryEvidenceType'
+ */
+export type EnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryEvidenceType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryEvidenceType[]'
+ */
+export type ListEnumCareerMemoryEvidenceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryEvidenceType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphEntityType'
+ */
+export type EnumCareerGraphEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphEntityType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphEntityType[]'
+ */
+export type ListEnumCareerGraphEntityTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphEntityType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphStatus'
+ */
+export type EnumCareerGraphStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphStatus'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphStatus[]'
+ */
+export type ListEnumCareerGraphStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphStatus[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphRelationType'
+ */
+export type EnumCareerGraphRelationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphRelationType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerGraphRelationType[]'
+ */
+export type ListEnumCareerGraphRelationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerGraphRelationType[]'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryEventType'
+ */
+export type EnumCareerMemoryEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryEventType'>
+
+
+
+/**
+ * Reference to a field of type 'CareerMemoryEventType[]'
+ */
+export type ListEnumCareerMemoryEventTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CareerMemoryEventType[]'>
+
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -7019,6 +7741,12 @@ export type GlobalOmitConfig = {
   weeklyCareerMetric?: Prisma.weeklyCareerMetricOmit
   weeklyCareerInsight?: Prisma.weeklyCareerInsightOmit
   weeklyCareerRecommendation?: Prisma.weeklyCareerRecommendationOmit
+  careerMemory?: Prisma.careerMemoryOmit
+  careerMemoryEvidence?: Prisma.careerMemoryEvidenceOmit
+  careerGraphEntity?: Prisma.careerGraphEntityOmit
+  careerGraphRelation?: Prisma.careerGraphRelationOmit
+  careerMemoryEvent?: Prisma.careerMemoryEventOmit
+  careerMemoryPreference?: Prisma.careerMemoryPreferenceOmit
 }
 
 /* Types for Logging */

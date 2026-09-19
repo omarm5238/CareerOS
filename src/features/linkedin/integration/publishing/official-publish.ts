@@ -340,6 +340,8 @@ export async function executeLinkedinOfficialPublish(
       sourceEntityId: plan.id,
       occurredAt: verifiedAt,
     });
+    const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+    await ingestCareerMemorySafe(userId, "EVENT_DRIVEN");
 
     return toPublishResult(success, "PUBLISHED");
   } catch (error) {

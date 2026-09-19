@@ -331,6 +331,51 @@ npm run m27:security
 npm run m27:headed
 ```
 
+### Milestone 28 — AI Memory + Knowledge Graph
+
+M28 stores structured long-term career memory with provenance, confidence, aging,
+contradiction handling, user control, and a small knowledge graph.
+
+Source of truth remains M21–M27. Memory provides context only. It cannot change
+application status, resume READY, job scores, communication USED, LinkedIn publish
+state, daily completion, or weekly Momentum scores.
+
+Six models: `careerMemory`, `careerMemoryEvidence`, `careerGraphEntity`,
+`careerGraphRelation`, `careerMemoryEvent`, `careerMemoryPreference`.
+
+Confidence is evidence strength (`LOW` / `MEDIUM` / `HIGH`), not probability.
+
+Source precedence: USER_CORRECTED > USER_DECLARED > direct domain event >
+repeated derived pattern > single derived signal. Duplicate evidence fingerprints
+cannot inflate confidence.
+
+Aging (unless user-declared/corrected): evidence signals 90 days, career patterns
+60 days, behavior patterns 45 days, derived focus 60 days. Preferences, goals,
+constraints, and milestones persist until superseded or deleted.
+
+Suppressed claims are not regenerated from old evidence. Delete All sets
+`memoryResetAt`. Normal refresh will not rebuild from history before that
+timestamp. Explicit Rebuild may reprocess the recent 12-week bound.
+
+When `memoryEnabled=false`, retrieval is empty and no new derived memory is
+created. Core CareerOS keeps working.
+
+M26 may add at most +5 contextual points and grounded whyNow text. Hard urgency
+always wins. M27 may enrich wording only.
+
+AI (`OPENAI_CAREER_MEMORY_MODEL`) may phrase text. It cannot set confidence,
+resolve conflicts, delete, suppress, or invent facts. Invalid models fall back.
+
+Route: `/workspace/memory`
+
+M29 will later consolidate global settings. M28 owns only memory/privacy controls.
+
+```bash
+npm run m28:qa
+npm run m28:security
+npm run m28:headed
+```
+
 ### Scripts
 
 | Script          | Description                |
@@ -352,6 +397,9 @@ npm run m27:headed
 | `npm run m27:qa` | M27 weekly review + momentum QA |
 | `npm run m27:security` | M27 ownership and forgery QA |
 | `npm run m27:headed` | M27 headed Review + 390×844 checks |
+| `npm run m28:qa` | M28 memory + knowledge graph QA |
+| `npm run m28:security` | M28 ownership and forgery QA |
+| `npm run m28:headed` | M28 headed Memory + 390×844 checks |
 
 ---
 

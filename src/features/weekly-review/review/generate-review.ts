@@ -12,6 +12,7 @@ import { assistWeeklyReviewWording } from "../insights/assist-wording";
 import { buildWeeklyRecommendations } from "../recommendations/build-recommendations";
 import { getCareerWeekBounds, resolveRequestedWeekStart } from "../period/week-bounds";
 import { getOrCreateDailyRoadmapPreference } from "@/features/daily-roadmap/preferences/preference-service";
+import { getRelevantCareerMemory, ingestCareerMemorySafe } from "@/features/career-memory/server";
 import type { WeeklyComponentResult, WeeklyReviewView } from "../types";
 
 function isUniqueConflict(error: unknown): boolean {
@@ -216,6 +217,19 @@ async function buildAndPersist(userId: string, reviewId: string, weekStartLocalD
     ...item,
     summary: wording.insightSummaries[item.fingerprint] ?? item.summary,
   }));
+  try {
+    const memory = await getRelevantCareerMemory({ userId, contextType: "WEEKLY_REVIEW" });
+    const gap = memory.evidenceGaps[0];
+    if (gap) {
+      for (const insight of insights) {
+        if (insight.type === "EVIDENCE_GAP" && !insight.summary.includes(gap.normalizedText)) {
+          insight.summary = `${insight.summary} ${gap.normalizedText} remains a recurring evidence gap and was not addressed this week.`;
+        }
+      }
+    }
+  } catch {
+    // Memory context is optional and must not change scores.
+  }
   const recs = recommendations.map((item) => ({
     ...item,
     reason: wording.recommendationReasons[item.fingerprint] ?? item.reason,
@@ -329,5 +343,7 @@ export async function finalizeWeeklyReview(userId: string, reviewId: string, now
     data: { status: "FINALIZED", finalizedAt: now },
     include: includeReview,
   });
-  return toReviewView(frozen, now);
+  const view = toReviewView(frozen, now);
+  await ingestCareerMemorySafe(userId, "REVIEW_DRIVEN");
+  return view;
 }

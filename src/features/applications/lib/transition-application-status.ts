@@ -44,6 +44,15 @@ const CLOSING_EVENT_TYPES: Partial<Record<ApplicationStatus, ApplicationEventTyp
   OFFER: "OFFER_RECEIVED",
 };
 
+const MEANINGFUL_MEMORY_STATUSES = new Set<ApplicationStatus>([
+  "APPLIED",
+  "SCREENING",
+  "ASSESSMENT",
+  "INTERVIEW",
+  "OFFER",
+  "ACCEPTED",
+]);
+
 /**
  * Deterministic state machine for application stage changes.
  *
@@ -247,6 +256,11 @@ export async function transitionApplicationStatus(
       sourceEntityId: result.updated.id,
       occurredAt: result.updated.appliedAt ?? now,
     });
+  }
+
+  if (MEANINGFUL_MEMORY_STATUSES.has(result.updated.status)) {
+    const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+    await ingestCareerMemorySafe(input.userId, "EVENT_DRIVEN");
   }
 
   return {

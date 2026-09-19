@@ -55,6 +55,8 @@ export async function completeDailyRoadmapAction(
         timezone: roadmap.timezone,
       });
     }
+    const { ingestCareerMemorySafe } = await import("@/features/career-memory/ingestion/refresh");
+    await ingestCareerMemorySafe(userId, "EVENT_DRIVEN");
   } else {
     const roadmap = await prisma.dailyRoadmap.findUniqueOrThrow({ where: { id: updated.dailyRoadmapId } });
     await touchActivityDay(userId, roadmap.localDate, roadmap.timezone);

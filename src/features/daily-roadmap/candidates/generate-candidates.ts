@@ -6,6 +6,7 @@ import { parseStringArray } from "../lib/json";
 import { isMeaningfulActionType } from "../activity/classifier";
 import { getSafeLinkedinConnection } from "@/features/linkedin/server";
 import { loadAdoptedWeeklyHandoffCandidates } from "@/features/weekly-review/handoff/adopted-candidates";
+import { emptyMemoryContext, getRelevantCareerMemory } from "@/features/career-memory/server";
 import type {
   DailyActionCandidate,
   DailyActionCategory,
@@ -98,6 +99,12 @@ export async function generateDailyActionCandidates(input: {
   const tomorrow = addLocalDays(today, 1);
   const windowStart = new Date(now.getTime() - 21 * 86_400_000);
   const collected: DailyActionCandidate[] = [];
+  let memoryContext = emptyMemoryContext();
+  try {
+    memoryContext = await getRelevantCareerMemory({ userId: input.userId, contextType: "TODAY_PLANNING" });
+  } catch {
+    memoryContext = emptyMemoryContext();
+  }
 
   const [
     discoveredJobs,
@@ -839,7 +846,29 @@ export async function generateDailyActionCandidates(input: {
     }
   }
 
-  return collapsed.slice(0, MAX_RAW_CANDIDATES).map((item) => ({
+  const deferredGrowth = memoryContext.patterns.some((item) => item.subjectKey === "pattern.defer");
+  const enriched = collapsed.slice(0, MAX_RAW_CANDIDATES).map((item) => {
+    const next = { ...item, whyNowFacts: [...item.whyNowFacts], contextSnapshot: { ...item.contextSnapshot } };
+    const skillName = typeof next.contextSnapshot.skill === "string" ? next.contextSnapshot.skill.toLowerCase() : "";
+    const matchingGap = memoryContext.evidenceGaps.find((gap) => {
+      const text = gap.normalizedText.toLowerCase();
+      return Boolean(skillName && text && (skillName.includes(text) || text.includes(skillName) || next.title.toLowerCase().includes(text)));
+    });
+    if (matchingGap && (next.type === "EVIDENCE_BUILDING" || next.type === "SKILL_DEVELOPMENT")) {
+      next.whyNowFacts.push(
+        `${matchingGap.normalizedText} has appeared repeatedly across your target roles and remains an evidence gap.`,
+      );
+      next.contextSnapshot.memoryBonus = 5;
+      next.impactSignals = [...next.impactSignals, "important evidence gap"];
+    }
+    if (deferredGrowth && (next.type === "EVIDENCE_BUILDING" || next.type === "SKILL_DEVELOPMENT") && next.estimatedMinutes >= 45) {
+      next.estimatedMinutes = 15;
+      next.whyNowFacts.push("This is a smaller step because similar growth actions were repeatedly deferred.");
+    }
+    return next;
+  });
+
+  return enriched.map((item) => ({
     ...item,
     estimatedMinutes: [5, 10, 15, 30, 45, 60, 90].includes(item.estimatedMinutes)
       ? item.estimatedMinutes
