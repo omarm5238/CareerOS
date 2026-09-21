@@ -5,31 +5,43 @@
 CareerOS is a **Career Operating System** that helps users manage resumes, jobs,
 skills, analytics, and career growth through one intelligent workspace.
 
-> This repository currently contains **only the architecture scaffold**. No business
-> logic, product features, database schema, authentication, or AI analysis have been
-> implemented yet.
+> **Current status:** active development, with implementation through **Milestone 29
+> — Personal Experience Hardening**. The repository includes authentication,
+> PostgreSQL/Prisma data models and migrations, AI-assisted workflows, and the
+> career workspace. External integrations require their own configuration.
+
+## What's Included
+
+- Email/password authentication and onboarding.
+- Resume upload, analysis, versions, and revisions.
+- Job discovery, matching, application queues, tracking, and assisted application execution.
+- Communication drafts and LinkedIn content planning with optional official publishing.
+- Skills insights, analytics, and career reports.
+- Daily roadmaps and streaks, weekly reviews, and Career Momentum.
+- Career memory, a knowledge graph, settings, and user-owned JSON export.
+
+See the milestone notes below for each feature's boundaries and integration requirements.
 
 ---
 
 ## Tech Stack
 
-| Concern        | Choice                                            |
-| -------------- | ------------------------------------------------- |
-| Framework      | Next.js (App Router)                              |
-| Language       | TypeScript                                        |
-| Styling        | Tailwind CSS                                       |
-| ORM            | Prisma                                            |
-| Database       | PostgreSQL                                        |
-| Auth           | Better Auth                                       |
-| Validation     | Zod                                               |
-| Forms          | React Hook Form                                   |
-| Animation      | Framer Motion                                     |
-| 3D / Graphics  | Three.js · React Three Fiber · Drei               |
-| Client state   | Zustand (only when necessary)                     |
+| Concern | Installed technology |
+| --- | --- |
+| Framework | Next.js 15 (App Router) + React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS 3 |
+| ORM / database | Prisma 7 + PostgreSQL (`pg` adapter) |
+| Authentication | Better Auth |
+| AI | OpenAI SDK |
+| Resume parsing | `pdf-parse` + Mammoth |
+| Assisted browser execution | Playwright / Chromium |
+| 3D / graphics | Three.js + React Three Fiber + Drei |
 
-> Note: the scaffold's `package.json` currently installs only the Next.js + TypeScript
-> + Tailwind toolchain needed to boot the app. The remaining libraries above are part
-> of the intended stack and will be added as their corresponding layers are built.
+[package.json](package.json) lists direct dependencies and scripts;
+[package-lock.json](package-lock.json) records the resolved versions. Zod,
+React Hook Form, Framer Motion, and Zustand are not currently declared as direct
+dependencies.
 
 ## Architecture Style
 
@@ -41,32 +53,39 @@ into well-isolated modules (features) and clear layers (UI, feature, server).
 
 ## Folder Structure
 
-```
+The main directories are:
+
+```text
+prisma/                   # Database schema and versioned migrations
+scripts/                  # Milestone QA, security, and browser checks
 src/
-├── app/                  # Next.js App Router: routes, layouts, route handlers
-├── components/           # Shared, cross-feature React components
-│   ├── ui/               # Presentational primitives (buttons, inputs, dialogs)
-│   ├── workspace/        # Workspace shell/layout components (panels, toolbars)
-│   └── three/            # 3D components (Three.js / R3F / Drei)
-├── features/             # Self-contained product domains (the modular monolith)
-│   ├── core/             # Cross-cutting feature logic shared across domains
-│   ├── onboarding/       # User onboarding flows and first-run experience
-│   ├── auth/             # Authentication UI/flows (client side)
-│   ├── resume/           # Resume management
-│   ├── workspace/        # Central workspace experience
-│   ├── analysis/         # Resume/job analysis & insights
-│   ├── jobs/             # Job tracking & pipeline
-│   ├── skills/           # Skills tracking & growth
-│   └── analytics/        # Career analytics & reporting
-├── hooks/                # Shared, reusable React hooks used across features
-├── lib/                  # Framework-agnostic, client-safe utilities/helpers
-├── server/               # Server-only code (never imported by the client)
-│   ├── ai/               # AI integrations & orchestration
-│   ├── db/               # Prisma client & data access (PostgreSQL)
-│   └── auth/             # Better Auth server config & sessions
-├── types/                # Shared TypeScript / Zod-inferred types
-├── styles/               # Global styles, design tokens, Tailwind layers
-└── config/               # App configuration, constants, env access
+├── app/                  # App Router pages and API route handlers
+├── components/           # Shared UI, workspace shell, command palette, Core, and 3D
+├── features/             # Product domains
+│   ├── auth/             # Authentication UI and client
+│   ├── onboarding/       # First-run experience
+│   ├── resume/           # Resume analysis, versions, and revisions
+│   ├── jobs/             # Job discovery, matching, and application queue
+│   ├── applications/     # Application tracking and events
+│   ├── application-packages/  # Application preparation and review
+│   ├── application-execution/ # Assisted browser execution and ATS fixtures
+│   ├── communications/   # Communication drafts and revisions
+│   ├── linkedin/         # Content planning and official API integration
+│   ├── skills/           # Skills insights
+│   ├── analytics/        # Career analytics
+│   ├── report/           # Career reports
+│   ├── daily-roadmap/    # Today plan and streaks (M26)
+│   ├── weekly-review/    # Weekly review and Momentum (M27)
+│   ├── career-memory/    # Career memory and knowledge graph (M28)
+│   ├── settings/         # Settings and data export (M29)
+│   └── ...               # Core, shared, landing, workspace, and analysis
+├── generated/prisma/     # Generated Prisma client
+├── server/               # Shared server-side AI, database, and auth infrastructure
+├── config/               # Design-system configuration
+├── styles/               # Shared styles and tokens
+├── hooks/                # Shared hook directory
+├── lib/                  # Shared utility directory
+└── types/                # Shared type directory
 ```
 
 ### Layering rules (intended)
@@ -83,15 +102,66 @@ src/
 
 ## Getting Started
 
-```bash
-# 1. Install dependencies
-npm install
+### Prerequisites
 
-# 2. Run the dev server
-npm run dev
-```
+- Node.js **20.19+ (20.x)**, **22.12+ (22.x)**, or **24+**, matching the locked Prisma 7 requirements.
+- npm and a running PostgreSQL database.
+- An OpenAI API key for AI-backed features; LinkedIn credentials only for the optional official integration.
 
-Then open [http://localhost:3000](http://localhost:3000).
+### Local setup
+
+1. Clone the repository and install the locked dependencies:
+
+   ```bash
+   git clone https://github.com/omarm5238/CareerOS.git
+   cd CareerOS
+   npm ci
+   ```
+
+2. Create a `.env` file in the repository root. Both Prisma and the QA scripts
+   load this file; Next.js also reads it. Replace the example values with your
+   local configuration:
+
+   ```dotenv
+   DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/careeros"
+   BETTER_AUTH_SECRET="replace-with-a-generated-secret"
+   BETTER_AUTH_URL="http://localhost:3000"
+
+   # Required only for AI-backed features.
+   OPENAI_API_KEY=""
+   # Set this to a model available to your OpenAI project, or leave empty
+   # to use the application default in src/server/ai/config.ts.
+   OPENAI_MODEL=""
+   ```
+
+   Generate an authentication secret with:
+
+   ```bash
+   node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"
+   ```
+
+   Keep `.env` private; environment files are already ignored by Git.
+
+3. Apply the committed migrations and regenerate the Prisma client:
+
+   ```bash
+   npx prisma migrate deploy
+   npx prisma generate
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000), create an account, and complete
+onboarding. For a production build, run `npm run build` followed by `npm run start`
+with the required environment configured.
+
+For assisted application execution, install Chromium and follow the runtime
+requirements below. LinkedIn connection and publishing need the separate
+configuration documented under M25B.
 
 ### Optional Career Brief AI settings
 
@@ -274,8 +344,9 @@ Meaningful activity is idempotent (`unique(userId, fingerprint)`). Login, page v
 roadmap generate/refresh, copy, and job dismiss do not count. Streak = consecutive
 scheduled career days with at least one meaningful activity.
 
-M26 exposes current/longest streak and this week's active/scheduled days. It does
-**not** implement weekly review, Career Momentum, or week-over-week strategy (M27).
+M26 exposes current/longest streak and this week's active/scheduled days.
+Weekly review, Career Momentum, and week-over-week strategy are implemented
+separately in M27.
 
 There is no cron, Redis, BullMQ, or background roadmap generation.
 
@@ -323,7 +394,7 @@ Adopted recommendations can inform the next M26 Today plan as `SYSTEM_RECOMMENDE
 candidates. Adoption does not execute domain actions. M26 still revalidates current
 truth, caps handoff at 3, and keeps hard urgency first.
 
-M28 will later own long-term AI memory / knowledge graph. M27 does not.
+Long-term AI memory and the knowledge graph are owned by M28, separately from M27.
 
 ```bash
 npm run m27:qa
@@ -368,7 +439,7 @@ resolve conflicts, delete, suppress, or invent facts. Invalid models fall back.
 
 Route: `/workspace/memory`
 
-M29 later consolidates global settings discoverability. M28 owns only memory/privacy controls.
+M29 consolidates global settings discoverability. M28 owns the memory/privacy controls.
 
 ```bash
 npm run m28:qa
@@ -420,6 +491,10 @@ npm run m29:headed
 
 ### Scripts
 
+The milestone QA scripts need the configured database and generated Prisma client.
+Use a development/test database: several scripts create fixture users and records.
+Headed browser checks also need Chromium and a running app.
+
 | Script          | Description                |
 | --------------- | -------------------------- |
 | `npm run dev`   | Start the dev server       |
@@ -427,6 +502,8 @@ npm run m29:headed
 | `npm run start` | Run the production build   |
 | `npm run lint`  | Lint with ESLint           |
 | `npm run m245b:fixtures` | Start local ATS fixtures (dev/QA only) |
+| `npm run m245c:qa` | M24.5C confirmed-submit gate QA |
+| `npm run m245c:live` | M24.5C live provider validation |
 | `npm run m25a:qa` | M25A LinkedIn growth QA |
 | `npm run m25a:headed` | M25A headed UI checks |
 | `npm run m25b:qa` | M25B fixture connection/publishing QA |
@@ -455,5 +532,10 @@ npm run m29:headed
 
 ## Status
 
-Scaffold only — initialized project + folder architecture. Awaiting review before
-any features are built.
+Implemented through **M29 (Personal Experience Hardening)**, with milestone QA,
+security, and browser-check scripts in the repository. This describes the code
+present, not a claim that every integration is configured or that all checks have
+passed in a particular environment.
+
+LinkedIn publishing depends on official app credentials and permissions. Confirmed
+browser submission remains disabled by default and subject to the gates above.
