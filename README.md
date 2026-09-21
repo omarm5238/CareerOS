@@ -1,30 +1,193 @@
 # CareerOS
 
-**CareerOS is not a resume builder, chatbot, or job board.**
+> A personal career operating system for managing the full job-search and career-growth workflow in one place.
 
-CareerOS is a **Career Operating System** that helps users manage resumes, jobs,
-skills, analytics, and career growth through one intelligent workspace.
+CareerOS connects job discovery, opportunity analysis, tailored resumes,
+application tracking, communication, LinkedIn growth, daily execution, weekly
+review, and long-term career memory into one structured workflow.
 
-> **Current status:** active development, with implementation through **Milestone 29
-> — Personal Experience Hardening**. The repository includes authentication,
-> PostgreSQL/Prisma data models and migrations, AI-assisted workflows, and the
-> career workspace. External integrations require their own configuration.
+**Discover → Analyze → Prepare → Apply → Track → Communicate → Build Visibility → Execute → Review → Remember → Improve**
 
-## What's Included
+The repository contains implementation through **M29 — Personal Experience
+Hardening**. External integrations require configuration and provider access;
+the presence of a feature does not mean live publishing or submission is enabled.
 
-- Email/password authentication and onboarding.
-- Resume upload, analysis, versions, and revisions.
-- Job discovery, matching, application queues, tracking, and assisted application execution.
-- Communication drafts and LinkedIn content planning with optional official publishing.
-- Skills insights, analytics, and career reports.
-- Daily roadmaps and streaks, weekly reviews, and Career Momentum.
-- Career memory, a knowledge graph, settings, and user-owned JSON export.
+## Contents
 
-See the milestone notes below for each feature's boundaries and integration requirements.
+- [Why CareerOS?](#why-careeros)
+- [Product Workflow](#product-workflow)
+- [Features](#features)
+- [AI Philosophy](#ai-philosophy)
+- [Privacy, Memory Controls & Data Export](#privacy-memory-controls--data-export)
+- [Technology Stack](#technology-stack)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Integration & Milestone Reference](#integration--milestone-reference)
+- [Testing & Validation](#testing--validation)
+- [Project Status & Known Limitations](#project-status--known-limitations)
+- [Author](#author)
 
----
+## Why CareerOS?
 
-## Tech Stack
+A job search often spreads across job boards, spreadsheets, resume files, notes,
+LinkedIn, reminders, and AI tools. CareerOS brings those workflows together while
+preserving the relationships between opportunities, evidence, applications, and
+next actions.
+
+An opportunity can inform which resume revision to prepare, which evidence is
+missing, what belongs in today's plan, and what needs follow-up. Weekly reviews
+and career memory add context for future decisions without replacing the
+underlying records.
+
+The goal is to turn career activity into a structured decision system.
+
+## Product Workflow
+
+```text
+Discover and analyze opportunities
+                ↓
+Prepare a job-specific resume and application package
+                ↓
+Apply, track progress, and follow up
+                ↓
+Build visibility through LinkedIn content
+                ↓
+Plan daily actions and review weekly progress
+                ↓
+Retain useful career context and improve future decisions
+```
+
+These are connected workflows, not mandatory sequential steps. Users can work
+with each domain independently.
+
+## Features
+
+### Job Discovery & Opportunity Intelligence
+
+Discovery profiles, discovery runs, and application queues separate evaluating
+opportunities from recording active applications. Opportunity analysis connects
+job requirements to career evidence, highlights gaps and eligibility checks, and
+supports preparation decisions. The aggregate opportunity score uses a
+deterministic weighted calculation.
+
+### Job-Specific Resume Versions
+
+Resume versions and immutable revisions preserve the content used for a specific
+role. When an application moves to `APPLIED`, its submission snapshot is finalized
+so later resume or job edits do not rewrite the historical application context.
+
+### Application Tracking & Assisted Execution
+
+Applications keep an event history and explicit stage transitions:
+
+```text
+DRAFT → APPLIED → SCREENING → ASSESSMENT → INTERVIEW → OFFER → ACCEPTED
+```
+
+Stages can be skipped where allowed. `REJECTED` and `WITHDRAWN` are terminal
+outcomes; the state machine controls which transitions are available.
+
+Prepared application packages and execution sessions support browser-assisted
+external applications. Confirmed submission is **disabled by default** and requires
+global, provider, and trusted runtime capability gates. If those checks fail,
+the user completes submission manually. An uncertain result must not be treated
+as a confirmed success.
+
+### Communication & LinkedIn Growth
+
+Communication drafts support application-related messages and follow-up, with
+revision history. Copying a draft does not mark it as used.
+
+LinkedIn workflows include strategy, content pillars, ideas, drafts, factual QA,
+publishing plans, and performance records. Manual Copy / Mark Published remains
+available alongside the optional official OAuth/API integration. Official
+publishing uses the approved plan's frozen revision; optional member analytics
+require additional provider approval.
+
+### Today — Daily Career Roadmap
+
+Route: `/workspace/today`
+
+A focused daily plan prioritizes career actions using urgency, career impact,
+readiness, opportunity quality, momentum, and effort. Career days and streaks
+follow the user's timezone and scheduled weekdays.
+
+Login, page views, refreshing a roadmap, and copying text do not count as
+meaningful activity. Completing a task on Today does not automatically change
+the underlying application or other domain record.
+
+### Weekly Review & Career Momentum
+
+Route: `/workspace/review`
+
+Weekly reviews summarize recorded activity and identify priorities for the next
+week. Career Momentum is a personal execution/progress indicator, not a hiring
+probability.
+
+| Component | Weight |
+| --- | ---: |
+| Execution consistency | 25 |
+| Application progress | 25 |
+| Opportunity pipeline | 20 |
+| Visibility / networking | 15 |
+| Skills / evidence growth | 15 |
+
+`NO_ACTIVITY` can score zero; `NOT_APPLICABLE` is excluded from the denominator.
+Finalized review metrics and content remain fixed. Adopt/Dismiss decisions can
+still be made after finalization.
+
+### AI Memory & Knowledge Graph
+
+Route: `/workspace/memory`
+
+Structured career memory records facts, preferences, goals, evidence, patterns,
+constraints, and milestones with provenance and confidence. Explainable graph
+relationships connect relevant career concepts.
+
+Users can correct, suppress, or delete memory and rebuild it from recent history.
+Memory supplies context; source domain records remain authoritative. Disabling
+memory stops retrieval and new derived memory while the core workspace remains
+available.
+
+### Settings & Data Export
+
+Route: `/workspace/settings`
+
+Settings group access to career planning, integrations, memory/privacy, provider
+status, and user-owned JSON export. Domain pages remain the source of truth for
+their own settings.
+
+## AI Philosophy
+
+CareerOS separates deterministic domain decisions from AI assistance. AI supports
+analysis, drafting, summaries, and explanation. Application transitions, weekly
+Momentum calculations, and memory confidence are handled by application logic.
+
+For Today, weekly review, and career memory, AI wording must not rewrite the
+underlying scores or facts. Those workflows include deterministic fallback text.
+AI-backed generation still needs an API key and a model available to the
+configured OpenAI project.
+
+## Privacy, Memory Controls & Data Export
+
+Server-side ownership checks scope records to the signed-in user. The LinkedIn
+integration includes OAuth state checks and encrypted token storage. Memory
+retains provenance and offers explicit user controls.
+
+**Settings → Data & Export** produces JSON containing selected profile,
+resume/revision metadata, jobs, applications, communication and LinkedIn metadata,
+roadmaps, reviews, career memory, and graph summaries. Export reads records in
+batches rather than inheriting workspace list limits. It is a data-portability
+export, not a full database backup or an import/restore feature.
+
+Authentication internals and provider credentials are excluded by the export
+implementation. Exported career data is still personal data and should be stored
+privately.
+
+Delete All sets a memory reset boundary so normal refresh does not reconstruct
+older history. An explicit Rebuild can reprocess the recent 12-week window.
+
+## Technology Stack
 
 | Concern | Installed technology |
 | --- | --- |
@@ -43,15 +206,17 @@ See the milestone notes below for each feature's boundaries and integration requ
 React Hook Form, Framer Motion, and Zustand are not currently declared as direct
 dependencies.
 
-## Architecture Style
+## Architecture
 
-**Modular Monolith.** A single deployable Next.js application, internally organized
-into well-isolated modules (features) and clear layers (UI, feature, server).
-**No microservices in v1.**
+CareerOS uses a **modular monolith**: one Next.js application with domain-specific
+features, shared UI, and server-side infrastructure. Today, weekly review, and
+career memory read domain records through integration points; AI does not replace
+the database as the source of truth.
 
----
+<details>
+<summary>Repository structure and layering conventions</summary>
 
-## Folder Structure
+### Folder Structure
 
 The main directories are:
 
@@ -98,7 +263,12 @@ src/
 - **`server/*`** is server-only (DB, auth, AI). The client must never import it.
 - **`lib/`** holds pure, client-safe helpers with no feature knowledge.
 
----
+
+- **Import alias:** `@/*` maps to `src/*`.
+- Some placeholder directories retain `.gitkeep` files.
+- Regenerate the Prisma client after schema changes.
+
+</details>
 
 ## Getting Started
 
@@ -163,6 +333,11 @@ For assisted application execution, install Chromium and follow the runtime
 requirements below. LinkedIn connection and publishing need the separate
 configuration documented under M25B.
 
+## Integration & Milestone Reference
+
+<details>
+<summary>Optional AI model and timeout settings</summary>
+
 ### Optional Career Brief AI settings
 
 The CareerOS Brief uses `OPENAI_MODEL` by default. These optional overrides tune
@@ -192,6 +367,11 @@ OPENAI_APPLICATION_EXECUTION_MODEL=""
 # Optional LinkedIn growth generation override (M25A).
 OPENAI_LINKEDIN_MODEL=""
 ```
+
+</details>
+
+<details>
+<summary>Detailed milestone behavior, provider configuration, and execution gates</summary>
 
 ### Milestone 24.5B — External Application Execution
 
@@ -489,6 +669,33 @@ npm run m29:security
 npm run m29:headed
 ```
 
+</details>
+
+## Testing & Validation
+
+After configuring a development/test database and generating the Prisma client:
+
+```bash
+npx prisma validate
+npx prisma migrate status
+npm run lint
+npm run build
+npm run m29:qa
+npm run m29:security
+```
+
+For the headed browser checks, install Chromium, start the app, then run:
+
+```bash
+npx playwright install chromium
+npm run m29:headed
+```
+
+These are commands to run in the configured environment, not recorded test results.
+
+<details>
+<summary>All available npm scripts</summary>
+
 ### Scripts
 
 The milestone QA scripts need the configured database and generated Prisma client.
@@ -523,19 +730,60 @@ Headed browser checks also need Chromium and a running app.
 | `npm run m29:security` | M29 export/settings ownership and secret QA |
 | `npm run m29:headed` | M29 Phase-2 E2E + 390×844 checks |
 
----
+</details>
 
-## Project Conventions
+## Project Status & Known Limitations
 
-- **Import alias:** `@/*` maps to `src/*` (e.g. `import { Button } from "@/components/ui/button"`).
-- **Empty folders** are tracked with `.gitkeep` files that also document each folder's purpose.
+The repository includes the Phase 2 implementation through **M29**, along with
+milestone QA and security scripts. This is a description of the source tree,
+not a claim that all tests or live integrations have been validated in every
+environment. The package version is currently `0.1.0`; no GitHub Release is
+currently published.
 
-## Status
+| Milestones | Implemented scope |
+| --- | --- |
+| M21–M22 | Job-specific resume versions and application tracking |
+| M23–M24 | Job discovery, application queues, and communication drafts |
+| M24.5A–M24.5C | Opportunity intelligence, preparation, assisted execution, and submit gates |
+| M25A–M25B | LinkedIn growth and official connection/publishing workflows |
+| M26–M27 | Daily roadmap, streaks, weekly review, and Momentum |
+| M28 | Career memory and knowledge graph |
+| M29 | Experience hardening, settings, and paginated data export |
 
-Implemented through **M29 (Personal Experience Hardening)**, with milestone QA,
-security, and browser-check scripts in the repository. This describes the code
-present, not a claim that every integration is configured or that all checks have
-passed in a particular environment.
+Current boundaries:
 
-LinkedIn publishing depends on official app credentials and permissions. Confirmed
-browser submission remains disabled by default and subject to the gates above.
+- Assisted browser execution needs a long-lived Node process and Chromium; it is
+  not suitable for a serverless-only deployment.
+- Confirmed external submission remains gated by provider validation and session
+  capability. A visible submit button alone is not enough.
+- LinkedIn publishing requires official credentials and permissions; analytics
+  need separate approval. Manual fallback remains available.
+- JSON export contains selected user data and metadata; it is not a complete
+  file archive or a restore mechanism.
+- The current product emphasizes personal career workflows. Organization and
+  team collaboration are not described as shipped capabilities.
+- Responsive and accessibility checks exist, but no formal WCAG certification
+  is claimed.
+
+### Possible Future Directions
+
+Deployment hardening, additional providers, richer analytics, collaboration, and
+expanded export/import workflows are possible future work, not committed
+features or release promises.
+
+### Repository Safety & License
+
+Keep environment files, API keys, OAuth credentials, database credentials,
+private user data, and personal exports out of version control. Follow the
+environment setup above; this repository does not currently include an
+`.env.example` file.
+
+No license file is currently included in the repository.
+
+## Author
+
+**Omar Mohamed Hassan** — Software Engineering
+
+CareerOS is a personal project exploring how structured software systems,
+deterministic decision logic, and AI assistance can improve career-management
+workflows.
