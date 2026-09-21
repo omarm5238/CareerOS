@@ -8,6 +8,8 @@ Instead of treating a job search as a pile of disconnected tasks, CareerOS keeps
 
 **Discover → Analyze → Prepare → Apply → Track → Communicate → Build Visibility → Execute → Review → Remember → Improve**
 
+The repository contains implementation through **M29 — Personal Experience Hardening**. External integrations require configuration and provider access; the presence of a feature does not mean live publishing or submission is enabled.
+
 ---
 
 ## Why CareerOS?
@@ -59,6 +61,8 @@ AI Memory + Knowledge Graph
       ↓
 Better Future Decisions
 ```
+
+These are connected workflows, not mandatory sequential steps. You can work with each domain independently.
 
 ---
 
@@ -424,7 +428,7 @@ AI is kept outside the core source-of-truth layer.
 
 ### Requirements
 
-- Node.js
+- Node.js **20.19+ (20.x)**, **22.12+ (22.x)**, or **24+** (Prisma 7)
 - npm
 - PostgreSQL
 - Git
@@ -441,6 +445,8 @@ cd CareerOS
 ```bash
 npm install
 ```
+
+For a lockfile-exact install, use `npm ci` instead.
 
 ### Environment setup
 
@@ -480,17 +486,23 @@ JOOBLE_API_KEY_DE=
 JOOBLE_API_KEY_TR=
 ```
 
+Generate an authentication secret with:
+
+```bash
+node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"
+```
+
 Never commit a real `.env` file or credentials.
 
 ### Database setup
 
 ```bash
 npx prisma validate
-npx prisma migrate dev
+npx prisma migrate deploy
 npx prisma generate
 ```
 
-The current Phase 2 schema includes **20 Prisma migrations**.
+On a local development database you can also use `npx prisma migrate dev`. The current Phase 2 schema includes **20 Prisma migrations**.
 
 ### Run the development server
 
@@ -499,6 +511,8 @@ npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000).
+
+Assisted application execution and headed QA need Playwright Chromium available locally (`npx playwright install chromium`).
 
 ### Production build
 
