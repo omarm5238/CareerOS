@@ -653,6 +653,6 @@ A public repository license has not yet been finalized.
 
 **Omar Mohamed Hassan**
 
-Software Engineering & Graphic Design
+Software Engineer
 
 CareerOS is a personal project exploring how structured software systems, deterministic decision logic, and AI assistance can work together in a real career-management workflow.
