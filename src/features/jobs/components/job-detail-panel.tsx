@@ -176,7 +176,7 @@ export function JobDetailPanel({
           Remove this saved job and its analysis only.
         </p>
         <div className="mt-3">
-          <DeleteJobButton jobId={job.id} />
+          <DeleteJobButton key={job.id} jobId={job.id} />
         </div>
       </section>
     </div>

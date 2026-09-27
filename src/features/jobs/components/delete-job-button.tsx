@@ -1,7 +1,18 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import {
+  beginDelete,
+  cancelConfirm,
+  confirmDelete,
+  deleteFailed,
+  deleteSucceeded,
+  idleDeleteUi,
+  selectJob,
+  type JobDeleteUiState,
+} from "../lib/job-delete-ui-state";
 
 type DeleteJobButtonProps = {
   jobId: string;
@@ -9,15 +20,36 @@ type DeleteJobButtonProps = {
 
 export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
   const router = useRouter();
-  const [confirming, setConfirming] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [ui, setUi] = useState<JobDeleteUiState>(idleDeleteUi);
+  const uiRef = useRef(ui);
+  const inFlight = useRef(false);
+  uiRef.current = ui;
+
+  function updateUi(next: JobDeleteUiState) {
+    uiRef.current = next;
+    setUi(next);
+  }
+
+  useEffect(() => {
+    setUi((current) => {
+      const next = selectJob(current, jobId);
+      uiRef.current = next;
+      return next;
+    });
+  }, [jobId]);
+
+  const isDeleting = ui.deletingJobId === jobId;
+  const isConfirming = ui.confirmingJobId === jobId;
+  const isRemoved = ui.removedJobId === jobId;
 
   async function handleDelete() {
-    if (isDeleting) return;
+    if (inFlight.current) return;
 
-    setIsDeleting(true);
-    setError(null);
+    const next = beginDelete(uiRef.current, jobId);
+    if (!next) return;
+
+    inFlight.current = true;
+    updateUi(next);
 
     try {
       const response = await fetch(`/api/jobs/${encodeURIComponent(jobId)}`, {
@@ -29,32 +61,41 @@ export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
         throw new Error(body?.message ?? "Could not delete this job.");
       }
 
+      updateUi(deleteSucceeded(uiRef.current, jobId));
       router.push("/workspace/jobs");
       router.refresh();
     } catch (deleteError) {
-      setError(
+      const message =
         deleteError instanceof Error
           ? deleteError.message
-          : "Could not delete this job. Please try again.",
-      );
-      setIsDeleting(false);
-      setConfirming(false);
+          : "Could not delete this job. Please try again.";
+      updateUi(deleteFailed(uiRef.current, jobId, message));
+    } finally {
+      inFlight.current = false;
     }
   }
 
-  if (!confirming) {
+  if (isRemoved) {
+    return (
+      <p className="pt-2 text-sm text-[var(--color-text-secondary)]">This job was deleted.</p>
+    );
+  }
+
+  if (!isConfirming) {
     return (
       <div className="pt-2">
         <button
           className="text-sm text-[var(--status-danger-text)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-          onClick={() => {
-            setError(null);
-            setConfirming(true);
-          }}
+          onClick={() => updateUi(confirmDelete(uiRef.current, jobId))}
           type="button"
         >
           Delete job
         </button>
+        {ui.error ? (
+          <p className="mt-2 text-sm text-[var(--color-text-secondary)]" role="alert">
+            {ui.error}
+          </p>
+        ) : null}
       </div>
     );
   }
@@ -67,6 +108,7 @@ export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
         <button
+          aria-busy={isDeleting}
           className="btn-danger px-3 py-1.5 text-sm"
           disabled={isDeleting}
           onClick={() => void handleDelete()}
@@ -77,15 +119,15 @@ export function DeleteJobButton({ jobId }: DeleteJobButtonProps) {
         <button
           className="inline-flex rounded-[var(--radius-md)] border border-[var(--color-border-subtle)] px-3 py-1.5 text-sm text-[var(--color-text-secondary)] disabled:opacity-50"
           disabled={isDeleting}
-          onClick={() => setConfirming(false)}
+          onClick={() => updateUi(cancelConfirm(uiRef.current, jobId))}
           type="button"
         >
           Cancel
         </button>
       </div>
-      {error ? (
+      {ui.error ? (
         <p className="mt-2 text-sm text-[var(--color-text-secondary)]" role="alert">
-          {error}
+          {ui.error}
         </p>
       ) : null}
     </div>
