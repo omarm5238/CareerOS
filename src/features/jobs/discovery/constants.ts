@@ -4,7 +4,11 @@
 
 export const MAX_PROVIDER_REQUESTS_PER_RUN = 4;
 export const MAX_RESULTS_PER_PROVIDER = 50;
-export const MAX_QUERY_VARIANTS = 6;
+export const MAX_QUERY_VARIANTS = 3;
+export const MAX_COUNTRIES_PER_PROVIDER = 3;
+export const MAX_BOARDS_PER_PROVIDER = 4;
+export const MAX_PAGES_PER_QUERY = 1;
+export const MAX_RAW_JOBS_PER_RUN = 200;
 export const PROVIDER_TIMEOUT_MS = 10_000;
 export const AI_DEEP_RANK_LIMIT = 24;
 export const AI_BATCH_SIZE = 5;

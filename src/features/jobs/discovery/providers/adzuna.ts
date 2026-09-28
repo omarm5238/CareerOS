@@ -1,4 +1,4 @@
-import { PROVIDER_TIMEOUT_MS, MAX_RESULTS_PER_PROVIDER, ADZUNA_SUPPORTED_COUNTRIES } from "../constants";
+import { PROVIDER_TIMEOUT_MS, MAX_RESULTS_PER_PROVIDER, MAX_COUNTRIES_PER_PROVIDER, ADZUNA_SUPPORTED_COUNTRIES } from "../constants";
 import type { ProviderJobResult, ProviderSearchRequest, ProviderAttribution } from "../types";
 import type { JobDiscoveryProvider } from "./types";
 
@@ -68,44 +68,46 @@ export class AdzunaProvider implements JobDiscoveryProvider {
     const creds = this.getCredentials();
     if (!creds) return [];
 
-    const country = (request.countryCode?.toLowerCase() ?? "gb");
-    if (!ADZUNA_SUPPORTED_COUNTRIES[country]) return [];
+    const countries = (request.countryCodes?.length ? request.countryCodes : [request.countryCode ?? "gb"])
+      .map((country) => country.toLowerCase())
+      .filter((country) => Boolean(ADZUNA_SUPPORTED_COUNTRIES[country]))
+      .slice(0, MAX_COUNTRIES_PER_PROVIDER);
+    if (countries.length === 0) return [];
 
     const results: ProviderJobResult[] = [];
     const keywords = request.keywords.slice(0, 3);
     const query = keywords.join(" ") || "software engineer";
 
-    const url = new URL(`https://api.adzuna.com/v1/api/jobs/${country}/search/1`);
-    url.searchParams.set("app_id", creds.appId);
-    url.searchParams.set("app_key", creds.appKey);
-    url.searchParams.set("what", query);
-    url.searchParams.set("results_per_page", String(Math.min(25, MAX_RESULTS_PER_PROVIDER)));
-    url.searchParams.set("content-type", "application/json");
+    for (const country of countries) {
+      if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+      const url = new URL(`https://api.adzuna.com/v1/api/jobs/${country}/search/1`);
+      url.searchParams.set("app_id", creds.appId);
+      url.searchParams.set("app_key", creds.appKey);
+      url.searchParams.set("what", query);
+      url.searchParams.set("results_per_page", String(Math.min(25, MAX_RESULTS_PER_PROVIDER)));
+      url.searchParams.set("content-type", "application/json");
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
-
-    try {
-      const response = await fetch(url.toString(), {
-        signal: controller.signal,
-        headers: { "Accept": "application/json" },
-      });
-
-      if (!response.ok) return [];
-
-      const data = await response.json() as { results?: unknown[] };
-      const jobs = Array.isArray(data?.results) ? data.results : [];
-
-      for (const raw of jobs) {
-        if (typeof raw !== "object" || raw === null) continue;
-        const parsed = parseAdzunaJob(raw as Record<string, unknown>, country);
-        if (parsed) results.push(parsed);
-        if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
+      try {
+        const response = await fetch(url.toString(), {
+          signal: controller.signal,
+          headers: { "Accept": "application/json" },
+        });
+        if (!response.ok) continue;
+        const data = await response.json() as { results?: unknown[] };
+        const jobs = Array.isArray(data?.results) ? data.results : [];
+        for (const raw of jobs) {
+          if (typeof raw !== "object" || raw === null) continue;
+          const parsed = parseAdzunaJob(raw as Record<string, unknown>, country);
+          if (parsed) results.push(parsed);
+          if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+        }
+      } catch {
+        // Failure isolated
+      } finally {
+        clearTimeout(timeout);
       }
-    } catch {
-      // Failure isolated
-    } finally {
-      clearTimeout(timeout);
     }
 
     return results;

@@ -4,10 +4,12 @@ import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
 
 import { DISCOVERY_COOLDOWN_MS, AI_DEEP_RANK_LIMIT } from "../constants";
 import type {
-  DiscoveryProviderName, ProviderJobResult, ProviderRunStats, ProviderError,
+  ProviderJobResult,
   DiscoveryQuerySnapshot, DiscoveryRunResult, JobDiscoveryProfileData,
 } from "../types";
+import { executeProviderSearches } from "../providers/execute-search";
 import { getAllProviders, getEnabledProviders } from "../providers/registry";
+import { titleVariants } from "../providers/query-planner";
 import { stripHtml, normalizeTitle, normalizeCompany, normalizeLocation } from "../normalization/normalize-text";
 import { fingerprintJob } from "../normalization/fingerprint-job";
 import { calculateDeterministicScore } from "../scoring/deterministic-score";
@@ -44,6 +46,17 @@ function toProviderQualityJob(job: ProviderJobResult, index: number): DiscoveryQ
     provider: job.provider,
     externalId: job.externalId,
   };
+}
+
+function coverageCounts(jobs: DiscoveryQualityJob[]): Record<string, number> {
+  const counts: Record<string, number> = { TR: 0, DE: 0, NL: 0, REMOTE: 0, OTHER: 0 };
+  for (const job of jobs) {
+    const country = (job.countryCode ?? "").toUpperCase();
+    if (country === "TR" || country === "DE" || country === "NL") counts[country]++;
+    else if (job.workMode === "REMOTE") counts.REMOTE++;
+    else counts.OTHER++;
+  }
+  return counts;
 }
 
 function discoveryBand(band: string): "STRONG" | "POSSIBLE" | "LOW" | null {
@@ -113,7 +126,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     }
   }
 
-  const queryVariants = queryTitles(intent).slice(0, 6);
+  const queryVariants = titleVariants(intent.preferredTitles.length > 0 ? intent.preferredTitles : queryTitles(intent));
   const enabledProviders = getEnabledProviders(profile.providerPreferences);
   const countries = queryCountries(intent);
   const remoteWanted = intent.locationMode === "REMOTE_ONLY"
@@ -139,95 +152,16 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     },
   });
 
-  const allResults: ProviderJobResult[] = [];
-  const providerStats: ProviderRunStats[] = [];
-  const providerErrors: ProviderError[] = [];
-  let anySuccess = false;
-
-  for (const provider of getAllProviders()) {
-    if (!provider.isConfigured()) {
-      providerStats.push({
-        provider: provider.provider,
-        configured: false,
-        requestsMade: 0,
-        rawResults: 0,
-        normalizedResults: 0,
-        durationMs: 0,
-        status: "skipped",
-      });
-      continue;
-    }
-    if (!enabledProviders.some((item) => item.provider === provider.provider)) continue;
-    if (provider.provider === "REMOTIVE" && !remoteWanted) {
-      providerStats.push({
-        provider: provider.provider,
-        configured: true,
-        requestsMade: 0,
-        rawResults: 0,
-        normalizedResults: 0,
-        durationMs: 0,
-        status: "skipped",
-      });
-      continue;
-    }
-
-    const providerStart = Date.now();
-    const searchCountries = provider.provider === "ADZUNA" || provider.provider === "JOOBLE"
-      ? (countries.length > 0 ? countries : [])
-      : [undefined];
-    if ((provider.provider === "ADZUNA" || provider.provider === "JOOBLE") && searchCountries.length === 0) {
-      providerStats.push({
-        provider: provider.provider,
-        configured: true,
-        requestsMade: 0,
-        rawResults: 0,
-        normalizedResults: 0,
-        durationMs: 0,
-        status: "skipped",
-      });
-      continue;
-    }
-    try {
-      let rawResults = 0;
-      let requestsMade = 0;
-      for (const countryCode of searchCountries) {
-        const results = await provider.search({
-          keywords: queryVariants,
-          countryCode,
-          location: countryCode,
-        });
-        requestsMade++;
-        rawResults += results.length;
-        allResults.push(...results);
-      }
-      providerStats.push({
-        provider: provider.provider,
-        configured: true,
-        requestsMade,
-        rawResults,
-        normalizedResults: rawResults,
-        durationMs: Date.now() - providerStart,
-        status: "success",
-      });
-      anySuccess = true;
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Unknown error";
-      providerErrors.push({
-        provider: provider.provider,
-        category: message.includes("timeout") || message.includes("abort") ? "TIMEOUT" : "UNKNOWN",
-        message: message.slice(0, 200),
-      });
-      providerStats.push({
-        provider: provider.provider,
-        configured: true,
-        requestsMade: 1,
-        rawResults: 0,
-        normalizedResults: 0,
-        durationMs: Date.now() - providerStart,
-        status: "failed",
-      });
-    }
-  }
+  const searched = await executeProviderSearches({
+    providers: getAllProviders(),
+    enabled: enabledProviders,
+    intent,
+    remoteWanted,
+  });
+  const allResults = searched.results;
+  const providerStats = searched.stats;
+  const providerErrors = searched.errors;
+  const anySuccess = searched.anySuccess;
 
   const emptyStats: FilterStats = {
     fetched: 0, normalized: 0, duplicatesRemoved: 0, roleFiltered: 0, seniorityFiltered: 0,
@@ -516,7 +450,15 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       hardRejectedCount,
       scoredCount,
       strongMatchCount: strongCount,
-      querySnapshotJson: toJson({ ...querySnapshot, filterStats: prepared.stats }),
+      querySnapshotJson: toJson({
+        ...querySnapshot,
+        filterStats: prepared.stats,
+        providerStats,
+        coverage: {
+          fetched: coverageCounts(allResults.map((job, index) => toProviderQualityJob(job, index))),
+          kept: coverageCounts(prepared.kept),
+        },
+      }),
     },
   });
 

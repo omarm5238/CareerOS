@@ -304,7 +304,7 @@ export function classifyRemote(job: DiscoveryQualityJob): {
   const text = `${job.location ?? ""}\n${job.title}\n${job.description.slice(0, 900)}`;
   const remote = job.workMode === "REMOTE" || /\bremote\b/i.test(text);
   if (!remote) return { remote: false, scope: "NONE", region: null, countryCode: normalizeCountryCode(job.countryCode) };
-  if (/\b(worldwide|work from anywhere|anywhere in the world|global remote)\b/i.test(text)) {
+  if (/\b(work from anywhere|anywhere in the world|global remote|remote worldwide|worldwide remote|work worldwide|working worldwide)\b/i.test(text)) {
     return { remote: true, scope: "WORLDWIDE", region: "WORLDWIDE", countryCode: null };
   }
   const restricted = restrictedCountry(text);
@@ -415,6 +415,8 @@ function titleExcluded(title: string, intent: SearchIntent): boolean {
   });
 }
 
+const PREFERRED_SOFTWARE_TITLE = /\b(software engineer|software developer|softwareentwickler|backend|back[\s-]?end|full[\s-]?stack|front[\s-]?end|frontend|web developer|programmer)\b/i;
+
 function roleAllowed(job: DiscoveryQualityJob, intent: SearchIntent): boolean {
   if (titleExcluded(job.title, intent)) return false;
   const family = previewJobSignals(job).roleFamily;
@@ -422,7 +424,9 @@ function roleAllowed(job: DiscoveryQualityJob, intent: SearchIntent): boolean {
   if (family === "UNKNOWN" || family === "JOURNALISM" || family === "SALES" || family === "MARKETING" || family === "HR" || family === "RECRUITING" || family === "ACCOUNTING" || family === "GRAPHIC_DESIGN" || family === "CUSTOMER_SERVICE" || family === "OTHER_NON_TECH") {
     return false;
   }
-  return preferred.has(family);
+  if (!preferred.has(family)) return false;
+  if (family === "SOFTWARE_ENGINEERING" && !PREFERRED_SOFTWARE_TITLE.test(job.title)) return false;
+  return true;
 }
 
 function seniorityAllowed(job: DiscoveryQualityJob, intent: SearchIntent): boolean {

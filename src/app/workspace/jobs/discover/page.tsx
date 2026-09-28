@@ -53,6 +53,9 @@ export default async function WorkspaceJobsDiscoverPage() {
                   }[])
                 : [],
               diagnostics: diagnosticsFromSnapshot(lastRun.querySnapshotJson),
+              providerStats: Array.isArray(lastRun.providerStatsJson)
+                ? lastRun.providerStatsJson as { provider: string; status: string; rawResults?: number; boardsQueried?: number }[]
+                : [],
             }
           : null
       }

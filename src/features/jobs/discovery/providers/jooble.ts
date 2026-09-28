@@ -1,4 +1,4 @@
-import { PROVIDER_TIMEOUT_MS, MAX_RESULTS_PER_PROVIDER, JOOBLE_REGIONAL_ENDPOINTS } from "../constants";
+import { PROVIDER_TIMEOUT_MS, MAX_RESULTS_PER_PROVIDER, MAX_COUNTRIES_PER_PROVIDER, JOOBLE_REGIONAL_ENDPOINTS } from "../constants";
 import type { ProviderJobResult, ProviderSearchRequest, ProviderAttribution } from "../types";
 import type { JobDiscoveryProvider } from "./types";
 
@@ -60,43 +60,45 @@ export class JoobleProvider implements JobDiscoveryProvider {
     const regions = getConfiguredRegions();
     if (regions.length === 0) return [];
 
-    const requested = request.countryCode?.toUpperCase() === "GB" ? "UK" : request.countryCode?.toUpperCase();
-    const chosen = requested ? regions.find((region) => region.region === requested) : regions[0];
-    if (!chosen) return [];
-    const { key, endpoint, region } = chosen;
+    const requested = (request.countryCodes?.length ? request.countryCodes : request.countryCode ? [request.countryCode] : [])
+      .map((country) => country.toUpperCase() === "GB" ? "UK" : country.toUpperCase());
+    const chosen = (requested.length > 0
+      ? regions.filter((region) => requested.includes(region.region))
+      : regions.slice(0, 1)
+    ).slice(0, MAX_COUNTRIES_PER_PROVIDER);
+    if (chosen.length === 0) return [];
     const results: ProviderJobResult[] = [];
     const query = request.keywords.join(" ") || "software engineer";
 
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
-
-    try {
-      const response = await fetch(`${endpoint}${key}`, {
-        method: "POST",
-        signal: controller.signal,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          keywords: query,
-          location: request.location || "",
-          page: 1,
-        }),
-      });
-
-      if (!response.ok) return [];
-
-      const data = await response.json() as { jobs?: unknown[] };
-      const jobs = Array.isArray(data?.jobs) ? data.jobs : [];
-
-      for (const raw of jobs) {
-        if (typeof raw !== "object" || raw === null) continue;
-        const parsed = parseJoobleJob(raw as Record<string, unknown>, region);
-        if (parsed) results.push(parsed);
-        if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+    for (const region of chosen) {
+      if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), PROVIDER_TIMEOUT_MS);
+      try {
+        const response = await fetch(`${region.endpoint}${region.key}`, {
+          method: "POST",
+          signal: controller.signal,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            keywords: query,
+            location: request.location || "",
+            page: 1,
+          }),
+        });
+        if (!response.ok) continue;
+        const data = await response.json() as { jobs?: unknown[] };
+        const jobs = Array.isArray(data?.jobs) ? data.jobs : [];
+        for (const raw of jobs) {
+          if (typeof raw !== "object" || raw === null) continue;
+          const parsed = parseJoobleJob(raw as Record<string, unknown>, region.region);
+          if (parsed) results.push(parsed);
+          if (results.length >= MAX_RESULTS_PER_PROVIDER) break;
+        }
+      } catch {
+        // Failure isolated
+      } finally {
+        clearTimeout(timeout);
       }
-    } catch {
-      // Failure isolated
-    } finally {
-      clearTimeout(timeout);
     }
 
     return results;

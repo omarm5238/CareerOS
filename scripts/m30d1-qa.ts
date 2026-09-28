@@ -41,21 +41,15 @@ function checkEnumIdentity() {
 
 function checkInactiveProviders() {
   const runnable = getAllProviders().map((provider) => provider.provider);
-  assert(runnable.join(",") === "REMOTIVE,ARBEITNOW,ADZUNA,JOOBLE", `runnable providers changed: ${runnable.join(",")}`);
-  const enabled = getEnabledProviders({
-    GREENHOUSE: true,
-    LEVER: true,
-    ASHBY: true,
-    EURES: true,
-    LINKEDIN: true,
-  }).map((provider) => provider.provider);
-  assert(!enabled.some((name) => ["GREENHOUSE", "LEVER", "ASHBY", "EURES", "LINKEDIN"].includes(name)), "new providers executed");
-  const status = new Map(getProviderStatus().map((item) => [item.provider, item]));
-  for (const name of ["GREENHOUSE", "LEVER", "ASHBY", "EURES"] as const) {
-    assert(status.get(name)?.status === "unsupported", `${name} must stay unsupported`);
-    assert(PROVIDER_CAPABILITIES[name].runnable === false, `${name} must not be runnable`);
-    assert(PROVIDER_CAPABILITIES[name].adapterImplemented === false, `${name} adapter must not exist`);
+  for (const name of ["REMOTIVE", "ARBEITNOW", "ADZUNA", "JOOBLE", "LEVER", "GREENHOUSE", "EURES"]) {
+    assert(runnable.includes(name as never), `${name} missing from provider registry`);
   }
+  assert(!runnable.includes("ASHBY") && !runnable.includes("LINKEDIN"), "gated providers were executed");
+  const disabled = getEnabledProviders({ LEVER: false, GREENHOUSE: false, EURES: false }).map((provider) => provider.provider);
+  assert(!disabled.some((name) => name === "LEVER" || name === "GREENHOUSE" || name === "EURES"), "disabled providers still ran");
+  const status = new Map(getProviderStatus().map((item) => [item.provider, item]));
+  assert(status.get("ASHBY")?.status === "unsupported", "Ashby must stay inactive");
+  assert(PROVIDER_CAPABILITIES.ASHBY.adapterImplemented === false, "Ashby adapter must not exist");
   assert(status.get("LINKEDIN")?.status === "partner_access_required", "LinkedIn must stay partner-gated");
   assert(PROVIDER_CAPABILITIES.LINKEDIN.runnable === false, "LinkedIn must not be runnable");
   assert(status.get("REMOTIVE")?.status === "available", "Remotive availability changed");

@@ -7,12 +7,18 @@ import { RemotiveProvider } from "./remotive";
 import { ArbeitnowProvider } from "./arbeitnow";
 import { AdzunaProvider } from "./adzuna";
 import { JoobleProvider } from "./jooble";
+import { LeverProvider } from "./lever";
+import { GreenhouseProvider } from "./greenhouse";
+import { EuresProvider } from "./eures";
 
 const ALL_PROVIDERS: JobDiscoveryProvider[] = [
   new RemotiveProvider(),
   new ArbeitnowProvider(),
   new AdzunaProvider(),
   new JoobleProvider(),
+  new LeverProvider(),
+  new GreenhouseProvider(),
+  new EuresProvider(),
 ];
 
 export function getAllProviders(): JobDiscoveryProvider[] {

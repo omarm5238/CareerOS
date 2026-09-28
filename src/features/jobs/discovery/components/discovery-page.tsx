@@ -44,6 +44,7 @@ type DiscoveryPageProps = {
       kept: number;
       locationIncomplete: boolean;
     } | null;
+    providerStats?: { provider: string; status: string; rawResults?: number; boardsQueried?: number }[];
   } | null;
   todayStrong: number;
   dailyTarget: number;
@@ -177,6 +178,12 @@ export function DiscoveryPage({
                 <span className="text-[var(--color-text-primary)]">{todayStrong} / {dailyTarget}</span>
               </div>
             </div>
+
+            {lastRun?.providerStats && lastRun.providerStats.length > 0 ? (
+              <p className="text-sm text-[var(--color-text-secondary)]">
+                {lastRun.providerStats.map((item) => `${item.provider} ${item.status}${typeof item.rawResults === "number" ? ` ${item.rawResults}` : ""}`).join(" · ")}
+              </p>
+            ) : null}
 
             <div className="flex flex-wrap gap-2" aria-label="Job provider status">
               {providerStatus.map((p) => (

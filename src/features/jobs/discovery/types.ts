@@ -118,6 +118,7 @@ export interface ProviderSearchRequest {
   keywords: string[];
   location?: string;
   countryCode?: string;
+  countryCodes?: string[];
   workMode?: string;
   page?: number;
   limit?: number;
@@ -130,7 +131,9 @@ export interface ProviderRunStats {
   rawResults: number;
   normalizedResults: number;
   durationMs: number;
-  status: "success" | "partial" | "failed" | "skipped";
+  status: "success" | "partial" | "failed" | "skipped" | "unsupported_target" | "rate_limited" | "partner_access_required";
+  boardsQueried?: number;
+  invalidRemoved?: number;
 }
 
 export interface ProviderError {

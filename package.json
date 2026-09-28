@@ -34,7 +34,9 @@
     "m30b:headed": "npx tsx scripts/m30b-headed-qa.ts",
     "m30c:qa": "npx tsx scripts/m30c-qa.ts",
     "m30c:headed": "npx tsx scripts/m30c-headed-qa.ts",
-    "m30d1:qa": "npx tsx scripts/m30d1-qa.ts"
+    "m30d1:qa": "npx tsx scripts/m30d1-qa.ts",
+    "m30d:qa": "npx tsx scripts/m30d-qa.ts",
+    "m30d:headed": "npx tsx scripts/m30d-headed-qa.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
