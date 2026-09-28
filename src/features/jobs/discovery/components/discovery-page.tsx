@@ -47,8 +47,8 @@ export function DiscoveryPage({
   const filtered = results.filter((j) => {
     if (filter === "dismissed") return !!j.dismissedAt;
     if (j.dismissedAt) return false;
-    if (filter === "strong") return (j.finalScore ?? 0) >= minScore;
-    if (filter === "possible") return (j.finalScore ?? 0) >= 65 && (j.finalScore ?? 0) < minScore;
+    if (filter === "strong") return j.hardBlockers.length === 0 && (j.finalScore ?? 0) >= minScore;
+    if (filter === "possible") return (j.finalScore ?? 0) >= 55 && (j.finalScore ?? 0) < minScore && j.hardBlockers.length === 0;
     return true;
   });
 

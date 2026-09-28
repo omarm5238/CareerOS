@@ -29,10 +29,10 @@ export function OpportunitySummary({
     <section className="surface-glass p-5">
       <p className="section-eyebrow">Opportunity Intelligence</p>
       <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
-        Opportunity Score is separate from Discovery Suitability. This is not hiring probability.
+        Opportunity Score uses the same canonical match as Discovery. This is not hiring probability.
       </p>
       <dl className="mt-4 grid gap-2 text-sm text-[var(--color-text-secondary)] sm:grid-cols-2">
-        <div>Opportunity Score {opportunityScore}</div>
+        <div>{eligibilityStatus === "INELIGIBLE" ? "Opportunity Score Ineligible" : `Opportunity Score ${opportunityScore}`}</div>
         <div>Priority {PRIORITY_BAND_LABELS[priorityBand]}</div>
         <div>Evidence Coverage {evidenceCoverage}%</div>
         <div>Eligibility {eligibilityStatus.replaceAll("_", " ")}</div>
@@ -47,7 +47,7 @@ export function OpportunitySummary({
         </p>
       ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
-        {packageId ? (
+        {eligibilityStatus === "INELIGIBLE" ? null : packageId ? (
           <Link className="btn-primary" href={`/workspace/jobs/apply-now/${packageId}`}>
             Review Package
           </Link>

@@ -11,9 +11,9 @@ import { analyzeJobGaps, countGaps } from "../gaps/analyze-job-gaps";
 import { extractJobRequirementsDeterministic } from "../requirements/extract-job-requirements";
 import { reconcileJobRequirements } from "../requirements/reconcile-job-requirements";
 import { classifyApplicationEffort, effortScore } from "../scoring/application-effort";
-import { calculateEvidenceCoverage, clampScore } from "../scoring/evidence-coverage";
-import { calculateOpportunityScore } from "../scoring/opportunity-score";
-import { applyPriorityGuardrails, bandFromPriorityScore, calculatePriorityScore } from "../scoring/priority-score";
+import { calculateEvidenceCoverage } from "../scoring/evidence-coverage";
+import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { evaluateCanonicalMatch } from "@/features/jobs/matching/canonical-match";
 import type { JobOpportunityView, JobRequirementInput, OpportunityWarning } from "../types";
 import { parseEligibilityChecks, parseGaps, parseWarnings, toPrismaJson } from "./json-parsers";
 import { normalizeToken } from "./hash";
@@ -28,25 +28,6 @@ function freshnessScore(postedAt: Date | null, now = new Date()): number {
   if (days <= 14) return 70;
   if (days <= 30) return 45;
   return 20;
-}
-
-function roleFitScore(title: string, roleTargets: string[]): number {
-  const normalizedTitle = normalizeToken(title);
-  if (roleTargets.length === 0) {
-    if (normalizedTitle.includes("backend") || normalizedTitle.includes("engineer")) return 70;
-    return 55;
-  }
-  for (const role of roleTargets) {
-    const token = normalizeToken(role);
-    if (!token) continue;
-    if (normalizedTitle === token) return 100;
-    if (normalizedTitle.includes(token) || token.includes(normalizedTitle)) return 88;
-    const titleParts = new Set(normalizedTitle.split(" "));
-    const overlap = token.split(" ").filter((part) => titleParts.has(part) && part.length > 2);
-    if (overlap.length >= 2) return 76;
-    if (overlap.length === 1) return 62;
-  }
-  return 42;
 }
 
 function mergeRequirements(base: JobRequirementInput[], extra: JobRequirementInput[]): JobRequirementInput[] {
@@ -111,11 +92,11 @@ export async function analyzeJobOpportunity(
     jobUrl: job.jobUrl,
     roleTargets,
     workModes: profile?.workModes ?? [],
-    evidenceSignal: evidence
+    evidenceSignal: `${evidence
       .map((item) => item.evidenceLabel)
       .sort()
       .slice(0, 40)
-      .join(","),
+      .join(",")}|m30b`,
   });
 
   if (!options?.force && existingAnalysis && existingAnalysis.contextFingerprint === fingerprint) {
@@ -199,49 +180,9 @@ export async function analyzeJobOpportunity(
   const coverage = calculateEvidenceCoverage(
     mapped.map((row) => ({ importance: row.input.importance, bestStrength: row.bestStrength })),
   );
-  const skillRows = mapped.filter((row) => row.input.category === "SKILL");
-  const skillFit = calculateEvidenceCoverage(
-    (skillRows.length > 0 ? skillRows : mapped).map((row) => ({
-      importance: row.input.importance,
-      bestStrength: row.bestStrength,
-    })),
-  );
-  const evidenceFit = clampScore(
-    mapped.reduce((sum, row) => {
-      const multiplier =
-        row.bestStrength === "DIRECT"
-          ? 100
-          : row.bestStrength === "STRONG"
-            ? 88
-            : row.bestStrength === "PARTIAL"
-              ? 60
-              : row.bestStrength === "TRANSFERABLE"
-                ? 40
-                : 8;
-      return sum + multiplier;
-    }, 0) / Math.max(1, mapped.length),
-  );
-
-  const experienceReq = mapped.find((row) => row.input.category === "EXPERIENCE");
-  const experienceFit = experienceReq
-    ? experienceReq.bestStrength === "NONE"
-      ? 55
-      : experienceReq.bestStrength === "TRANSFERABLE"
-        ? 62
-        : 80
-    : 70;
-
   const locationTargets = (profile?.locationTargets ?? [])
     .filter((item) => item.enabled)
     .flatMap((item) => [item.country, ...item.cities]);
-  const locationFit = job.location
-    ? locationTargets.some((target) => job.location?.toLowerCase().includes(target.toLowerCase()))
-      ? 90
-      : 65
-    : 55;
-
-  const authorizationMentioned = mapped.some((row) => row.input.category === "AUTHORIZATION");
-  const authorizationFit = authorizationMentioned ? 70 : 75;
 
   const requiresCoverLetter = mapped.some((row) => normalizeToken(row.input.normalizedName).includes("cover letter"));
   const requiresPortfolio = mapped.some((row) => normalizeToken(row.input.normalizedName).includes("portfolio"));
@@ -281,37 +222,73 @@ export async function analyzeJobOpportunity(
   const gaps = analyzeJobGaps(mapped.map((row) => ({ ...row.input, bestStrength: row.bestStrength })));
   const gapCounts = countGaps(gaps);
 
+  const resume = await getLatestResumeAnalysisForUser(userId);
+  const skillLabels = evidence.filter((item) => item.evidenceType === "SKILL").map((item) => item.evidenceLabel);
+  const match = evaluateCanonicalMatch(
+    {
+      title: job.title,
+      description: job.description,
+      location: job.location,
+    },
+    {
+      roleTargets,
+      experienceLevel: resume?.experienceLevel ?? null,
+      skills: skillLabels,
+      evidenceSkills: skillLabels,
+      countryCode: profile?.locationTargets.find((target) => target.enabled)?.countryCode ?? null,
+      countryNames: (profile?.locationTargets ?? [])
+        .filter((target) => target.enabled)
+        .flatMap((target) => [target.country, ...target.cities]),
+      workModes: profile?.workModes ?? [],
+    },
+  );
+  const eligibilityStatus = match.eligibility === "ELIGIBLE"
+    ? "ELIGIBLE"
+    : match.eligibility === "REVIEW_REQUIRED"
+      ? "REVIEW_REQUIRED"
+      : "INELIGIBLE";
+  const opportunityScore = match.score ?? 0;
+  const priorityBand = match.band === "INELIGIBLE"
+    ? "SKIP"
+    : match.eligibility === "REVIEW_REQUIRED"
+      ? "REVIEW_FIRST"
+      : match.band === "STRONG"
+        ? "HIGH_PRIORITY"
+        : match.band === "POSSIBLE"
+          ? "GOOD_OPPORTUNITY"
+          : "LOW_PRIORITY";
+  const recommendation = priorityBand === "SKIP"
+    ? "SKIP"
+    : priorityBand === "HIGH_PRIORITY"
+      ? "APPLY"
+      : priorityBand === "GOOD_OPPORTUNITY"
+        ? "APPLY_WITH_CAUTION"
+        : "REVIEW_FIRST";
   const components = {
-    roleFit: roleFitScore(job.title, roleTargets),
-    skillFit,
-    evidenceFit,
-    experienceFit,
-    locationFit,
-    authorizationFit,
+    roleFit: match.components.roleAlignment,
+    skillFit: match.components.stackMatch,
+    evidenceFit: match.components.evidenceStrength,
+    experienceFit: match.components.experienceAlignment,
+    locationFit: match.components.locationFit,
+    authorizationFit: match.components.dataConfidence,
     freshnessScore: freshnessScore(discovered?.postedAt ?? null),
     applicationEffortScore: effortScore(effort),
   };
-  const opportunityScore = calculateOpportunityScore(components);
-  const priorityScore = calculatePriorityScore({
-    opportunityScore,
-    freshnessScore: components.freshnessScore,
-    applicationEffortScore: components.applicationEffortScore,
-  });
-  const guarded = applyPriorityGuardrails({
-    baseBand: bandFromPriorityScore(priorityScore),
-    eligibilityStatus: eligibility.status,
-    hasConfirmedBlocker: gapCounts.criticalGapCount > 0,
-    alreadyApplied,
-    listingExpired,
-  });
+  const priorityScore = opportunityScore;
+  const canonicalChecks = match.blockingReasons.map((reason) => ({
+    key: reason === "LOCATION_INELIGIBLE" || reason === "UNKNOWN_LOCATION_POLICY" ? "LOCATION" : reason === "SENIORITY_MISMATCH" || reason === "UNKNOWN_SENIORITY" || reason === "EXPERIENCE_MISMATCH" ? "SENIORITY" : "EMPLOYMENT_RESTRICTION",
+    status: eligibilityStatus,
+    reason,
+    evidence: null,
+    requiresUserConfirmation: eligibilityStatus === "REVIEW_REQUIRED",
+  }));
 
-  if (whyYouMatch.length === 0) {
-    if (components.roleFit >= 75) whyYouMatch.push("Role title aligns with stored target roles.");
-    const direct = mapped.filter((row) => row.bestStrength === "DIRECT").slice(0, 3);
-    for (const row of direct) {
-      whyYouMatch.push(`${row.input.normalizedName} is directly evidenced.`);
-    }
-    if (gapCounts.criticalGapCount === 0) whyYouMatch.push("No confirmed critical blocker is stored.");
+  if (match.eligibility === "INELIGIBLE") {
+    summary = match.explanation.join(". ");
+    whyYouMatch = [];
+  } else if (!summary) {
+    summary = match.explanation.join(". ");
+    whyYouMatch = match.explanation;
   }
 
   const status = analysisSource === "FALLBACK" ? "PARTIAL" : "COMPLETED";
@@ -325,14 +302,14 @@ export async function analyzeJobOpportunity(
       ...components,
       opportunityScore,
       priorityScore,
-      priorityBand: guarded.band,
-      recommendation: guarded.recommendation,
-      eligibilityStatus: eligibility.status,
+      priorityBand,
+      recommendation,
+      eligibilityStatus,
       applicationEffort: effort,
       evidenceCoverage: coverage,
       ...gapCounts,
       gapsJson: toPrismaJson(gaps),
-      eligibilityChecksJson: toPrismaJson(eligibility.checks),
+      eligibilityChecksJson: toPrismaJson(canonicalChecks.length > 0 ? canonicalChecks : eligibility.checks),
       warningsJson: toPrismaJson(warnings),
       summary,
       contextFingerprint: fingerprint,
@@ -343,14 +320,14 @@ export async function analyzeJobOpportunity(
       ...components,
       opportunityScore,
       priorityScore,
-      priorityBand: guarded.band,
-      recommendation: guarded.recommendation,
-      eligibilityStatus: eligibility.status,
+      priorityBand,
+      recommendation,
+      eligibilityStatus,
       applicationEffort: effort,
       evidenceCoverage: coverage,
       ...gapCounts,
       gapsJson: toPrismaJson(gaps),
-      eligibilityChecksJson: toPrismaJson(eligibility.checks),
+      eligibilityChecksJson: toPrismaJson(canonicalChecks.length > 0 ? canonicalChecks : eligibility.checks),
       warningsJson: toPrismaJson(warnings),
       summary,
       contextFingerprint: fingerprint,

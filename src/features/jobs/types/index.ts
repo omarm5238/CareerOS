@@ -53,6 +53,7 @@ export type JobAnalysisSummary = {
   matchedSkillsCount: number;
   missingSkillsCount: number;
   analysisSource: JobAnalysisSource;
+  canonicalBand: string | null;
 };
 
 export type JobListItem = JobApplicationFields & {

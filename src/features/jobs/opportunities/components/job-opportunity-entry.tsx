@@ -9,6 +9,7 @@ import type { OpportunityPriorityBand } from "@/generated/prisma/client";
 
 type JobOpportunityEntryProps = {
   jobPostingId: string;
+  canonicalEligibility?: string | null;
   analysis: {
     opportunityScore: number;
     priorityBand: OpportunityPriorityBand;
@@ -21,12 +22,17 @@ type JobOpportunityEntryProps = {
   packageId: string | null;
 };
 
-export function JobOpportunityEntry({ jobPostingId, analysis, packageId }: JobOpportunityEntryProps) {
+export function JobOpportunityEntry({
+  jobPostingId,
+  analysis,
+  packageId,
+  canonicalEligibility = null,
+}: JobOpportunityEntryProps) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function run(path: string, then?: (json: Record<string, unknown>) => void) {
+  async function run(path: string, then?: (json: Record<string, unknown>) => void, confirmReview = false) {
     if (pending) return;
     setPending(true);
     setError(null);
@@ -34,7 +40,7 @@ export function JobOpportunityEntry({ jobPostingId, analysis, packageId }: JobOp
       const response = await fetch(path, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: "{}",
+        body: JSON.stringify(confirmReview ? { confirmReview: true } : {}),
       });
       const json = (await response.json()) as Record<string, unknown>;
       if (!response.ok) {
@@ -85,13 +91,13 @@ export function JobOpportunityEntry({ jobPostingId, analysis, packageId }: JobOp
         <button
           className="btn-primary"
           data-testid="prepare-application"
-          disabled={pending}
+          disabled={pending || analysis?.eligibilityStatus === "INELIGIBLE" || canonicalEligibility === "INELIGIBLE"}
           onClick={() =>
             void run(`/api/jobs/opportunities/${jobPostingId}/prepare`, (json) => {
               if (typeof json.packageId === "string") {
                 router.push(`/workspace/jobs/apply-now/${json.packageId}`);
               }
-            })
+            }, analysis?.eligibilityStatus === "REVIEW_REQUIRED" || canonicalEligibility === "REVIEW_REQUIRED")
           }
           type="button"
         >

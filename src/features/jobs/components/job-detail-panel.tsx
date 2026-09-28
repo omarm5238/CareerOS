@@ -104,6 +104,7 @@ export function JobDetailPanel({
 
       <JobOpportunityEntry
         analysis={opportunity}
+        canonicalEligibility={canonicalEligibilityFromWarnings(job.analysis?.aiWarnings)}
         jobPostingId={job.id}
         packageId={opportunityPackageId}
       />
@@ -132,6 +133,7 @@ export function JobDetailPanel({
           </section>
 
           <JobMatchSummary
+            aiWarnings={job.analysis.aiWarnings}
             matchScore={job.analysis.matchScore}
             matchedSkills={job.analysis.matchedSkills}
             missingSkills={job.analysis.missingSkills}
@@ -181,6 +183,11 @@ export function JobDetailPanel({
       </section>
     </div>
   );
+}
+
+function canonicalEligibilityFromWarnings(warnings: string[] | undefined): string | null {
+  const marker = warnings?.find((warning) => warning.startsWith("CANONICAL|"));
+  return marker?.split("|")[1] ?? null;
 }
 
 function MetaItem({ label, value }: { label: string; value: string }) {

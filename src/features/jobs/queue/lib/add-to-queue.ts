@@ -7,10 +7,14 @@ export async function addToQueue(
 ): Promise<{ id: string; created: boolean }> {
   const job = await prisma.discoveredJob.findFirst({
     where: { id: discoveredJobId, userId },
-    select: { id: true, finalScore: true },
+    select: { id: true, finalScore: true, hardBlockersJson: true, softBlockersJson: true },
   });
 
   if (!job) throw new Error("Job not found.");
+  const hardBlockers = Array.isArray(job.hardBlockersJson) ? job.hardBlockersJson : [];
+  if (hardBlockers.length > 0) {
+    throw new Error("This job is ineligible and cannot enter the application queue.");
+  }
 
   const existing = await prisma.applicationQueueItem.findUnique({
     where: { userId_discoveredJobId: { userId, discoveredJobId } },
@@ -44,10 +48,13 @@ export async function batchAddToQueue(
   for (const id of discoveredJobIds.slice(0, 10)) {
     const job = await prisma.discoveredJob.findFirst({
       where: { id, userId, discoveryStatus: "CANDIDATE", dismissedAt: null },
-      select: { id: true, finalScore: true },
+      select: { id: true, finalScore: true, hardBlockersJson: true, softBlockersJson: true },
     });
 
-    if (!job || (job.finalScore ?? 0) < minimumScore) {
+    const hardBlockers = Array.isArray(job?.hardBlockersJson) ? job.hardBlockersJson : [];
+    const softBlockers = Array.isArray(job?.softBlockersJson) ? job.softBlockersJson : [];
+    const reviewRequired = softBlockers.some((blocker) => blocker === "REVIEW_REQUIRED");
+    if (!job || hardBlockers.length > 0 || reviewRequired || (job.finalScore ?? 0) < minimumScore) {
       skipped++;
       continue;
     }

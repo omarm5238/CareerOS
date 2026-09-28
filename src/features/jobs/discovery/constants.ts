@@ -15,7 +15,7 @@ export const QUEUE_PREPARE_CONCURRENCY = 2;
 export const SCORE_BAND_THRESHOLDS = {
   EXCELLENT: 85,
   STRONG: 75,
-  POSSIBLE: 65,
+  POSSIBLE: 55,
   LOW: 0,
 } as const;
 

@@ -62,6 +62,12 @@ function isHardRejected(
   return null;
 }
 
+function discoveryBand(band: string): "STRONG" | "POSSIBLE" | "LOW" | null {
+  if (band === "INELIGIBLE") return null;
+  if (band === "STRONG" || band === "POSSIBLE" || band === "LOW") return band;
+  return "LOW";
+}
+
 export async function runJobDiscovery(userId: string, options?: { force?: boolean }): Promise<DiscoveryRunResult> {
   const start = Date.now();
 
@@ -294,6 +300,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       normalizedCompany: normCompany,
       roleTargets: enabledTargets.map(t => t.title),
       resumeAnalysisId: resumeAnalysis?.analysisId ?? null,
+      skillsContextKey: "m30b-canonical",
     });
 
     // Upsert job
@@ -313,9 +320,9 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         lastDiscoveryRunId: run.id,
       };
       if (shouldRescore) {
-        updateData.deterministicScore = scoreResult.breakdown.total;
-        updateData.finalScore = scoreResult.breakdown.total;
-        updateData.scoreBand = scoreResult.scoreBand;
+        updateData.deterministicScore = scoreResult.canonical.score;
+        updateData.finalScore = scoreResult.canonical.score;
+        updateData.scoreBand = discoveryBand(scoreResult.scoreBand);
         updateData.matchedSkillsJson = toJson(scoreResult.matchedSkills);
         updateData.missingSkillsJson = toJson(scoreResult.missingSkills);
         updateData.hardBlockersJson = toJson(scoreResult.hardBlockers);
@@ -348,9 +355,9 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
           expiresAt: job.expiresAt ? new Date(job.expiresAt) : null,
           canonicalFingerprint: fp,
           lastDiscoveryRunId: run.id,
-          deterministicScore: scoreResult.breakdown.total,
-          finalScore: scoreResult.breakdown.total,
-          scoreBand: scoreResult.scoreBand as "EXCELLENT" | "STRONG" | "POSSIBLE" | "LOW",
+          deterministicScore: scoreResult.canonical.score,
+          finalScore: scoreResult.canonical.score,
+          scoreBand: discoveryBand(scoreResult.scoreBand),
           matchedSkillsJson: toJson(scoreResult.matchedSkills),
           missingSkillsJson: toJson(scoreResult.missingSkills),
           hardBlockersJson: toJson(scoreResult.hardBlockers),
@@ -409,12 +416,14 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     select: {
       id: true, title: true, company: true, description: true,
       matchedSkillsJson: true, missingSkillsJson: true,
-      scoreContextFingerprint: true, aiScore: true,
+      scoreContextFingerprint: true, aiScore: true, hardBlockersJson: true,
     },
   });
 
-  // Only AI rank candidates that don't already have an AI score with matching context
-  const needsAiRank = topCandidates.filter(c => c.aiScore === null);
+  const needsAiRank = topCandidates.filter((candidate) => {
+    if (candidate.aiScore !== null) return false;
+    return !Array.isArray(candidate.hardBlockersJson) || candidate.hardBlockersJson.length === 0;
+  });
 
   if (needsAiRank.length > 0 && resumeAnalysis) {
     const aiResult = await rankDiscoveredJobsBatch(
@@ -440,31 +449,10 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         const candidate = needsAiRank.find(c => c.id === ranking.candidateId);
         if (!candidate) continue;
 
-        const existingDetScore = await prisma.discoveredJob.findUnique({
-          where: { id: candidate.id },
-          select: { deterministicScore: true },
-        });
-
-        const detScore = existingDetScore?.deterministicScore ?? 0;
-        const finalScore = Math.round(detScore * 0.70 + ranking.aiSuitability * 0.30);
-
-        const band = finalScore >= 85 ? "EXCELLENT" : finalScore >= 75 ? "STRONG" : finalScore >= 65 ? "POSSIBLE" : "LOW";
-
         await prisma.discoveredJob.update({
           where: { id: candidate.id },
           data: {
-            aiScore: ranking.aiSuitability,
-            finalScore,
-            scoreBand: band,
             matchSummary: ranking.matchSummary || null,
-            matchedSkillsJson: toJson(
-              ranking.strongEvidence.length > 0 ? ranking.strongEvidence : [],
-            ),
-            missingSkillsJson: toJson(ranking.missingSkills),
-            softBlockersJson: toJson(ranking.softBlockers),
-            hardBlockersJson: toJson(ranking.hardBlockers),
-            warningsJson: toJson(ranking.warnings),
-            analysisSource: "AI_ENHANCED",
             aiModel: process.env.OPENAI_DISCOVERY_MODEL?.trim() || process.env.OPENAI_MODEL?.trim() || null,
           },
         });

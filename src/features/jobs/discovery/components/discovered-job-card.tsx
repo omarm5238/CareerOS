@@ -11,9 +11,25 @@ type DiscoveredJobCardProps = {
   onDismiss: (id: string, reason?: string) => Promise<void>;
 };
 
-function ScoreBadge({ score, band }: { score: number | null; band: string | null }) {
+function ScoreBadge({
+  score,
+  band,
+  hardBlockers,
+}: {
+  score: number | null;
+  band: string | null;
+  hardBlockers: string[];
+}) {
+  if (hardBlockers.length > 0) {
+    return (
+      <div className="space-y-1">
+        <span className="text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">Ineligible</span>
+        <p className="text-sm text-[var(--color-text-primary)]">{hardBlockers.join(", ")}</p>
+      </div>
+    );
+  }
   if (score == null) return null;
-  const label = band ? SCORE_BAND_LABELS[band] ?? band : "";
+  const label = band === "LOW" ? "Weak" : band ? SCORE_BAND_LABELS[band] ?? band : "";
   return (
     <div className="flex items-baseline gap-2">
       <span className="text-2xl font-semibold tabular-nums text-[var(--color-text-primary)]">{score}</span>
@@ -47,7 +63,7 @@ export function DiscoveredJobCard({ job, onAddToQueue, onDismiss }: DiscoveredJo
     <article className="surface-glass p-5 space-y-3">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <ScoreBadge score={job.finalScore} band={job.scoreBand} />
+          <ScoreBadge score={job.finalScore} band={job.scoreBand} hardBlockers={job.hardBlockers} />
           <h3 className="mt-1 text-lg font-semibold text-[var(--color-text-primary)]">{job.title}</h3>
           <p className="text-sm text-[var(--color-text-secondary)]">{job.company}</p>
           <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
@@ -76,7 +92,7 @@ export function DiscoveredJobCard({ job, onAddToQueue, onDismiss }: DiscoveredJo
           ) : (
             <button
               type="button"
-              disabled={loading}
+              disabled={loading || job.hardBlockers.length > 0}
               onClick={handleAdd}
               className="rounded-lg border border-[var(--color-border)] bg-[var(--surface-elevated)] px-3 py-1.5 text-sm font-medium text-[var(--color-text-primary)] hover:border-[var(--color-accent)] disabled:opacity-50"
             >

@@ -85,6 +85,11 @@ function mapAnalysisRecord(
   };
 }
 
+function canonicalBandFromWarnings(value: unknown): string | null {
+  const marker = parseStringArray(value).find((warning) => warning.startsWith("CANONICAL|"));
+  return marker?.split("|")[2] ?? null;
+}
+
 export function mapJobPostingToListItem(job: JobRecord): JobListItem {
   return {
     id: job.id,
@@ -101,6 +106,7 @@ export function mapJobPostingToListItem(job: JobRecord): JobListItem {
           matchedSkillsCount: parseStringArray(job.analysis.matchedSkills).length,
           missingSkillsCount: parseStringArray(job.analysis.missingSkills).length,
           analysisSource: parseAnalysisSource(job.analysis.analysisSource),
+          canonicalBand: canonicalBandFromWarnings(job.analysis.aiWarnings),
         }
       : null,
   };

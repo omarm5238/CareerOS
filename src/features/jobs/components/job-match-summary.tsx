@@ -8,6 +8,7 @@ type JobMatchSummaryProps = {
   roleAlignment: RoleAlignment;
   matchedSkills: string[];
   missingSkills: string[];
+  aiWarnings?: string[];
 };
 
 export function JobMatchSummary({
@@ -15,8 +16,13 @@ export function JobMatchSummary({
   roleAlignment,
   matchedSkills,
   missingSkills,
+  aiWarnings = [],
 }: JobMatchSummaryProps) {
   const requirements = partitionRequirements(missingSkills);
+  const canonical = aiWarnings.find((warning) => warning.startsWith("CANONICAL|"));
+  const [, eligibility, band, scoreText, reasons = ""] = canonical?.split("|") ?? [];
+  const blocking = reasons.split(",").filter(Boolean);
+  const ineligible = eligibility === "INELIGIBLE" || band === "INELIGIBLE";
   return (
     <section
       aria-labelledby="job-match-heading"
@@ -33,9 +39,12 @@ export function JobMatchSummary({
         <div className="surface-card p-3">
           <p className="section-eyebrow">Match score</p>
           <p className="metric-number mt-1 text-3xl text-[var(--color-text-primary)]">
-            {matchScore}%
+            {ineligible ? "Ineligible" : `${scoreText || matchScore}%`}
             <span className="sr-only"> match</span>
           </p>
+          {band && !ineligible ? (
+            <p className="mt-1 text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">{band}</p>
+          ) : null}
         </div>
         <div className="surface-card p-3">
           <p className="text-[11px] text-[var(--color-text-secondary)]">Role alignment</p>
@@ -45,7 +54,11 @@ export function JobMatchSummary({
         </div>
       </div>
 
-      <SkillGroup label="Matched skills" skills={matchedSkills} empty="No matched skills yet." />
+      {blocking.length > 0 ? (
+        <p className="mt-4 text-sm text-[var(--color-text-primary)]" role="status">
+          {ineligible ? "Blocking" : "Review"}: {blocking.join(", ")}
+        </p>
+      ) : null}
       <SkillGroup label="Missing skills" skills={requirements.skill} empty="No missing technical skills." />
       <SkillGroup
         label="Experience gaps"

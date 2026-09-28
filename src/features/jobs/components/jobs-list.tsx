@@ -70,7 +70,7 @@ export function JobsList({ jobs, selectedJobId }: JobsListProps) {
                           source={job.analysis.analysisSource}
                         />
                         <span className="metric-number rounded-full border border-[var(--color-border-subtle)] bg-[var(--surface-inset)] px-2 py-0.5 text-[11px] text-[var(--color-text-primary)]">
-                          {job.analysis.matchScore}%
+                          {job.analysis.canonicalBand === "INELIGIBLE" ? "Ineligible" : `${job.analysis.matchScore}%`}
                         </span>
                       </>
                     ) : null}

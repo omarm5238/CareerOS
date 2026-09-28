@@ -3,6 +3,7 @@ import { prisma } from "@/server/db/prisma";
 
 import { buildJobMatchInput, resolveJobMatchAnalysis } from "../ai";
 import type { CreateJobPostingInput, JobDetailView } from "../types";
+import { stampCanonicalJobMatch } from "../matching/stamp-job-match";
 import { jobMatchAnalysisToPrismaData } from "./job-match-analysis-to-prisma";
 import { mapJobPostingToDetailView } from "./map-job-posting-to-view";
 
@@ -22,7 +23,15 @@ export async function createJobPostingForUser(
     },
     resume,
   );
-  const analysis = await resolveJobMatchAnalysis(matchInput);
+  const analysis = await stampCanonicalJobMatch(
+    userId,
+    {
+      title: input.title,
+      description: input.description,
+      location: input.location ?? null,
+    },
+    await resolveJobMatchAnalysis(matchInput),
+  );
 
   const created = await prisma.jobPosting.create({
     data: {

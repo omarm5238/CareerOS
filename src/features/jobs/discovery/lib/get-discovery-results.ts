@@ -27,7 +27,8 @@ export async function getDiscoveryResultsForUser(
   if (filter === "strong") {
     where.finalScore = { gte: minScore };
   } else if (filter === "possible") {
-    where.finalScore = { gte: 65, lt: minScore };
+    where.finalScore = { gte: 55, lt: minScore };
+    where.hardBlockersJson = { equals: [] };
   }
 
   const jobs = await prisma.discoveredJob.findMany({
