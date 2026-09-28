@@ -21,7 +21,13 @@ function buildProfileFields(data: Partial<JobDiscoveryProfileData>, generated?: 
   if (data.freshnessDays !== undefined) fields.freshnessDays = data.freshnessDays;
   if (data.minimumSuitabilityScore !== undefined) fields.minimumSuitabilityScore = data.minimumSuitabilityScore;
   if (data.dailyTarget !== undefined) fields.dailyTarget = data.dailyTarget;
-  if (data.providerPreferences !== undefined) fields.providerPreferencesJson = toJson(data.providerPreferences);
+  if (data.providerPreferences !== undefined || data.searchIntent !== undefined) {
+    const providerPreferences = {
+      ...(data.providerPreferences ?? {}),
+      ...(data.searchIntent !== undefined ? { searchIntent: data.searchIntent } : {}),
+    };
+    fields.providerPreferencesJson = toJson(providerPreferences);
+  }
   if (generated) fields.generatedFromContextAt = new Date();
 
   return fields;
@@ -50,7 +56,10 @@ export async function upsertDiscoveryProfile(
       freshnessDays: data.freshnessDays ?? 14,
       minimumSuitabilityScore: data.minimumSuitabilityScore ?? 75,
       dailyTarget: data.dailyTarget ?? 20,
-      providerPreferencesJson: toJson(data.providerPreferences ?? {}),
+      providerPreferencesJson: toJson({
+        ...(data.providerPreferences ?? {}),
+        ...(data.searchIntent ? { searchIntent: data.searchIntent } : {}),
+      }),
       generatedFromContextAt: generated ? new Date() : null,
     },
     update: updates,

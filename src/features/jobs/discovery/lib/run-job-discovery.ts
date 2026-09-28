@@ -2,64 +2,48 @@ import { prisma } from "@/server/db/prisma";
 import type { Prisma } from "@/generated/prisma/client";
 import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
 
-import { DISCOVERY_COOLDOWN_MS, AI_DEEP_RANK_LIMIT, MAX_QUERY_VARIANTS } from "../constants";
+import { DISCOVERY_COOLDOWN_MS, AI_DEEP_RANK_LIMIT } from "../constants";
 import type {
   DiscoveryProviderName, ProviderJobResult, ProviderRunStats, ProviderError,
   DiscoveryQuerySnapshot, DiscoveryRunResult, JobDiscoveryProfileData,
 } from "../types";
-import { getEnabledProviders } from "../providers/registry";
+import { getAllProviders, getEnabledProviders } from "../providers/registry";
 import { stripHtml, normalizeTitle, normalizeCompany, normalizeLocation } from "../normalization/normalize-text";
-import { canonicalizeUrl } from "../normalization/canonicalize-url";
 import { fingerprintJob } from "../normalization/fingerprint-job";
 import { calculateDeterministicScore } from "../scoring/deterministic-score";
 import { rankDiscoveredJobsBatch } from "../ai/rank-discovered-jobs";
 import { buildScoreContextFingerprint } from "../ai/context-fingerprint";
-import { getDiscoveryProfileForUser, parseDiscoveryProfileData } from "./get-discovery-profile";
+import { getDiscoveryProfileForUser } from "./get-discovery-profile";
+import {
+  interpretSearchProfile,
+  prepareDiscoveryCandidates,
+  queryCountries,
+  queryTitles,
+  type DiscoveryQualityJob,
+  type FilterStats,
+} from "../quality/search-quality";
 
 function toJson(value: unknown): Prisma.InputJsonValue {
   return value as Prisma.InputJsonValue;
 }
 
-function buildQueryVariants(profile: JobDiscoveryProfileData): string[] {
-  const variants = new Set<string>();
-  for (const target of profile.roleTargets) {
-    if (!target.enabled) continue;
-    variants.add(target.title.toLowerCase());
-    for (const alias of target.aliases) {
-      variants.add(alias.toLowerCase());
-      if (variants.size >= MAX_QUERY_VARIANTS) break;
-    }
-    if (variants.size >= MAX_QUERY_VARIANTS) break;
-  }
-  return [...variants];
-}
-
-function isHardRejected(
-  job: ProviderJobResult,
-  profile: JobDiscoveryProfileData,
-): string | null {
-  // Malformed
-  if (!job.title.trim() || !job.company.trim()) return "malformed";
-  if (!job.description || job.description.trim().length < 20) return "empty_description";
-
-  // Freshness
-  if (job.postedAt && profile.freshnessDays > 0) {
-    const posted = new Date(job.postedAt);
-    if (!isNaN(posted.getTime())) {
-      const daysSincePost = (Date.now() - posted.getTime()) / (1000 * 60 * 60 * 24);
-      if (daysSincePost > profile.freshnessDays * 2) return "too_old";
-    }
-  }
-
-  // Excluded keywords
-  if (profile.excludedKeywords.length > 0) {
-    const text = `${job.title} ${job.description}`.toLowerCase();
-    for (const kw of profile.excludedKeywords) {
-      if (text.includes(kw.toLowerCase())) return `excluded_keyword:${kw}`;
-    }
-  }
-
-  return null;
+function toProviderQualityJob(job: ProviderJobResult, index: number): DiscoveryQualityJob {
+  return {
+    id: `${job.provider}:${job.externalId ?? index}`,
+    title: job.title,
+    company: job.company,
+    location: job.location,
+    countryCode: job.countryCode,
+    workMode: job.workMode,
+    employmentType: job.employmentType,
+    description: stripHtml(job.description),
+    postedAt: job.postedAt,
+    expiresAt: job.expiresAt,
+    sourceUrl: job.sourceUrl,
+    applyUrl: job.applyUrl,
+    provider: job.provider,
+    externalId: job.externalId,
+  };
 }
 
 function discoveryBand(band: string): "STRONG" | "POSSIBLE" | "LOW" | null {
@@ -91,7 +75,10 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     minimumSuitabilityScore: profileRow.minimumSuitabilityScore,
     dailyTarget: profileRow.dailyTarget,
     providerPreferences: profileRow.providerPreferences,
+    searchIntent: profileRow.searchIntent,
   };
+
+  const intent = interpretSearchProfile(profile);
 
   const enabledTargets = profile.roleTargets.filter(t => t.enabled);
   if (enabledTargets.length === 0) {
@@ -126,15 +113,18 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     }
   }
 
-  // Create run record
-  const queryVariants = buildQueryVariants(profile);
+  const queryVariants = queryTitles(intent).slice(0, 6);
   const enabledProviders = getEnabledProviders(profile.providerPreferences);
+  const countries = queryCountries(intent);
+  const remoteWanted = intent.locationMode === "REMOTE_ONLY"
+    || intent.locationMode === "CURRENT_COUNTRY_PLUS_REMOTE"
+    || intent.locationMode === "SELECTED_COUNTRIES_PLUS_REMOTE";
 
   const querySnapshot: DiscoveryQuerySnapshot = {
     roleTargets: enabledTargets.map(t => t.title),
-    locations: profile.locationTargets.filter(l => l.enabled).map(l => l.country),
+    locations: countries.length > 0 ? countries : [intent.currentCountryCode ?? ""].filter(Boolean),
     workModes: profile.workModes,
-    freshnessDays: profile.freshnessDays,
+    freshnessDays: intent.freshnessDays,
     minimumSuitabilityScore: profile.minimumSuitabilityScore,
     enabledProviders: enabledProviders.map(p => p.provider),
     queryVariants,
@@ -154,26 +144,73 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
   const providerErrors: ProviderError[] = [];
   let anySuccess = false;
 
-  // Fetch from providers
-  for (const provider of enabledProviders) {
-    const providerStart = Date.now();
-    try {
-      const results = await provider.search({ keywords: queryVariants });
-      const durationMs = Date.now() - providerStart;
-
-      allResults.push(...results);
+  for (const provider of getAllProviders()) {
+    if (!provider.isConfigured()) {
+      providerStats.push({
+        provider: provider.provider,
+        configured: false,
+        requestsMade: 0,
+        rawResults: 0,
+        normalizedResults: 0,
+        durationMs: 0,
+        status: "skipped",
+      });
+      continue;
+    }
+    if (!enabledProviders.some((item) => item.provider === provider.provider)) continue;
+    if (provider.provider === "REMOTIVE" && !remoteWanted) {
       providerStats.push({
         provider: provider.provider,
         configured: true,
-        requestsMade: 1,
-        rawResults: results.length,
-        normalizedResults: results.length,
-        durationMs,
+        requestsMade: 0,
+        rawResults: 0,
+        normalizedResults: 0,
+        durationMs: 0,
+        status: "skipped",
+      });
+      continue;
+    }
+
+    const providerStart = Date.now();
+    const searchCountries = provider.provider === "ADZUNA" || provider.provider === "JOOBLE"
+      ? (countries.length > 0 ? countries : [])
+      : [undefined];
+    if ((provider.provider === "ADZUNA" || provider.provider === "JOOBLE") && searchCountries.length === 0) {
+      providerStats.push({
+        provider: provider.provider,
+        configured: true,
+        requestsMade: 0,
+        rawResults: 0,
+        normalizedResults: 0,
+        durationMs: 0,
+        status: "skipped",
+      });
+      continue;
+    }
+    try {
+      let rawResults = 0;
+      let requestsMade = 0;
+      for (const countryCode of searchCountries) {
+        const results = await provider.search({
+          keywords: queryVariants,
+          countryCode,
+          location: countryCode,
+        });
+        requestsMade++;
+        rawResults += results.length;
+        allResults.push(...results);
+      }
+      providerStats.push({
+        provider: provider.provider,
+        configured: true,
+        requestsMade,
+        rawResults,
+        normalizedResults: rawResults,
+        durationMs: Date.now() - providerStart,
         status: "success",
       });
       anySuccess = true;
     } catch (err) {
-      const durationMs = Date.now() - providerStart;
       const message = err instanceof Error ? err.message : "Unknown error";
       providerErrors.push({
         provider: provider.provider,
@@ -186,11 +223,17 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         requestsMade: 1,
         rawResults: 0,
         normalizedResults: 0,
-        durationMs,
+        durationMs: Date.now() - providerStart,
         status: "failed",
       });
     }
   }
+
+  const emptyStats: FilterStats = {
+    fetched: 0, normalized: 0, duplicatesRemoved: 0, roleFiltered: 0, seniorityFiltered: 0,
+    stackFiltered: 0, employmentFiltered: 0, geoFiltered: 0, freshnessFiltered: 0, trustFiltered: 0,
+    kept: 0, locationIncomplete: intent.locationMode !== "REMOTE_ONLY" && intent.locationMode !== "SELECTED_COUNTRIES" && intent.locationMode !== "SELECTED_COUNTRIES_PLUS_REMOTE" && !intent.currentCountryCode,
+  };
 
   if (!anySuccess) {
     await prisma.jobDiscoveryRun.update({
@@ -201,6 +244,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         providerStatsJson: toJson(providerStats),
         providerErrorsJson: toJson(providerErrors),
         rawFoundCount: 0,
+        querySnapshotJson: toJson({ ...querySnapshot, filterStats: emptyStats }),
       },
     });
     return {
@@ -209,51 +253,23 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       rawFoundCount: 0, normalizedCount: 0, duplicateCount: 0,
       hardRejectedCount: 0, scoredCount: 0, strongMatchCount: 0,
       providerStats, providerErrors, durationMs: Date.now() - start,
+      filterStats: emptyStats,
     };
   }
 
-  // Normalize & deduplicate
+  const prepared = prepareDiscoveryCandidates(
+    allResults.map((job, index) => toProviderQualityJob(job, index)),
+    intent,
+  );
+  const keptIds = new Set(prepared.kept.map((job) => job.id));
+  const candidates = allResults.filter((job, index) => keptIds.has(toProviderQualityJob(job, index).id));
   const rawFoundCount = allResults.length;
-  let duplicateCount = 0;
-  let hardRejectedCount = 0;
-
-  // Level 1 dedup: provider + externalId
-  const seen = new Map<string, ProviderJobResult>();
-  const dedupResults: ProviderJobResult[] = [];
-
-  for (const job of allResults) {
-    const key = `${job.provider}:${job.externalId ?? canonicalizeUrl(job.sourceUrl)}`;
-    if (seen.has(key)) {
-      duplicateCount++;
-      continue;
-    }
-    seen.set(key, job);
-    dedupResults.push(job);
-  }
-
-  // Level 2 dedup: canonical URL
-  const urlSeen = new Set<string>();
-  const urlDedupResults: ProviderJobResult[] = [];
-  for (const job of dedupResults) {
-    const canonUrl = canonicalizeUrl(job.sourceUrl);
-    if (urlSeen.has(canonUrl)) {
-      duplicateCount++;
-      continue;
-    }
-    urlSeen.add(canonUrl);
-    urlDedupResults.push(job);
-  }
-
-  // Hard filter
-  const candidates: ProviderJobResult[] = [];
-  for (const job of urlDedupResults) {
-    const rejectReason = isHardRejected(job, profile);
-    if (rejectReason) {
-      hardRejectedCount++;
-      continue;
-    }
-    candidates.push(job);
-  }
+  let duplicateCount = prepared.stats.duplicatesRemoved;
+  const hardRejectedCount = rawFoundCount - prepared.stats.normalized + (
+    prepared.stats.roleFiltered + prepared.stats.seniorityFiltered + prepared.stats.stackFiltered
+    + prepared.stats.employmentFiltered + prepared.stats.geoFiltered + prepared.stats.freshnessFiltered
+    + prepared.stats.trustFiltered
+  );
 
   // Load resume context for scoring
   const resumeAnalysis = await getLatestResumeAnalysisForUser(userId);
@@ -292,7 +308,9 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       userExperienceLevel: resumeAnalysis?.experienceLevel ?? null,
       userSkills,
       userEvidenceSkills,
-      freshnessDays: profile.freshnessDays,
+      freshnessDays: intent.freshnessDays,
+      searchTargetCountryCodes: [...new Set([intent.currentCountryCode, ...intent.selectedCountryCodes].filter((code): code is string => Boolean(code)))],
+      profileCountryCode: intent.currentCountryCode,
     });
 
     const ctxFp = buildScoreContextFingerprint({
@@ -330,6 +348,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         updateData.evidenceJson = toJson(scoreResult.evidence);
         updateData.analysisSource = "RULE_BASED";
         updateData.scoreContextFingerprint = ctxFp;
+        updateData.discoveryStatus = scoreResult.canonical.eligibility === "INELIGIBLE" ? "FILTERED" : "CANDIDATE";
       }
       await prisma.discoveredJob.update({
         where: { id: existing.id },
@@ -400,6 +419,18 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     if (scoreResult.breakdown.total >= profile.minimumSuitabilityScore) {
       strongMatchCount++;
     }
+  }
+
+  if (upsertedIds.length === 0) {
+    await prisma.discoveredJob.updateMany({
+      where: { userId, discoveryStatus: "CANDIDATE", dismissedAt: null },
+      data: { discoveryStatus: "STALE" },
+    });
+  } else {
+    await prisma.discoveredJob.updateMany({
+      where: { userId, discoveryStatus: "CANDIDATE", dismissedAt: null, id: { notIn: upsertedIds } },
+      data: { discoveryStatus: "STALE" },
+    });
   }
 
   const normalizedCount = candidates.length;
@@ -485,6 +516,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       hardRejectedCount,
       scoredCount,
       strongMatchCount: strongCount,
+      querySnapshotJson: toJson({ ...querySnapshot, filterStats: prepared.stats }),
     },
   });
 
@@ -500,5 +532,6 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     providerStats,
     providerErrors,
     durationMs: Date.now() - start,
+    filterStats: prepared.stats,
   };
 }

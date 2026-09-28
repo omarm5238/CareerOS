@@ -60,8 +60,10 @@ export class JoobleProvider implements JobDiscoveryProvider {
     const regions = getConfiguredRegions();
     if (regions.length === 0) return [];
 
-    // Only search in the first configured region to be conservative
-    const { key, endpoint, region } = regions[0];
+    const requested = request.countryCode?.toUpperCase() === "GB" ? "UK" : request.countryCode?.toUpperCase();
+    const chosen = requested ? regions.find((region) => region.region === requested) : regions[0];
+    if (!chosen) return [];
+    const { key, endpoint, region } = chosen;
     const results: ProviderJobResult[] = [];
     const query = request.keywords.join(" ") || "software engineer";
 

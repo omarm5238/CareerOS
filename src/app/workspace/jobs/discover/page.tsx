@@ -52,6 +52,7 @@ export default async function WorkspaceJobsDiscoverPage() {
                     message: string;
                   }[])
                 : [],
+              diagnostics: diagnosticsFromSnapshot(lastRun.querySnapshotJson),
             }
           : null
       }
@@ -59,4 +60,24 @@ export default async function WorkspaceJobsDiscoverPage() {
       dailyTarget={dailyTarget}
     />
   );
+}
+
+function diagnosticsFromSnapshot(value: unknown) {
+  if (typeof value !== "object" || value === null || !("filterStats" in value)) return null;
+  const stats = (value as { filterStats?: unknown }).filterStats;
+  if (typeof stats !== "object" || stats === null) return null;
+  return stats as {
+    fetched: number;
+    normalized: number;
+    duplicatesRemoved: number;
+    roleFiltered: number;
+    seniorityFiltered: number;
+    stackFiltered: number;
+    employmentFiltered: number;
+    geoFiltered: number;
+    freshnessFiltered: number;
+    trustFiltered: number;
+    kept: number;
+    locationIncomplete: boolean;
+  };
 }

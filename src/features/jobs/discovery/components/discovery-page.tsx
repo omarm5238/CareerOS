@@ -22,6 +22,20 @@ type DiscoveryPageProps = {
     status: string;
     strongMatchCount: number;
     providerErrors: ProviderError[];
+    diagnostics?: {
+      fetched: number;
+      normalized: number;
+      duplicatesRemoved: number;
+      roleFiltered: number;
+      seniorityFiltered: number;
+      stackFiltered: number;
+      employmentFiltered: number;
+      geoFiltered: number;
+      freshnessFiltered: number;
+      trustFiltered: number;
+      kept: number;
+      locationIncomplete: boolean;
+    } | null;
   } | null;
   todayStrong: number;
   dailyTarget: number;
@@ -47,7 +61,8 @@ export function DiscoveryPage({
   const filtered = results.filter((j) => {
     if (filter === "dismissed") return !!j.dismissedAt;
     if (j.dismissedAt) return false;
-    if (filter === "strong") return j.hardBlockers.length === 0 && (j.finalScore ?? 0) >= minScore;
+    if (j.hardBlockers.length > 0) return false;
+    if (filter === "strong") return (j.finalScore ?? 0) >= minScore;
     if (filter === "possible") return (j.finalScore ?? 0) >= 55 && (j.finalScore ?? 0) < minScore && j.hardBlockers.length === 0;
     return true;
   });
@@ -165,6 +180,22 @@ export function DiscoveryPage({
                 </span>
               ))}
             </div>
+
+            {lastRun?.diagnostics ? (
+              <p className="text-sm text-[var(--color-text-secondary)]">
+                Fetched {lastRun.diagnostics.fetched}
+                {" · "}Normalized {lastRun.diagnostics.normalized}
+                {" · "}Duplicates removed {lastRun.diagnostics.duplicatesRemoved}
+                {" · "}Role filtered {lastRun.diagnostics.roleFiltered}
+                {" · "}Seniority filtered {lastRun.diagnostics.seniorityFiltered}
+                {" · "}Stack filtered {lastRun.diagnostics.stackFiltered}
+                {" · "}Geo filtered {lastRun.diagnostics.geoFiltered}
+                {" · "}Freshness filtered {lastRun.diagnostics.freshnessFiltered}
+                {" · "}Trust filtered {lastRun.diagnostics.trustFiltered}
+                {" · "}Kept {lastRun.diagnostics.kept}
+                {lastRun.diagnostics.locationIncomplete ? " · Current country is not set" : ""}
+              </p>
+            ) : null}
 
             {lastRun?.status === "PARTIAL" && lastRun.providerErrors.length > 0 ? (
               <p className="text-sm text-[var(--color-text-secondary)]">

@@ -17,6 +17,8 @@ export interface DeterministicScoreInput {
   userSkills: string[];
   userEvidenceSkills: string[];
   freshnessDays: number;
+  searchTargetCountryCodes?: string[];
+  profileCountryCode?: string | null;
 }
 
 export interface DeterministicScoreResult {
@@ -45,9 +47,10 @@ export function calculateDeterministicScore(input: DeterministicScoreInput): Det
       experienceLevel: input.userExperienceLevel,
       skills: input.userSkills,
       evidenceSkills: input.userEvidenceSkills,
-      countryCode: enabledLocations[0]?.countryCode ?? null,
+      countryCode: input.profileCountryCode || enabledLocations[0]?.countryCode || null,
       countryNames: enabledLocations.flatMap((target) => [target.country, ...target.cities]),
       workModes: input.userWorkModes,
+      searchTargetCountryCodes: input.searchTargetCountryCodes,
     },
   );
 

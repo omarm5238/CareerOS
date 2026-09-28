@@ -1,5 +1,5 @@
 import { prisma } from "@/server/db/prisma";
-import type { JobDiscoveryProfileData, JobDiscoveryRoleTarget, JobDiscoveryLocationTarget, ProviderPreferences, WorkAuthorizationPreferences } from "../types";
+import type { JobDiscoveryProfileData, JobDiscoveryRoleTarget, JobDiscoveryLocationTarget, ProviderPreferences, StoredSearchIntent, WorkAuthorizationPreferences } from "../types";
 
 function safeJsonArray<T>(value: unknown): T[] {
   if (Array.isArray(value)) return value as T[];
@@ -26,6 +26,11 @@ export function parseDiscoveryProfileData(row: {
   dailyTarget: number;
   providerPreferencesJson: unknown;
 }): JobDiscoveryProfileData {
+  const providerRecord = safeJsonRecord(row.providerPreferencesJson);
+  const searchIntent = isSearchIntent(providerRecord.searchIntent) ? providerRecord.searchIntent : null;
+  const providerPreferences = { ...providerRecord };
+  delete providerPreferences.searchIntent;
+
   return {
     roleTargets: safeJsonArray<JobDiscoveryRoleTarget>(row.roleTargetsJson),
     locationTargets: safeJsonArray<JobDiscoveryLocationTarget>(row.locationTargetsJson),
@@ -39,8 +44,13 @@ export function parseDiscoveryProfileData(row: {
     freshnessDays: row.freshnessDays,
     minimumSuitabilityScore: row.minimumSuitabilityScore,
     dailyTarget: row.dailyTarget,
-    providerPreferences: safeJsonRecord(row.providerPreferencesJson) as ProviderPreferences,
+    providerPreferences: providerPreferences as ProviderPreferences,
+    searchIntent,
   };
+}
+
+function isSearchIntent(value: unknown): value is StoredSearchIntent {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 export async function getDiscoveryProfileForUser(userId: string) {

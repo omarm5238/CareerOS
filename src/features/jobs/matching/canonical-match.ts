@@ -54,6 +54,8 @@ export type CanonicalProfile = {
   countryCode: string | null;
   countryNames: string[];
   workModes: string[];
+  /** Explicit discovery search targets. Residence outside these countries is not a hard location failure. */
+  searchTargetCountryCodes?: string[];
 };
 
 export type CanonicalJobInput = {
@@ -124,7 +126,7 @@ const TECH: TechDef[] = [
   { id: "next", family: "js", primary: false, pattern: /\bnext\.?js\b|\bnextjs\b/i },
   { id: "postgresql", family: "data", primary: false, pattern: /\bpostgresql\b|\bpostgres\b/i },
   { id: "prisma", family: "data", primary: false, pattern: /\bprisma\b/i },
-  { id: "csharp", family: "dotnet", primary: true, pattern: /\bc\s*#\b|\bc\s*sharp\b|\bcsharp\b/i },
+  { id: "csharp", family: "dotnet", primary: true, pattern: /\bc\s*#(?!\w)|\bc\s*sharp\b|\bcsharp\b/i },
   { id: "dotnet", family: "dotnet", primary: true, pattern: /\.net\b|\bdotnet\b|\basp\.net\b/i },
   { id: "java", family: "java", primary: true, pattern: /\bjava\b(?!script)/i },
   { id: "php", family: "php", primary: true, pattern: /\bphp\b|\blaravel\b/i },
@@ -265,6 +267,23 @@ export function canManuallyQueue(result: CanonicalMatchResult): boolean {
   return result.eligibility !== "INELIGIBLE";
 }
 
+export function previewJobSignals(job: CanonicalJobInput): {
+  roleFamily: RoleFamily;
+  seniority: SeniorityLevel;
+  coreTechIds: string[];
+} {
+  const stack = extractStack(job.title, job.description);
+  return {
+    roleFamily: classifyRoleFamily(job.title, job.description),
+    seniority: inferSeniority(job.title, job.description),
+    coreTechIds: [...stack.core],
+  };
+}
+
+export function normalizeTechIds(skills: string[]): string[] {
+  return [...skillIds(skills)];
+}
+
 function classifyRoleFamily(title: string, description: string): RoleFamily {
   for (const rule of NON_TECH_TITLE) {
     if (rule.pattern.test(title)) return rule.family;
@@ -372,7 +391,9 @@ function extractStack(title: string, description: string): { core: Set<string>; 
   for (const tech of TECH) {
     if (tech.pattern.test(title)) core.add(tech.id);
   }
-  for (const sentence of description.split(/[.\n]/)) {
+  const protectedDescription = description.replace(/(\w)\.(?=\w)/g, "$1\u0000");
+  for (const rawSentence of protectedDescription.split(/[.\n]/)) {
+    const sentence = rawSentence.replace(/\u0000/g, ".");
     const optionalSentence = /\b(nice to have|preferred|bonus|familiarity|exposure to|plus if)\b/i.test(sentence);
     const coreSentence = /\b(required|must have|must-have|mandatory|proficiency|strong experience|minimum \d+ years)\b/i.test(sentence);
     for (const tech of TECH) {
@@ -422,6 +443,14 @@ function evaluateLocation(
   const turkeyMentioned = /\b(türkiye|turkiye|turkey|istanbul)\b/i.test(text) || (job.countryCode ?? "").toUpperCase() === "TR";
   const worldwide = /\b(worldwide|work from anywhere|remote worldwide|anywhere in the world|global remote)\b/i.test(text);
   const restricted = restrictedRegion(text);
+  const searchTargets = new Set((profile.searchTargetCountryCodes ?? []).map((code) => code.toUpperCase()));
+
+  if (restricted && searchTargets.has(restricted)) {
+    return {
+      status: "REVIEW",
+      explanation: "Remote restriction matches an explicit search target, and work eligibility is not confirmed",
+    };
+  }
 
   if (restricted && userInTurkey && !turkeyMentioned && restricted !== "TR") {
     return { status: "INELIGIBLE", explanation: `Remote policy is limited to ${restricted}` };

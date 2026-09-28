@@ -34,6 +34,29 @@ export interface ProviderPreferences {
   JOOBLE?: boolean;
 }
 
+export interface StoredSearchIntent {
+  preferredTitles?: string[];
+  excludedTitles?: string[];
+  allowedSeniority?: string[];
+  excludedSeniority?: string[];
+  preferredStack?: string[];
+  avoidWhenMandatoryStack?: string[];
+  locationMode?: string;
+  currentCountryCode?: string | null;
+  currentCity?: string | null;
+  selectedCountryCodes?: string[];
+  remote?: {
+    worldwide?: boolean;
+    regions?: string[];
+    acceptingCurrentCountry?: boolean;
+    acceptingSelectedCountries?: boolean;
+  };
+  employmentTypes?: string[];
+  freshnessDays?: number;
+  minimumTrust?: "TIER_A" | "TIER_B" | "TIER_C";
+  aggregatorsAllowed?: boolean;
+}
+
 export interface JobDiscoveryProfileData {
   roleTargets: JobDiscoveryRoleTarget[];
   locationTargets: JobDiscoveryLocationTarget[];
@@ -48,6 +71,7 @@ export interface JobDiscoveryProfileData {
   minimumSuitabilityScore: number;
   dailyTarget: number;
   providerPreferences: ProviderPreferences;
+  searchIntent?: StoredSearchIntent | null;
 }
 
 // Provider types
@@ -262,4 +286,18 @@ export interface DiscoveryRunResult {
   providerStats: ProviderRunStats[];
   providerErrors: ProviderError[];
   durationMs: number;
+  filterStats?: {
+    fetched: number;
+    normalized: number;
+    duplicatesRemoved: number;
+    roleFiltered: number;
+    seniorityFiltered: number;
+    stackFiltered: number;
+    employmentFiltered: number;
+    geoFiltered: number;
+    freshnessFiltered: number;
+    trustFiltered: number;
+    kept: number;
+    locationIncomplete: boolean;
+  };
 }

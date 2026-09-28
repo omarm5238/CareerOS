@@ -1,6 +1,7 @@
 import { prisma } from "@/server/db/prisma";
 import type { Prisma } from "@/generated/prisma/client";
 import type { DiscoveryListItem } from "../types";
+import { compareDiscoveryRank } from "../quality/search-quality";
 
 export async function getDiscoveryResultsForUser(
   userId: string,
@@ -70,7 +71,7 @@ export async function getDiscoveryResultsForUser(
     },
   });
 
-  return jobs.map(job => {
+  const mapped = jobs.map(job => {
     const qi = job.queueItems[0] ?? null;
     return {
       id: job.id,
@@ -99,6 +100,37 @@ export async function getDiscoveryResultsForUser(
       applicationId: qi?.applicationId ?? null,
     };
   });
+
+  const visible = filter === "dismissed"
+    ? mapped
+    : mapped.filter((job) => job.dismissedAt || job.hardBlockers.length === 0);
+
+  return visible.sort((a, b) => compareDiscoveryRank(toRanked(a), toRanked(b)));
+}
+
+function toRanked(job: DiscoveryListItem) {
+  return {
+    id: job.id,
+    title: job.title,
+    company: job.company,
+    location: job.location,
+    countryCode: null,
+    workMode: job.workMode,
+    employmentType: "UNKNOWN",
+    description: job.matchSummary ?? job.title,
+    postedAt: job.postedAt,
+    expiresAt: null,
+    sourceUrl: job.sourceUrl ?? "",
+    applyUrl: job.sourceUrl,
+    provider: job.providers[0] ?? "UNKNOWN",
+    externalId: null,
+    canonicalScore: job.finalScore,
+    eligibility: job.hardBlockers.length > 0
+      ? "INELIGIBLE" as const
+      : job.softBlockers.includes("REVIEW_REQUIRED")
+        ? "REVIEW_REQUIRED" as const
+        : "ELIGIBLE" as const,
+  };
 }
 
 function safeStringArray(value: unknown): string[] {

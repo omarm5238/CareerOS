@@ -67,8 +67,9 @@ export function DiscoveredJobCard({ job, onAddToQueue, onDismiss }: DiscoveredJo
           <h3 className="mt-1 text-lg font-semibold text-[var(--color-text-primary)]">{job.title}</h3>
           <p className="text-sm text-[var(--color-text-secondary)]">{job.company}</p>
           <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
-            {[job.workMode !== "UNKNOWN" ? job.workMode : null, job.location].filter(Boolean).join(" · ")}
-            {job.postedAt ? ` · Posted ${new Date(job.postedAt).toLocaleDateString()}` : ""}
+            {[job.workMode !== "UNKNOWN" ? job.workMode : null, job.location].filter(Boolean).join(" · ") || "Location not stated"}
+            {job.postedAt ? ` · Posted ${new Date(job.postedAt).toLocaleDateString()}` : " · Date unknown"}
+            {job.softBlockers.includes("REVIEW_REQUIRED") ? " · Review required" : ""}
           </p>
           {job.providers.length > 0 ? (
             <p className="mt-1 text-xs text-[var(--color-text-secondary)]">
