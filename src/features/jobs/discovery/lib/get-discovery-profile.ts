@@ -1,5 +1,5 @@
 import { prisma } from "@/server/db/prisma";
-import type { JobDiscoveryProfileData, JobDiscoveryRoleTarget, JobDiscoveryLocationTarget, ProviderPreferences, StoredSearchIntent, WorkAuthorizationPreferences } from "../types";
+import { DISCOVERY_PROVIDER_NAMES, type JobDiscoveryProfileData, type JobDiscoveryRoleTarget, type JobDiscoveryLocationTarget, type ProviderPreferences, type StoredSearchIntent, type WorkAuthorizationPreferences } from "../types";
 
 function safeJsonArray<T>(value: unknown): T[] {
   if (Array.isArray(value)) return value as T[];
@@ -28,8 +28,7 @@ export function parseDiscoveryProfileData(row: {
 }): JobDiscoveryProfileData {
   const providerRecord = safeJsonRecord(row.providerPreferencesJson);
   const searchIntent = isSearchIntent(providerRecord.searchIntent) ? providerRecord.searchIntent : null;
-  const providerPreferences = { ...providerRecord };
-  delete providerPreferences.searchIntent;
+  const providerPreferences = parseProviderPreferences(providerRecord);
 
   return {
     roleTargets: safeJsonArray<JobDiscoveryRoleTarget>(row.roleTargetsJson),
@@ -47,6 +46,14 @@ export function parseDiscoveryProfileData(row: {
     providerPreferences: providerPreferences as ProviderPreferences,
     searchIntent,
   };
+}
+
+export function parseProviderPreferences(record: Record<string, unknown>): ProviderPreferences {
+  const preferences: ProviderPreferences = {};
+  for (const key of DISCOVERY_PROVIDER_NAMES) {
+    if (typeof record[key] === "boolean") preferences[key] = record[key];
+  }
+  return preferences;
 }
 
 function isSearchIntent(value: unknown): value is StoredSearchIntent {

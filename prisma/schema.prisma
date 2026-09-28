@@ -649,6 +649,11 @@ enum DiscoveryProvider {
   ARBEITNOW
   ADZUNA
   JOOBLE
+  GREENHOUSE
+  LEVER
+  ASHBY
+  EURES
+  LINKEDIN
 }
 
 enum DiscoveryScoreBand {

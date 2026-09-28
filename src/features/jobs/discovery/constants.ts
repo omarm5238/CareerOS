@@ -50,6 +50,11 @@ export const PROVIDER_LABELS: Record<string, string> = {
   ARBEITNOW: "Arbeitnow",
   ADZUNA: "Adzuna",
   JOOBLE: "Jooble",
+  GREENHOUSE: "Greenhouse",
+  LEVER: "Lever",
+  ASHBY: "Ashby",
+  EURES: "EURES",
+  LINKEDIN: "LinkedIn",
 };
 
 export const ADZUNA_SUPPORTED_COUNTRIES: Record<string, string> = {

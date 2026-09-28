@@ -283,7 +283,8 @@ export function preferredRoleFamilies(intent: SearchIntent): Set<RoleFamily> {
 export function providerTrust(job: Pick<DiscoveryQualityJob, "provider" | "sourceUrl" | "applyUrl">): TrustTier {
   const url = `${job.applyUrl ?? ""} ${job.sourceUrl}`.toLowerCase();
   if (/greenhouse\.io|lever\.co|ashbyhq\.com|myworkdayjobs\.com|smartrecruiters\.com/.test(url)) return "TIER_A";
-  if (["REMOTIVE", "ARBEITNOW", "ADZUNA", "JOOBLE"].includes(job.provider)) return "TIER_B";
+  if (job.provider === "GREENHOUSE" || job.provider === "LEVER" || job.provider === "ASHBY") return "TIER_A";
+  if (job.provider === "EURES" || ["REMOTIVE", "ARBEITNOW", "ADZUNA", "JOOBLE"].includes(job.provider)) return "TIER_B";
   if (/remotive\.com|arbeitnow\.com|adzuna\.|jooble\.org/.test(url)) return "TIER_B";
   return "TIER_C";
 }

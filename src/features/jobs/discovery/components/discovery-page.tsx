@@ -13,6 +13,14 @@ import type { JobDiscoveryProfileData } from "../types";
 
 type ProviderStatus = { provider: string; status: string; label: string };
 
+function providerAvailabilityLabel(status: string): string {
+  if (status === "available") return "Available";
+  if (status === "not_configured") return "Not configured";
+  if (status === "partner_access_required") return "Partner access required";
+  if (status === "unsupported") return "Not available";
+  return "Unavailable this run";
+}
+
 type DiscoveryPageProps = {
   profile: (JobDiscoveryProfileData & { id: string }) | null;
   results: DiscoveryListItem[];
@@ -176,7 +184,7 @@ export function DiscoveryPage({
                   key={p.provider}
                   className="rounded border border-[var(--color-border-subtle)] px-2 py-1 text-xs text-[var(--color-text-secondary)]"
                 >
-                  {p.label} — {p.status === "available" ? "Available" : p.status === "not_configured" ? "Not configured" : "Unavailable this run"}
+                  {p.label} — {providerAvailabilityLabel(p.status)}
                 </span>
               ))}
             </div>

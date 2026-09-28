@@ -215,7 +215,12 @@ export const DiscoveryProvider = {
   REMOTIVE: 'REMOTIVE',
   ARBEITNOW: 'ARBEITNOW',
   ADZUNA: 'ADZUNA',
-  JOOBLE: 'JOOBLE'
+  JOOBLE: 'JOOBLE',
+  GREENHOUSE: 'GREENHOUSE',
+  LEVER: 'LEVER',
+  ASHBY: 'ASHBY',
+  EURES: 'EURES',
+  LINKEDIN: 'LINKEDIN'
 } as const
 
 export type DiscoveryProvider = (typeof DiscoveryProvider)[keyof typeof DiscoveryProvider]

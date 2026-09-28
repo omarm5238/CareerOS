@@ -27,11 +27,28 @@ export interface WorkAuthorizationPreferences {
   [countryCode: string]: WorkAuthStatus;
 }
 
+export const DISCOVERY_PROVIDER_NAMES = [
+  "REMOTIVE",
+  "ARBEITNOW",
+  "ADZUNA",
+  "JOOBLE",
+  "GREENHOUSE",
+  "LEVER",
+  "ASHBY",
+  "EURES",
+  "LINKEDIN",
+] as const;
+
 export interface ProviderPreferences {
   REMOTIVE?: boolean;
   ARBEITNOW?: boolean;
   ADZUNA?: boolean;
   JOOBLE?: boolean;
+  GREENHOUSE?: boolean;
+  LEVER?: boolean;
+  ASHBY?: boolean;
+  EURES?: boolean;
+  LINKEDIN?: boolean;
 }
 
 export interface StoredSearchIntent {
@@ -75,7 +92,7 @@ export interface JobDiscoveryProfileData {
 }
 
 // Provider types
-export type DiscoveryProviderName = "REMOTIVE" | "ARBEITNOW" | "ADZUNA" | "JOOBLE";
+export type DiscoveryProviderName = (typeof DISCOVERY_PROVIDER_NAMES)[number];
 
 export interface ProviderJobResult {
   provider: DiscoveryProviderName;
