@@ -148,6 +148,17 @@ export type jobEvidenceMatch = Prisma.jobEvidenceMatchModel
  */
 export type jobOpportunityAnalysis = Prisma.jobOpportunityAnalysisModel
 /**
+ * Model resumeSourceRevision
+ * Source-resume revision. One active row per user is enforced by the partial
+ * unique index resumeSourceRevision_one_active in the provenance migration.
+ */
+export type resumeSourceRevision = Prisma.resumeSourceRevisionModel
+/**
+ * Model opportunityAnalysisSnapshot
+ *
+ */
+export type opportunityAnalysisSnapshot = Prisma.opportunityAnalysisSnapshotModel
+/**
  * Model applicationPackage
  *
  */

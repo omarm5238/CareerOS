@@ -68,6 +68,8 @@ model user {
   careerGraphRelations          careerGraphRelation[]
   careerMemoryEvents            careerMemoryEvent[]
   careerMemoryPreference        careerMemoryPreference?
+  resumeSourceRevisions         resumeSourceRevision[]
+  opportunityAnalysisSnapshots  opportunityAnalysisSnapshot[]
 }
 
 model session {
@@ -130,6 +132,8 @@ model resumeDocument {
   user           user            @relation(fields: [userId], references: [id], onDelete: Cascade)
   analysis       resumeAnalysis?
   resumeVersions resumeVersion[]
+  sourceRevision resumeSourceRevision?
+  opportunitySnapshots opportunityAnalysisSnapshot[]
 
   @@index([userId])
 }
@@ -150,11 +154,21 @@ model resumeAnalysis {
   analysisSource     String   @default("rule_based")
   aiModel            String?
   aiWarnings         Json     @default("[]")
+  analyzerVersion    String?
+  sourceContentHash  String?
+  freshness          ResumeAnalysisFreshness?
+  staleReason        ResumeStaleReason?
+  sourceRevisionId   String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
-  resumeDocument resumeDocument  @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
+  resumeDocument resumeDocument         @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
   resumeVersions resumeVersion[]
+  sourceRevision resumeSourceRevision?  @relation(fields: [sourceRevisionId], references: [id], onDelete: SetNull)
+  opportunitySnapshots opportunityAnalysisSnapshot[]
+
+  @@index([sourceRevisionId])
+  @@index([freshness])
 }
 
 model jobPosting {
@@ -180,6 +194,7 @@ model jobPosting {
   communicationDrafts          communicationDraft[]
   requirements                 jobRequirement[]
   opportunityAnalysis          jobOpportunityAnalysis?
+  opportunitySnapshots         opportunityAnalysisSnapshot[]
   applicationPackages          applicationPackage[]
   applicationExecutionSessions applicationExecutionSession[]
 
@@ -1054,6 +1069,21 @@ enum JobOpportunityAnalysisStatus {
   COMPLETED
   PARTIAL
   FAILED
+  STALE
+}
+
+enum ResumeAnalysisFreshness {
+  CURRENT
+  STALE
+  SUPERSEDED
+  FAILED
+}
+
+enum ResumeStaleReason {
+  ACTIVE_REVISION_CHANGED
+  SOURCE_CONTENT_CHANGED
+  ANALYZER_VERSION_CHANGED
+  MANUAL_INVALIDATION
 }
 
 enum JobOpportunityAnalysisSource {
@@ -1174,13 +1204,20 @@ model jobEvidenceMatch {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user           user           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  jobRequirement jobRequirement @relation(fields: [jobRequirementId], references: [id], onDelete: Cascade)
+  resumeRevisionId   String?
+  sourceContentHash  String?
+  verified           Boolean @default(false)
+
+  user           user                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobRequirement jobRequirement        @relation(fields: [jobRequirementId], references: [id], onDelete: Cascade)
+  resumeRevision resumeSourceRevision? @relation(fields: [resumeRevisionId], references: [id], onDelete: SetNull)
 
   @@unique([jobRequirementId, fingerprint])
   @@index([userId])
   @@index([jobRequirementId])
   @@index([matchStrength])
+  @@index([resumeRevisionId])
+  @@index([verified])
 }
 
 model jobOpportunityAnalysis {
@@ -1230,6 +1267,7 @@ model jobOpportunityAnalysis {
 
   user       user       @relation(fields: [userId], references: [id], onDelete: Cascade)
   jobPosting jobPosting @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  snapshots  opportunityAnalysisSnapshot[]
 
   @@unique([userId, jobPostingId])
   @@index([userId])
@@ -1239,6 +1277,60 @@ model jobOpportunityAnalysis {
   @@index([priorityScore])
   @@index([eligibilityStatus])
   @@index([updatedAt])
+}
+
+/// Source-resume revision. One active row per user is enforced by the partial
+/// unique index resumeSourceRevision_one_active in the provenance migration.
+model resumeSourceRevision {
+  id               String    @id @default(cuid())
+  userId           String
+  resumeDocumentId String    @unique
+  revisionNumber   Int
+  contentHash      String
+  sourceFilename   String
+  isActive         Boolean   @default(false)
+  activatedAt      DateTime?
+  createdAt        DateTime  @default(now())
+
+  user           user             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resumeDocument resumeDocument   @relation(fields: [resumeDocumentId], references: [id], onDelete: Cascade)
+  analyses       resumeAnalysis[]
+  opportunitySnapshots opportunityAnalysisSnapshot[]
+  evidenceMatches jobEvidenceMatch[]
+
+  @@unique([userId, revisionNumber])
+  @@index([userId, createdAt])
+  @@index([contentHash])
+}
+
+model opportunityAnalysisSnapshot {
+  id                         String   @id @default(cuid())
+  userId                     String
+  jobPostingId               String
+  legacyAnalysisId           String?
+  resumeDocumentId           String
+  resumeRevisionId           String
+  resumeContentHash          String
+  resumeAnalysisId           String
+  jobSnapshotHash            String
+  canonicalMatchVersion      String
+  opportunityAnalyzerVersion String
+  status                     JobOpportunityAnalysisStatus
+  snapshotJson               Json
+  createdAt                  DateTime @default(now())
+
+  user           user                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobPosting     jobPosting             @relation(fields: [jobPostingId], references: [id], onDelete: Cascade)
+  legacyAnalysis jobOpportunityAnalysis? @relation(fields: [legacyAnalysisId], references: [id], onDelete: SetNull)
+  resumeDocument resumeDocument         @relation(fields: [resumeDocumentId], references: [id], onDelete: Restrict)
+  resumeRevision resumeSourceRevision   @relation(fields: [resumeRevisionId], references: [id], onDelete: Restrict)
+  resumeAnalysis resumeAnalysis         @relation(fields: [resumeAnalysisId], references: [id], onDelete: Restrict)
+
+  @@index([userId, createdAt])
+  @@index([jobPostingId, createdAt])
+  @@index([resumeRevisionId])
+  @@index([resumeAnalysisId])
+  @@index([jobSnapshotHash])
 }
 
 model applicationPackage {

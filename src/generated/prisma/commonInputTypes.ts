@@ -199,6 +199,20 @@ export type JsonFilterBase<$PrismaModel = never> = {
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
 }
 
+export type EnumResumeAnalysisFreshnessNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeAnalysisFreshness | Prisma.EnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel> | $Enums.ResumeAnalysisFreshness | null
+}
+
+export type EnumResumeStaleReasonNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeStaleReason | Prisma.EnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel> | $Enums.ResumeStaleReason | null
+}
+
 export type JsonWithAggregatesFilter<$PrismaModel = never> =
 | Prisma.PatchUndefined<
     Prisma.Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
@@ -224,6 +238,26 @@ export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedJsonFilter<$PrismaModel>
   _max?: Prisma.NestedJsonFilter<$PrismaModel>
+}
+
+export type EnumResumeAnalysisFreshnessNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeAnalysisFreshness | Prisma.EnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeAnalysisFreshnessNullableWithAggregatesFilter<$PrismaModel> | $Enums.ResumeAnalysisFreshness | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel>
+}
+
+export type EnumResumeStaleReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeStaleReason | Prisma.EnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeStaleReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.ResumeStaleReason | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel>
 }
 
 export type EnumResumeVersionTypeFilter<$PrismaModel = never> = {
@@ -2324,6 +2358,20 @@ export type NestedFloatFilter<$PrismaModel = never> = {
   not?: Prisma.NestedFloatFilter<$PrismaModel> | number
 }
 
+export type NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeAnalysisFreshness | Prisma.EnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel> | $Enums.ResumeAnalysisFreshness | null
+}
+
+export type NestedEnumResumeStaleReasonNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeStaleReason | Prisma.EnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel> | $Enums.ResumeStaleReason | null
+}
+
 export type NestedJsonFilter<$PrismaModel = never> =
 | Prisma.PatchUndefined<
     Prisma.Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -2346,6 +2394,26 @@ export type NestedJsonFilterBase<$PrismaModel = never> = {
   gt?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   gte?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel>
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
+}
+
+export type NestedEnumResumeAnalysisFreshnessNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeAnalysisFreshness | Prisma.EnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeAnalysisFreshness[] | Prisma.ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeAnalysisFreshnessNullableWithAggregatesFilter<$PrismaModel> | $Enums.ResumeAnalysisFreshness | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeAnalysisFreshnessNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumResumeStaleReasonNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ResumeStaleReason | Prisma.EnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ResumeStaleReason[] | Prisma.ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumResumeStaleReasonNullableWithAggregatesFilter<$PrismaModel> | $Enums.ResumeStaleReason | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumResumeStaleReasonNullableFilter<$PrismaModel>
 }
 
 export type NestedEnumResumeVersionTypeFilter<$PrismaModel = never> = {

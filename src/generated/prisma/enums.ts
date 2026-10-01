@@ -391,10 +391,31 @@ export const JobOpportunityAnalysisStatus = {
   PENDING: 'PENDING',
   COMPLETED: 'COMPLETED',
   PARTIAL: 'PARTIAL',
-  FAILED: 'FAILED'
+  FAILED: 'FAILED',
+  STALE: 'STALE'
 } as const
 
 export type JobOpportunityAnalysisStatus = (typeof JobOpportunityAnalysisStatus)[keyof typeof JobOpportunityAnalysisStatus]
+
+
+export const ResumeAnalysisFreshness = {
+  CURRENT: 'CURRENT',
+  STALE: 'STALE',
+  SUPERSEDED: 'SUPERSEDED',
+  FAILED: 'FAILED'
+} as const
+
+export type ResumeAnalysisFreshness = (typeof ResumeAnalysisFreshness)[keyof typeof ResumeAnalysisFreshness]
+
+
+export const ResumeStaleReason = {
+  ACTIVE_REVISION_CHANGED: 'ACTIVE_REVISION_CHANGED',
+  SOURCE_CONTENT_CHANGED: 'SOURCE_CONTENT_CHANGED',
+  ANALYZER_VERSION_CHANGED: 'ANALYZER_VERSION_CHANGED',
+  MANUAL_INVALIDATION: 'MANUAL_INVALIDATION'
+} as const
+
+export type ResumeStaleReason = (typeof ResumeStaleReason)[keyof typeof ResumeStaleReason]
 
 
 export const JobOpportunityAnalysisSource = {

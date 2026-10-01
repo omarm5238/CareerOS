@@ -77,6 +77,8 @@ export const ModelName = {
   jobRequirement: 'jobRequirement',
   jobEvidenceMatch: 'jobEvidenceMatch',
   jobOpportunityAnalysis: 'jobOpportunityAnalysis',
+  resumeSourceRevision: 'resumeSourceRevision',
+  opportunityAnalysisSnapshot: 'opportunityAnalysisSnapshot',
   applicationPackage: 'applicationPackage',
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
@@ -215,6 +217,11 @@ export const ResumeAnalysisScalarFieldEnum = {
   analysisSource: 'analysisSource',
   aiModel: 'aiModel',
   aiWarnings: 'aiWarnings',
+  analyzerVersion: 'analyzerVersion',
+  sourceContentHash: 'sourceContentHash',
+  freshness: 'freshness',
+  staleReason: 'staleReason',
+  sourceRevisionId: 'sourceRevisionId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -646,7 +653,10 @@ export const JobEvidenceMatchScalarFieldEnum = {
   reasoning: 'reasoning',
   fingerprint: 'fingerprint',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  resumeRevisionId: 'resumeRevisionId',
+  sourceContentHash: 'sourceContentHash',
+  verified: 'verified'
 } as const
 
 export type JobEvidenceMatchScalarFieldEnum = (typeof JobEvidenceMatchScalarFieldEnum)[keyof typeof JobEvidenceMatchScalarFieldEnum]
@@ -687,6 +697,41 @@ export const JobOpportunityAnalysisScalarFieldEnum = {
 } as const
 
 export type JobOpportunityAnalysisScalarFieldEnum = (typeof JobOpportunityAnalysisScalarFieldEnum)[keyof typeof JobOpportunityAnalysisScalarFieldEnum]
+
+
+export const ResumeSourceRevisionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  resumeDocumentId: 'resumeDocumentId',
+  revisionNumber: 'revisionNumber',
+  contentHash: 'contentHash',
+  sourceFilename: 'sourceFilename',
+  isActive: 'isActive',
+  activatedAt: 'activatedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ResumeSourceRevisionScalarFieldEnum = (typeof ResumeSourceRevisionScalarFieldEnum)[keyof typeof ResumeSourceRevisionScalarFieldEnum]
+
+
+export const OpportunityAnalysisSnapshotScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  legacyAnalysisId: 'legacyAnalysisId',
+  resumeDocumentId: 'resumeDocumentId',
+  resumeRevisionId: 'resumeRevisionId',
+  resumeContentHash: 'resumeContentHash',
+  resumeAnalysisId: 'resumeAnalysisId',
+  jobSnapshotHash: 'jobSnapshotHash',
+  canonicalMatchVersion: 'canonicalMatchVersion',
+  opportunityAnalyzerVersion: 'opportunityAnalyzerVersion',
+  status: 'status',
+  snapshotJson: 'snapshotJson',
+  createdAt: 'createdAt'
+} as const
+
+export type OpportunityAnalysisSnapshotScalarFieldEnum = (typeof OpportunityAnalysisSnapshotScalarFieldEnum)[keyof typeof OpportunityAnalysisSnapshotScalarFieldEnum]
 
 
 export const ApplicationPackageScalarFieldEnum = {

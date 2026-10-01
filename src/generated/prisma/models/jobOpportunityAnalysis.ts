@@ -470,6 +470,7 @@ export type jobOpportunityAnalysisWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"jobOpportunityAnalysis"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   jobPosting?: Prisma.XOR<Prisma.JobPostingScalarRelationFilter, Prisma.jobPostingWhereInput>
+  snapshots?: Prisma.OpportunityAnalysisSnapshotListRelationFilter
 }
 
 export type jobOpportunityAnalysisOrderByWithRelationInput = {
@@ -506,6 +507,7 @@ export type jobOpportunityAnalysisOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   user?: Prisma.userOrderByWithRelationInput
   jobPosting?: Prisma.jobPostingOrderByWithRelationInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotOrderByRelationAggregateInput
 }
 
 export type jobOpportunityAnalysisWhereUniqueInput = Prisma.AtLeast<{
@@ -546,6 +548,7 @@ export type jobOpportunityAnalysisWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"jobOpportunityAnalysis"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   jobPosting?: Prisma.XOR<Prisma.JobPostingScalarRelationFilter, Prisma.jobPostingWhereInput>
+  snapshots?: Prisma.OpportunityAnalysisSnapshotListRelationFilter
 }, "id" | "jobPostingId" | "userId_jobPostingId">
 
 export type jobOpportunityAnalysisOrderByWithAggregationInput = {
@@ -656,6 +659,7 @@ export type jobOpportunityAnalysisCreateInput = {
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutJobOpportunityAnalysesInput
   jobPosting: Prisma.jobPostingCreateNestedOneWithoutOpportunityAnalysisInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisUncheckedCreateInput = {
@@ -690,6 +694,7 @@ export type jobOpportunityAnalysisUncheckedCreateInput = {
   analysisSource: $Enums.JobOpportunityAnalysisSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisUpdateInput = {
@@ -724,6 +729,7 @@ export type jobOpportunityAnalysisUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutJobOpportunityAnalysesNestedInput
   jobPosting?: Prisma.jobPostingUpdateOneRequiredWithoutOpportunityAnalysisNestedInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutLegacyAnalysisNestedInput
 }
 
 export type jobOpportunityAnalysisUncheckedUpdateInput = {
@@ -758,6 +764,7 @@ export type jobOpportunityAnalysisUncheckedUpdateInput = {
   analysisSource?: Prisma.EnumJobOpportunityAnalysisSourceFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutLegacyAnalysisNestedInput
 }
 
 export type jobOpportunityAnalysisCreateManyInput = {
@@ -1110,6 +1117,22 @@ export type EnumJobOpportunityAnalysisSourceFieldUpdateOperationsInput = {
   set?: $Enums.JobOpportunityAnalysisSource
 }
 
+export type jobOpportunityAnalysisCreateNestedOneWithoutSnapshotsInput = {
+  create?: Prisma.XOR<Prisma.jobOpportunityAnalysisCreateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedCreateWithoutSnapshotsInput>
+  connectOrCreate?: Prisma.jobOpportunityAnalysisCreateOrConnectWithoutSnapshotsInput
+  connect?: Prisma.jobOpportunityAnalysisWhereUniqueInput
+}
+
+export type jobOpportunityAnalysisUpdateOneWithoutSnapshotsNestedInput = {
+  create?: Prisma.XOR<Prisma.jobOpportunityAnalysisCreateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedCreateWithoutSnapshotsInput>
+  connectOrCreate?: Prisma.jobOpportunityAnalysisCreateOrConnectWithoutSnapshotsInput
+  upsert?: Prisma.jobOpportunityAnalysisUpsertWithoutSnapshotsInput
+  disconnect?: Prisma.jobOpportunityAnalysisWhereInput | boolean
+  delete?: Prisma.jobOpportunityAnalysisWhereInput | boolean
+  connect?: Prisma.jobOpportunityAnalysisWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.jobOpportunityAnalysisUpdateToOneWithWhereWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUpdateWithoutSnapshotsInput>, Prisma.jobOpportunityAnalysisUncheckedUpdateWithoutSnapshotsInput>
+}
+
 export type jobOpportunityAnalysisCreateWithoutUserInput = {
   id?: string
   status?: $Enums.JobOpportunityAnalysisStatus
@@ -1141,6 +1164,7 @@ export type jobOpportunityAnalysisCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   jobPosting: Prisma.jobPostingCreateNestedOneWithoutOpportunityAnalysisInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisUncheckedCreateWithoutUserInput = {
@@ -1174,6 +1198,7 @@ export type jobOpportunityAnalysisUncheckedCreateWithoutUserInput = {
   analysisSource: $Enums.JobOpportunityAnalysisSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisCreateOrConnectWithoutUserInput = {
@@ -1270,6 +1295,7 @@ export type jobOpportunityAnalysisCreateWithoutJobPostingInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.userCreateNestedOneWithoutJobOpportunityAnalysesInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisUncheckedCreateWithoutJobPostingInput = {
@@ -1303,6 +1329,7 @@ export type jobOpportunityAnalysisUncheckedCreateWithoutJobPostingInput = {
   analysisSource: $Enums.JobOpportunityAnalysisSource
   createdAt?: Date | string
   updatedAt?: Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutLegacyAnalysisInput
 }
 
 export type jobOpportunityAnalysisCreateOrConnectWithoutJobPostingInput = {
@@ -1352,11 +1379,165 @@ export type jobOpportunityAnalysisUpdateWithoutJobPostingInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.userUpdateOneRequiredWithoutJobOpportunityAnalysesNestedInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutLegacyAnalysisNestedInput
 }
 
 export type jobOpportunityAnalysisUncheckedUpdateWithoutJobPostingInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumJobOpportunityAnalysisStatusFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisStatus
+  roleFit?: Prisma.IntFieldUpdateOperationsInput | number
+  skillFit?: Prisma.IntFieldUpdateOperationsInput | number
+  experienceFit?: Prisma.IntFieldUpdateOperationsInput | number
+  evidenceFit?: Prisma.IntFieldUpdateOperationsInput | number
+  locationFit?: Prisma.IntFieldUpdateOperationsInput | number
+  authorizationFit?: Prisma.IntFieldUpdateOperationsInput | number
+  freshnessScore?: Prisma.IntFieldUpdateOperationsInput | number
+  applicationEffortScore?: Prisma.IntFieldUpdateOperationsInput | number
+  opportunityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  priorityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  priorityBand?: Prisma.EnumOpportunityPriorityBandFieldUpdateOperationsInput | $Enums.OpportunityPriorityBand
+  recommendation?: Prisma.EnumOpportunityRecommendationFieldUpdateOperationsInput | $Enums.OpportunityRecommendation
+  eligibilityStatus?: Prisma.EnumJobEligibilityStatusFieldUpdateOperationsInput | $Enums.JobEligibilityStatus
+  applicationEffort?: Prisma.EnumApplicationEffortFieldUpdateOperationsInput | $Enums.ApplicationEffort
+  evidenceCoverage?: Prisma.IntFieldUpdateOperationsInput | number
+  criticalGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  importantGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  minorGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  optionalGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  gapsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilityChecksJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  analysisSource?: Prisma.EnumJobOpportunityAnalysisSourceFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisSource
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutLegacyAnalysisNestedInput
+}
+
+export type jobOpportunityAnalysisCreateWithoutSnapshotsInput = {
+  id?: string
+  status?: $Enums.JobOpportunityAnalysisStatus
+  roleFit: number
+  skillFit: number
+  experienceFit: number
+  evidenceFit: number
+  locationFit: number
+  authorizationFit: number
+  freshnessScore: number
+  applicationEffortScore: number
+  opportunityScore: number
+  priorityScore: number
+  priorityBand: $Enums.OpportunityPriorityBand
+  recommendation: $Enums.OpportunityRecommendation
+  eligibilityStatus: $Enums.JobEligibilityStatus
+  applicationEffort: $Enums.ApplicationEffort
+  evidenceCoverage: number
+  criticalGapCount?: number
+  importantGapCount?: number
+  minorGapCount?: number
+  optionalGapCount?: number
+  gapsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilityChecksJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  summary?: string | null
+  contextFingerprint: string
+  analysisSource: $Enums.JobOpportunityAnalysisSource
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutJobOpportunityAnalysesInput
+  jobPosting: Prisma.jobPostingCreateNestedOneWithoutOpportunityAnalysisInput
+}
+
+export type jobOpportunityAnalysisUncheckedCreateWithoutSnapshotsInput = {
+  id?: string
+  userId: string
+  jobPostingId: string
+  status?: $Enums.JobOpportunityAnalysisStatus
+  roleFit: number
+  skillFit: number
+  experienceFit: number
+  evidenceFit: number
+  locationFit: number
+  authorizationFit: number
+  freshnessScore: number
+  applicationEffortScore: number
+  opportunityScore: number
+  priorityScore: number
+  priorityBand: $Enums.OpportunityPriorityBand
+  recommendation: $Enums.OpportunityRecommendation
+  eligibilityStatus: $Enums.JobEligibilityStatus
+  applicationEffort: $Enums.ApplicationEffort
+  evidenceCoverage: number
+  criticalGapCount?: number
+  importantGapCount?: number
+  minorGapCount?: number
+  optionalGapCount?: number
+  gapsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilityChecksJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  summary?: string | null
+  contextFingerprint: string
+  analysisSource: $Enums.JobOpportunityAnalysisSource
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type jobOpportunityAnalysisCreateOrConnectWithoutSnapshotsInput = {
+  where: Prisma.jobOpportunityAnalysisWhereUniqueInput
+  create: Prisma.XOR<Prisma.jobOpportunityAnalysisCreateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedCreateWithoutSnapshotsInput>
+}
+
+export type jobOpportunityAnalysisUpsertWithoutSnapshotsInput = {
+  update: Prisma.XOR<Prisma.jobOpportunityAnalysisUpdateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedUpdateWithoutSnapshotsInput>
+  create: Prisma.XOR<Prisma.jobOpportunityAnalysisCreateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedCreateWithoutSnapshotsInput>
+  where?: Prisma.jobOpportunityAnalysisWhereInput
+}
+
+export type jobOpportunityAnalysisUpdateToOneWithWhereWithoutSnapshotsInput = {
+  where?: Prisma.jobOpportunityAnalysisWhereInput
+  data: Prisma.XOR<Prisma.jobOpportunityAnalysisUpdateWithoutSnapshotsInput, Prisma.jobOpportunityAnalysisUncheckedUpdateWithoutSnapshotsInput>
+}
+
+export type jobOpportunityAnalysisUpdateWithoutSnapshotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumJobOpportunityAnalysisStatusFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisStatus
+  roleFit?: Prisma.IntFieldUpdateOperationsInput | number
+  skillFit?: Prisma.IntFieldUpdateOperationsInput | number
+  experienceFit?: Prisma.IntFieldUpdateOperationsInput | number
+  evidenceFit?: Prisma.IntFieldUpdateOperationsInput | number
+  locationFit?: Prisma.IntFieldUpdateOperationsInput | number
+  authorizationFit?: Prisma.IntFieldUpdateOperationsInput | number
+  freshnessScore?: Prisma.IntFieldUpdateOperationsInput | number
+  applicationEffortScore?: Prisma.IntFieldUpdateOperationsInput | number
+  opportunityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  priorityScore?: Prisma.IntFieldUpdateOperationsInput | number
+  priorityBand?: Prisma.EnumOpportunityPriorityBandFieldUpdateOperationsInput | $Enums.OpportunityPriorityBand
+  recommendation?: Prisma.EnumOpportunityRecommendationFieldUpdateOperationsInput | $Enums.OpportunityRecommendation
+  eligibilityStatus?: Prisma.EnumJobEligibilityStatusFieldUpdateOperationsInput | $Enums.JobEligibilityStatus
+  applicationEffort?: Prisma.EnumApplicationEffortFieldUpdateOperationsInput | $Enums.ApplicationEffort
+  evidenceCoverage?: Prisma.IntFieldUpdateOperationsInput | number
+  criticalGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  importantGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  minorGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  optionalGapCount?: Prisma.IntFieldUpdateOperationsInput | number
+  gapsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilityChecksJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  analysisSource?: Prisma.EnumJobOpportunityAnalysisSourceFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisSource
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutJobOpportunityAnalysesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneRequiredWithoutOpportunityAnalysisNestedInput
+}
+
+export type jobOpportunityAnalysisUncheckedUpdateWithoutSnapshotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumJobOpportunityAnalysisStatusFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisStatus
   roleFit?: Prisma.IntFieldUpdateOperationsInput | number
   skillFit?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1451,6 +1632,7 @@ export type jobOpportunityAnalysisUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   jobPosting?: Prisma.jobPostingUpdateOneRequiredWithoutOpportunityAnalysisNestedInput
+  snapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutLegacyAnalysisNestedInput
 }
 
 export type jobOpportunityAnalysisUncheckedUpdateWithoutUserInput = {
@@ -1484,6 +1666,7 @@ export type jobOpportunityAnalysisUncheckedUpdateWithoutUserInput = {
   analysisSource?: Prisma.EnumJobOpportunityAnalysisSourceFieldUpdateOperationsInput | $Enums.JobOpportunityAnalysisSource
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  snapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutLegacyAnalysisNestedInput
 }
 
 export type jobOpportunityAnalysisUncheckedUpdateManyWithoutUserInput = {
@@ -1520,6 +1703,35 @@ export type jobOpportunityAnalysisUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type JobOpportunityAnalysisCountOutputType
+ */
+
+export type JobOpportunityAnalysisCountOutputType = {
+  snapshots: number
+}
+
+export type JobOpportunityAnalysisCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  snapshots?: boolean | JobOpportunityAnalysisCountOutputTypeCountSnapshotsArgs
+}
+
+/**
+ * JobOpportunityAnalysisCountOutputType without action
+ */
+export type JobOpportunityAnalysisCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the JobOpportunityAnalysisCountOutputType
+   */
+  select?: Prisma.JobOpportunityAnalysisCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * JobOpportunityAnalysisCountOutputType without action
+ */
+export type JobOpportunityAnalysisCountOutputTypeCountSnapshotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.opportunityAnalysisSnapshotWhereInput
+}
+
 
 export type jobOpportunityAnalysisSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1555,6 +1767,8 @@ export type jobOpportunityAnalysisSelect<ExtArgs extends runtime.Types.Extension
   updatedAt?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
+  snapshots?: boolean | Prisma.jobOpportunityAnalysis$snapshotsArgs<ExtArgs>
+  _count?: boolean | Prisma.JobOpportunityAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["jobOpportunityAnalysis"]>
 
 export type jobOpportunityAnalysisSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1667,6 +1881,8 @@ export type jobOpportunityAnalysisOmit<ExtArgs extends runtime.Types.Extensions.
 export type jobOpportunityAnalysisInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobPosting?: boolean | Prisma.jobPostingDefaultArgs<ExtArgs>
+  snapshots?: boolean | Prisma.jobOpportunityAnalysis$snapshotsArgs<ExtArgs>
+  _count?: boolean | Prisma.JobOpportunityAnalysisCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type jobOpportunityAnalysisIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -1682,6 +1898,7 @@ export type $jobOpportunityAnalysisPayload<ExtArgs extends runtime.Types.Extensi
   objects: {
     user: Prisma.$userPayload<ExtArgs>
     jobPosting: Prisma.$jobPostingPayload<ExtArgs>
+    snapshots: Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2111,6 +2328,7 @@ export interface Prisma__jobOpportunityAnalysisClient<T, Null = never, ExtArgs e
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   jobPosting<T extends Prisma.jobPostingDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobPostingDefaultArgs<ExtArgs>>): Prisma.Prisma__jobPostingClient<runtime.Types.Result.GetResult<Prisma.$jobPostingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  snapshots<T extends Prisma.jobOpportunityAnalysis$snapshotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobOpportunityAnalysis$snapshotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2569,6 +2787,30 @@ export type jobOpportunityAnalysisDeleteManyArgs<ExtArgs extends runtime.Types.E
    * Limit how many jobOpportunityAnalyses to delete.
    */
   limit?: number
+}
+
+/**
+ * jobOpportunityAnalysis.snapshots
+ */
+export type jobOpportunityAnalysis$snapshotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the opportunityAnalysisSnapshot
+   */
+  select?: Prisma.opportunityAnalysisSnapshotSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the opportunityAnalysisSnapshot
+   */
+  omit?: Prisma.opportunityAnalysisSnapshotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.opportunityAnalysisSnapshotInclude<ExtArgs> | null
+  where?: Prisma.opportunityAnalysisSnapshotWhereInput
+  orderBy?: Prisma.opportunityAnalysisSnapshotOrderByWithRelationInput | Prisma.opportunityAnalysisSnapshotOrderByWithRelationInput[]
+  cursor?: Prisma.opportunityAnalysisSnapshotWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.OpportunityAnalysisSnapshotScalarFieldEnum | Prisma.OpportunityAnalysisSnapshotScalarFieldEnum[]
 }
 
 /**

@@ -410,6 +410,8 @@ export const ModelName = {
   jobRequirement: 'jobRequirement',
   jobEvidenceMatch: 'jobEvidenceMatch',
   jobOpportunityAnalysis: 'jobOpportunityAnalysis',
+  resumeSourceRevision: 'resumeSourceRevision',
+  opportunityAnalysisSnapshot: 'opportunityAnalysisSnapshot',
   applicationPackage: 'applicationPackage',
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
@@ -456,7 +458,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation" | "careerMemory" | "careerMemoryEvidence" | "careerGraphEntity" | "careerGraphRelation" | "careerMemoryEvent" | "careerMemoryPreference"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "resumeSourceRevision" | "opportunityAnalysisSnapshot" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation" | "careerMemory" | "careerMemoryEvidence" | "careerGraphEntity" | "careerGraphRelation" | "careerMemoryEvent" | "careerMemoryPreference"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2381,6 +2383,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.jobOpportunityAnalysisCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.JobOpportunityAnalysisCountAggregateOutputType> | number
+        }
+      }
+    }
+    resumeSourceRevision: {
+      payload: Prisma.$resumeSourceRevisionPayload<ExtArgs>
+      fields: Prisma.resumeSourceRevisionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.resumeSourceRevisionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.resumeSourceRevisionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        findFirst: {
+          args: Prisma.resumeSourceRevisionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.resumeSourceRevisionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        findMany: {
+          args: Prisma.resumeSourceRevisionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>[]
+        }
+        create: {
+          args: Prisma.resumeSourceRevisionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        createMany: {
+          args: Prisma.resumeSourceRevisionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.resumeSourceRevisionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>[]
+        }
+        delete: {
+          args: Prisma.resumeSourceRevisionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        update: {
+          args: Prisma.resumeSourceRevisionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        deleteMany: {
+          args: Prisma.resumeSourceRevisionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.resumeSourceRevisionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.resumeSourceRevisionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>[]
+        }
+        upsert: {
+          args: Prisma.resumeSourceRevisionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$resumeSourceRevisionPayload>
+        }
+        aggregate: {
+          args: Prisma.ResumeSourceRevisionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateResumeSourceRevision>
+        }
+        groupBy: {
+          args: Prisma.resumeSourceRevisionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResumeSourceRevisionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.resumeSourceRevisionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResumeSourceRevisionCountAggregateOutputType> | number
+        }
+      }
+    }
+    opportunityAnalysisSnapshot: {
+      payload: Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>
+      fields: Prisma.opportunityAnalysisSnapshotFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.opportunityAnalysisSnapshotFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.opportunityAnalysisSnapshotFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        findFirst: {
+          args: Prisma.opportunityAnalysisSnapshotFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.opportunityAnalysisSnapshotFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        findMany: {
+          args: Prisma.opportunityAnalysisSnapshotFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>[]
+        }
+        create: {
+          args: Prisma.opportunityAnalysisSnapshotCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        createMany: {
+          args: Prisma.opportunityAnalysisSnapshotCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.opportunityAnalysisSnapshotCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>[]
+        }
+        delete: {
+          args: Prisma.opportunityAnalysisSnapshotDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        update: {
+          args: Prisma.opportunityAnalysisSnapshotUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        deleteMany: {
+          args: Prisma.opportunityAnalysisSnapshotDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.opportunityAnalysisSnapshotUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.opportunityAnalysisSnapshotUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>[]
+        }
+        upsert: {
+          args: Prisma.opportunityAnalysisSnapshotUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$opportunityAnalysisSnapshotPayload>
+        }
+        aggregate: {
+          args: Prisma.OpportunityAnalysisSnapshotAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOpportunityAnalysisSnapshot>
+        }
+        groupBy: {
+          args: Prisma.opportunityAnalysisSnapshotGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OpportunityAnalysisSnapshotGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.opportunityAnalysisSnapshotCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OpportunityAnalysisSnapshotCountAggregateOutputType> | number
         }
       }
     }
@@ -4806,6 +4956,11 @@ export const ResumeAnalysisScalarFieldEnum = {
   analysisSource: 'analysisSource',
   aiModel: 'aiModel',
   aiWarnings: 'aiWarnings',
+  analyzerVersion: 'analyzerVersion',
+  sourceContentHash: 'sourceContentHash',
+  freshness: 'freshness',
+  staleReason: 'staleReason',
+  sourceRevisionId: 'sourceRevisionId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -5237,7 +5392,10 @@ export const JobEvidenceMatchScalarFieldEnum = {
   reasoning: 'reasoning',
   fingerprint: 'fingerprint',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  resumeRevisionId: 'resumeRevisionId',
+  sourceContentHash: 'sourceContentHash',
+  verified: 'verified'
 } as const
 
 export type JobEvidenceMatchScalarFieldEnum = (typeof JobEvidenceMatchScalarFieldEnum)[keyof typeof JobEvidenceMatchScalarFieldEnum]
@@ -5278,6 +5436,41 @@ export const JobOpportunityAnalysisScalarFieldEnum = {
 } as const
 
 export type JobOpportunityAnalysisScalarFieldEnum = (typeof JobOpportunityAnalysisScalarFieldEnum)[keyof typeof JobOpportunityAnalysisScalarFieldEnum]
+
+
+export const ResumeSourceRevisionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  resumeDocumentId: 'resumeDocumentId',
+  revisionNumber: 'revisionNumber',
+  contentHash: 'contentHash',
+  sourceFilename: 'sourceFilename',
+  isActive: 'isActive',
+  activatedAt: 'activatedAt',
+  createdAt: 'createdAt'
+} as const
+
+export type ResumeSourceRevisionScalarFieldEnum = (typeof ResumeSourceRevisionScalarFieldEnum)[keyof typeof ResumeSourceRevisionScalarFieldEnum]
+
+
+export const OpportunityAnalysisSnapshotScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  jobPostingId: 'jobPostingId',
+  legacyAnalysisId: 'legacyAnalysisId',
+  resumeDocumentId: 'resumeDocumentId',
+  resumeRevisionId: 'resumeRevisionId',
+  resumeContentHash: 'resumeContentHash',
+  resumeAnalysisId: 'resumeAnalysisId',
+  jobSnapshotHash: 'jobSnapshotHash',
+  canonicalMatchVersion: 'canonicalMatchVersion',
+  opportunityAnalyzerVersion: 'opportunityAnalyzerVersion',
+  status: 'status',
+  snapshotJson: 'snapshotJson',
+  createdAt: 'createdAt'
+} as const
+
+export type OpportunityAnalysisSnapshotScalarFieldEnum = (typeof OpportunityAnalysisSnapshotScalarFieldEnum)[keyof typeof OpportunityAnalysisSnapshotScalarFieldEnum]
 
 
 export const ApplicationPackageScalarFieldEnum = {
@@ -6080,6 +6273,34 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+
+
+
+/**
+ * Reference to a field of type 'ResumeAnalysisFreshness'
+ */
+export type EnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResumeAnalysisFreshness'>
+
+
+
+/**
+ * Reference to a field of type 'ResumeAnalysisFreshness[]'
+ */
+export type ListEnumResumeAnalysisFreshnessFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResumeAnalysisFreshness[]'>
+
+
+
+/**
+ * Reference to a field of type 'ResumeStaleReason'
+ */
+export type EnumResumeStaleReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResumeStaleReason'>
+
+
+
+/**
+ * Reference to a field of type 'ResumeStaleReason[]'
+ */
+export type ListEnumResumeStaleReasonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ResumeStaleReason[]'>
 
 
 
@@ -7716,6 +7937,8 @@ export type GlobalOmitConfig = {
   jobRequirement?: Prisma.jobRequirementOmit
   jobEvidenceMatch?: Prisma.jobEvidenceMatchOmit
   jobOpportunityAnalysis?: Prisma.jobOpportunityAnalysisOmit
+  resumeSourceRevision?: Prisma.resumeSourceRevisionOmit
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotOmit
   applicationPackage?: Prisma.applicationPackageOmit
   applicationExecutionSession?: Prisma.applicationExecutionSessionOmit
   applicationExecutionEvent?: Prisma.applicationExecutionEventOmit

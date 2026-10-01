@@ -37,6 +37,9 @@ export type JobEvidenceMatchMinAggregateOutputType = {
   fingerprint: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  resumeRevisionId: string | null
+  sourceContentHash: string | null
+  verified: boolean | null
 }
 
 export type JobEvidenceMatchMaxAggregateOutputType = {
@@ -52,6 +55,9 @@ export type JobEvidenceMatchMaxAggregateOutputType = {
   fingerprint: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  resumeRevisionId: string | null
+  sourceContentHash: string | null
+  verified: boolean | null
 }
 
 export type JobEvidenceMatchCountAggregateOutputType = {
@@ -67,6 +73,9 @@ export type JobEvidenceMatchCountAggregateOutputType = {
   fingerprint: number
   createdAt: number
   updatedAt: number
+  resumeRevisionId: number
+  sourceContentHash: number
+  verified: number
   _all: number
 }
 
@@ -84,6 +93,9 @@ export type JobEvidenceMatchMinAggregateInputType = {
   fingerprint?: true
   createdAt?: true
   updatedAt?: true
+  resumeRevisionId?: true
+  sourceContentHash?: true
+  verified?: true
 }
 
 export type JobEvidenceMatchMaxAggregateInputType = {
@@ -99,6 +111,9 @@ export type JobEvidenceMatchMaxAggregateInputType = {
   fingerprint?: true
   createdAt?: true
   updatedAt?: true
+  resumeRevisionId?: true
+  sourceContentHash?: true
+  verified?: true
 }
 
 export type JobEvidenceMatchCountAggregateInputType = {
@@ -114,6 +129,9 @@ export type JobEvidenceMatchCountAggregateInputType = {
   fingerprint?: true
   createdAt?: true
   updatedAt?: true
+  resumeRevisionId?: true
+  sourceContentHash?: true
+  verified?: true
   _all?: true
 }
 
@@ -202,6 +220,9 @@ export type JobEvidenceMatchGroupByOutputType = {
   fingerprint: string
   createdAt: Date
   updatedAt: Date
+  resumeRevisionId: string | null
+  sourceContentHash: string | null
+  verified: boolean
   _count: JobEvidenceMatchCountAggregateOutputType | null
   _min: JobEvidenceMatchMinAggregateOutputType | null
   _max: JobEvidenceMatchMaxAggregateOutputType | null
@@ -238,8 +259,12 @@ export type jobEvidenceMatchWhereInput = {
   fingerprint?: Prisma.StringFilter<"jobEvidenceMatch"> | string
   createdAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
+  resumeRevisionId?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  sourceContentHash?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  verified?: Prisma.BoolFilter<"jobEvidenceMatch"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   jobRequirement?: Prisma.XOR<Prisma.JobRequirementScalarRelationFilter, Prisma.jobRequirementWhereInput>
+  resumeRevision?: Prisma.XOR<Prisma.ResumeSourceRevisionNullableScalarRelationFilter, Prisma.resumeSourceRevisionWhereInput> | null
 }
 
 export type jobEvidenceMatchOrderByWithRelationInput = {
@@ -255,8 +280,12 @@ export type jobEvidenceMatchOrderByWithRelationInput = {
   fingerprint?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  resumeRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceContentHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  verified?: Prisma.SortOrder
   user?: Prisma.userOrderByWithRelationInput
   jobRequirement?: Prisma.jobRequirementOrderByWithRelationInput
+  resumeRevision?: Prisma.resumeSourceRevisionOrderByWithRelationInput
 }
 
 export type jobEvidenceMatchWhereUniqueInput = Prisma.AtLeast<{
@@ -276,8 +305,12 @@ export type jobEvidenceMatchWhereUniqueInput = Prisma.AtLeast<{
   fingerprint?: Prisma.StringFilter<"jobEvidenceMatch"> | string
   createdAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
+  resumeRevisionId?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  sourceContentHash?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  verified?: Prisma.BoolFilter<"jobEvidenceMatch"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.userWhereInput>
   jobRequirement?: Prisma.XOR<Prisma.JobRequirementScalarRelationFilter, Prisma.jobRequirementWhereInput>
+  resumeRevision?: Prisma.XOR<Prisma.ResumeSourceRevisionNullableScalarRelationFilter, Prisma.resumeSourceRevisionWhereInput> | null
 }, "id" | "jobRequirementId_fingerprint">
 
 export type jobEvidenceMatchOrderByWithAggregationInput = {
@@ -293,6 +326,9 @@ export type jobEvidenceMatchOrderByWithAggregationInput = {
   fingerprint?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  resumeRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceContentHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  verified?: Prisma.SortOrder
   _count?: Prisma.jobEvidenceMatchCountOrderByAggregateInput
   _max?: Prisma.jobEvidenceMatchMaxOrderByAggregateInput
   _min?: Prisma.jobEvidenceMatchMinOrderByAggregateInput
@@ -314,6 +350,9 @@ export type jobEvidenceMatchScalarWhereWithAggregatesInput = {
   fingerprint?: Prisma.StringWithAggregatesFilter<"jobEvidenceMatch"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"jobEvidenceMatch"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"jobEvidenceMatch"> | Date | string
+  resumeRevisionId?: Prisma.StringNullableWithAggregatesFilter<"jobEvidenceMatch"> | string | null
+  sourceContentHash?: Prisma.StringNullableWithAggregatesFilter<"jobEvidenceMatch"> | string | null
+  verified?: Prisma.BoolWithAggregatesFilter<"jobEvidenceMatch"> | boolean
 }
 
 export type jobEvidenceMatchCreateInput = {
@@ -327,8 +366,11 @@ export type jobEvidenceMatchCreateInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
   user: Prisma.userCreateNestedOneWithoutJobEvidenceMatchesInput
   jobRequirement: Prisma.jobRequirementCreateNestedOneWithoutEvidenceMatchesInput
+  resumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutEvidenceMatchesInput
 }
 
 export type jobEvidenceMatchUncheckedCreateInput = {
@@ -344,6 +386,9 @@ export type jobEvidenceMatchUncheckedCreateInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchUpdateInput = {
@@ -357,8 +402,11 @@ export type jobEvidenceMatchUpdateInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.userUpdateOneRequiredWithoutJobEvidenceMatchesNestedInput
   jobRequirement?: Prisma.jobRequirementUpdateOneRequiredWithoutEvidenceMatchesNestedInput
+  resumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutEvidenceMatchesNestedInput
 }
 
 export type jobEvidenceMatchUncheckedUpdateInput = {
@@ -374,6 +422,9 @@ export type jobEvidenceMatchUncheckedUpdateInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type jobEvidenceMatchCreateManyInput = {
@@ -389,6 +440,9 @@ export type jobEvidenceMatchCreateManyInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchUpdateManyMutationInput = {
@@ -402,6 +456,8 @@ export type jobEvidenceMatchUpdateManyMutationInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type jobEvidenceMatchUncheckedUpdateManyInput = {
@@ -417,6 +473,9 @@ export type jobEvidenceMatchUncheckedUpdateManyInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type JobEvidenceMatchListRelationFilter = {
@@ -447,6 +506,9 @@ export type jobEvidenceMatchCountOrderByAggregateInput = {
   fingerprint?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  resumeRevisionId?: Prisma.SortOrder
+  sourceContentHash?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
 }
 
 export type jobEvidenceMatchMaxOrderByAggregateInput = {
@@ -462,6 +524,9 @@ export type jobEvidenceMatchMaxOrderByAggregateInput = {
   fingerprint?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  resumeRevisionId?: Prisma.SortOrder
+  sourceContentHash?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
 }
 
 export type jobEvidenceMatchMinOrderByAggregateInput = {
@@ -477,6 +542,9 @@ export type jobEvidenceMatchMinOrderByAggregateInput = {
   fingerprint?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  resumeRevisionId?: Prisma.SortOrder
+  sourceContentHash?: Prisma.SortOrder
+  verified?: Prisma.SortOrder
 }
 
 export type jobEvidenceMatchCreateNestedManyWithoutUserInput = {
@@ -571,6 +639,48 @@ export type EnumJobEvidenceMatchStrengthFieldUpdateOperationsInput = {
   set?: $Enums.JobEvidenceMatchStrength
 }
 
+export type jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput = {
+  create?: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput> | Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput[] | Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput[]
+  connectOrCreate?: Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput | Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput[]
+  createMany?: Prisma.jobEvidenceMatchCreateManyResumeRevisionInputEnvelope
+  connect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+}
+
+export type jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput = {
+  create?: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput> | Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput[] | Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput[]
+  connectOrCreate?: Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput | Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput[]
+  createMany?: Prisma.jobEvidenceMatchCreateManyResumeRevisionInputEnvelope
+  connect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+}
+
+export type jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput> | Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput[] | Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput[]
+  connectOrCreate?: Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput | Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput[]
+  upsert?: Prisma.jobEvidenceMatchUpsertWithWhereUniqueWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpsertWithWhereUniqueWithoutResumeRevisionInput[]
+  createMany?: Prisma.jobEvidenceMatchCreateManyResumeRevisionInputEnvelope
+  set?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  disconnect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  delete?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  connect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  update?: Prisma.jobEvidenceMatchUpdateWithWhereUniqueWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpdateWithWhereUniqueWithoutResumeRevisionInput[]
+  updateMany?: Prisma.jobEvidenceMatchUpdateManyWithWhereWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpdateManyWithWhereWithoutResumeRevisionInput[]
+  deleteMany?: Prisma.jobEvidenceMatchScalarWhereInput | Prisma.jobEvidenceMatchScalarWhereInput[]
+}
+
+export type jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput> | Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput[] | Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput[]
+  connectOrCreate?: Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput | Prisma.jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput[]
+  upsert?: Prisma.jobEvidenceMatchUpsertWithWhereUniqueWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpsertWithWhereUniqueWithoutResumeRevisionInput[]
+  createMany?: Prisma.jobEvidenceMatchCreateManyResumeRevisionInputEnvelope
+  set?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  disconnect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  delete?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  connect?: Prisma.jobEvidenceMatchWhereUniqueInput | Prisma.jobEvidenceMatchWhereUniqueInput[]
+  update?: Prisma.jobEvidenceMatchUpdateWithWhereUniqueWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpdateWithWhereUniqueWithoutResumeRevisionInput[]
+  updateMany?: Prisma.jobEvidenceMatchUpdateManyWithWhereWithoutResumeRevisionInput | Prisma.jobEvidenceMatchUpdateManyWithWhereWithoutResumeRevisionInput[]
+  deleteMany?: Prisma.jobEvidenceMatchScalarWhereInput | Prisma.jobEvidenceMatchScalarWhereInput[]
+}
+
 export type jobEvidenceMatchCreateWithoutUserInput = {
   id?: string
   evidenceType: $Enums.JobEvidenceType
@@ -582,7 +692,10 @@ export type jobEvidenceMatchCreateWithoutUserInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
   jobRequirement: Prisma.jobRequirementCreateNestedOneWithoutEvidenceMatchesInput
+  resumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutEvidenceMatchesInput
 }
 
 export type jobEvidenceMatchUncheckedCreateWithoutUserInput = {
@@ -597,6 +710,9 @@ export type jobEvidenceMatchUncheckedCreateWithoutUserInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchCreateOrConnectWithoutUserInput = {
@@ -641,6 +757,9 @@ export type jobEvidenceMatchScalarWhereInput = {
   fingerprint?: Prisma.StringFilter<"jobEvidenceMatch"> | string
   createdAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"jobEvidenceMatch"> | Date | string
+  resumeRevisionId?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  sourceContentHash?: Prisma.StringNullableFilter<"jobEvidenceMatch"> | string | null
+  verified?: Prisma.BoolFilter<"jobEvidenceMatch"> | boolean
 }
 
 export type jobEvidenceMatchCreateWithoutJobRequirementInput = {
@@ -654,7 +773,10 @@ export type jobEvidenceMatchCreateWithoutJobRequirementInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
   user: Prisma.userCreateNestedOneWithoutJobEvidenceMatchesInput
+  resumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutEvidenceMatchesInput
 }
 
 export type jobEvidenceMatchUncheckedCreateWithoutJobRequirementInput = {
@@ -669,6 +791,9 @@ export type jobEvidenceMatchUncheckedCreateWithoutJobRequirementInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchCreateOrConnectWithoutJobRequirementInput = {
@@ -697,6 +822,66 @@ export type jobEvidenceMatchUpdateManyWithWhereWithoutJobRequirementInput = {
   data: Prisma.XOR<Prisma.jobEvidenceMatchUpdateManyMutationInput, Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutJobRequirementInput>
 }
 
+export type jobEvidenceMatchCreateWithoutResumeRevisionInput = {
+  id?: string
+  evidenceType: $Enums.JobEvidenceType
+  evidenceSourceId?: string | null
+  evidenceLabel: string
+  evidenceExcerpt?: string | null
+  matchStrength: $Enums.JobEvidenceMatchStrength
+  reasoning?: string | null
+  fingerprint: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
+  user: Prisma.userCreateNestedOneWithoutJobEvidenceMatchesInput
+  jobRequirement: Prisma.jobRequirementCreateNestedOneWithoutEvidenceMatchesInput
+}
+
+export type jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput = {
+  id?: string
+  userId: string
+  jobRequirementId: string
+  evidenceType: $Enums.JobEvidenceType
+  evidenceSourceId?: string | null
+  evidenceLabel: string
+  evidenceExcerpt?: string | null
+  matchStrength: $Enums.JobEvidenceMatchStrength
+  reasoning?: string | null
+  fingerprint: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
+}
+
+export type jobEvidenceMatchCreateOrConnectWithoutResumeRevisionInput = {
+  where: Prisma.jobEvidenceMatchWhereUniqueInput
+  create: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput>
+}
+
+export type jobEvidenceMatchCreateManyResumeRevisionInputEnvelope = {
+  data: Prisma.jobEvidenceMatchCreateManyResumeRevisionInput | Prisma.jobEvidenceMatchCreateManyResumeRevisionInput[]
+  skipDuplicates?: boolean
+}
+
+export type jobEvidenceMatchUpsertWithWhereUniqueWithoutResumeRevisionInput = {
+  where: Prisma.jobEvidenceMatchWhereUniqueInput
+  update: Prisma.XOR<Prisma.jobEvidenceMatchUpdateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedUpdateWithoutResumeRevisionInput>
+  create: Prisma.XOR<Prisma.jobEvidenceMatchCreateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedCreateWithoutResumeRevisionInput>
+}
+
+export type jobEvidenceMatchUpdateWithWhereUniqueWithoutResumeRevisionInput = {
+  where: Prisma.jobEvidenceMatchWhereUniqueInput
+  data: Prisma.XOR<Prisma.jobEvidenceMatchUpdateWithoutResumeRevisionInput, Prisma.jobEvidenceMatchUncheckedUpdateWithoutResumeRevisionInput>
+}
+
+export type jobEvidenceMatchUpdateManyWithWhereWithoutResumeRevisionInput = {
+  where: Prisma.jobEvidenceMatchScalarWhereInput
+  data: Prisma.XOR<Prisma.jobEvidenceMatchUpdateManyMutationInput, Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionInput>
+}
+
 export type jobEvidenceMatchCreateManyUserInput = {
   id?: string
   jobRequirementId: string
@@ -709,6 +894,9 @@ export type jobEvidenceMatchCreateManyUserInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchUpdateWithoutUserInput = {
@@ -722,7 +910,10 @@ export type jobEvidenceMatchUpdateWithoutUserInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   jobRequirement?: Prisma.jobRequirementUpdateOneRequiredWithoutEvidenceMatchesNestedInput
+  resumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutEvidenceMatchesNestedInput
 }
 
 export type jobEvidenceMatchUncheckedUpdateWithoutUserInput = {
@@ -737,6 +928,9 @@ export type jobEvidenceMatchUncheckedUpdateWithoutUserInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type jobEvidenceMatchUncheckedUpdateManyWithoutUserInput = {
@@ -751,6 +945,9 @@ export type jobEvidenceMatchUncheckedUpdateManyWithoutUserInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type jobEvidenceMatchCreateManyJobRequirementInput = {
@@ -765,6 +962,9 @@ export type jobEvidenceMatchCreateManyJobRequirementInput = {
   fingerprint: string
   createdAt?: Date | string
   updatedAt?: Date | string
+  resumeRevisionId?: string | null
+  sourceContentHash?: string | null
+  verified?: boolean
 }
 
 export type jobEvidenceMatchUpdateWithoutJobRequirementInput = {
@@ -778,7 +978,10 @@ export type jobEvidenceMatchUpdateWithoutJobRequirementInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   user?: Prisma.userUpdateOneRequiredWithoutJobEvidenceMatchesNestedInput
+  resumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutEvidenceMatchesNestedInput
 }
 
 export type jobEvidenceMatchUncheckedUpdateWithoutJobRequirementInput = {
@@ -793,6 +996,9 @@ export type jobEvidenceMatchUncheckedUpdateWithoutJobRequirementInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type jobEvidenceMatchUncheckedUpdateManyWithoutJobRequirementInput = {
@@ -807,6 +1013,77 @@ export type jobEvidenceMatchUncheckedUpdateManyWithoutJobRequirementInput = {
   fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  resumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type jobEvidenceMatchCreateManyResumeRevisionInput = {
+  id?: string
+  userId: string
+  jobRequirementId: string
+  evidenceType: $Enums.JobEvidenceType
+  evidenceSourceId?: string | null
+  evidenceLabel: string
+  evidenceExcerpt?: string | null
+  matchStrength: $Enums.JobEvidenceMatchStrength
+  reasoning?: string | null
+  fingerprint: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sourceContentHash?: string | null
+  verified?: boolean
+}
+
+export type jobEvidenceMatchUpdateWithoutResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceType?: Prisma.EnumJobEvidenceTypeFieldUpdateOperationsInput | $Enums.JobEvidenceType
+  evidenceSourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  evidenceLabel?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceExcerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  matchStrength?: Prisma.EnumJobEvidenceMatchStrengthFieldUpdateOperationsInput | $Enums.JobEvidenceMatchStrength
+  reasoning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  user?: Prisma.userUpdateOneRequiredWithoutJobEvidenceMatchesNestedInput
+  jobRequirement?: Prisma.jobRequirementUpdateOneRequiredWithoutEvidenceMatchesNestedInput
+}
+
+export type jobEvidenceMatchUncheckedUpdateWithoutResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobRequirementId?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceType?: Prisma.EnumJobEvidenceTypeFieldUpdateOperationsInput | $Enums.JobEvidenceType
+  evidenceSourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  evidenceLabel?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceExcerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  matchStrength?: Prisma.EnumJobEvidenceMatchStrengthFieldUpdateOperationsInput | $Enums.JobEvidenceMatchStrength
+  reasoning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobRequirementId?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceType?: Prisma.EnumJobEvidenceTypeFieldUpdateOperationsInput | $Enums.JobEvidenceType
+  evidenceSourceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  evidenceLabel?: Prisma.StringFieldUpdateOperationsInput | string
+  evidenceExcerpt?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  matchStrength?: Prisma.EnumJobEvidenceMatchStrengthFieldUpdateOperationsInput | $Enums.JobEvidenceMatchStrength
+  reasoning?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sourceContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -824,8 +1101,12 @@ export type jobEvidenceMatchSelect<ExtArgs extends runtime.Types.Extensions.Inte
   fingerprint?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  resumeRevisionId?: boolean
+  sourceContentHash?: boolean
+  verified?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }, ExtArgs["result"]["jobEvidenceMatch"]>
 
 export type jobEvidenceMatchSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -841,8 +1122,12 @@ export type jobEvidenceMatchSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   fingerprint?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  resumeRevisionId?: boolean
+  sourceContentHash?: boolean
+  verified?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }, ExtArgs["result"]["jobEvidenceMatch"]>
 
 export type jobEvidenceMatchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -858,8 +1143,12 @@ export type jobEvidenceMatchSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   fingerprint?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  resumeRevisionId?: boolean
+  sourceContentHash?: boolean
+  verified?: boolean
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }, ExtArgs["result"]["jobEvidenceMatch"]>
 
 export type jobEvidenceMatchSelectScalar = {
@@ -875,20 +1164,26 @@ export type jobEvidenceMatchSelectScalar = {
   fingerprint?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  resumeRevisionId?: boolean
+  sourceContentHash?: boolean
+  verified?: boolean
 }
 
-export type jobEvidenceMatchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobRequirementId" | "evidenceType" | "evidenceSourceId" | "evidenceLabel" | "evidenceExcerpt" | "matchStrength" | "reasoning" | "fingerprint" | "createdAt" | "updatedAt", ExtArgs["result"]["jobEvidenceMatch"]>
+export type jobEvidenceMatchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobRequirementId" | "evidenceType" | "evidenceSourceId" | "evidenceLabel" | "evidenceExcerpt" | "matchStrength" | "reasoning" | "fingerprint" | "createdAt" | "updatedAt" | "resumeRevisionId" | "sourceContentHash" | "verified", ExtArgs["result"]["jobEvidenceMatch"]>
 export type jobEvidenceMatchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }
 export type jobEvidenceMatchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }
 export type jobEvidenceMatchIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobRequirement?: boolean | Prisma.jobRequirementDefaultArgs<ExtArgs>
+  resumeRevision?: boolean | Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>
 }
 
 export type $jobEvidenceMatchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -896,6 +1191,7 @@ export type $jobEvidenceMatchPayload<ExtArgs extends runtime.Types.Extensions.In
   objects: {
     user: Prisma.$userPayload<ExtArgs>
     jobRequirement: Prisma.$jobRequirementPayload<ExtArgs>
+    resumeRevision: Prisma.$resumeSourceRevisionPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -910,6 +1206,9 @@ export type $jobEvidenceMatchPayload<ExtArgs extends runtime.Types.Extensions.In
     fingerprint: string
     createdAt: Date
     updatedAt: Date
+    resumeRevisionId: string | null
+    sourceContentHash: string | null
+    verified: boolean
   }, ExtArgs["result"]["jobEvidenceMatch"]>
   composites: {}
 }
@@ -1306,6 +1605,7 @@ export interface Prisma__jobEvidenceMatchClient<T, Null = never, ExtArgs extends
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.userDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.userDefaultArgs<ExtArgs>>): Prisma.Prisma__userClient<runtime.Types.Result.GetResult<Prisma.$userPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   jobRequirement<T extends Prisma.jobRequirementDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobRequirementDefaultArgs<ExtArgs>>): Prisma.Prisma__jobRequirementClient<runtime.Types.Result.GetResult<Prisma.$jobRequirementPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  resumeRevision<T extends Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.jobEvidenceMatch$resumeRevisionArgs<ExtArgs>>): Prisma.Prisma__resumeSourceRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeSourceRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1347,6 +1647,9 @@ export interface jobEvidenceMatchFieldRefs {
   readonly fingerprint: Prisma.FieldRef<"jobEvidenceMatch", 'String'>
   readonly createdAt: Prisma.FieldRef<"jobEvidenceMatch", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"jobEvidenceMatch", 'DateTime'>
+  readonly resumeRevisionId: Prisma.FieldRef<"jobEvidenceMatch", 'String'>
+  readonly sourceContentHash: Prisma.FieldRef<"jobEvidenceMatch", 'String'>
+  readonly verified: Prisma.FieldRef<"jobEvidenceMatch", 'Boolean'>
 }
 
 
@@ -1745,6 +2048,25 @@ export type jobEvidenceMatchDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many jobEvidenceMatches to delete.
    */
   limit?: number
+}
+
+/**
+ * jobEvidenceMatch.resumeRevision
+ */
+export type jobEvidenceMatch$resumeRevisionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeSourceRevision
+   */
+  select?: Prisma.resumeSourceRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeSourceRevision
+   */
+  omit?: Prisma.resumeSourceRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeSourceRevisionInclude<ExtArgs> | null
+  where?: Prisma.resumeSourceRevisionWhereInput
 }
 
 /**
