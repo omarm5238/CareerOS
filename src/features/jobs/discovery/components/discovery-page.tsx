@@ -23,6 +23,11 @@ function providerAvailabilityLabel(status: string): string {
 
 type DiscoveryPageProps = {
   profile: (JobDiscoveryProfileData & { id: string }) | null;
+  resumeContext: {
+    status: "CURRENT" | "NO_ACTIVE_RESUME" | "CURRENT_ANALYSIS_NOT_FOUND";
+    sourceFilename: string | null;
+    revisionNumber: number | null;
+  };
   results: DiscoveryListItem[];
   providerStatus: ProviderStatus[];
   lastRun: {
@@ -52,6 +57,7 @@ type DiscoveryPageProps = {
 
 export function DiscoveryPage({
   profile,
+  resumeContext,
   results: initialResults,
   providerStatus,
   lastRun,
@@ -70,8 +76,8 @@ export function DiscoveryPage({
   const filtered = results.filter((j) => {
     if (filter === "dismissed") return !!j.dismissedAt;
     if (j.dismissedAt) return false;
-    if (j.hardBlockers.length > 0) return false;
-    if (filter === "strong") return (j.finalScore ?? 0) >= minScore;
+    if (j.hardBlockers.length > 0) return filter === "all";
+    if (filter === "strong") return (j.finalScore ?? 0) >= minScore && j.scoreBand === "STRONG";
     if (filter === "possible") return (j.finalScore ?? 0) >= 55 && (j.finalScore ?? 0) < minScore && j.hardBlockers.length === 0;
     return true;
   });
@@ -165,6 +171,13 @@ export function DiscoveryPage({
               <p className="mt-1 text-sm text-[var(--color-text-secondary)]">
                 Last discovery: {lastRun ? new Date(lastRun.startedAt).toLocaleString() : "Never"}
                 {lastRun ? ` · ${lastRun.status}` : ""}
+              </p>
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)]" data-testid="discovery-resume-context">
+                {resumeContext.status === "CURRENT"
+                  ? `Resume context: ${resumeContext.sourceFilename} · Revision ${resumeContext.revisionNumber}`
+                  : resumeContext.status === "CURRENT_ANALYSIS_NOT_FOUND"
+                    ? "Reanalysis required"
+                    : "Fresh resume analysis required"}
               </p>
             </div>
 

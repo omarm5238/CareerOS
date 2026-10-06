@@ -24,7 +24,8 @@ const STRENGTH_RANK: Record<JobEvidenceMatchStrength, number> = {
 };
 
 function includesNormalized(haystack: string, needle: string): boolean {
-  return ` ${haystack} `.includes(` ${needle} `) || haystack.includes(needle);
+  if (!needle) return false;
+  return ` ${haystack} `.includes(` ${needle} `);
 }
 
 function scoreMatch(requirement: JobRequirementInput, evidence: CareerEvidenceItem): JobEvidenceMatchStrength | null {
@@ -73,6 +74,8 @@ export function mapEvidenceForRequirement(
       evidenceLabel: item.evidenceLabel,
       evidenceExcerpt: item.evidenceExcerpt,
       matchStrength: strength,
+      commercial: item.commercial,
+      durationMonths: item.durationMonths,
       reasoning:
         strength === "TRANSFERABLE"
           ? `Related ${item.evidenceType.toLowerCase().replaceAll("_", " ")} evidence exists. Do not claim ${requirement.normalizedName} proficiency.`

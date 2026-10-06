@@ -4,6 +4,13 @@ export { getLatestResumeAnalysisForUser } from "./lib/get-latest-resume-analysis
 export { getResumeAnalysisByDocumentIdForUser } from "./lib/get-resume-analysis-by-document-id-for-user";
 export { getResumeAnalysisHistoryForUser } from "./lib/get-resume-analysis-history-for-user";
 export { saveResumeAnalysis } from "./lib/save-resume-analysis";
+export {
+  getActiveResumeRevisionForUser,
+  getCurrentResumeAnalysis,
+  getCurrentResumeContextForUser,
+  RESUME_ANALYZER_VERSION,
+  ResumeTruthError,
+} from "./provenance";
 
 /** Milestone 21 — job-specific tailored resume versions. */
 export {

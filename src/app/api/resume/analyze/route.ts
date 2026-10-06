@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 import { validateResumeFile } from "@/features/resume";
 import { analyzeResumeWithAi } from "@/features/resume/ai";
+import { toResumeTruthErrorResponse } from "@/features/resume/provenance";
 import { extractResumeText, saveResumeAnalysis } from "@/features/resume/server";
 import { auth } from "@/server/auth";
 
@@ -68,9 +69,14 @@ export async function POST(request: Request) {
         fileSize: file.size,
         textLength: extracted.textLength,
         textPreview: extracted.textPreview,
+        fullText: extracted.normalizedText,
         analysis,
       });
-    } catch {
+    } catch (error) {
+      const truth = toResumeTruthErrorResponse(error);
+      if (truth && error instanceof Error && "code" in error) {
+        return NextResponse.json({ message: truth.message, code: String(error.code) }, { status: truth.status });
+      }
       return NextResponse.json(
         { message: "Could not save resume analysis. Please try again." },
         { status: 500 },

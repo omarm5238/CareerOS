@@ -2,7 +2,9 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { toApplicationErrorResponse } from "@/features/applications/lib/application-permissions";
+import { toOpportunityTruthErrorResponse } from "@/features/jobs/opportunities/provenance/errors";
 import { toOpportunityErrorResponse } from "@/features/jobs/opportunities/lib/permissions";
+import { toResumeTruthErrorResponse } from "@/features/resume/provenance";
 import { auth } from "@/server/auth";
 
 export async function requireSessionUserId() {
@@ -14,7 +16,10 @@ export async function requireSessionUserId() {
 }
 
 export function handleOpportunityError(error: unknown) {
-  const mapped = toOpportunityErrorResponse(error) ?? toApplicationErrorResponse(error);
+  const mapped = toOpportunityErrorResponse(error)
+    ?? toOpportunityTruthErrorResponse(error)
+    ?? toResumeTruthErrorResponse(error)
+    ?? toApplicationErrorResponse(error);
   if (mapped) {
     const message =
       mapped.message.includes("already exists for this job") || mapped.message.includes("Already applied")

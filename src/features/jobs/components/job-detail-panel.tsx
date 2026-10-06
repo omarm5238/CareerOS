@@ -35,6 +35,13 @@ type JobDetailPanelProps = {
     applicationEffort: string;
     topEvidence: string[];
     topGaps: Array<{ requirementName: string; severity: string }>;
+    provenance?: {
+      state: "current" | "stale" | "missing";
+      filename: string | null;
+      revisionNumber: number | null;
+      analyzedAt: string | null;
+    } | null;
+    evidenceRows?: Array<{ requirement: string; result: string; evidence: string; gap: string }>;
   } | null;
   opportunityPackageId?: string | null;
 };
@@ -152,7 +159,7 @@ export function JobDetailPanel({
                 Analysis notes
               </h2>
               <ul className="mt-3 space-y-2">
-                {job.analysis.aiWarnings.map((warning) => (
+                {job.analysis.aiWarnings.filter((warning) => !warning.startsWith("CANONICAL|")).map((warning) => (
                   <li
                     className="text-sm leading-6 text-[var(--color-text-secondary)]"
                     key={warning}

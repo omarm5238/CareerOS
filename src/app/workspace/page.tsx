@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { WorkspaceShell } from "@/components/workspace/workspace-shell";
 import { getWorkspaceAnalyticsStatusForUser } from "@/features/analytics/server";
 import { getWorkspaceJobsStatusForUser } from "@/features/jobs/server";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { getWorkspaceSkillsStatusForUser } from "@/features/skills/server";
 import { auth } from "@/server/auth";
 
@@ -17,8 +17,8 @@ export default async function WorkspacePage() {
     redirect("/sign-in");
   }
 
-  const [profile, jobsStatus, skillsStatus, analyticsStatus] = await Promise.all([
-    getLatestResumeAnalysisForUser(session.user.id),
+  const [resumeContext, jobsStatus, skillsStatus, analyticsStatus] = await Promise.all([
+    getCurrentResumeContextForUser(session.user.id),
     getWorkspaceJobsStatusForUser(session.user.id),
     getWorkspaceSkillsStatusForUser(session.user.id),
     getWorkspaceAnalyticsStatusForUser(session.user.id),
@@ -28,7 +28,8 @@ export default async function WorkspacePage() {
     <WorkspaceShell
       analyticsStatus={analyticsStatus}
       jobsStatus={jobsStatus}
-      profile={profile}
+      profile={resumeContext.status === "CURRENT" ? resumeContext.analysis : null}
+      resumeTruth={resumeContext.status}
       skillsStatus={skillsStatus}
     />
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import {
@@ -17,7 +17,9 @@ type ResumeReanalysisUploadProps = {
 export function ResumeReanalysisUpload({ compact = false }: ResumeReanalysisUploadProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
+  const [ready, setReady] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  useEffect(() => setReady(true), []);
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "analyzing" | "success">("idle");
 
@@ -115,9 +117,10 @@ export function ResumeReanalysisUpload({ compact = false }: ResumeReanalysisUplo
   }
 
   return (
-    <section
+      <section
       aria-labelledby="resume-reanalysis-heading"
       className="surface-glass p-5"
+      data-testid={ready ? "resume-upload-ready" : undefined}
     >
       <h2
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"

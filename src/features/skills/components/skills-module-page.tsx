@@ -25,7 +25,10 @@ export function SkillsModulePage({ data }: SkillsModulePageProps) {
   if (!data.hasResume || !data.overview) {
     return (
       <WorkspaceModuleLayout title="Skills Module">
-        <SkillsEmptyState variant="no-resume" />
+        <SkillsEmptyState
+          message={data.resumeTruthStatus === "CURRENT_ANALYSIS_NOT_FOUND" ? "Reanalysis required" : "Fresh resume analysis required"}
+          variant="no-resume"
+        />
       </WorkspaceModuleLayout>
     );
   }

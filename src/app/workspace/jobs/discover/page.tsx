@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { DiscoveryPage } from "@/features/jobs/discovery/components/discovery-page";
 import { getDiscoveryProfileForUser } from "@/features/jobs/discovery/lib/get-discovery-profile";
+import { getDiscoveryResumeInput } from "@/features/jobs/discovery/lib/run-job-discovery";
 import {
   getDiscoveryResultsForUser,
   getLastDiscoveryRun,
@@ -20,16 +21,22 @@ export default async function WorkspaceJobsDiscoverPage() {
   const minScore = profile?.minimumSuitabilityScore ?? 75;
   const dailyTarget = profile?.dailyTarget ?? 20;
 
-  const [results, lastRun, todayStrong, providerStatus] = await Promise.all([
+  const [results, lastRun, todayStrong, providerStatus, resumeInput] = await Promise.all([
     getDiscoveryResultsForUser(userId, { filter: "all", minimumScore: minScore }),
     getLastDiscoveryRun(userId),
     getTodayStrongCount(userId, minScore),
     Promise.resolve(getProviderStatus()),
+    getDiscoveryResumeInput(userId),
   ]);
 
   return (
     <DiscoveryPage
       profile={profile ? { ...profile, id: profile.id } : null}
+      resumeContext={{
+        status: resumeInput.status,
+        sourceFilename: resumeInput.sourceFilename,
+        revisionNumber: resumeInput.revisionNumber,
+      }}
       results={results}
       providerStatus={providerStatus}
       lastRun={

@@ -5,6 +5,7 @@ import type {
 
 type ResumeImprovementCenterProps = {
   data: ResumeImprovementCenterData;
+  historical?: boolean;
 };
 
 function priorityClass(priority: string): string {
@@ -42,7 +43,7 @@ function actionLabel(item: ResumeImprovementItem): string {
   return "Add if true";
 }
 
-export function ResumeImprovementCenter({ data }: ResumeImprovementCenterProps) {
+export function ResumeImprovementCenter({ data, historical = false }: ResumeImprovementCenterProps) {
   return (
     <section
       aria-labelledby="resume-improvement-center-heading"
@@ -53,11 +54,12 @@ export function ResumeImprovementCenter({ data }: ResumeImprovementCenterProps) 
         className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]"
         id="resume-improvement-center-heading"
       >
-        Resume Improvement Center
+        {historical ? "Historical recommendations" : "Resume Improvement Center"}
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--color-text-secondary)]">
-        Continuous resume fixes independent of skills strategy. Only add claims you can support with
-        real evidence.
+        {historical
+          ? "These recommendations belong to an older analysis. They are not current resume advice."
+          : "Continuous resume fixes independent of skills strategy. Only add claims you can support with real evidence."}
       </p>
 
       {data.itemCount === 0 ? (

@@ -1,4 +1,6 @@
 import { prisma } from "@/server/db/prisma";
+import { projectCurrentDiscoveryMatch } from "@/features/jobs/matching/project-current-match";
+import { loadCanonicalProfile } from "@/features/jobs/matching/stamp-job-match";
 import type { ApplicationQueueListItem, QueuePreparationState } from "../../discovery/types";
 
 export function derivePreparationState(item: {
@@ -22,7 +24,8 @@ export function derivePreparationState(item: {
 }
 
 export async function getQueueForUser(userId: string): Promise<ApplicationQueueListItem[]> {
-  const items = await prisma.applicationQueueItem.findMany({
+  const [items, profile] = await Promise.all([
+    prisma.applicationQueueItem.findMany({
     where: { userId, queueStatus: { not: "DISMISSED" } },
     orderBy: [{ priority: "asc" }, { createdAt: "asc" }],
     include: {
@@ -30,7 +33,9 @@ export async function getQueueForUser(userId: string): Promise<ApplicationQueueL
         select: {
           title: true,
           company: true,
+          description: true,
           location: true,
+          countryCode: true,
           workMode: true,
           finalScore: true,
           scoreBand: true,
@@ -41,7 +46,9 @@ export async function getQueueForUser(userId: string): Promise<ApplicationQueueL
         },
       },
     },
-  });
+  }),
+    loadCanonicalProfile(userId),
+  ]);
 
   // Batch-load resume statuses
   const resumeIds = items.map(i => i.resumeVersionId).filter((id): id is string => !!id);
@@ -61,6 +68,7 @@ export async function getQueueForUser(userId: string): Promise<ApplicationQueueL
       resumeStatus: rv?.status ?? null,
     });
 
+    const current = projectCurrentDiscoveryMatch(dj, profile);
     return {
       id: item.id,
       discoveredJobId: item.discoveredJobId,
@@ -68,8 +76,8 @@ export async function getQueueForUser(userId: string): Promise<ApplicationQueueL
       company: dj.company,
       location: dj.location,
       workMode: dj.workMode,
-      discoveryScore: dj.finalScore,
-      scoreBand: dj.scoreBand,
+      discoveryScore: current.eligibility === "INELIGIBLE" ? null : current.finalScore,
+      scoreBand: current.scoreBand,
       priority: item.priority,
       queueStatus: item.queueStatus,
       preparationState: prepState,

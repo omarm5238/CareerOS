@@ -100,9 +100,22 @@ async function counts() {
   return { resumeDocument, resumeAnalysis, jobOpportunityAnalysis, jobEvidenceMatch };
 }
 
+async function provenanceCounts() {
+  const [revisions, snapshots, evidenced, verified, linkedAnalyses] = await Promise.all([
+    prisma.resumeSourceRevision.count(),
+    prisma.opportunityAnalysisSnapshot.count(),
+    prisma.jobEvidenceMatch.count({ where: { resumeRevisionId: { not: null } } }),
+    prisma.jobEvidenceMatch.count({ where: { verified: true } }),
+    prisma.resumeAnalysis.count({ where: { sourceRevisionId: { not: null } } }),
+  ]);
+  return { revisions, snapshots, evidenced, verified, linkedAnalyses };
+}
+
 async function checkPersistence() {
   const before = await counts();
+  const provenanceBefore = await provenanceCounts();
   const legacy = await prisma.resumeAnalysis.findFirst({
+    where: { analyzerVersion: null },
     select: {
       id: true,
       detectedRole: true,
@@ -113,8 +126,8 @@ async function checkPersistence() {
       sourceRevisionId: true,
     },
   });
-  assert(legacy, "no legacy resume analysis exists to compare");
-  assert(legacy.analyzerVersion == null && legacy.sourceContentHash == null, "legacy analysis was backfilled");
+  assert(legacy, "legacy analysis was backfilled");
+  assert(legacy.analyzerVersion == null && legacy.sourceContentHash == null, "legacy analysis was partially backfilled");
   assert(legacy.freshness == null && legacy.staleReason == null && legacy.sourceRevisionId == null, "legacy analysis was marked current");
   const legacyEvidence = await prisma.jobEvidenceMatch.findFirst({
     select: { id: true, evidenceLabel: true, resumeRevisionId: true, sourceContentHash: true, verified: true },
@@ -483,12 +496,9 @@ async function checkPersistence() {
   }
 
   const after = await counts();
+  const provenanceAfter = await provenanceCounts();
   assert(JSON.stringify(before) === JSON.stringify(after), `row counts changed ${JSON.stringify(before)} -> ${JSON.stringify(after)}`);
-  assert(await prisma.resumeSourceRevision.count() === 0, "source revisions were left behind");
-  assert(await prisma.opportunityAnalysisSnapshot.count() === 0, "snapshots were left behind");
-  assert(await prisma.jobEvidenceMatch.count({ where: { resumeRevisionId: { not: null } } }) === 0, "evidence provenance was left behind");
-  assert(await prisma.jobEvidenceMatch.count({ where: { verified: true } }) === 0, "verified evidence was left behind");
-  assert(await prisma.resumeAnalysis.count({ where: { sourceRevisionId: { not: null } } }) === 0, "analysis provenance was left behind");
+  assert(JSON.stringify(provenanceBefore) === JSON.stringify(provenanceAfter), `provenance rows changed ${JSON.stringify(provenanceBefore)} -> ${JSON.stringify(provenanceAfter)}`);
   const reread = await prisma.resumeAnalysis.findUnique({ where: { id: legacy.id } });
   assert(reread?.detectedRole === legacy.detectedRole && reread.sourceRevisionId == null, "legacy analysis changed");
 }

@@ -1,3 +1,4 @@
+import { getCurrentResumeContextForUser } from "@/features/resume/provenance/resolvers";
 import { prisma } from "@/server/db/prisma";
 
 import { buildResumeTailoringInput } from "../ai/build-resume-tailoring-input";
@@ -73,16 +74,26 @@ export async function createResumeVersionForJob(
     return { ok: false, status: 404, message: "Job not found." };
   }
 
-  const resumeDocument = input.sourceResumeDocumentId
+  const currentResume = input.sourceResumeDocumentId
+    ? null
+    : await getCurrentResumeContextForUser(input.userId);
+  const sourceDocumentId = input.sourceResumeDocumentId
+    ?? (currentResume?.status === "CURRENT" ? currentResume.analysis.resumeDocumentId : null);
+  if (!input.sourceResumeDocumentId && currentResume && currentResume.status !== "CURRENT") {
+    return {
+      ok: false,
+      status: 400,
+      message: currentResume.status === "CURRENT_ANALYSIS_NOT_FOUND"
+        ? "Reanalysis required before a tailored resume can be created."
+        : "Fresh resume analysis required before a tailored resume can be created.",
+    };
+  }
+  const resumeDocument = sourceDocumentId
     ? await prisma.resumeDocument.findFirst({
-        where: { id: input.sourceResumeDocumentId, userId: input.userId },
+        where: { id: sourceDocumentId, userId: input.userId },
         select: RESUME_DOCUMENT_SELECT,
       })
-    : await prisma.resumeDocument.findFirst({
-        where: { userId: input.userId, analysis: { isNot: null } },
-        orderBy: { createdAt: "desc" },
-        select: RESUME_DOCUMENT_SELECT,
-      });
+    : null;
 
   if (!resumeDocument) {
     return {
@@ -90,7 +101,7 @@ export async function createResumeVersionForJob(
       status: 400,
       message: input.sourceResumeDocumentId
         ? "That resume could not be found in your account."
-        : "Upload and analyze a resume before creating a tailored version.",
+        : "Fresh resume analysis required before a tailored resume can be created.",
     };
   }
 

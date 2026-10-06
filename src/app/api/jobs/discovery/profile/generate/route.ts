@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { auth } from "@/server/auth";
 import { prisma } from "@/server/db/prisma";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { upsertDiscoveryProfile } from "@/features/jobs/discovery/lib/update-discovery-profile";
 import { getDiscoveryProfileForUser } from "@/features/jobs/discovery/lib/get-discovery-profile";
 import { generateSearchProfileWithAi, generateFallbackProfile } from "@/features/jobs/discovery/ai/generate-search-profile";
@@ -12,7 +12,16 @@ export async function POST() {
   if (!session) return NextResponse.json({ message: "Authentication required." }, { status: 401 });
 
   const userId = session.user.id;
-  const resume = await getLatestResumeAnalysisForUser(userId);
+  const resumeContext = await getCurrentResumeContextForUser(userId);
+  if (resumeContext.status !== "CURRENT") {
+    return NextResponse.json({
+      message: resumeContext.status === "NO_ACTIVE_RESUME"
+        ? "Fresh resume analysis required before a search profile can be generated from a resume."
+        : "Reanalysis required before a search profile can be generated from the active resume.",
+      code: resumeContext.status,
+    }, { status: 409 });
+  }
+  const resume = resumeContext.analysis;
 
   const existingJobs = await prisma.jobPosting.findMany({
     where: { userId },

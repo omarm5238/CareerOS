@@ -1,3 +1,4 @@
+import { getCurrentResumeAnalysis } from "@/features/resume/provenance/resolvers";
 import { prisma } from "@/server/db/prisma";
 
 export async function getInsightSourceTimestampsForUser(userId: string): Promise<{
@@ -5,12 +6,8 @@ export async function getInsightSourceTimestampsForUser(userId: string): Promise
   latestJobAt: string | null;
   currentJobCount: number;
 }> {
-  const [latestResume, latestJob, jobCount] = await Promise.all([
-    prisma.resumeDocument.findFirst({
-      where: { userId },
-      orderBy: { updatedAt: "desc" },
-      select: { updatedAt: true, createdAt: true },
-    }),
+  const [currentResume, latestJob, jobCount] = await Promise.all([
+    getCurrentResumeAnalysis(userId),
     prisma.jobPosting.findFirst({
       where: { userId },
       orderBy: { updatedAt: "desc" },
@@ -20,9 +17,7 @@ export async function getInsightSourceTimestampsForUser(userId: string): Promise
   ]);
 
   return {
-    latestResumeAt: latestResume
-      ? (latestResume.updatedAt ?? latestResume.createdAt).toISOString()
-      : null,
+    latestResumeAt: currentResume?.createdAt.toISOString() ?? null,
     latestJobAt: latestJob
       ? (latestJob.updatedAt ?? latestJob.createdAt).toISOString()
       : null,

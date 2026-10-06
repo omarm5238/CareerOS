@@ -61,6 +61,8 @@ export type ResumeAnalysisHistoryItem = {
   detectedSkillsCount: number;
   analysisSource: AnalysisSource;
   createdAt: string;
+  freshness?: string | null;
+  truthLabel?: "Current" | "Historical" | "Outdated";
 };
 
 export type ResumeActionPriority = "High" | "Medium" | "Low";

@@ -1,5 +1,7 @@
 import { prisma } from "@/server/db/prisma";
 import type { Prisma } from "@/generated/prisma/client";
+import { loadCanonicalProfile } from "@/features/jobs/matching/stamp-job-match";
+import { projectCurrentDiscoveryMatch } from "@/features/jobs/matching/project-current-match";
 import type { DiscoveryListItem } from "../types";
 import { compareDiscoveryRank } from "../quality/search-quality";
 
@@ -19,7 +21,7 @@ export async function getDiscoveryResultsForUser(
     where.dismissedAt = { not: null };
   } else if (filter === "all") {
     // Include dismissed rows so the client dismissed tab survives refresh.
-    where.discoveryStatus = { in: ["CANDIDATE", "DISMISSED"] };
+    where.discoveryStatus = { in: ["CANDIDATE", "DISMISSED", "STALE"] };
   } else {
     where.dismissedAt = null;
     where.discoveryStatus = "CANDIDATE";
@@ -41,7 +43,9 @@ export async function getDiscoveryResultsForUser(
       title: true,
       company: true,
       location: true,
+      countryCode: true,
       workMode: true,
+      description: true,
       finalScore: true,
       scoreBand: true,
       matchSummary: true,
@@ -71,21 +75,29 @@ export async function getDiscoveryResultsForUser(
     },
   });
 
+  const profile = await loadCanonicalProfile(userId);
   const mapped = jobs.map(job => {
     const qi = job.queueItems[0] ?? null;
+    const current = projectCurrentDiscoveryMatch({
+      title: job.title,
+      description: job.description,
+      location: job.location,
+      countryCode: job.countryCode,
+      workMode: job.workMode,
+    }, profile);
     return {
       id: job.id,
       title: job.title,
       company: job.company,
       location: job.location,
       workMode: job.workMode,
-      finalScore: job.finalScore,
-      scoreBand: job.scoreBand,
-      matchSummary: job.matchSummary,
+      finalScore: current.finalScore,
+      scoreBand: current.scoreBand,
+      matchSummary: current.matchSummary,
       matchedSkills: safeStringArray(job.matchedSkillsJson),
       missingSkills: safeStringArray(job.missingSkillsJson),
-      hardBlockers: safeStringArray(job.hardBlockersJson),
-      softBlockers: safeStringArray(job.softBlockersJson),
+      hardBlockers: current.hardBlockers,
+      softBlockers: current.softBlockers,
       evidence: safeStringArray(job.evidenceJson),
       warnings: safeStringArray(job.warningsJson),
       analysisSource: job.analysisSource,
@@ -101,9 +113,17 @@ export async function getDiscoveryResultsForUser(
     };
   });
 
-  const visible = filter === "dismissed"
-    ? mapped
-    : mapped.filter((job) => job.dismissedAt || job.hardBlockers.length === 0);
+  const visible = mapped.filter((job) => {
+    if (filter === "dismissed") return Boolean(job.dismissedAt);
+    if (filter === "strong") {
+      return !job.dismissedAt && job.hardBlockers.length === 0 && job.scoreBand === "STRONG" && (job.finalScore ?? 0) >= minScore;
+    }
+    if (filter === "possible") {
+      return !job.dismissedAt && job.scoreBand === "POSSIBLE" && job.hardBlockers.length === 0;
+    }
+    if (job.discoveryStatus === "STALE") return job.hardBlockers.length > 0;
+    return true;
+  });
 
   return visible.sort((a, b) => compareDiscoveryRank(toRanked(a), toRanked(b)));
 }
@@ -148,14 +168,27 @@ export async function getLastDiscoveryRun(userId: string) {
 export async function getTodayStrongCount(userId: string, minimumScore: number): Promise<number> {
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
+  const [jobs, profile] = await Promise.all([
+    prisma.discoveredJob.findMany({
+      where: {
+        userId,
+        discoveryStatus: "CANDIDATE",
+        dismissedAt: null,
+        lastSeenAt: { gte: todayStart },
+      },
+      select: {
+        title: true,
+        description: true,
+        location: true,
+        countryCode: true,
+        workMode: true,
+      },
+    }),
+    loadCanonicalProfile(userId),
+  ]);
 
-  return prisma.discoveredJob.count({
-    where: {
-      userId,
-      discoveryStatus: "CANDIDATE",
-      finalScore: { gte: minimumScore },
-      dismissedAt: null,
-      lastSeenAt: { gte: todayStart },
-    },
-  });
+  return jobs.filter((job) => {
+    const current = projectCurrentDiscoveryMatch(job, profile);
+    return current.scoreBand === "STRONG" && (current.finalScore ?? 0) >= minimumScore && current.hardBlockers.length === 0;
+  }).length;
 }

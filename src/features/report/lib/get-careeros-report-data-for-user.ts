@@ -4,7 +4,7 @@ import {
   sanitizeActionCenterSections,
 } from "@/features/analytics/lib/build-deterministic-action-center";
 import { buildResumeImprovementCenter } from "@/features/resume/lib/build-resume-improvement-center";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { getUserProfile } from "@/features/settings/server";
 import { evaluateInsightFreshness } from "@/features/shared/insights/freshness";
 import { getInsightSourceTimestampsForUser } from "@/features/shared/insights/get-insight-source-timestamps";
@@ -26,15 +26,16 @@ export async function getCareerOsReportDataForUser(
   userId: string,
   requestedJobId?: string | null,
 ): Promise<CareerOsReportData | null> {
-  const [profile, resume, analytics, skillsData, sourceTimestamps] = await Promise.all([
+  const [profile, resumeContext, analytics, skillsData, sourceTimestamps] = await Promise.all([
     getUserProfile(userId),
-    getLatestResumeAnalysisForUser(userId),
+    getCurrentResumeContextForUser(userId),
     getAnalyticsModuleDataForUser(userId, requestedJobId),
     getSkillsModuleDataForUser(userId, requestedJobId),
     getInsightSourceTimestampsForUser(userId),
   ]);
 
   if (!profile) return null;
+  const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
 
   const brief = analytics.careerBrief;
   const insight = skillsData.insight;
@@ -82,7 +83,9 @@ export async function getCareerOsReportDataForUser(
   ].filter(isHumanFacingWarning);
 
   if (!resume) {
-    warnings.push("No resume analysis yet. Analyze a resume to unlock fuller report sections.");
+    warnings.push(resumeContext.status === "CURRENT_ANALYSIS_NOT_FOUND"
+      ? "Reanalysis required. The active resume has no current analysis."
+      : "Fresh resume analysis required. Older analyses are not used as the current resume.");
   }
   if (analytics.jobs.savedJobsCount === 0) {
     warnings.push(ZERO_JOBS_BENCHMARKING_MESSAGE);

@@ -18,6 +18,13 @@ type JobOpportunityEntryProps = {
     applicationEffort: string;
     topEvidence: string[];
     topGaps: Array<{ requirementName: string; severity: string }>;
+    provenance?: {
+      state: "current" | "stale" | "missing";
+      filename: string | null;
+      revisionNumber: number | null;
+      analyzedAt: string | null;
+    } | null;
+    evidenceRows?: Array<{ requirement: string; result: string; evidence: string; gap: string }>;
   } | null;
   packageId: string | null;
 };
@@ -69,6 +76,8 @@ export function JobOpportunityEntry({
           topEvidence={analysis.topEvidence}
           topGaps={analysis.topGaps}
           packageId={packageId}
+          provenance={analysis.provenance}
+          evidenceRows={analysis.evidenceRows}
         />
       ) : (
         <section className="surface-glass p-5">

@@ -60,6 +60,8 @@ export type JobEvidenceView = {
   evidenceExcerpt: string | null;
   matchStrength: JobEvidenceMatchStrength;
   reasoning: string | null;
+  commercial?: boolean;
+  durationMonths?: number | null;
 };
 
 export type JobRequirementView = {
@@ -135,7 +137,10 @@ export type JobOpportunityView = {
   updatedAt: string;
 };
 
-export type CareerEvidenceItem = JobEvidenceCandidate;
+export type CareerEvidenceItem = JobEvidenceCandidate & {
+  commercial?: boolean;
+  durationMonths?: number | null;
+};
 
 export const IMPORTANCE_WEIGHTS: Record<JobRequirementImportance, number> = {
   REQUIRED: 4,

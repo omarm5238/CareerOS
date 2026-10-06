@@ -6,7 +6,6 @@ import { CareerCore } from "@/components/core/CareerCore";
 import type { CareerCoreModuleId } from "@/core/career-core/types";
 import { buildWorkspaceAnalyticsLabel, type WorkspaceAnalyticsStatus } from "@/features/analytics";
 import type { WorkspaceJobsStatus } from "@/features/jobs";
-import { readOnboardingState } from "@/features/onboarding";
 import type { WorkspaceProfile } from "@/features/resume";
 import { buildWorkspaceSkillsLabel, type WorkspaceSkillsStatus } from "@/features/skills";
 
@@ -18,27 +17,11 @@ import {
 
 type WorkspaceCorePanelProps = {
   profile: WorkspaceProfile | null;
+  resumeTruth: "CURRENT" | "NO_ACTIVE_RESUME" | "CURRENT_ANALYSIS_NOT_FOUND";
   jobsStatus: WorkspaceJobsStatus;
   skillsStatus: WorkspaceSkillsStatus;
   analyticsStatus: WorkspaceAnalyticsStatus;
 };
-
-function mapCachedProfileToWorkspaceProfile(): WorkspaceProfile | null {
-  const cached = readOnboardingState();
-  if (!cached?.completed) return null;
-
-  return {
-    role: cached.profile.role,
-    experienceLevel: cached.profile.experienceLevel,
-    completenessScore: cached.profile.completenessScore,
-    filename: cached.resume.filename,
-    fileSize: cached.resume.fileSize,
-    textLength: 0,
-    detectedSkills: cached.profile.detectedSkills,
-    profileSummary: cached.profile.profileSummary ?? null,
-    analysisSource: cached.profile.analysisSource ?? "rule_based",
-  };
-}
 
 function buildJobsLabel(jobsStatus: WorkspaceJobsStatus): string {
   if (jobsStatus.count <= 0) return "No saved jobs";
@@ -54,6 +37,7 @@ function buildJobsLabel(jobsStatus: WorkspaceJobsStatus): string {
 
 export function WorkspaceCorePanel({
   profile,
+  resumeTruth,
   jobsStatus,
   skillsStatus,
   analyticsStatus,
@@ -65,13 +49,13 @@ export function WorkspaceCorePanel({
   const [resolvedProfile, setResolvedProfile] = useState<WorkspaceProfile | null>(profile);
 
   useEffect(() => {
-    if (profile) {
+    if (profile && resumeTruth === "CURRENT") {
       setResolvedProfile(profile);
       return;
     }
 
-    setResolvedProfile(mapCachedProfileToWorkspaceProfile());
-  }, [profile]);
+    setResolvedProfile(null);
+  }, [profile, resumeTruth]);
 
   const hasProfile = !!resolvedProfile;
   const jobsLabel = buildJobsLabel(jobsStatus);
@@ -111,7 +95,9 @@ export function WorkspaceCorePanel({
             profile={resolvedProfile}
           />
         ) : (
-          <WorkspaceProfileSetupPanel />
+          <WorkspaceProfileSetupPanel
+            message={resumeTruth === "CURRENT_ANALYSIS_NOT_FOUND" ? "Reanalysis required" : "Fresh resume analysis required"}
+          />
         )}
       </div>
     </div>

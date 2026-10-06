@@ -1,7 +1,7 @@
 import { parseApplicationStatus } from "@/features/jobs/constants/application-status";
 import { getJobPostingsForUser } from "@/features/jobs/server";
 import {
-  getLatestResumeAnalysisForUser,
+  getCurrentResumeContextForUser,
   getResumeAnalysisHistoryForUser,
 } from "@/features/resume/server";
 import { evaluateInsightFreshness } from "@/features/shared/insights/freshness";
@@ -89,8 +89,8 @@ export async function getAnalyticsModuleDataForUser(
   userId: string,
   requestedJobId?: string | null,
 ): Promise<AnalyticsModuleData> {
-  const [resume, history, jobs, skillsData, latestBrief, sourceTimestamps] = await Promise.all([
-    getLatestResumeAnalysisForUser(userId),
+  const [resumeContext, history, jobs, skillsData, latestBrief, sourceTimestamps] = await Promise.all([
+    getCurrentResumeContextForUser(userId),
     getResumeAnalysisHistoryForUser(userId),
     getJobPostingsForUser(userId),
     getSkillsModuleDataForUser(userId, requestedJobId),
@@ -98,6 +98,7 @@ export async function getAnalyticsModuleDataForUser(
     getInsightSourceTimestampsForUser(userId),
   ]);
 
+  const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
   const jobsMetrics = buildJobsMetrics(jobs);
   const skillsOverview = skillsData.overview;
 

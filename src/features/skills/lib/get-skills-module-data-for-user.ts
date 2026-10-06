@@ -1,4 +1,4 @@
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { getTargetJobContextForUser } from "@/features/jobs/server";
 import { evaluateInsightFreshness } from "@/features/shared/insights/freshness";
 import { getInsightSourceTimestampsForUser } from "@/features/shared/insights/get-insight-source-timestamps";
@@ -16,19 +16,22 @@ export async function getSkillsModuleDataForUser(
   userId: string,
   requestedJobId?: string | null,
 ): Promise<SkillsModuleData> {
-  const [resume, targetJobContext, allJobSnapshots, latestInsight, sourceTimestamps] = await Promise.all([
-    getLatestResumeAnalysisForUser(userId),
+  const [resumeContext, targetJobContext, allJobSnapshots, latestInsight, sourceTimestamps] = await Promise.all([
+    getCurrentResumeContextForUser(userId),
     getTargetJobContextForUser(userId, requestedJobId),
     getJobSkillsSnapshotsForUser(userId),
     getLatestSkillsInsightForUser(userId),
     getInsightSourceTimestampsForUser(userId),
   ]);
+  const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
+  const resumeFreshnessAt = resume?.analyzedAt ?? null;
 
   const selectedMode = targetJobContext.mode === "selected_job";
 
   if (!resume) {
     return {
       hasResume: false,
+      resumeTruthStatus: resumeContext.status,
       resumeRole: null,
       resumeExperienceLevel: null,
       overview: null,
@@ -60,7 +63,7 @@ export async function getSkillsModuleDataForUser(
   if (insight && latestInsight) {
     const freshness = evaluateInsightFreshness({
       generatedAt: latestInsight.createdAt,
-      latestResumeAt: sourceTimestamps.latestResumeAt,
+      latestResumeAt: resumeFreshnessAt,
       latestJobAt: sourceTimestamps.latestJobAt,
       currentJobCount,
       insightJobCount: latestInsight.jobCount,
@@ -79,6 +82,7 @@ export async function getSkillsModuleDataForUser(
 
   return {
     hasResume: true,
+    resumeTruthStatus: "CURRENT",
     resumeRole: resume.role,
     resumeExperienceLevel: resume.experienceLevel,
     overview,

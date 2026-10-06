@@ -3,7 +3,7 @@ import { isAiConfigured } from "@/server/ai";
 
 import { getDiscoveryProfileForUser } from "@/features/jobs/discovery/lib/get-discovery-profile";
 import { extractRequirementsWithAi } from "../ai/opportunity-ai";
-import { buildCareerEvidence } from "../evidence/build-career-evidence";
+import { evidenceFromCatalog } from "../evidence/trusted-resume-evidence";
 import { bestEvidenceStrength, mapEvidenceForRequirement } from "../evidence/map-job-evidence";
 import { buildEvidenceFingerprint } from "../evidence/evidence-fingerprint";
 import { evaluateJobEligibility } from "../eligibility/evaluate-job-eligibility";
@@ -12,8 +12,11 @@ import { extractJobRequirementsDeterministic } from "../requirements/extract-job
 import { reconcileJobRequirements } from "../requirements/reconcile-job-requirements";
 import { classifyApplicationEffort, effortScore } from "../scoring/application-effort";
 import { calculateEvidenceCoverage } from "../scoring/evidence-coverage";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { CANONICAL_MATCH_VERSION } from "@/features/jobs/matching/canonical-match";
 import { evaluateCanonicalMatch } from "@/features/jobs/matching/canonical-match";
+import { requireCurrentResumeAnalysis } from "@/features/resume/provenance";
+import { classifyEvidenceResult, commercialYears } from "../provenance/semantic-evidence";
+import { hashJobSnapshot, OPPORTUNITY_ANALYZER_VERSION } from "../provenance/hash-job-snapshot";
 import type { JobOpportunityView, JobRequirementInput, OpportunityWarning } from "../types";
 import { parseEligibilityChecks, parseGaps, parseWarnings, toPrismaJson } from "./json-parsers";
 import { normalizeToken } from "./hash";
@@ -63,9 +66,17 @@ export async function analyzeJobOpportunity(
     throw new OpportunityAccessError("NOT_FOUND", "Job not found.");
   }
 
-  const [profile, evidence, discovered, existingAnalysis, activeApplications] = await Promise.all([
+  const currentResume = await requireCurrentResumeAnalysis(userId);
+  const activeRevision = {
+    id: currentResume.sourceRevisionId,
+    contentHash: currentResume.sourceContentHash,
+    documentId: currentResume.resumeDocumentId,
+  };
+  const evidence = evidenceFromCatalog(currentResume.catalog, currentResume.analysisId, currentResume.detectedSkills);
+  const jobSnapshotHash = hashJobSnapshot(job);
+
+  const [profile, discovered, existingAnalysis, activeApplications] = await Promise.all([
     getDiscoveryProfileForUser(userId),
-    buildCareerEvidence(userId),
     prisma.discoveredJob.findFirst({
       where: { userId, jobPostingId: job.id },
       select: { postedAt: true, expiresAt: true, discoveryStatus: true },
@@ -99,7 +110,23 @@ export async function analyzeJobOpportunity(
       .join(",")}|m30b`,
   });
 
-  if (!options?.force && existingAnalysis && existingAnalysis.contextFingerprint === fingerprint) {
+  const currentSnapshot = options?.force
+    ? null
+    : await prisma.opportunityAnalysisSnapshot.findFirst({
+      where: {
+        userId,
+        jobPostingId: job.id,
+        resumeRevisionId: activeRevision.id,
+        resumeContentHash: activeRevision.contentHash,
+        resumeAnalysisId: currentResume.analysisId,
+        jobSnapshotHash,
+        canonicalMatchVersion: CANONICAL_MATCH_VERSION,
+        opportunityAnalyzerVersion: OPPORTUNITY_ANALYZER_VERSION,
+        status: { notIn: ["STALE", "FAILED"] },
+      },
+      select: { id: true },
+    });
+  if (!options?.force && existingAnalysis && existingAnalysis.contextFingerprint === fingerprint && currentSnapshot) {
     return mapAnalysisRow(existingAnalysis);
   }
 
@@ -147,11 +174,36 @@ export async function analyzeJobOpportunity(
   });
 
   const mapped = reconciled.map((row) => {
-    const matches = mapEvidenceForRequirement(row.input, evidence);
+    const years = commercialYears(row.input);
+    const matches = mapEvidenceForRequirement(row.input, evidence).map((match) => {
+      const lacksCommercialDuration = Boolean(
+        years && (
+          match.evidenceType !== "WORK_EXPERIENCE"
+          || match.commercial === false
+          || typeof match.durationMonths !== "number"
+          || match.durationMonths < years * 12
+        ),
+      );
+      if (lacksCommercialDuration && (match.matchStrength === "DIRECT" || match.matchStrength === "STRONG")) {
+        return {
+          ...match,
+          matchStrength: "PARTIAL" as const,
+          reasoning: "Technical evidence exists, but it does not verify the commercial duration.",
+        };
+      }
+      return match;
+    });
     return {
       ...row,
       matches,
       bestStrength: bestEvidenceStrength(matches),
+      semantic: classifyEvidenceResult({
+        requirement: row.input,
+        matches: matches.map((match) => ({
+          ...match,
+          verified: match.matchStrength !== "NONE" && Boolean(match.evidenceSourceId),
+        })),
+      }),
     };
   });
 
@@ -159,22 +211,22 @@ export async function analyzeJobOpportunity(
     where: { jobRequirementId: { in: mapped.map((row) => row.id) } },
   });
 
-  for (const row of mapped) {
-    for (const match of row.matches) {
-      await prisma.jobEvidenceMatch.create({
-        data: {
-          userId,
-          jobRequirementId: row.id,
-          evidenceType: match.evidenceType,
-          evidenceSourceId: match.evidenceSourceId,
-          evidenceLabel: match.evidenceLabel,
-          evidenceExcerpt: match.evidenceExcerpt,
-          matchStrength: match.matchStrength,
-          reasoning: match.reasoning,
-          fingerprint: buildEvidenceFingerprint(match),
-        },
-      });
-    }
+  const evidenceRows = mapped.flatMap((row) => row.matches.map((match) => ({
+    userId,
+    jobRequirementId: row.id,
+    evidenceType: match.evidenceType,
+    evidenceSourceId: match.evidenceSourceId,
+    evidenceLabel: match.evidenceLabel,
+    evidenceExcerpt: match.evidenceExcerpt,
+    matchStrength: match.matchStrength,
+    reasoning: match.reasoning,
+    fingerprint: buildEvidenceFingerprint(match),
+    resumeRevisionId: activeRevision.id,
+    sourceContentHash: activeRevision.contentHash,
+    verified: match.matchStrength !== "NONE" && Boolean(match.evidenceSourceId),
+  })));
+  if (evidenceRows.length > 0) {
+    await prisma.jobEvidenceMatch.createMany({ data: evidenceRows });
   }
 
   const coverage = calculateEvidenceCoverage(
@@ -222,7 +274,6 @@ export async function analyzeJobOpportunity(
   const gaps = analyzeJobGaps(mapped.map((row) => ({ ...row.input, bestStrength: row.bestStrength })));
   const gapCounts = countGaps(gaps);
 
-  const resume = await getLatestResumeAnalysisForUser(userId);
   const skillLabels = evidence.filter((item) => item.evidenceType === "SKILL").map((item) => item.evidenceLabel);
   const match = evaluateCanonicalMatch(
     {
@@ -232,7 +283,7 @@ export async function analyzeJobOpportunity(
     },
     {
       roleTargets,
-      experienceLevel: resume?.experienceLevel ?? null,
+      experienceLevel: currentResume.experienceLevel,
       skills: skillLabels,
       evidenceSkills: skillLabels,
       countryCode: profile?.locationTargets.find((target) => target.enabled)?.countryCode ?? null,
@@ -334,6 +385,58 @@ export async function analyzeJobOpportunity(
       analysisSource,
     },
   });
+
+  await prisma.opportunityAnalysisSnapshot.updateMany({
+    where: {
+      userId,
+      jobPostingId: job.id,
+      status: { notIn: ["STALE", "FAILED"] },
+      NOT: {
+        resumeRevisionId: activeRevision.id,
+        resumeContentHash: activeRevision.contentHash,
+        resumeAnalysisId: currentResume.analysisId,
+        jobSnapshotHash,
+      },
+    },
+    data: { status: "STALE" },
+  });
+
+  const evidenceSummary = mapped.map((row) => ({
+    requirement: row.input.normalizedName,
+    result: row.semantic,
+    evidence: row.matches.find((match) => match.matchStrength !== "NONE")?.evidenceLabel ?? "No verified evidence",
+    gap: row.semantic === "MATCHED" ? null : row.matches[0]?.reasoning ?? null,
+  }));
+
+  await prisma.opportunityAnalysisSnapshot.create({
+    data: {
+      userId,
+      jobPostingId: job.id,
+      legacyAnalysisId: saved.id,
+      resumeDocumentId: activeRevision.documentId,
+      resumeRevisionId: activeRevision.id,
+      resumeContentHash: activeRevision.contentHash,
+      resumeAnalysisId: currentResume.analysisId,
+      jobSnapshotHash,
+      canonicalMatchVersion: CANONICAL_MATCH_VERSION,
+      opportunityAnalyzerVersion: OPPORTUNITY_ANALYZER_VERSION,
+      status,
+      snapshotJson: toPrismaJson({
+        opportunityScore,
+        eligibilityStatus,
+        priorityBand,
+        evidence: evidenceSummary,
+      }),
+    },
+  });
+
+  console.info(JSON.stringify({
+    event: "opportunity_snapshot_created",
+    userId,
+    jobId: job.id,
+    analysisId: currentResume.analysisId,
+    revisionId: activeRevision.id,
+  }));
 
   return {
     ...mapAnalysisRow(saved),

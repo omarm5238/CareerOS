@@ -35,6 +35,29 @@
     font-family: var(--font-sans);
   }
 
+  select {
+    color-scheme: dark;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+  }
+
+  select option,
+  select optgroup {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+  }
+
+  select option:checked,
+  select option:focus,
+  select option:hover {
+    background-color: var(--color-surface-elevated, var(--color-surface));
+    color: var(--color-text-primary);
+  }
+
+  select option:disabled {
+    color: var(--color-text-secondary);
+  }
+
   ::selection {
     background: rgb(200 185 138 / 22%);
     color: var(--color-text-primary);

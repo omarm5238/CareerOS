@@ -8,7 +8,10 @@ import { ResumeVersionsSection } from "../versions/components/resume-versions-se
 import type { ResumeVersionListItem } from "../versions/types";
 
 import { buildResumeImprovementCenter } from "../lib/build-resume-improvement-center";
+import { currentRecommendationTexts, keepCurrentImprovementItems } from "../provenance/recommendation-freshness";
+import type { ActiveResumeRevision, EvidenceCatalog } from "../provenance";
 import type { ResumeAnalysisHistoryItem, ResumeModuleAnalysis } from "../types";
+import { ResumeProvenanceBanner } from "./resume-provenance-banner";
 import { ResumeAnalysisHeader } from "./resume-analysis-header";
 import { ResumeEmptyState } from "./resume-empty-state";
 import { ResumeHistoryList } from "./resume-history-list";
@@ -28,6 +31,11 @@ type ResumeAnalysisPageProps = {
   targetJobContext: TargetJobContext;
   versions: ResumeVersionListItem[];
   archivedVersions: ResumeVersionListItem[];
+  provenance?: {
+    active: ActiveResumeRevision | null;
+    mode: "current" | "outdated" | "historical" | "legacy";
+    catalog: EvidenceCatalog | null;
+  };
 };
 
 export function ResumeAnalysisPage({
@@ -38,11 +46,23 @@ export function ResumeAnalysisPage({
   targetJobContext,
   versions,
   archivedVersions,
+  provenance = { active: null, mode: "legacy", catalog: null },
 }: ResumeAnalysisPageProps) {
   const latestDocumentId = history[0]?.resumeDocumentId ?? null;
-  const improvementCenter = analysis
+  const builtCenter = analysis
     ? buildResumeImprovementCenter({ analysis, targetJobContext })
     : null;
+  const improvementCenter = builtCenter && provenance.mode === "current"
+    ? {
+      groups: builtCenter.groups
+        .map((group) => ({ ...group, items: keepCurrentImprovementItems(group.items, provenance.catalog) }))
+        .filter((group) => group.items.length > 0),
+      itemCount: 0,
+    }
+    : builtCenter;
+  if (improvementCenter && provenance.mode === "current") {
+    improvementCenter.itemCount = improvementCenter.groups.reduce((sum, group) => sum + group.items.length, 0);
+  }
 
   return (
     <WorkspaceModuleLayout title="Resume Module">
@@ -79,6 +99,12 @@ export function ResumeAnalysisPage({
               </section>
             ) : null}
 
+            <ResumeProvenanceBanner
+              active={provenance.active}
+              analysisCreatedAt={analysis?.analyzedAt ?? null}
+              mode={analysis ? provenance.mode : "legacy"}
+            />
+
             {analysis ? (
               <>
                 <ResumeAnalysisHeader analysis={analysis} />
@@ -109,8 +135,12 @@ export function ResumeAnalysisPage({
                     <ResumeSkillsSection skills={analysis.detectedSkills} />
                     <ResumeInsightsSection
                       strengths={analysis.strengths}
-                      suggestedFocus={analysis.suggestedFocus}
-                      weaknesses={analysis.weaknesses}
+                      suggestedFocus={provenance.mode === "current" && provenance.catalog
+                        ? currentRecommendationTexts(analysis.suggestedFocus, provenance.catalog)
+                        : analysis.suggestedFocus}
+                      weaknesses={provenance.mode === "current" && provenance.catalog
+                        ? currentRecommendationTexts(analysis.weaknesses, provenance.catalog)
+                        : analysis.weaknesses}
                     />
                   </div>
                 </div>
@@ -121,7 +151,7 @@ export function ResumeAnalysisPage({
                     versions={versions}
                   />
                   {improvementCenter ? (
-                    <ResumeImprovementCenter data={improvementCenter} />
+                    <ResumeImprovementCenter data={improvementCenter} historical={provenance.mode !== "current"} />
                   ) : null}
                 </div>
               </>

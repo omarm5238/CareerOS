@@ -10,6 +10,7 @@ import { WorkspaceRail } from "./workspace-rail";
 
 type WorkspaceShellProps = {
   profile: WorkspaceProfile | null;
+  resumeTruth: "CURRENT" | "NO_ACTIVE_RESUME" | "CURRENT_ANALYSIS_NOT_FOUND";
   jobsStatus: WorkspaceJobsStatus;
   skillsStatus: WorkspaceSkillsStatus;
   analyticsStatus: WorkspaceAnalyticsStatus;
@@ -17,6 +18,7 @@ type WorkspaceShellProps = {
 
 export function WorkspaceShell({
   profile,
+  resumeTruth,
   jobsStatus,
   skillsStatus,
   analyticsStatus,
@@ -43,6 +45,7 @@ export function WorkspaceShell({
               analyticsStatus={analyticsStatus}
               jobsStatus={jobsStatus}
               profile={profile}
+              resumeTruth={resumeTruth}
               skillsStatus={skillsStatus}
             />
           </section>

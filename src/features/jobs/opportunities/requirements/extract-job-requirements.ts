@@ -22,6 +22,8 @@ const EXTRA_SKILLS = [
   "Node.js",
   "PostgreSQL",
   "Docker",
+  "C#",
+  ".NET",
 ];
 
 const SKILL_ALIASES: Record<string, string[]> = {
@@ -30,6 +32,8 @@ const SKILL_ALIASES: Record<string, string[]> = {
   docker: ["docker"],
   go: ["golang", " go "],
   postgresql: ["postgres", "postgresql"],
+  "c#": ["c#"],
+  ".net": [".net", "dotnet"],
 };
 
 function excerptAround(text: string, needle: string): string {
@@ -43,7 +47,7 @@ function excerptAround(text: string, needle: string): string {
 
 function importanceFromContext(context: string): JobRequirementImportance {
   const lower = context.toLowerCase();
-  if (/\b(must|required|mandatory|need to have)\b/.test(lower)) return "REQUIRED";
+  if (/\b(must|required|mandatory|minimum|need to have)\b/.test(lower)) return "REQUIRED";
   if (/\b(strongly preferred|highly preferred)\b/.test(lower)) return "STRONGLY_PREFERRED";
   if (/\b(preferred|nice to have|plus|bonus)\b/.test(lower)) return "PREFERRED";
   if (/\b(optional)\b/.test(lower)) return "OPTIONAL";
@@ -148,6 +152,20 @@ export function extractJobRequirementsDeterministic(input: {
       importance: "REQUIRED",
       normalizedName: "Cover letter",
       rawText: "cover letter",
+      sourceExcerpt: excerpt,
+      yearsRequired: null,
+      proficiencyRequired: null,
+      isExplicit: true,
+    });
+  }
+
+  if (/\brelevant experience\b/i.test(text)) {
+    const excerpt = excerptAround(text, "relevant experience");
+    pushUnique(results, {
+      category: "OTHER",
+      importance: "UNKNOWN",
+      normalizedName: "relevant experience",
+      rawText: "relevant experience",
       sourceExcerpt: excerpt,
       yearsRequired: null,
       proficiencyRequired: null,

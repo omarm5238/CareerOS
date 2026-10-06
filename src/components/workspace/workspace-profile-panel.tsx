@@ -33,7 +33,7 @@ export function WorkspaceProfilePanel({
     setExpanded((current) => {
       const next = !current;
       localStorage.setItem(STORAGE_KEY, String(next));
-      onExpandedChange?.(next);
+      queueMicrotask(() => onExpandedChange?.(next));
       return next;
     });
   }
@@ -50,6 +50,9 @@ export function WorkspaceProfilePanel({
           </p>
           <p className="mt-1 truncate text-sm font-semibold text-[var(--color-text-primary)]">
             {profile.role}
+          </p>
+          <p className="mt-1 truncate text-xs text-[var(--color-text-secondary)]" data-testid="home-resume-truth">
+            {profile.filename} · {profile.detectedSkills.join(", ")}
           </p>
         </div>
         <button
@@ -98,17 +101,17 @@ export function WorkspaceProfilePanel({
   );
 }
 
-export function WorkspaceProfileSetupPanel() {
+export function WorkspaceProfileSetupPanel({ message = "Fresh resume analysis required" }: { message?: string }) {
   return (
     <div className="pointer-events-auto absolute left-4 top-4 w-[min(100%,240px)] rounded-[var(--radius-xl)] border border-[var(--color-border-subtle)] bg-[rgb(10_10_10_/_72%)] p-3 shadow-[var(--shadow-md)] backdrop-blur-xl sm:w-[260px]">
       <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
         Profile setup
       </p>
-      <p className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]">
-        Build your career profile
+      <p className="mt-1 text-sm font-semibold text-[var(--color-text-primary)]" data-testid="home-resume-truth">
+        {message}
       </p>
       <p className="mt-1 text-xs leading-5 text-[var(--color-text-secondary)]">
-        Complete onboarding to unlock your first profile baseline.
+        Older analyses stay in history. Analyze a full source CV before CareerOS treats a resume as current.
       </p>
       <Link
         className="btn-primary mt-3 px-3 py-2 text-xs"

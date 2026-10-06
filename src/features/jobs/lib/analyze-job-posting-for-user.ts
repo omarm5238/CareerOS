@@ -1,4 +1,4 @@
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { prisma } from "@/server/db/prisma";
 
 import { buildJobMatchInput, resolveJobMatchAnalysis } from "../ai";
@@ -27,7 +27,8 @@ export async function analyzeJobPostingForUser(
 
   if (!job) return null;
 
-  const resume = await getLatestResumeAnalysisForUser(userId);
+  const resumeContext = await getCurrentResumeContextForUser(userId);
+  const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
   const matchInput = buildJobMatchInput(
     {
       title: job.title,

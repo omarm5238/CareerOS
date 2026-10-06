@@ -1,3 +1,4 @@
+import { getCurrentResumeContextForUser } from "@/features/resume/provenance/resolvers";
 import { prisma } from "@/server/db/prisma";
 
 import { buildResumeTailoringInput } from "../ai/build-resume-tailoring-input";
@@ -85,7 +86,6 @@ export async function regenerateResumeVersion(
     };
   }
 
-  // Falls back to the newest analyzed resume when the original document was removed.
   const resumeDocument = version.sourceResumeDocumentId
     ? await prisma.resumeDocument.findFirst({
         where: { id: version.sourceResumeDocumentId, userId },
@@ -93,20 +93,22 @@ export async function regenerateResumeVersion(
       })
     : null;
 
-  const effectiveDocument =
-    resumeDocument ??
-    (await prisma.resumeDocument.findFirst({
-      where: { userId, analysis: { isNot: null } },
-      orderBy: { createdAt: "desc" },
-      select: RESUME_DOCUMENT_SELECT,
-    }));
+  const currentResume = resumeDocument?.analysis ? null : await getCurrentResumeContextForUser(userId);
+  const fallbackDocument = currentResume?.status === "CURRENT"
+    ? await prisma.resumeDocument.findFirst({
+        where: { id: currentResume.analysis.resumeDocumentId, userId },
+        select: RESUME_DOCUMENT_SELECT,
+      })
+    : null;
+  const effectiveDocument = resumeDocument?.analysis ? resumeDocument : fallbackDocument;
 
   if (!effectiveDocument?.analysis) {
     return {
       ok: false,
       status: 400,
-      message:
-        "No analyzed resume is available to regenerate from. Existing revisions are unchanged.",
+      message: currentResume?.status === "CURRENT_ANALYSIS_NOT_FOUND"
+        ? "Reanalysis required before this version can be regenerated. Existing revisions are unchanged."
+        : "Fresh resume analysis required before this version can be regenerated. Existing revisions are unchanged.",
     };
   }
 

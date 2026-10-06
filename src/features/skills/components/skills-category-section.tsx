@@ -24,7 +24,7 @@ export function SkillsCategorySection({ groupedSkills }: SkillsCategorySectionPr
         Detected Skills
       </h2>
 
-      <div className="mt-4 space-y-5">
+      <div className="mt-4 space-y-5" data-testid="current-skills">
         {SKILL_CATEGORY_ORDER.map((category) => {
           const skills = groupedSkills[category];
           if (skills.length === 0) return null;

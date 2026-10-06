@@ -51,6 +51,7 @@ export type SkillsOverview = {
 
 export type SkillsModuleData = {
   hasResume: boolean;
+  resumeTruthStatus: "CURRENT" | "NO_ACTIVE_RESUME" | "CURRENT_ANALYSIS_NOT_FOUND";
   resumeRole: string | null;
   resumeExperienceLevel: string | null;
   overview: SkillsOverview | null;

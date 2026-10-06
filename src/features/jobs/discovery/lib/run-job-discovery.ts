@@ -1,6 +1,6 @@
 import { prisma } from "@/server/db/prisma";
 import type { Prisma } from "@/generated/prisma/client";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 
 import { DISCOVERY_COOLDOWN_MS, AI_DEEP_RANK_LIMIT } from "../constants";
 import type {
@@ -57,6 +57,34 @@ function coverageCounts(jobs: DiscoveryQualityJob[]): Record<string, number> {
     else counts.OTHER++;
   }
   return counts;
+}
+
+export async function getDiscoveryResumeInput(userId: string) {
+  const context = await getCurrentResumeContextForUser(userId);
+  if (context.status !== "CURRENT") {
+    return {
+      status: context.status,
+      userSkills: [] as string[],
+      userEvidenceSkills: [] as string[],
+      userExperienceLevel: null as string | null,
+      resumeAnalysisId: null as string | null,
+      sourceFilename: null as string | null,
+      revisionNumber: null as number | null,
+      role: null as string | null,
+      strengths: [] as string[],
+    };
+  }
+  return {
+    status: "CURRENT" as const,
+    userSkills: context.analysis.detectedSkills,
+    userEvidenceSkills: context.analysis.detectedSkills,
+    userExperienceLevel: context.analysis.experienceLevel,
+    resumeAnalysisId: context.analysis.analysisId,
+    sourceFilename: context.revision.sourceFilename,
+    revisionNumber: context.revision.revisionNumber,
+    role: context.analysis.role,
+    strengths: context.analysis.strengths,
+  };
 }
 
 function discoveryBand(band: string): "STRONG" | "POSSIBLE" | "LOW" | null {
@@ -205,14 +233,9 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     + prepared.stats.trustFiltered
   );
 
-  // Load resume context for scoring
-  const resumeAnalysis = await getLatestResumeAnalysisForUser(userId);
-  const userSkills: string[] = [];
-  const userEvidenceSkills: string[] = [];
-  if (resumeAnalysis) {
-    userSkills.push(...resumeAnalysis.detectedSkills);
-    userEvidenceSkills.push(...resumeAnalysis.detectedSkills);
-  }
+  const resumeInput = await getDiscoveryResumeInput(userId);
+  const userSkills = resumeInput.userSkills;
+  const userEvidenceSkills = resumeInput.userEvidenceSkills;
 
   // Upsert discovered jobs and score
   const upsertedIds: string[] = [];
@@ -239,7 +262,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       locationTargets: profile.locationTargets,
       userWorkModes: profile.workModes,
       userEmploymentTypes: profile.employmentTypes,
-      userExperienceLevel: resumeAnalysis?.experienceLevel ?? null,
+      userExperienceLevel: resumeInput.userExperienceLevel,
       userSkills,
       userEvidenceSkills,
       freshnessDays: intent.freshnessDays,
@@ -251,7 +274,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
       normalizedTitle: normTitle,
       normalizedCompany: normCompany,
       roleTargets: enabledTargets.map(t => t.title),
-      resumeAnalysisId: resumeAnalysis?.analysisId ?? null,
+      resumeAnalysisId: resumeInput.resumeAnalysisId,
       skillsContextKey: "m30b-canonical",
     });
 
@@ -390,7 +413,7 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
     return !Array.isArray(candidate.hardBlockersJson) || candidate.hardBlockersJson.length === 0;
   });
 
-  if (needsAiRank.length > 0 && resumeAnalysis) {
+  if (needsAiRank.length > 0 && resumeInput.status === "CURRENT") {
     const aiResult = await rankDiscoveredJobsBatch(
       needsAiRank.map(c => ({
         id: c.id,
@@ -401,11 +424,10 @@ export async function runJobDiscovery(userId: string, options?: { force?: boolea
         missingSkills: Array.isArray(c.missingSkillsJson) ? c.missingSkillsJson as string[] : [],
       })),
       {
-        role: resumeAnalysis.role,
+        role: resumeInput.role ?? "Unknown role",
         skills: userSkills.slice(0, 15),
-        experienceLevel: resumeAnalysis.experienceLevel,
-        strengths: Array.isArray(resumeAnalysis.strengths)
-          ? (resumeAnalysis.strengths as string[]).slice(0, 5) : [],
+        experienceLevel: resumeInput.userExperienceLevel ?? "Unknown",
+        strengths: resumeInput.strengths.slice(0, 5),
       },
     );
 

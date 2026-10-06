@@ -9,7 +9,7 @@ import {
 import { getApplicationSummaryForJob } from "@/features/applications/server";
 import {
   getJobTailoredResumeSummary,
-  getLatestResumeAnalysisForUser,
+  getCurrentResumeContextForUser,
 } from "@/features/resume/server";
 import {
   getJobCommunications,
@@ -39,6 +39,8 @@ async function getJobOpportunityProps(userId: string, jobPostingId: string) {
           applicationEffort: opportunity.applicationEffort,
           topEvidence: opportunity.topEvidence,
           topGaps: opportunity.topGaps,
+          provenance: opportunity.provenance,
+          evidenceRows: opportunity.evidenceRows,
         }
       : null,
     opportunityPackageId: latestPackage?.id ?? null,
@@ -63,10 +65,11 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
   const jobId =
     typeof rawJobId === "string" && rawJobId.trim().length > 0 ? rawJobId.trim() : null;
 
-  const [jobs, resume] = await Promise.all([
+  const [jobs, resumeContext] = await Promise.all([
     getJobPostingsForUser(session.user.id),
-    getLatestResumeAnalysisForUser(session.user.id),
+    getCurrentResumeContextForUser(session.user.id),
   ]);
+  const hasCurrentResume = resumeContext.status === "CURRENT";
 
   if (jobId) {
     const selected = await getJobPostingByIdForUser(session.user.id, jobId);
@@ -74,7 +77,7 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
     if (!selected) {
       return (
         <JobsModulePage
-          hasResumeProfile={!!resume}
+          hasResumeProfile={hasCurrentResume}
           jobNotFound
           jobs={jobs}
           selectedJob={null}
@@ -98,7 +101,7 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
         applicationSummary={applicationSummary}
         communicationDrafts={communicationDrafts}
         communicationResumeOptions={communicationResumeOptions}
-        hasResumeProfile={!!resume}
+        hasResumeProfile={hasCurrentResume}
         jobs={jobs}
         opportunity={opportunityProps.opportunity}
         opportunityPackageId={opportunityProps.opportunityPackageId}
@@ -134,7 +137,7 @@ export default async function WorkspaceJobsPage({ searchParams }: WorkspaceJobsP
       applicationSummary={applicationSummary}
       communicationDrafts={communicationDrafts}
       communicationResumeOptions={communicationResumeOptions}
-      hasResumeProfile={!!resume}
+      hasResumeProfile={hasCurrentResume}
       jobs={jobs}
       opportunity={opportunityProps.opportunity}
       opportunityPackageId={opportunityProps.opportunityPackageId}

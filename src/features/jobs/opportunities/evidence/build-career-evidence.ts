@@ -1,6 +1,6 @@
 import { prisma } from "@/server/db/prisma";
 
-import { getLatestResumeAnalysisForUser } from "@/features/resume/lib/get-latest-resume-analysis-for-user";
+import { getCurrentResumeContextForUser } from "@/features/resume/provenance/resolvers";
 import { parseResumeVersionContent } from "@/features/resume/versions/lib/json-parsers";
 import { normalizeToken } from "../lib/hash";
 import type { CareerEvidenceItem } from "../types";
@@ -14,7 +14,8 @@ function tokensFrom(...parts: Array<string | null | undefined>): string[] {
 export async function buildCareerEvidence(userId: string): Promise<CareerEvidenceItem[]> {
   const items: CareerEvidenceItem[] = [];
 
-  const analysis = await getLatestResumeAnalysisForUser(userId);
+  const resumeContext = await getCurrentResumeContextForUser(userId);
+  const analysis = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
   if (analysis) {
     const skills = Array.isArray(analysis.detectedSkills)
       ? analysis.detectedSkills.filter((item): item is string => typeof item === "string")

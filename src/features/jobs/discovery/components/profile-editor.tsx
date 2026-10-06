@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { JobDiscoveryProfileData, JobDiscoveryRoleTarget } from "../types";
 import { interpretSearchProfile, LOCATION_MODES, type LocationSearchMode, type SearchIntent } from "../quality/search-quality";
@@ -139,17 +139,13 @@ export function ProfileEditor({ profile }: ProfileEditorProps) {
       </fieldset>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="text-sm">
+        <div className="text-sm">
           <span className="text-[var(--color-text-secondary)]">Current country</span>
-          <select
+          <CountrySelect
             value={intent.currentCountryCode ?? ""}
-            onChange={(e) => setIntent((prev) => ({ ...prev, currentCountryCode: e.target.value || null }))}
-            className="mt-1 w-full rounded border border-[var(--color-border)] bg-transparent px-2 py-1"
-          >
-            <option value="">Not set</option>
-            {COUNTRY_OPTIONS.map((country) => <option key={country.code} value={country.code}>{country.label}</option>)}
-          </select>
-        </label>
+            onChange={(code) => setIntent((prev) => ({ ...prev, currentCountryCode: code || null }))}
+          />
+        </div>
         <div>
           <p className="text-sm text-[var(--color-text-secondary)]">Selected countries</p>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -260,6 +256,103 @@ export function ProfileEditor({ profile }: ProfileEditorProps) {
         {saving ? "Saving…" : "Save Profile"}
       </button>
     </section>
+  );
+}
+
+function CountrySelect({ value, onChange }: { value: string; onChange: (code: string) => void }) {
+  const options = [{ code: "", label: "Not set" }, ...COUNTRY_OPTIONS];
+  const selectedIndex = Math.max(0, options.findIndex((option) => option.code === value));
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(selectedIndex);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function closeOnOutsideClick(event: MouseEvent) {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", closeOnOutsideClick);
+    return () => document.removeEventListener("mousedown", closeOnOutsideClick);
+  }, []);
+
+  function commit(index: number) {
+    onChange(options[index]?.code ?? "");
+    setOpen(false);
+  }
+
+  function onKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const start = open ? activeIndex : selectedIndex;
+      const next = event.key === "ArrowDown"
+        ? Math.min(options.length - 1, start + 1)
+        : Math.max(0, start - 1);
+      setActiveIndex(next);
+      setOpen(true);
+      return;
+    }
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      if (open) commit(activeIndex);
+      else setOpen(true);
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  return (
+    <div className="relative mt-1" ref={rootRef}>
+      <button
+        aria-controls="current-country-listbox"
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        className="flex w-full items-center justify-between rounded border border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-1 text-left text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        data-testid="current-country"
+        onClick={() => {
+          setActiveIndex(selectedIndex);
+          setOpen((current) => !current);
+        }}
+        onKeyDown={onKeyDown}
+        type="button"
+      >
+        <span>{options[selectedIndex]?.label ?? "Not set"}</span>
+        <span aria-hidden="true">▾</span>
+      </button>
+      {open ? (
+        <ul
+          className="absolute z-30 mt-1 max-h-64 w-full overflow-auto rounded border border-[var(--color-border)] bg-[var(--color-surface)] py-1 shadow-lg"
+          data-testid="current-country-listbox"
+          id="current-country-listbox"
+          role="listbox"
+        >
+          {options.map((option, index) => {
+            const selected = option.code === value;
+            const highlighted = index === activeIndex;
+            return (
+              <li key={option.code || "unset"} role="presentation">
+                <button
+                  aria-selected={selected}
+                  className={`block w-full px-2 py-1 text-left text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] ${
+                    highlighted || selected
+                      ? "bg-[var(--color-surface-elevated)] text-[var(--color-text-primary)]"
+                      : "bg-[var(--color-surface)] text-[var(--color-text-primary)]"
+                  }`}
+                  data-testid={`country-option-${option.code || "unset"}`}
+                  onClick={() => commit(index)}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  role="option"
+                  type="button"
+                >
+                  {option.label}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
+    </div>
   );
 }
 

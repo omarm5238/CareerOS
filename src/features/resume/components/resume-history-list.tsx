@@ -68,6 +68,11 @@ export function ResumeHistoryList({
                   </div>
 
                   <div className="flex flex-col items-end gap-1.5">
+                    {item.truthLabel ? (
+                      <span className="rounded-full border border-[var(--color-border-subtle)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]" data-testid="resume-history-truth">
+                        {item.truthLabel}
+                      </span>
+                    ) : null}
                     {isLatest ? (
                       <span className="rounded-full border border-[var(--color-border-subtle)] bg-[rgb(17_17_17_/_70%)] px-2 py-0.5 text-[10px] uppercase tracking-[0.12em] text-[var(--color-text-secondary)]">
                         Latest

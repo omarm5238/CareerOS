@@ -33,6 +33,7 @@ export async function getResumeAnalysisHistoryForUser(
         detectedSkillsCount: parseStringArray(analysis.detectedSkills).length,
         analysisSource: parseAnalysisSource(analysis.analysisSource),
         createdAt: analysis.createdAt.toISOString(),
+        freshness: analysis.freshness,
       };
     });
 }

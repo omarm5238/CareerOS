@@ -5,6 +5,7 @@ import {
   isValidSkillName,
   partitionRequirements,
 } from "@/features/shared/insights";
+import { canonicalResumeSkills } from "@/features/resume/provenance/normalize-resume-skills";
 import type { ResumeModuleAnalysis } from "@/features/resume/types";
 import type { TargetJobContext } from "@/features/jobs";
 
@@ -101,7 +102,7 @@ export function buildSelectedJobSkillContext(input: {
   const extractedNonSkills = splits.flatMap((item) => item.nonSkillRequirements);
 
   const overview = generateSkillsOverview({
-    resumeDetectedSkills: filterSkillLikeItems(input.resume.detectedSkills),
+    resumeDetectedSkills: canonicalResumeSkills(input.resume.detectedSkills),
     resumeRole: input.resume.role,
     resumeExperienceLevel: input.resume.experienceLevel,
     resumeCompletenessScore: input.resume.completenessScore,

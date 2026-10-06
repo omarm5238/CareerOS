@@ -1,5 +1,17 @@
 import { prisma } from "@/server/db/prisma";
+import { projectCurrentDiscoveryMatch } from "@/features/jobs/matching/project-current-match";
+import { loadCanonicalProfile } from "@/features/jobs/matching/stamp-job-match";
 import { SCORE_BAND_THRESHOLDS } from "../../discovery/constants";
+
+const discoveredMatchSelect = {
+  id: true,
+  title: true,
+  description: true,
+  location: true,
+  countryCode: true,
+  workMode: true,
+  finalScore: true,
+} as const;
 
 export async function addToQueue(
   userId: string,
@@ -7,12 +19,12 @@ export async function addToQueue(
 ): Promise<{ id: string; created: boolean }> {
   const job = await prisma.discoveredJob.findFirst({
     where: { id: discoveredJobId, userId },
-    select: { id: true, finalScore: true, hardBlockersJson: true, softBlockersJson: true },
+    select: discoveredMatchSelect,
   });
 
   if (!job) throw new Error("Job not found.");
-  const hardBlockers = Array.isArray(job.hardBlockersJson) ? job.hardBlockersJson : [];
-  if (hardBlockers.length > 0) {
+  const current = projectCurrentDiscoveryMatch(job, await loadCanonicalProfile(userId));
+  if (current.eligibility === "INELIGIBLE") {
     throw new Error("This job is ineligible and cannot enter the application queue.");
   }
 
@@ -23,7 +35,7 @@ export async function addToQueue(
 
   if (existing) return { id: existing.id, created: false };
 
-  const priority = (job.finalScore ?? 0) >= SCORE_BAND_THRESHOLDS.EXCELLENT ? "HIGH" : "NORMAL";
+  const priority = (current.finalScore ?? 0) >= SCORE_BAND_THRESHOLDS.EXCELLENT ? "HIGH" : "NORMAL";
 
   const item = await prisma.applicationQueueItem.create({
     data: {
@@ -45,16 +57,14 @@ export async function batchAddToQueue(
   let added = 0;
   let skipped = 0;
 
+  const profile = await loadCanonicalProfile(userId);
   for (const id of discoveredJobIds.slice(0, 10)) {
     const job = await prisma.discoveredJob.findFirst({
       where: { id, userId, discoveryStatus: "CANDIDATE", dismissedAt: null },
-      select: { id: true, finalScore: true, hardBlockersJson: true, softBlockersJson: true },
+      select: discoveredMatchSelect,
     });
-
-    const hardBlockers = Array.isArray(job?.hardBlockersJson) ? job.hardBlockersJson : [];
-    const softBlockers = Array.isArray(job?.softBlockersJson) ? job.softBlockersJson : [];
-    const reviewRequired = softBlockers.some((blocker) => blocker === "REVIEW_REQUIRED");
-    if (!job || hardBlockers.length > 0 || reviewRequired || (job.finalScore ?? 0) < minimumScore) {
+    const current = job ? projectCurrentDiscoveryMatch(job, profile) : null;
+    if (!current || current.eligibility !== "ELIGIBLE" || current.scoreBand == null || current.scoreBand === "INELIGIBLE" || (current.finalScore ?? 0) < minimumScore) {
       skipped++;
       continue;
     }

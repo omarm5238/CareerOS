@@ -125,7 +125,9 @@ export function DiscoveredJobCard({ job, onAddToQueue, onDismiss }: DiscoveredJo
 
       {job.matchSummary ? (
         <div>
-          <p className="text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">Why it fits</p>
+          <p className="text-xs uppercase tracking-wider text-[var(--color-text-secondary)]">
+            {job.hardBlockers.length > 0 ? "Current match" : "Why it fits"}
+          </p>
           <p className="mt-1 text-sm text-[var(--color-text-primary)]">{job.matchSummary}</p>
         </div>
       ) : null}

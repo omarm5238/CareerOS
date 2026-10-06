@@ -111,7 +111,9 @@ export function ApplicationQueuePage({ items: initialItems }: QueuePageProps) {
                     <div>
                       <h3 className="text-lg font-semibold text-[var(--color-text-primary)]">{item.title}</h3>
                       <p className="text-sm text-[var(--color-text-secondary)]">{item.company}</p>
-                      {item.discoveryScore != null ? (
+                      {item.scoreBand === "INELIGIBLE" ? (
+                        <p className="mt-2 text-sm font-medium text-[var(--color-text-primary)]">Ineligible</p>
+                      ) : item.discoveryScore != null ? (
                         <p className="mt-2 text-sm">
                           <span className="text-[var(--color-text-secondary)]">Discovery Suitability: </span>
                           <span className="font-medium text-[var(--color-text-primary)]">

@@ -1,4 +1,4 @@
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { prisma } from "@/server/db/prisma";
 
 import { buildSkillsInsightInput, resolveSkillsInsight } from "../ai";
@@ -23,12 +23,15 @@ export type AnalyzeSkillsInsightResult =
 export async function analyzeSkillsInsightForUser(
   userId: string,
 ): Promise<AnalyzeSkillsInsightResult> {
-  const resume = await getLatestResumeAnalysisForUser(userId);
+  const resumeContext = await getCurrentResumeContextForUser(userId);
+  const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
 
   if (!resume) {
     return {
       ok: false,
-      message: "Upload or analyze a resume first to generate skills intelligence.",
+      message: resumeContext.status === "CURRENT_ANALYSIS_NOT_FOUND"
+        ? "Reanalysis required before skills intelligence can use the active resume."
+        : "Fresh resume analysis required before skills intelligence can use a current resume.",
       status: 400,
     };
   }

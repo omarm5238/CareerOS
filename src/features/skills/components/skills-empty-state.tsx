@@ -2,21 +2,22 @@ import Link from "next/link";
 
 type SkillsEmptyStateProps = {
   variant: "no-resume" | "no-detected-skills";
+  message?: string;
 };
 
-export function SkillsEmptyState({ variant }: SkillsEmptyStateProps) {
+export function SkillsEmptyState({ variant, message }: SkillsEmptyStateProps) {
   if (variant === "no-resume") {
     return (
       <div className="relative mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center px-6 py-16">
-        <div className="w-full text-center">
+        <div className="w-full text-center" data-testid="skills-resume-truth">
           <p className="text-xs uppercase tracking-[0.28em] text-[var(--color-text-secondary)]">
             Skills Module
           </p>
           <h1 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--color-text-primary)]">
-            No resume skills yet
+            {message ?? "Fresh resume analysis required"}
           </h1>
           <p className="mt-3 text-sm leading-7 text-[var(--color-text-secondary)]">
-            Upload a resume to detect skills and compare them against saved jobs.
+            Current skills come from the active source resume. Older analyses stay historical until you analyze a full CV again.
           </p>
         </div>
 

@@ -1,3 +1,4 @@
+import { canonicalResumeSkills } from "../provenance/normalize-resume-skills";
 import type { AnalysisSource, ResumeModuleAnalysis } from "../types";
 
 type ResumeDocumentWithAnalysis = {
@@ -44,7 +45,7 @@ export function mapResumeDocumentToModuleAnalysis(
     fileSize: document.fileSize,
     textLength: document.textLength,
     mimeType: document.mimeType,
-    detectedSkills: parseStringArray(document.analysis.detectedSkills),
+    detectedSkills: canonicalResumeSkills(parseStringArray(document.analysis.detectedSkills)),
     suggestedFocus: parseStringArray(document.analysis.suggestedFocus),
     strengths: parseStringArray(document.analysis.strengths),
     weaknesses: parseStringArray(document.analysis.weaknesses),

@@ -1,3 +1,6 @@
+/** Identity of the M30B scoring rules. Opportunity snapshots record this; they do not rescore. */
+export const CANONICAL_MATCH_VERSION = "m30b-canonical-v1";
+
 export const BLOCKING_REASONS = [
   "ROLE_FAMILY_MISMATCH",
   "SENIORITY_MISMATCH",

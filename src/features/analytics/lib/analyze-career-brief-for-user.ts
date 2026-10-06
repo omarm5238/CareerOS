@@ -1,6 +1,6 @@
 import { parseApplicationStatus } from "@/features/jobs/constants/application-status";
 import type { JobDetailView } from "@/features/jobs";
-import { getLatestResumeAnalysisForUser } from "@/features/resume/server";
+import { getCurrentResumeContextForUser } from "@/features/resume/server";
 import { buildResumeImprovementCenter } from "@/features/resume/lib/build-resume-improvement-center";
 import { getSkillsModuleDataForUser } from "@/features/skills/server";
 
@@ -102,11 +102,12 @@ export async function analyzeCareerBriefForUser(
   requestedJobId?: string | null,
 ): Promise<AnalyzeCareerBriefResult> {
   try {
-    const [resume, skillsData, analytics] = await Promise.all([
-      getLatestResumeAnalysisForUser(userId),
+    const [resumeContext, skillsData, analytics] = await Promise.all([
+      getCurrentResumeContextForUser(userId),
       getSkillsModuleDataForUser(userId, requestedJobId),
       getAnalyticsModuleDataForUser(userId, requestedJobId),
     ]);
+    const resume = resumeContext.status === "CURRENT" ? resumeContext.analysis : null;
     const targetJobContext = skillsData.targetJobContext;
     const jobsSummary = buildJobsSummary(
       targetJobContext.selectedJob,
@@ -117,7 +118,7 @@ export async function analyzeCareerBriefForUser(
     if (!resume && jobsSummary.count === 0) {
       return {
         ok: false,
-        message: "Upload or analyze a resume first to generate a CareerOS Brief.",
+        message: "Fresh resume analysis required before a CareerOS Brief can use current resume facts.",
         status: 400,
       };
     }

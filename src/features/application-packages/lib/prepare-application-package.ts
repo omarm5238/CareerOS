@@ -1,7 +1,8 @@
 import { prisma } from "@/server/db/prisma";
 
 import { generateCommunicationDraft } from "@/features/communications/lib/generate-communication-draft";
-import { analyzeJobOpportunity } from "@/features/jobs/opportunities/lib/analyze-job-opportunity";
+import { getOpportunityAnalysisForUser } from "@/features/jobs/opportunities/lib/analyze-job-opportunity";
+import { assertCurrentOpportunityForPreparation } from "@/features/jobs/opportunities/provenance/current-opportunity";
 import { OpportunityAccessError } from "@/features/jobs/opportunities/lib/permissions";
 import { createResumeVersionForJob } from "@/features/resume/versions/lib/create-resume-version-for-job";
 import { normalizeToken } from "@/features/jobs/opportunities/lib/hash";
@@ -41,7 +42,11 @@ export async function prepareApplicationPackage(
     });
     if (!job) throw new OpportunityAccessError("NOT_FOUND", "Job not found.");
 
-    const analysis = await analyzeJobOpportunity(userId, jobPostingId);
+    const currentOpportunity = await assertCurrentOpportunityForPreparation(userId, jobPostingId);
+    const analysis = await getOpportunityAnalysisForUser(userId, jobPostingId);
+    if (!analysis) {
+      throw new OpportunityAccessError("INVALID_INPUT", "Opportunity analysis is required before preparing an application.");
+    }
 
     const requirements = await prisma.jobRequirement.findMany({
       where: { userId, jobPostingId },
@@ -224,6 +229,11 @@ export async function prepareApplicationPackage(
         : (latest?.version ?? 0) + 1;
 
     const opportunitySnapshot = {
+      resumeDocumentId: currentOpportunity.resumeDocumentId,
+      resumeRevisionId: currentOpportunity.resumeRevisionId,
+      resumeContentHash: currentOpportunity.resumeContentHash,
+      resumeAnalysisId: currentOpportunity.resumeAnalysisId,
+      opportunityAnalysisSnapshotId: currentOpportunity.snapshotId,
       opportunityScore: analysis.opportunityScore,
       priorityScore: analysis.priorityScore,
       priorityBand: analysis.priorityBand,
