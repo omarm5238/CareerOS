@@ -6,6 +6,7 @@ import { getOpportunityAnalysisForUser } from "@/features/jobs/opportunities/lib
 import { OpportunityAccessError } from "@/features/jobs/opportunities/lib/permissions";
 import { normalizeToken } from "@/features/jobs/opportunities/lib/hash";
 
+import { evaluateApplicationReadiness } from "../readiness/evaluate-application-readiness";
 import { buildApplicationPackageFingerprint } from "./application-package-fingerprint";
 import {
   parseEligibility,
@@ -30,6 +31,7 @@ export async function getApplicationPackageDetail(
       resumeVersionRevision: { select: { id: true, revisionNumber: true } },
       coverLetterDraft: { select: { id: true, status: true, activeRevisionId: true, activeRevision: { select: { content: true } } } },
       coverLetterRevision: { select: { id: true, revisionNumber: true } },
+      sourceResumeRevision: { select: { revisionNumber: true, sourceFilename: true } },
       application: { select: { id: true, status: true } },
     },
   });
@@ -111,6 +113,8 @@ export async function getApplicationPackageDetail(
                 ? "READY_TO_APPLY"
                 : "NEEDS_YOUR_INPUT";
 
+  const readiness = await evaluateApplicationReadiness(userId, row.id);
+
   return {
     id: row.id,
     version: row.version,
@@ -122,7 +126,10 @@ export async function getApplicationPackageDetail(
     workMode: null,
     applyUrl: row.jobPosting?.jobUrl ?? null,
     status: row.status,
-    readinessStatus: row.readinessStatus,
+    readinessStatus: readiness.status === "READY" ? "READY" : readiness.status === "REVIEW_REQUIRED" ? "NEEDS_REVIEW" : "BLOCKED",
+    readinessBlockers: readiness.blockers,
+    sourceFilename: row.sourceResumeRevision?.sourceFilename ?? null,
+    sourceRevisionNumber: row.sourceResumeRevision?.revisionNumber ?? null,
     qaStatus: row.qaStatus,
     userFacingState,
     opportunityScore: typeof snapshot.opportunityScore === "number" ? snapshot.opportunityScore : null,

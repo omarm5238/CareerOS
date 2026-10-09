@@ -104,7 +104,12 @@ export async function executeConfirmedSubmit(userId: string, sessionId: string, 
     await prisma.$transaction(async (tx) => {
       await tx.applicationSubmissionAttempt.update({
         where: { id: attempt.id },
-        data: { approvalUsedAt: new Date(nowMs()), status: "SUBMITTING", startedAt: new Date() },
+        data: {
+        approvalUsedAt: new Date(nowMs()),
+        status: "SUBMITTING",
+        startedAt: new Date(),
+        submitBoundaryCrossedAt: new Date(),
+      },
       });
       await tx.applicationExecutionSession.update({
         where: { id: sessionId },
@@ -192,8 +197,9 @@ async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: s
   await prisma.applicationSubmissionAttempt.update({
     where: { id: attemptId },
     data: {
-      verificationStatus: result.status,
-      status: result.status === "FAILED" ? "FAILED" : result.status === "VERIFIED" ? "COMPLETED" : "UNCERTAIN",
+      verificationStatus: result.status === "VERIFIED" ? "NOT_RUN" : result.status,
+      status: result.status === "FAILED" ? "FAILED" : result.status === "VERIFIED" ? "VERIFYING" : "UNCERTAIN",
+      confirmationType: result.status === "VERIFIED" ? "provider-confirmation" : undefined,
       confirmationUrl: result.confirmationUrl,
       providerApplicationId: result.providerApplicationId,
       verificationEvidenceJson: {
@@ -203,9 +209,9 @@ async function verifyAfterSubmit(userId: string, sessionId: string, attemptId: s
         confirmationUrl: result.confirmationUrl,
         providerApplicationId: result.providerApplicationId,
         pageFingerprint: result.pageFingerprint,
+        trustedConfirmation: result.status === "VERIFIED",
         verifiedAt: new Date().toISOString(),
       },
-      verifiedAt: result.status === "VERIFIED" ? new Date() : null,
       failureCode,
     },
   });

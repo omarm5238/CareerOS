@@ -4301,5 +4301,3 @@ export type NestedEnumCareerMemoryEventTypeWithAggregatesFilter<$PrismaModel = n
   _min?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
   _max?: Prisma.NestedEnumCareerMemoryEventTypeFilter<$PrismaModel>
 }
-
-

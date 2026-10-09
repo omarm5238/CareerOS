@@ -7,6 +7,7 @@ import { OpportunityAccessError } from "@/features/jobs/opportunities/lib/permis
 import { createResumeVersionForJob } from "@/features/resume/versions/lib/create-resume-version-for-job";
 import { normalizeToken } from "@/features/jobs/opportunities/lib/hash";
 
+import { hashSubmissionPackage } from "../provenance/package-hash";
 import { buildApplicationPackageFingerprint } from "./application-package-fingerprint";
 import { buildRequiredUserInputs, mergePreservedInputs } from "./build-required-user-inputs";
 import { calculateApplicationReadiness } from "./calculate-application-readiness";
@@ -260,6 +261,21 @@ export async function prepareApplicationPackage(
       })),
     }));
 
+    const packageIdentity = {
+      jobPostingId,
+      jobSnapshotHash: currentOpportunity.jobSnapshotHash,
+      opportunityAnalysisSnapshotId: currentOpportunity.snapshotId,
+      sourceResumeRevisionId: currentOpportunity.resumeRevisionId,
+      sourceResumeContentHash: currentOpportunity.resumeContentHash,
+      resumeAnalysisId: currentOpportunity.resumeAnalysisId,
+      tailoredResumeVersionId: resume.id,
+      tailoredResumeRevisionId: revision.id,
+      communicationDraftId: coverLetterDraftId,
+      communicationRevisionId: coverLetter?.activeRevisionId ?? null,
+      provider: null,
+    };
+    const packageHash = hashSubmissionPackage(packageIdentity);
+
     const data = {
       userId,
       jobPostingId,
@@ -281,11 +297,18 @@ export async function prepareApplicationPackage(
       qaSnapshotJson: toPrismaJson(qa),
       warningsJson: toPrismaJson(analysis.warnings),
       contextFingerprint: fingerprint,
+      opportunityAnalysisSnapshotId: currentOpportunity.snapshotId,
+      sourceResumeRevisionId: currentOpportunity.resumeRevisionId,
+      sourceResumeContentHash: currentOpportunity.resumeContentHash,
+      resumeAnalysisId: currentOpportunity.resumeAnalysisId,
+      packageHash,
+      packageJson: toPrismaJson({ ...packageIdentity, communicationRequired: coverLetterRequired }),
       preparedAt: new Date(),
     };
 
     const shouldUpdate =
       latest &&
+      !latest.lockedAt &&
       latest.version === nextVersion &&
       latest.status !== "APPROVED" &&
       latest.status !== "SUBMITTED" &&

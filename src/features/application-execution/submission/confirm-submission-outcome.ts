@@ -1,5 +1,6 @@
 import { prisma } from "@/server/db/prisma";
 
+import { finalizeConfirmedSubmission, persistTrustedConfirmation } from "../integrity/finalize-confirmed-submission";
 import { toPrismaJson } from "../lib/json-parsers";
 import { ExecutionAccessError } from "../lib/permissions";
 import { recordExecutionEvent } from "../sessions/execution-event";
@@ -35,6 +36,27 @@ export async function confirmSubmissionOutcome(userId: string, sessionId: string
   }
 
   if (outcome === "SUBMITTED") {
+    if (attempt.submitBoundaryCrossedAt) {
+      await recordExecutionEvent(prisma, {
+        userId,
+        executionSessionId: sessionId,
+        type: "VERIFICATION_RESULT",
+        message: "User verified this was submitted.",
+        metadata: { attemptId: attempt.id, resolution: "SUBMITTED" },
+      });
+      const persisted = await persistTrustedConfirmation(userId, attempt.id, { confirmationType: "user-verified" });
+      if (!persisted) throw new ExecutionAccessError("CONFLICT", "Confirmation is not trusted.");
+      const result = await finalizeConfirmedSubmission({
+        userId,
+        submissionAttemptId: attempt.id,
+        submissionPackageId: row.applicationPackageId,
+        applicationId: row.applicationId,
+      });
+      if (result !== "FINALIZED" && result !== "ALREADY_FINALIZED") {
+        throw new ExecutionAccessError("CONFLICT", "Submission could not be finalized.");
+      }
+      return loadOwnedSession(userId, sessionId);
+    }
     await prisma.applicationSubmissionAttempt.update({
       where: { id: attempt.id },
       data: {

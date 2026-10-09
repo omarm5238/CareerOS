@@ -27,6 +27,11 @@ export type TransitionApplicationStatusInput = {
   confirmedRejectionReason?: string | null;
   confirmedRejectionSource?: string | null;
   note?: string | null;
+  submittedPackageId?: string | null;
+  submittedExecutionAttemptId?: string | null;
+  resumeVersionId?: string | null;
+  resumeVersionRevisionId?: string | null;
+  provider?: string | null;
 };
 
 export type TransitionApplicationStatusResult = {
@@ -68,6 +73,22 @@ export async function transitionApplicationStatus(
 
   // Idempotency: repeated clicks must not append duplicate status events.
   if (application.status === input.toStatus) {
+    if (
+      input.toStatus === "APPLIED" &&
+      input.submittedPackageId &&
+      input.submittedExecutionAttemptId &&
+      (!application.submittedPackageId || !application.submittedExecutionAttemptId)
+    ) {
+      await prisma.application.update({
+        where: { id: application.id },
+        data: {
+          submittedPackageId: application.submittedPackageId ?? input.submittedPackageId,
+          submittedExecutionAttemptId: application.submittedExecutionAttemptId ?? input.submittedExecutionAttemptId,
+          resumeVersionId: application.resumeVersionId ?? input.resumeVersionId ?? undefined,
+          resumeVersionRevisionId: application.resumeVersionRevisionId ?? input.resumeVersionRevisionId ?? undefined,
+        },
+      });
+    }
     return {
       applicationId: application.id,
       status: application.status,
@@ -138,6 +159,12 @@ export async function transitionApplicationStatus(
         status: input.toStatus,
         lastActivityAt: now,
         ...(isSubmitting ? { appliedAt } : {}),
+        ...(isSubmitting && input.resumeVersionId ? { resumeVersionId: input.resumeVersionId } : {}),
+        ...(isSubmitting && input.resumeVersionRevisionId ? { resumeVersionRevisionId: input.resumeVersionRevisionId } : {}),
+        ...(isSubmitting && input.submittedPackageId ? { submittedPackageId: input.submittedPackageId } : {}),
+        ...(isSubmitting && input.submittedExecutionAttemptId
+          ? { submittedExecutionAttemptId: input.submittedExecutionAttemptId }
+          : {}),
         ...(finalSnapshot ? { contextSnapshotJson: toPrismaJson(finalSnapshot) } : {}),
         ...(input.toStatus === "REJECTED"
           ? {
@@ -192,6 +219,11 @@ export async function transitionApplicationStatus(
             }`
           : "No CareerOS resume revision was recorded for this submission.",
         eventAt: appliedAt ?? now,
+        metadata: {
+          submissionPackageId: input.submittedPackageId ?? undefined,
+          executionAttemptId: input.submittedExecutionAttemptId ?? undefined,
+          provider: input.provider ?? undefined,
+        },
       });
     }
 

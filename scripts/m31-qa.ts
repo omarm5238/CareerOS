@@ -106,7 +106,7 @@ function hasSkill(skills: string[], name: string) {
 
 async function main() {
   const migrationCount = readdirSync("prisma/migrations", { withFileTypes: true }).filter((entry) => entry.isDirectory()).length;
-  assert(migrationCount === 22, `migration count is ${migrationCount}`);
+  assert(migrationCount >= 22, `migration count is ${migrationCount}`);
   const juniorBackend = evaluateCanonicalMatch({
     title: "Junior Backend Engineer",
     location: "Istanbul, Türkiye",

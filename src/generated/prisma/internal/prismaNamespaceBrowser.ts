@@ -384,6 +384,8 @@ export const ApplicationScalarFieldEnum = {
   confirmedRejectionSource: 'confirmedRejectionSource',
   rejectedAt: 'rejectedAt',
   closedAt: 'closedAt',
+  submittedPackageId: 'submittedPackageId',
+  submittedExecutionAttemptId: 'submittedExecutionAttemptId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -757,6 +759,13 @@ export const ApplicationPackageScalarFieldEnum = {
   qaSnapshotJson: 'qaSnapshotJson',
   warningsJson: 'warningsJson',
   contextFingerprint: 'contextFingerprint',
+  opportunityAnalysisSnapshotId: 'opportunityAnalysisSnapshotId',
+  sourceResumeRevisionId: 'sourceResumeRevisionId',
+  sourceResumeContentHash: 'sourceResumeContentHash',
+  resumeAnalysisId: 'resumeAnalysisId',
+  packageHash: 'packageHash',
+  packageJson: 'packageJson',
+  lockedAt: 'lockedAt',
   preparedAt: 'preparedAt',
   approvedAt: 'approvedAt',
   submissionStartedAt: 'submissionStartedAt',
@@ -837,6 +846,10 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
   resumeFileHash: 'resumeFileHash',
   coverLetterRevisionId: 'coverLetterRevisionId',
   coverLetterFileHash: 'coverLetterFileHash',
+  idempotencyKey: 'idempotencyKey',
+  submitBoundaryCrossedAt: 'submitBoundaryCrossedAt',
+  destinationUrl: 'destinationUrl',
+  confirmationType: 'confirmationType',
   startedAt: 'startedAt',
   submittedAt: 'submittedAt',
   verifiedAt: 'verifiedAt',
@@ -1466,4 +1479,3 @@ export const JsonNullValueFilter = {
 } as const
 
 export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-

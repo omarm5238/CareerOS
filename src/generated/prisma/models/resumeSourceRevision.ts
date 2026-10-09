@@ -254,6 +254,7 @@ export type resumeSourceRevisionWhereInput = {
   analyses?: Prisma.ResumeAnalysisListRelationFilter
   opportunitySnapshots?: Prisma.OpportunityAnalysisSnapshotListRelationFilter
   evidenceMatches?: Prisma.JobEvidenceMatchListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }
 
 export type resumeSourceRevisionOrderByWithRelationInput = {
@@ -271,6 +272,7 @@ export type resumeSourceRevisionOrderByWithRelationInput = {
   analyses?: Prisma.resumeAnalysisOrderByRelationAggregateInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotOrderByRelationAggregateInput
   evidenceMatches?: Prisma.jobEvidenceMatchOrderByRelationAggregateInput
+  applicationPackages?: Prisma.applicationPackageOrderByRelationAggregateInput
 }
 
 export type resumeSourceRevisionWhereUniqueInput = Prisma.AtLeast<{
@@ -292,6 +294,7 @@ export type resumeSourceRevisionWhereUniqueInput = Prisma.AtLeast<{
   analyses?: Prisma.ResumeAnalysisListRelationFilter
   opportunitySnapshots?: Prisma.OpportunityAnalysisSnapshotListRelationFilter
   evidenceMatches?: Prisma.JobEvidenceMatchListRelationFilter
+  applicationPackages?: Prisma.ApplicationPackageListRelationFilter
 }, "id" | "resumeDocumentId" | "userId_revisionNumber">
 
 export type resumeSourceRevisionOrderByWithAggregationInput = {
@@ -339,6 +342,7 @@ export type resumeSourceRevisionCreateInput = {
   analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateInput = {
@@ -354,6 +358,7 @@ export type resumeSourceRevisionUncheckedCreateInput = {
   analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUpdateInput = {
@@ -369,6 +374,7 @@ export type resumeSourceRevisionUpdateInput = {
   analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateInput = {
@@ -384,6 +390,7 @@ export type resumeSourceRevisionUncheckedUpdateInput = {
   analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionCreateManyInput = {
@@ -609,6 +616,22 @@ export type resumeSourceRevisionUpdateOneRequiredWithoutOpportunitySnapshotsNest
   update?: Prisma.XOR<Prisma.XOR<Prisma.resumeSourceRevisionUpdateToOneWithWhereWithoutOpportunitySnapshotsInput, Prisma.resumeSourceRevisionUpdateWithoutOpportunitySnapshotsInput>, Prisma.resumeSourceRevisionUncheckedUpdateWithoutOpportunitySnapshotsInput>
 }
 
+export type resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput = {
+  create?: Prisma.XOR<Prisma.resumeSourceRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.resumeSourceRevisionCreateOrConnectWithoutApplicationPackagesInput
+  connect?: Prisma.resumeSourceRevisionWhereUniqueInput
+}
+
+export type resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput = {
+  create?: Prisma.XOR<Prisma.resumeSourceRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  connectOrCreate?: Prisma.resumeSourceRevisionCreateOrConnectWithoutApplicationPackagesInput
+  upsert?: Prisma.resumeSourceRevisionUpsertWithoutApplicationPackagesInput
+  disconnect?: Prisma.resumeSourceRevisionWhereInput | boolean
+  delete?: Prisma.resumeSourceRevisionWhereInput | boolean
+  connect?: Prisma.resumeSourceRevisionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.resumeSourceRevisionUpdateToOneWithWhereWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUpdateWithoutApplicationPackagesInput>, Prisma.resumeSourceRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
 export type resumeSourceRevisionCreateWithoutUserInput = {
   id?: string
   revisionNumber: number
@@ -621,6 +644,7 @@ export type resumeSourceRevisionCreateWithoutUserInput = {
   analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateWithoutUserInput = {
@@ -635,6 +659,7 @@ export type resumeSourceRevisionUncheckedCreateWithoutUserInput = {
   analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionCreateOrConnectWithoutUserInput = {
@@ -690,6 +715,7 @@ export type resumeSourceRevisionCreateWithoutResumeDocumentInput = {
   analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateWithoutResumeDocumentInput = {
@@ -704,6 +730,7 @@ export type resumeSourceRevisionUncheckedCreateWithoutResumeDocumentInput = {
   analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionCreateOrConnectWithoutResumeDocumentInput = {
@@ -734,6 +761,7 @@ export type resumeSourceRevisionUpdateWithoutResumeDocumentInput = {
   analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateWithoutResumeDocumentInput = {
@@ -748,6 +776,7 @@ export type resumeSourceRevisionUncheckedUpdateWithoutResumeDocumentInput = {
   analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionCreateWithoutAnalysesInput = {
@@ -762,6 +791,7 @@ export type resumeSourceRevisionCreateWithoutAnalysesInput = {
   resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateWithoutAnalysesInput = {
@@ -776,6 +806,7 @@ export type resumeSourceRevisionUncheckedCreateWithoutAnalysesInput = {
   createdAt?: Date | string
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionCreateOrConnectWithoutAnalysesInput = {
@@ -806,6 +837,7 @@ export type resumeSourceRevisionUpdateWithoutAnalysesInput = {
   resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateWithoutAnalysesInput = {
@@ -820,6 +852,7 @@ export type resumeSourceRevisionUncheckedUpdateWithoutAnalysesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionCreateWithoutEvidenceMatchesInput = {
@@ -834,6 +867,7 @@ export type resumeSourceRevisionCreateWithoutEvidenceMatchesInput = {
   resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutSourceRevisionInput
   analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateWithoutEvidenceMatchesInput = {
@@ -848,6 +882,7 @@ export type resumeSourceRevisionUncheckedCreateWithoutEvidenceMatchesInput = {
   createdAt?: Date | string
   analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionCreateOrConnectWithoutEvidenceMatchesInput = {
@@ -878,6 +913,7 @@ export type resumeSourceRevisionUpdateWithoutEvidenceMatchesInput = {
   resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutSourceRevisionNestedInput
   analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateWithoutEvidenceMatchesInput = {
@@ -892,6 +928,7 @@ export type resumeSourceRevisionUncheckedUpdateWithoutEvidenceMatchesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionCreateWithoutOpportunitySnapshotsInput = {
@@ -906,6 +943,7 @@ export type resumeSourceRevisionCreateWithoutOpportunitySnapshotsInput = {
   resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutSourceRevisionInput
   analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionUncheckedCreateWithoutOpportunitySnapshotsInput = {
@@ -920,6 +958,7 @@ export type resumeSourceRevisionUncheckedCreateWithoutOpportunitySnapshotsInput 
   createdAt?: Date | string
   analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+  applicationPackages?: Prisma.applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput
 }
 
 export type resumeSourceRevisionCreateOrConnectWithoutOpportunitySnapshotsInput = {
@@ -950,6 +989,7 @@ export type resumeSourceRevisionUpdateWithoutOpportunitySnapshotsInput = {
   resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutSourceRevisionNestedInput
   analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateWithoutOpportunitySnapshotsInput = {
@@ -963,6 +1003,83 @@ export type resumeSourceRevisionUncheckedUpdateWithoutOpportunitySnapshotsInput 
   activatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
+  evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
+}
+
+export type resumeSourceRevisionCreateWithoutApplicationPackagesInput = {
+  id?: string
+  revisionNumber: number
+  contentHash: string
+  sourceFilename: string
+  isActive?: boolean
+  activatedAt?: Date | string | null
+  createdAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutResumeSourceRevisionsInput
+  resumeDocument: Prisma.resumeDocumentCreateNestedOneWithoutSourceRevisionInput
+  analyses?: Prisma.resumeAnalysisCreateNestedManyWithoutSourceRevisionInput
+  opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotCreateNestedManyWithoutResumeRevisionInput
+  evidenceMatches?: Prisma.jobEvidenceMatchCreateNestedManyWithoutResumeRevisionInput
+}
+
+export type resumeSourceRevisionUncheckedCreateWithoutApplicationPackagesInput = {
+  id?: string
+  userId: string
+  resumeDocumentId: string
+  revisionNumber: number
+  contentHash: string
+  sourceFilename: string
+  isActive?: boolean
+  activatedAt?: Date | string | null
+  createdAt?: Date | string
+  analyses?: Prisma.resumeAnalysisUncheckedCreateNestedManyWithoutSourceRevisionInput
+  opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedCreateNestedManyWithoutResumeRevisionInput
+  evidenceMatches?: Prisma.jobEvidenceMatchUncheckedCreateNestedManyWithoutResumeRevisionInput
+}
+
+export type resumeSourceRevisionCreateOrConnectWithoutApplicationPackagesInput = {
+  where: Prisma.resumeSourceRevisionWhereUniqueInput
+  create: Prisma.XOR<Prisma.resumeSourceRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedCreateWithoutApplicationPackagesInput>
+}
+
+export type resumeSourceRevisionUpsertWithoutApplicationPackagesInput = {
+  update: Prisma.XOR<Prisma.resumeSourceRevisionUpdateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+  create: Prisma.XOR<Prisma.resumeSourceRevisionCreateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedCreateWithoutApplicationPackagesInput>
+  where?: Prisma.resumeSourceRevisionWhereInput
+}
+
+export type resumeSourceRevisionUpdateToOneWithWhereWithoutApplicationPackagesInput = {
+  where?: Prisma.resumeSourceRevisionWhereInput
+  data: Prisma.XOR<Prisma.resumeSourceRevisionUpdateWithoutApplicationPackagesInput, Prisma.resumeSourceRevisionUncheckedUpdateWithoutApplicationPackagesInput>
+}
+
+export type resumeSourceRevisionUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  contentHash?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceFilename?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  activatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutResumeSourceRevisionsNestedInput
+  resumeDocument?: Prisma.resumeDocumentUpdateOneRequiredWithoutSourceRevisionNestedInput
+  analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
+  opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
+  evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+}
+
+export type resumeSourceRevisionUncheckedUpdateWithoutApplicationPackagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  resumeDocumentId?: Prisma.StringFieldUpdateOperationsInput | string
+  revisionNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  contentHash?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceFilename?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  activatedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
+  opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
 }
 
@@ -989,6 +1106,7 @@ export type resumeSourceRevisionUpdateWithoutUserInput = {
   analyses?: Prisma.resumeAnalysisUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateWithoutUserInput = {
@@ -1003,6 +1121,7 @@ export type resumeSourceRevisionUncheckedUpdateWithoutUserInput = {
   analyses?: Prisma.resumeAnalysisUncheckedUpdateManyWithoutSourceRevisionNestedInput
   opportunitySnapshots?: Prisma.opportunityAnalysisSnapshotUncheckedUpdateManyWithoutResumeRevisionNestedInput
   evidenceMatches?: Prisma.jobEvidenceMatchUncheckedUpdateManyWithoutResumeRevisionNestedInput
+  applicationPackages?: Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput
 }
 
 export type resumeSourceRevisionUncheckedUpdateManyWithoutUserInput = {
@@ -1025,12 +1144,14 @@ export type ResumeSourceRevisionCountOutputType = {
   analyses: number
   opportunitySnapshots: number
   evidenceMatches: number
+  applicationPackages: number
 }
 
 export type ResumeSourceRevisionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   analyses?: boolean | ResumeSourceRevisionCountOutputTypeCountAnalysesArgs
   opportunitySnapshots?: boolean | ResumeSourceRevisionCountOutputTypeCountOpportunitySnapshotsArgs
   evidenceMatches?: boolean | ResumeSourceRevisionCountOutputTypeCountEvidenceMatchesArgs
+  applicationPackages?: boolean | ResumeSourceRevisionCountOutputTypeCountApplicationPackagesArgs
 }
 
 /**
@@ -1064,6 +1185,13 @@ export type ResumeSourceRevisionCountOutputTypeCountEvidenceMatchesArgs<ExtArgs 
   where?: Prisma.jobEvidenceMatchWhereInput
 }
 
+/**
+ * ResumeSourceRevisionCountOutputType without action
+ */
+export type ResumeSourceRevisionCountOutputTypeCountApplicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationPackageWhereInput
+}
+
 
 export type resumeSourceRevisionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1080,6 +1208,7 @@ export type resumeSourceRevisionSelect<ExtArgs extends runtime.Types.Extensions.
   analyses?: boolean | Prisma.resumeSourceRevision$analysesArgs<ExtArgs>
   opportunitySnapshots?: boolean | Prisma.resumeSourceRevision$opportunitySnapshotsArgs<ExtArgs>
   evidenceMatches?: boolean | Prisma.resumeSourceRevision$evidenceMatchesArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.resumeSourceRevision$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ResumeSourceRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["resumeSourceRevision"]>
 
@@ -1130,6 +1259,7 @@ export type resumeSourceRevisionInclude<ExtArgs extends runtime.Types.Extensions
   analyses?: boolean | Prisma.resumeSourceRevision$analysesArgs<ExtArgs>
   opportunitySnapshots?: boolean | Prisma.resumeSourceRevision$opportunitySnapshotsArgs<ExtArgs>
   evidenceMatches?: boolean | Prisma.resumeSourceRevision$evidenceMatchesArgs<ExtArgs>
+  applicationPackages?: boolean | Prisma.resumeSourceRevision$applicationPackagesArgs<ExtArgs>
   _count?: boolean | Prisma.ResumeSourceRevisionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type resumeSourceRevisionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1149,6 +1279,7 @@ export type $resumeSourceRevisionPayload<ExtArgs extends runtime.Types.Extension
     analyses: Prisma.$resumeAnalysisPayload<ExtArgs>[]
     opportunitySnapshots: Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>[]
     evidenceMatches: Prisma.$jobEvidenceMatchPayload<ExtArgs>[]
+    applicationPackages: Prisma.$applicationPackagePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1559,6 +1690,7 @@ export interface Prisma__resumeSourceRevisionClient<T, Null = never, ExtArgs ext
   analyses<T extends Prisma.resumeSourceRevision$analysesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeSourceRevision$analysesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$resumeAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   opportunitySnapshots<T extends Prisma.resumeSourceRevision$opportunitySnapshotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeSourceRevision$opportunitySnapshotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   evidenceMatches<T extends Prisma.resumeSourceRevision$evidenceMatchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeSourceRevision$evidenceMatchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$jobEvidenceMatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  applicationPackages<T extends Prisma.resumeSourceRevision$applicationPackagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeSourceRevision$applicationPackagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPackagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2067,6 +2199,30 @@ export type resumeSourceRevision$evidenceMatchesArgs<ExtArgs extends runtime.Typ
   take?: number
   skip?: number
   distinct?: Prisma.JobEvidenceMatchScalarFieldEnum | Prisma.JobEvidenceMatchScalarFieldEnum[]
+}
+
+/**
+ * resumeSourceRevision.applicationPackages
+ */
+export type resumeSourceRevision$applicationPackagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationPackage
+   */
+  select?: Prisma.applicationPackageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationPackage
+   */
+  omit?: Prisma.applicationPackageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationPackageInclude<ExtArgs> | null
+  where?: Prisma.applicationPackageWhereInput
+  orderBy?: Prisma.applicationPackageOrderByWithRelationInput | Prisma.applicationPackageOrderByWithRelationInput[]
+  cursor?: Prisma.applicationPackageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationPackageScalarFieldEnum | Prisma.ApplicationPackageScalarFieldEnum[]
 }
 
 /**

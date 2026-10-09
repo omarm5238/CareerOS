@@ -4,6 +4,7 @@ import { transitionApplicationStatus } from "@/features/applications/lib/transit
 
 import { selectAdapter } from "../adapters/adapter-registry";
 import { getApplicationBrowserRunner } from "../browser/browser-runtime-registry";
+import { finalizeConfirmedSubmission, persistTrustedConfirmation } from "../integrity/finalize-confirmed-submission";
 import { toPrismaJson } from "../lib/json-parsers";
 import { ExecutionAccessError } from "../lib/permissions";
 import { recordExecutionEvent } from "../sessions/execution-event";
@@ -36,9 +37,10 @@ export async function verifySubmission(userId: string, sessionId: string) {
   await prisma.applicationSubmissionAttempt.update({
     where: { id: attempt.id },
     data: {
-      verificationStatus: result.status,
+      verificationStatus: result.status === "VERIFIED" ? attempt.verificationStatus : result.status,
       confirmationUrl: result.confirmationUrl,
       providerApplicationId: result.providerApplicationId,
+      confirmationType: result.status === "VERIFIED" ? (attempt.confirmationType ?? "provider-confirmation") : attempt.confirmationType,
       verificationEvidenceJson: toPrismaJson({
         provider: row.provider,
         verificationMethod: result.method,
@@ -46,10 +48,10 @@ export async function verifySubmission(userId: string, sessionId: string) {
         confirmationUrl: result.confirmationUrl,
         providerApplicationId: result.providerApplicationId,
         pageFingerprint: result.pageFingerprint,
+        trustedConfirmation: result.status === "VERIFIED",
         verifiedAt: new Date().toISOString(),
       }),
-      status: result.status === "VERIFIED" ? "COMPLETED" : result.status === "FAILED" ? "FAILED" : attempt.status,
-      verifiedAt: result.status === "VERIFIED" ? new Date() : attempt.verifiedAt,
+      status: result.status === "FAILED" ? "FAILED" : attempt.status,
     },
   });
   await recordExecutionEvent(prisma, {
@@ -72,10 +74,40 @@ export async function applyVerifiedSuccess(
   source: "provider" | "user",
 ) {
   const row = await loadOwnedSession(userId, sessionId);
+  const attempt = row.submissionAttempts.find((item) => item.id === attemptId) ?? row.submissionAttempts[0];
+  if (!attempt || attempt.id !== attemptId) {
+    throw new ExecutionAccessError("NOT_FOUND", "Submission attempt not found.");
+  }
+  if (attempt.submitBoundaryCrossedAt) {
+    const persisted = await persistTrustedConfirmation(userId, attempt.id, {
+      confirmationType: source === "provider" ? "provider-confirmation" : "user-verified",
+      confirmationReference: attempt.providerApplicationId,
+    });
+    if (!persisted) throw new ExecutionAccessError("CONFLICT", "Confirmation is not trusted.");
+    const result = await finalizeConfirmedSubmission({
+      userId,
+      submissionAttemptId: attempt.id,
+      submissionPackageId: row.applicationPackageId,
+      applicationId: row.applicationId,
+    });
+    if (result !== "FINALIZED" && result !== "ALREADY_FINALIZED") {
+      throw new ExecutionAccessError("CONFLICT", "Submission could not be finalized.");
+    }
+    await getApplicationBrowserRunner().close(sessionId).catch(() => undefined);
+    return;
+  }
+  if (source === "provider") {
+    throw new ExecutionAccessError("CONFLICT", "Provider confirmation without a submit boundary cannot be finalized.");
+  }
   await transitionApplicationStatus({
     userId,
     applicationId: row.applicationId,
     toStatus: "APPLIED",
+    submittedPackageId: row.applicationPackageId,
+    submittedExecutionAttemptId: attemptId,
+    resumeVersionId: row.applicationPackage.resumeVersionId,
+    resumeVersionRevisionId: row.applicationPackage.resumeVersionRevisionId,
+    provider: row.provider,
   });
   await prisma.applicationPackage.update({
     where: { id: row.applicationPackageId },
@@ -83,11 +115,7 @@ export async function applyVerifiedSuccess(
   });
   await prisma.applicationSubmissionAttempt.update({
     where: { id: attemptId },
-    data: {
-      status: "COMPLETED",
-      submittedAt: new Date(),
-      verifiedAt: source === "provider" ? new Date() : undefined,
-    },
+    data: { status: "COMPLETED", submittedAt: new Date() },
   });
   await prisma.applicationExecutionSession.update({
     where: { id: sessionId },
@@ -97,10 +125,7 @@ export async function applyVerifiedSuccess(
     userId,
     executionSessionId: sessionId,
     type: "SESSION_COMPLETED",
-    message:
-      source === "provider"
-        ? "Application submission verified by the provider adapter. M22 marked APPLIED."
-        : "User confirmed the application was submitted. M22 marked APPLIED.",
+    message: "User confirmed a manual submission. No provider execution boundary was crossed.",
   });
   await getApplicationBrowserRunner().close(sessionId).catch(() => undefined);
 }

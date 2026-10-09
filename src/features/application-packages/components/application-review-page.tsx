@@ -67,6 +67,7 @@ export function ApplicationReviewPage({
             <p className="section-eyebrow">
               {detail.priorityBand ? PRIORITY_BAND_LABELS[detail.priorityBand] : "Application package"}
             </p>
+            <p className="mt-3 text-sm text-[var(--color-text-primary)]">This is the package that will be submitted.</p>
             <h1 className="mt-2 text-2xl font-semibold text-[var(--color-text-primary)]">{detail.jobTitle}</h1>
             <p className="text-sm text-[var(--color-text-secondary)]">
               {detail.company}
@@ -77,7 +78,23 @@ export function ApplicationReviewPage({
               <div>Evidence Coverage {detail.evidenceCoverage ?? "—"}%</div>
               <div>Application Effort {detail.applicationEffort ?? "Unknown"}</div>
               <div>Version {detail.version}</div>
+              <div>Application readiness {detail.readinessStatus === "READY" ? "READY" : detail.readinessStatus === "BLOCKED" ? "BLOCKED" : "NEEDS REVIEW"}</div>
+              <div>Source CV {detail.sourceFilename ?? "Legacy"}{detail.sourceRevisionNumber ? ` · Revision ${detail.sourceRevisionNumber}` : ""}</div>
+              <div>Tailored resume revision {detail.resumeRevisionNumber ?? "Missing"}</div>
             </dl>
+            {detail.readinessBlockers.includes("PACKAGE_STALE") ? (
+              <div className="mt-4 rounded-md border border-[var(--color-border)] p-3 text-sm">
+                <p className="font-medium text-[var(--color-text-primary)]">Package outdated</p>
+                <p className="mt-1 text-[var(--color-text-secondary)]">
+                  Resume or opportunity changed. Prepare a new package. This package cannot be submitted.
+                </p>
+              </div>
+            ) : null}
+            {detail.readinessBlockers.length > 0 ? (
+              <ul className="mt-3 space-y-1 text-sm text-[var(--color-danger)]">
+                {detail.readinessBlockers.map((blocker) => <li key={blocker}>{blocker}</li>)}
+              </ul>
+            ) : null}
             {detail.stale ? (
               <div className="mt-4 rounded-md border border-[var(--color-border)] p-3 text-sm">
                 <p className="font-medium text-[var(--color-text-primary)]">Package context changed</p>

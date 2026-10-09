@@ -71,6 +71,9 @@ export type ApplicationPackageView = {
   applyUrl: string | null;
   status: ApplicationPackageStatus;
   readinessStatus: ApplicationReadinessStatus;
+  readinessBlockers: string[];
+  sourceFilename: string | null;
+  sourceRevisionNumber: number | null;
   qaStatus: ApplicationPackageQaStatus;
   userFacingState: "READY_TO_APPLY" | "NEEDS_YOUR_INPUT" | "BLOCKED" | "APPROVED" | "SUBMISSION_STARTED" | "SUBMITTED" | "ARCHIVED";
   opportunityScore: number | null;

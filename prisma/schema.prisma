@@ -166,6 +166,7 @@ model resumeAnalysis {
   resumeVersions resumeVersion[]
   sourceRevision resumeSourceRevision?  @relation(fields: [sourceRevisionId], references: [id], onDelete: SetNull)
   opportunitySnapshots opportunityAnalysisSnapshot[]
+  applicationPackages applicationPackage[]
 
   @@index([sourceRevisionId])
   @@index([freshness])
@@ -513,6 +514,10 @@ model application {
 
   closedAt DateTime?
 
+  /// Exact package and execution used for a real submission. Null on legacy applications.
+  submittedPackageId          String? @unique
+  submittedExecutionAttemptId String? @unique
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -525,8 +530,10 @@ model application {
   insights                      applicationInsight[]
   communicationDrafts           communicationDraft[]
   applicationPackages           applicationPackage[]
+  submittedPackage              applicationPackage?            @relation("SubmittedApplicationPackage", fields: [submittedPackageId], references: [id], onDelete: Restrict)
   applicationExecutionSessions  applicationExecutionSession[]
   applicationSubmissionAttempts applicationSubmissionAttempt[]
+  submittedExecutionAttempt     applicationSubmissionAttempt?  @relation("SubmittedExecutionAttempt", fields: [submittedExecutionAttemptId], references: [id], onDelete: Restrict)
 
   @@index([userId])
   @@index([jobPostingId])
@@ -1297,6 +1304,7 @@ model resumeSourceRevision {
   analyses       resumeAnalysis[]
   opportunitySnapshots opportunityAnalysisSnapshot[]
   evidenceMatches jobEvidenceMatch[]
+  applicationPackages applicationPackage[]
 
   @@unique([userId, revisionNumber])
   @@index([userId, createdAt])
@@ -1325,6 +1333,7 @@ model opportunityAnalysisSnapshot {
   resumeDocument resumeDocument         @relation(fields: [resumeDocumentId], references: [id], onDelete: Restrict)
   resumeRevision resumeSourceRevision   @relation(fields: [resumeRevisionId], references: [id], onDelete: Restrict)
   resumeAnalysis resumeAnalysis         @relation(fields: [resumeAnalysisId], references: [id], onDelete: Restrict)
+  applicationPackages applicationPackage[]
 
   @@index([userId, createdAt])
   @@index([jobPostingId, createdAt])
@@ -1364,6 +1373,15 @@ model applicationPackage {
 
   contextFingerprint String
 
+  /// Exact M31 provenance. Null on packages created before M32.
+  opportunityAnalysisSnapshotId String?
+  sourceResumeRevisionId        String?
+  sourceResumeContentHash       String?
+  resumeAnalysisId              String?
+  packageHash                   String?
+  packageJson                   Json    @default("{}")
+  lockedAt                      DateTime?
+
   preparedAt          DateTime?
   approvedAt          DateTime?
   submissionStartedAt DateTime?
@@ -1382,13 +1400,23 @@ model applicationPackage {
   coverLetterDraft      communicationDraft?            @relation("PackageCoverLetter", fields: [coverLetterDraftId], references: [id], onDelete: SetNull)
   coverLetterRevision   communicationDraftRevision?    @relation("PackageCoverLetterRevision", fields: [coverLetterRevisionId], references: [id], onDelete: SetNull)
   applicationEmailDraft communicationDraft?            @relation("PackageApplicationEmail", fields: [applicationEmailDraftId], references: [id], onDelete: SetNull)
+  opportunityAnalysisSnapshot opportunityAnalysisSnapshot? @relation(fields: [opportunityAnalysisSnapshotId], references: [id], onDelete: Restrict)
+  sourceResumeRevision        resumeSourceRevision?        @relation(fields: [sourceResumeRevisionId], references: [id], onDelete: Restrict)
+  resumeAnalysis              resumeAnalysis?              @relation(fields: [resumeAnalysisId], references: [id], onDelete: Restrict)
+  submittedApplication        application?                 @relation("SubmittedApplicationPackage")
   executionSessions     applicationExecutionSession[]
   submissionAttempts    applicationSubmissionAttempt[]
 
   @@unique([userId, jobPostingId, version])
+  @@index([userId, createdAt])
   @@index([userId])
   @@index([jobPostingId])
   @@index([applicationId])
+  @@index([opportunityAnalysisSnapshotId])
+  @@index([sourceResumeRevisionId])
+  @@index([resumeAnalysisId])
+  @@index([resumeVersionRevisionId])
+  @@index([packageHash])
   @@index([status])
   @@index([readinessStatus])
   @@index([qaStatus])
@@ -1631,6 +1659,11 @@ model applicationSubmissionAttempt {
   coverLetterRevisionId String?
   coverLetterFileHash   String?
 
+  idempotencyKey          String?   @unique
+  submitBoundaryCrossedAt DateTime?
+  destinationUrl          String?
+  confirmationType        String?
+
   startedAt   DateTime?
   submittedAt DateTime?
   verifiedAt  DateTime?
@@ -1644,6 +1677,7 @@ model applicationSubmissionAttempt {
   application           application                 @relation(fields: [applicationId], references: [id], onDelete: Restrict)
   resumeVersionRevision resumeVersionRevision       @relation("AttemptResumeRevision", fields: [resumeVersionRevisionId], references: [id], onDelete: Restrict)
   coverLetterRevision   communicationDraftRevision? @relation("AttemptCoverLetterRevision", fields: [coverLetterRevisionId], references: [id], onDelete: Restrict)
+  submittedApplications application[]               @relation("SubmittedExecutionAttempt")
 
   @@unique([executionSessionId, attemptNumber])
   @@index([userId])

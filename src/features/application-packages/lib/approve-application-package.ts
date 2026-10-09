@@ -80,6 +80,7 @@ export async function approveApplicationPackage(userId: string, packageId: strin
     data: {
       status: "APPROVED",
       approvedAt: new Date(),
+      lockedAt: row.lockedAt ?? new Date(),
       applicationId: created.applicationId,
       coverLetterRevisionId,
     },

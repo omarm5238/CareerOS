@@ -56,6 +56,10 @@ export type ApplicationSubmissionAttemptMinAggregateOutputType = {
   resumeFileHash: string | null
   coverLetterRevisionId: string | null
   coverLetterFileHash: string | null
+  idempotencyKey: string | null
+  submitBoundaryCrossedAt: Date | null
+  destinationUrl: string | null
+  confirmationType: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -85,6 +89,10 @@ export type ApplicationSubmissionAttemptMaxAggregateOutputType = {
   resumeFileHash: string | null
   coverLetterRevisionId: string | null
   coverLetterFileHash: string | null
+  idempotencyKey: string | null
+  submitBoundaryCrossedAt: Date | null
+  destinationUrl: string | null
+  confirmationType: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -116,6 +124,10 @@ export type ApplicationSubmissionAttemptCountAggregateOutputType = {
   resumeFileHash: number
   coverLetterRevisionId: number
   coverLetterFileHash: number
+  idempotencyKey: number
+  submitBoundaryCrossedAt: number
+  destinationUrl: number
+  confirmationType: number
   startedAt: number
   submittedAt: number
   verifiedAt: number
@@ -155,6 +167,10 @@ export type ApplicationSubmissionAttemptMinAggregateInputType = {
   resumeFileHash?: true
   coverLetterRevisionId?: true
   coverLetterFileHash?: true
+  idempotencyKey?: true
+  submitBoundaryCrossedAt?: true
+  destinationUrl?: true
+  confirmationType?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -184,6 +200,10 @@ export type ApplicationSubmissionAttemptMaxAggregateInputType = {
   resumeFileHash?: true
   coverLetterRevisionId?: true
   coverLetterFileHash?: true
+  idempotencyKey?: true
+  submitBoundaryCrossedAt?: true
+  destinationUrl?: true
+  confirmationType?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -215,6 +235,10 @@ export type ApplicationSubmissionAttemptCountAggregateInputType = {
   resumeFileHash?: true
   coverLetterRevisionId?: true
   coverLetterFileHash?: true
+  idempotencyKey?: true
+  submitBoundaryCrossedAt?: true
+  destinationUrl?: true
+  confirmationType?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -333,6 +357,10 @@ export type ApplicationSubmissionAttemptGroupByOutputType = {
   resumeFileHash: string
   coverLetterRevisionId: string | null
   coverLetterFileHash: string | null
+  idempotencyKey: string | null
+  submitBoundaryCrossedAt: Date | null
+  destinationUrl: string | null
+  confirmationType: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -387,6 +415,10 @@ export type applicationSubmissionAttemptWhereInput = {
   resumeFileHash?: Prisma.StringFilter<"applicationSubmissionAttempt"> | string
   coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   coverLetterFileHash?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  idempotencyKey?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -398,6 +430,7 @@ export type applicationSubmissionAttemptWhereInput = {
   application?: Prisma.XOR<Prisma.ApplicationScalarRelationFilter, Prisma.applicationWhereInput>
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput>
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
+  submittedApplications?: Prisma.ApplicationListRelationFilter
 }
 
 export type applicationSubmissionAttemptOrderByWithRelationInput = {
@@ -424,6 +457,10 @@ export type applicationSubmissionAttemptOrderByWithRelationInput = {
   resumeFileHash?: Prisma.SortOrder
   coverLetterRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   coverLetterFileHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrderInput | Prisma.SortOrder
+  submitBoundaryCrossedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  destinationUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationType?: Prisma.SortOrderInput | Prisma.SortOrder
   startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -435,10 +472,12 @@ export type applicationSubmissionAttemptOrderByWithRelationInput = {
   application?: Prisma.applicationOrderByWithRelationInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionOrderByWithRelationInput
   coverLetterRevision?: Prisma.communicationDraftRevisionOrderByWithRelationInput
+  submittedApplications?: Prisma.applicationOrderByRelationAggregateInput
 }
 
 export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  idempotencyKey?: string
   executionSessionId_attemptNumber?: Prisma.applicationSubmissionAttemptExecutionSessionIdAttemptNumberCompoundUniqueInput
   AND?: Prisma.applicationSubmissionAttemptWhereInput | Prisma.applicationSubmissionAttemptWhereInput[]
   OR?: Prisma.applicationSubmissionAttemptWhereInput[]
@@ -465,6 +504,9 @@ export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   resumeFileHash?: Prisma.StringFilter<"applicationSubmissionAttempt"> | string
   coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   coverLetterFileHash?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -476,7 +518,8 @@ export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   application?: Prisma.XOR<Prisma.ApplicationScalarRelationFilter, Prisma.applicationWhereInput>
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput>
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
-}, "id" | "executionSessionId_attemptNumber">
+  submittedApplications?: Prisma.ApplicationListRelationFilter
+}, "id" | "idempotencyKey" | "executionSessionId_attemptNumber">
 
 export type applicationSubmissionAttemptOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -502,6 +545,10 @@ export type applicationSubmissionAttemptOrderByWithAggregationInput = {
   resumeFileHash?: Prisma.SortOrder
   coverLetterRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
   coverLetterFileHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrderInput | Prisma.SortOrder
+  submitBoundaryCrossedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  destinationUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationType?: Prisma.SortOrderInput | Prisma.SortOrder
   startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -541,6 +588,10 @@ export type applicationSubmissionAttemptScalarWhereWithAggregatesInput = {
   resumeFileHash?: Prisma.StringWithAggregatesFilter<"applicationSubmissionAttempt"> | string
   coverLetterRevisionId?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
   coverLetterFileHash?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  idempotencyKey?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  submitBoundaryCrossedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  destinationUrl?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationType?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -566,6 +617,10 @@ export type applicationSubmissionAttemptCreateInput = {
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -577,6 +632,7 @@ export type applicationSubmissionAttemptCreateInput = {
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateInput = {
@@ -603,11 +659,16 @@ export type applicationSubmissionAttemptUncheckedCreateInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUpdateInput = {
@@ -628,6 +689,10 @@ export type applicationSubmissionAttemptUpdateInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -639,6 +704,7 @@ export type applicationSubmissionAttemptUpdateInput = {
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateInput = {
@@ -665,11 +731,16 @@ export type applicationSubmissionAttemptUncheckedUpdateInput = {
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptCreateManyInput = {
@@ -696,6 +767,10 @@ export type applicationSubmissionAttemptCreateManyInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -721,6 +796,10 @@ export type applicationSubmissionAttemptUpdateManyMutationInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -752,6 +831,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyInput = {
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -767,6 +850,11 @@ export type ApplicationSubmissionAttemptListRelationFilter = {
 
 export type applicationSubmissionAttemptOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type ApplicationSubmissionAttemptNullableScalarRelationFilter = {
+  is?: Prisma.applicationSubmissionAttemptWhereInput | null
+  isNot?: Prisma.applicationSubmissionAttemptWhereInput | null
 }
 
 export type applicationSubmissionAttemptExecutionSessionIdAttemptNumberCompoundUniqueInput = {
@@ -798,6 +886,10 @@ export type applicationSubmissionAttemptCountOrderByAggregateInput = {
   resumeFileHash?: Prisma.SortOrder
   coverLetterRevisionId?: Prisma.SortOrder
   coverLetterFileHash?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  submitBoundaryCrossedAt?: Prisma.SortOrder
+  destinationUrl?: Prisma.SortOrder
+  confirmationType?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -831,6 +923,10 @@ export type applicationSubmissionAttemptMaxOrderByAggregateInput = {
   resumeFileHash?: Prisma.SortOrder
   coverLetterRevisionId?: Prisma.SortOrder
   coverLetterFileHash?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  submitBoundaryCrossedAt?: Prisma.SortOrder
+  destinationUrl?: Prisma.SortOrder
+  confirmationType?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -860,6 +956,10 @@ export type applicationSubmissionAttemptMinOrderByAggregateInput = {
   resumeFileHash?: Prisma.SortOrder
   coverLetterRevisionId?: Prisma.SortOrder
   coverLetterFileHash?: Prisma.SortOrder
+  idempotencyKey?: Prisma.SortOrder
+  submitBoundaryCrossedAt?: Prisma.SortOrder
+  destinationUrl?: Prisma.SortOrder
+  confirmationType?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -962,6 +1062,12 @@ export type applicationSubmissionAttemptCreateNestedManyWithoutApplicationInput 
   connect?: Prisma.applicationSubmissionAttemptWhereUniqueInput | Prisma.applicationSubmissionAttemptWhereUniqueInput[]
 }
 
+export type applicationSubmissionAttemptCreateNestedOneWithoutSubmittedApplicationsInput = {
+  create?: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput>
+  connectOrCreate?: Prisma.applicationSubmissionAttemptCreateOrConnectWithoutSubmittedApplicationsInput
+  connect?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+}
+
 export type applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationInput = {
   create?: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutApplicationInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput> | Prisma.applicationSubmissionAttemptCreateWithoutApplicationInput[] | Prisma.applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput[]
   connectOrCreate?: Prisma.applicationSubmissionAttemptCreateOrConnectWithoutApplicationInput | Prisma.applicationSubmissionAttemptCreateOrConnectWithoutApplicationInput[]
@@ -981,6 +1087,16 @@ export type applicationSubmissionAttemptUpdateManyWithoutApplicationNestedInput 
   update?: Prisma.applicationSubmissionAttemptUpdateWithWhereUniqueWithoutApplicationInput | Prisma.applicationSubmissionAttemptUpdateWithWhereUniqueWithoutApplicationInput[]
   updateMany?: Prisma.applicationSubmissionAttemptUpdateManyWithWhereWithoutApplicationInput | Prisma.applicationSubmissionAttemptUpdateManyWithWhereWithoutApplicationInput[]
   deleteMany?: Prisma.applicationSubmissionAttemptScalarWhereInput | Prisma.applicationSubmissionAttemptScalarWhereInput[]
+}
+
+export type applicationSubmissionAttemptUpdateOneWithoutSubmittedApplicationsNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput>
+  connectOrCreate?: Prisma.applicationSubmissionAttemptCreateOrConnectWithoutSubmittedApplicationsInput
+  upsert?: Prisma.applicationSubmissionAttemptUpsertWithoutSubmittedApplicationsInput
+  disconnect?: Prisma.applicationSubmissionAttemptWhereInput | boolean
+  delete?: Prisma.applicationSubmissionAttemptWhereInput | boolean
+  connect?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateToOneWithWhereWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput>, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicationsInput>
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationNestedInput = {
@@ -1153,6 +1269,10 @@ export type applicationSubmissionAttemptCreateWithoutUserInput = {
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1163,6 +1283,7 @@ export type applicationSubmissionAttemptCreateWithoutUserInput = {
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutUserInput = {
@@ -1188,11 +1309,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutUserInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutUserInput = {
@@ -1248,6 +1374,10 @@ export type applicationSubmissionAttemptScalarWhereInput = {
   resumeFileHash?: Prisma.StringFilter<"applicationSubmissionAttempt"> | string
   coverLetterRevisionId?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   coverLetterFileHash?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  idempotencyKey?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -1273,6 +1403,10 @@ export type applicationSubmissionAttemptCreateWithoutResumeVersionRevisionInput 
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1283,6 +1417,7 @@ export type applicationSubmissionAttemptCreateWithoutResumeVersionRevisionInput 
   applicationPackage: Prisma.applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutResumeVersionRevisionInput = {
@@ -1308,11 +1443,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutResumeVersionRevis
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutResumeVersionRevisionInput = {
@@ -1359,6 +1499,10 @@ export type applicationSubmissionAttemptCreateWithoutApplicationInput = {
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1369,6 +1513,7 @@ export type applicationSubmissionAttemptCreateWithoutApplicationInput = {
   applicationPackage: Prisma.applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput = {
@@ -1394,11 +1539,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput =
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutApplicationInput = {
@@ -1409,6 +1559,81 @@ export type applicationSubmissionAttemptCreateOrConnectWithoutApplicationInput =
 export type applicationSubmissionAttemptCreateManyApplicationInputEnvelope = {
   data: Prisma.applicationSubmissionAttemptCreateManyApplicationInput | Prisma.applicationSubmissionAttemptCreateManyApplicationInput[]
   skipDuplicates?: boolean
+}
+
+export type applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput = {
+  id?: string
+  attemptNumber: number
+  method: $Enums.ApplicationSubmissionMethod
+  status?: $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint: string
+  approvalTokenHash?: string | null
+  approvalExpiresAt?: Date | string | null
+  approvalUsedAt?: Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: string | null
+  confirmationUrl?: string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: string | null
+  resumeFileHash: string
+  coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
+  startedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  verifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationSubmissionAttemptsInput
+  executionSession: Prisma.applicationExecutionSessionCreateNestedOneWithoutSubmissionAttemptsInput
+  applicationPackage: Prisma.applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput
+  application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
+  resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+}
+
+export type applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput = {
+  id?: string
+  userId: string
+  executionSessionId: string
+  applicationPackageId: string
+  applicationId: string
+  attemptNumber: number
+  method: $Enums.ApplicationSubmissionMethod
+  status?: $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint: string
+  approvalTokenHash?: string | null
+  approvalExpiresAt?: Date | string | null
+  approvalUsedAt?: Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: string | null
+  confirmationUrl?: string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: string | null
+  resumeVersionRevisionId: string
+  resumeFileHash: string
+  coverLetterRevisionId?: string | null
+  coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
+  startedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  verifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationSubmissionAttemptCreateOrConnectWithoutSubmittedApplicationsInput = {
+  where: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput>
 }
 
 export type applicationSubmissionAttemptUpsertWithWhereUniqueWithoutApplicationInput = {
@@ -1425,6 +1650,87 @@ export type applicationSubmissionAttemptUpdateWithWhereUniqueWithoutApplicationI
 export type applicationSubmissionAttemptUpdateManyWithWhereWithoutApplicationInput = {
   where: Prisma.applicationSubmissionAttemptScalarWhereInput
   data: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateManyMutationInput, Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationInput>
+}
+
+export type applicationSubmissionAttemptUpsertWithoutSubmittedApplicationsInput = {
+  update: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicationsInput>
+  create: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput>
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+}
+
+export type applicationSubmissionAttemptUpdateToOneWithWhereWithoutSubmittedApplicationsInput = {
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+  data: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicationsInput>
+}
+
+export type applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  attemptNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  method?: Prisma.EnumApplicationSubmissionMethodFieldUpdateOperationsInput | $Enums.ApplicationSubmissionMethod
+  status?: Prisma.EnumApplicationSubmissionAttemptStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: Prisma.EnumApplicationSubmissionVerificationStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvalExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvalUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: Prisma.NullableEnumApplicationExecutionFailureCodeFieldUpdateOperationsInput | $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
+  coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
+  executionSession?: Prisma.applicationExecutionSessionUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
+  applicationPackage?: Prisma.applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
+  application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+}
+
+export type applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicationsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  executionSessionId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationPackageId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationId?: Prisma.StringFieldUpdateOperationsInput | string
+  attemptNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  method?: Prisma.EnumApplicationSubmissionMethodFieldUpdateOperationsInput | $Enums.ApplicationSubmissionMethod
+  status?: Prisma.EnumApplicationSubmissionAttemptStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: Prisma.EnumApplicationSubmissionVerificationStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvalExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvalUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: Prisma.NullableEnumApplicationExecutionFailureCodeFieldUpdateOperationsInput | $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.StringFieldUpdateOperationsInput | string
+  resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = {
@@ -1445,6 +1751,10 @@ export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = 
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1455,6 +1765,7 @@ export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = 
   applicationPackage: Prisma.applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutCoverLetterRevisionInput = {
@@ -1480,11 +1791,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutCoverLetterRevisio
   resumeVersionRevisionId: string
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutCoverLetterRevisionInput = {
@@ -1531,6 +1847,10 @@ export type applicationSubmissionAttemptCreateWithoutApplicationPackageInput = {
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1541,6 +1861,7 @@ export type applicationSubmissionAttemptCreateWithoutApplicationPackageInput = {
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationPackageInput = {
@@ -1566,11 +1887,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationPackage
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutApplicationPackageInput = {
@@ -1617,6 +1943,10 @@ export type applicationSubmissionAttemptCreateWithoutExecutionSessionInput = {
   failureMessage?: string | null
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1627,6 +1957,7 @@ export type applicationSubmissionAttemptCreateWithoutExecutionSessionInput = {
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutExecutionSessionInput = {
@@ -1652,11 +1983,16 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutExecutionSessionIn
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutExecutionSessionInput = {
@@ -1708,6 +2044,10 @@ export type applicationSubmissionAttemptCreateManyUserInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1733,6 +2073,10 @@ export type applicationSubmissionAttemptUpdateWithoutUserInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1743,6 +2087,7 @@ export type applicationSubmissionAttemptUpdateWithoutUserInput = {
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutUserInput = {
@@ -1768,11 +2113,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutUserInput = {
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutUserInput = {
@@ -1798,6 +2148,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutUserInput = {
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1828,6 +2182,10 @@ export type applicationSubmissionAttemptCreateManyResumeVersionRevisionInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1853,6 +2211,10 @@ export type applicationSubmissionAttemptUpdateWithoutResumeVersionRevisionInput 
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1863,6 +2225,7 @@ export type applicationSubmissionAttemptUpdateWithoutResumeVersionRevisionInput 
   applicationPackage?: Prisma.applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutResumeVersionRevisionInput = {
@@ -1888,11 +2251,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutResumeVersionRevis
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutResumeVersionRevisionInput = {
@@ -1918,6 +2286,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutResumeVersionR
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1948,6 +2320,10 @@ export type applicationSubmissionAttemptCreateManyApplicationInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1973,6 +2349,10 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1983,6 +2363,7 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationInput = {
   applicationPackage?: Prisma.applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationInput = {
@@ -2008,11 +2389,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationInput =
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationInput = {
@@ -2038,6 +2424,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationInp
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2068,6 +2458,10 @@ export type applicationSubmissionAttemptCreateManyCoverLetterRevisionInput = {
   resumeVersionRevisionId: string
   resumeFileHash: string
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2093,6 +2487,10 @@ export type applicationSubmissionAttemptUpdateWithoutCoverLetterRevisionInput = 
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2103,6 +2501,7 @@ export type applicationSubmissionAttemptUpdateWithoutCoverLetterRevisionInput = 
   applicationPackage?: Prisma.applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutCoverLetterRevisionInput = {
@@ -2128,11 +2527,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutCoverLetterRevisio
   resumeVersionRevisionId?: Prisma.StringFieldUpdateOperationsInput | string
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionInput = {
@@ -2158,6 +2562,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRev
   resumeVersionRevisionId?: Prisma.StringFieldUpdateOperationsInput | string
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2188,6 +2596,10 @@ export type applicationSubmissionAttemptCreateManyApplicationPackageInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2213,6 +2625,10 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationPackageInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2223,6 +2639,7 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationPackageInput = {
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationPackageInput = {
@@ -2248,11 +2665,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationPackage
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageInput = {
@@ -2278,6 +2700,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPac
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2308,6 +2734,10 @@ export type applicationSubmissionAttemptCreateManyExecutionSessionInput = {
   resumeFileHash: string
   coverLetterRevisionId?: string | null
   coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2333,6 +2763,10 @@ export type applicationSubmissionAttemptUpdateWithoutExecutionSessionInput = {
   failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2343,6 +2777,7 @@ export type applicationSubmissionAttemptUpdateWithoutExecutionSessionInput = {
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutExecutionSessionInput = {
@@ -2368,11 +2803,16 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutExecutionSessionIn
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessionInput = {
@@ -2398,6 +2838,10 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessi
   resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
   coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2405,6 +2849,35 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessi
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type ApplicationSubmissionAttemptCountOutputType
+ */
+
+export type ApplicationSubmissionAttemptCountOutputType = {
+  submittedApplications: number
+}
+
+export type ApplicationSubmissionAttemptCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  submittedApplications?: boolean | ApplicationSubmissionAttemptCountOutputTypeCountSubmittedApplicationsArgs
+}
+
+/**
+ * ApplicationSubmissionAttemptCountOutputType without action
+ */
+export type ApplicationSubmissionAttemptCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ApplicationSubmissionAttemptCountOutputType
+   */
+  select?: Prisma.ApplicationSubmissionAttemptCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ApplicationSubmissionAttemptCountOutputType without action
+ */
+export type ApplicationSubmissionAttemptCountOutputTypeCountSubmittedApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.applicationWhereInput
+}
 
 
 export type applicationSubmissionAttemptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2431,6 +2904,10 @@ export type applicationSubmissionAttemptSelect<ExtArgs extends runtime.Types.Ext
   resumeFileHash?: boolean
   coverLetterRevisionId?: boolean
   coverLetterFileHash?: boolean
+  idempotencyKey?: boolean
+  submitBoundaryCrossedAt?: boolean
+  destinationUrl?: boolean
+  confirmationType?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2442,6 +2919,8 @@ export type applicationSubmissionAttemptSelect<ExtArgs extends runtime.Types.Ext
   application?: boolean | Prisma.applicationDefaultArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>
+  submittedApplications?: boolean | Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationSubmissionAttemptCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["applicationSubmissionAttempt"]>
 
 export type applicationSubmissionAttemptSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -2468,6 +2947,10 @@ export type applicationSubmissionAttemptSelectCreateManyAndReturn<ExtArgs extend
   resumeFileHash?: boolean
   coverLetterRevisionId?: boolean
   coverLetterFileHash?: boolean
+  idempotencyKey?: boolean
+  submitBoundaryCrossedAt?: boolean
+  destinationUrl?: boolean
+  confirmationType?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2505,6 +2988,10 @@ export type applicationSubmissionAttemptSelectUpdateManyAndReturn<ExtArgs extend
   resumeFileHash?: boolean
   coverLetterRevisionId?: boolean
   coverLetterFileHash?: boolean
+  idempotencyKey?: boolean
+  submitBoundaryCrossedAt?: boolean
+  destinationUrl?: boolean
+  confirmationType?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2542,6 +3029,10 @@ export type applicationSubmissionAttemptSelectScalar = {
   resumeFileHash?: boolean
   coverLetterRevisionId?: boolean
   coverLetterFileHash?: boolean
+  idempotencyKey?: boolean
+  submitBoundaryCrossedAt?: boolean
+  destinationUrl?: boolean
+  confirmationType?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2549,7 +3040,7 @@ export type applicationSubmissionAttemptSelectScalar = {
   updatedAt?: boolean
 }
 
-export type applicationSubmissionAttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "executionSessionId" | "applicationPackageId" | "applicationId" | "attemptNumber" | "method" | "status" | "verificationStatus" | "approvalFingerprint" | "approvalTokenHash" | "approvalExpiresAt" | "approvalUsedAt" | "finalSubmissionSnapshotJson" | "providerApplicationId" | "confirmationUrl" | "verificationEvidenceJson" | "failureCode" | "failureMessage" | "resumeVersionRevisionId" | "resumeFileHash" | "coverLetterRevisionId" | "coverLetterFileHash" | "startedAt" | "submittedAt" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationSubmissionAttempt"]>
+export type applicationSubmissionAttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "executionSessionId" | "applicationPackageId" | "applicationId" | "attemptNumber" | "method" | "status" | "verificationStatus" | "approvalFingerprint" | "approvalTokenHash" | "approvalExpiresAt" | "approvalUsedAt" | "finalSubmissionSnapshotJson" | "providerApplicationId" | "confirmationUrl" | "verificationEvidenceJson" | "failureCode" | "failureMessage" | "resumeVersionRevisionId" | "resumeFileHash" | "coverLetterRevisionId" | "coverLetterFileHash" | "idempotencyKey" | "submitBoundaryCrossedAt" | "destinationUrl" | "confirmationType" | "startedAt" | "submittedAt" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationSubmissionAttempt"]>
 export type applicationSubmissionAttemptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   executionSession?: boolean | Prisma.applicationExecutionSessionDefaultArgs<ExtArgs>
@@ -2557,6 +3048,8 @@ export type applicationSubmissionAttemptInclude<ExtArgs extends runtime.Types.Ex
   application?: boolean | Prisma.applicationDefaultArgs<ExtArgs>
   resumeVersionRevision?: boolean | Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>
+  submittedApplications?: boolean | Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>
+  _count?: boolean | Prisma.ApplicationSubmissionAttemptCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationSubmissionAttemptIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -2584,6 +3077,7 @@ export type $applicationSubmissionAttemptPayload<ExtArgs extends runtime.Types.E
     application: Prisma.$applicationPayload<ExtArgs>
     resumeVersionRevision: Prisma.$resumeVersionRevisionPayload<ExtArgs>
     coverLetterRevision: Prisma.$communicationDraftRevisionPayload<ExtArgs> | null
+    submittedApplications: Prisma.$applicationPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2609,6 +3103,10 @@ export type $applicationSubmissionAttemptPayload<ExtArgs extends runtime.Types.E
     resumeFileHash: string
     coverLetterRevisionId: string | null
     coverLetterFileHash: string | null
+    idempotencyKey: string | null
+    submitBoundaryCrossedAt: Date | null
+    destinationUrl: string | null
+    confirmationType: string | null
     startedAt: Date | null
     submittedAt: Date | null
     verifiedAt: Date | null
@@ -3014,6 +3512,7 @@ export interface Prisma__applicationSubmissionAttemptClient<T, Null = never, Ext
   application<T extends Prisma.applicationDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationDefaultArgs<ExtArgs>>): Prisma.Prisma__applicationClient<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   resumeVersionRevision<T extends Prisma.resumeVersionRevisionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>>): Prisma.Prisma__resumeVersionRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   coverLetterRevision<T extends Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>>): Prisma.Prisma__communicationDraftRevisionClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  submittedApplications<T extends Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3066,6 +3565,10 @@ export interface applicationSubmissionAttemptFieldRefs {
   readonly resumeFileHash: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
   readonly coverLetterRevisionId: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
   readonly coverLetterFileHash: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly idempotencyKey: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly submitBoundaryCrossedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly destinationUrl: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly confirmationType: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
   readonly startedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
   readonly submittedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
   readonly verifiedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
@@ -3488,6 +3991,30 @@ export type applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs extends
    */
   include?: Prisma.communicationDraftRevisionInclude<ExtArgs> | null
   where?: Prisma.communicationDraftRevisionWhereInput
+}
+
+/**
+ * applicationSubmissionAttempt.submittedApplications
+ */
+export type applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the application
+   */
+  select?: Prisma.applicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the application
+   */
+  omit?: Prisma.applicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationInclude<ExtArgs> | null
+  where?: Prisma.applicationWhereInput
+  orderBy?: Prisma.applicationOrderByWithRelationInput | Prisma.applicationOrderByWithRelationInput[]
+  cursor?: Prisma.applicationWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
 }
 
 /**

@@ -50,6 +50,12 @@ export type ApplicationPackageMinAggregateOutputType = {
   readinessStatus: $Enums.ApplicationReadinessStatus | null
   qaStatus: $Enums.ApplicationPackageQaStatus | null
   contextFingerprint: string | null
+  opportunityAnalysisSnapshotId: string | null
+  sourceResumeRevisionId: string | null
+  sourceResumeContentHash: string | null
+  resumeAnalysisId: string | null
+  packageHash: string | null
+  lockedAt: Date | null
   preparedAt: Date | null
   approvedAt: Date | null
   submissionStartedAt: Date | null
@@ -75,6 +81,12 @@ export type ApplicationPackageMaxAggregateOutputType = {
   readinessStatus: $Enums.ApplicationReadinessStatus | null
   qaStatus: $Enums.ApplicationPackageQaStatus | null
   contextFingerprint: string | null
+  opportunityAnalysisSnapshotId: string | null
+  sourceResumeRevisionId: string | null
+  sourceResumeContentHash: string | null
+  resumeAnalysisId: string | null
+  packageHash: string | null
+  lockedAt: Date | null
   preparedAt: Date | null
   approvedAt: Date | null
   submissionStartedAt: Date | null
@@ -107,6 +119,13 @@ export type ApplicationPackageCountAggregateOutputType = {
   qaSnapshotJson: number
   warningsJson: number
   contextFingerprint: number
+  opportunityAnalysisSnapshotId: number
+  sourceResumeRevisionId: number
+  sourceResumeContentHash: number
+  resumeAnalysisId: number
+  packageHash: number
+  packageJson: number
+  lockedAt: number
   preparedAt: number
   approvedAt: number
   submissionStartedAt: number
@@ -142,6 +161,12 @@ export type ApplicationPackageMinAggregateInputType = {
   readinessStatus?: true
   qaStatus?: true
   contextFingerprint?: true
+  opportunityAnalysisSnapshotId?: true
+  sourceResumeRevisionId?: true
+  sourceResumeContentHash?: true
+  resumeAnalysisId?: true
+  packageHash?: true
+  lockedAt?: true
   preparedAt?: true
   approvedAt?: true
   submissionStartedAt?: true
@@ -167,6 +192,12 @@ export type ApplicationPackageMaxAggregateInputType = {
   readinessStatus?: true
   qaStatus?: true
   contextFingerprint?: true
+  opportunityAnalysisSnapshotId?: true
+  sourceResumeRevisionId?: true
+  sourceResumeContentHash?: true
+  resumeAnalysisId?: true
+  packageHash?: true
+  lockedAt?: true
   preparedAt?: true
   approvedAt?: true
   submissionStartedAt?: true
@@ -199,6 +230,13 @@ export type ApplicationPackageCountAggregateInputType = {
   qaSnapshotJson?: true
   warningsJson?: true
   contextFingerprint?: true
+  opportunityAnalysisSnapshotId?: true
+  sourceResumeRevisionId?: true
+  sourceResumeContentHash?: true
+  resumeAnalysisId?: true
+  packageHash?: true
+  packageJson?: true
+  lockedAt?: true
   preparedAt?: true
   approvedAt?: true
   submissionStartedAt?: true
@@ -318,6 +356,13 @@ export type ApplicationPackageGroupByOutputType = {
   qaSnapshotJson: runtime.JsonValue
   warningsJson: runtime.JsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId: string | null
+  sourceResumeRevisionId: string | null
+  sourceResumeContentHash: string | null
+  resumeAnalysisId: string | null
+  packageHash: string | null
+  packageJson: runtime.JsonValue
+  lockedAt: Date | null
   preparedAt: Date | null
   approvedAt: Date | null
   submissionStartedAt: Date | null
@@ -373,6 +418,13 @@ export type applicationPackageWhereInput = {
   qaSnapshotJson?: Prisma.JsonFilter<"applicationPackage">
   warningsJson?: Prisma.JsonFilter<"applicationPackage">
   contextFingerprint?: Prisma.StringFilter<"applicationPackage"> | string
+  opportunityAnalysisSnapshotId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeContentHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  resumeAnalysisId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageJson?: Prisma.JsonFilter<"applicationPackage">
+  lockedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   preparedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   approvedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   submissionStartedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
@@ -389,6 +441,10 @@ export type applicationPackageWhereInput = {
   coverLetterDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   applicationEmailDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  opportunityAnalysisSnapshot?: Prisma.XOR<Prisma.OpportunityAnalysisSnapshotNullableScalarRelationFilter, Prisma.opportunityAnalysisSnapshotWhereInput> | null
+  sourceResumeRevision?: Prisma.XOR<Prisma.ResumeSourceRevisionNullableScalarRelationFilter, Prisma.resumeSourceRevisionWhereInput> | null
+  resumeAnalysis?: Prisma.XOR<Prisma.ResumeAnalysisNullableScalarRelationFilter, Prisma.resumeAnalysisWhereInput> | null
+  submittedApplication?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.applicationWhereInput> | null
   executionSessions?: Prisma.ApplicationExecutionSessionListRelationFilter
   submissionAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
 }
@@ -416,6 +472,13 @@ export type applicationPackageOrderByWithRelationInput = {
   qaSnapshotJson?: Prisma.SortOrder
   warningsJson?: Prisma.SortOrder
   contextFingerprint?: Prisma.SortOrder
+  opportunityAnalysisSnapshotId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceResumeRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceResumeContentHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  resumeAnalysisId?: Prisma.SortOrderInput | Prisma.SortOrder
+  packageHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  packageJson?: Prisma.SortOrder
+  lockedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   preparedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submissionStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -432,6 +495,10 @@ export type applicationPackageOrderByWithRelationInput = {
   coverLetterDraft?: Prisma.communicationDraftOrderByWithRelationInput
   coverLetterRevision?: Prisma.communicationDraftRevisionOrderByWithRelationInput
   applicationEmailDraft?: Prisma.communicationDraftOrderByWithRelationInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotOrderByWithRelationInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionOrderByWithRelationInput
+  resumeAnalysis?: Prisma.resumeAnalysisOrderByWithRelationInput
+  submittedApplication?: Prisma.applicationOrderByWithRelationInput
   executionSessions?: Prisma.applicationExecutionSessionOrderByRelationAggregateInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptOrderByRelationAggregateInput
 }
@@ -463,6 +530,13 @@ export type applicationPackageWhereUniqueInput = Prisma.AtLeast<{
   qaSnapshotJson?: Prisma.JsonFilter<"applicationPackage">
   warningsJson?: Prisma.JsonFilter<"applicationPackage">
   contextFingerprint?: Prisma.StringFilter<"applicationPackage"> | string
+  opportunityAnalysisSnapshotId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeContentHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  resumeAnalysisId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageJson?: Prisma.JsonFilter<"applicationPackage">
+  lockedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   preparedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   approvedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   submissionStartedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
@@ -479,6 +553,10 @@ export type applicationPackageWhereUniqueInput = Prisma.AtLeast<{
   coverLetterDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   applicationEmailDraft?: Prisma.XOR<Prisma.CommunicationDraftNullableScalarRelationFilter, Prisma.communicationDraftWhereInput> | null
+  opportunityAnalysisSnapshot?: Prisma.XOR<Prisma.OpportunityAnalysisSnapshotNullableScalarRelationFilter, Prisma.opportunityAnalysisSnapshotWhereInput> | null
+  sourceResumeRevision?: Prisma.XOR<Prisma.ResumeSourceRevisionNullableScalarRelationFilter, Prisma.resumeSourceRevisionWhereInput> | null
+  resumeAnalysis?: Prisma.XOR<Prisma.ResumeAnalysisNullableScalarRelationFilter, Prisma.resumeAnalysisWhereInput> | null
+  submittedApplication?: Prisma.XOR<Prisma.ApplicationNullableScalarRelationFilter, Prisma.applicationWhereInput> | null
   executionSessions?: Prisma.ApplicationExecutionSessionListRelationFilter
   submissionAttempts?: Prisma.ApplicationSubmissionAttemptListRelationFilter
 }, "id" | "userId_jobPostingId_version">
@@ -506,6 +584,13 @@ export type applicationPackageOrderByWithAggregationInput = {
   qaSnapshotJson?: Prisma.SortOrder
   warningsJson?: Prisma.SortOrder
   contextFingerprint?: Prisma.SortOrder
+  opportunityAnalysisSnapshotId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceResumeRevisionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sourceResumeContentHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  resumeAnalysisId?: Prisma.SortOrderInput | Prisma.SortOrder
+  packageHash?: Prisma.SortOrderInput | Prisma.SortOrder
+  packageJson?: Prisma.SortOrder
+  lockedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   preparedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submissionStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -546,6 +631,13 @@ export type applicationPackageScalarWhereWithAggregatesInput = {
   qaSnapshotJson?: Prisma.JsonWithAggregatesFilter<"applicationPackage">
   warningsJson?: Prisma.JsonWithAggregatesFilter<"applicationPackage">
   contextFingerprint?: Prisma.StringWithAggregatesFilter<"applicationPackage"> | string
+  opportunityAnalysisSnapshotId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  sourceResumeRevisionId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  sourceResumeContentHash?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  resumeAnalysisId?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  packageHash?: Prisma.StringNullableWithAggregatesFilter<"applicationPackage"> | string | null
+  packageJson?: Prisma.JsonWithAggregatesFilter<"applicationPackage">
+  lockedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationPackage"> | Date | string | null
   preparedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationPackage"> | Date | string | null
   approvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationPackage"> | Date | string | null
   submissionStartedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationPackage"> | Date | string | null
@@ -569,6 +661,10 @@ export type applicationPackageCreateInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -585,6 +681,10 @@ export type applicationPackageCreateInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -612,6 +712,13 @@ export type applicationPackageUncheckedCreateInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -619,6 +726,7 @@ export type applicationPackageUncheckedCreateInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -637,6 +745,10 @@ export type applicationPackageUpdateInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -653,6 +765,10 @@ export type applicationPackageUpdateInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -680,6 +796,13 @@ export type applicationPackageUncheckedUpdateInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -687,6 +810,7 @@ export type applicationPackageUncheckedUpdateInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -714,6 +838,13 @@ export type applicationPackageCreateManyInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -737,6 +868,10 @@ export type applicationPackageUpdateManyMutationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -769,6 +904,13 @@ export type applicationPackageUncheckedUpdateManyInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -786,6 +928,11 @@ export type ApplicationPackageListRelationFilter = {
 
 export type applicationPackageOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type ApplicationPackageNullableScalarRelationFilter = {
+  is?: Prisma.applicationPackageWhereInput | null
+  isNot?: Prisma.applicationPackageWhereInput | null
 }
 
 export type applicationPackageUserIdJobPostingIdVersionCompoundUniqueInput = {
@@ -817,6 +964,13 @@ export type applicationPackageCountOrderByAggregateInput = {
   qaSnapshotJson?: Prisma.SortOrder
   warningsJson?: Prisma.SortOrder
   contextFingerprint?: Prisma.SortOrder
+  opportunityAnalysisSnapshotId?: Prisma.SortOrder
+  sourceResumeRevisionId?: Prisma.SortOrder
+  sourceResumeContentHash?: Prisma.SortOrder
+  resumeAnalysisId?: Prisma.SortOrder
+  packageHash?: Prisma.SortOrder
+  packageJson?: Prisma.SortOrder
+  lockedAt?: Prisma.SortOrder
   preparedAt?: Prisma.SortOrder
   approvedAt?: Prisma.SortOrder
   submissionStartedAt?: Prisma.SortOrder
@@ -846,6 +1000,12 @@ export type applicationPackageMaxOrderByAggregateInput = {
   readinessStatus?: Prisma.SortOrder
   qaStatus?: Prisma.SortOrder
   contextFingerprint?: Prisma.SortOrder
+  opportunityAnalysisSnapshotId?: Prisma.SortOrder
+  sourceResumeRevisionId?: Prisma.SortOrder
+  sourceResumeContentHash?: Prisma.SortOrder
+  resumeAnalysisId?: Prisma.SortOrder
+  packageHash?: Prisma.SortOrder
+  lockedAt?: Prisma.SortOrder
   preparedAt?: Prisma.SortOrder
   approvedAt?: Prisma.SortOrder
   submissionStartedAt?: Prisma.SortOrder
@@ -871,6 +1031,12 @@ export type applicationPackageMinOrderByAggregateInput = {
   readinessStatus?: Prisma.SortOrder
   qaStatus?: Prisma.SortOrder
   contextFingerprint?: Prisma.SortOrder
+  opportunityAnalysisSnapshotId?: Prisma.SortOrder
+  sourceResumeRevisionId?: Prisma.SortOrder
+  sourceResumeContentHash?: Prisma.SortOrder
+  resumeAnalysisId?: Prisma.SortOrder
+  packageHash?: Prisma.SortOrder
+  lockedAt?: Prisma.SortOrder
   preparedAt?: Prisma.SortOrder
   approvedAt?: Prisma.SortOrder
   submissionStartedAt?: Prisma.SortOrder
@@ -928,6 +1094,48 @@ export type applicationPackageUncheckedUpdateManyWithoutUserNestedInput = {
   connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
   update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutUserInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutUserInput[]
   updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutUserInput | Prisma.applicationPackageUpdateManyWithWhereWithoutUserInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageCreateNestedManyWithoutResumeAnalysisInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput> | Prisma.applicationPackageCreateWithoutResumeAnalysisInput[] | Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput | Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput[]
+  createMany?: Prisma.applicationPackageCreateManyResumeAnalysisInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUncheckedCreateNestedManyWithoutResumeAnalysisInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput> | Prisma.applicationPackageCreateWithoutResumeAnalysisInput[] | Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput | Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput[]
+  createMany?: Prisma.applicationPackageCreateManyResumeAnalysisInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUpdateManyWithoutResumeAnalysisNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput> | Prisma.applicationPackageCreateWithoutResumeAnalysisInput[] | Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput | Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutResumeAnalysisInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutResumeAnalysisInput[]
+  createMany?: Prisma.applicationPackageCreateManyResumeAnalysisInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutResumeAnalysisInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutResumeAnalysisInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutResumeAnalysisInput | Prisma.applicationPackageUpdateManyWithWhereWithoutResumeAnalysisInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutResumeAnalysisNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput> | Prisma.applicationPackageCreateWithoutResumeAnalysisInput[] | Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput | Prisma.applicationPackageCreateOrConnectWithoutResumeAnalysisInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutResumeAnalysisInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutResumeAnalysisInput[]
+  createMany?: Prisma.applicationPackageCreateManyResumeAnalysisInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutResumeAnalysisInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutResumeAnalysisInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutResumeAnalysisInput | Prisma.applicationPackageUpdateManyWithWhereWithoutResumeAnalysisInput[]
   deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
 }
 
@@ -1064,6 +1272,12 @@ export type applicationPackageCreateNestedManyWithoutApplicationInput = {
   connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
 }
 
+export type applicationPackageCreateNestedOneWithoutSubmittedApplicationInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedCreateWithoutSubmittedApplicationInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSubmittedApplicationInput
+  connect?: Prisma.applicationPackageWhereUniqueInput
+}
+
 export type applicationPackageUncheckedCreateNestedManyWithoutApplicationInput = {
   create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutApplicationInput, Prisma.applicationPackageUncheckedCreateWithoutApplicationInput> | Prisma.applicationPackageCreateWithoutApplicationInput[] | Prisma.applicationPackageUncheckedCreateWithoutApplicationInput[]
   connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutApplicationInput | Prisma.applicationPackageCreateOrConnectWithoutApplicationInput[]
@@ -1083,6 +1297,16 @@ export type applicationPackageUpdateManyWithoutApplicationNestedInput = {
   update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutApplicationInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutApplicationInput[]
   updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutApplicationInput | Prisma.applicationPackageUpdateManyWithWhereWithoutApplicationInput[]
   deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageUpdateOneWithoutSubmittedApplicationNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedCreateWithoutSubmittedApplicationInput>
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSubmittedApplicationInput
+  upsert?: Prisma.applicationPackageUpsertWithoutSubmittedApplicationInput
+  disconnect?: Prisma.applicationPackageWhereInput | boolean
+  delete?: Prisma.applicationPackageWhereInput | boolean
+  connect?: Prisma.applicationPackageWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationPackageUpdateToOneWithWhereWithoutSubmittedApplicationInput, Prisma.applicationPackageUpdateWithoutSubmittedApplicationInput>, Prisma.applicationPackageUncheckedUpdateWithoutSubmittedApplicationInput>
 }
 
 export type applicationPackageUncheckedUpdateManyWithoutApplicationNestedInput = {
@@ -1267,6 +1491,90 @@ export type applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionNeste
   deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
 }
 
+export type applicationPackageCreateNestedManyWithoutSourceResumeRevisionInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput> | Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManySourceResumeRevisionInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUncheckedCreateNestedManyWithoutSourceResumeRevisionInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput> | Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManySourceResumeRevisionInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUpdateManyWithoutSourceResumeRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput> | Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutSourceResumeRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManySourceResumeRevisionInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutSourceResumeRevisionInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpdateManyWithWhereWithoutSourceResumeRevisionInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput> | Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput[] | Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput | Prisma.applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutSourceResumeRevisionInput[]
+  createMany?: Prisma.applicationPackageCreateManySourceResumeRevisionInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutSourceResumeRevisionInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutSourceResumeRevisionInput | Prisma.applicationPackageUpdateManyWithWhereWithoutSourceResumeRevisionInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageCreateNestedManyWithoutOpportunityAnalysisSnapshotInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput> | Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput[] | Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput[]
+  createMany?: Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUncheckedCreateNestedManyWithoutOpportunityAnalysisSnapshotInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput> | Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput[] | Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput[]
+  createMany?: Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInputEnvelope
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+}
+
+export type applicationPackageUpdateManyWithoutOpportunityAnalysisSnapshotNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput> | Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput[] | Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput[]
+  createMany?: Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpdateManyWithWhereWithoutOpportunityAnalysisSnapshotInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutOpportunityAnalysisSnapshotNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput> | Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput[] | Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput[]
+  connectOrCreate?: Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput[]
+  upsert?: Prisma.applicationPackageUpsertWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpsertWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput[]
+  createMany?: Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInputEnvelope
+  set?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  disconnect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  delete?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  connect?: Prisma.applicationPackageWhereUniqueInput | Prisma.applicationPackageWhereUniqueInput[]
+  update?: Prisma.applicationPackageUpdateWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpdateWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput[]
+  updateMany?: Prisma.applicationPackageUpdateManyWithWhereWithoutOpportunityAnalysisSnapshotInput | Prisma.applicationPackageUpdateManyWithWhereWithoutOpportunityAnalysisSnapshotInput[]
+  deleteMany?: Prisma.applicationPackageScalarWhereInput | Prisma.applicationPackageScalarWhereInput[]
+}
+
 export type EnumApplicationPackageStatusFieldUpdateOperationsInput = {
   set?: $Enums.ApplicationPackageStatus
 }
@@ -1321,6 +1629,10 @@ export type applicationPackageCreateWithoutUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1336,6 +1648,10 @@ export type applicationPackageCreateWithoutUserInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1362,6 +1678,13 @@ export type applicationPackageUncheckedCreateWithoutUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1369,6 +1692,7 @@ export type applicationPackageUncheckedCreateWithoutUserInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1425,6 +1749,13 @@ export type applicationPackageScalarWhereInput = {
   qaSnapshotJson?: Prisma.JsonFilter<"applicationPackage">
   warningsJson?: Prisma.JsonFilter<"applicationPackage">
   contextFingerprint?: Prisma.StringFilter<"applicationPackage"> | string
+  opportunityAnalysisSnapshotId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeRevisionId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  sourceResumeContentHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  resumeAnalysisId?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageHash?: Prisma.StringNullableFilter<"applicationPackage"> | string | null
+  packageJson?: Prisma.JsonFilter<"applicationPackage">
+  lockedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   preparedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   approvedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   submissionStartedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
@@ -1432,6 +1763,114 @@ export type applicationPackageScalarWhereInput = {
   archivedAt?: Prisma.DateTimeNullableFilter<"applicationPackage"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"applicationPackage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"applicationPackage"> | Date | string
+}
+
+export type applicationPackageCreateWithoutResumeAnalysisInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutResumeAnalysisInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutResumeAnalysisInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput>
+}
+
+export type applicationPackageCreateManyResumeAnalysisInputEnvelope = {
+  data: Prisma.applicationPackageCreateManyResumeAnalysisInput | Prisma.applicationPackageCreateManyResumeAnalysisInput[]
+  skipDuplicates?: boolean
+}
+
+export type applicationPackageUpsertWithWhereUniqueWithoutResumeAnalysisInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedUpdateWithoutResumeAnalysisInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedCreateWithoutResumeAnalysisInput>
+}
+
+export type applicationPackageUpdateWithWhereUniqueWithoutResumeAnalysisInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutResumeAnalysisInput, Prisma.applicationPackageUncheckedUpdateWithoutResumeAnalysisInput>
+}
+
+export type applicationPackageUpdateManyWithWhereWithoutResumeAnalysisInput = {
+  where: Prisma.applicationPackageScalarWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutResumeAnalysisInput>
 }
 
 export type applicationPackageCreateWithoutJobPostingInput = {
@@ -1448,6 +1887,10 @@ export type applicationPackageCreateWithoutJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1463,6 +1906,10 @@ export type applicationPackageCreateWithoutJobPostingInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1489,6 +1936,13 @@ export type applicationPackageUncheckedCreateWithoutJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1496,6 +1950,7 @@ export type applicationPackageUncheckedCreateWithoutJobPostingInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1540,6 +1995,10 @@ export type applicationPackageCreateWithoutResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1555,6 +2014,10 @@ export type applicationPackageCreateWithoutResumeVersionInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1581,6 +2044,13 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1588,6 +2058,7 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1632,6 +2103,10 @@ export type applicationPackageCreateWithoutResumeVersionRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1647,6 +2122,10 @@ export type applicationPackageCreateWithoutResumeVersionRevisionInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1673,6 +2152,13 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionRevisionInput =
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1680,6 +2166,7 @@ export type applicationPackageUncheckedCreateWithoutResumeVersionRevisionInput =
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1724,6 +2211,10 @@ export type applicationPackageCreateWithoutApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1739,6 +2230,10 @@ export type applicationPackageCreateWithoutApplicationInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1765,6 +2260,13 @@ export type applicationPackageUncheckedCreateWithoutApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1772,6 +2274,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1784,6 +2287,93 @@ export type applicationPackageCreateOrConnectWithoutApplicationInput = {
 export type applicationPackageCreateManyApplicationInputEnvelope = {
   data: Prisma.applicationPackageCreateManyApplicationInput | Prisma.applicationPackageCreateManyApplicationInput[]
   skipDuplicates?: boolean
+}
+
+export type applicationPackageCreateWithoutSubmittedApplicationInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutSubmittedApplicationInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutSubmittedApplicationInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedCreateWithoutSubmittedApplicationInput>
 }
 
 export type applicationPackageUpsertWithWhereUniqueWithoutApplicationInput = {
@@ -1802,6 +2392,99 @@ export type applicationPackageUpdateManyWithWhereWithoutApplicationInput = {
   data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutApplicationInput>
 }
 
+export type applicationPackageUpsertWithoutSubmittedApplicationInput = {
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedUpdateWithoutSubmittedApplicationInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedCreateWithoutSubmittedApplicationInput>
+  where?: Prisma.applicationPackageWhereInput
+}
+
+export type applicationPackageUpdateToOneWithWhereWithoutSubmittedApplicationInput = {
+  where?: Prisma.applicationPackageWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSubmittedApplicationInput, Prisma.applicationPackageUncheckedUpdateWithoutSubmittedApplicationInput>
+}
+
+export type applicationPackageUpdateWithoutSubmittedApplicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutSubmittedApplicationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
 export type applicationPackageCreateWithoutApplicationQueueItemInput = {
   id?: string
   version?: number
@@ -1816,6 +2499,10 @@ export type applicationPackageCreateWithoutApplicationQueueItemInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1831,6 +2518,10 @@ export type applicationPackageCreateWithoutApplicationQueueItemInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1857,6 +2548,13 @@ export type applicationPackageUncheckedCreateWithoutApplicationQueueItemInput = 
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1864,6 +2562,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationQueueItemInput = 
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1908,6 +2607,10 @@ export type applicationPackageCreateWithoutCoverLetterDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1923,6 +2626,10 @@ export type applicationPackageCreateWithoutCoverLetterDraftInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1949,6 +2656,13 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1956,6 +2670,7 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterDraftInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -1984,6 +2699,10 @@ export type applicationPackageCreateWithoutApplicationEmailDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -1999,6 +2718,10 @@ export type applicationPackageCreateWithoutApplicationEmailDraftInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -2025,6 +2748,13 @@ export type applicationPackageUncheckedCreateWithoutApplicationEmailDraftInput =
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2032,6 +2762,7 @@ export type applicationPackageUncheckedCreateWithoutApplicationEmailDraftInput =
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -2092,6 +2823,10 @@ export type applicationPackageCreateWithoutCoverLetterRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2107,6 +2842,10 @@ export type applicationPackageCreateWithoutCoverLetterRevisionInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
@@ -2133,6 +2872,13 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2140,6 +2886,7 @@ export type applicationPackageUncheckedCreateWithoutCoverLetterRevisionInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
@@ -2170,7 +2917,7 @@ export type applicationPackageUpdateManyWithWhereWithoutCoverLetterRevisionInput
   data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionInput>
 }
 
-export type applicationPackageCreateWithoutExecutionSessionsInput = {
+export type applicationPackageCreateWithoutSourceResumeRevisionInput = {
   id?: string
   version?: number
   status?: $Enums.ApplicationPackageStatus
@@ -2184,6 +2931,10 @@ export type applicationPackageCreateWithoutExecutionSessionsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2200,6 +2951,226 @@ export type applicationPackageCreateWithoutExecutionSessionsInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutSourceResumeRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput>
+}
+
+export type applicationPackageCreateManySourceResumeRevisionInputEnvelope = {
+  data: Prisma.applicationPackageCreateManySourceResumeRevisionInput | Prisma.applicationPackageCreateManySourceResumeRevisionInput[]
+  skipDuplicates?: boolean
+}
+
+export type applicationPackageUpsertWithWhereUniqueWithoutSourceResumeRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedUpdateWithoutSourceResumeRevisionInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedCreateWithoutSourceResumeRevisionInput>
+}
+
+export type applicationPackageUpdateWithWhereUniqueWithoutSourceResumeRevisionInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutSourceResumeRevisionInput, Prisma.applicationPackageUncheckedUpdateWithoutSourceResumeRevisionInput>
+}
+
+export type applicationPackageUpdateManyWithWhereWithoutSourceResumeRevisionInput = {
+  where: Prisma.applicationPackageScalarWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionInput>
+}
+
+export type applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
+}
+
+export type applicationPackageCreateOrConnectWithoutOpportunityAnalysisSnapshotInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput>
+}
+
+export type applicationPackageCreateManyOpportunityAnalysisSnapshotInputEnvelope = {
+  data: Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInput | Prisma.applicationPackageCreateManyOpportunityAnalysisSnapshotInput[]
+  skipDuplicates?: boolean
+}
+
+export type applicationPackageUpsertWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  update: Prisma.XOR<Prisma.applicationPackageUpdateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedUpdateWithoutOpportunityAnalysisSnapshotInput>
+  create: Prisma.XOR<Prisma.applicationPackageCreateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedCreateWithoutOpportunityAnalysisSnapshotInput>
+}
+
+export type applicationPackageUpdateWithWhereUniqueWithoutOpportunityAnalysisSnapshotInput = {
+  where: Prisma.applicationPackageWhereUniqueInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateWithoutOpportunityAnalysisSnapshotInput, Prisma.applicationPackageUncheckedUpdateWithoutOpportunityAnalysisSnapshotInput>
+}
+
+export type applicationPackageUpdateManyWithWhereWithoutOpportunityAnalysisSnapshotInput = {
+  where: Prisma.applicationPackageScalarWhereInput
+  data: Prisma.XOR<Prisma.applicationPackageUpdateManyMutationInput, Prisma.applicationPackageUncheckedUpdateManyWithoutOpportunityAnalysisSnapshotInput>
+}
+
+export type applicationPackageCreateWithoutExecutionSessionsInput = {
+  id?: string
+  version?: number
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationPackagesInput
+  jobPosting?: Prisma.jobPostingCreateNestedOneWithoutApplicationPackagesInput
+  applicationQueueItem?: Prisma.applicationQueueItemCreateNestedOneWithoutApplicationPackagesInput
+  application?: Prisma.applicationCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersion?: Prisma.resumeVersionCreateNestedOneWithoutApplicationPackagesInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionCreateNestedOneWithoutApplicationPackagesInput
+  coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
+  applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptCreateNestedManyWithoutApplicationPackageInput
 }
 
@@ -2226,6 +3197,13 @@ export type applicationPackageUncheckedCreateWithoutExecutionSessionsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2233,6 +3211,7 @@ export type applicationPackageUncheckedCreateWithoutExecutionSessionsInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
@@ -2266,6 +3245,10 @@ export type applicationPackageUpdateWithoutExecutionSessionsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2282,6 +3265,10 @@ export type applicationPackageUpdateWithoutExecutionSessionsInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
 
@@ -2308,6 +3295,13 @@ export type applicationPackageUncheckedUpdateWithoutExecutionSessionsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2315,6 +3309,7 @@ export type applicationPackageUncheckedUpdateWithoutExecutionSessionsInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
@@ -2332,6 +3327,10 @@ export type applicationPackageCreateWithoutSubmissionAttemptsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2348,6 +3347,10 @@ export type applicationPackageCreateWithoutSubmissionAttemptsInput = {
   coverLetterDraft?: Prisma.communicationDraftCreateNestedOneWithoutCoverLetterPackagesInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutApprovedCoverLetterPackagesInput
   applicationEmailDraft?: Prisma.communicationDraftCreateNestedOneWithoutApplicationEmailPackagesInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotCreateNestedOneWithoutApplicationPackagesInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionCreateNestedOneWithoutApplicationPackagesInput
+  resumeAnalysis?: Prisma.resumeAnalysisCreateNestedOneWithoutApplicationPackagesInput
+  submittedApplication?: Prisma.applicationCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionCreateNestedManyWithoutApplicationPackageInput
 }
 
@@ -2374,6 +3377,13 @@ export type applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2381,6 +3391,7 @@ export type applicationPackageUncheckedCreateWithoutSubmissionAttemptsInput = {
   archivedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  submittedApplication?: Prisma.applicationUncheckedCreateNestedOneWithoutSubmittedPackageInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedCreateNestedManyWithoutApplicationPackageInput
 }
 
@@ -2414,6 +3425,10 @@ export type applicationPackageUpdateWithoutSubmissionAttemptsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2430,6 +3445,10 @@ export type applicationPackageUpdateWithoutSubmissionAttemptsInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
 }
 
@@ -2456,6 +3475,13 @@ export type applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2463,6 +3489,7 @@ export type applicationPackageUncheckedUpdateWithoutSubmissionAttemptsInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
 
@@ -2488,6 +3515,13 @@ export type applicationPackageCreateManyUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2511,6 +3545,10 @@ export type applicationPackageUpdateWithoutUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2526,6 +3564,10 @@ export type applicationPackageUpdateWithoutUserInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2552,6 +3594,13 @@ export type applicationPackageUncheckedUpdateWithoutUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2559,6 +3608,7 @@ export type applicationPackageUncheckedUpdateWithoutUserInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2585,6 +3635,171 @@ export type applicationPackageUncheckedUpdateManyWithoutUserInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type applicationPackageCreateManyResumeAnalysisInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationPackageUpdateWithoutResumeAnalysisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutResumeAnalysisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutResumeAnalysisInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2616,6 +3831,13 @@ export type applicationPackageCreateManyJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2639,6 +3861,10 @@ export type applicationPackageUpdateWithoutJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2654,6 +3880,10 @@ export type applicationPackageUpdateWithoutJobPostingInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2680,6 +3910,13 @@ export type applicationPackageUncheckedUpdateWithoutJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2687,6 +3924,7 @@ export type applicationPackageUncheckedUpdateWithoutJobPostingInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2713,6 +3951,13 @@ export type applicationPackageUncheckedUpdateManyWithoutJobPostingInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2744,6 +3989,13 @@ export type applicationPackageCreateManyResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2767,6 +4019,10 @@ export type applicationPackageUpdateWithoutResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2782,6 +4038,10 @@ export type applicationPackageUpdateWithoutResumeVersionInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2808,6 +4068,13 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2815,6 +4082,7 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2841,6 +4109,13 @@ export type applicationPackageUncheckedUpdateManyWithoutResumeVersionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2872,6 +4147,13 @@ export type applicationPackageCreateManyResumeVersionRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -2895,6 +4177,10 @@ export type applicationPackageUpdateWithoutResumeVersionRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2910,6 +4196,10 @@ export type applicationPackageUpdateWithoutResumeVersionRevisionInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2936,6 +4226,13 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionRevisionInput =
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2943,6 +4240,7 @@ export type applicationPackageUncheckedUpdateWithoutResumeVersionRevisionInput =
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -2969,6 +4267,13 @@ export type applicationPackageUncheckedUpdateManyWithoutResumeVersionRevisionInp
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3000,6 +4305,13 @@ export type applicationPackageCreateManyApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -3023,6 +4335,10 @@ export type applicationPackageUpdateWithoutApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3038,6 +4354,10 @@ export type applicationPackageUpdateWithoutApplicationInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3064,6 +4384,13 @@ export type applicationPackageUncheckedUpdateWithoutApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3071,6 +4398,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3097,6 +4425,13 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3128,6 +4463,13 @@ export type applicationPackageCreateManyApplicationQueueItemInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -3151,6 +4493,10 @@ export type applicationPackageUpdateWithoutApplicationQueueItemInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3166,6 +4512,10 @@ export type applicationPackageUpdateWithoutApplicationQueueItemInput = {
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3192,6 +4542,13 @@ export type applicationPackageUncheckedUpdateWithoutApplicationQueueItemInput = 
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3199,6 +4556,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationQueueItemInput = 
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3225,6 +4583,13 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationQueueItemInpu
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3256,6 +4621,13 @@ export type applicationPackageCreateManyCoverLetterDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -3287,6 +4659,13 @@ export type applicationPackageCreateManyApplicationEmailDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -3310,6 +4689,10 @@ export type applicationPackageUpdateWithoutCoverLetterDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3325,6 +4708,10 @@ export type applicationPackageUpdateWithoutCoverLetterDraftInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3351,6 +4738,13 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3358,6 +4752,7 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterDraftInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3384,6 +4779,13 @@ export type applicationPackageUncheckedUpdateManyWithoutCoverLetterDraftInput = 
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3407,6 +4809,10 @@ export type applicationPackageUpdateWithoutApplicationEmailDraftInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3422,6 +4828,10 @@ export type applicationPackageUpdateWithoutApplicationEmailDraftInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3448,6 +4858,13 @@ export type applicationPackageUncheckedUpdateWithoutApplicationEmailDraftInput =
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3455,6 +4872,7 @@ export type applicationPackageUncheckedUpdateWithoutApplicationEmailDraftInput =
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3481,6 +4899,13 @@ export type applicationPackageUncheckedUpdateManyWithoutApplicationEmailDraftInp
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3512,6 +4937,13 @@ export type applicationPackageCreateManyCoverLetterRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
   preparedAt?: Date | string | null
   approvedAt?: Date | string | null
   submissionStartedAt?: Date | string | null
@@ -3535,6 +4967,10 @@ export type applicationPackageUpdateWithoutCoverLetterRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3550,6 +4986,10 @@ export type applicationPackageUpdateWithoutCoverLetterRevisionInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
   coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
   applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3576,6 +5016,13 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterRevisionInput = {
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3583,6 +5030,7 @@ export type applicationPackageUncheckedUpdateWithoutCoverLetterRevisionInput = {
   archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
   executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
   submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
 }
@@ -3609,6 +5057,329 @@ export type applicationPackageUncheckedUpdateManyWithoutCoverLetterRevisionInput
   qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type applicationPackageCreateManySourceResumeRevisionInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  opportunityAnalysisSnapshotId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationPackageUpdateWithoutSourceResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  opportunityAnalysisSnapshot?: Prisma.opportunityAnalysisSnapshotUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutSourceResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutSourceResumeRevisionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  opportunityAnalysisSnapshotId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type applicationPackageCreateManyOpportunityAnalysisSnapshotInput = {
+  id?: string
+  userId: string
+  jobPostingId?: string | null
+  applicationQueueItemId?: string | null
+  applicationId?: string | null
+  version?: number
+  resumeVersionId?: string | null
+  resumeVersionRevisionId?: string | null
+  coverLetterDraftId?: string | null
+  coverLetterRevisionId?: string | null
+  applicationEmailDraftId?: string | null
+  status?: $Enums.ApplicationPackageStatus
+  readinessStatus?: $Enums.ApplicationReadinessStatus
+  qaStatus?: $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint: string
+  sourceResumeRevisionId?: string | null
+  sourceResumeContentHash?: string | null
+  resumeAnalysisId?: string | null
+  packageHash?: string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Date | string | null
+  preparedAt?: Date | string | null
+  approvedAt?: Date | string | null
+  submissionStartedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  archivedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type applicationPackageUpdateWithoutOpportunityAnalysisSnapshotInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationPackagesNestedInput
+  jobPosting?: Prisma.jobPostingUpdateOneWithoutApplicationPackagesNestedInput
+  applicationQueueItem?: Prisma.applicationQueueItemUpdateOneWithoutApplicationPackagesNestedInput
+  application?: Prisma.applicationUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersion?: Prisma.resumeVersionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  coverLetterDraft?: Prisma.communicationDraftUpdateOneWithoutCoverLetterPackagesNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutApprovedCoverLetterPackagesNestedInput
+  applicationEmailDraft?: Prisma.communicationDraftUpdateOneWithoutApplicationEmailPackagesNestedInput
+  sourceResumeRevision?: Prisma.resumeSourceRevisionUpdateOneWithoutApplicationPackagesNestedInput
+  resumeAnalysis?: Prisma.resumeAnalysisUpdateOneWithoutApplicationPackagesNestedInput
+  submittedApplication?: Prisma.applicationUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateWithoutOpportunityAnalysisSnapshotInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  archivedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplication?: Prisma.applicationUncheckedUpdateOneWithoutSubmittedPackageNestedInput
+  executionSessions?: Prisma.applicationExecutionSessionUncheckedUpdateManyWithoutApplicationPackageNestedInput
+  submissionAttempts?: Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageNestedInput
+}
+
+export type applicationPackageUncheckedUpdateManyWithoutOpportunityAnalysisSnapshotInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  jobPostingId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationQueueItemId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  version?: Prisma.IntFieldUpdateOperationsInput | number
+  resumeVersionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  applicationEmailDraftId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumApplicationPackageStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageStatus
+  readinessStatus?: Prisma.EnumApplicationReadinessStatusFieldUpdateOperationsInput | $Enums.ApplicationReadinessStatus
+  qaStatus?: Prisma.EnumApplicationPackageQaStatusFieldUpdateOperationsInput | $Enums.ApplicationPackageQaStatus
+  opportunitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  evidenceSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  gapSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  eligibilitySnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  requiredUserInputsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  qaSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  warningsJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  contextFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  sourceResumeRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sourceResumeContentHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeAnalysisId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  packageJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  lockedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   preparedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submissionStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -3681,6 +5452,13 @@ export type applicationPackageSelect<ExtArgs extends runtime.Types.Extensions.In
   qaSnapshotJson?: boolean
   warningsJson?: boolean
   contextFingerprint?: boolean
+  opportunityAnalysisSnapshotId?: boolean
+  sourceResumeRevisionId?: boolean
+  sourceResumeContentHash?: boolean
+  resumeAnalysisId?: boolean
+  packageHash?: boolean
+  packageJson?: boolean
+  lockedAt?: boolean
   preparedAt?: boolean
   approvedAt?: boolean
   submissionStartedAt?: boolean
@@ -3697,6 +5475,10 @@ export type applicationPackageSelect<ExtArgs extends runtime.Types.Extensions.In
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
+  submittedApplication?: boolean | Prisma.applicationPackage$submittedApplicationArgs<ExtArgs>
   executionSessions?: boolean | Prisma.applicationPackage$executionSessionsArgs<ExtArgs>
   submissionAttempts?: boolean | Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationPackageCountOutputTypeDefaultArgs<ExtArgs>
@@ -3725,6 +5507,13 @@ export type applicationPackageSelectCreateManyAndReturn<ExtArgs extends runtime.
   qaSnapshotJson?: boolean
   warningsJson?: boolean
   contextFingerprint?: boolean
+  opportunityAnalysisSnapshotId?: boolean
+  sourceResumeRevisionId?: boolean
+  sourceResumeContentHash?: boolean
+  resumeAnalysisId?: boolean
+  packageHash?: boolean
+  packageJson?: boolean
+  lockedAt?: boolean
   preparedAt?: boolean
   approvedAt?: boolean
   submissionStartedAt?: boolean
@@ -3741,6 +5530,9 @@ export type applicationPackageSelectCreateManyAndReturn<ExtArgs extends runtime.
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
 }, ExtArgs["result"]["applicationPackage"]>
 
 export type applicationPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -3766,6 +5558,13 @@ export type applicationPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.
   qaSnapshotJson?: boolean
   warningsJson?: boolean
   contextFingerprint?: boolean
+  opportunityAnalysisSnapshotId?: boolean
+  sourceResumeRevisionId?: boolean
+  sourceResumeContentHash?: boolean
+  resumeAnalysisId?: boolean
+  packageHash?: boolean
+  packageJson?: boolean
+  lockedAt?: boolean
   preparedAt?: boolean
   approvedAt?: boolean
   submissionStartedAt?: boolean
@@ -3782,6 +5581,9 @@ export type applicationPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
 }, ExtArgs["result"]["applicationPackage"]>
 
 export type applicationPackageSelectScalar = {
@@ -3807,6 +5609,13 @@ export type applicationPackageSelectScalar = {
   qaSnapshotJson?: boolean
   warningsJson?: boolean
   contextFingerprint?: boolean
+  opportunityAnalysisSnapshotId?: boolean
+  sourceResumeRevisionId?: boolean
+  sourceResumeContentHash?: boolean
+  resumeAnalysisId?: boolean
+  packageHash?: boolean
+  packageJson?: boolean
+  lockedAt?: boolean
   preparedAt?: boolean
   approvedAt?: boolean
   submissionStartedAt?: boolean
@@ -3816,7 +5625,7 @@ export type applicationPackageSelectScalar = {
   updatedAt?: boolean
 }
 
-export type applicationPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobPostingId" | "applicationQueueItemId" | "applicationId" | "version" | "resumeVersionId" | "resumeVersionRevisionId" | "coverLetterDraftId" | "coverLetterRevisionId" | "applicationEmailDraftId" | "status" | "readinessStatus" | "qaStatus" | "opportunitySnapshotJson" | "evidenceSnapshotJson" | "gapSnapshotJson" | "eligibilitySnapshotJson" | "requiredUserInputsJson" | "qaSnapshotJson" | "warningsJson" | "contextFingerprint" | "preparedAt" | "approvedAt" | "submissionStartedAt" | "submittedAt" | "archivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationPackage"]>
+export type applicationPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "jobPostingId" | "applicationQueueItemId" | "applicationId" | "version" | "resumeVersionId" | "resumeVersionRevisionId" | "coverLetterDraftId" | "coverLetterRevisionId" | "applicationEmailDraftId" | "status" | "readinessStatus" | "qaStatus" | "opportunitySnapshotJson" | "evidenceSnapshotJson" | "gapSnapshotJson" | "eligibilitySnapshotJson" | "requiredUserInputsJson" | "qaSnapshotJson" | "warningsJson" | "contextFingerprint" | "opportunityAnalysisSnapshotId" | "sourceResumeRevisionId" | "sourceResumeContentHash" | "resumeAnalysisId" | "packageHash" | "packageJson" | "lockedAt" | "preparedAt" | "approvedAt" | "submissionStartedAt" | "submittedAt" | "archivedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationPackage"]>
 export type applicationPackageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   jobPosting?: boolean | Prisma.applicationPackage$jobPostingArgs<ExtArgs>
@@ -3827,6 +5636,10 @@ export type applicationPackageInclude<ExtArgs extends runtime.Types.Extensions.I
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
+  submittedApplication?: boolean | Prisma.applicationPackage$submittedApplicationArgs<ExtArgs>
   executionSessions?: boolean | Prisma.applicationPackage$executionSessionsArgs<ExtArgs>
   submissionAttempts?: boolean | Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationPackageCountOutputTypeDefaultArgs<ExtArgs>
@@ -3841,6 +5654,9 @@ export type applicationPackageIncludeCreateManyAndReturn<ExtArgs extends runtime
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
 }
 export type applicationPackageIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
@@ -3852,6 +5668,9 @@ export type applicationPackageIncludeUpdateManyAndReturn<ExtArgs extends runtime
   coverLetterDraft?: boolean | Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>
   applicationEmailDraft?: boolean | Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>
+  opportunityAnalysisSnapshot?: boolean | Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>
+  sourceResumeRevision?: boolean | Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>
+  resumeAnalysis?: boolean | Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>
 }
 
 export type $applicationPackagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3866,6 +5685,10 @@ export type $applicationPackagePayload<ExtArgs extends runtime.Types.Extensions.
     coverLetterDraft: Prisma.$communicationDraftPayload<ExtArgs> | null
     coverLetterRevision: Prisma.$communicationDraftRevisionPayload<ExtArgs> | null
     applicationEmailDraft: Prisma.$communicationDraftPayload<ExtArgs> | null
+    opportunityAnalysisSnapshot: Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs> | null
+    sourceResumeRevision: Prisma.$resumeSourceRevisionPayload<ExtArgs> | null
+    resumeAnalysis: Prisma.$resumeAnalysisPayload<ExtArgs> | null
+    submittedApplication: Prisma.$applicationPayload<ExtArgs> | null
     executionSessions: Prisma.$applicationExecutionSessionPayload<ExtArgs>[]
     submissionAttempts: Prisma.$applicationSubmissionAttemptPayload<ExtArgs>[]
   }
@@ -3892,6 +5715,16 @@ export type $applicationPackagePayload<ExtArgs extends runtime.Types.Extensions.
     qaSnapshotJson: runtime.JsonValue
     warningsJson: runtime.JsonValue
     contextFingerprint: string
+    /**
+     * Exact M31 provenance. Null on packages created before M32.
+     */
+    opportunityAnalysisSnapshotId: string | null
+    sourceResumeRevisionId: string | null
+    sourceResumeContentHash: string | null
+    resumeAnalysisId: string | null
+    packageHash: string | null
+    packageJson: runtime.JsonValue
+    lockedAt: Date | null
     preparedAt: Date | null
     approvedAt: Date | null
     submissionStartedAt: Date | null
@@ -4302,6 +6135,10 @@ export interface Prisma__applicationPackageClient<T, Null = never, ExtArgs exten
   coverLetterDraft<T extends Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$coverLetterDraftArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   coverLetterRevision<T extends Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$coverLetterRevisionArgs<ExtArgs>>): Prisma.Prisma__communicationDraftRevisionClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   applicationEmailDraft<T extends Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$applicationEmailDraftArgs<ExtArgs>>): Prisma.Prisma__communicationDraftClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  opportunityAnalysisSnapshot<T extends Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs>>): Prisma.Prisma__opportunityAnalysisSnapshotClient<runtime.Types.Result.GetResult<Prisma.$opportunityAnalysisSnapshotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  sourceResumeRevision<T extends Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$sourceResumeRevisionArgs<ExtArgs>>): Prisma.Prisma__resumeSourceRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeSourceRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  resumeAnalysis<T extends Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$resumeAnalysisArgs<ExtArgs>>): Prisma.Prisma__resumeAnalysisClient<runtime.Types.Result.GetResult<Prisma.$resumeAnalysisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  submittedApplication<T extends Prisma.applicationPackage$submittedApplicationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$submittedApplicationArgs<ExtArgs>>): Prisma.Prisma__applicationClient<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   executionSessions<T extends Prisma.applicationPackage$executionSessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$executionSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationExecutionSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   submissionAttempts<T extends Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationPackage$submissionAttemptsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationSubmissionAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -4355,6 +6192,13 @@ export interface applicationPackageFieldRefs {
   readonly qaSnapshotJson: Prisma.FieldRef<"applicationPackage", 'Json'>
   readonly warningsJson: Prisma.FieldRef<"applicationPackage", 'Json'>
   readonly contextFingerprint: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly opportunityAnalysisSnapshotId: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly sourceResumeRevisionId: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly sourceResumeContentHash: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly resumeAnalysisId: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly packageHash: Prisma.FieldRef<"applicationPackage", 'String'>
+  readonly packageJson: Prisma.FieldRef<"applicationPackage", 'Json'>
+  readonly lockedAt: Prisma.FieldRef<"applicationPackage", 'DateTime'>
   readonly preparedAt: Prisma.FieldRef<"applicationPackage", 'DateTime'>
   readonly approvedAt: Prisma.FieldRef<"applicationPackage", 'DateTime'>
   readonly submissionStartedAt: Prisma.FieldRef<"applicationPackage", 'DateTime'>
@@ -4912,6 +6756,82 @@ export type applicationPackage$applicationEmailDraftArgs<ExtArgs extends runtime
    */
   include?: Prisma.communicationDraftInclude<ExtArgs> | null
   where?: Prisma.communicationDraftWhereInput
+}
+
+/**
+ * applicationPackage.opportunityAnalysisSnapshot
+ */
+export type applicationPackage$opportunityAnalysisSnapshotArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the opportunityAnalysisSnapshot
+   */
+  select?: Prisma.opportunityAnalysisSnapshotSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the opportunityAnalysisSnapshot
+   */
+  omit?: Prisma.opportunityAnalysisSnapshotOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.opportunityAnalysisSnapshotInclude<ExtArgs> | null
+  where?: Prisma.opportunityAnalysisSnapshotWhereInput
+}
+
+/**
+ * applicationPackage.sourceResumeRevision
+ */
+export type applicationPackage$sourceResumeRevisionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeSourceRevision
+   */
+  select?: Prisma.resumeSourceRevisionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeSourceRevision
+   */
+  omit?: Prisma.resumeSourceRevisionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeSourceRevisionInclude<ExtArgs> | null
+  where?: Prisma.resumeSourceRevisionWhereInput
+}
+
+/**
+ * applicationPackage.resumeAnalysis
+ */
+export type applicationPackage$resumeAnalysisArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the resumeAnalysis
+   */
+  select?: Prisma.resumeAnalysisSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the resumeAnalysis
+   */
+  omit?: Prisma.resumeAnalysisOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.resumeAnalysisInclude<ExtArgs> | null
+  where?: Prisma.resumeAnalysisWhereInput
+}
+
+/**
+ * applicationPackage.submittedApplication
+ */
+export type applicationPackage$submittedApplicationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the application
+   */
+  select?: Prisma.applicationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the application
+   */
+  omit?: Prisma.applicationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationInclude<ExtArgs> | null
+  where?: Prisma.applicationWhereInput
 }
 
 /**

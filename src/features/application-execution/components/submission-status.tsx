@@ -29,16 +29,47 @@ export function SubmissionStatus({
         </div>
       ) : null}
 
-      {view.status === "VERIFYING" || view.submission.status === "UNCERTAIN" ? (
+      {view.submission.status === "UNCERTAIN" ? (
         <div className="mt-3 space-y-3 text-sm">
-          <p>CareerOS is checking whether the first submission succeeded. Do not try again yet.</p>
-          <button className="btn-primary w-full" onClick={onVerify} type="button">
-            Verify Again
+          <p className="font-medium text-[var(--color-text-primary)]">Submission status uncertain.</p>
+          <p>
+            CareerOS cannot safely retry automatically because the provider may already have received the application.
+            Verify on the provider before retrying.
+          </p>
+          <p>Manual verification required. Nothing is marked applied until you confirm the provider accepted it.</p>
+          <button className="btn-primary w-full" onClick={() => onConfirm("SUBMITTED")} type="button">
+            I verified this was submitted
+          </button>
+          <button className="btn-secondary w-full" onClick={() => onConfirm("NOT_SUBMITTED")} type="button">
+            It was not submitted
           </button>
         </div>
       ) : null}
 
-      {(verification === "PROBABLE" || verification === "UNVERIFIED") && view.applicationStatus === "DRAFT" ? (
+      {view.status === "FAILED" && view.failureCode !== "SUBMISSION_REJECTED" && view.failureCode !== "SUBMISSION_UNCERTAIN" ? (
+        <div className="mt-3 space-y-2 text-sm">
+          <p className="font-medium text-[var(--color-text-primary)]">Nothing was submitted.</p>
+          <p>The attempt failed before a confirmed submission. Retry may be available after you review the package again.</p>
+        </div>
+      ) : null}
+
+      {view.status === "FAILED" && view.failureCode === "SUBMISSION_REJECTED" ? (
+        <div className="mt-3 space-y-2 text-sm">
+          <p className="font-medium text-[var(--color-text-primary)]">The provider rejected this application.</p>
+          <p>This is not an uncertain submission. CareerOS will not submit it again automatically.</p>
+        </div>
+      ) : null}
+
+      {view.status === "VERIFYING" && view.submission.status !== "UNCERTAIN" ? (
+        <div className="mt-3 space-y-3 text-sm">
+          <p>CareerOS is checking whether the submission succeeded. Do not submit again yet.</p>
+          <button className="btn-secondary w-full" onClick={onVerify} type="button">
+            Check confirmation
+          </button>
+        </div>
+      ) : null}
+
+      {(verification === "PROBABLE" || verification === "UNVERIFIED") && view.applicationStatus === "DRAFT" && view.submission.status !== "UNCERTAIN" ? (
         <div className="mt-3 space-y-3 text-sm">
           <p>CareerOS could not verify the result confidently. Did the submission complete?</p>
           <button className="btn-primary w-full" onClick={() => onConfirm("SUBMITTED")} type="button">

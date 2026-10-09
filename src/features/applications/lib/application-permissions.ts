@@ -134,6 +134,8 @@ export async function assertApplicationOwnedByUser(userId: string, applicationId
       jobPostingId: true,
       resumeVersionId: true,
       resumeVersionRevisionId: true,
+      submittedPackageId: true,
+      submittedExecutionAttemptId: true,
       appliedAt: true,
       followUpAt: true,
       closedAt: true,

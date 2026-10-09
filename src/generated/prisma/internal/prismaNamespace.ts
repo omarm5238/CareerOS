@@ -5123,6 +5123,8 @@ export const ApplicationScalarFieldEnum = {
   confirmedRejectionSource: 'confirmedRejectionSource',
   rejectedAt: 'rejectedAt',
   closedAt: 'closedAt',
+  submittedPackageId: 'submittedPackageId',
+  submittedExecutionAttemptId: 'submittedExecutionAttemptId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -5496,6 +5498,13 @@ export const ApplicationPackageScalarFieldEnum = {
   qaSnapshotJson: 'qaSnapshotJson',
   warningsJson: 'warningsJson',
   contextFingerprint: 'contextFingerprint',
+  opportunityAnalysisSnapshotId: 'opportunityAnalysisSnapshotId',
+  sourceResumeRevisionId: 'sourceResumeRevisionId',
+  sourceResumeContentHash: 'sourceResumeContentHash',
+  resumeAnalysisId: 'resumeAnalysisId',
+  packageHash: 'packageHash',
+  packageJson: 'packageJson',
+  lockedAt: 'lockedAt',
   preparedAt: 'preparedAt',
   approvedAt: 'approvedAt',
   submissionStartedAt: 'submissionStartedAt',
@@ -5576,6 +5585,10 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
   resumeFileHash: 'resumeFileHash',
   coverLetterRevisionId: 'coverLetterRevisionId',
   coverLetterFileHash: 'coverLetterFileHash',
+  idempotencyKey: 'idempotencyKey',
+  submitBoundaryCrossedAt: 'submitBoundaryCrossedAt',
+  destinationUrl: 'destinationUrl',
+  confirmationType: 'confirmationType',
   startedAt: 'startedAt',
   submittedAt: 'submittedAt',
   verifiedAt: 'verifiedAt',
@@ -8032,4 +8045,3 @@ export type PrismaAction =
  * `PrismaClient` proxy available in interactive transactions.
  */
 export type TransactionClient = Omit<DefaultPrismaClient, runtime.ITXClientDenyList>
-

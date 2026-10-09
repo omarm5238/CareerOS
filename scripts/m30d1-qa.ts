@@ -216,7 +216,7 @@ async function checkPersistence() {
 function checkMigrationFile() {
   const root = join(process.cwd(), "prisma", "migrations");
   const dirs = readdirSync(root, { withFileTypes: true }).filter((entry) => entry.isDirectory());
-  assert(dirs.length === 22, `expected 22 migrations, found ${dirs.length}`);
+  assert(dirs.length >= 22, `expected at least the 22 pre-M32 migrations, found ${dirs.length}`);
   const match = dirs.find((entry) => entry.name.endsWith("_add_discovery_providers"));
   assert(match, "add_discovery_providers migration is missing");
   const sql = readFileSync(join(root, match.name, "migration.sql"), "utf8");

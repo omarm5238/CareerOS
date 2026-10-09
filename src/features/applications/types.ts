@@ -125,6 +125,9 @@ export type ApplicationEventMetadata = {
   url?: string;
   location?: string;
   notes?: string;
+  submissionPackageId?: string;
+  executionAttemptId?: string;
+  provider?: string;
 };
 
 // ---------------------------------------------------------------------------
