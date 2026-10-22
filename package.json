@@ -46,7 +46,13 @@
     "m32-3:qa": "npx tsx scripts/m32-3-qa.ts",
     "m32:atomicity-qa": "npx tsx scripts/m32-atomicity-qa.ts",
     "m32:qa": "npx tsx scripts/m32-qa.ts",
-    "m32:headed": "npx tsx scripts/m32-headed-qa.ts"
+    "m32:headed": "npx tsx scripts/m32-headed-qa.ts",
+    "m33-1:qa": "npx tsx scripts/m33-1-qa.ts",
+    "m33-2:qa": "npx tsx scripts/m33-2-qa.ts",
+    "m33-3:qa": "npx tsx scripts/m33-3-qa.ts",
+    "m33-4:qa": "npx tsx scripts/m33-4-qa.ts",
+    "m33:qa": "npx tsx scripts/m33-qa.ts",
+    "m33:headed": "npx tsx scripts/m33-headed-qa.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

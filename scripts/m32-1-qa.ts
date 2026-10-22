@@ -36,7 +36,7 @@ async function rejected(run: () => Promise<unknown>, message: string) {
 
 async function main() {
   const migrations = readdirSync("prisma/migrations", { withFileTypes: true }).filter((entry) => entry.isDirectory());
-  assert(migrations.length === 23, `expected 23 migrations, found ${migrations.length}`);
+  assert(migrations.length >= 23, `expected at least the 23 M32 migrations, found ${migrations.length}`);
   assert(migrations.some((entry) => entry.name.endsWith("_add_application_execution_integrity")), "M32 migration is missing");
   const before = await counts();
   const historical = await prisma.application.findFirst({

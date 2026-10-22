@@ -25,6 +25,8 @@ import { ApplicationResumeSection } from "./application-resume-section";
 import type { ApplicationResumeOption } from "./application-resume-section";
 import { ApplicationStageActions } from "./application-stage-actions";
 import { ApplicationTimeline } from "./application-timeline";
+import { ExternalSubmissionPanel } from "@/features/application-execution/components/external-submission-panel";
+import type { SubmissionAuditView } from "@/features/application-execution/integrity/external-submission";
 import { ApplicationCommunicationSection } from "@/features/communications/components/application-communication-section";
 import type {
   CommunicationContactOption,
@@ -44,6 +46,7 @@ type ApplicationDetailPageProps = {
   communicationContacts: CommunicationContactOption[];
   communicationResumeOptions: CommunicationResumeOption[];
   interviewCompleted: boolean;
+  submissionAudit: SubmissionAuditView;
 };
 
 const SOURCE_LABELS: Record<ApplicationDetail["source"], string> = {
@@ -64,6 +67,7 @@ export function ApplicationDetailPage({
   communicationContacts,
   communicationResumeOptions,
   interviewCompleted,
+  submissionAudit,
 }: ApplicationDetailPageProps) {
   const isClosed = application.closedAt !== null;
   const canChangeResume = application.status === "DRAFT";
@@ -137,6 +141,7 @@ export function ApplicationDetailPage({
 
           <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
             <div className="space-y-6">
+              <ExternalSubmissionPanel applicationId={application.id} audit={submissionAudit} />
               <section className="surface-glass p-5" id="next-action">
                 <p className="section-eyebrow">Current Next Action</p>
                 {application.nextAction.title ? (

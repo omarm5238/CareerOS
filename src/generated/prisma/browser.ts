@@ -179,6 +179,11 @@ export type applicationExecutionEvent = Prisma.applicationExecutionEventModel
  */
 export type applicationSubmissionAttempt = Prisma.applicationSubmissionAttemptModel
 /**
+ * Model applicationSubmitAuthorization
+ * One-shot provider submit authorization. Raw bearer secrets are never stored.
+ */
+export type applicationSubmitAuthorization = Prisma.applicationSubmitAuthorizationModel
+/**
  * Model applicationAnswerPreference
  *
  */

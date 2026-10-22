@@ -416,6 +416,7 @@ export const ModelName = {
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
   applicationSubmissionAttempt: 'applicationSubmissionAttempt',
+  applicationSubmitAuthorization: 'applicationSubmitAuthorization',
   applicationAnswerPreference: 'applicationAnswerPreference',
   linkedinGrowthProfile: 'linkedinGrowthProfile',
   linkedinContentPillar: 'linkedinContentPillar',
@@ -458,7 +459,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "resumeSourceRevision" | "opportunityAnalysisSnapshot" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation" | "careerMemory" | "careerMemoryEvidence" | "careerGraphEntity" | "careerGraphRelation" | "careerMemoryEvent" | "careerMemoryPreference"
+    modelProps: "user" | "session" | "account" | "verification" | "resumeDocument" | "resumeAnalysis" | "jobPosting" | "jobAnalysis" | "skillsInsight" | "careerBrief" | "resumeVersion" | "resumeVersionRevision" | "application" | "applicationEvent" | "applicationContact" | "applicationInsight" | "jobDiscoveryProfile" | "jobDiscoveryRun" | "discoveredJob" | "discoveredJobSource" | "applicationQueueItem" | "communicationDraft" | "communicationDraftRevision" | "jobRequirement" | "jobEvidenceMatch" | "jobOpportunityAnalysis" | "resumeSourceRevision" | "opportunityAnalysisSnapshot" | "applicationPackage" | "applicationExecutionSession" | "applicationExecutionEvent" | "applicationSubmissionAttempt" | "applicationSubmitAuthorization" | "applicationAnswerPreference" | "linkedinGrowthProfile" | "linkedinContentPillar" | "linkedinContentIdea" | "linkedinPost" | "linkedinPostRevision" | "linkedinPublishingPlan" | "linkedinPostPerformance" | "linkedinGrowthInsight" | "linkedinConnection" | "linkedinOAuthAttempt" | "linkedinPublishingAttempt" | "dailyRoadmapPreference" | "dailyRoadmap" | "dailyRoadmapAction" | "careerActivityRecord" | "careerActivityDay" | "weeklyCareerReview" | "weeklyCareerMetric" | "weeklyCareerInsight" | "weeklyCareerRecommendation" | "careerMemory" | "careerMemoryEvidence" | "careerGraphEntity" | "careerGraphRelation" | "careerMemoryEvent" | "careerMemoryPreference"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2827,6 +2828,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.applicationSubmissionAttemptCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.ApplicationSubmissionAttemptCountAggregateOutputType> | number
+        }
+      }
+    }
+    applicationSubmitAuthorization: {
+      payload: Prisma.$applicationSubmitAuthorizationPayload<ExtArgs>
+      fields: Prisma.applicationSubmitAuthorizationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.applicationSubmitAuthorizationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.applicationSubmitAuthorizationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        findFirst: {
+          args: Prisma.applicationSubmitAuthorizationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.applicationSubmitAuthorizationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        findMany: {
+          args: Prisma.applicationSubmitAuthorizationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>[]
+        }
+        create: {
+          args: Prisma.applicationSubmitAuthorizationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        createMany: {
+          args: Prisma.applicationSubmitAuthorizationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.applicationSubmitAuthorizationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>[]
+        }
+        delete: {
+          args: Prisma.applicationSubmitAuthorizationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        update: {
+          args: Prisma.applicationSubmitAuthorizationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        deleteMany: {
+          args: Prisma.applicationSubmitAuthorizationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.applicationSubmitAuthorizationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.applicationSubmitAuthorizationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>[]
+        }
+        upsert: {
+          args: Prisma.applicationSubmitAuthorizationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$applicationSubmitAuthorizationPayload>
+        }
+        aggregate: {
+          args: Prisma.ApplicationSubmitAuthorizationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateApplicationSubmitAuthorization>
+        }
+        groupBy: {
+          args: Prisma.applicationSubmitAuthorizationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationSubmitAuthorizationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.applicationSubmitAuthorizationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ApplicationSubmitAuthorizationCountAggregateOutputType> | number
         }
       }
     }
@@ -5589,6 +5664,19 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
   submitBoundaryCrossedAt: 'submitBoundaryCrossedAt',
   destinationUrl: 'destinationUrl',
   confirmationType: 'confirmationType',
+  externalPhase: 'externalPhase',
+  recoveryDisposition: 'recoveryDisposition',
+  confirmationStrength: 'confirmationStrength',
+  clickAttemptStartedAt: 'clickAttemptStartedAt',
+  clickDispatchedAt: 'clickDispatchedAt',
+  postClickActivityObservedAt: 'postClickActivityObservedAt',
+  confirmationObservedAt: 'confirmationObservedAt',
+  confirmationPersistedAt: 'confirmationPersistedAt',
+  providerAdapterVersion: 'providerAdapterVersion',
+  selectorStrategyVersion: 'selectorStrategyVersion',
+  confirmationStrategyVersion: 'confirmationStrategyVersion',
+  lastProviderVerificationAt: 'lastProviderVerificationAt',
+  submitAuthorizationId: 'submitAuthorizationId',
   startedAt: 'startedAt',
   submittedAt: 'submittedAt',
   verifiedAt: 'verifiedAt',
@@ -5597,6 +5685,30 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
 } as const
 
 export type ApplicationSubmissionAttemptScalarFieldEnum = (typeof ApplicationSubmissionAttemptScalarFieldEnum)[keyof typeof ApplicationSubmissionAttemptScalarFieldEnum]
+
+
+export const ApplicationSubmitAuthorizationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  packageId: 'packageId',
+  attemptId: 'attemptId',
+  provider: 'provider',
+  targetHost: 'targetHost',
+  targetJobId: 'targetJobId',
+  authorizationHash: 'authorizationHash',
+  state: 'state',
+  issuedAt: 'issuedAt',
+  consumedAt: 'consumedAt',
+  cancelledAt: 'cancelledAt',
+  expiresAt: 'expiresAt',
+  dryRunStatus: 'dryRunStatus',
+  dryRunCertifiedAt: 'dryRunCertifiedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationSubmitAuthorizationScalarFieldEnum = (typeof ApplicationSubmitAuthorizationScalarFieldEnum)[keyof typeof ApplicationSubmitAuthorizationScalarFieldEnum]
 
 
 export const ApplicationAnswerPreferenceScalarFieldEnum = {
@@ -7032,6 +7144,62 @@ export type ListEnumApplicationSubmissionVerificationStatusFieldRefInput<$Prisma
 
 
 /**
+ * Reference to a field of type 'ExternalSubmissionPhase'
+ */
+export type EnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExternalSubmissionPhase'>
+
+
+
+/**
+ * Reference to a field of type 'ExternalSubmissionPhase[]'
+ */
+export type ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExternalSubmissionPhase[]'>
+
+
+
+/**
+ * Reference to a field of type 'RecoveryDisposition'
+ */
+export type EnumRecoveryDispositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RecoveryDisposition'>
+
+
+
+/**
+ * Reference to a field of type 'RecoveryDisposition[]'
+ */
+export type ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RecoveryDisposition[]'>
+
+
+
+/**
+ * Reference to a field of type 'ConfirmationStrength'
+ */
+export type EnumConfirmationStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ConfirmationStrength'>
+
+
+
+/**
+ * Reference to a field of type 'ConfirmationStrength[]'
+ */
+export type ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ConfirmationStrength[]'>
+
+
+
+/**
+ * Reference to a field of type 'SubmitAuthorizationState'
+ */
+export type EnumSubmitAuthorizationStateFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubmitAuthorizationState'>
+
+
+
+/**
+ * Reference to a field of type 'SubmitAuthorizationState[]'
+ */
+export type ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubmitAuthorizationState[]'>
+
+
+
+/**
  * Reference to a field of type 'ApplicationAnswerScope'
  */
 export type EnumApplicationAnswerScopeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApplicationAnswerScope'>
@@ -7956,6 +8124,7 @@ export type GlobalOmitConfig = {
   applicationExecutionSession?: Prisma.applicationExecutionSessionOmit
   applicationExecutionEvent?: Prisma.applicationExecutionEventOmit
   applicationSubmissionAttempt?: Prisma.applicationSubmissionAttemptOmit
+  applicationSubmitAuthorization?: Prisma.applicationSubmitAuthorizationOmit
   applicationAnswerPreference?: Prisma.applicationAnswerPreferenceOmit
   linkedinGrowthProfile?: Prisma.linkedinGrowthProfileOmit
   linkedinContentPillar?: Prisma.linkedinContentPillarOmit

@@ -1141,6 +1141,27 @@ export type EnumApplicationSubmissionVerificationStatusFilter<$PrismaModel = nev
   not?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel> | $Enums.ApplicationSubmissionVerificationStatus
 }
 
+export type EnumExternalSubmissionPhaseNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExternalSubmissionPhase | Prisma.EnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel> | $Enums.ExternalSubmissionPhase | null
+}
+
+export type EnumRecoveryDispositionNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.RecoveryDisposition | Prisma.EnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  in?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel> | $Enums.RecoveryDisposition | null
+}
+
+export type EnumConfirmationStrengthNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ConfirmationStrength | Prisma.EnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel> | $Enums.ConfirmationStrength | null
+}
+
 export type EnumApplicationSubmissionMethodWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.ApplicationSubmissionMethod | Prisma.EnumApplicationSubmissionMethodFieldRefInput<$PrismaModel>
   in?: $Enums.ApplicationSubmissionMethod[] | Prisma.ListEnumApplicationSubmissionMethodFieldRefInput<$PrismaModel>
@@ -1169,6 +1190,53 @@ export type EnumApplicationSubmissionVerificationStatusWithAggregatesFilter<$Pri
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel>
+}
+
+export type EnumExternalSubmissionPhaseNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExternalSubmissionPhase | Prisma.EnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumExternalSubmissionPhaseNullableWithAggregatesFilter<$PrismaModel> | $Enums.ExternalSubmissionPhase | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel>
+}
+
+export type EnumRecoveryDispositionNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RecoveryDisposition | Prisma.EnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  in?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumRecoveryDispositionNullableWithAggregatesFilter<$PrismaModel> | $Enums.RecoveryDisposition | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel>
+}
+
+export type EnumConfirmationStrengthNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ConfirmationStrength | Prisma.EnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumConfirmationStrengthNullableWithAggregatesFilter<$PrismaModel> | $Enums.ConfirmationStrength | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel>
+}
+
+export type EnumSubmitAuthorizationStateFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmitAuthorizationState | Prisma.EnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel> | $Enums.SubmitAuthorizationState
+}
+
+export type EnumSubmitAuthorizationStateWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmitAuthorizationState | Prisma.EnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmitAuthorizationStateWithAggregatesFilter<$PrismaModel> | $Enums.SubmitAuthorizationState
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel>
 }
 
 export type EnumApplicationAnswerScopeFilter<$PrismaModel = never> = {
@@ -3297,6 +3365,27 @@ export type NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel
   not?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel> | $Enums.ApplicationSubmissionVerificationStatus
 }
 
+export type NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExternalSubmissionPhase | Prisma.EnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel> | $Enums.ExternalSubmissionPhase | null
+}
+
+export type NestedEnumRecoveryDispositionNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.RecoveryDisposition | Prisma.EnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  in?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel> | $Enums.RecoveryDisposition | null
+}
+
+export type NestedEnumConfirmationStrengthNullableFilter<$PrismaModel = never> = {
+  equals?: $Enums.ConfirmationStrength | Prisma.EnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel> | $Enums.ConfirmationStrength | null
+}
+
 export type NestedEnumApplicationSubmissionMethodWithAggregatesFilter<$PrismaModel = never> = {
   equals?: $Enums.ApplicationSubmissionMethod | Prisma.EnumApplicationSubmissionMethodFieldRefInput<$PrismaModel>
   in?: $Enums.ApplicationSubmissionMethod[] | Prisma.ListEnumApplicationSubmissionMethodFieldRefInput<$PrismaModel>
@@ -3325,6 +3414,53 @@ export type NestedEnumApplicationSubmissionVerificationStatusWithAggregatesFilte
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumApplicationSubmissionVerificationStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumExternalSubmissionPhaseNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ExternalSubmissionPhase | Prisma.EnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ExternalSubmissionPhase[] | Prisma.ListEnumExternalSubmissionPhaseFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumExternalSubmissionPhaseNullableWithAggregatesFilter<$PrismaModel> | $Enums.ExternalSubmissionPhase | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumExternalSubmissionPhaseNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumRecoveryDispositionNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RecoveryDisposition | Prisma.EnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  in?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.RecoveryDisposition[] | Prisma.ListEnumRecoveryDispositionFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumRecoveryDispositionNullableWithAggregatesFilter<$PrismaModel> | $Enums.RecoveryDisposition | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRecoveryDispositionNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumConfirmationStrengthNullableWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ConfirmationStrength | Prisma.EnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  in?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  notIn?: $Enums.ConfirmationStrength[] | Prisma.ListEnumConfirmationStrengthFieldRefInput<$PrismaModel> | null
+  not?: Prisma.NestedEnumConfirmationStrengthNullableWithAggregatesFilter<$PrismaModel> | $Enums.ConfirmationStrength | null
+  _count?: Prisma.NestedIntNullableFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumConfirmationStrengthNullableFilter<$PrismaModel>
+}
+
+export type NestedEnumSubmitAuthorizationStateFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmitAuthorizationState | Prisma.EnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel> | $Enums.SubmitAuthorizationState
+}
+
+export type NestedEnumSubmitAuthorizationStateWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubmitAuthorizationState | Prisma.EnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  in?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubmitAuthorizationState[] | Prisma.ListEnumSubmitAuthorizationStateFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubmitAuthorizationStateWithAggregatesFilter<$PrismaModel> | $Enums.SubmitAuthorizationState
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubmitAuthorizationStateFilter<$PrismaModel>
 }
 
 export type NestedEnumApplicationAnswerScopeFilter<$PrismaModel = never> = {

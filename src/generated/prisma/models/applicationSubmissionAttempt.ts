@@ -60,6 +60,19 @@ export type ApplicationSubmissionAttemptMinAggregateOutputType = {
   submitBoundaryCrossedAt: Date | null
   destinationUrl: string | null
   confirmationType: string | null
+  externalPhase: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition: $Enums.RecoveryDisposition | null
+  confirmationStrength: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt: Date | null
+  clickDispatchedAt: Date | null
+  postClickActivityObservedAt: Date | null
+  confirmationObservedAt: Date | null
+  confirmationPersistedAt: Date | null
+  providerAdapterVersion: string | null
+  selectorStrategyVersion: string | null
+  confirmationStrategyVersion: string | null
+  lastProviderVerificationAt: Date | null
+  submitAuthorizationId: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -93,6 +106,19 @@ export type ApplicationSubmissionAttemptMaxAggregateOutputType = {
   submitBoundaryCrossedAt: Date | null
   destinationUrl: string | null
   confirmationType: string | null
+  externalPhase: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition: $Enums.RecoveryDisposition | null
+  confirmationStrength: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt: Date | null
+  clickDispatchedAt: Date | null
+  postClickActivityObservedAt: Date | null
+  confirmationObservedAt: Date | null
+  confirmationPersistedAt: Date | null
+  providerAdapterVersion: string | null
+  selectorStrategyVersion: string | null
+  confirmationStrategyVersion: string | null
+  lastProviderVerificationAt: Date | null
+  submitAuthorizationId: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -128,6 +154,19 @@ export type ApplicationSubmissionAttemptCountAggregateOutputType = {
   submitBoundaryCrossedAt: number
   destinationUrl: number
   confirmationType: number
+  externalPhase: number
+  recoveryDisposition: number
+  confirmationStrength: number
+  clickAttemptStartedAt: number
+  clickDispatchedAt: number
+  postClickActivityObservedAt: number
+  confirmationObservedAt: number
+  confirmationPersistedAt: number
+  providerAdapterVersion: number
+  selectorStrategyVersion: number
+  confirmationStrategyVersion: number
+  lastProviderVerificationAt: number
+  submitAuthorizationId: number
   startedAt: number
   submittedAt: number
   verifiedAt: number
@@ -171,6 +210,19 @@ export type ApplicationSubmissionAttemptMinAggregateInputType = {
   submitBoundaryCrossedAt?: true
   destinationUrl?: true
   confirmationType?: true
+  externalPhase?: true
+  recoveryDisposition?: true
+  confirmationStrength?: true
+  clickAttemptStartedAt?: true
+  clickDispatchedAt?: true
+  postClickActivityObservedAt?: true
+  confirmationObservedAt?: true
+  confirmationPersistedAt?: true
+  providerAdapterVersion?: true
+  selectorStrategyVersion?: true
+  confirmationStrategyVersion?: true
+  lastProviderVerificationAt?: true
+  submitAuthorizationId?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -204,6 +256,19 @@ export type ApplicationSubmissionAttemptMaxAggregateInputType = {
   submitBoundaryCrossedAt?: true
   destinationUrl?: true
   confirmationType?: true
+  externalPhase?: true
+  recoveryDisposition?: true
+  confirmationStrength?: true
+  clickAttemptStartedAt?: true
+  clickDispatchedAt?: true
+  postClickActivityObservedAt?: true
+  confirmationObservedAt?: true
+  confirmationPersistedAt?: true
+  providerAdapterVersion?: true
+  selectorStrategyVersion?: true
+  confirmationStrategyVersion?: true
+  lastProviderVerificationAt?: true
+  submitAuthorizationId?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -239,6 +304,19 @@ export type ApplicationSubmissionAttemptCountAggregateInputType = {
   submitBoundaryCrossedAt?: true
   destinationUrl?: true
   confirmationType?: true
+  externalPhase?: true
+  recoveryDisposition?: true
+  confirmationStrength?: true
+  clickAttemptStartedAt?: true
+  clickDispatchedAt?: true
+  postClickActivityObservedAt?: true
+  confirmationObservedAt?: true
+  confirmationPersistedAt?: true
+  providerAdapterVersion?: true
+  selectorStrategyVersion?: true
+  confirmationStrategyVersion?: true
+  lastProviderVerificationAt?: true
+  submitAuthorizationId?: true
   startedAt?: true
   submittedAt?: true
   verifiedAt?: true
@@ -361,6 +439,19 @@ export type ApplicationSubmissionAttemptGroupByOutputType = {
   submitBoundaryCrossedAt: Date | null
   destinationUrl: string | null
   confirmationType: string | null
+  externalPhase: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition: $Enums.RecoveryDisposition | null
+  confirmationStrength: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt: Date | null
+  clickDispatchedAt: Date | null
+  postClickActivityObservedAt: Date | null
+  confirmationObservedAt: Date | null
+  confirmationPersistedAt: Date | null
+  providerAdapterVersion: string | null
+  selectorStrategyVersion: string | null
+  confirmationStrategyVersion: string | null
+  lastProviderVerificationAt: Date | null
+  submitAuthorizationId: string | null
   startedAt: Date | null
   submittedAt: Date | null
   verifiedAt: Date | null
@@ -419,6 +510,19 @@ export type applicationSubmissionAttemptWhereInput = {
   submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  externalPhase?: Prisma.EnumExternalSubmissionPhaseNullableFilter<"applicationSubmissionAttempt"> | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.EnumRecoveryDispositionNullableFilter<"applicationSubmissionAttempt"> | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.EnumConfirmationStrengthNullableFilter<"applicationSubmissionAttempt"> | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  clickDispatchedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  postClickActivityObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationPersistedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  providerAdapterVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  selectorStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  lastProviderVerificationAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  submitAuthorizationId?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -431,6 +535,7 @@ export type applicationSubmissionAttemptWhereInput = {
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput>
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   submittedApplications?: Prisma.ApplicationListRelationFilter
+  authorization?: Prisma.XOR<Prisma.ApplicationSubmitAuthorizationNullableScalarRelationFilter, Prisma.applicationSubmitAuthorizationWhereInput> | null
 }
 
 export type applicationSubmissionAttemptOrderByWithRelationInput = {
@@ -461,6 +566,19 @@ export type applicationSubmissionAttemptOrderByWithRelationInput = {
   submitBoundaryCrossedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   destinationUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   confirmationType?: Prisma.SortOrderInput | Prisma.SortOrder
+  externalPhase?: Prisma.SortOrderInput | Prisma.SortOrder
+  recoveryDisposition?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationStrength?: Prisma.SortOrderInput | Prisma.SortOrder
+  clickAttemptStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  clickDispatchedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  postClickActivityObservedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationObservedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationPersistedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerAdapterVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  selectorStrategyVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationStrategyVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastProviderVerificationAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  submitAuthorizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -473,11 +591,13 @@ export type applicationSubmissionAttemptOrderByWithRelationInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionOrderByWithRelationInput
   coverLetterRevision?: Prisma.communicationDraftRevisionOrderByWithRelationInput
   submittedApplications?: Prisma.applicationOrderByRelationAggregateInput
+  authorization?: Prisma.applicationSubmitAuthorizationOrderByWithRelationInput
 }
 
 export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   idempotencyKey?: string
+  submitAuthorizationId?: string
   executionSessionId_attemptNumber?: Prisma.applicationSubmissionAttemptExecutionSessionIdAttemptNumberCompoundUniqueInput
   AND?: Prisma.applicationSubmissionAttemptWhereInput | Prisma.applicationSubmissionAttemptWhereInput[]
   OR?: Prisma.applicationSubmissionAttemptWhereInput[]
@@ -507,6 +627,18 @@ export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  externalPhase?: Prisma.EnumExternalSubmissionPhaseNullableFilter<"applicationSubmissionAttempt"> | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.EnumRecoveryDispositionNullableFilter<"applicationSubmissionAttempt"> | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.EnumConfirmationStrengthNullableFilter<"applicationSubmissionAttempt"> | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  clickDispatchedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  postClickActivityObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationPersistedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  providerAdapterVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  selectorStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  lastProviderVerificationAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -519,7 +651,8 @@ export type applicationSubmissionAttemptWhereUniqueInput = Prisma.AtLeast<{
   resumeVersionRevision?: Prisma.XOR<Prisma.ResumeVersionRevisionScalarRelationFilter, Prisma.resumeVersionRevisionWhereInput>
   coverLetterRevision?: Prisma.XOR<Prisma.CommunicationDraftRevisionNullableScalarRelationFilter, Prisma.communicationDraftRevisionWhereInput> | null
   submittedApplications?: Prisma.ApplicationListRelationFilter
-}, "id" | "idempotencyKey" | "executionSessionId_attemptNumber">
+  authorization?: Prisma.XOR<Prisma.ApplicationSubmitAuthorizationNullableScalarRelationFilter, Prisma.applicationSubmitAuthorizationWhereInput> | null
+}, "id" | "idempotencyKey" | "submitAuthorizationId" | "executionSessionId_attemptNumber">
 
 export type applicationSubmissionAttemptOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -549,6 +682,19 @@ export type applicationSubmissionAttemptOrderByWithAggregationInput = {
   submitBoundaryCrossedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   destinationUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   confirmationType?: Prisma.SortOrderInput | Prisma.SortOrder
+  externalPhase?: Prisma.SortOrderInput | Prisma.SortOrder
+  recoveryDisposition?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationStrength?: Prisma.SortOrderInput | Prisma.SortOrder
+  clickAttemptStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  clickDispatchedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  postClickActivityObservedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationObservedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationPersistedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerAdapterVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  selectorStrategyVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  confirmationStrategyVersion?: Prisma.SortOrderInput | Prisma.SortOrder
+  lastProviderVerificationAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  submitAuthorizationId?: Prisma.SortOrderInput | Prisma.SortOrder
   startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   submittedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -592,6 +738,19 @@ export type applicationSubmissionAttemptScalarWhereWithAggregatesInput = {
   submitBoundaryCrossedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
   destinationUrl?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
   confirmationType?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  externalPhase?: Prisma.EnumExternalSubmissionPhaseNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.EnumRecoveryDispositionNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.EnumConfirmationStrengthNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  clickDispatchedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  postClickActivityObservedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationObservedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationPersistedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  providerAdapterVersion?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  selectorStrategyVersion?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationStrategyVersion?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
+  lastProviderVerificationAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
+  submitAuthorizationId?: Prisma.StringNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -621,6 +780,19 @@ export type applicationSubmissionAttemptCreateInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -633,6 +805,7 @@ export type applicationSubmissionAttemptCreateInput = {
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateInput = {
@@ -663,12 +836,26 @@ export type applicationSubmissionAttemptUncheckedCreateInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUpdateInput = {
@@ -693,6 +880,19 @@ export type applicationSubmissionAttemptUpdateInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -705,6 +905,7 @@ export type applicationSubmissionAttemptUpdateInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateInput = {
@@ -735,12 +936,26 @@ export type applicationSubmissionAttemptUncheckedUpdateInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptCreateManyInput = {
@@ -771,6 +986,19 @@ export type applicationSubmissionAttemptCreateManyInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -800,6 +1028,19 @@ export type applicationSubmissionAttemptUpdateManyMutationInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -835,6 +1076,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -890,6 +1144,19 @@ export type applicationSubmissionAttemptCountOrderByAggregateInput = {
   submitBoundaryCrossedAt?: Prisma.SortOrder
   destinationUrl?: Prisma.SortOrder
   confirmationType?: Prisma.SortOrder
+  externalPhase?: Prisma.SortOrder
+  recoveryDisposition?: Prisma.SortOrder
+  confirmationStrength?: Prisma.SortOrder
+  clickAttemptStartedAt?: Prisma.SortOrder
+  clickDispatchedAt?: Prisma.SortOrder
+  postClickActivityObservedAt?: Prisma.SortOrder
+  confirmationObservedAt?: Prisma.SortOrder
+  confirmationPersistedAt?: Prisma.SortOrder
+  providerAdapterVersion?: Prisma.SortOrder
+  selectorStrategyVersion?: Prisma.SortOrder
+  confirmationStrategyVersion?: Prisma.SortOrder
+  lastProviderVerificationAt?: Prisma.SortOrder
+  submitAuthorizationId?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -927,6 +1194,19 @@ export type applicationSubmissionAttemptMaxOrderByAggregateInput = {
   submitBoundaryCrossedAt?: Prisma.SortOrder
   destinationUrl?: Prisma.SortOrder
   confirmationType?: Prisma.SortOrder
+  externalPhase?: Prisma.SortOrder
+  recoveryDisposition?: Prisma.SortOrder
+  confirmationStrength?: Prisma.SortOrder
+  clickAttemptStartedAt?: Prisma.SortOrder
+  clickDispatchedAt?: Prisma.SortOrder
+  postClickActivityObservedAt?: Prisma.SortOrder
+  confirmationObservedAt?: Prisma.SortOrder
+  confirmationPersistedAt?: Prisma.SortOrder
+  providerAdapterVersion?: Prisma.SortOrder
+  selectorStrategyVersion?: Prisma.SortOrder
+  confirmationStrategyVersion?: Prisma.SortOrder
+  lastProviderVerificationAt?: Prisma.SortOrder
+  submitAuthorizationId?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -960,6 +1240,19 @@ export type applicationSubmissionAttemptMinOrderByAggregateInput = {
   submitBoundaryCrossedAt?: Prisma.SortOrder
   destinationUrl?: Prisma.SortOrder
   confirmationType?: Prisma.SortOrder
+  externalPhase?: Prisma.SortOrder
+  recoveryDisposition?: Prisma.SortOrder
+  confirmationStrength?: Prisma.SortOrder
+  clickAttemptStartedAt?: Prisma.SortOrder
+  clickDispatchedAt?: Prisma.SortOrder
+  postClickActivityObservedAt?: Prisma.SortOrder
+  confirmationObservedAt?: Prisma.SortOrder
+  confirmationPersistedAt?: Prisma.SortOrder
+  providerAdapterVersion?: Prisma.SortOrder
+  selectorStrategyVersion?: Prisma.SortOrder
+  confirmationStrategyVersion?: Prisma.SortOrder
+  lastProviderVerificationAt?: Prisma.SortOrder
+  submitAuthorizationId?: Prisma.SortOrder
   startedAt?: Prisma.SortOrder
   submittedAt?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
@@ -969,6 +1262,11 @@ export type applicationSubmissionAttemptMinOrderByAggregateInput = {
 
 export type applicationSubmissionAttemptSumOrderByAggregateInput = {
   attemptNumber?: Prisma.SortOrder
+}
+
+export type ApplicationSubmissionAttemptScalarRelationFilter = {
+  is?: Prisma.applicationSubmissionAttemptWhereInput
+  isNot?: Prisma.applicationSubmissionAttemptWhereInput
 }
 
 export type applicationSubmissionAttemptCreateNestedManyWithoutUserInput = {
@@ -1251,6 +1549,32 @@ export type EnumApplicationSubmissionVerificationStatusFieldUpdateOperationsInpu
   set?: $Enums.ApplicationSubmissionVerificationStatus
 }
 
+export type NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput = {
+  set?: $Enums.ExternalSubmissionPhase | null
+}
+
+export type NullableEnumRecoveryDispositionFieldUpdateOperationsInput = {
+  set?: $Enums.RecoveryDisposition | null
+}
+
+export type NullableEnumConfirmationStrengthFieldUpdateOperationsInput = {
+  set?: $Enums.ConfirmationStrength | null
+}
+
+export type applicationSubmissionAttemptCreateNestedOneWithoutAuthorizationInput = {
+  create?: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutAuthorizationInput>
+  connectOrCreate?: Prisma.applicationSubmissionAttemptCreateOrConnectWithoutAuthorizationInput
+  connect?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+}
+
+export type applicationSubmissionAttemptUpdateOneRequiredWithoutAuthorizationNestedInput = {
+  create?: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutAuthorizationInput>
+  connectOrCreate?: Prisma.applicationSubmissionAttemptCreateOrConnectWithoutAuthorizationInput
+  upsert?: Prisma.applicationSubmissionAttemptUpsertWithoutAuthorizationInput
+  connect?: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateToOneWithWhereWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUpdateWithoutAuthorizationInput>, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutAuthorizationInput>
+}
+
 export type applicationSubmissionAttemptCreateWithoutUserInput = {
   id?: string
   attemptNumber: number
@@ -1273,6 +1597,19 @@ export type applicationSubmissionAttemptCreateWithoutUserInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1284,6 +1621,7 @@ export type applicationSubmissionAttemptCreateWithoutUserInput = {
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutUserInput = {
@@ -1313,12 +1651,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutUserInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutUserInput = {
@@ -1378,6 +1730,19 @@ export type applicationSubmissionAttemptScalarWhereInput = {
   submitBoundaryCrossedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   destinationUrl?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   confirmationType?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  externalPhase?: Prisma.EnumExternalSubmissionPhaseNullableFilter<"applicationSubmissionAttempt"> | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.EnumRecoveryDispositionNullableFilter<"applicationSubmissionAttempt"> | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.EnumConfirmationStrengthNullableFilter<"applicationSubmissionAttempt"> | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  clickDispatchedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  postClickActivityObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationObservedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  confirmationPersistedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  providerAdapterVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  selectorStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  confirmationStrategyVersion?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
+  lastProviderVerificationAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
+  submitAuthorizationId?: Prisma.StringNullableFilter<"applicationSubmissionAttempt"> | string | null
   startedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   submittedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
   verifiedAt?: Prisma.DateTimeNullableFilter<"applicationSubmissionAttempt"> | Date | string | null
@@ -1407,6 +1772,19 @@ export type applicationSubmissionAttemptCreateWithoutResumeVersionRevisionInput 
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1418,6 +1796,7 @@ export type applicationSubmissionAttemptCreateWithoutResumeVersionRevisionInput 
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutResumeVersionRevisionInput = {
@@ -1447,12 +1826,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutResumeVersionRevis
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutResumeVersionRevisionInput = {
@@ -1503,6 +1896,19 @@ export type applicationSubmissionAttemptCreateWithoutApplicationInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1514,6 +1920,7 @@ export type applicationSubmissionAttemptCreateWithoutApplicationInput = {
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput = {
@@ -1543,12 +1950,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationInput =
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutApplicationInput = {
@@ -1583,6 +2004,19 @@ export type applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput 
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1594,6 +2028,7 @@ export type applicationSubmissionAttemptCreateWithoutSubmittedApplicationsInput 
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicationsInput = {
@@ -1624,11 +2059,25 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutSubmittedApplicati
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutSubmittedApplicationsInput = {
@@ -1685,6 +2134,19 @@ export type applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput 
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1696,6 +2158,7 @@ export type applicationSubmissionAttemptUpdateWithoutSubmittedApplicationsInput 
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicationsInput = {
@@ -1726,11 +2189,25 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutSubmittedApplicati
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = {
@@ -1755,6 +2232,19 @@ export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = 
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1766,6 +2256,7 @@ export type applicationSubmissionAttemptCreateWithoutCoverLetterRevisionInput = 
   application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutCoverLetterRevisionInput = {
@@ -1795,12 +2286,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutCoverLetterRevisio
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutCoverLetterRevisionInput = {
@@ -1851,6 +2356,19 @@ export type applicationSubmissionAttemptCreateWithoutApplicationPackageInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1862,6 +2380,7 @@ export type applicationSubmissionAttemptCreateWithoutApplicationPackageInput = {
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationPackageInput = {
@@ -1891,12 +2410,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutApplicationPackage
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutApplicationPackageInput = {
@@ -1947,6 +2480,19 @@ export type applicationSubmissionAttemptCreateWithoutExecutionSessionInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -1958,6 +2504,7 @@ export type applicationSubmissionAttemptCreateWithoutExecutionSessionInput = {
   resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
   coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
   submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptUncheckedCreateWithoutExecutionSessionInput = {
@@ -1987,12 +2534,26 @@ export type applicationSubmissionAttemptUncheckedCreateWithoutExecutionSessionIn
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedCreateNestedOneWithoutAttemptInput
 }
 
 export type applicationSubmissionAttemptCreateOrConnectWithoutExecutionSessionInput = {
@@ -2019,6 +2580,218 @@ export type applicationSubmissionAttemptUpdateWithWhereUniqueWithoutExecutionSes
 export type applicationSubmissionAttemptUpdateManyWithWhereWithoutExecutionSessionInput = {
   where: Prisma.applicationSubmissionAttemptScalarWhereInput
   data: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateManyMutationInput, Prisma.applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessionInput>
+}
+
+export type applicationSubmissionAttemptCreateWithoutAuthorizationInput = {
+  id?: string
+  attemptNumber: number
+  method: $Enums.ApplicationSubmissionMethod
+  status?: $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint: string
+  approvalTokenHash?: string | null
+  approvalExpiresAt?: Date | string | null
+  approvalUsedAt?: Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: string | null
+  confirmationUrl?: string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: string | null
+  resumeFileHash: string
+  coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
+  startedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  verifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.userCreateNestedOneWithoutApplicationSubmissionAttemptsInput
+  executionSession: Prisma.applicationExecutionSessionCreateNestedOneWithoutSubmissionAttemptsInput
+  applicationPackage: Prisma.applicationPackageCreateNestedOneWithoutSubmissionAttemptsInput
+  application: Prisma.applicationCreateNestedOneWithoutApplicationSubmissionAttemptsInput
+  resumeVersionRevision: Prisma.resumeVersionRevisionCreateNestedOneWithoutExecutionSubmissionAttemptsInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionCreateNestedOneWithoutExecutionCoverLetterAttemptsInput
+  submittedApplications?: Prisma.applicationCreateNestedManyWithoutSubmittedExecutionAttemptInput
+}
+
+export type applicationSubmissionAttemptUncheckedCreateWithoutAuthorizationInput = {
+  id?: string
+  userId: string
+  executionSessionId: string
+  applicationPackageId: string
+  applicationId: string
+  attemptNumber: number
+  method: $Enums.ApplicationSubmissionMethod
+  status?: $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint: string
+  approvalTokenHash?: string | null
+  approvalExpiresAt?: Date | string | null
+  approvalUsedAt?: Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: string | null
+  confirmationUrl?: string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: string | null
+  resumeVersionRevisionId: string
+  resumeFileHash: string
+  coverLetterRevisionId?: string | null
+  coverLetterFileHash?: string | null
+  idempotencyKey?: string | null
+  submitBoundaryCrossedAt?: Date | string | null
+  destinationUrl?: string | null
+  confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
+  startedAt?: Date | string | null
+  submittedAt?: Date | string | null
+  verifiedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  submittedApplications?: Prisma.applicationUncheckedCreateNestedManyWithoutSubmittedExecutionAttemptInput
+}
+
+export type applicationSubmissionAttemptCreateOrConnectWithoutAuthorizationInput = {
+  where: Prisma.applicationSubmissionAttemptWhereUniqueInput
+  create: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutAuthorizationInput>
+}
+
+export type applicationSubmissionAttemptUpsertWithoutAuthorizationInput = {
+  update: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutAuthorizationInput>
+  create: Prisma.XOR<Prisma.applicationSubmissionAttemptCreateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedCreateWithoutAuthorizationInput>
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+}
+
+export type applicationSubmissionAttemptUpdateToOneWithWhereWithoutAuthorizationInput = {
+  where?: Prisma.applicationSubmissionAttemptWhereInput
+  data: Prisma.XOR<Prisma.applicationSubmissionAttemptUpdateWithoutAuthorizationInput, Prisma.applicationSubmissionAttemptUncheckedUpdateWithoutAuthorizationInput>
+}
+
+export type applicationSubmissionAttemptUpdateWithoutAuthorizationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  attemptNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  method?: Prisma.EnumApplicationSubmissionMethodFieldUpdateOperationsInput | $Enums.ApplicationSubmissionMethod
+  status?: Prisma.EnumApplicationSubmissionAttemptStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: Prisma.EnumApplicationSubmissionVerificationStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvalExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvalUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: Prisma.NullableEnumApplicationExecutionFailureCodeFieldUpdateOperationsInput | $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
+  coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.userUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
+  executionSession?: Prisma.applicationExecutionSessionUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
+  applicationPackage?: Prisma.applicationPackageUpdateOneRequiredWithoutSubmissionAttemptsNestedInput
+  application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
+  resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
+  coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
+  submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+}
+
+export type applicationSubmissionAttemptUncheckedUpdateWithoutAuthorizationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  executionSessionId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationPackageId?: Prisma.StringFieldUpdateOperationsInput | string
+  applicationId?: Prisma.StringFieldUpdateOperationsInput | string
+  attemptNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  method?: Prisma.EnumApplicationSubmissionMethodFieldUpdateOperationsInput | $Enums.ApplicationSubmissionMethod
+  status?: Prisma.EnumApplicationSubmissionAttemptStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionAttemptStatus
+  verificationStatus?: Prisma.EnumApplicationSubmissionVerificationStatusFieldUpdateOperationsInput | $Enums.ApplicationSubmissionVerificationStatus
+  approvalFingerprint?: Prisma.StringFieldUpdateOperationsInput | string
+  approvalTokenHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  approvalExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  approvalUsedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  finalSubmissionSnapshotJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  providerApplicationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  verificationEvidenceJson?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  failureCode?: Prisma.NullableEnumApplicationExecutionFailureCodeFieldUpdateOperationsInput | $Enums.ApplicationExecutionFailureCode | null
+  failureMessage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  resumeVersionRevisionId?: Prisma.StringFieldUpdateOperationsInput | string
+  resumeFileHash?: Prisma.StringFieldUpdateOperationsInput | string
+  coverLetterRevisionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverLetterFileHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  idempotencyKey?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptCreateManyUserInput = {
@@ -2048,6 +2821,19 @@ export type applicationSubmissionAttemptCreateManyUserInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2077,6 +2863,19 @@ export type applicationSubmissionAttemptUpdateWithoutUserInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2088,6 +2887,7 @@ export type applicationSubmissionAttemptUpdateWithoutUserInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutUserInput = {
@@ -2117,12 +2917,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutUserInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutUserInput = {
@@ -2152,6 +2966,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutUserInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2186,6 +3013,19 @@ export type applicationSubmissionAttemptCreateManyResumeVersionRevisionInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2215,6 +3055,19 @@ export type applicationSubmissionAttemptUpdateWithoutResumeVersionRevisionInput 
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2226,6 +3079,7 @@ export type applicationSubmissionAttemptUpdateWithoutResumeVersionRevisionInput 
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutResumeVersionRevisionInput = {
@@ -2255,12 +3109,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutResumeVersionRevis
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutResumeVersionRevisionInput = {
@@ -2290,6 +3158,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutResumeVersionR
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2324,6 +3205,19 @@ export type applicationSubmissionAttemptCreateManyApplicationInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2353,6 +3247,19 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2364,6 +3271,7 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationInput = {
@@ -2393,12 +3301,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationInput =
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationInput = {
@@ -2428,6 +3350,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationInp
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2462,6 +3397,19 @@ export type applicationSubmissionAttemptCreateManyCoverLetterRevisionInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2491,6 +3439,19 @@ export type applicationSubmissionAttemptUpdateWithoutCoverLetterRevisionInput = 
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2502,6 +3463,7 @@ export type applicationSubmissionAttemptUpdateWithoutCoverLetterRevisionInput = 
   application?: Prisma.applicationUpdateOneRequiredWithoutApplicationSubmissionAttemptsNestedInput
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutCoverLetterRevisionInput = {
@@ -2531,12 +3493,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutCoverLetterRevisio
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRevisionInput = {
@@ -2566,6 +3542,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutCoverLetterRev
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2600,6 +3589,19 @@ export type applicationSubmissionAttemptCreateManyApplicationPackageInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2629,6 +3631,19 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationPackageInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2640,6 +3655,7 @@ export type applicationSubmissionAttemptUpdateWithoutApplicationPackageInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationPackageInput = {
@@ -2669,12 +3685,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutApplicationPackage
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPackageInput = {
@@ -2704,6 +3734,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutApplicationPac
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2738,6 +3781,19 @@ export type applicationSubmissionAttemptCreateManyExecutionSessionInput = {
   submitBoundaryCrossedAt?: Date | string | null
   destinationUrl?: string | null
   confirmationType?: string | null
+  externalPhase?: $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: $Enums.RecoveryDisposition | null
+  confirmationStrength?: $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Date | string | null
+  clickDispatchedAt?: Date | string | null
+  postClickActivityObservedAt?: Date | string | null
+  confirmationObservedAt?: Date | string | null
+  confirmationPersistedAt?: Date | string | null
+  providerAdapterVersion?: string | null
+  selectorStrategyVersion?: string | null
+  confirmationStrategyVersion?: string | null
+  lastProviderVerificationAt?: Date | string | null
+  submitAuthorizationId?: string | null
   startedAt?: Date | string | null
   submittedAt?: Date | string | null
   verifiedAt?: Date | string | null
@@ -2767,6 +3823,19 @@ export type applicationSubmissionAttemptUpdateWithoutExecutionSessionInput = {
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2778,6 +3847,7 @@ export type applicationSubmissionAttemptUpdateWithoutExecutionSessionInput = {
   resumeVersionRevision?: Prisma.resumeVersionRevisionUpdateOneRequiredWithoutExecutionSubmissionAttemptsNestedInput
   coverLetterRevision?: Prisma.communicationDraftRevisionUpdateOneWithoutExecutionCoverLetterAttemptsNestedInput
   submittedApplications?: Prisma.applicationUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateWithoutExecutionSessionInput = {
@@ -2807,12 +3877,26 @@ export type applicationSubmissionAttemptUncheckedUpdateWithoutExecutionSessionIn
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   submittedApplications?: Prisma.applicationUncheckedUpdateManyWithoutSubmittedExecutionAttemptNestedInput
+  authorization?: Prisma.applicationSubmitAuthorizationUncheckedUpdateOneWithoutAttemptNestedInput
 }
 
 export type applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessionInput = {
@@ -2842,6 +3926,19 @@ export type applicationSubmissionAttemptUncheckedUpdateManyWithoutExecutionSessi
   submitBoundaryCrossedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   destinationUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   confirmationType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  externalPhase?: Prisma.NullableEnumExternalSubmissionPhaseFieldUpdateOperationsInput | $Enums.ExternalSubmissionPhase | null
+  recoveryDisposition?: Prisma.NullableEnumRecoveryDispositionFieldUpdateOperationsInput | $Enums.RecoveryDisposition | null
+  confirmationStrength?: Prisma.NullableEnumConfirmationStrengthFieldUpdateOperationsInput | $Enums.ConfirmationStrength | null
+  clickAttemptStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  clickDispatchedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  postClickActivityObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationObservedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  confirmationPersistedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  providerAdapterVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  selectorStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  confirmationStrategyVersion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastProviderVerificationAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  submitAuthorizationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   submittedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -2908,6 +4005,19 @@ export type applicationSubmissionAttemptSelect<ExtArgs extends runtime.Types.Ext
   submitBoundaryCrossedAt?: boolean
   destinationUrl?: boolean
   confirmationType?: boolean
+  externalPhase?: boolean
+  recoveryDisposition?: boolean
+  confirmationStrength?: boolean
+  clickAttemptStartedAt?: boolean
+  clickDispatchedAt?: boolean
+  postClickActivityObservedAt?: boolean
+  confirmationObservedAt?: boolean
+  confirmationPersistedAt?: boolean
+  providerAdapterVersion?: boolean
+  selectorStrategyVersion?: boolean
+  confirmationStrategyVersion?: boolean
+  lastProviderVerificationAt?: boolean
+  submitAuthorizationId?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2920,6 +4030,7 @@ export type applicationSubmissionAttemptSelect<ExtArgs extends runtime.Types.Ext
   resumeVersionRevision?: boolean | Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>
   submittedApplications?: boolean | Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>
+  authorization?: boolean | Prisma.applicationSubmissionAttempt$authorizationArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationSubmissionAttemptCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["applicationSubmissionAttempt"]>
 
@@ -2951,6 +4062,19 @@ export type applicationSubmissionAttemptSelectCreateManyAndReturn<ExtArgs extend
   submitBoundaryCrossedAt?: boolean
   destinationUrl?: boolean
   confirmationType?: boolean
+  externalPhase?: boolean
+  recoveryDisposition?: boolean
+  confirmationStrength?: boolean
+  clickAttemptStartedAt?: boolean
+  clickDispatchedAt?: boolean
+  postClickActivityObservedAt?: boolean
+  confirmationObservedAt?: boolean
+  confirmationPersistedAt?: boolean
+  providerAdapterVersion?: boolean
+  selectorStrategyVersion?: boolean
+  confirmationStrategyVersion?: boolean
+  lastProviderVerificationAt?: boolean
+  submitAuthorizationId?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -2992,6 +4116,19 @@ export type applicationSubmissionAttemptSelectUpdateManyAndReturn<ExtArgs extend
   submitBoundaryCrossedAt?: boolean
   destinationUrl?: boolean
   confirmationType?: boolean
+  externalPhase?: boolean
+  recoveryDisposition?: boolean
+  confirmationStrength?: boolean
+  clickAttemptStartedAt?: boolean
+  clickDispatchedAt?: boolean
+  postClickActivityObservedAt?: boolean
+  confirmationObservedAt?: boolean
+  confirmationPersistedAt?: boolean
+  providerAdapterVersion?: boolean
+  selectorStrategyVersion?: boolean
+  confirmationStrategyVersion?: boolean
+  lastProviderVerificationAt?: boolean
+  submitAuthorizationId?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -3033,6 +4170,19 @@ export type applicationSubmissionAttemptSelectScalar = {
   submitBoundaryCrossedAt?: boolean
   destinationUrl?: boolean
   confirmationType?: boolean
+  externalPhase?: boolean
+  recoveryDisposition?: boolean
+  confirmationStrength?: boolean
+  clickAttemptStartedAt?: boolean
+  clickDispatchedAt?: boolean
+  postClickActivityObservedAt?: boolean
+  confirmationObservedAt?: boolean
+  confirmationPersistedAt?: boolean
+  providerAdapterVersion?: boolean
+  selectorStrategyVersion?: boolean
+  confirmationStrategyVersion?: boolean
+  lastProviderVerificationAt?: boolean
+  submitAuthorizationId?: boolean
   startedAt?: boolean
   submittedAt?: boolean
   verifiedAt?: boolean
@@ -3040,7 +4190,7 @@ export type applicationSubmissionAttemptSelectScalar = {
   updatedAt?: boolean
 }
 
-export type applicationSubmissionAttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "executionSessionId" | "applicationPackageId" | "applicationId" | "attemptNumber" | "method" | "status" | "verificationStatus" | "approvalFingerprint" | "approvalTokenHash" | "approvalExpiresAt" | "approvalUsedAt" | "finalSubmissionSnapshotJson" | "providerApplicationId" | "confirmationUrl" | "verificationEvidenceJson" | "failureCode" | "failureMessage" | "resumeVersionRevisionId" | "resumeFileHash" | "coverLetterRevisionId" | "coverLetterFileHash" | "idempotencyKey" | "submitBoundaryCrossedAt" | "destinationUrl" | "confirmationType" | "startedAt" | "submittedAt" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationSubmissionAttempt"]>
+export type applicationSubmissionAttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "executionSessionId" | "applicationPackageId" | "applicationId" | "attemptNumber" | "method" | "status" | "verificationStatus" | "approvalFingerprint" | "approvalTokenHash" | "approvalExpiresAt" | "approvalUsedAt" | "finalSubmissionSnapshotJson" | "providerApplicationId" | "confirmationUrl" | "verificationEvidenceJson" | "failureCode" | "failureMessage" | "resumeVersionRevisionId" | "resumeFileHash" | "coverLetterRevisionId" | "coverLetterFileHash" | "idempotencyKey" | "submitBoundaryCrossedAt" | "destinationUrl" | "confirmationType" | "externalPhase" | "recoveryDisposition" | "confirmationStrength" | "clickAttemptStartedAt" | "clickDispatchedAt" | "postClickActivityObservedAt" | "confirmationObservedAt" | "confirmationPersistedAt" | "providerAdapterVersion" | "selectorStrategyVersion" | "confirmationStrategyVersion" | "lastProviderVerificationAt" | "submitAuthorizationId" | "startedAt" | "submittedAt" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["applicationSubmissionAttempt"]>
 export type applicationSubmissionAttemptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.userDefaultArgs<ExtArgs>
   executionSession?: boolean | Prisma.applicationExecutionSessionDefaultArgs<ExtArgs>
@@ -3049,6 +4199,7 @@ export type applicationSubmissionAttemptInclude<ExtArgs extends runtime.Types.Ex
   resumeVersionRevision?: boolean | Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>
   coverLetterRevision?: boolean | Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>
   submittedApplications?: boolean | Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>
+  authorization?: boolean | Prisma.applicationSubmissionAttempt$authorizationArgs<ExtArgs>
   _count?: boolean | Prisma.ApplicationSubmissionAttemptCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type applicationSubmissionAttemptIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3078,6 +4229,7 @@ export type $applicationSubmissionAttemptPayload<ExtArgs extends runtime.Types.E
     resumeVersionRevision: Prisma.$resumeVersionRevisionPayload<ExtArgs>
     coverLetterRevision: Prisma.$communicationDraftRevisionPayload<ExtArgs> | null
     submittedApplications: Prisma.$applicationPayload<ExtArgs>[]
+    authorization: Prisma.$applicationSubmitAuthorizationPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -3104,9 +4256,25 @@ export type $applicationSubmissionAttemptPayload<ExtArgs extends runtime.Types.E
     coverLetterRevisionId: string | null
     coverLetterFileHash: string | null
     idempotencyKey: string | null
+    /**
+     * Reused M32 boundary timestamp. This is not proof that a click occurred.
+     */
     submitBoundaryCrossedAt: Date | null
     destinationUrl: string | null
     confirmationType: string | null
+    externalPhase: $Enums.ExternalSubmissionPhase | null
+    recoveryDisposition: $Enums.RecoveryDisposition | null
+    confirmationStrength: $Enums.ConfirmationStrength | null
+    clickAttemptStartedAt: Date | null
+    clickDispatchedAt: Date | null
+    postClickActivityObservedAt: Date | null
+    confirmationObservedAt: Date | null
+    confirmationPersistedAt: Date | null
+    providerAdapterVersion: string | null
+    selectorStrategyVersion: string | null
+    confirmationStrategyVersion: string | null
+    lastProviderVerificationAt: Date | null
+    submitAuthorizationId: string | null
     startedAt: Date | null
     submittedAt: Date | null
     verifiedAt: Date | null
@@ -3513,6 +4681,7 @@ export interface Prisma__applicationSubmissionAttemptClient<T, Null = never, Ext
   resumeVersionRevision<T extends Prisma.resumeVersionRevisionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.resumeVersionRevisionDefaultArgs<ExtArgs>>): Prisma.Prisma__resumeVersionRevisionClient<runtime.Types.Result.GetResult<Prisma.$resumeVersionRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   coverLetterRevision<T extends Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationSubmissionAttempt$coverLetterRevisionArgs<ExtArgs>>): Prisma.Prisma__communicationDraftRevisionClient<runtime.Types.Result.GetResult<Prisma.$communicationDraftRevisionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   submittedApplications<T extends Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$applicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  authorization<T extends Prisma.applicationSubmissionAttempt$authorizationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.applicationSubmissionAttempt$authorizationArgs<ExtArgs>>): Prisma.Prisma__applicationSubmitAuthorizationClient<runtime.Types.Result.GetResult<Prisma.$applicationSubmitAuthorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3569,6 +4738,19 @@ export interface applicationSubmissionAttemptFieldRefs {
   readonly submitBoundaryCrossedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
   readonly destinationUrl: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
   readonly confirmationType: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly externalPhase: Prisma.FieldRef<"applicationSubmissionAttempt", 'ExternalSubmissionPhase'>
+  readonly recoveryDisposition: Prisma.FieldRef<"applicationSubmissionAttempt", 'RecoveryDisposition'>
+  readonly confirmationStrength: Prisma.FieldRef<"applicationSubmissionAttempt", 'ConfirmationStrength'>
+  readonly clickAttemptStartedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly clickDispatchedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly postClickActivityObservedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly confirmationObservedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly confirmationPersistedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly providerAdapterVersion: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly selectorStrategyVersion: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly confirmationStrategyVersion: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
+  readonly lastProviderVerificationAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
+  readonly submitAuthorizationId: Prisma.FieldRef<"applicationSubmissionAttempt", 'String'>
   readonly startedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
   readonly submittedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
   readonly verifiedAt: Prisma.FieldRef<"applicationSubmissionAttempt", 'DateTime'>
@@ -4015,6 +5197,25 @@ export type applicationSubmissionAttempt$submittedApplicationsArgs<ExtArgs exten
   take?: number
   skip?: number
   distinct?: Prisma.ApplicationScalarFieldEnum | Prisma.ApplicationScalarFieldEnum[]
+}
+
+/**
+ * applicationSubmissionAttempt.authorization
+ */
+export type applicationSubmissionAttempt$authorizationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the applicationSubmitAuthorization
+   */
+  select?: Prisma.applicationSubmitAuthorizationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the applicationSubmitAuthorization
+   */
+  omit?: Prisma.applicationSubmitAuthorizationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.applicationSubmitAuthorizationInclude<ExtArgs> | null
+  where?: Prisma.applicationSubmitAuthorizationWhereInput
 }
 
 /**

@@ -83,6 +83,7 @@ export const ModelName = {
   applicationExecutionSession: 'applicationExecutionSession',
   applicationExecutionEvent: 'applicationExecutionEvent',
   applicationSubmissionAttempt: 'applicationSubmissionAttempt',
+  applicationSubmitAuthorization: 'applicationSubmitAuthorization',
   applicationAnswerPreference: 'applicationAnswerPreference',
   linkedinGrowthProfile: 'linkedinGrowthProfile',
   linkedinContentPillar: 'linkedinContentPillar',
@@ -850,6 +851,19 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
   submitBoundaryCrossedAt: 'submitBoundaryCrossedAt',
   destinationUrl: 'destinationUrl',
   confirmationType: 'confirmationType',
+  externalPhase: 'externalPhase',
+  recoveryDisposition: 'recoveryDisposition',
+  confirmationStrength: 'confirmationStrength',
+  clickAttemptStartedAt: 'clickAttemptStartedAt',
+  clickDispatchedAt: 'clickDispatchedAt',
+  postClickActivityObservedAt: 'postClickActivityObservedAt',
+  confirmationObservedAt: 'confirmationObservedAt',
+  confirmationPersistedAt: 'confirmationPersistedAt',
+  providerAdapterVersion: 'providerAdapterVersion',
+  selectorStrategyVersion: 'selectorStrategyVersion',
+  confirmationStrategyVersion: 'confirmationStrategyVersion',
+  lastProviderVerificationAt: 'lastProviderVerificationAt',
+  submitAuthorizationId: 'submitAuthorizationId',
   startedAt: 'startedAt',
   submittedAt: 'submittedAt',
   verifiedAt: 'verifiedAt',
@@ -858,6 +872,30 @@ export const ApplicationSubmissionAttemptScalarFieldEnum = {
 } as const
 
 export type ApplicationSubmissionAttemptScalarFieldEnum = (typeof ApplicationSubmissionAttemptScalarFieldEnum)[keyof typeof ApplicationSubmissionAttemptScalarFieldEnum]
+
+
+export const ApplicationSubmitAuthorizationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  applicationId: 'applicationId',
+  packageId: 'packageId',
+  attemptId: 'attemptId',
+  provider: 'provider',
+  targetHost: 'targetHost',
+  targetJobId: 'targetJobId',
+  authorizationHash: 'authorizationHash',
+  state: 'state',
+  issuedAt: 'issuedAt',
+  consumedAt: 'consumedAt',
+  cancelledAt: 'cancelledAt',
+  expiresAt: 'expiresAt',
+  dryRunStatus: 'dryRunStatus',
+  dryRunCertifiedAt: 'dryRunCertifiedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationSubmitAuthorizationScalarFieldEnum = (typeof ApplicationSubmitAuthorizationScalarFieldEnum)[keyof typeof ApplicationSubmitAuthorizationScalarFieldEnum]
 
 
 export const ApplicationAnswerPreferenceScalarFieldEnum = {

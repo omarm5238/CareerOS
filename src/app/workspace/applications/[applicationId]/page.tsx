@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
+import { getSubmissionAudit } from "@/features/application-execution/integrity/external-submission";
 import { ApplicationDetailPage } from "@/features/applications/components/application-detail-page";
 import type { ApplicationResumeOption } from "@/features/applications/components/application-resume-section";
 import {
@@ -57,6 +58,7 @@ export default async function WorkspaceApplicationDetailPage({ params }: PagePro
     : [];
 
   const communication = await getApplicationCommunicationSection(session.user.id, application.id);
+  const submissionAudit = await getSubmissionAudit(session.user.id, application.id);
 
   return (
     <ApplicationDetailPage
@@ -82,6 +84,7 @@ export default async function WorkspaceApplicationDetailPage({ params }: PagePro
       insightType={insightSpec?.type ?? null}
       interviewCompleted={communication?.interviewCompleted ?? false}
       resumeOptions={resumeOptions}
+      submissionAudit={submissionAudit}
     />
   );
 }

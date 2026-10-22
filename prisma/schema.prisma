@@ -41,6 +41,7 @@ model user {
   applicationExecutionSessions  applicationExecutionSession[]
   applicationExecutionEvents    applicationExecutionEvent[]
   applicationSubmissionAttempts applicationSubmissionAttempt[]
+  applicationSubmitAuthorizations applicationSubmitAuthorization[]
   applicationAnswerPreferences  applicationAnswerPreference[]
   linkedinGrowthProfiles        linkedinGrowthProfile[]
   linkedinContentPillars        linkedinContentPillar[]
@@ -533,6 +534,7 @@ model application {
   submittedPackage              applicationPackage?            @relation("SubmittedApplicationPackage", fields: [submittedPackageId], references: [id], onDelete: Restrict)
   applicationExecutionSessions  applicationExecutionSession[]
   applicationSubmissionAttempts applicationSubmissionAttempt[]
+  applicationSubmitAuthorizations applicationSubmitAuthorization[]
   submittedExecutionAttempt     applicationSubmissionAttempt?  @relation("SubmittedExecutionAttempt", fields: [submittedExecutionAttemptId], references: [id], onDelete: Restrict)
 
   @@index([userId])
@@ -1406,6 +1408,7 @@ model applicationPackage {
   submittedApplication        application?                 @relation("SubmittedApplicationPackage")
   executionSessions     applicationExecutionSession[]
   submissionAttempts    applicationSubmissionAttempt[]
+  submitAuthorizations  applicationSubmitAuthorization[]
 
   @@unique([userId, jobPostingId, version])
   @@index([userId, createdAt])
@@ -1495,6 +1498,24 @@ enum ApplicationExecutionEventType {
   SESSION_FAILED
   SESSION_CANCELLED
   SESSION_COMPLETED
+  SUBMIT_AUTHORIZATION_ISSUED
+  SUBMIT_BOUNDARY_ACQUIRED
+  CLICK_ATTEMPT_STARTED
+  CLICK_DISPATCHED
+  POST_CLICK_NAVIGATION_OBSERVED
+  POST_CLICK_NETWORK_OBSERVED
+  POST_CLICK_DOM_OBSERVED
+  CONFIRMATION_EVIDENCE_OBSERVED
+  CONFIRMATION_EVIDENCE_REJECTED
+  CONFIRMATION_PERSISTED
+  PROVIDER_VERIFICATION_STARTED
+  PROVIDER_VERIFICATION_CONFIRMED
+  PROVIDER_VERIFICATION_NOT_FOUND
+  PROVIDER_VERIFICATION_INCONCLUSIVE
+  SUBMISSION_MARKED_UNCERTAIN
+  MANUAL_CONFIRMATION_RECORDED
+  MANUAL_NOT_SUBMITTED_RECORDED
+  LOCAL_RECONCILIATION_COMPLETED
 }
 
 enum ApplicationSubmissionMethod {
@@ -1519,6 +1540,44 @@ enum ApplicationSubmissionVerificationStatus {
   PROBABLE
   UNVERIFIED
   FAILED
+}
+
+enum SubmitAuthorizationState {
+  ISSUED
+  CONSUMED
+  CANCELLED
+  EXPIRED
+}
+
+enum ExternalSubmissionPhase {
+  EXECUTION_STARTED
+  FORM_READY
+  SUBMIT_BOUNDARY_ACQUIRED
+  CLICK_ATTEMPT_STARTED
+  CLICK_DISPATCHED
+  POST_CLICK_ACTIVITY_OBSERVED
+  CONFIRMATION_OBSERVED
+  CONFIRMATION_PERSISTED
+  LOCAL_FINALIZATION_COMPLETED
+  PROVIDER_REJECTED
+  USER_ABORTED
+  FAILED_BEFORE_CLICK
+}
+
+enum RecoveryDisposition {
+  SAFE_TO_RETRY
+  VERIFY_PROVIDER
+  SUBMIT_UNCERTAIN
+  CONFIRMED_NEEDS_LOCAL_RECONCILIATION
+  ALREADY_FINALIZED
+  MANUAL_REVIEW_REQUIRED
+}
+
+enum ConfirmationStrength {
+  NONE
+  WEAK
+  STRONG
+  DEFINITIVE
 }
 
 enum ApplicationAnswerScope {
@@ -1660,9 +1719,24 @@ model applicationSubmissionAttempt {
   coverLetterFileHash   String?
 
   idempotencyKey          String?   @unique
+  /// Reused M32 boundary timestamp. This is not proof that a click occurred.
   submitBoundaryCrossedAt DateTime?
   destinationUrl          String?
   confirmationType        String?
+
+  externalPhase              ExternalSubmissionPhase?
+  recoveryDisposition        RecoveryDisposition?
+  confirmationStrength       ConfirmationStrength?
+  clickAttemptStartedAt      DateTime?
+  clickDispatchedAt          DateTime?
+  postClickActivityObservedAt DateTime?
+  confirmationObservedAt     DateTime?
+  confirmationPersistedAt    DateTime?
+  providerAdapterVersion     String?
+  selectorStrategyVersion    String?
+  confirmationStrategyVersion String?
+  lastProviderVerificationAt DateTime?
+  submitAuthorizationId      String? @unique
 
   startedAt   DateTime?
   submittedAt DateTime?
@@ -1677,7 +1751,8 @@ model applicationSubmissionAttempt {
   application           application                 @relation(fields: [applicationId], references: [id], onDelete: Restrict)
   resumeVersionRevision resumeVersionRevision       @relation("AttemptResumeRevision", fields: [resumeVersionRevisionId], references: [id], onDelete: Restrict)
   coverLetterRevision   communicationDraftRevision? @relation("AttemptCoverLetterRevision", fields: [coverLetterRevisionId], references: [id], onDelete: Restrict)
-  submittedApplications application[]               @relation("SubmittedExecutionAttempt")
+  submittedApplications application[]                  @relation("SubmittedExecutionAttempt")
+  authorization         applicationSubmitAuthorization?
 
   @@unique([executionSessionId, attemptNumber])
   @@index([userId])
@@ -1685,6 +1760,44 @@ model applicationSubmissionAttempt {
   @@index([applicationId])
   @@index([status])
   @@index([createdAt])
+}
+
+/// One-shot provider submit authorization. Raw bearer secrets are never stored.
+model applicationSubmitAuthorization {
+  id            String @id @default(cuid())
+  userId        String
+  applicationId String
+  packageId     String
+  attemptId     String @unique
+
+  provider    ApplicationProvider
+  targetHost  String
+  targetJobId String?
+
+  /// SHA-256 of the one-time bearer. The raw token is returned only at issuance.
+  authorizationHash String @unique
+
+  state       SubmitAuthorizationState @default(ISSUED)
+  issuedAt    DateTime                 @default(now())
+  consumedAt  DateTime?
+  cancelledAt DateTime?
+  expiresAt   DateTime
+
+  dryRunStatus     String?
+  dryRunCertifiedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user        user                         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  application application                  @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  package     applicationPackage           @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  attempt     applicationSubmissionAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([applicationId])
+  @@index([packageId])
+  @@index([state])
 }
 
 model applicationAnswerPreference {
